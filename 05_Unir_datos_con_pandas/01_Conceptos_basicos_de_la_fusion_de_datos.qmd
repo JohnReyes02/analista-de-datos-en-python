@@ -1,0 +1,188 @@
+---
+title: "Conceptos Básicos de la fusión de datos"
+author: "Edwin John Fredy Reyes Aguirre"
+date: today
+toc: true
+toc-title: "Contenido"
+---
+
+Aprende a fusionar datos dispares mediante uniones internas. Combinando información de múltiples fuentes, descubrirás perspectivas convincentes que antes podían estar ocultas. También aprenderás cómo la relación entre esas fuentes, de uno a uno o de uno a muchos, puede afectar a tu resultado.
+
+## Unión interna
+
+### Qué columna elegiremos para fusionar?
+
+Chicago proporciona una lista de propietarios de taxis y vehículos con licencia para operar en la ciudad, por seguridad pública. Tu objetivo es unir dos tablas. Una tabla se llama `taxi_owners` y contiene información sobre los propietarios de las empresas de taxis, mientras que la otra se llama `taxi_veh`e incluye información sobre cada vehículo de taxi.
+
+```{python}
+
+import pandas as pd
+```
+
+```{python}
+taxi_owners = pd.read_pickle('../datasets/taxi_owners.p')
+taxi_owners.head()
+```
+
+```{python}
+taxi_veh = pd.read_pickle('../datasets/taxi_vehicles.p')
+taxi_veh.head()
+```
+
+#### Instrucciones:
+
+Elige una columna que utilizarías para fusionar las dos tablas utilizando el método `.merge()`.
+
+Respuestas posibles
+
+-   [ ] on='rid'
+
+-   [x] on='vid'
+
+-   [ ] on='year'
+
+-   [ ] on='zip'
+
+### Tu primera unión interna
+
+Te han encargado que averigües cuáles son los tipos de combustibles más utlizados en los taxis de Chicago. Para completar el análisis, tienes que fusionar las tablas `taxi_owners` y `taxi_veh` en la columna `vid`. A continuación, puedes utilizar la tabla combinada junto con el método `.values_counts()` para encontrar el `fuel_type` más común.
+
+#### Instrucciones:
+
+1.  Fusiona `taxi_owners` con `taxi_veh` en la columna `vid` y guarda el resultado en `taxi_own_veh`.
+
+```{python}
+
+# Merge the taxi_owners and taxi_veh tables
+taxi_own_veh = taxi_owners.merge(taxi_veh, on='vid')
+taxi_own_veh.head()
+
+# Print the column names of taxi_own_veh
+print(taxi_own_veh.columns)
+```
+
+2.  Establece los sufijos izquierdo y derecho de la tabla para las columnas solapadas de la fusión en `_own` y `_veh`, respectivamente.
+
+```{python}
+
+# Merge the taxi_owners and taxi_veh tables setting a suffix
+taxi_own_veh = taxi_owners.merge(taxi_veh, on='vid', suffixes=('_own', '_veh'))
+taxi_own_veh.head()
+
+# Print the column names of taxi_own_veh
+print(taxi_own_veh.columns)
+```
+
+3.  Selecciona la columna `fuel_type` de `taxi_own_veh` e imprime `value_counts()` para encontrar los `fuel_type` más utilizados.
+
+```{python}
+
+# Merge the taxi_owners and taxi_veh tables setting a suffix
+taxi_own_veh = taxi_owners.merge(taxi_veh, on='vid', suffixes=('_own', '_veh'))
+
+# Print the value_counts to find the most popular fuel_type
+print(taxi_own_veh['fuel_type'].value_counts())
+```
+
+### Uniones internas y número de filas devueltas
+
+Todas las fusiones que has estudiado hasta ahora se llaman uniones internas. Es necesario comprender que las uniones internas solo devuelven las filas con valores coincidentes en ambas tablas. Explorarás esto más a fondo revisando la fusión entre las tablas `wards` y `census`, y comparándola después con fusiones de copias de estas tablas ligeramente alteradas, denominadas `wards_altered` y `census_altered`. La primera fila de la columna `wards` se ha modificado en las tablas alteradas. Examinarás cómo afecta esto a la fusión entre ellos.
+
+```{python}
+
+wards = pd.read_pickle('../datasets/ward.p')
+wards.head()
+```
+
+```{python}
+census = pd.read_pickle('../datasets/census.p')
+census.head()
+```
+
+```{python}
+
+wards_altered = wards.copy()
+wards_altered.loc[0, 'ward'] = 61
+wards_altered.head()
+```
+
+```{python}
+census_altered = census.copy()
+census_altered.loc[0, 'ward'] = None
+census_altered.head()
+```
+
+#### Instrucciones:
+
+1.  Fusiona `wards` y `census` en la columna `ward` y guarda el resultado en `ward_census`.
+
+```{python}
+
+# Merge the wards and census tables on the ward column
+ward_census = wards.merge(census, on='ward')
+
+# Print the shape of wards_census
+print(f'ward_census table shape: {ward_census.shape}')
+```
+
+2.  Fusiona las tablas `merge_altered` y `census` en la columna `ward` y observa la diferencia en las filas devueltas.
+
+```{python}
+
+# Print the first few rows of the wards_altered table to view the change
+print(wards_altered[['ward']].head())
+
+# Merge the wards_altered and census tables on the ward column
+wards_altered_census =  wards_altered.merge(census, on='ward')
+
+# Print the shape of wards_altered_census
+print(f'wards_altered_census table shape: {wards_altered_census.shape}')
+```
+
+3.  Fusiona las tablas `wards` y `census_altered` en la columna `ward` y observa la diferencia en las filas devueltas.
+
+```{python}
+
+# Print the first few rows of the wards_altered table to view the change
+print(census_altered[['ward']].head())
+
+# Merge the wards_altered and census tables on the ward column
+wards_altered_census =  wards.merge(census_altered, on='ward')
+
+# Print the shape of wards_altered_census
+print(f'wards_altered_census table shape: {wards_altered_census.shape}')
+```
+
+En el paso 1, el `.merge()` devolvió una tabla con el mismo número de filas que la tabla original `wards`. Sin embargo, en los pasos 2 y 3, al usar las tablas alteradas con la primera fila alterada de la columna `ward`, el número de filas devueltas fue menor. No había un valor coincidente en la columna `ward` de la otra tabla. *Recuerda que `.merge()` solo devuelve filas donde los valores coinciden en ambas tablas.*
+
+## Relaciones de uno a muchos
+
+En una relación de uno a muchos cada fila de la tabla izquierda esta relacionada con una o varias filas de la tabla derecha.
+
+A continuación se muestran algunos ejemplos de relación uno a uno y relación uno a muchos:
+
+| **Uno a uno** | **Uno a muchos** |
+|---------------------------------------|---------------------------------|
+| La relación entre `products` y `inventory` | La relación entre `products` y `orders` |
+| La relación entre `customer`y `cust_tax_info` | La relación entre `customers`y `orders` |
+
+### Fusión de uno a muchos
+
+Una empresa puede tener uno o varios propietarios. En este ejercicio, seguirás adquiriendo experiencia con las uniones de uno a muchos fusionando una tabla de propietarios de empresas, llamada `biz_owners`, con la tabla `licenses`. Recuerda de la lección de video que, con una relación de uno a muchos, una fila de la tabla izquierda puede repetirse si está relacionada con varias filas de la tabla de la derecha. En esta lección, profundizarás en este tema averiguando cuál es el título de propietario de empresa más habitual (por ejemplo, secretario, CEO, o vicepresidente).
+
+
+```{python}
+
+licenses = pd.read_pickle('../datasets/licenses.p')
+licenses.head()
+```
+
+
+```{python}
+
+biz_owners = pd.read_pickle('../datasets/business_owners.p')
+biz_owners.head()
+```
+
+#### Instrucciones:
+
