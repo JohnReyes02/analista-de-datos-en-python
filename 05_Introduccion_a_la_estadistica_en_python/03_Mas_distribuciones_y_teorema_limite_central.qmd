@@ -1,0 +1,112 @@
+---
+title: "Mas distribuciones y el teorema del límite central"
+author: "Edwin John Fredy Reyes Aguirre"
+date: today
+toc: true
+toc-title: "Contenido"
+---
+
+## La distribución de Poisson
+
+-   Proceso de Poisson
+
+    -   Procesos que parecen ocurrir a un ritmo determinado, pero completamente aleatorio.
+
+    -   Ejemplos:
+
+        -   El número de animales adoptados de un refugio por semana.
+
+        -   El número de personas que llegan a un restaurante cada hora.
+
+        -   El número de terremotos al año en California.
+
+    -   La unidad de tiempo, como, horas, semanas o años es irrelevante siempre que sean coherentes.
+
+-   Distrubición de Poisson
+
+    -   La probabilidad de que ocurra un número determinado de sucesos en un periodo de tiempo.
+
+    -   Ejemplos
+
+        -   Probabilidad de \>= 5 animales adoptados en una semana.
+
+        -   Probabilidad de que 12 personas lleguen a un restaurante en una hora.
+
+        -   Probabilidad \< 20 terremotos en California en un año.
+
+-   Lambda ($\lambda$)
+
+    -   $\lambda$: Número de eventos promedio por intervalo de tiempo.
+
+        -   Número promedio de adopciones por semana = 8.
+
+            ![](images/paste-1.png){width="384"}
+
+-   Lambda es el pico de la distribución
+
+    ![](images/paste-2.png){width="433"}
+
+-   CTL continúa aplicando
+
+    ![](images/paste-3.png){width="435"}
+
+### Identificar lambda
+
+Ahora que has aprendido sobre la distribución de Poisson, sabes que su forma se describe mediante un valor llamado lambda. En este ejercicio emparejarás histogramas con valores lambda.
+
+|       lambda = 1        |       lambda = 4        |       lambda = 8        |
+|:----------------------:|:----------------------:|:----------------------:|
+| ![](images/paste-4.png) | ![](images/paste-5.png) | ![](images/paste-6.png) |
+
+La distribución de Poisson es una familia de distribuciones, igual que las distribuciones uniforme, binomial o normal.
+
+### Seguimiento de las respuestas de los clientes potenciales
+
+Tu empresa utiliza un software de ventas para hacer un seguimiento de los nuevos clientes potenciales. Los organiza en una cola para que cualquiera pueda hacer el seguimiento de uno cuando tenga un poco de tiempo libre. Dado que el número de respuestas de clientes potenciales es un resultado contable a lo largo de un periodo de tiempo, esta situación corresponde a una distribución de Poisson. De media, Amir responde a 4 clientes potenciales cada día. En este ejercicio, calcularás las probabilidades de que Amir responda a distintos números de clientes potenciales.
+
+#### Instrucciones:
+
+1. Importa `poisson` de `scipy.stats` y calcula la problabilidad de que Amir responda a 5 clientes potenciales en un día, dado que responde a una media de 4.
+
+
+```{python}
+
+# Import poisson from scipy.stats
+from scipy.stats import poisson
+
+# Probability of 5 responses
+prob_5 = poisson.pmf(5, 4) # (deseado, media)
+print(prob_5)
+```
+
+2. El compañero de trabajo de Amir responde a una media de 5.5 clientes potenciales al día. Cuál es la probabilidad a que responda a 5 clientes potenciales en un día?
+
+
+```{python}
+
+# Probability of 5 responses
+prob_coworker = poisson.pmf(5, 5.5)  # (deseado, media)
+print(prob_coworker)
+```
+
+3. Cuál es la probabilidad de que Amir responda a 2 o menos clientes potenciales en en un día?
+
+
+```{python}
+
+# Probability of 2 or fewer responses
+prob_2_or_less = poisson.cdf(2, 4) # <= cdf(deseado, media)
+print(prob_2_or_less)
+```
+
+4. Cuál es la probabilidad de que Amir responda a más de 10 clientes potenciales en 1 día?
+
+
+```{python}
+
+# Probability of > 10 responses
+prob_over_10 = 1 - poisson.cdf(10, 4)
+print(prob_over_10)
+```
+
+Tener en cuenta que si se proporciona `poisson.pmf` o `poisson.cdf` con un número no entero , arroja un error ya que la distribución de Poisson solo se aplica a enteros.
