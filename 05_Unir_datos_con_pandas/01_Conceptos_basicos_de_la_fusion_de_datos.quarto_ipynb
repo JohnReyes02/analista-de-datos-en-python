@@ -21,7 +21,7 @@
         "\n",
         "Chicago proporciona una lista de propietarios de taxis y vehículos con licencia para operar en la ciudad, por seguridad pública. Tu objetivo es unir dos tablas. Una tabla se llama `taxi_owners` y contiene información sobre los propietarios de las empresas de taxis, mientras que la otra se llama `taxi_veh`e incluye información sobre cada vehículo de taxi.\n"
       ],
-      "id": "afe2119c"
+      "id": "d218e449"
     },
     {
       "cell_type": "code",
@@ -29,7 +29,7 @@
       "source": [
         "import pandas as pd"
       ],
-      "id": "5d9609bb",
+      "id": "68ba1d21",
       "execution_count": null,
       "outputs": []
     },
@@ -40,7 +40,7 @@
         "taxi_owners = pd.read_pickle('../datasets/taxi_owners.p')\n",
         "taxi_owners.head()"
       ],
-      "id": "1205e2b6",
+      "id": "9f7eba3f",
       "execution_count": null,
       "outputs": []
     },
@@ -51,7 +51,7 @@
         "taxi_veh = pd.read_pickle('../datasets/taxi_vehicles.p')\n",
         "taxi_veh.head()"
       ],
-      "id": "e52841f6",
+      "id": "1e35c0ae",
       "execution_count": null,
       "outputs": []
     },
@@ -81,7 +81,7 @@
         "\n",
         "1.  Fusiona `taxi_owners` con `taxi_veh` en la columna `vid` y guarda el resultado en `taxi_own_veh`.\n"
       ],
-      "id": "e9d5635b"
+      "id": "3185eacb"
     },
     {
       "cell_type": "code",
@@ -94,7 +94,7 @@
         "# Print the column names of taxi_own_veh\n",
         "print(taxi_own_veh.columns)"
       ],
-      "id": "daf7a6f9",
+      "id": "49fede52",
       "execution_count": null,
       "outputs": []
     },
@@ -104,7 +104,7 @@
       "source": [
         "2.  Establece los sufijos izquierdo y derecho de la tabla para las columnas solapadas de la fusión en `_own` y `_veh`, respectivamente.\n"
       ],
-      "id": "54327615"
+      "id": "76df2805"
     },
     {
       "cell_type": "code",
@@ -117,7 +117,7 @@
         "# Print the column names of taxi_own_veh\n",
         "print(taxi_own_veh.columns)"
       ],
-      "id": "dc112dd7",
+      "id": "93328fce",
       "execution_count": null,
       "outputs": []
     },
@@ -127,7 +127,7 @@
       "source": [
         "3.  Selecciona la columna `fuel_type` de `taxi_own_veh` e imprime `value_counts()` para encontrar los `fuel_type` más utilizados.\n"
       ],
-      "id": "9521a984"
+      "id": "ccb052b9"
     },
     {
       "cell_type": "code",
@@ -139,7 +139,7 @@
         "# Print the value_counts to find the most popular fuel_type\n",
         "print(taxi_own_veh['fuel_type'].value_counts())"
       ],
-      "id": "c424bbc3",
+      "id": "ec884834",
       "execution_count": null,
       "outputs": []
     },
@@ -151,7 +151,7 @@
         "\n",
         "Todas las fusiones que has estudiado hasta ahora se llaman uniones internas. Es necesario comprender que las uniones internas solo devuelven las filas con valores coincidentes en ambas tablas. Explorarás esto más a fondo revisando la fusión entre las tablas `wards` y `census`, y comparándola después con fusiones de copias de estas tablas ligeramente alteradas, denominadas `wards_altered` y `census_altered`. La primera fila de la columna `wards` se ha modificado en las tablas alteradas. Examinarás cómo afecta esto a la fusión entre ellos.\n"
       ],
-      "id": "928576d6"
+      "id": "2b36c901"
     },
     {
       "cell_type": "code",
@@ -160,7 +160,7 @@
         "wards = pd.read_pickle('../datasets/ward.p')\n",
         "wards.head()"
       ],
-      "id": "dfcab071",
+      "id": "7f8bc38e",
       "execution_count": null,
       "outputs": []
     },
@@ -171,7 +171,7 @@
         "census = pd.read_pickle('../datasets/census.p')\n",
         "census.head()"
       ],
-      "id": "47855819",
+      "id": "5c9fe6bd",
       "execution_count": null,
       "outputs": []
     },
@@ -183,7 +183,7 @@
         "wards_altered.loc[0, 'ward'] = 61\n",
         "wards_altered.head()"
       ],
-      "id": "7038758c",
+      "id": "324108b7",
       "execution_count": null,
       "outputs": []
     },
@@ -195,7 +195,7 @@
         "census_altered.loc[0, 'ward'] = None\n",
         "census_altered.head()"
       ],
-      "id": "46046702",
+      "id": "11292d20",
       "execution_count": null,
       "outputs": []
     },
@@ -207,7 +207,7 @@
         "\n",
         "1.  Fusiona `wards` y `census` en la columna `ward` y guarda el resultado en `ward_census`.\n"
       ],
-      "id": "a45a9e79"
+      "id": "74e57fe2"
     },
     {
       "cell_type": "code",
@@ -219,7 +219,7 @@
         "# Print the shape of wards_census\n",
         "print(f'ward_census table shape: {ward_census.shape}')"
       ],
-      "id": "d75c4766",
+      "id": "e473f50d",
       "execution_count": null,
       "outputs": []
     },
@@ -229,7 +229,7 @@
       "source": [
         "2.  Fusiona las tablas `merge_altered` y `census` en la columna `ward` y observa la diferencia en las filas devueltas.\n"
       ],
-      "id": "994a3a36"
+      "id": "4296d7e4"
     },
     {
       "cell_type": "code",
@@ -244,7 +244,7 @@
         "# Print the shape of wards_altered_census\n",
         "print(f'wards_altered_census table shape: {wards_altered_census.shape}')"
       ],
-      "id": "97c8f71b",
+      "id": "40889f68",
       "execution_count": null,
       "outputs": []
     },
@@ -254,7 +254,7 @@
       "source": [
         "3.  Fusiona las tablas `wards` y `census_altered` en la columna `ward` y observa la diferencia en las filas devueltas.\n"
       ],
-      "id": "5f1c43d1"
+      "id": "29525583"
     },
     {
       "cell_type": "code",
@@ -269,7 +269,7 @@
         "# Print the shape of wards_altered_census\n",
         "print(f'wards_altered_census table shape: {wards_altered_census.shape}')"
       ],
-      "id": "724c4788",
+      "id": "774b3645",
       "execution_count": null,
       "outputs": []
     },
@@ -294,7 +294,7 @@
         "\n",
         "Una empresa puede tener uno o varios propietarios. En este ejercicio, seguirás adquiriendo experiencia con las uniones de uno a muchos fusionando una tabla de propietarios de empresas, llamada `biz_owners`, con la tabla `licenses`. Recuerda de la lección de video que, con una relación de uno a muchos, una fila de la tabla izquierda puede repetirse si está relacionada con varias filas de la tabla de la derecha. En esta lección, profundizarás en este tema averiguando cuál es el título de propietario de empresa más habitual (por ejemplo, secretario, CEO, o vicepresidente).\n"
       ],
-      "id": "01257cf8"
+      "id": "502a42fb"
     },
     {
       "cell_type": "code",
@@ -303,7 +303,7 @@
         "licenses = pd.read_pickle('../datasets/licenses.p')\n",
         "licenses.head()"
       ],
-      "id": "36b9b9d5",
+      "id": "a96e7a66",
       "execution_count": null,
       "outputs": []
     },
@@ -314,7 +314,7 @@
         "biz_owners = pd.read_pickle('../datasets/business_owners.p')\n",
         "biz_owners.head()"
       ],
-      "id": "ded67537",
+      "id": "b7c09594",
       "execution_count": null,
       "outputs": []
     },
@@ -324,7 +324,7 @@
       "source": [
         "#### Instrucciones:\n"
       ],
-      "id": "a5417ca3"
+      "id": "4a28678c"
     }
   ],
   "metadata": {
