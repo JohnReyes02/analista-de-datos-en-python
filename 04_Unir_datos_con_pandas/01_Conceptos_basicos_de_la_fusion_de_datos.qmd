@@ -20,12 +20,12 @@ import pandas as pd
 ```
 
 ```{python}
-taxi_owners = pd.read_pickle('../datasets/taxi_owners.p')
+taxi_owners = pd.read_pickle('./data/taxi_owners.p')
 taxi_owners.head()
 ```
 
 ```{python}
-taxi_veh = pd.read_pickle('../datasets/taxi_vehicles.p')
+taxi_veh = pd.read_pickle('./data/taxi_vehicles.p')
 taxi_veh.head()
 ```
 
@@ -90,12 +90,12 @@ Todas las fusiones que has estudiado hasta ahora se llaman uniones internas. Es 
 
 ```{python}
 
-wards = pd.read_pickle('../datasets/ward.p')
+wards = pd.read_pickle('./data/ward.p')
 wards.head()
 ```
 
 ```{python}
-census = pd.read_pickle('../datasets/census.p')
+census = pd.read_pickle('./data/census.p')
 census.head()
 ```
 
@@ -173,14 +173,14 @@ Una empresa puede tener uno o varios propietarios. En este ejercicio, seguirás 
 
 ```{python}
 
-licenses = pd.read_pickle('../datasets/licenses.p')
+licenses = pd.read_pickle('./data/licenses.p')
 licenses.head()
 ```
 
 
 ```{python}
 
-biz_owners = pd.read_pickle('../datasets/business_owners.p')
+biz_owners = pd.read_pickle('./data/business_owners.p')
 biz_owners.head()
 ```
 
