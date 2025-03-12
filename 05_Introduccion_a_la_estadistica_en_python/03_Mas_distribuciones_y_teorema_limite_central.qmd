@@ -66,8 +66,7 @@ Tu empresa utiliza un software de ventas para hacer un seguimiento de los nuevos
 
 #### Instrucciones:
 
-1. Importa `poisson` de `scipy.stats` y calcula la problabilidad de que Amir responda a 5 clientes potenciales en un día, dado que responde a una media de 4.
-
+1.  Importa `poisson` de `scipy.stats` y calcula la problabilidad de que Amir responda a 5 clientes potenciales en un día, dado que responde a una media de 4.
 
 ```{python}
 
@@ -79,8 +78,7 @@ prob_5 = poisson.pmf(5, 4) # (deseado, media)
 print(prob_5)
 ```
 
-2. El compañero de trabajo de Amir responde a una media de 5.5 clientes potenciales al día. Cuál es la probabilidad a que responda a 5 clientes potenciales en un día?
-
+2.  El compañero de trabajo de Amir responde a una media de 5.5 clientes potenciales al día. Cuál es la probabilidad a que responda a 5 clientes potenciales en un día?
 
 ```{python}
 
@@ -89,8 +87,7 @@ prob_coworker = poisson.pmf(5, 5.5)  # (deseado, media)
 print(prob_coworker)
 ```
 
-3. Cuál es la probabilidad de que Amir responda a 2 o menos clientes potenciales en en un día?
-
+3.  Cuál es la probabilidad de que Amir responda a 2 o menos clientes potenciales en en un día?
 
 ```{python}
 
@@ -99,8 +96,7 @@ prob_2_or_less = poisson.cdf(2, 4) # <= cdf(deseado, media)
 print(prob_2_or_less)
 ```
 
-4. Cuál es la probabilidad de que Amir responda a más de 10 clientes potenciales en 1 día?
-
+4.  Cuál es la probabilidad de que Amir responda a más de 10 clientes potenciales en 1 día?
 
 ```{python}
 
@@ -110,3 +106,100 @@ print(prob_over_10)
 ```
 
 Tener en cuenta que si se proporciona `poisson.pmf` o `poisson.cdf` con un número no entero , arroja un error ya que la distribución de Poisson solo se aplica a enteros.
+
+## Más distribuciones de probabilidad
+
+-   Distribución exponencial
+
+    -   Probabilidad en que transcurra cierto tiempo entre eventos de Poisson.
+
+    -   Ejemplos
+
+        -   Probabilidad \> 1 día entre adopciones.
+
+        -   Probabilidad \< 10 minutos entre llegadas a restaurantes.
+
+        -   Probabilidad de 6 a 8 meses entre terremotos.
+
+    -   También usa lambda $\lambda$
+
+    -   Continua (tiempo)
+
+    -   Valor esperado de la distribución exponencial
+
+        -   Mide la frecuencia en terminos de tiempo entre sucesos.
+
+-   Distribución T (estudiante)
+
+    -   Forma similar a la distribución normal.
+
+    ![](images/paste-1.png){width="454"}
+
+-   Grados de libertad (DoF)
+
+    -   Tiene un parámetro de grados de libertad (df) que afecta el grosor de las colas de la distribución.
+
+        ![](images/paste-2.png){width="454"}
+
+        -   Bajo df = Colas más gruesas y mayor desviación estandar.
+
+        -   Alto df = Similar a la distribución normal.
+
+-   Distribución Log-normal
+
+    -   Las variables que siguen una distribución log-normal tiene un logaritmo que se distribuye normalmente. Da lugar a distribuciones sesgadas.
+
+    -   Ejemplos
+
+        -   Duración de las partidas de ajedrez.
+
+        -   La presión arterial en adultos.
+
+        -   Número de hospitalizaciones en el brote de SARS en el 2003.
+
+### Arrastrar y colocar distribuciones
+
+Llegados a este punto, has aprendido sobre tantas distribuciones de probabilidad diferentes que puede ser difícil recordar cuál es cuál. En este ejercicio, practicarás la distinción entre distribuciones y la identificación de la distribución que mejor se ajusta a distintas situaciones.
+
+| Poisson | Exponencial | Binomial |
+|:--:|:--:|:--:|
+| Número de clientes que entran a una tienda cada hora. | Tiempo que transcurre hasta que alguien paga su préstamo. | Número de personas de un grupo de 30 que aprueban  el examen de conducir. |
+| Número de productos vendidos cada semana. | Tiempo que transcurre hasta que el siguiente cliente realiza su compra. |  |
+
+### Tiempo de modelado entre clientes potenciales
+
+Para evaluar mejor el rendimiento de Amir, quieres saber cuánto tarda en responder a un cliente potencial después de abrirlo. De media, responde a 1 solicitud cada 2,5 horas. En este ejercicio, calcularás las probabilidades de que pasen diferentes cantidades de tiempo entre que Amir recibe un cliente potencial y envía una respuesta.
+
+#### Instrucciones:
+
+1. Importa `expon` desde `scipy.stats`. Cuál es la probabilidad de que Amir tarde menos de una hora en responder a un cliente potencial.
+
+
+```{python}
+
+# Import expon from scipy.stats
+from scipy.stats import expon
+
+# Print probability response takes < 1 hour
+print(expon.cdf(1, scale=2.5))
+```
+
+2. Cuál es la probabilidad de que Amir tarde más de 4 horas en responder a un cliente potencial?
+
+
+```{python}
+
+# Print probability response takes > 4
+print(1 - expon.cdf(4, scale=2.5))
+```
+
+3. Cuál es la probabilidad de que Amir tarde 3-4 horas en responder a un cliente potencial?
+
+
+```{python}
+
+# Print probability response takes 3-4 hours
+print(expon.cdf(4, scale=2.5) - expon.cdf(3, scale=2.5))
+```
+
+Hay solo alrededor de un 20% de probabilidad de que Amir tarde más de 4 horas en responder, así que es bastante rápido en sus respuestas.
