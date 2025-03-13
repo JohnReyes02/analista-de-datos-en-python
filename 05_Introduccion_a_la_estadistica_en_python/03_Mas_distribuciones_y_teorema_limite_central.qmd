@@ -203,3 +203,15 @@ print(expon.cdf(4, scale=2.5) - expon.cdf(3, scale=2.5))
 ```
 
 Hay solo alrededor de un 20% de probabilidad de que Amir tarde más de 4 horas en responder, así que es bastante rápido en sus respuestas.
+
+### La disttibución t
+
+Qué afirmación no es cierta respecto a la distrubución t?
+
+- [ ] La distribución t tiene colas más gruesas que la distribución normal.
+
+- [ ] Una distribución t con altos grados de libertad se parece a la distribución normal.
+
+- [ ] El número de grados de libertad afecta a la varianza de la distribución.
+
+- [x] La distribución t está sesgada.
