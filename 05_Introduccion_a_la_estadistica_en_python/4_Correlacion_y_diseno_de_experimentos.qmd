@@ -1,0 +1,121 @@
+---
+title: "Correlación y diseño de experimentos"
+author: "Edwin John Fredy Reyes Aguirre"
+date: today
+toc: true
+toc-title: "Contenido"
+---
+
+En este capítulo, aprenderás a cuantificar la fuerza de una relación lineal entre dos variables, y explorarás cómo las variables de confusión pueden afectar a la relación entre otras dos variables. También verás cómo el diseño de un estudio puede influir en sus resultados, cambiar la forma en que deben analizarse los datos y afectar potencialmente a la fiabilidad de tus conclusiones.
+
+## Correlación
+
+-   Realción entre dos variables
+
+    ![](images/paste-3.png){width="500"}
+
+    -   x = variable explicativa o independiente.
+    -   y = variable de respuesta o dependiente.
+
+-   Coeficiente de correlación
+
+    -   Cuantifica la relación lineal entre dos variables.
+
+    -   Es un múmero entre -1 y 1.
+
+    -   La magnitud corresponde a la fuerza de la relación.
+
+    -   Signo (+ o -) corresponde a la dirección de la relación.
+
+-   Magnitud = Fuerza de la relación
+
+    +:------------------------------------:+:------------------------------------:+:-----------------------------------------------------------:+
+    | 0.99 (Muy fuerte relación)           | 0.75 (Fuerte relación                | 0.56 (moderada relación)                                    |
+    |                                      |                                      |                                                             |
+    | ![](images/paste-6.png){width="230"} | ![](images/paste-5.png){width="230"} | ![](images/paste-10.png){width="230"}                       |
+    +--------------------------------------+--------------------------------------+-------------------------------------------------------------+
+    | 0.21 (débil relación)                | 0.04 (sin relación)                  | -   Conocer el valor de `x` no nos dice nada acerca de `y`. |
+    |                                      |                                      |                                                             |
+    | ![](images/paste-7.png){width="230"} | ![](images/paste-9.png){width="230"} |                                                             |
+    +--------------------------------------+--------------------------------------+-------------------------------------------------------------+
+
+-   Signo = Dirección
+
+    +------------------------------------------+----------------------------------------+
+    | 0.75: Como `x` incrementa `y` incrementa | -0.75: Como `x` incrementa `y` decrece |
+    +:========================================:+:======================================:+
+    | ![](images/paste-11.png){width="300"}    | ![](images/paste-12.png){width="300"}  |
+    +------------------------------------------+----------------------------------------+
+
+-   Visualización de relaciones
+
+```{python}
+# | echo: True
+# | eval: false
+import seaborn as sns
+sns.scatterplot(x='sleep_total', y='sleep_rem', data=msleep)
+plt.show()
+```
+
+![](images/paste-13.png){width="500"}
+
+-   Añadir una linea de tendencia
+
+```{python}
+# | echo: true
+# | eval: false
+import seaborn as sns
+sns.lmplot(x='sleep_total', y='sleep_rem', data=msleep, ci=None)
+plt.show()
+```
+
+![](images/paste-14.png){width="500"}
+
+-   Calcular el coeficiente de correlación entre dos series
+
+```{python}
+# | echo: true
+# | eval: false
+msleep['sleep_total'].corr(msleep['sleep_rem'])
+```
+
+```{python}
+# | echo: true
+# | eval: false
+msleep['sleep_rem'].corr(msleep['sleep_total'])
+```
+
+-   Muchas formas de calcular la correlación
+
+    -   La usada en el curso: Correlación producto momento de Pearson ($r$)
+
+        -   Es la más común
+
+        -   $\bar{x} = \text{media de } x \\$
+
+        -   $\sigma_x = \text{desviación estandar de } x$
+
+
+            \begin{align*}
+                r &= \sum_{i=1}^{n} \frac{(x_i - \bar{x})(y_i - \bar{y})}{\sigma_x \times \sigma_y}
+            \end{align*}
+
+### Adivina la correlación
+
+### Relaciones entre variables
+
+## Advertencias sobre la correlación
+
+### Qué no puede medir la correlación?
+
+### Transformación de variables
+
+### El azúcar aumenta la felicidad?
+
+### Factores de confusión
+
+## Diseño de experimentos
+
+### Tipos de estudio
+
+### Estudios longitudinales frente a estudios transversales
