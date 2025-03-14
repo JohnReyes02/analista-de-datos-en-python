@@ -1,0 +1,228 @@
+---
+title: "Síntesis estadística"
+author: "Edwin John Fredy Reyes Aguirre"
+date: today
+toc: true
+toc-title: "Contenido"
+---
+
+La síntesis estadística te proporciona las herramientas que necesitas para condensar conjuntos de datos masivos y revelar lo más destacado. En este capítulo explorarás la síntesis estadística, lo que incluye la media, la mediana y la desviación típica, y aprenderás a realizar una interpretación exacta. También desarrollarás tus competencias de pensamiento crítico, lo que te permitirá elegir la mejor síntesis estadística para tus datos.
+
+## Qué es la estadística?
+
+-   Campo de la estadística: Es la práctica y studio de la recogida y análisis de datos.
+
+-   Un resúmen estadístico: Un dato o resumen de algunos datos.
+
+**Tipos de estadística:**
+
++--------------------------------------------+-----------------------------------------------------------------------------------+
+| Estadística Descriptiva                    | Estadística Inferencial                                                           |
++============================================+===================================================================================+
+| -   Describe y resume los datos.           | -   Usa una muestra de datos para hacer inferencias acerca de una gran población. |
++--------------------------------------------+-----------------------------------------------------------------------------------+
+| Ejemplos:                                  | Ejemplo:                                                                          |
+|                                            |                                                                                   |
+| -   50% de los amigos conducen al trabajo. | -   Qué porcentaje de personas manejan al trabajo?                                |
+|                                            |                                                                                   |
+| -   25% toman el bus.                      |                                                                                   |
+|                                            |                                                                                   |
+| -   25% bicicleta                          |                                                                                   |
++--------------------------------------------+-----------------------------------------------------------------------------------+
+
+**Tipos de datos:**
+
++--------------------------------------+-------------------------------+
+| Numérico (Cuantitativo)              | Categórico (Cualitativo)      |
++======================================+===============================+
+| -   Continuos (se pueden medir)      | -   Nominal (Sin orden)       |
+|                                      |                               |
+|     -   Velocidad de un avión.       |     -   Casado / Divorciado.  |
+|                                      |                               |
+|     -   Tiempo de espera en una fila |     -   País de residencia.   |
++--------------------------------------+-------------------------------+
+| -   Discretos (de recuento)          | -   Ordinal (Ordenado)        |
+|                                      |                               |
+|     -   Número de mascotas.          |     -   Preguntas de encuesta |
+|                                      |                               |
+|     -   Número de paquetes enviados. |                               |
++--------------------------------------+-------------------------------+
+
+### Estadística descriptiva e inferencial
+
+La estadística puede utilizarse para responder a muchos tipos de preguntas, pero saber identificar qué tipo de estadística se necesita es esencial para sacar conclusiones exactas. En este ejercicio, afinarás tus competencias identificando qué tipo se necesita para responder a cada pregunta.
+
++-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------+
+| Descriptiva                                                                                                                 | Inferencial                                                                                                             |
++=============================================================================================================================+=========================================================================================================================+
+| -   Dados los datos de cada solicitud de atención al cliente realizada, ¿cuál es el tiempo medio que se tardó en responder? | -   Después de entrevistar a 100 clientes, ¿qué porcentaje de **todos** tus clientes están satisfechos con tu producto? |
++-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------+
+| -   Dados los datos de las 100 000 personas que vieron un anuncio, ¿qué porcentaje de personas hicieron clic en él?         | -   Dados los datos de 20 peces capturados en un lago, ¿cuál es el peso medio de todos los peces del lago?              |
++-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------+
+
+### Clasificación de los tipos de datos
+
+En el vídeo, aprendiste sobre dos tipos principales de datos: numéricos y categóricos. Las variables numéricas pueden clasificarse como discretas o continuas, y las variables categóricas, como nominales u ordinales. Estas características de una variable determinan qué formas de resumir tus datos funcionarán mejor.
+
+| Numérica continua | Numérica discreta | Categórica |
+|----|----|----|
+| Temperatura del aire | Número de artículos en stock | Código postal |
+| Kilovatios de electricidad consumidos | Número de cursos de Datacamp realizados | Marca de un producto |
+
+
+## Medidas de tendencia central
+
+- Media: Funciona mejor para datos simétricos.
+
+- Mediana: Funciona mejor para datos sesgados a izquierda y derecha.
+
+- Moda: Principalmente para datos categóricos.
+
+### Media y mediana
+
+En este capítulo, trabajarás con el conjunto de datos `food_consumption` del 2018 Food Carbon Footprint Index, de nu3. El conjunto de datos `food_consumption` contiene el número de kilogramos de alimentos consumidos por persona y año en cada `country` y categoría de alimentos (`consumption`), y su huella de carbono (`co2_emissions`) medida en kilogramos de dióxido de carbono, o CO2.
+
+En este ejercicio, calcularás medidas de tendencia central para comparar el consumo de alimentos en US y Bélgica utilizando tus competencias en pandas y numpy.
+
+```{python}
+import pandas as pd
+```
+
+```{python}
+food_consumption = pd.read_csv('../datasets/food_consumption.csv')
+print(food_consumption.head())
+```
+
+#### Instrucciones:
+
+- Importa las librerías pandas y numpy.
+
+- Subdivide food_consumption para obtener las filas en las que el country es'USA'
+
+- Calcula la media del consumption de alimentos en el DataFrame usa_consumption.
+
+- Calcula la mediana del consumption de alimentos en el DataFrame usa_consumption.
+
+```{python}
+
+# Import numpy with alias np
+import numpy as np
+
+# Subset country for USA: usa_consumption
+usa_consumption = food_consumption[food_consumption['country'] == 'USA']
+
+# Calculate mean consumption in USA
+print(np.mean(usa_consumption['consumption']))
+
+# Calculate median consumption in USA
+print(np.median(usa_consumption['consumption']))
+```
+
+Los cálculos muestran que la media y la mediana del consumo en los Estados Unidos son bastante diferentes.
+
+
+### Media frente a mediana
+
+En el vídeo has aprendido que la media es la suma de todos los puntos de datos dividida entre el número total de puntos de datos, y que la mediana es el valor central del conjunto de datos, donde el 50 % de los datos son menores que la mediana y el 50 % de los datos son mayores que la mediana. En este ejercicio, compararás estas dos medidas de tendencia central.
+
+#### Instrucciones:
+
+ 1. 
+
+- Importa la librería `matplotlib.pyplot` con el alias `plt`.
+
+- Subdivide food_consumption para obtener las filas en las que el `food_category` es `rice`.
+
+- Crea un histograma de `co2_emissions` en el DataFrame `rice_consumption` y
+muestra el gráfico.
+
+```{python}
+
+# Import matplotlib.pyplot with alias plt
+import matplotlib.pyplot as plt
+```
+
+```{python}
+
+# Subset for food_category equals rice
+rice_consumption = food_consumption[food_consumption['food_category'] == 'rice']
+print(rice_consumption.head())
+```
+
+```{python}
+
+# Histogram of co2_emissions for rice and show plot
+plt.hist(rice_consumption['co2_emission'])
+plt.show()
+```
+
+2. **Pregunta**
+
+Echa un vistazo al histograma que acabas de crear de las emisiones de CO2 de los distintos países para el arroz. Cuál de los siguientes términos describe mejor la forma de los datos?
+
+**Respuestas posibles**
+
+- [ ] Sin sesgo
+
+- [ ] Sesgado a la izquierda
+
+- [x] Sesgado a la derecha
+
+3. 
+
+- Utiliza `.agg()` para calcular la media y la mediana de `co2_emissions`
+para el arroz.
+
+```{python}
+
+# Subset for food_category equals rice
+rice_consumption = food_consumption[food_consumption['food_category'] == 'rice']
+print(rice_consumption)
+```
+
+
+```{python}
+
+# Calculate mean and median of co2_emission with .agg()
+print(rice_consumption['co2_emission'].agg(['mean', 'median']))
+```
+
+4. **Pregunta**
+
+Dado el sesgo de estos datos, qué medida de tendencia central resume mejor los kilogramos de emisiones de CO2 por persona y año para el arroz?
+
+**Respuestas posibles**
+
+- [ ] Media
+
+- [x] Mediana
+
+- [ ] Media y mediana
+
+
+## Medidas de dispersión
+
+Describe lo separado o juntos que se encuentran los grupos de datos. 
+
+#### Varianza:
+
+Mide la distancia media de cada punto de datos a la media de los datos. Se puede calcular usando `np.var()`.
+
+#### Desviación estándar
+
+Se calcula tomando la raíz cuadrada de la varianza. Se puede calcular usando `np.sd()`.
+
+#### Desviación estándar absoluto
+
+Toma el valor absoluto de las distancias a la media y luego toma la media de las diferencias.
+
+#### Desviación estandar vs desviación media absoluta
+
+- En la desviación estandar los cuadrados de las distancias penaliza las largas distancias más que las cortas.
+- En la desviación media absoluta todas las distancias se penalizar de forma equitativa.
+
+### Varianza y desviación típica
+
+### Cuartiles, cuantiles y quintiles
+
+### Encontrar valores atípicos mediante IQR
