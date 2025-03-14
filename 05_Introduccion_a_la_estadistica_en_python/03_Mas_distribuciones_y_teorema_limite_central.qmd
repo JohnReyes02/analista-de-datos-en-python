@@ -5,6 +5,27 @@ date: today
 toc: true
 toc-title: "Contenido"
 ---
+## La distribución normal
+
+### Distribución de las ventas de Amir
+
+### Probabilidades de la distribución normal
+
+### Simulación de ventas en nuevas condiciones de mercado
+
+### Qué mercado es el mejor?
+
+
+
+## Teorema del límite central
+
+### Visualizar distribuciones muestrales
+
+### CTL en acción
+
+### La media de las medias
+
+
 
 ## La distribución de Poisson
 
