@@ -1,0 +1,303 @@
+---
+title: "Correlación y diseño de experimentos"
+author: "Edwin John Fredy Reyes Aguirre"
+date: today
+toc: true
+toc-title: "Contenido"
+---
+
+En este capítulo, aprenderás a cuantificar la fuerza de una relación lineal entre dos variables, y explorarás cómo las variables de confusión pueden afectar a la relación entre otras dos variables. También verás cómo el diseño de un estudio puede influir en sus resultados, cambiar la forma en que deben analizarse los datos y afectar potencialmente a la fiabilidad de tus conclusiones.
+
+## Correlación
+
+-   Realción entre dos variables
+
+    ![](images/paste-3.png){width="500"}
+
+    -   x = variable explicativa o independiente.
+    -   y = variable de respuesta o dependiente.
+
+-   Coeficiente de correlación
+
+    -   Cuantifica la relación lineal entre dos variables.
+
+    -   Es un múmero entre -1 y 1.
+
+    -   La magnitud corresponde a la fuerza de la relación.
+
+    -   Signo (+ o -) corresponde a la dirección de la relación.
+
+-   Magnitud = Fuerza de la relación
+
+    +:------------------------------------:+:------------------------------------:+:-----------------------------------------------------------:+
+    | 0.99 (Muy fuerte relación)           | 0.75 (Fuerte relación                | 0.56 (moderada relación)                                    |
+    |                                      |                                      |                                                             |
+    | ![](images/paste-6.png){width="230"} | ![](images/paste-5.png){width="230"} | ![](images/paste-10.png){width="230"}                       |
+    +--------------------------------------+--------------------------------------+-------------------------------------------------------------+
+    | 0.21 (débil relación)                | 0.04 (sin relación)                  | -   Conocer el valor de `x` no nos dice nada acerca de `y`. |
+    |                                      |                                      |                                                             |
+    | ![](images/paste-7.png){width="230"} | ![](images/paste-9.png){width="230"} |                                                             |
+    +--------------------------------------+--------------------------------------+-------------------------------------------------------------+
+
+-   Signo = Dirección
+
+    +------------------------------------------+----------------------------------------+
+    | 0.75: Como `x` incrementa `y` incrementa | -0.75: Como `x` incrementa `y` decrece |
+    +:========================================:+:======================================:+
+    | ![](images/paste-11.png){width="300"}    | ![](images/paste-12.png){width="300"}  |
+    +------------------------------------------+----------------------------------------+
+
+-   Visualización de relaciones
+
+```{python}
+# | echo: True
+# | eval: false
+import seaborn as sns
+sns.scatterplot(x='sleep_total', y='sleep_rem', data=msleep)
+plt.show()
+```
+
+![](images/paste-13.png){width="500"}
+
+-   Añadir una linea de tendencia
+
+```{python}
+# | echo: true
+# | eval: false
+import seaborn as sns
+sns.lmplot(x='sleep_total', y='sleep_rem', data=msleep, ci=None)
+plt.show()
+```
+
+![](images/paste-14.png){width="500"}
+
+-   Calcular el coeficiente de correlación entre dos series
+
+```{python}
+# | echo: true
+# | eval: false
+msleep['sleep_total'].corr(msleep['sleep_rem'])
+```
+
+```{python}
+# | echo: true
+# | eval: false
+msleep['sleep_rem'].corr(msleep['sleep_total'])
+```
+
+-   Muchas formas de calcular la correlación
+
+    -   La usada en el curso: Correlación producto momento de Pearson ($r$)
+
+        -   Es la más común
+
+        -   $\bar{x} = \text{media de } x \\$
+
+        -   $\sigma_x = \text{desviación estandar de } x$
+
+
+            \begin{align*}
+                r &= \sum_{i=1}^{n} \frac{(x_i - \bar{x})(y_i - \bar{y})}{\sigma_x \times \sigma_y}
+            \end{align*}
+
+    -   Variaciones en esta fórmula:
+
+        -   Kendall's tau
+
+        -   Spearman's rho
+
+
+
+### Adivina la correlación
+
+¿Cuál de las siguientes afirmaciones NOT es verdadera sobre la correlación?
+
+- [ ] Si la correlación entre `x` y `y` tiene una magnitud elevada, los puntos de datos se agruparán estrechamente alrededor de una línea.
+
+- [ ] La correlación puede escribirse como r.
+
+- [ ] Si `x` e `y` están correlacionados negativamente, los valores de `y` disminuyen a medida que aumentan los de `x`.
+
+- [x] La correlación no puede ser 0.
+
+
+### Relaciones entre variables
+
+En este capítulo, trabajarás con un conjunto de datos `world_happiness` que contiene los resultados de [2019 World Happiness Report](https://worldhappiness.report/ed/2019/). El informe puntúa a diferentes países en función de lo felices que son sus habitantes. También clasifica a cada país en función de diversos aspectos sociales, como el apoyo social, la libertad, la corrupción y otros. El conjunto de datos también incluye el GDP per cápita y la esperanza de vida de cada país.
+
+En este ejercicio, examinarás la relación entre la esperanza de vida de un país (`life_exp`) y la puntuación de felicidad (`happiness_score`) tanto visual como cuantitativamente. `seaborn` como `sns`, `matplotlib.pyplot` como `plt` y `pandas` como `pd` están cargados y `world_happiness` está disponible.
+
+```{python}
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+```
+
+```{python}
+
+world_happiness = pd.read_csv('./data/world_happiness.csv')
+world_happiness.head()
+```
+
+#### Instrucciones:
+
+1. 
+
+- Crea un diagrama de dispersión de `happiness_score` frente a `life_exp` (sin línea de tendencia) utilizando `seaborn`.
+
+- Muestra el gráfoco.
+
+```{python}
+
+# Create a scatterplot of happiness_score vs. life_exp ando show
+sns.scatterplot(x='life_exp', y='happiness_score', data=world_happiness)
+
+# Show plot
+plt.show()
+```
+
+2. 
+
+- Crea un diagrama de dispersión de `happiness_score` frente a `life_exp` con una línea de tendencia lineal utilizando `seaborn`, estableciendo `ci` en `None`.
+
+- Muestra el gráfico.
+
+```{python}
+
+# Create scatterplot of happiness_score vs life_exp with trendline
+sns.lmplot(x='life_exp', y='happiness_score', data=world_happiness, ci=None)
+
+# Show plot
+plt.show()
+```
+
+3. 
+
+**Pregunta**
+
+Según el diagrama de dispersión, cuál es la correlación más probable entre `life_exp` y `happiness_score`?
+
+**Respuestras posibles**
+
+- [ ] 0.3
+
+- [ ] -0.3
+
+- [x] 0.8
+
+- [ ] -0.8
+
+
+4. Calcula la correlación entre `life_exp` y `happiness_score`. Guárdala como `cor`.
+
+```{python}
+
+# Correlation between life_exp and happiness_score
+cor =  world_happiness['life_exp'].corr(world_happiness['happiness_score'])
+
+print(cor)
+```
+
+Los diagramas de dispersión con líneas de tendencia son una excelente manera de verificar que una relación estre dos variables es realmente lineal.
+
+## Advertencias sobre la correlación
+
+-   Relaciones no lineales
+
+    -   Siempre que sea posible visualizar los datos.
+
+-   Transformación logaritmica
+
+    -   Es posible usarla cuando hayan datos muy sesgados.
+
+-   Otras transformaciones
+
+    -   Transformación logarítmica (`log(x)`)
+
+    -   Transformación raíz cuadrada (`sqrt(x)`)
+
+    -   Transformación recíproca (`1 / x`)
+
+    -   Combinations de esteas, por ejemplo:
+
+        -   `log(x)` y `log(y)`
+        
+        -   `sqrt(x)` y `1 / y`
+
+-   Por qué usar una transformación?
+
+    -   Ciertos métodos estadísticos se basan en que las variables tengan una relación lineal.
+
+        -   Coeficiente de correlación
+
+        - Regresión lineal.
+
+
+-   La correlación no implica causalidad.
+
+    Si `x` está correlacionada con `y` no significa que `x` cause `y`.
+
+-   Confusión 
+
+    Este fenómeno puede dar lugar a correlaciones espurias.
+
+
+### Qué no puede medir la correlación?
+
+Aunque el coeficiente de correlación es una forma cómoda de cuantificar la fuerza de una relación entre dos variables, dista mucho de ser perfecto. En este ejercicio, explorarás una de las advertencias sobre el coeficiente de correlación examinando la relación entre el GDP per cápita de un país (`gdp_per_cap`) y la puntuación de felicidad.
+
+### Instrucciones:
+
+1. 
+
+- Crea un diagrama de dispersión `seaborn` (sin línea de tendencia) que muestre la relaciín entre `gdp_per_cap` (en el eje X) y `life_exp` (en el eje Y).
+
+- Muestra el gráfico.
+
+```{python}
+
+# Scatterplot of gdp_per_cap and life_exp
+sns.scatterplot(x='gdp_per_cap', y='life_exp', data=world_happiness)
+
+# Show plot
+plt.show()
+
+```
+
+2. Calcula la correlación entre `gdp_per_cap` y `life_exp` y guárdala como `cor`.
+
+```{python}
+
+# Correlation between gdp_per_cap and life_exp
+cor = world_happiness['gdp_per_cap'].corr(world_happiness['life_exp'])
+
+print(cor)
+```
+
+3. 
+
+**Pregunta**
+
+La correlación entre GDP per cápita y esperanza de vida es de 0.7. Por qué la correlación no es la mejor forma de medir la relación entre estas dos variables?
+
+**Respuestas posibles**
+
+- [ ] La correlación mide cómo afecta una variable a otra.
+
+- [x] La correlación solo mide las correlaciones lineales.
+
+- [ ] La correlación no puede medir adecuadamente las relaciones entre variables numéricas.
+
+El coeficiente de correlación no puede dar cuenta de ninguna relación que no sea lineal, independientemente de su fuerza.
+
+### Transformación de variables
+
+### El azúcar aumenta la felicidad?
+
+### Factores de confusión
+
+## Diseño de experimentos
+
+### Tipos de estudio
+
+### Estudios longitudinales frente a estudios transversales
