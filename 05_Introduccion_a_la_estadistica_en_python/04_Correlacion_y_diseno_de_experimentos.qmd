@@ -129,6 +129,7 @@ En este ejercicio, examinarás la relación entre la esperanza de vida de un pa�
 
 ```{python}
 import pandas as pd
+import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 ```
@@ -136,7 +137,7 @@ import seaborn as sns
 ```{python}
 
 world_happiness = pd.read_csv('./data/world_happiness.csv')
-world_happiness.head()
+print(world_happiness.head())
 ```
 
 #### Instrucciones:
@@ -145,7 +146,7 @@ world_happiness.head()
 
 - Crea un diagrama de dispersión de `happiness_score` frente a `life_exp` (sin línea de tendencia) utilizando `seaborn`.
 
-- Muestra el gráfoco.
+- Muestra el gráfico.
 
 ```{python}
 
@@ -250,7 +251,7 @@ Aunque el coeficiente de correlación es una forma cómoda de cuantificar la fue
 
 1. 
 
-- Crea un diagrama de dispersión `seaborn` (sin línea de tendencia) que muestre la relaciín entre `gdp_per_cap` (en el eje X) y `life_exp` (en el eje Y).
+- Crea un diagrama de dispersión `seaborn` (sin línea de tendencia) que muestre la relación entre `gdp_per_cap` (en el eje X) y `life_exp` (en el eje Y).
 
 - Muestra el gráfico.
 
@@ -292,7 +293,88 @@ El coeficiente de correlación no puede dar cuenta de ninguna relación que no s
 
 ### Transformación de variables
 
+Cuando las variables tienen distribuciones sesgadas, a menudo requieren una transformación para formar una relación lineal con otra variable, de modo que pueda calcularse la correlación. En este ejercicio realizarás una transformación.
+
+#### Instrucciones:
+
+1. Crea un diagrama de dispersión de `happiness_score` frente a `gdp_per_cap` y calcula la correlación entre ambos.
+
+```{python}
+
+# Scatterplot of happiness_score vs. gdp_per_cap
+sns.scatterplot(x='gdp_per_cap', y='happiness_score', data=world_happiness)
+plt.show()
+
+# Calculate correlation
+cor = world_happiness['happiness_score'].corr(world_happiness['gdp_per_cap'])
+print(cor)
+```
+
+2. Añade una nueva columna a `world_happiness` llamada `log_gdp_per_cap` que contenga el logaritmo de `gdp_per_cap`. Crea un diagrama de dispersión `seaborn` de `happiness_score` frente a `log_gdp_per_cap` y `happiness_score`.
+Calcula la correlación enre `log_gdp_per_cap` y `happiness_score`.
+
+```{python}
+
+# Create log_gdp_per_cap column
+world_happiness['log_gdp_per_cap'] = np.log(world_happiness['gdp_per_cap'])
+
+# Scatterplot of happiness_score vs. log_gdp_per_cap
+sns.scatterplot(x='log_gdp_per_cap', y='happiness_score', data=world_happiness)
+plt.show()
+
+# Calculate correlation
+cor = world_happiness['log_gdp_per_cap'].corr(world_happiness['happiness_score'])
+print(cor)
+```
+
+La relación entre el PIB per cápita y la felicidad se volvió más lineal al aplicar una transformación logarítmica. Las transformaciones logarítmicas son excelentes para usar en variables con una distribución sesgada, como el PIB.
+
+
 ### El azúcar aumenta la felicidad?
+
+Se ha añadido una nueva columna a `world_happiness` llamada `grams_sugar_per_day`, que contiene la cantidad media de azúcar ingerida por persona y día en cada país. En este ejercicio, examinarás el efecto del consumo medio de azúcar de un país en su puntuación de felicidad.
+
+
+```{python}
+world_happiness = pd.read_csv('./data/world_happiness_add_sugar.csv', index_col=0)
+world_happiness
+```
+
+#### Instrucciones:
+
+1. 
+
+- Crea un diagrama de dispersión `seaborn` que muestre la relación entre `grams_sugar_per_day` (en el eje X) y `happiness_score` (en el eje Y).
+
+- Calcula la correlación entre `grams_sugar_per_day` y `happiness_score`.
+
+```{python}
+
+# Scatterplot of grams_sugar_per_day and happiness_score
+sns.scatterplot(x='grams_sugar_per_day', y='happiness_score', data=world_happiness)
+plt.show()
+
+# Correlation between grams_sugar_per_day and happiness_score
+cor = world_happiness['grams_sugar_per_day'].corr(world_happiness['happiness_score'])
+print(cor)
+```
+
+2. 
+
+**Pregunta**
+
+Según estos datos, qué afirmación sobre el consumo de azúcar y las puntuaciones de felicidad es cierta?
+
+**Respuestas posibles**
+
+- [ ] Un mayor consumo de azúcar conduce a una mayor puntuación de felicidad.
+
+- [ ] A menor consumo de azúcar, menor puntuación de felicidad.
+
+- [x] Un mayor consumo de azúcar se asocia a una mayor puntuación de felicidad.
+
+- [ ] El consumo de azúcar no está relacionado con la felicidad.
+
 
 ### Factores de confusión
 
