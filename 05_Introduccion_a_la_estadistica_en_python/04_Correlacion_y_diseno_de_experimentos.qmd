@@ -375,8 +375,13 @@ Según estos datos, qué afirmación sobre el consumo de azúcar y las puntuacio
 
 - [ ] El consumo de azúcar no está relacionado con la felicidad.
 
+Si la correlación siempre implicara que una cosa causa la otra, la gente podría hacer cosas son sentido, como comer más azúcar para se más feliz.
 
 ### Factores de confusión
+
+Un estudio investiga la relación entre la residencia en el vecindario y la capacidad pulmonar. Los investigadores miden la capacidad pulmonar de treinta personas del vecindario A, situado cerca de una autovía, y de treinta personas del vecindario B, que no está cerca de una autovía. Ambos grupos tienen unos hábitos de consumo de tabaco y un desglose por sexos similares.
+
+¿Cuál de los siguientes podría ser un factor de confusión en este estudio?
 
 ## Diseño de experimentos
 
