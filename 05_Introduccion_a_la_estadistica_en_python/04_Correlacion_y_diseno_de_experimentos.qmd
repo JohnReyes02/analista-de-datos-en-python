@@ -95,7 +95,6 @@ msleep['sleep_rem'].corr(msleep['sleep_total'])
 
         -   $\sigma_x = \text{desviación estandar de } x$
 
-
             \begin{align*}
                 r &= \sum_{i=1}^{n} \frac{(x_i - \bar{x})(y_i - \bar{y})}{\sigma_x \times \sigma_y}
             \end{align*}
@@ -106,20 +105,17 @@ msleep['sleep_rem'].corr(msleep['sleep_total'])
 
         -   Spearman's rho
 
-
-
 ### Adivina la correlación
 
 ¿Cuál de las siguientes afirmaciones NOT es verdadera sobre la correlación?
 
-- [ ] Si la correlación entre `x` y `y` tiene una magnitud elevada, los puntos de datos se agruparán estrechamente alrededor de una línea.
+-   [ ] Si la correlación entre `x` y `y` tiene una magnitud elevada, los puntos de datos se agruparán estrechamente alrededor de una línea.
 
-- [ ] La correlación puede escribirse como r.
+-   [ ] La correlación puede escribirse como r.
 
-- [ ] Si `x` e `y` están correlacionados negativamente, los valores de `y` disminuyen a medida que aumentan los de `x`.
+-   [ ] Si `x` e `y` están correlacionados negativamente, los valores de `y` disminuyen a medida que aumentan los de `x`.
 
-- [x] La correlación no puede ser 0.
-
+-   [x] La correlación no puede ser 0.
 
 ### Relaciones entre variables
 
@@ -142,11 +138,11 @@ print(world_happiness.head())
 
 #### Instrucciones:
 
-1. 
+1.  
 
-- Crea un diagrama de dispersión de `happiness_score` frente a `life_exp` (sin línea de tendencia) utilizando `seaborn`.
+-   Crea un diagrama de dispersión de `happiness_score` frente a `life_exp` (sin línea de tendencia) utilizando `seaborn`.
 
-- Muestra el gráfico.
+-   Muestra el gráfico.
 
 ```{python}
 
@@ -157,11 +153,11 @@ sns.scatterplot(x='life_exp', y='happiness_score', data=world_happiness)
 plt.show()
 ```
 
-2. 
+2.  
 
-- Crea un diagrama de dispersión de `happiness_score` frente a `life_exp` con una línea de tendencia lineal utilizando `seaborn`, estableciendo `ci` en `None`.
+-   Crea un diagrama de dispersión de `happiness_score` frente a `life_exp` con una línea de tendencia lineal utilizando `seaborn`, estableciendo `ci` en `None`.
 
-- Muestra el gráfico.
+-   Muestra el gráfico.
 
 ```{python}
 
@@ -172,7 +168,7 @@ sns.lmplot(x='life_exp', y='happiness_score', data=world_happiness, ci=None)
 plt.show()
 ```
 
-3. 
+3.  
 
 **Pregunta**
 
@@ -180,16 +176,15 @@ Según el diagrama de dispersión, cuál es la correlación más probable entre 
 
 **Respuestras posibles**
 
-- [ ] 0.3
+-   [ ] 0.3
 
-- [ ] -0.3
+-   [ ] -0.3
 
-- [x] 0.8
+-   [x] 0.8
 
-- [ ] -0.8
+-   [ ] -0.8
 
-
-4. Calcula la correlación entre `life_exp` y `happiness_score`. Guárdala como `cor`.
+4.  Calcula la correlación entre `life_exp` y `happiness_score`. Guárdala como `cor`.
 
 ```{python}
 
@@ -222,7 +217,7 @@ Los diagramas de dispersión con líneas de tendencia son una excelente manera d
     -   Combinations de esteas, por ejemplo:
 
         -   `log(x)` y `log(y)`
-        
+
         -   `sqrt(x)` y `1 / y`
 
 -   Por qué usar una transformación?
@@ -231,17 +226,15 @@ Los diagramas de dispersión con líneas de tendencia son una excelente manera d
 
         -   Coeficiente de correlación
 
-        - Regresión lineal.
-
+        -   Regresión lineal.
 
 -   La correlación no implica causalidad.
 
     Si `x` está correlacionada con `y` no significa que `x` cause `y`.
 
--   Confusión 
+-   Confusión
 
     Este fenómeno puede dar lugar a correlaciones espurias.
-
 
 ### Qué no puede medir la correlación?
 
@@ -249,11 +242,11 @@ Aunque el coeficiente de correlación es una forma cómoda de cuantificar la fue
 
 ### Instrucciones:
 
-1. 
+1.  
 
-- Crea un diagrama de dispersión `seaborn` (sin línea de tendencia) que muestre la relación entre `gdp_per_cap` (en el eje X) y `life_exp` (en el eje Y).
+-   Crea un diagrama de dispersión `seaborn` (sin línea de tendencia) que muestre la relación entre `gdp_per_cap` (en el eje X) y `life_exp` (en el eje Y).
 
-- Muestra el gráfico.
+-   Muestra el gráfico.
 
 ```{python}
 
@@ -265,7 +258,7 @@ plt.show()
 
 ```
 
-2. Calcula la correlación entre `gdp_per_cap` y `life_exp` y guárdala como `cor`.
+2.  Calcula la correlación entre `gdp_per_cap` y `life_exp` y guárdala como `cor`.
 
 ```{python}
 
@@ -275,7 +268,7 @@ cor = world_happiness['gdp_per_cap'].corr(world_happiness['life_exp'])
 print(cor)
 ```
 
-3. 
+3.  
 
 **Pregunta**
 
@@ -283,11 +276,11 @@ La correlación entre GDP per cápita y esperanza de vida es de 0.7. Por qué la
 
 **Respuestas posibles**
 
-- [ ] La correlación mide cómo afecta una variable a otra.
+-   [ ] La correlación mide cómo afecta una variable a otra.
 
-- [x] La correlación solo mide las correlaciones lineales.
+-   [x] La correlación solo mide las correlaciones lineales.
 
-- [ ] La correlación no puede medir adecuadamente las relaciones entre variables numéricas.
+-   [ ] La correlación no puede medir adecuadamente las relaciones entre variables numéricas.
 
 El coeficiente de correlación no puede dar cuenta de ninguna relación que no sea lineal, independientemente de su fuerza.
 
@@ -297,7 +290,7 @@ Cuando las variables tienen distribuciones sesgadas, a menudo requieren una tran
 
 #### Instrucciones:
 
-1. Crea un diagrama de dispersión de `happiness_score` frente a `gdp_per_cap` y calcula la correlación entre ambos.
+1.  Crea un diagrama de dispersión de `happiness_score` frente a `gdp_per_cap` y calcula la correlación entre ambos.
 
 ```{python}
 
@@ -310,8 +303,7 @@ cor = world_happiness['happiness_score'].corr(world_happiness['gdp_per_cap'])
 print(cor)
 ```
 
-2. Añade una nueva columna a `world_happiness` llamada `log_gdp_per_cap` que contenga el logaritmo de `gdp_per_cap`. Crea un diagrama de dispersión `seaborn` de `happiness_score` frente a `log_gdp_per_cap` y `happiness_score`.
-Calcula la correlación enre `log_gdp_per_cap` y `happiness_score`.
+2.  Añade una nueva columna a `world_happiness` llamada `log_gdp_per_cap` que contenga el logaritmo de `gdp_per_cap`. Crea un diagrama de dispersión `seaborn` de `happiness_score` frente a `log_gdp_per_cap` y `happiness_score`. Calcula la correlación enre `log_gdp_per_cap` y `happiness_score`.
 
 ```{python}
 
@@ -329,11 +321,9 @@ print(cor)
 
 La relación entre el PIB per cápita y la felicidad se volvió más lineal al aplicar una transformación logarítmica. Las transformaciones logarítmicas son excelentes para usar en variables con una distribución sesgada, como el PIB.
 
-
 ### El azúcar aumenta la felicidad?
 
 Se ha añadido una nueva columna a `world_happiness` llamada `grams_sugar_per_day`, que contiene la cantidad media de azúcar ingerida por persona y día en cada país. En este ejercicio, examinarás el efecto del consumo medio de azúcar de un país en su puntuación de felicidad.
-
 
 ```{python}
 world_happiness = pd.read_csv('./data/world_happiness_add_sugar.csv', index_col=0)
@@ -342,11 +332,11 @@ world_happiness
 
 #### Instrucciones:
 
-1. 
+1.  
 
-- Crea un diagrama de dispersión `seaborn` que muestre la relación entre `grams_sugar_per_day` (en el eje X) y `happiness_score` (en el eje Y).
+-   Crea un diagrama de dispersión `seaborn` que muestre la relación entre `grams_sugar_per_day` (en el eje X) y `happiness_score` (en el eje Y).
 
-- Calcula la correlación entre `grams_sugar_per_day` y `happiness_score`.
+-   Calcula la correlación entre `grams_sugar_per_day` y `happiness_score`.
 
 ```{python}
 
@@ -359,7 +349,7 @@ cor = world_happiness['grams_sugar_per_day'].corr(world_happiness['happiness_sco
 print(cor)
 ```
 
-2. 
+2.  
 
 **Pregunta**
 
@@ -367,13 +357,10 @@ Según estos datos, qué afirmación sobre el consumo de azúcar y las puntuacio
 
 **Respuestas posibles**
 
-- [ ] Un mayor consumo de azúcar conduce a una mayor puntuación de felicidad.
-
-- [ ] A menor consumo de azúcar, menor puntuación de felicidad.
-
-- [x] Un mayor consumo de azúcar se asocia a una mayor puntuación de felicidad.
-
-- [ ] El consumo de azúcar no está relacionado con la felicidad.
+-   [ ] Un mayor consumo de azúcar conduce a una mayor puntuación de felicidad.
+-   [ ] A menor consumo de azúcar, menor puntuación de felicidad.
+-   [x] Un mayor consumo de azúcar se asocia a una mayor puntuación de felicidad.
+-   [ ] El consumo de azúcar no está relacionado con la felicidad.
 
 Si la correlación siempre implicara que una cosa causa la otra, la gente podría hacer cosas son sentido, como comer más azúcar para se más feliz.
 
@@ -382,6 +369,16 @@ Si la correlación siempre implicara que una cosa causa la otra, la gente podrí
 Un estudio investiga la relación entre la residencia en el vecindario y la capacidad pulmonar. Los investigadores miden la capacidad pulmonar de treinta personas del vecindario A, situado cerca de una autovía, y de treinta personas del vecindario B, que no está cerca de una autovía. Ambos grupos tienen unos hábitos de consumo de tabaco y un desglose por sexos similares.
 
 ¿Cuál de los siguientes podría ser un factor de confusión en este estudio?
+
+**Respuestas posibles**
+
+- [ ] Capacidad pulmonar
+- [ ] Vecindario
+- [x] Contaminación atmosférica
+- [ ] Condición de fumador
+- [ ] Sexo
+
+Es de esperar que haya más contaminación atmosférica en el vecindario situado cerca de la autovía, lo que puede provocar una menor capacidad pulmonar.
 
 ## Diseño de experimentos
 
