@@ -96,7 +96,7 @@
         "\n",
         "1.  Importa `poisson` de `scipy.stats` y calcula la problabilidad de que Amir responda a 5 clientes potenciales en un día, dado que responde a una media de 4.\n"
       ],
-      "id": "2f3ec17c"
+      "id": "e725d8f4"
     },
     {
       "cell_type": "code",
@@ -109,7 +109,7 @@
         "prob_5 = poisson.pmf(5, 4) # (deseado, media)\n",
         "print(prob_5)"
       ],
-      "id": "fd892774",
+      "id": "a3fe0271",
       "execution_count": null,
       "outputs": []
     },
@@ -119,7 +119,7 @@
       "source": [
         "2.  El compañero de trabajo de Amir responde a una media de 5.5 clientes potenciales al día. Cuál es la probabilidad a que responda a 5 clientes potenciales en un día?\n"
       ],
-      "id": "21b0c97d"
+      "id": "8aec739e"
     },
     {
       "cell_type": "code",
@@ -129,7 +129,7 @@
         "prob_coworker = poisson.pmf(5, 5.5)  # (deseado, media)\n",
         "print(prob_coworker)"
       ],
-      "id": "d82e5e76",
+      "id": "40df2e41",
       "execution_count": null,
       "outputs": []
     },
@@ -139,7 +139,7 @@
       "source": [
         "3.  Cuál es la probabilidad de que Amir responda a 2 o menos clientes potenciales en en un día?\n"
       ],
-      "id": "8e05ae8d"
+      "id": "8f2cc488"
     },
     {
       "cell_type": "code",
@@ -149,7 +149,7 @@
         "prob_2_or_less = poisson.cdf(2, 4) # <= cdf(deseado, media)\n",
         "print(prob_2_or_less)"
       ],
-      "id": "0aaba7e1",
+      "id": "3dee4e7f",
       "execution_count": null,
       "outputs": []
     },
@@ -159,7 +159,7 @@
       "source": [
         "4.  Cuál es la probabilidad de que Amir responda a más de 10 clientes potenciales en 1 día?\n"
       ],
-      "id": "cd0321d9"
+      "id": "eabaf00c"
     },
     {
       "cell_type": "code",
@@ -169,7 +169,7 @@
         "prob_over_10 = 1 - poisson.cdf(10, 4)\n",
         "print(prob_over_10)"
       ],
-      "id": "7f255dd2",
+      "id": "b701a90f",
       "execution_count": null,
       "outputs": []
     },
@@ -246,7 +246,7 @@
         "\n",
         "1. Importa `expon` desde `scipy.stats`. Cuál es la probabilidad de que Amir tarde menos de una hora en responder a un cliente potencial.\n"
       ],
-      "id": "ae74d17f"
+      "id": "32c9439f"
     },
     {
       "cell_type": "code",
@@ -258,7 +258,7 @@
         "# Print probability response takes < 1 hour\n",
         "print(expon.cdf(1, scale=2.5))"
       ],
-      "id": "bbfe3b93",
+      "id": "3e95cd28",
       "execution_count": null,
       "outputs": []
     },
@@ -268,7 +268,7 @@
       "source": [
         "2. Cuál es la probabilidad de que Amir tarde más de 4 horas en responder a un cliente potencial?\n"
       ],
-      "id": "7dee46c4"
+      "id": "12042aeb"
     },
     {
       "cell_type": "code",
@@ -277,7 +277,7 @@
         "# Print probability response takes > 4\n",
         "print(1 - expon.cdf(4, scale=2.5))"
       ],
-      "id": "a7186be0",
+      "id": "ba179eee",
       "execution_count": null,
       "outputs": []
     },
@@ -287,7 +287,7 @@
       "source": [
         "3. Cuál es la probabilidad de que Amir tarde 3-4 horas en responder a un cliente potencial?\n"
       ],
-      "id": "5224c078"
+      "id": "dbe67ea6"
     },
     {
       "cell_type": "code",
@@ -296,7 +296,7 @@
         "# Print probability response takes 3-4 hours\n",
         "print(expon.cdf(4, scale=2.5) - expon.cdf(3, scale=2.5))"
       ],
-      "id": "8f0972e4",
+      "id": "620e99dd",
       "execution_count": null,
       "outputs": []
     },
@@ -318,15 +318,15 @@
         "\n",
         "- [x] La distribución t está sesgada."
       ],
-      "id": "7e403255"
+      "id": "1f87319d"
     }
   ],
   "metadata": {
     "kernelspec": {
-      "name": "venv",
+      "name": "python3",
       "language": "python",
-      "display_name": "Python (venv)",
-      "path": "/Users/edwinmacmini/Library/Jupyter/kernels/venv"
+      "display_name": "Python 3 (ipykernel)",
+      "path": "/Users/edwinmacmini/Documents/Datacamp/venv/share/jupyter/kernels/python3"
     }
   },
   "nbformat": 4,

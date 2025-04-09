@@ -30,7 +30,7 @@ En este capítulo, aprenderás a cuantificar la fuerza de una relación lineal e
 -   Magnitud = Fuerza de la relación
 
     +:------------------------------------:+:------------------------------------:+:-----------------------------------------------------------:+
-    | 0.99 (Muy fuerte relación)           | 0.75 (Fuerte relación                | 0.56 (moderada relación)                                    |
+    | 0.99 (Muy fuerte relación)           | 0.75 (Fuerte relación )               | 0.56 (moderada relación)                                    |
     |                                      |                                      |                                                             |
     | ![](images/paste-6.png){width="230"} | ![](images/paste-5.png){width="230"} | ![](images/paste-10.png){width="230"}                       |
     +--------------------------------------+--------------------------------------+-------------------------------------------------------------+
@@ -372,16 +372,87 @@ Un estudio investiga la relación entre la residencia en el vecindario y la capa
 
 **Respuestas posibles**
 
-- [ ] Capacidad pulmonar
-- [ ] Vecindario
-- [x] Contaminación atmosférica
-- [ ] Condición de fumador
-- [ ] Sexo
+-   [ ] Capacidad pulmonar
+-   [ ] Vecindario
+-   [x] Contaminación atmosférica
+-   [ ] Condición de fumador
+-   [ ] Sexo
 
 Es de esperar que haya más contaminación atmosférica en el vecindario situado cerca de la autovía, lo que puede provocar una menor capacidad pulmonar.
 
 ## Diseño de experimentos
 
+-   Vocabulario
+    -   El experimento responde a la prgunta: Cuál es el efecto del tratamiento sobre la respuesta?.
+        -   Tratamiento: Variable explicativa o independiente.
+        -   Respuesta: Variable dependiente o de respuesta.
+    -   Ejemplo: Cuál es el efecto de un anuncio en el número de productos comprados?
+        -   Tratamiento: Anuncio
+        -   Respuesta: Número de productos comprados
+-   Experimentos Controlados
+    -   Los participantes son asignados aleatoriamente a los grupos de tratamiento o al grupo de control. El grupo de tratamiento recibe el tratamiento y el de control no.
+        -   Grupo de tratamiento ve los anuncios
+        -   El grupo de control no.
+    -   Los grupos deben ser comparables de modo que la causalidad pueda ser inferida.
+    -   Si los grupos no son comparables, esto podria llevar a confusión.
+        -   Grupo de tratamiento con edad promedio de : 25
+        -   Grupo de control con edad promedio de: 50
+        -   La edad es un un potencial factor de confusión.
+-   El gold estándar de los experimento usará...
+    -   Ensayo controlado aleatorio.
+        -   Los participantes son asignados al azar al grupo de tratamiento o de control. No basado en alguna característica.
+        -   La asignación aleatoria ayuda a asegurar que los grupos sean comparables.
+    -   Placebo
+        -   Se parace al tratamiento, pero no tiene efecto.
+        -   Los participantes no sabrán a cual grupo irán.
+    -   Doble ciego
+        -   La persona que administra el tratamiento no conoce cual es el tratamiento real o el placebo.
+        -   Previene el sesgo en la respuesta y/o en el análisis de resultados.
+    -   Menos oportunidades de que haya sesgo = mas fiable sera la conclusión que el tratamiento afecta la respuesta.
+-   Estudios observacionales
+    -   Los participantes no se asignan aleatoriamente a los grupos.
+        -   Los participantes se asignan a si mismos, usualmente basado en características preexistentes.
+    -   Muchas preguntas no son conducidas a un experimento controlado.
+        -   No puedes forzar a alguien a fumar o tener un deseso.
+        -   No puede hacer que alguien tengan cierto comportamiento.
+    -   Se establece asociación no causalidad.
+        -   Los efectos del tratamiento pueden ser confundidos por factores que llevaron a ciertas personas al grupo de control o tratamiento.
+        -   Hay formas de controlar la confusión para obtener más conclusiones fiabiles acerca de la asociación.
+-   Estudios Longitudinales vs Estudios transversales
+    -   Estudios Longitudinales
+        -   Se sigue a los mismos participantes durante un periodo de tiempo para examinar el efecto del tratamiento en la respuesta.
+        -   El efecto de la edad en la altura no es confundida por generación.
+        -   Son más costosos, los resultados toman tiempo.
+    -   Estudio transversal
+        -   Los datos de los participantes son recolectados de una sola camptura en el tiempo.
+        -   El efecto de la edad en la altura se confunde por generación.
+        -   Son más baratos, rápidos y mas convenientes.
+
 ### Tipos de estudio
 
+Aunque los experimentos controlados son ideales, muchas situaciones y preguntas de investigación no son propicias para un experimento controlado. En un experimento controlado, es probable que pueda inferirse la causalidad si los grupos de control y de prueba tienen características similares y no hay ninguna diferencia sistemática entre ellos. Por otra parte , la causalidad no suele inferirse de los estudios observacionales, cuyos resultados suelen interpretarse erróneamente como consecuencia de ello.
+
+#### Instrucciones
+
+-   Determina si cada estudio es un experimento controlado o un estudio observacional
+
+| Experimento Controlado | Estudio Observacional |
+|----|----|
+| Se comparan los síntomas de asma entre niños asignados aleatoriamente a recibir servicios profesionales de control de plagas a domicilio o educaci´øn sobre el control de plagas. | Se compara la prevalencia de enfermedades cardíacas entre veteranos con PTSD y veteranos sin PTSD. |
+| Se comparan las tasas de compra entre los usuarios de un sitio de comercio electrónico que son dirigidos aleatoriamente a una nueva versión de la página de inicio o a una versión antigua. | Hace una semana, se actualizó la página de inico de un sitio de comercio electrónico. Las tasas de compra se comparan entre los usuarios que vieron las versiones antigua y nueva de la págna de inicio. |
+| Se asigna aleatoriamente a los sujetos una dieta y se compara la pérdida de peso. |  |
+
 ### Estudios longitudinales frente a estudios transversales
+
+Una empresa fabrica termómetros y quiere estudiar la relación entre la antigüedad de un termómetro y su exactitud. Para ello, toman una muestra de 100 termómetros diferentes de distintas antigüedades y comprueban su exactitud. Son datos longitudinales o transversales?
+
+**Respuestas posibles**
+
+Selecciona una respuesta:
+
+- [ ] Longitudinal
+- [x] Transversal
+- [ ] Ambos
+- [ ] Ninguno
+
+Se trata de un estudio transversal, ya que los investigadores no están siguiendo el mismo conjunto de termómetros a lo largo del tiempo y midiendo repetidamente su exactitud con diferentes antigüedades.
