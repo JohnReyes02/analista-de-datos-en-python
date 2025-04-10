@@ -1,0 +1,58 @@
+---
+title: "Introducción a Seaborn"
+author: "Edwin John Fredy Reyes Aguirre"
+date: today
+toc: true
+toc-title: "Contenido"
+---
+
+Qué es Seaborn y cuándo debes utilizarlo? En este capítulo, ¡Lo descubrirás! Además, aprenderás a crear gráficos de dispersión y de recuento tanto con listas de datos como con DataFrames de pandas. También conocerás una de las grandes ventajas de utilizar Seaborn: la posibilidad de añadir fácilmente una tercera varible a tus gráficos utilizando el color para representar diferentes subgrupos.
+
+## Introducción a Seaborn
+
+- Qué es Seaborn?
+    - Puthon es una librería de visualización de datos
+    - Crea facilmente los tipos más comunes de gráficos
+
+- Por qué es útil Seaborn?
+    - Exploración de datos
+    - Comunicación de resultados
+
+- Ventajas de Seaborn
+    - Fácil de usar
+    - Trabaja bien con estructuras de datos de `pandas`
+    - Construído sobre `matplotlib`
+
+- Cómo iniciar?
+
+```{python}
+#| echo: true
+#| eval: false
+import seaborn as sns # Samuel Norman Seaborn (sns)
+import matplotlib.pyplot as plt
+```
+
+- Ejemplo 1: Scatter plot
+
+```{python}
+import seaborn as sns
+import matplotlib.pyplot as plt
+height = [62, 64, 69, 75, 66,
+          68, 65, 71, 76, 73]
+weight = [120, 136, 148, 175, 137,
+          165, 154, 172, 200, 187]
+sns.scatterplot(x=height, y=weight)
+plt.show()
+```
+
+- Ejemplo 2: Crear un count plot
+
+```{python}
+import seaborn as sns
+import matplotlib.pyplot as plt
+gender = ['Female', 'Female',
+          'Female', 'Female',
+          'Male', 'Male', 'Male',
+          'Male', 'Male', 'Male']
+sns.countplot(x=gender)
+```
