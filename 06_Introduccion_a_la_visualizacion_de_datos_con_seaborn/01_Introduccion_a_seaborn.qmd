@@ -56,3 +56,55 @@ gender = ['Female', 'Female',
           'Male', 'Male', 'Male']
 sns.countplot(x=gender)
 ```
+
+### Hacer un gráfico de dispersión con listas
+
+En este ejecicio, utilizaremos un conjunto de datos que contiene información sobre 227 países. Este conjunto de datos contiene mucha información interesante sobre cada país, como sus tasas de natalidad y mortalidad y su producto interno bruto (GDP). GDP es el valor de todos los bienes y servicios producidas en un año, expresado en dólares por persona.
+
+Hemos creado tres listas de datos a partir de este conjunto de datos para que puedas empezar. `gdp` es una lista que contiene el valor de GDP por país, expresado en dólares por persona. `phones` es una lista con el número de teléfonos móviles por cada 1000 personas en este país. Por último `percent_literate` es una lista que contiene el porcentaje de la población de cada país que sabe leer y escribir.
+
+```{python}
+import pandas as pd
+
+ruta = './data/countries-of-the-world.csv'
+df = pd.read_csv(ruta)
+df.head()
+```
+
+```{python}
+# Convertir a numerico los datos tipo object
+df['Phones (per 1000)'] = df['Phones (per 1000)'].str.replace(',', '.').astype(float)
+df['Literacy (%)'] = df['Literacy (%)'].str.replace(',', '.').astype(float)
+
+# Crear las listas
+gdp = df['GDP ($ per capita)'].tolist()
+phones = df['Phones (per 1000)'].tolist()
+percent_literate = df['Literacy (%)'].tolist()
+```
+
+
+#### Instrucciones
+
+1. Importa Matplotlib y Seaborn utilizando la convención de nomenclatura estándar.
+
+```{python}
+# Import Matplotlib and Seaborn
+import matplotlib.pyplot as plt
+import seaborn as sns
+```
+
+2. Crea un gráfico de dispersión de GDP (`gdp`) frente al número de teléfonos por cada 1000 personas (`phones`).
+
+```{python}
+# Create scatterplot with GDP on x-axis and number of phones on the y-axis
+sns.scatterplot(x=gdp, y=phones)
+plt.show()
+```
+
+3. Combina el diagrama de dispersión para que meustre el porcentaje de la población que sabe leer y escribir (`percent_literate`) en el eje y.
+
+```{python}
+sns.scatterplot(x=gdp, y=percent_literate)
+plt.show()
+```
+Aunque este gráfico no muestra una relación lineal entre el PIB y el porcentaje de alfabetización, los países con un PIB más bajo parecen tener más probabilidades de tener un porcentaje menor de la población que puede leer y escribir.
