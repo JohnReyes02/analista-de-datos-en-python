@@ -101,10 +101,44 @@ sns.scatterplot(x=gdp, y=phones)
 plt.show()
 ```
 
-3. Combina el diagrama de dispersión para que meustre el porcentaje de la población que sabe leer y escribir (`percent_literate`) en el eje y.
+3. Combina el diagrama de dispersión para que muestre el porcentaje de la población que sabe leer y escribir (`percent_literate`) en el eje y.
 
 ```{python}
 sns.scatterplot(x=gdp, y=percent_literate)
 plt.show()
 ```
 Aunque este gráfico no muestra una relación lineal entre el PIB y el porcentaje de alfabetización, los países con un PIB más bajo parecen tener más probabilidades de tener un porcentaje menor de la población que puede leer y escribir.
+
+
+### Hacer un gráfico de recuento con una lista
+
+En el ejercicio anterior, exploramos un conjunto de datos que contienen información sobre 227 países. Exploremos más a fondo estos dato: concretamente, ¿cuántos países hay en cada región del mundo?
+
+Para ello, tendremos que utilizar un gráfico de recuento. Los gráficos de recuento toman una lista categórica y devuelven barras que representan el número de entradas de la lista por categoría. Puedes crear una aquí utilizando una lista de regiones para cada país, que es uva variable llamada `region`.
+
+
+```{python}
+# Se convierte la columna Region en lista y se quitan los espacios
+region = df['Region'].tolist()
+region = [item.strip() for item in region]
+```
+
+#### Instrucciones
+
+- Importa Matplotlib y Seaborn utilizando las convenciones de nomenclatura estándar.
+- Utiliza Seaborn para crear un gráfico de recuento con `region` en el eje y.
+- Visualiza el gráfico
+
+```{python}
+# Import Matplotlib and Seaborn
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Create count plot with region on the y-axis
+sns.countplot(y=region)
+
+# Show plot
+plt.show()
+```
+
+África Subsahariana contiene la mayoría de los países en esta lista.
