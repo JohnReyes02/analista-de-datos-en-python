@@ -153,10 +153,99 @@ plt.show()
 
 - Trabajando con DataFrames
 
-
 ```{python}
 #| echo: true
 #| eval: false
 import pandas as pd
 df = pd.read_csv('masculinity.csv')
+df.head()
 ```
+
+- Usando DataFrames con countplot()
+
+```{python}
+#| echo: true
+#| eval: false
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+df = pd.read_csv('masculinity.csv')
+sns.countplot(x='how_masucline', data=df)
+plt.show()
+```
+
+### Datos "ordenados" frente a datos "desordenados"
+
+Aquí tenemos un conjunto de datos que muestra de una encuesta a niños sobre sus animales favoritos. Pros, ¿Podemos utilizar este conjunto de datos tal cual con Seaborn? Vamos a utilizar pandas para importar el archivo csv con los datos recogidos en la encuestra y determinar si está ordenado, lo cual es esencial para que funcione bien con Seaborn.
+
+Para empezar, se ha asignado la tura del archivo csv a la variable `csv_filepath`.
+
+#### Instrucciones
+
+1. 
+- Lee el archivo csv situado en `csv_filepath` en un DataFrame llamado `df`.
+- Imprime la cabecera de `df` para mostrar las cinco primeras filas.
+
+
+```{python}
+csv_filepath = 'https://assets.datacamp.com/production/repositories/3996/datasets/7ac19e11cf7ed61205ffe8da5208794b8e2a5086/1.2.1_example_csv.csv'
+```
+
+
+```{python}
+# Import pandas
+import pandas as pd
+
+# Create a DataFrame from csv file
+df = pd.read_csv(csv_filepath)
+
+# Print the head of df
+print(df.head())
+```
+
+2. **Pregunta**
+
+Visualiza las cinco primeras filas del DataFrame `df`. ¿Está ordenado? ¿Por qué si o por qué no?
+
+**Respuestas posibles**
+
+- [ ] Si, porque no hay erratas ni faltan valores.
+- [ ] Si, porque está vien organizado y es fácil de leer.
+- [X] No, porque una misma columna contiene distintos tipos de formación.
+
+
+### Hacer un gráfico de recuento con un DataFrame
+
+En este ejercicio examinaremos las respuestas a una encuesta enviada a los jóvenes. Nuestra pregunta principal aquí es: ¿cuántos jóvenes encuestados afirman tener miedo a las arañas? Se pidió a los participantes en la encuesta que estuvieran de acuerdo o en desacuerdo con la afirmación "Tengo miedo a las arañas". Las respuestas varían de 1 a 5, donde 1 es "Totalmente en desacuerdo" y 5 es "Totalmente de acuerdo".
+
+Para empezar, la ruta del archivo csv con los datos de la encuesta se ha asignado a la variable `csv_filepath`.
+
+#### Instrucciones
+
+- Importa Matplotlib, pandas y Seaborn utilizando los nombres estándar. 
+- Crea un DataFrame llamado `df` a partir del archivo csv situado en `csv_filepath`.
+- Utilizando la función `countplot()` con los argumentos `x=` y `data=` para crear un gráfico de recuento con los valores de la columna `"Spiders"` en el eje x.
+- Visualiza el gráfico.
+
+```{python}
+csv_filepath = './data/young-people-survey-responses.csv'
+```
+
+```{python}
+# Import Matplotlib, pandas and Seaborn
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Create a DataFrame from csv file
+df = pd.read_csv(csv_filepath)
+
+# Create a countplot with "Spiders" on the x-axis
+sns.countplot(x='Spiders', data=df)
+
+# Display the plot
+plt.show()
+```
+
+Este gráfico nos muestra que la gran mayoría de los jóvenes informaron no tener miedo a las arañas.
