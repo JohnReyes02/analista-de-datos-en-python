@@ -1,0 +1,301 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "title: \"Introducción a Seaborn\"\n",
+        "author: \"Edwin John Fredy Reyes Aguirre\"\n",
+        "date: today\n",
+        "toc: true\n",
+        "toc-title: \"Contenido\"\n",
+        "---\n",
+        "\n",
+        "\n",
+        "Qué es Seaborn y cuándo debes utilizarlo? En este capítulo, ¡Lo descubrirás! Además, aprenderás a crear gráficos de dispersión y de recuento tanto con listas de datos como con DataFrames de pandas. También conocerás una de las grandes ventajas de utilizar Seaborn: la posibilidad de añadir fácilmente una tercera varible a tus gráficos utilizando el color para representar diferentes subgrupos.\n",
+        "\n",
+        "## Introducción a Seaborn\n",
+        "\n",
+        "- Qué es Seaborn?\n",
+        "    - Puthon es una librería de visualización de datos\n",
+        "    - Crea facilmente los tipos más comunes de gráficos\n",
+        "\n",
+        "- Por qué es útil Seaborn?\n",
+        "    - Exploración de datos\n",
+        "    - Comunicación de resultados\n",
+        "\n",
+        "- Ventajas de Seaborn\n",
+        "    - Fácil de usar\n",
+        "    - Trabaja bien con estructuras de datos de `pandas`\n",
+        "    - Construído sobre `matplotlib`\n",
+        "\n",
+        "- Cómo iniciar?\n"
+      ],
+      "id": "bc466a66"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| eval: false\n",
+        "import seaborn as sns # Samuel Norman Seaborn (sns)\n",
+        "import matplotlib.pyplot as plt"
+      ],
+      "id": "1bdc09c0",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "- Ejemplo 1: Scatter plot\n"
+      ],
+      "id": "94aab8f8"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import seaborn as sns\n",
+        "import matplotlib.pyplot as plt\n",
+        "height = [62, 64, 69, 75, 66,\n",
+        "          68, 65, 71, 76, 73]\n",
+        "weight = [120, 136, 148, 175, 137,\n",
+        "          165, 154, 172, 200, 187]\n",
+        "sns.scatterplot(x=height, y=weight)\n",
+        "plt.show()"
+      ],
+      "id": "eed3e261",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "- Ejemplo 2: Crear un count plot\n"
+      ],
+      "id": "348ad71d"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import seaborn as sns\n",
+        "import matplotlib.pyplot as plt\n",
+        "gender = ['Female', 'Female',\n",
+        "          'Female', 'Female',\n",
+        "          'Male', 'Male', 'Male',\n",
+        "          'Male', 'Male', 'Male']\n",
+        "sns.countplot(x=gender)"
+      ],
+      "id": "7d321e8a",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### Hacer un gráfico de dispersión con listas\n",
+        "\n",
+        "En este ejecicio, utilizaremos un conjunto de datos que contiene información sobre 227 países. Este conjunto de datos contiene mucha información interesante sobre cada país, como sus tasas de natalidad y mortalidad y su producto interno bruto (GDP). GDP es el valor de todos los bienes y servicios producidas en un año, expresado en dólares por persona.\n",
+        "\n",
+        "Hemos creado tres listas de datos a partir de este conjunto de datos para que puedas empezar. `gdp` es una lista que contiene el valor de GDP por país, expresado en dólares por persona. `phones` es una lista con el número de teléfonos móviles por cada 1000 personas en este país. Por último `percent_literate` es una lista que contiene el porcentaje de la población de cada país que sabe leer y escribir.\n"
+      ],
+      "id": "993f36f3"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import pandas as pd\n",
+        "\n",
+        "ruta = './data/countries-of-the-world.csv'\n",
+        "df = pd.read_csv(ruta)\n",
+        "df.head()"
+      ],
+      "id": "7566ff3e",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Convertir a numerico los datos tipo object\n",
+        "df['Phones (per 1000)'] = df['Phones (per 1000)'].str.replace(',', '.').astype(float)\n",
+        "df['Literacy (%)'] = df['Literacy (%)'].str.replace(',', '.').astype(float)\n",
+        "\n",
+        "# Crear las listas\n",
+        "gdp = df['GDP ($ per capita)'].tolist()\n",
+        "phones = df['Phones (per 1000)'].tolist()\n",
+        "percent_literate = df['Literacy (%)'].tolist()"
+      ],
+      "id": "147b7cbf",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "#### Instrucciones\n",
+        "\n",
+        "1. Importa Matplotlib y Seaborn utilizando la convención de nomenclatura estándar.\n"
+      ],
+      "id": "b58138c3"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Import Matplotlib and Seaborn\n",
+        "import matplotlib.pyplot as plt\n",
+        "import seaborn as sns"
+      ],
+      "id": "0f9f521e",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "2. Crea un gráfico de dispersión de GDP (`gdp`) frente al número de teléfonos por cada 1000 personas (`phones`).\n"
+      ],
+      "id": "7581801c"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Create scatterplot with GDP on x-axis and number of phones on the y-axis\n",
+        "sns.scatterplot(x=gdp, y=phones)\n",
+        "plt.show()"
+      ],
+      "id": "e2ea04f4",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "3. Combina el diagrama de dispersión para que muestre el porcentaje de la población que sabe leer y escribir (`percent_literate`) en el eje y.\n"
+      ],
+      "id": "e762a0da"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "sns.scatterplot(x=gdp, y=percent_literate)\n",
+        "plt.show()"
+      ],
+      "id": "50d782c4",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Aunque este gráfico no muestra una relación lineal entre el PIB y el porcentaje de alfabetización, los países con un PIB más bajo parecen tener más probabilidades de tener un porcentaje menor de la población que puede leer y escribir.\n",
+        "\n",
+        "\n",
+        "### Hacer un gráfico de recuento con una lista\n",
+        "\n",
+        "En el ejercicio anterior, exploramos un conjunto de datos que contienen información sobre 227 países. Exploremos más a fondo estos dato: concretamente, ¿cuántos países hay en cada región del mundo?\n",
+        "\n",
+        "Para ello, tendremos que utilizar un gráfico de recuento. Los gráficos de recuento toman una lista categórica y devuelven barras que representan el número de entradas de la lista por categoría. Puedes crear una aquí utilizando una lista de regiones para cada país, que es uva variable llamada `region`.\n"
+      ],
+      "id": "f7df12cb"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Se convierte la columna Region en lista y se quitan los espacios\n",
+        "region = df['Region'].tolist()\n",
+        "region = [item.strip() for item in region]"
+      ],
+      "id": "b44bbaa4",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "#### Instrucciones\n",
+        "\n",
+        "- Importa Matplotlib y Seaborn utilizando las convenciones de nomenclatura estándar.\n",
+        "- Utiliza Seaborn para crear un gráfico de recuento con `region` en el eje y.\n",
+        "- Visualiza el gráfico\n"
+      ],
+      "id": "c4953cd0"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Import Matplotlib and Seaborn\n",
+        "import matplotlib.pyplot as plt\n",
+        "import seaborn as sns\n",
+        "\n",
+        "# Create count plot with region on the y-axis\n",
+        "sns.countplot(y=region)\n",
+        "\n",
+        "# Show plot\n",
+        "plt.show()"
+      ],
+      "id": "50ec21e6",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "África Subsahariana contiene la mayoría de los países en esta lista.\n",
+        "\n",
+        "\n",
+        "## Utilizar pandas con Seaborn\n",
+        "\n",
+        "- Qué es Pandas?\n",
+        "    - Librería de Python para análisis de datos.\n",
+        "    - Puede leer conjunto de datos de múltiples tipos de archivos. Por ejemplo csv, txt.\n",
+        "    - El conjunto de datos toma la forma de objeto `DataFrame`.\n",
+        "\n",
+        "- Trabajando con DataFrames\n"
+      ],
+      "id": "44b4faf0"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| eval: false\n",
+        "import pandas as pd\n",
+        "df = pd.read_csv('masculinity.csv')"
+      ],
+      "id": "89df6ea4",
+      "execution_count": null,
+      "outputs": []
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "display_name": "Python 3",
+      "language": "python",
+      "name": "python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}

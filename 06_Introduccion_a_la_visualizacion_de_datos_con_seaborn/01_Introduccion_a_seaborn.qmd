@@ -142,3 +142,21 @@ plt.show()
 ```
 
 África Subsahariana contiene la mayoría de los países en esta lista.
+
+
+## Utilizar pandas con Seaborn
+
+- Qué es Pandas?
+    - Librería de Python para análisis de datos.
+    - Puede leer conjunto de datos de múltiples tipos de archivos. Por ejemplo csv, txt.
+    - El conjunto de datos toma la forma de objeto `DataFrame`.
+
+- Trabajando con DataFrames
+
+
+```{python}
+#| echo: true
+#| eval: false
+import pandas as pd
+df = pd.read_csv('masculinity.csv')
+```
