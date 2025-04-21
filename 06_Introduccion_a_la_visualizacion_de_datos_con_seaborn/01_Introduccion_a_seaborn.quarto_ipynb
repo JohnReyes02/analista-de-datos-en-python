@@ -32,7 +32,7 @@
         "\n",
         "- Cómo iniciar?\n"
       ],
-      "id": "bc466a66"
+      "id": "7140c648"
     },
     {
       "cell_type": "code",
@@ -43,7 +43,7 @@
         "import seaborn as sns # Samuel Norman Seaborn (sns)\n",
         "import matplotlib.pyplot as plt"
       ],
-      "id": "1bdc09c0",
+      "id": "ddc1bede",
       "execution_count": null,
       "outputs": []
     },
@@ -53,7 +53,7 @@
       "source": [
         "- Ejemplo 1: Scatter plot\n"
       ],
-      "id": "94aab8f8"
+      "id": "d22b0883"
     },
     {
       "cell_type": "code",
@@ -68,7 +68,7 @@
         "sns.scatterplot(x=height, y=weight)\n",
         "plt.show()"
       ],
-      "id": "eed3e261",
+      "id": "dda6dc17",
       "execution_count": null,
       "outputs": []
     },
@@ -78,7 +78,7 @@
       "source": [
         "- Ejemplo 2: Crear un count plot\n"
       ],
-      "id": "348ad71d"
+      "id": "049d0255"
     },
     {
       "cell_type": "code",
@@ -92,7 +92,7 @@
         "          'Male', 'Male', 'Male']\n",
         "sns.countplot(x=gender)"
       ],
-      "id": "7d321e8a",
+      "id": "08c59e61",
       "execution_count": null,
       "outputs": []
     },
@@ -106,7 +106,7 @@
         "\n",
         "Hemos creado tres listas de datos a partir de este conjunto de datos para que puedas empezar. `gdp` es una lista que contiene el valor de GDP por país, expresado en dólares por persona. `phones` es una lista con el número de teléfonos móviles por cada 1000 personas en este país. Por último `percent_literate` es una lista que contiene el porcentaje de la población de cada país que sabe leer y escribir.\n"
       ],
-      "id": "993f36f3"
+      "id": "d430770d"
     },
     {
       "cell_type": "code",
@@ -118,7 +118,7 @@
         "df = pd.read_csv(ruta)\n",
         "df.head()"
       ],
-      "id": "7566ff3e",
+      "id": "ab556c42",
       "execution_count": null,
       "outputs": []
     },
@@ -135,7 +135,7 @@
         "phones = df['Phones (per 1000)'].tolist()\n",
         "percent_literate = df['Literacy (%)'].tolist()"
       ],
-      "id": "147b7cbf",
+      "id": "c3819084",
       "execution_count": null,
       "outputs": []
     },
@@ -147,7 +147,7 @@
         "\n",
         "1. Importa Matplotlib y Seaborn utilizando la convención de nomenclatura estándar.\n"
       ],
-      "id": "b58138c3"
+      "id": "33f5eb97"
     },
     {
       "cell_type": "code",
@@ -157,7 +157,7 @@
         "import matplotlib.pyplot as plt\n",
         "import seaborn as sns"
       ],
-      "id": "0f9f521e",
+      "id": "859ec107",
       "execution_count": null,
       "outputs": []
     },
@@ -167,7 +167,7 @@
       "source": [
         "2. Crea un gráfico de dispersión de GDP (`gdp`) frente al número de teléfonos por cada 1000 personas (`phones`).\n"
       ],
-      "id": "7581801c"
+      "id": "2a176df5"
     },
     {
       "cell_type": "code",
@@ -177,7 +177,7 @@
         "sns.scatterplot(x=gdp, y=phones)\n",
         "plt.show()"
       ],
-      "id": "e2ea04f4",
+      "id": "30978945",
       "execution_count": null,
       "outputs": []
     },
@@ -187,7 +187,7 @@
       "source": [
         "3. Combina el diagrama de dispersión para que muestre el porcentaje de la población que sabe leer y escribir (`percent_literate`) en el eje y.\n"
       ],
-      "id": "e762a0da"
+      "id": "1fd8d598"
     },
     {
       "cell_type": "code",
@@ -196,7 +196,7 @@
         "sns.scatterplot(x=gdp, y=percent_literate)\n",
         "plt.show()"
       ],
-      "id": "50d782c4",
+      "id": "a502164b",
       "execution_count": null,
       "outputs": []
     },
@@ -213,7 +213,7 @@
         "\n",
         "Para ello, tendremos que utilizar un gráfico de recuento. Los gráficos de recuento toman una lista categórica y devuelven barras que representan el número de entradas de la lista por categoría. Puedes crear una aquí utilizando una lista de regiones para cada país, que es uva variable llamada `region`.\n"
       ],
-      "id": "f7df12cb"
+      "id": "bb73ac6d"
     },
     {
       "cell_type": "code",
@@ -223,7 +223,7 @@
         "region = df['Region'].tolist()\n",
         "region = [item.strip() for item in region]"
       ],
-      "id": "b44bbaa4",
+      "id": "0d71bbf4",
       "execution_count": null,
       "outputs": []
     },
@@ -237,7 +237,7 @@
         "- Utiliza Seaborn para crear un gráfico de recuento con `region` en el eje y.\n",
         "- Visualiza el gráfico\n"
       ],
-      "id": "c4953cd0"
+      "id": "4819916c"
     },
     {
       "cell_type": "code",
@@ -253,7 +253,7 @@
         "# Show plot\n",
         "plt.show()"
       ],
-      "id": "50ec21e6",
+      "id": "ff96321a",
       "execution_count": null,
       "outputs": []
     },
@@ -273,7 +273,7 @@
         "\n",
         "- Trabajando con DataFrames\n"
       ],
-      "id": "44b4faf0"
+      "id": "2e911adc"
     },
     {
       "cell_type": "code",
@@ -284,7 +284,7 @@
         "import pandas as pd\n",
         "df = pd.read_csv('masculinity.csv')"
       ],
-      "id": "89df6ea4",
+      "id": "50d3f425",
       "execution_count": null,
       "outputs": []
     }
