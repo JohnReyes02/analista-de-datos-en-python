@@ -189,7 +189,7 @@ Para empezar, se ha asignado la tura del archivo csv a la variable `csv_filepath
 
 
 ```{python}
-csv_filepath = 'https://assets.datacamp.com/production/repositories/3996/datasets/7ac19e11cf7ed61205ffe8da5208794b8e2a5086/1.2.1_example_csv.csv'
+csv_filepath = './data/1.2.1_example_csv.csv'
 ```
 
 
@@ -261,7 +261,7 @@ Para probarlos usaremos el siguiente Dataset:
 ```{python}
 import pandas as pd
 import seaborn as sns
-tips = sns.load_dataset('tips')
+tips = pd.read_csv('./data/tips.csv')
 tips.head()
 ```
 
