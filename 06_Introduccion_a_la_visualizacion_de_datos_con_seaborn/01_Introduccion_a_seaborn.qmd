@@ -26,9 +26,9 @@ Qué es Seaborn y cuándo debes utilizarlo? En este capítulo, ¡Lo descubrirás
 - Cómo iniciar?
 
 ```{python}
-#| echo: true
-#| eval: false
-import seaborn as sns # Samuel Norman Seaborn (sns)
+# | echo: true
+# | eval: false
+import seaborn as sns  # Samuel Norman Seaborn (sns)
 import matplotlib.pyplot as plt
 ```
 
