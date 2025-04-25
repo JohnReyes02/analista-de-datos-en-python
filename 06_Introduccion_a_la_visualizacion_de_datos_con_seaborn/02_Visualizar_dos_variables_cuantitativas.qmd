@@ -8,7 +8,7 @@ toc-title: "Contenido"
 
 En este capíulo, crearás y personalizarás gráficos que visualizan la relación entre dos variables cuantitativas. Para ello, utilizarás gráficos se dispersión y de líneas para explorar cómo cambia el nivel de contaminación atmosférica en una ciudad a lo largo de un día y cómo se relacionan los caballos de potencia con la eficiencia del combustible en los coches. También verás otra gran ventaja de utilizar Seaborn: ¡la posibilidad de crear fácilmente subtramas en una sola figura!
 
-## Intruducción a las plots (tramas) y subplots (subtramas) relacionales
+## Introducción a las plots (tramas) y subplots (subtramas) relacionales
 
 -   Gráficos relacionales
 
@@ -207,7 +207,7 @@ Debido a que estos subgráficos tenían un gran rango de valores x, es más fác
 
 ### Crear subtramas de dos factores
 
-Sigamos examinando el conjunto de datos `student_data` de alumnos de secundaria. Aquí queremos responder a la siguiente pregunta: ¿la nota del primer semestre de un alumno (`"G1"`) tienede a correlacionarse con su nota final (`"G3"`)?
+Sigamos examinando el conjunto de datos `student_data` de alumnos de secundaria. Aquí queremos responder a la siguiente pregunta: ¿la nota del primer semestre de un alumno (`"G1"`) tiende a correlacionarse con su nota final (`"G3"`)?
 
 Hay muchos aspectos de la vida de un alumno que pueden dar lugar a una nota final más alta o más baja en la clase. Por ejemplo, algunos alumnos reciben apoyo  educativo adicional de su centro escolar (`"schoolsup"`) o de su familia (`"famsup"`), lo que podría traducirse en mejores notas.
 Intentamos controlar estos dos factores creando subtramas en función de si el alumno recibió apoyo educativo adicional de su escuela o de su familia.
@@ -392,7 +392,7 @@ Los coches con mayor potencia tienden a tener un menor número de millas por gal
 
 ### Cambiar el estilo de los puntos del gráfico de dispersión
 
-Sigamos explorando el conjunto de datos `mpg` de Seaborn observando la relación entre la velocidad a la que se puede acelerar un coche (`"acceleration"`) y su eficiencia de combustible (`"mpg"`). Varían estas propiedades según el país de origen (`"origin"`)?
+Sigamos explorando el conjunto de datos `mpg` de Seaborn observando la relación entre la velocidad a la que se puede acelerar un coche (`"acceleration"`) y su eficiencia de combustible (`"mpg"`). ¿Varían estas propiedades según el país de origen (`"origin"`)?
 
 Observa que la variable `"acceleration"` es el tiempo de aceleración de 0 a 60 millas por hora, en segundos. Los valores más altos indican una aceleración más lenta.
 
