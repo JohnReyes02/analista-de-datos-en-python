@@ -1,0 +1,1264 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Edwin John Fredy Reyes Aguirre">
+<meta name="dcterms.date" content="2025-04-24">
+
+<title>Conceptos Básicos de la fusión de datos</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="01_Conceptos_basicos_de_la_fusion_de_datos_files/libs/clipboard/clipboard.min.js"></script>
+<script src="01_Conceptos_basicos_de_la_fusion_de_datos_files/libs/quarto-html/quarto.js"></script>
+<script src="01_Conceptos_basicos_de_la_fusion_de_datos_files/libs/quarto-html/popper.min.js"></script>
+<script src="01_Conceptos_basicos_de_la_fusion_de_datos_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="01_Conceptos_basicos_de_la_fusion_de_datos_files/libs/quarto-html/anchor.min.js"></script>
+<link href="01_Conceptos_basicos_de_la_fusion_de_datos_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="01_Conceptos_basicos_de_la_fusion_de_datos_files/libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="01_Conceptos_basicos_de_la_fusion_de_datos_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="01_Conceptos_basicos_de_la_fusion_de_datos_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="01_Conceptos_basicos_de_la_fusion_de_datos_files/libs/bootstrap/bootstrap-c0367b04c37547644fece4185067e4a7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contenido</h2>
+   
+  <ul>
+  <li><a href="#unión-interna" id="toc-unión-interna" class="nav-link active" data-scroll-target="#unión-interna">Unión interna</a>
+  <ul class="collapse">
+  <li><a href="#qué-columna-elegiremos-para-fusionar" id="toc-qué-columna-elegiremos-para-fusionar" class="nav-link" data-scroll-target="#qué-columna-elegiremos-para-fusionar">Qué columna elegiremos para fusionar?</a></li>
+  <li><a href="#tu-primera-unión-interna" id="toc-tu-primera-unión-interna" class="nav-link" data-scroll-target="#tu-primera-unión-interna">Tu primera unión interna</a></li>
+  <li><a href="#uniones-internas-y-número-de-filas-devueltas" id="toc-uniones-internas-y-número-de-filas-devueltas" class="nav-link" data-scroll-target="#uniones-internas-y-número-de-filas-devueltas">Uniones internas y número de filas devueltas</a></li>
+  </ul></li>
+  <li><a href="#relaciones-de-uno-a-muchos" id="toc-relaciones-de-uno-a-muchos" class="nav-link" data-scroll-target="#relaciones-de-uno-a-muchos">Relaciones de uno a muchos</a>
+  <ul class="collapse">
+  <li><a href="#fusión-de-uno-a-muchos" id="toc-fusión-de-uno-a-muchos" class="nav-link" data-scroll-target="#fusión-de-uno-a-muchos">Fusión de uno a muchos</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Conceptos Básicos de la fusión de datos</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Edwin John Fredy Reyes Aguirre </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">April 24, 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Aprende a fusionar datos dispares mediante uniones internas. Combinando información de múltiples fuentes, descubrirás perspectivas convincentes que antes podían estar ocultas. También aprenderás cómo la relación entre esas fuentes, de uno a uno o de uno a muchos, puede afectar a tu resultado.</p>
+<section id="unión-interna" class="level2">
+<h2 class="anchored" data-anchor-id="unión-interna">Unión interna</h2>
+<section id="qué-columna-elegiremos-para-fusionar" class="level3">
+<h3 class="anchored" data-anchor-id="qué-columna-elegiremos-para-fusionar">Qué columna elegiremos para fusionar?</h3>
+<p>Chicago proporciona una lista de propietarios de taxis y vehículos con licencia para operar en la ciudad, por seguridad pública. Tu objetivo es unir dos tablas. Una tabla se llama <code>taxi_owners</code> y contiene información sobre los propietarios de las empresas de taxis, mientras que la otra se llama <code>taxi_veh</code>e incluye información sobre cada vehículo de taxi.</p>
+<div id="0642f04d" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="0360e487" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>taxi_owners <span class="op">=</span> pd.read_pickle(<span class="st">'./data/taxi_owners.p'</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>taxi_owners.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">rid</th>
+<th data-quarto-table-cell-role="th">vid</th>
+<th data-quarto-table-cell-role="th">owner</th>
+<th data-quarto-table-cell-role="th">address</th>
+<th data-quarto-table-cell-role="th">zip</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>T6285</td>
+<td>6285</td>
+<td>AGEAN TAXI LLC</td>
+<td>4536 N. ELSTON AVE.</td>
+<td>60630</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>T4862</td>
+<td>4862</td>
+<td>MANGIB CORP.</td>
+<td>5717 N. WASHTENAW AVE.</td>
+<td>60659</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>T1495</td>
+<td>1495</td>
+<td>FUNRIDE, INC.</td>
+<td>3351 W. ADDISON ST.</td>
+<td>60618</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>T4231</td>
+<td>4231</td>
+<td>ALQUSH CORP.</td>
+<td>6611 N. CAMPBELL AVE.</td>
+<td>60645</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>T5971</td>
+<td>5971</td>
+<td>EUNIFFORD INC.</td>
+<td>3351 W. ADDISON ST.</td>
+<td>60618</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="7818f5e0" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>taxi_veh <span class="op">=</span> pd.read_pickle(<span class="st">'./data/taxi_vehicles.p'</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>taxi_veh.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">vid</th>
+<th data-quarto-table-cell-role="th">make</th>
+<th data-quarto-table-cell-role="th">model</th>
+<th data-quarto-table-cell-role="th">year</th>
+<th data-quarto-table-cell-role="th">fuel_type</th>
+<th data-quarto-table-cell-role="th">owner</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>2767</td>
+<td>TOYOTA</td>
+<td>CAMRY</td>
+<td>2013</td>
+<td>HYBRID</td>
+<td>SEYED M. BADRI</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>1411</td>
+<td>TOYOTA</td>
+<td>RAV4</td>
+<td>2017</td>
+<td>HYBRID</td>
+<td>DESZY CORP.</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>6500</td>
+<td>NISSAN</td>
+<td>SENTRA</td>
+<td>2019</td>
+<td>GASOLINE</td>
+<td>AGAPH CAB CORP</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>2746</td>
+<td>TOYOTA</td>
+<td>CAMRY</td>
+<td>2013</td>
+<td>HYBRID</td>
+<td>MIDWEST CAB CO, INC</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>5922</td>
+<td>TOYOTA</td>
+<td>CAMRY</td>
+<td>2013</td>
+<td>HYBRID</td>
+<td>SUMETTI CAB CO</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<section id="instrucciones" class="level4">
+<h4 class="anchored" data-anchor-id="instrucciones">Instrucciones:</h4>
+<p>Elige una columna que utilizarías para fusionar las dos tablas utilizando el método <code>.merge()</code>.</p>
+<p>Respuestas posibles</p>
+<ul class="task-list">
+<li><p><label><input type="checkbox">on=‘rid’</label></p></li>
+<li><p><label><input type="checkbox" checked="">on=‘vid’</label></p></li>
+<li><p><label><input type="checkbox">on=‘year’</label></p></li>
+<li><p><label><input type="checkbox">on=‘zip’</label></p></li>
+</ul>
+</section>
+</section>
+<section id="tu-primera-unión-interna" class="level3">
+<h3 class="anchored" data-anchor-id="tu-primera-unión-interna">Tu primera unión interna</h3>
+<p>Te han encargado que averigües cuáles son los tipos de combustibles más utlizados en los taxis de Chicago. Para completar el análisis, tienes que fusionar las tablas <code>taxi_owners</code> y <code>taxi_veh</code> en la columna <code>vid</code>. A continuación, puedes utilizar la tabla combinada junto con el método <code>.values_counts()</code> para encontrar el <code>fuel_type</code> más común.</p>
+<section id="instrucciones-1" class="level4">
+<h4 class="anchored" data-anchor-id="instrucciones-1">Instrucciones:</h4>
+<ol type="1">
+<li>Fusiona <code>taxi_owners</code> con <code>taxi_veh</code> en la columna <code>vid</code> y guarda el resultado en <code>taxi_own_veh</code>.</li>
+</ol>
+<div id="39d03ad0" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Merge the taxi_owners and taxi_veh tables</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>taxi_own_veh <span class="op">=</span> taxi_owners.merge(taxi_veh, on<span class="op">=</span><span class="st">'vid'</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>taxi_own_veh.head()</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the column names of taxi_own_veh</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(taxi_own_veh.columns)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Index(['rid', 'vid', 'owner_x', 'address', 'zip', 'make', 'model', 'year',
+       'fuel_type', 'owner_y'],
+      dtype='object')</code></pre>
+</div>
+</div>
+<ol start="2" type="1">
+<li>Establece los sufijos izquierdo y derecho de la tabla para las columnas solapadas de la fusión en <code>_own</code> y <code>_veh</code>, respectivamente.</li>
+</ol>
+<div id="858b1463" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Merge the taxi_owners and taxi_veh tables setting a suffix</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>taxi_own_veh <span class="op">=</span> taxi_owners.merge(taxi_veh, on<span class="op">=</span><span class="st">'vid'</span>, suffixes<span class="op">=</span>(<span class="st">'_own'</span>, <span class="st">'_veh'</span>))</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>taxi_own_veh.head()</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the column names of taxi_own_veh</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(taxi_own_veh.columns)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Index(['rid', 'vid', 'owner_own', 'address', 'zip', 'make', 'model', 'year',
+       'fuel_type', 'owner_veh'],
+      dtype='object')</code></pre>
+</div>
+</div>
+<ol start="3" type="1">
+<li>Selecciona la columna <code>fuel_type</code> de <code>taxi_own_veh</code> e imprime <code>value_counts()</code> para encontrar los <code>fuel_type</code> más utilizados.</li>
+</ol>
+<div id="7aed3927" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Merge the taxi_owners and taxi_veh tables setting a suffix</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>taxi_own_veh <span class="op">=</span> taxi_owners.merge(taxi_veh, on<span class="op">=</span><span class="st">'vid'</span>, suffixes<span class="op">=</span>(<span class="st">'_own'</span>, <span class="st">'_veh'</span>))</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the value_counts to find the most popular fuel_type</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(taxi_own_veh[<span class="st">'fuel_type'</span>].value_counts())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>fuel_type
+HYBRID                    2792
+GASOLINE                   611
+FLEX FUEL                   89
+COMPRESSED NATURAL GAS      27
+Name: count, dtype: int64</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="uniones-internas-y-número-de-filas-devueltas" class="level3">
+<h3 class="anchored" data-anchor-id="uniones-internas-y-número-de-filas-devueltas">Uniones internas y número de filas devueltas</h3>
+<p>Todas las fusiones que has estudiado hasta ahora se llaman uniones internas. Es necesario comprender que las uniones internas solo devuelven las filas con valores coincidentes en ambas tablas. Explorarás esto más a fondo revisando la fusión entre las tablas <code>wards</code> y <code>census</code>, y comparándola después con fusiones de copias de estas tablas ligeramente alteradas, denominadas <code>wards_altered</code> y <code>census_altered</code>. La primera fila de la columna <code>wards</code> se ha modificado en las tablas alteradas. Examinarás cómo afecta esto a la fusión entre ellos.</p>
+<div id="418564d2" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>wards <span class="op">=</span> pd.read_pickle(<span class="st">'./data/ward.p'</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>wards.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">ward</th>
+<th data-quarto-table-cell-role="th">alderman</th>
+<th data-quarto-table-cell-role="th">address</th>
+<th data-quarto-table-cell-role="th">zip</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>1</td>
+<td>Proco "Joe" Moreno</td>
+<td>2058 NORTH WESTERN AVENUE</td>
+<td>60647</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2</td>
+<td>Brian Hopkins</td>
+<td>1400 NORTH ASHLAND AVENUE</td>
+<td>60622</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>3</td>
+<td>Pat Dowell</td>
+<td>5046 SOUTH STATE STREET</td>
+<td>60609</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>4</td>
+<td>William D. Burns</td>
+<td>435 EAST 35TH STREET, 1ST FLOOR</td>
+<td>60616</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>5</td>
+<td>Leslie A. Hairston</td>
+<td>2325 EAST 71ST STREET</td>
+<td>60649</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="0b898a92" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>census <span class="op">=</span> pd.read_pickle(<span class="st">'./data/census.p'</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>census.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">ward</th>
+<th data-quarto-table-cell-role="th">pop_2000</th>
+<th data-quarto-table-cell-role="th">pop_2010</th>
+<th data-quarto-table-cell-role="th">change</th>
+<th data-quarto-table-cell-role="th">address</th>
+<th data-quarto-table-cell-role="th">zip</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>1</td>
+<td>52951</td>
+<td>56149</td>
+<td>6%</td>
+<td>2765 WEST SAINT MARY STREET</td>
+<td>60647</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2</td>
+<td>54361</td>
+<td>55805</td>
+<td>3%</td>
+<td>WM WASTE MANAGEMENT 1500</td>
+<td>60622</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>3</td>
+<td>40385</td>
+<td>53039</td>
+<td>31%</td>
+<td>17 EAST 38TH STREET</td>
+<td>60653</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>4</td>
+<td>51953</td>
+<td>54589</td>
+<td>5%</td>
+<td>31ST ST HARBOR BUILDING LAKEFRONT TRAIL</td>
+<td>60653</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>5</td>
+<td>55302</td>
+<td>51455</td>
+<td>-7%</td>
+<td>JACKSON PARK LAGOON SOUTH CORNELL DRIVE</td>
+<td>60637</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="d0bfffb2" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>wards_altered <span class="op">=</span> wards.copy()</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>wards_altered.loc[<span class="dv">0</span>, <span class="st">'ward'</span>] <span class="op">=</span> <span class="dv">61</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>wards_altered.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">ward</th>
+<th data-quarto-table-cell-role="th">alderman</th>
+<th data-quarto-table-cell-role="th">address</th>
+<th data-quarto-table-cell-role="th">zip</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>61</td>
+<td>Proco "Joe" Moreno</td>
+<td>2058 NORTH WESTERN AVENUE</td>
+<td>60647</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2</td>
+<td>Brian Hopkins</td>
+<td>1400 NORTH ASHLAND AVENUE</td>
+<td>60622</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>3</td>
+<td>Pat Dowell</td>
+<td>5046 SOUTH STATE STREET</td>
+<td>60609</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>4</td>
+<td>William D. Burns</td>
+<td>435 EAST 35TH STREET, 1ST FLOOR</td>
+<td>60616</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>5</td>
+<td>Leslie A. Hairston</td>
+<td>2325 EAST 71ST STREET</td>
+<td>60649</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="c7754116" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>census_altered <span class="op">=</span> census.copy()</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>census_altered.loc[<span class="dv">0</span>, <span class="st">'ward'</span>] <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>census_altered.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">ward</th>
+<th data-quarto-table-cell-role="th">pop_2000</th>
+<th data-quarto-table-cell-role="th">pop_2010</th>
+<th data-quarto-table-cell-role="th">change</th>
+<th data-quarto-table-cell-role="th">address</th>
+<th data-quarto-table-cell-role="th">zip</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>None</td>
+<td>52951</td>
+<td>56149</td>
+<td>6%</td>
+<td>2765 WEST SAINT MARY STREET</td>
+<td>60647</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2</td>
+<td>54361</td>
+<td>55805</td>
+<td>3%</td>
+<td>WM WASTE MANAGEMENT 1500</td>
+<td>60622</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>3</td>
+<td>40385</td>
+<td>53039</td>
+<td>31%</td>
+<td>17 EAST 38TH STREET</td>
+<td>60653</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>4</td>
+<td>51953</td>
+<td>54589</td>
+<td>5%</td>
+<td>31ST ST HARBOR BUILDING LAKEFRONT TRAIL</td>
+<td>60653</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>5</td>
+<td>55302</td>
+<td>51455</td>
+<td>-7%</td>
+<td>JACKSON PARK LAGOON SOUTH CORNELL DRIVE</td>
+<td>60637</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<section id="instrucciones-2" class="level4">
+<h4 class="anchored" data-anchor-id="instrucciones-2">Instrucciones:</h4>
+<ol type="1">
+<li>Fusiona <code>wards</code> y <code>census</code> en la columna <code>ward</code> y guarda el resultado en <code>ward_census</code>.</li>
+</ol>
+<div id="2000291d" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Merge the wards and census tables on the ward column</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>ward_census <span class="op">=</span> wards.merge(census, on<span class="op">=</span><span class="st">'ward'</span>)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the shape of wards_census</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'ward_census table shape: </span><span class="sc">{</span>ward_census<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>ward_census table shape: (50, 9)</code></pre>
+</div>
+</div>
+<ol start="2" type="1">
+<li>Fusiona las tablas <code>merge_altered</code> y <code>census</code> en la columna <code>ward</code> y observa la diferencia en las filas devueltas.</li>
+</ol>
+<div id="9f761cb9" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the first few rows of the wards_altered table to view the change</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(wards_altered[[<span class="st">'ward'</span>]].head())</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Merge the wards_altered and census tables on the ward column</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>wards_altered_census <span class="op">=</span>  wards_altered.merge(census, on<span class="op">=</span><span class="st">'ward'</span>)</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the shape of wards_altered_census</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'wards_altered_census table shape: </span><span class="sc">{</span>wards_altered_census<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  ward
+0   61
+1    2
+2    3
+3    4
+4    5
+wards_altered_census table shape: (49, 9)</code></pre>
+</div>
+</div>
+<ol start="3" type="1">
+<li>Fusiona las tablas <code>wards</code> y <code>census_altered</code> en la columna <code>ward</code> y observa la diferencia en las filas devueltas.</li>
+</ol>
+<div id="a64409d4" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the first few rows of the wards_altered table to view the change</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(census_altered[[<span class="st">'ward'</span>]].head())</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Merge the wards_altered and census tables on the ward column</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>wards_altered_census <span class="op">=</span>  wards.merge(census_altered, on<span class="op">=</span><span class="st">'ward'</span>)</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the shape of wards_altered_census</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'wards_altered_census table shape: </span><span class="sc">{</span>wards_altered_census<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   ward
+0  None
+1     2
+2     3
+3     4
+4     5
+wards_altered_census table shape: (49, 9)</code></pre>
+</div>
+</div>
+<p>En el paso 1, el <code>.merge()</code> devolvió una tabla con el mismo número de filas que la tabla original <code>wards</code>. Sin embargo, en los pasos 2 y 3, al usar las tablas alteradas con la primera fila alterada de la columna <code>ward</code>, el número de filas devueltas fue menor. No había un valor coincidente en la columna <code>ward</code> de la otra tabla. <em>Recuerda que <code>.merge()</code> solo devuelve filas donde los valores coinciden en ambas tablas.</em></p>
+</section>
+</section>
+</section>
+<section id="relaciones-de-uno-a-muchos" class="level2">
+<h2 class="anchored" data-anchor-id="relaciones-de-uno-a-muchos">Relaciones de uno a muchos</h2>
+<p>En una relación de uno a muchos cada fila de la tabla izquierda esta relacionada con una o varias filas de la tabla derecha.</p>
+<p>A continuación se muestran algunos ejemplos de relación uno a uno y relación uno a muchos:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 54%">
+<col style="width: 45%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Uno a uno</strong></th>
+<th><strong>Uno a muchos</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>La relación entre <code>products</code> y <code>inventory</code></td>
+<td>La relación entre <code>products</code> y <code>orders</code></td>
+</tr>
+<tr class="even">
+<td>La relación entre <code>customer</code>y <code>cust_tax_info</code></td>
+<td>La relación entre <code>customers</code>y <code>orders</code></td>
+</tr>
+</tbody>
+</table>
+<section id="fusión-de-uno-a-muchos" class="level3">
+<h3 class="anchored" data-anchor-id="fusión-de-uno-a-muchos">Fusión de uno a muchos</h3>
+<p>Una empresa puede tener uno o varios propietarios. En este ejercicio, seguirás adquiriendo experiencia con las uniones de uno a muchos fusionando una tabla de propietarios de empresas, llamada <code>biz_owners</code>, con la tabla <code>licenses</code>. Recuerda de la lección de video que, con una relación de uno a muchos, una fila de la tabla izquierda puede repetirse si está relacionada con varias filas de la tabla de la derecha. En esta lección, profundizarás en este tema averiguando cuál es el título de propietario de empresa más habitual (por ejemplo, secretario, CEO, o vicepresidente).</p>
+<div id="02d928bf" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>licenses <span class="op">=</span> pd.read_pickle(<span class="st">'./data/licenses.p'</span>)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>licenses.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="14">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">account</th>
+<th data-quarto-table-cell-role="th">ward</th>
+<th data-quarto-table-cell-role="th">aid</th>
+<th data-quarto-table-cell-role="th">business</th>
+<th data-quarto-table-cell-role="th">address</th>
+<th data-quarto-table-cell-role="th">zip</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>307071</td>
+<td>3</td>
+<td>743</td>
+<td>REGGIE'S BAR &amp; GRILL</td>
+<td>2105 S STATE ST</td>
+<td>60616</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>10</td>
+<td>10</td>
+<td>829</td>
+<td>HONEYBEERS</td>
+<td>13200 S HOUSTON AVE</td>
+<td>60633</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>10002</td>
+<td>14</td>
+<td>775</td>
+<td>CELINA DELI</td>
+<td>5089 S ARCHER AVE</td>
+<td>60632</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>10005</td>
+<td>12</td>
+<td>NaN</td>
+<td>KRAFT FOODS NORTH AMERICA</td>
+<td>2005 W 43RD ST</td>
+<td>60609</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>10044</td>
+<td>44</td>
+<td>638</td>
+<td>NEYBOUR'S TAVERN &amp; GRILLE</td>
+<td>3651 N SOUTHPORT AVE</td>
+<td>60613</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="e606976b" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>biz_owners <span class="op">=</span> pd.read_pickle(<span class="st">'./data/business_owners.p'</span>)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>biz_owners.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="15">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">account</th>
+<th data-quarto-table-cell-role="th">first_name</th>
+<th data-quarto-table-cell-role="th">last_name</th>
+<th data-quarto-table-cell-role="th">title</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>10</td>
+<td>PEARL</td>
+<td>SHERMAN</td>
+<td>PRESIDENT</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>10</td>
+<td>PEARL</td>
+<td>SHERMAN</td>
+<td>SECRETARY</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>10002</td>
+<td>WALTER</td>
+<td>MROZEK</td>
+<td>PARTNER</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>10002</td>
+<td>CELINA</td>
+<td>BYRDAK</td>
+<td>PARTNER</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>10005</td>
+<td>IRENE</td>
+<td>ROSENFELD</td>
+<td>PRESIDENT</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<section id="instrucciones-3" class="level4">
+<h4 class="anchored" data-anchor-id="instrucciones-3">Instrucciones:</h4>
+</section>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

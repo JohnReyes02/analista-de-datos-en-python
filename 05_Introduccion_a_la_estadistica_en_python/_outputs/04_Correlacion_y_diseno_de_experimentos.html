@@ -1,0 +1,1323 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Edwin John Fredy Reyes Aguirre">
+<meta name="dcterms.date" content="2025-04-09">
+
+<title>Correlación y diseño de experimentos</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="04_Correlacion_y_diseno_de_experimentos_files/libs/clipboard/clipboard.min.js"></script>
+<script src="04_Correlacion_y_diseno_de_experimentos_files/libs/quarto-html/quarto.js"></script>
+<script src="04_Correlacion_y_diseno_de_experimentos_files/libs/quarto-html/popper.min.js"></script>
+<script src="04_Correlacion_y_diseno_de_experimentos_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="04_Correlacion_y_diseno_de_experimentos_files/libs/quarto-html/anchor.min.js"></script>
+<link href="04_Correlacion_y_diseno_de_experimentos_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="04_Correlacion_y_diseno_de_experimentos_files/libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="04_Correlacion_y_diseno_de_experimentos_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="04_Correlacion_y_diseno_de_experimentos_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="04_Correlacion_y_diseno_de_experimentos_files/libs/bootstrap/bootstrap-c0367b04c37547644fece4185067e4a7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contenido</h2>
+   
+  <ul>
+  <li><a href="#correlación" id="toc-correlación" class="nav-link active" data-scroll-target="#correlación">Correlación</a>
+  <ul class="collapse">
+  <li><a href="#adivina-la-correlación" id="toc-adivina-la-correlación" class="nav-link" data-scroll-target="#adivina-la-correlación">Adivina la correlación</a></li>
+  <li><a href="#relaciones-entre-variables" id="toc-relaciones-entre-variables" class="nav-link" data-scroll-target="#relaciones-entre-variables">Relaciones entre variables</a></li>
+  </ul></li>
+  <li><a href="#advertencias-sobre-la-correlación" id="toc-advertencias-sobre-la-correlación" class="nav-link" data-scroll-target="#advertencias-sobre-la-correlación">Advertencias sobre la correlación</a>
+  <ul class="collapse">
+  <li><a href="#qué-no-puede-medir-la-correlación" id="toc-qué-no-puede-medir-la-correlación" class="nav-link" data-scroll-target="#qué-no-puede-medir-la-correlación">Qué no puede medir la correlación?</a></li>
+  <li><a href="#instrucciones-1" id="toc-instrucciones-1" class="nav-link" data-scroll-target="#instrucciones-1">Instrucciones:</a></li>
+  <li><a href="#transformación-de-variables" id="toc-transformación-de-variables" class="nav-link" data-scroll-target="#transformación-de-variables">Transformación de variables</a></li>
+  <li><a href="#el-azúcar-aumenta-la-felicidad" id="toc-el-azúcar-aumenta-la-felicidad" class="nav-link" data-scroll-target="#el-azúcar-aumenta-la-felicidad">El azúcar aumenta la felicidad?</a></li>
+  <li><a href="#factores-de-confusión" id="toc-factores-de-confusión" class="nav-link" data-scroll-target="#factores-de-confusión">Factores de confusión</a></li>
+  </ul></li>
+  <li><a href="#diseño-de-experimentos" id="toc-diseño-de-experimentos" class="nav-link" data-scroll-target="#diseño-de-experimentos">Diseño de experimentos</a>
+  <ul class="collapse">
+  <li><a href="#tipos-de-estudio" id="toc-tipos-de-estudio" class="nav-link" data-scroll-target="#tipos-de-estudio">Tipos de estudio</a></li>
+  <li><a href="#estudios-longitudinales-frente-a-estudios-transversales" id="toc-estudios-longitudinales-frente-a-estudios-transversales" class="nav-link" data-scroll-target="#estudios-longitudinales-frente-a-estudios-transversales">Estudios longitudinales frente a estudios transversales</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Correlación y diseño de experimentos</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Edwin John Fredy Reyes Aguirre </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">April 9, 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>En este capítulo, aprenderás a cuantificar la fuerza de una relación lineal entre dos variables, y explorarás cómo las variables de confusión pueden afectar a la relación entre otras dos variables. También verás cómo el diseño de un estudio puede influir en sus resultados, cambiar la forma en que deben analizarse los datos y afectar potencialmente a la fiabilidad de tus conclusiones.</p>
+<section id="correlación" class="level2">
+<h2 class="anchored" data-anchor-id="correlación">Correlación</h2>
+<ul>
+<li><p>Realción entre dos variables</p>
+<p><img src="images/paste-3.png" class="img-fluid" width="500"></p>
+<ul>
+<li>x = variable explicativa o independiente.</li>
+<li>y = variable de respuesta o dependiente.</li>
+</ul></li>
+<li><p>Coeficiente de correlación</p>
+<ul>
+<li><p>Cuantifica la relación lineal entre dos variables.</p></li>
+<li><p>Es un múmero entre -1 y 1.</p></li>
+<li><p>La magnitud corresponde a la fuerza de la relación.</p></li>
+<li><p>Signo (+ o -) corresponde a la dirección de la relación.</p></li>
+</ul></li>
+<li><p>Magnitud = Fuerza de la relación</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 27%">
+<col style="width: 27%">
+<col style="width: 43%">
+<col style="width: 0%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><p>0.99 (Muy fuerte relación)</p>
+<p><img src="images/paste-6.png" class="img-fluid" width="230"></p></td>
+<td colspan="3" style="text-align: center;">0.75 (Fuerte relación ) | 0.56 (moderada relación) | | <img src="images/paste-5.png" class="img-fluid" width="230"> | <img src="images/paste-10.png" class="img-fluid" width="230"> |</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><p>0.21 (débil relación)</p>
+<p><img src="images/paste-7.png" class="img-fluid" width="230"></p></td>
+<td style="text-align: center;"><p>0.04 (sin relación)</p>
+<p><img src="images/paste-9.png" class="img-fluid" width="230"></p></td>
+<td style="text-align: center;"><ul>
+<li>Conocer el valor de <code>x</code> no nos dice nada acerca de <code>y</code>.</li>
+</ul></td>
+<td></td>
+</tr>
+</tbody>
+</table></li>
+<li><p>Signo = Dirección</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 51%">
+<col style="width: 48%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">0.75: Como <code>x</code> incrementa <code>y</code> incrementa</th>
+<th style="text-align: center;">-0.75: Como <code>x</code> incrementa <code>y</code> decrece</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><img src="images/paste-11.png" class="img-fluid" width="300"></td>
+<td style="text-align: center;"><img src="images/paste-12.png" class="img-fluid" width="300"></td>
+</tr>
+</tbody>
+</table></li>
+<li><p>Visualización de relaciones</p></li>
+</ul>
+<div id="0693b1cd" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(x<span class="op">=</span><span class="st">'sleep_total'</span>, y<span class="op">=</span><span class="st">'sleep_rem'</span>, data<span class="op">=</span>msleep)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><img src="images/paste-13.png" class="img-fluid" width="500"></p>
+<ul>
+<li>Añadir una linea de tendencia</li>
+</ul>
+<div id="a6e14ae8" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>sns.lmplot(x<span class="op">=</span><span class="st">'sleep_total'</span>, y<span class="op">=</span><span class="st">'sleep_rem'</span>, data<span class="op">=</span>msleep, ci<span class="op">=</span><span class="va">None</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><img src="images/paste-14.png" class="img-fluid" width="500"></p>
+<ul>
+<li>Calcular el coeficiente de correlación entre dos series</li>
+</ul>
+<div id="cbef90bc" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>msleep[<span class="st">'sleep_total'</span>].corr(msleep[<span class="st">'sleep_rem'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="ed5e65b8" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>msleep[<span class="st">'sleep_rem'</span>].corr(msleep[<span class="st">'sleep_total'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><p>Muchas formas de calcular la correlación</p>
+<ul>
+<li><p>La usada en el curso: Correlación producto momento de Pearson (<span class="math inline">\(r\)</span>)</p>
+<ul>
+<li><p>Es la más común</p></li>
+<li><p><span class="math inline">\(\bar{x} = \text{media de } x \\\)</span></p></li>
+<li><p><span class="math inline">\(\sigma_x = \text{desviación estandar de } x\)</span></p>
+<p><span class="math display">\[\begin{align*}
+    r &amp;= \sum_{i=1}^{n} \frac{(x_i - \bar{x})(y_i - \bar{y})}{\sigma_x \times \sigma_y}
+\end{align*}\]</span></p></li>
+</ul></li>
+<li><p>Variaciones en esta fórmula:</p>
+<ul>
+<li><p>Kendall’s tau</p></li>
+<li><p>Spearman’s rho</p></li>
+</ul></li>
+</ul></li>
+</ul>
+<section id="adivina-la-correlación" class="level3">
+<h3 class="anchored" data-anchor-id="adivina-la-correlación">Adivina la correlación</h3>
+<p>¿Cuál de las siguientes afirmaciones NOT es verdadera sobre la correlación?</p>
+<ul class="task-list">
+<li><p><label><input type="checkbox">Si la correlación entre <code>x</code> y <code>y</code> tiene una magnitud elevada, los puntos de datos se agruparán estrechamente alrededor de una línea.</label></p></li>
+<li><p><label><input type="checkbox">La correlación puede escribirse como r.</label></p></li>
+<li><p><label><input type="checkbox">Si <code>x</code> e <code>y</code> están correlacionados negativamente, los valores de <code>y</code> disminuyen a medida que aumentan los de <code>x</code>.</label></p></li>
+<li><p><label><input type="checkbox" checked="">La correlación no puede ser 0.</label></p></li>
+</ul>
+</section>
+<section id="relaciones-entre-variables" class="level3">
+<h3 class="anchored" data-anchor-id="relaciones-entre-variables">Relaciones entre variables</h3>
+<p>En este capítulo, trabajarás con un conjunto de datos <code>world_happiness</code> que contiene los resultados de <a href="https://worldhappiness.report/ed/2019/">2019 World Happiness Report</a>. El informe puntúa a diferentes países en función de lo felices que son sus habitantes. También clasifica a cada país en función de diversos aspectos sociales, como el apoyo social, la libertad, la corrupción y otros. El conjunto de datos también incluye el GDP per cápita y la esperanza de vida de cada país.</p>
+<p>En este ejercicio, examinarás la relación entre la esperanza de vida de un país (<code>life_exp</code>) y la puntuación de felicidad (<code>happiness_score</code>) tanto visual como cuantitativamente. <code>seaborn</code> como <code>sns</code>, <code>matplotlib.pyplot</code> como <code>plt</code> y <code>pandas</code> como <code>pd</code> están cargados y <code>world_happiness</code> está disponible.</p>
+<div id="7c30b42a" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="d99cf77c" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>world_happiness <span class="op">=</span> pd.read_csv(<span class="st">'./data/world_happiness.csv'</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(world_happiness.head())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Unnamed: 0      country  social_support  freedom  corruption  generosity  \
+0           1      Finland             2.0      5.0         4.0        47.0   
+1           2      Denmark             4.0      6.0         3.0        22.0   
+2           3       Norway             3.0      3.0         8.0        11.0   
+3           4      Iceland             1.0      7.0        45.0         3.0   
+4           5  Netherlands            15.0     19.0        12.0         7.0   
+
+   gdp_per_cap  life_exp  happiness_score  
+0        42400      81.8              155  
+1        48300      81.0              154  
+2        66300      82.6              153  
+3        47900      83.0              152  
+4        50500      81.8              151  </code></pre>
+</div>
+</div>
+<section id="instrucciones" class="level4">
+<h4 class="anchored" data-anchor-id="instrucciones">Instrucciones:</h4>
+<ol type="1">
+<li></li>
+</ol>
+<ul>
+<li><p>Crea un diagrama de dispersión de <code>happiness_score</code> frente a <code>life_exp</code> (sin línea de tendencia) utilizando <code>seaborn</code>.</p></li>
+<li><p>Muestra el gráfico.</p></li>
+</ul>
+<div id="9dd11b36" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a scatterplot of happiness_score vs. life_exp ando show</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(x<span class="op">=</span><span class="st">'life_exp'</span>, y<span class="op">=</span><span class="st">'happiness_score'</span>, data<span class="op">=</span>world_happiness)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Show plot</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="04_Correlacion_y_diseno_de_experimentos_files/figure-html/cell-8-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="2" type="1">
+<li></li>
+</ol>
+<ul>
+<li><p>Crea un diagrama de dispersión de <code>happiness_score</code> frente a <code>life_exp</code> con una línea de tendencia lineal utilizando <code>seaborn</code>, estableciendo <code>ci</code> en <code>None</code>.</p></li>
+<li><p>Muestra el gráfico.</p></li>
+</ul>
+<div id="bac9947e" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create scatterplot of happiness_score vs life_exp with trendline</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>sns.lmplot(x<span class="op">=</span><span class="st">'life_exp'</span>, y<span class="op">=</span><span class="st">'happiness_score'</span>, data<span class="op">=</span>world_happiness, ci<span class="op">=</span><span class="va">None</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Show plot</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="04_Correlacion_y_diseno_de_experimentos_files/figure-html/cell-9-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="3" type="1">
+<li></li>
+</ol>
+<p><strong>Pregunta</strong></p>
+<p>Según el diagrama de dispersión, cuál es la correlación más probable entre <code>life_exp</code> y <code>happiness_score</code>?</p>
+<p><strong>Respuestras posibles</strong></p>
+<ul class="task-list">
+<li><p><label><input type="checkbox">0.3</label></p></li>
+<li><p><label><input type="checkbox">-0.3</label></p></li>
+<li><p><label><input type="checkbox" checked="">0.8</label></p></li>
+<li><p><label><input type="checkbox">-0.8</label></p></li>
+</ul>
+<ol start="4" type="1">
+<li>Calcula la correlación entre <code>life_exp</code> y <code>happiness_score</code>. Guárdala como <code>cor</code>.</li>
+</ol>
+<div id="caf705e1" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Correlation between life_exp and happiness_score</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>cor <span class="op">=</span>  world_happiness[<span class="st">'life_exp'</span>].corr(world_happiness[<span class="st">'happiness_score'</span>])</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(cor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.7802249053272065</code></pre>
+</div>
+</div>
+<p>Los diagramas de dispersión con líneas de tendencia son una excelente manera de verificar que una relación estre dos variables es realmente lineal.</p>
+</section>
+</section>
+</section>
+<section id="advertencias-sobre-la-correlación" class="level2">
+<h2 class="anchored" data-anchor-id="advertencias-sobre-la-correlación">Advertencias sobre la correlación</h2>
+<ul>
+<li><p>Relaciones no lineales</p>
+<ul>
+<li>Siempre que sea posible visualizar los datos.</li>
+</ul></li>
+<li><p>Transformación logaritmica</p>
+<ul>
+<li>Es posible usarla cuando hayan datos muy sesgados.</li>
+</ul></li>
+<li><p>Otras transformaciones</p>
+<ul>
+<li><p>Transformación logarítmica (<code>log(x)</code>)</p></li>
+<li><p>Transformación raíz cuadrada (<code>sqrt(x)</code>)</p></li>
+<li><p>Transformación recíproca (<code>1 / x</code>)</p></li>
+<li><p>Combinations de esteas, por ejemplo:</p>
+<ul>
+<li><p><code>log(x)</code> y <code>log(y)</code></p></li>
+<li><p><code>sqrt(x)</code> y <code>1 / y</code></p></li>
+</ul></li>
+</ul></li>
+<li><p>Por qué usar una transformación?</p>
+<ul>
+<li><p>Ciertos métodos estadísticos se basan en que las variables tengan una relación lineal.</p>
+<ul>
+<li><p>Coeficiente de correlación</p></li>
+<li><p>Regresión lineal.</p></li>
+</ul></li>
+</ul></li>
+<li><p>La correlación no implica causalidad.</p>
+<p>Si <code>x</code> está correlacionada con <code>y</code> no significa que <code>x</code> cause <code>y</code>.</p></li>
+<li><p>Confusión</p>
+<p>Este fenómeno puede dar lugar a correlaciones espurias.</p></li>
+</ul>
+<section id="qué-no-puede-medir-la-correlación" class="level3">
+<h3 class="anchored" data-anchor-id="qué-no-puede-medir-la-correlación">Qué no puede medir la correlación?</h3>
+<p>Aunque el coeficiente de correlación es una forma cómoda de cuantificar la fuerza de una relación entre dos variables, dista mucho de ser perfecto. En este ejercicio, explorarás una de las advertencias sobre el coeficiente de correlación examinando la relación entre el GDP per cápita de un país (<code>gdp_per_cap</code>) y la puntuación de felicidad.</p>
+</section>
+<section id="instrucciones-1" class="level3">
+<h3 class="anchored" data-anchor-id="instrucciones-1">Instrucciones:</h3>
+<ol type="1">
+<li></li>
+</ol>
+<ul>
+<li><p>Crea un diagrama de dispersión <code>seaborn</code> (sin línea de tendencia) que muestre la relación entre <code>gdp_per_cap</code> (en el eje X) y <code>life_exp</code> (en el eje Y).</p></li>
+<li><p>Muestra el gráfico.</p></li>
+</ul>
+<div id="1ed82f4c" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Scatterplot of gdp_per_cap and life_exp</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(x<span class="op">=</span><span class="st">'gdp_per_cap'</span>, y<span class="op">=</span><span class="st">'life_exp'</span>, data<span class="op">=</span>world_happiness)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Show plot</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="04_Correlacion_y_diseno_de_experimentos_files/figure-html/cell-11-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="2" type="1">
+<li>Calcula la correlación entre <code>gdp_per_cap</code> y <code>life_exp</code> y guárdala como <code>cor</code>.</li>
+</ol>
+<div id="24d67095" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Correlation between gdp_per_cap and life_exp</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>cor <span class="op">=</span> world_happiness[<span class="st">'gdp_per_cap'</span>].corr(world_happiness[<span class="st">'life_exp'</span>])</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(cor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.7019547642148015</code></pre>
+</div>
+</div>
+<ol start="3" type="1">
+<li></li>
+</ol>
+<p><strong>Pregunta</strong></p>
+<p>La correlación entre GDP per cápita y esperanza de vida es de 0.7. Por qué la correlación no es la mejor forma de medir la relación entre estas dos variables?</p>
+<p><strong>Respuestas posibles</strong></p>
+<ul class="task-list">
+<li><p><label><input type="checkbox">La correlación mide cómo afecta una variable a otra.</label></p></li>
+<li><p><label><input type="checkbox" checked="">La correlación solo mide las correlaciones lineales.</label></p></li>
+<li><p><label><input type="checkbox">La correlación no puede medir adecuadamente las relaciones entre variables numéricas.</label></p></li>
+</ul>
+<p>El coeficiente de correlación no puede dar cuenta de ninguna relación que no sea lineal, independientemente de su fuerza.</p>
+</section>
+<section id="transformación-de-variables" class="level3">
+<h3 class="anchored" data-anchor-id="transformación-de-variables">Transformación de variables</h3>
+<p>Cuando las variables tienen distribuciones sesgadas, a menudo requieren una transformación para formar una relación lineal con otra variable, de modo que pueda calcularse la correlación. En este ejercicio realizarás una transformación.</p>
+<section id="instrucciones-2" class="level4">
+<h4 class="anchored" data-anchor-id="instrucciones-2">Instrucciones:</h4>
+<ol type="1">
+<li>Crea un diagrama de dispersión de <code>happiness_score</code> frente a <code>gdp_per_cap</code> y calcula la correlación entre ambos.</li>
+</ol>
+<div id="81157fec" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Scatterplot of happiness_score vs. gdp_per_cap</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(x<span class="op">=</span><span class="st">'gdp_per_cap'</span>, y<span class="op">=</span><span class="st">'happiness_score'</span>, data<span class="op">=</span>world_happiness)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate correlation</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>cor <span class="op">=</span> world_happiness[<span class="st">'happiness_score'</span>].corr(world_happiness[<span class="st">'gdp_per_cap'</span>])</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(cor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="04_Correlacion_y_diseno_de_experimentos_files/figure-html/cell-13-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.7279733012222978</code></pre>
+</div>
+</div>
+<ol start="2" type="1">
+<li>Añade una nueva columna a <code>world_happiness</code> llamada <code>log_gdp_per_cap</code> que contenga el logaritmo de <code>gdp_per_cap</code>. Crea un diagrama de dispersión <code>seaborn</code> de <code>happiness_score</code> frente a <code>log_gdp_per_cap</code> y <code>happiness_score</code>. Calcula la correlación enre <code>log_gdp_per_cap</code> y <code>happiness_score</code>.</li>
+</ol>
+<div id="e1066c2b" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create log_gdp_per_cap column</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>world_happiness[<span class="st">'log_gdp_per_cap'</span>] <span class="op">=</span> np.log(world_happiness[<span class="st">'gdp_per_cap'</span>])</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Scatterplot of happiness_score vs. log_gdp_per_cap</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(x<span class="op">=</span><span class="st">'log_gdp_per_cap'</span>, y<span class="op">=</span><span class="st">'happiness_score'</span>, data<span class="op">=</span>world_happiness)</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate correlation</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>cor <span class="op">=</span> world_happiness[<span class="st">'log_gdp_per_cap'</span>].corr(world_happiness[<span class="st">'happiness_score'</span>])</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(cor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="04_Correlacion_y_diseno_de_experimentos_files/figure-html/cell-14-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.8043146004918288</code></pre>
+</div>
+</div>
+<p>La relación entre el PIB per cápita y la felicidad se volvió más lineal al aplicar una transformación logarítmica. Las transformaciones logarítmicas son excelentes para usar en variables con una distribución sesgada, como el PIB.</p>
+</section>
+</section>
+<section id="el-azúcar-aumenta-la-felicidad" class="level3">
+<h3 class="anchored" data-anchor-id="el-azúcar-aumenta-la-felicidad">El azúcar aumenta la felicidad?</h3>
+<p>Se ha añadido una nueva columna a <code>world_happiness</code> llamada <code>grams_sugar_per_day</code>, que contiene la cantidad media de azúcar ingerida por persona y día en cada país. En este ejercicio, examinarás el efecto del consumo medio de azúcar de un país en su puntuación de felicidad.</p>
+<div id="6bf51409" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>world_happiness <span class="op">=</span> pd.read_csv(<span class="st">'./data/world_happiness_add_sugar.csv'</span>, index_col<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>world_happiness</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="65">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">country</th>
+<th data-quarto-table-cell-role="th">social_support</th>
+<th data-quarto-table-cell-role="th">freedom</th>
+<th data-quarto-table-cell-role="th">corruption</th>
+<th data-quarto-table-cell-role="th">generosity</th>
+<th data-quarto-table-cell-role="th">gdp_per_cap</th>
+<th data-quarto-table-cell-role="th">life_exp</th>
+<th data-quarto-table-cell-role="th">happiness_score</th>
+<th data-quarto-table-cell-role="th">grams_sugar_per_day</th>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">Unnamed: 0</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">1</td>
+<td>Finland</td>
+<td>2</td>
+<td>5</td>
+<td>4.0</td>
+<td>47</td>
+<td>42400</td>
+<td>81.8</td>
+<td>155</td>
+<td>86.8</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2</td>
+<td>Denmark</td>
+<td>4</td>
+<td>6</td>
+<td>3.0</td>
+<td>22</td>
+<td>48300</td>
+<td>81.0</td>
+<td>154</td>
+<td>152.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">3</td>
+<td>Norway</td>
+<td>3</td>
+<td>3</td>
+<td>8.0</td>
+<td>11</td>
+<td>66300</td>
+<td>82.6</td>
+<td>153</td>
+<td>120.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">4</td>
+<td>Iceland</td>
+<td>1</td>
+<td>7</td>
+<td>45.0</td>
+<td>3</td>
+<td>47900</td>
+<td>83.0</td>
+<td>152</td>
+<td>132.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">5</td>
+<td>Netherlands</td>
+<td>15</td>
+<td>19</td>
+<td>12.0</td>
+<td>7</td>
+<td>50500</td>
+<td>81.8</td>
+<td>151</td>
+<td>122.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">129</td>
+<td>Yemen</td>
+<td>100</td>
+<td>147</td>
+<td>83.0</td>
+<td>155</td>
+<td>2340</td>
+<td>68.1</td>
+<td>5</td>
+<td>77.9</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">130</td>
+<td>Rwanda</td>
+<td>144</td>
+<td>21</td>
+<td>2.0</td>
+<td>90</td>
+<td>2110</td>
+<td>69.1</td>
+<td>4</td>
+<td>14.1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">131</td>
+<td>Tanzania</td>
+<td>131</td>
+<td>78</td>
+<td>34.0</td>
+<td>49</td>
+<td>2980</td>
+<td>67.7</td>
+<td>3</td>
+<td>28.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">132</td>
+<td>Afghanistan</td>
+<td>151</td>
+<td>155</td>
+<td>136.0</td>
+<td>137</td>
+<td>1760</td>
+<td>64.1</td>
+<td>2</td>
+<td>24.5</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">133</td>
+<td>Central African Republic</td>
+<td>155</td>
+<td>133</td>
+<td>122.0</td>
+<td>113</td>
+<td>794</td>
+<td>52.9</td>
+<td>1</td>
+<td>22.4</td>
+</tr>
+</tbody>
+</table>
+
+<p>133 rows × 9 columns</p>
+</div>
+</div>
+</div>
+<section id="instrucciones-3" class="level4">
+<h4 class="anchored" data-anchor-id="instrucciones-3">Instrucciones:</h4>
+<ol type="1">
+<li></li>
+</ol>
+<ul>
+<li><p>Crea un diagrama de dispersión <code>seaborn</code> que muestre la relación entre <code>grams_sugar_per_day</code> (en el eje X) y <code>happiness_score</code> (en el eje Y).</p></li>
+<li><p>Calcula la correlación entre <code>grams_sugar_per_day</code> y <code>happiness_score</code>.</p></li>
+</ul>
+<div id="e7510bbb" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Scatterplot of grams_sugar_per_day and happiness_score</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(x<span class="op">=</span><span class="st">'grams_sugar_per_day'</span>, y<span class="op">=</span><span class="st">'happiness_score'</span>, data<span class="op">=</span>world_happiness)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Correlation between grams_sugar_per_day and happiness_score</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>cor <span class="op">=</span> world_happiness[<span class="st">'grams_sugar_per_day'</span>].corr(world_happiness[<span class="st">'happiness_score'</span>])</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(cor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="04_Correlacion_y_diseno_de_experimentos_files/figure-html/cell-16-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.6939100021829634</code></pre>
+</div>
+</div>
+<ol start="2" type="1">
+<li></li>
+</ol>
+<p><strong>Pregunta</strong></p>
+<p>Según estos datos, qué afirmación sobre el consumo de azúcar y las puntuaciones de felicidad es cierta?</p>
+<p><strong>Respuestas posibles</strong></p>
+<ul class="task-list">
+<li><label><input type="checkbox">Un mayor consumo de azúcar conduce a una mayor puntuación de felicidad.</label></li>
+<li><label><input type="checkbox">A menor consumo de azúcar, menor puntuación de felicidad.</label></li>
+<li><label><input type="checkbox" checked="">Un mayor consumo de azúcar se asocia a una mayor puntuación de felicidad.</label></li>
+<li><label><input type="checkbox">El consumo de azúcar no está relacionado con la felicidad.</label></li>
+</ul>
+<p>Si la correlación siempre implicara que una cosa causa la otra, la gente podría hacer cosas son sentido, como comer más azúcar para se más feliz.</p>
+</section>
+</section>
+<section id="factores-de-confusión" class="level3">
+<h3 class="anchored" data-anchor-id="factores-de-confusión">Factores de confusión</h3>
+<p>Un estudio investiga la relación entre la residencia en el vecindario y la capacidad pulmonar. Los investigadores miden la capacidad pulmonar de treinta personas del vecindario A, situado cerca de una autovía, y de treinta personas del vecindario B, que no está cerca de una autovía. Ambos grupos tienen unos hábitos de consumo de tabaco y un desglose por sexos similares.</p>
+<p>¿Cuál de los siguientes podría ser un factor de confusión en este estudio?</p>
+<p><strong>Respuestas posibles</strong></p>
+<ul class="task-list">
+<li><label><input type="checkbox">Capacidad pulmonar</label></li>
+<li><label><input type="checkbox">Vecindario</label></li>
+<li><label><input type="checkbox" checked="">Contaminación atmosférica</label></li>
+<li><label><input type="checkbox">Condición de fumador</label></li>
+<li><label><input type="checkbox">Sexo</label></li>
+</ul>
+<p>Es de esperar que haya más contaminación atmosférica en el vecindario situado cerca de la autovía, lo que puede provocar una menor capacidad pulmonar.</p>
+</section>
+</section>
+<section id="diseño-de-experimentos" class="level2">
+<h2 class="anchored" data-anchor-id="diseño-de-experimentos">Diseño de experimentos</h2>
+<ul>
+<li>Vocabulario
+<ul>
+<li>El experimento responde a la prgunta: Cuál es el efecto del tratamiento sobre la respuesta?.
+<ul>
+<li>Tratamiento: Variable explicativa o independiente.</li>
+<li>Respuesta: Variable dependiente o de respuesta.</li>
+</ul></li>
+<li>Ejemplo: Cuál es el efecto de un anuncio en el número de productos comprados?
+<ul>
+<li>Tratamiento: Anuncio</li>
+<li>Respuesta: Número de productos comprados</li>
+</ul></li>
+</ul></li>
+<li>Experimentos Controlados
+<ul>
+<li>Los participantes son asignados aleatoriamente a los grupos de tratamiento o al grupo de control. El grupo de tratamiento recibe el tratamiento y el de control no.
+<ul>
+<li>Grupo de tratamiento ve los anuncios</li>
+<li>El grupo de control no.</li>
+</ul></li>
+<li>Los grupos deben ser comparables de modo que la causalidad pueda ser inferida.</li>
+<li>Si los grupos no son comparables, esto podria llevar a confusión.
+<ul>
+<li>Grupo de tratamiento con edad promedio de : 25</li>
+<li>Grupo de control con edad promedio de: 50</li>
+<li>La edad es un un potencial factor de confusión.</li>
+</ul></li>
+</ul></li>
+<li>El gold estándar de los experimento usará…
+<ul>
+<li>Ensayo controlado aleatorio.
+<ul>
+<li>Los participantes son asignados al azar al grupo de tratamiento o de control. No basado en alguna característica.</li>
+<li>La asignación aleatoria ayuda a asegurar que los grupos sean comparables.</li>
+</ul></li>
+<li>Placebo
+<ul>
+<li>Se parace al tratamiento, pero no tiene efecto.</li>
+<li>Los participantes no sabrán a cual grupo irán.</li>
+</ul></li>
+<li>Doble ciego
+<ul>
+<li>La persona que administra el tratamiento no conoce cual es el tratamiento real o el placebo.</li>
+<li>Previene el sesgo en la respuesta y/o en el análisis de resultados.</li>
+</ul></li>
+<li>Menos oportunidades de que haya sesgo = mas fiable sera la conclusión que el tratamiento afecta la respuesta.</li>
+</ul></li>
+<li>Estudios observacionales
+<ul>
+<li>Los participantes no se asignan aleatoriamente a los grupos.
+<ul>
+<li>Los participantes se asignan a si mismos, usualmente basado en características preexistentes.</li>
+</ul></li>
+<li>Muchas preguntas no son conducidas a un experimento controlado.
+<ul>
+<li>No puedes forzar a alguien a fumar o tener un deseso.</li>
+<li>No puede hacer que alguien tengan cierto comportamiento.</li>
+</ul></li>
+<li>Se establece asociación no causalidad.
+<ul>
+<li>Los efectos del tratamiento pueden ser confundidos por factores que llevaron a ciertas personas al grupo de control o tratamiento.</li>
+<li>Hay formas de controlar la confusión para obtener más conclusiones fiabiles acerca de la asociación.</li>
+</ul></li>
+</ul></li>
+<li>Estudios Longitudinales vs Estudios transversales
+<ul>
+<li>Estudios Longitudinales
+<ul>
+<li>Se sigue a los mismos participantes durante un periodo de tiempo para examinar el efecto del tratamiento en la respuesta.</li>
+<li>El efecto de la edad en la altura no es confundida por generación.</li>
+<li>Son más costosos, los resultados toman tiempo.</li>
+</ul></li>
+<li>Estudio transversal
+<ul>
+<li>Los datos de los participantes son recolectados de una sola camptura en el tiempo.</li>
+<li>El efecto de la edad en la altura se confunde por generación.</li>
+<li>Son más baratos, rápidos y mas convenientes.</li>
+</ul></li>
+</ul></li>
+</ul>
+<section id="tipos-de-estudio" class="level3">
+<h3 class="anchored" data-anchor-id="tipos-de-estudio">Tipos de estudio</h3>
+<p>Aunque los experimentos controlados son ideales, muchas situaciones y preguntas de investigación no son propicias para un experimento controlado. En un experimento controlado, es probable que pueda inferirse la causalidad si los grupos de control y de prueba tienen características similares y no hay ninguna diferencia sistemática entre ellos. Por otra parte , la causalidad no suele inferirse de los estudios observacionales, cuyos resultados suelen interpretarse erróneamente como consecuencia de ello.</p>
+<section id="instrucciones-4" class="level4">
+<h4 class="anchored" data-anchor-id="instrucciones-4">Instrucciones</h4>
+<ul>
+<li>Determina si cada estudio es un experimento controlado o un estudio observacional</li>
+</ul>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Experimento Controlado</th>
+<th>Estudio Observacional</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Se comparan los síntomas de asma entre niños asignados aleatoriamente a recibir servicios profesionales de control de plagas a domicilio o educaci´øn sobre el control de plagas.</td>
+<td>Se compara la prevalencia de enfermedades cardíacas entre veteranos con PTSD y veteranos sin PTSD.</td>
+</tr>
+<tr class="even">
+<td>Se comparan las tasas de compra entre los usuarios de un sitio de comercio electrónico que son dirigidos aleatoriamente a una nueva versión de la página de inicio o a una versión antigua.</td>
+<td>Hace una semana, se actualizó la página de inico de un sitio de comercio electrónico. Las tasas de compra se comparan entre los usuarios que vieron las versiones antigua y nueva de la págna de inicio.</td>
+</tr>
+<tr class="odd">
+<td>Se asigna aleatoriamente a los sujetos una dieta y se compara la pérdida de peso.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="estudios-longitudinales-frente-a-estudios-transversales" class="level3">
+<h3 class="anchored" data-anchor-id="estudios-longitudinales-frente-a-estudios-transversales">Estudios longitudinales frente a estudios transversales</h3>
+<p>Una empresa fabrica termómetros y quiere estudiar la relación entre la antigüedad de un termómetro y su exactitud. Para ello, toman una muestra de 100 termómetros diferentes de distintas antigüedades y comprueban su exactitud. Son datos longitudinales o transversales?</p>
+<p><strong>Respuestas posibles</strong></p>
+<p>Selecciona una respuesta:</p>
+<ul class="task-list">
+<li><label><input type="checkbox">Longitudinal</label></li>
+<li><label><input type="checkbox" checked="">Transversal</label></li>
+<li><label><input type="checkbox">Ambos</label></li>
+<li><label><input type="checkbox">Ninguno</label></li>
+</ul>
+<p>Se trata de un estudio transversal, ya que los investigadores no están siguiendo el mismo conjunto de termómetros a lo largo del tiempo y midiendo repetidamente su exactitud con diferentes antigüedades.</p>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
