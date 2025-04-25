@@ -257,3 +257,163 @@ plt.show()
 ```
 
 Parece que la nota del primer semestre si correlaciona con la nota final, independientemente dl tipo de apoyo que recibió el estudiante.
+
+
+## Personalizar gráficos de dispersión
+
+- Resumen Scatter plot
+    - Muestran la realción entre dos variables cuantitativas.
+    - Hemos visto:
+        - Subplots (`col` y `row`)
+        - Subgrupos con color (`hue`)
+    
+    - Nuevas personalizaciones:
+        - Subgrupos con tamaño de punto y estilo.
+        - Cambio en la transparencia de los puntos.
+
+    - Se pueden utilizar en `scatterplot()` y `relplot()`
+
+
+- Subgrupos con tamaño de punto
+
+
+```{python}
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+sns.relplot(x='total_bill', y='tip',
+            data=tips,
+            kind='scatter',
+            size='size')
+plt.show()
+```
+
+El gráfico anterior es difícil de leer pues todos los puntos son del mismo color. Su visualización puede facilitarse utilizando lo siguiente:
+
+- Tamaño de punto y hue
+
+```{python}
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+sns.relplot(x='total_bill', y='tip',
+            data=tips,
+            kind='scatter',
+            size='size',
+            hue='size')
+plt.show()
+```
+
+
+- Subbrupos con estilo de punto
+
+
+```{python}
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+sns.relplot(x='total_bill', y='tip',
+            data=tips,
+            kind='scatter',
+            hue='smoker',
+            size='smoker')
+plt.show()
+```
+
+- Cambiando la transparencia del punto
+
+
+```{python}
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Set alpha to be between 0 and 1
+sns.relplot(x='total_bill', y='tip',
+            data=tips,
+            kind='scatter',
+            alpha=0.4)
+
+plt.show()
+```
+
+Este último gráfico es muy útil cuando hay gran concentración de puntos
+
+
+### Cambiar el tamaño de los puntos del diagrama del dispersión
+
+En este ejercicio, exploraremos el conjunto de datos `mpg` de Seaborn, que contiene una fila por modelo de coche e incluye información como el año de fabricación del coche, el número de millas por galón ("M.P.G.") que alcanza, la potencia de su motor (medida en "caballos") y su país de origen.
+
+¿Cuál es la relación entre la potencia del motor de un coche (`"horsepower"`) y su eficiencia de combustible (`"mpg"`)? ¿Y cómo varía esta relación según el número de cilindros (`"cylinders"`) que tenga el coche? Averigüémoslo.
+
+Sigamos utilizando `relplot()` en lugar de `scatterplot()` ya que ofrece más flexibilidad.
+
+
+```{python}
+import pandas as pd
+mpg = pd.read_csv('./data/mpg.csv')
+mpg.head()
+```
+
+#### Instrucciones
+
+1. Utiliza `relplot()` y el DataFrame `mpg` para crear un gráfico de dispersión con `"horsepower"` en el eje x y `"mpg"` en el eje y. Varía el tamaño de los puntos según el número de cilindros del coche (`"cylinders"`).
+
+```{python}
+# Import Matplotlib and Seaborn
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Create scatter plot of horsepower vs. mpg
+sns.relplot(x='horsepower', y='mpg',
+            data=mpg,
+            kind='scatter',
+            size='cylinders')
+# Show plot
+plt.show()
+```
+
+2. Para que el gráfico se más fácil de leer, utiliza `hue` para variar el color de los puntos según el número de cilindros del coche (`"cylinders"`).
+
+
+```{python}
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+sns.relplot(x='horsepower', y='mpg',
+            data=mpg,
+            kind='scatter',
+            size='cylinders',
+            hue='cylinders')
+# Show plot
+plt.show()
+```
+
+Los coches con mayor potencia tienden a tener un menor número de millas por galón. También tienden a tener un mayor número de cilindros.
+
+### Cambiar el estilo de los puntos del gráfico de dispersión
+
+Sigamos explorando el conjunto de datos `mpg` de Seaborn observando la relación entre la velocidad a la que se puede acelerar un coche (`"acceleration"`) y su eficiencia de combustible (`"mpg"`). Varían estas propiedades según el país de origen (`"origin"`)?
+
+Observa que la variable `"acceleration"` es el tiempo de aceleración de 0 a 60 millas por hora, en segundos. Los valores más altos indican una aceleración más lenta.
+
+#### Instrucciones
+
+- Utiliza `relplot()` y el DataFrame `mpg` para crear un gráfico de dispersión con `"acceleration"` en el eje x y `"mpg"` en el eje y. Varía el estilo y el color de los puntos de la trama según el país de origen (`"origin"`).
+
+
+```{python}
+# Import Matplotlib and Seaborn
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Create a scatter plot of acceleration vs. mpg
+sns.relplot(x='acceleration', y='mpg',
+            data=mpg,
+            kind='scatter',
+            style='origin',
+            hue='origin')
+# Show plot
+plt.show()
+```
+
+Los coches de EE.UU tienden a acelerar más rápido y obtener menos millas por galón en comparación con los coches de Europa y Japón.
