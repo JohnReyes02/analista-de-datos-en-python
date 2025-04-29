@@ -32,7 +32,8 @@ En este capíulo, crearás y personalizarás gráficos que visualizan la relaci�
     tips = pd.read_csv('./data/tips.csv')
     ```
 
-    - Usando `scatterplot()`
+    -   Usando `scatterplot()`
+
     ```{python}
     import seaborn as sns
     import matplotlib.pyplot as plt
@@ -43,7 +44,8 @@ En este capíulo, crearás y personalizarás gráficos que visualizan la relaci�
     plt.show()
 
     ```
-    - Usando `relplot()`
+
+    -   Usando `relplot()`
 
     ```{python}
     import seaborn as sns
@@ -56,7 +58,7 @@ En este capíulo, crearás y personalizarás gráficos que visualizan la relaci�
     plt.show()
     ```
 
-- Subplots en columnas
+-   Subplots en columnas
 
 ```{python}
 import seaborn as sns
@@ -70,8 +72,7 @@ sns.relplot(x='total_bill',
 plt.show()
 ```
 
-- Subplots en filas
-
+-   Subplots en filas
 
 ```{python}
 import seaborn as sns
@@ -85,8 +86,7 @@ sns.relplot(x='total_bill',
 plt.show()
 ```
 
-- Subplots en filas y columnas
-
+-   Subplots en filas y columnas
 
 ```{python}
 import seaborn as sns
@@ -101,8 +101,7 @@ sns.relplot(x='total_bill',
 plt.show()
 ```
 
-- Subgrupos por día de la semana 
-
+-   Subgrupos por día de la semana
 
 ```{python}
 import seaborn as sns
@@ -118,8 +117,8 @@ plt.show()
 
 El gráfico se ve pequeño si todos estan en la misma fila
 
-- Wrapping columns
-    - Se pueden establecer dos gráficos por fila
+-   Wrapping columns
+    -   Se pueden establecer dos gráficos por fila
 
 ```{python}
 import seaborn as sns
@@ -134,7 +133,7 @@ sns.relplot(x='total_bill',
 plt.show()
 ```
 
-- Orden de las columnas
+-   Orden de las columnas
 
 ```{python}
 import seaborn as sns
@@ -167,7 +166,7 @@ student_data.head()
 
 #### Instrucciones
 
-1. Modifica el código paora utilizar `relplot()` en lugar de `scatterplot()`.
+1.  Modifica el código paora utilizar `relplot()` en lugar de `scatterplot()`.
 
 ```{python}
 # Change to use relplot() instead of scatterplot()
@@ -179,7 +178,7 @@ sns.relplot(x='absences', y='G3',
 plt.show()
 ```
 
-2. Modifica el código para crear un gráfico de dispersión para cada nivel de la variable `"study_time"`, ordenado en columnas.
+2.  Modifica el código para crear un gráfico de dispersión para cada nivel de la variable `"study_time"`, ordenado en columnas.
 
 ```{python}
 # Change to make subplots based on study time
@@ -190,7 +189,8 @@ sns.relplot(x='absences', y='G3',
 # Show plot
 plt.show()
 ```
-3. Adapta tu código para crear un gráfico de dispersión para cada nivel del tiempo de estudio semanal de un alumno, esta vez ordenado en filas.
+
+3.  Adapta tu código para crear un gráfico de dispersión para cada nivel del tiempo de estudio semanal de un alumno, esta vez ordenado en filas.
 
 ```{python}
 # Change this scatter plot to arrange the plots in rows instead of columns
@@ -204,17 +204,15 @@ plt.show()
 
 Debido a que estos subgráficos tenían un gran rango de valores x, es más fácil leerlos dispuestos en filas en lugar de columnas.
 
-
 ### Crear subtramas de dos factores
 
 Sigamos examinando el conjunto de datos `student_data` de alumnos de secundaria. Aquí queremos responder a la siguiente pregunta: ¿la nota del primer semestre de un alumno (`"G1"`) tiende a correlacionarse con su nota final (`"G3"`)?
 
-Hay muchos aspectos de la vida de un alumno que pueden dar lugar a una nota final más alta o más baja en la clase. Por ejemplo, algunos alumnos reciben apoyo  educativo adicional de su centro escolar (`"schoolsup"`) o de su familia (`"famsup"`), lo que podría traducirse en mejores notas.
-Intentamos controlar estos dos factores creando subtramas en función de si el alumno recibió apoyo educativo adicional de su escuela o de su familia.
+Hay muchos aspectos de la vida de un alumno que pueden dar lugar a una nota final más alta o más baja en la clase. Por ejemplo, algunos alumnos reciben apoyo educativo adicional de su centro escolar (`"schoolsup"`) o de su familia (`"famsup"`), lo que podría traducirse en mejores notas. Intentamos controlar estos dos factores creando subtramas en función de si el alumno recibió apoyo educativo adicional de su escuela o de su familia.
 
 #### Instrucciones
 
-1. Utiliza `relplot()` para crear un gráfico de dispersión con `"G1"` en el eje x y `"G3"` en el eje y, utilizando el DataFrame `student_data`
+1.  Utiliza `relplot()` para crear un gráfico de dispersión con `"G1"` en el eje x y `"G3"` en el eje y, utilizando el DataFrame `student_data`
 
 ```{python}
 # Create a scatter plot fo G1 vs. G3
@@ -226,7 +224,7 @@ sns.relplot(x='G1', y='G3',
 plt.show()
 ```
 
-2. Crea subtramas **de columnas** en función de su el alumno recibió ayuda de la escuela (`"schoolsup"`), ordenadas de forma que "si" vaya antes que "no".
+2.  Crea subtramas **de columnas** en función de su el alumno recibió ayuda de la escuela (`"schoolsup"`), ordenadas de forma que "si" vaya antes que "no".
 
 ```{python}
 # Adjust to add subplots based on school support
@@ -240,8 +238,7 @@ sns.relplot(x='G1', y='G3',
 plt.show()
 ```
 
-3. Añade subgrupos **de filas** en función de su el alumno recibió ayuda de la familia (`"famsup"`), ordenados de forma que "si" vaya antes que "no". Esto dará lugar a subtramas basadas en dos factores.
-
+3.  Añade subgrupos **de filas** en función de su el alumno recibió ayuda de la familia (`"famsup"`), ordenados de forma que "si" vaya antes que "no". Esto dará lugar a subtramas basadas en dos factores.
 
 ```{python}
 # Adjust further to add subplots based on family support
@@ -258,24 +255,18 @@ plt.show()
 
 Parece que la nota del primer semestre si correlaciona con la nota final, independientemente dl tipo de apoyo que recibió el estudiante.
 
-
 ## Personalizar gráficos de dispersión
 
-- Resumen Scatter plot
-    - Muestran la realción entre dos variables cuantitativas.
-    - Hemos visto:
-        - Subplots (`col` y `row`)
-        - Subgrupos con color (`hue`)
-    
-    - Nuevas personalizaciones:
-        - Subgrupos con tamaño de punto y estilo.
-        - Cambio en la transparencia de los puntos.
-
-    - Se pueden utilizar en `scatterplot()` y `relplot()`
-
-
-- Subgrupos con tamaño de punto
-
+-   Resumen Scatter plot
+    -   Muestran la realción entre dos variables cuantitativas.
+    -   Hemos visto:
+        -   Subplots (`col` y `row`)
+        -   Subgrupos con color (`hue`)
+    -   Nuevas personalizaciones:
+        -   Subgrupos con tamaño de punto y estilo.
+        -   Cambio en la transparencia de los puntos.
+    -   Se pueden utilizar en `scatterplot()` y `relplot()`
+-   Subgrupos con tamaño de punto
 
 ```{python}
 import seaborn as sns
@@ -290,7 +281,7 @@ plt.show()
 
 El gráfico anterior es difícil de leer pues todos los puntos son del mismo color. Su visualización puede facilitarse utilizando lo siguiente:
 
-- Tamaño de punto y hue
+-   Tamaño de punto y hue
 
 ```{python}
 import seaborn as sns
@@ -304,9 +295,7 @@ sns.relplot(x='total_bill', y='tip',
 plt.show()
 ```
 
-
-- Subbrupos con estilo de punto
-
+-   Subbrupos con estilo de punto
 
 ```{python}
 import seaborn as sns
@@ -320,8 +309,7 @@ sns.relplot(x='total_bill', y='tip',
 plt.show()
 ```
 
-- Cambiando la transparencia del punto
-
+-   Cambiando la transparencia del punto
 
 ```{python}
 import seaborn as sns
@@ -338,7 +326,6 @@ plt.show()
 
 Este último gráfico es muy útil cuando hay gran concentración de puntos
 
-
 ### Cambiar el tamaño de los puntos del diagrama del dispersión
 
 En este ejercicio, exploraremos el conjunto de datos `mpg` de Seaborn, que contiene una fila por modelo de coche e incluye información como el año de fabricación del coche, el número de millas por galón ("M.P.G.") que alcanza, la potencia de su motor (medida en "caballos") y su país de origen.
@@ -346,7 +333,6 @@ En este ejercicio, exploraremos el conjunto de datos `mpg` de Seaborn, que conti
 ¿Cuál es la relación entre la potencia del motor de un coche (`"horsepower"`) y su eficiencia de combustible (`"mpg"`)? ¿Y cómo varía esta relación según el número de cilindros (`"cylinders"`) que tenga el coche? Averigüémoslo.
 
 Sigamos utilizando `relplot()` en lugar de `scatterplot()` ya que ofrece más flexibilidad.
-
 
 ```{python}
 import pandas as pd
@@ -356,7 +342,7 @@ mpg.head()
 
 #### Instrucciones
 
-1. Utiliza `relplot()` y el DataFrame `mpg` para crear un gráfico de dispersión con `"horsepower"` en el eje x y `"mpg"` en el eje y. Varía el tamaño de los puntos según el número de cilindros del coche (`"cylinders"`).
+1.  Utiliza `relplot()` y el DataFrame `mpg` para crear un gráfico de dispersión con `"horsepower"` en el eje x y `"mpg"` en el eje y. Varía el tamaño de los puntos según el número de cilindros del coche (`"cylinders"`).
 
 ```{python}
 # Import Matplotlib and Seaborn
@@ -372,8 +358,7 @@ sns.relplot(x='horsepower', y='mpg',
 plt.show()
 ```
 
-2. Para que el gráfico se más fácil de leer, utiliza `hue` para variar el color de los puntos según el número de cilindros del coche (`"cylinders"`).
-
+2.  Para que el gráfico se más fácil de leer, utiliza `hue` para variar el color de los puntos según el número de cilindros del coche (`"cylinders"`).
 
 ```{python}
 import matplotlib.pyplot as plt
@@ -398,8 +383,7 @@ Observa que la variable `"acceleration"` es el tiempo de aceleración de 0 a 60 
 
 #### Instrucciones
 
-- Utiliza `relplot()` y el DataFrame `mpg` para crear un gráfico de dispersión con `"acceleration"` en el eje x y `"mpg"` en el eje y. Varía el estilo y el color de los puntos de la trama según el país de origen (`"origin"`).
-
+-   Utiliza `relplot()` y el DataFrame `mpg` para crear un gráfico de dispersión con `"acceleration"` en el eje x y `"mpg"` en el eje y. Varía el estilo y el color de los puntos de la trama según el país de origen (`"origin"`).
 
 ```{python}
 # Import Matplotlib and Seaborn
@@ -417,3 +401,106 @@ plt.show()
 ```
 
 Los coches de EE.UU tienden a acelerar más rápido y obtener menos millas por galón en comparación con los coches de Europa y Japón.
+
+## Intruducción a los gráficos lineales
+
+-   Qué son los diagramas de lineas?
+    -   Hay dos tipos de gráficos relacionales: scatterpltos y lineplots
+
+    -   Scatterplots
+
+        -   Cada punto en el gráfico es una observación independiente.
+
+    -   Lineplots
+
+        -   Cada punto representa la misma cosa, típicamente seguida por el tiempo.
+-   Ejemplo de Scatterplot
+
+```{python}
+#| eval: false
+#| echo: true
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+sns.relplot(x='hour', y='NO_2_mean',
+            data=air_df_mean,
+            kind='scatter')
+plt.show()
+```
+
+![](images/paste-1.png){width="370"}
+
+-   Ejemplot de lineplot
+
+```{python}
+#| eval: false
+#| echo: true
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+sns.relplot(x='hour', y='NO_2_mean',
+            data=air_df_mean,
+            kind='Line')
+plt.show()
+```
+
+![](images/paste-2.png){width="370"}
+
+-   Subgrupos por localización
+
+```{python}
+#| eval: false
+#| echo: true
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+sns.relplot(x='hour', y='NO_2_mean',
+            data=air_df_mean,
+            kind='Line',
+            style='location',
+            hue='location')
+plt.show()
+```
+
+![](images/paste-3.png){width="370"}
+
+-   Añadiendo marcadores
+
+```{python}
+#| eval: false
+#| echo: true
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+sns.relplot(x='hour', y='NO_2_mean',
+            data=air_df_mean,
+            kind='Line',
+            style='location',
+            hue='location',
+            markers=True)
+plt.show()
+```
+
+![](images/paste-4.png){width="370"}
+
+-   Apagando los estilos de líneas
+
+```{python}
+#| eval: false
+#| echo: true
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+sns.relplot(x='hour', y='NO_2_mean',
+            data=air_df_mean,
+            kind='Line',
+            style='location',
+            hue='location',
+            markers=True,
+            dashes=False)
+plt.show()
+```
+
+![](images/paste-5.png){width="370"}
+
+-   Múltiples observaciones
