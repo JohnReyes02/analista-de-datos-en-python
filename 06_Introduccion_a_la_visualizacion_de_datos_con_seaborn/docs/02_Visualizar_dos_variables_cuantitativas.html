@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Edwin John Fredy Reyes Aguirre">
-<meta name="dcterms.date" content="2025-04-29">
+<meta name="dcterms.date" content="2025-05-02">
 
 <title>Visualizar dos variables cuantitativas</title>
 <style>
@@ -94,7 +94,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#cambiar-el-tamaño-de-los-puntos-del-diagrama-del-dispersión" id="toc-cambiar-el-tamaño-de-los-puntos-del-diagrama-del-dispersión" class="nav-link" data-scroll-target="#cambiar-el-tamaño-de-los-puntos-del-diagrama-del-dispersión">Cambiar el tamaño de los puntos del diagrama del dispersión</a></li>
   <li><a href="#cambiar-el-estilo-de-los-puntos-del-gráfico-de-dispersión" id="toc-cambiar-el-estilo-de-los-puntos-del-gráfico-de-dispersión" class="nav-link" data-scroll-target="#cambiar-el-estilo-de-los-puntos-del-gráfico-de-dispersión">Cambiar el estilo de los puntos del gráfico de dispersión</a></li>
   </ul></li>
-  <li><a href="#intruducción-a-los-gráficos-lineales" id="toc-intruducción-a-los-gráficos-lineales" class="nav-link" data-scroll-target="#intruducción-a-los-gráficos-lineales">Intruducción a los gráficos lineales</a></li>
+  <li><a href="#introducción-a-los-gráficos-lineales" id="toc-introducción-a-los-gráficos-lineales" class="nav-link" data-scroll-target="#introducción-a-los-gráficos-lineales">Introducción a los gráficos lineales</a>
+  <ul class="collapse">
+  <li><a href="#interpretación-de-gráficos-lineales" id="toc-interpretación-de-gráficos-lineales" class="nav-link" data-scroll-target="#interpretación-de-gráficos-lineales">Interpretación de gráficos lineales</a></li>
+  <li><a href="#visualización-de-la-desviación-estándar-con-gráfico-de-líneas" id="toc-visualización-de-la-desviación-estándar-con-gráfico-de-líneas" class="nav-link" data-scroll-target="#visualización-de-la-desviación-estándar-con-gráfico-de-líneas">Visualización de la desviación estándar con gráfico de líneas</a></li>
+  <li><a href="#trazar-subgrupos-en-gráficos-de-líneas" id="toc-trazar-subgrupos-en-gráficos-de-líneas" class="nav-link" data-scroll-target="#trazar-subgrupos-en-gráficos-de-líneas">Trazar subgrupos en gráficos de líneas</a></li>
+  </ul></li>
   </ul>
 </nav>
 </div>
@@ -119,7 +124,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">April 29, 2025</p>
+      <p class="date">May 2, 2025</p>
     </div>
   </div>
   
@@ -150,7 +155,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul></li>
 </ul></li>
 <li><p>Scatterplot() vs relplot()</p>
-<div id="c6dff550" class="cell" data-execution_count="1">
+<div id="0caa6dc3" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># para poder mostrar el dataset en los ejemplos</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>tips <span class="op">=</span> pd.read_csv(<span class="st">'./data/tips.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -158,7 +163,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Usando <code>scatterplot()</code></li>
 </ul>
-<div id="02acb8ba" class="cell" data-execution_count="2">
+<div id="63a974d8" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -177,7 +182,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Usando <code>relplot()</code></li>
 </ul>
-<div id="b43223aa" class="cell" data-execution_count="3">
+<div id="20f1110c" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -196,7 +201,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div></li>
 <li><p>Subplots en columnas</p></li>
 </ul>
-<div id="aac168a3" class="cell" data-execution_count="4">
+<div id="41533c58" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -217,7 +222,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Subplots en filas</li>
 </ul>
-<div id="06af77c8" class="cell" data-execution_count="5">
+<div id="46fa1224" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -238,7 +243,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Subplots en filas y columnas</li>
 </ul>
-<div id="0affcbb5" class="cell" data-execution_count="6">
+<div id="ca76830b" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -260,7 +265,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Subgrupos por día de la semana</li>
 </ul>
-<div id="3485fcbf" class="cell" data-execution_count="7">
+<div id="f4b3c3cb" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -285,7 +290,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Se pueden establecer dos gráficos por fila</li>
 </ul></li>
 </ul>
-<div id="9c26502a" class="cell" data-execution_count="8">
+<div id="9c0e8608" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -307,7 +312,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Orden de las columnas</li>
 </ul>
-<div id="23bb19ac" class="cell" data-execution_count="9">
+<div id="17f6306c" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -334,7 +339,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="crear-subtramas-con-columna-y-fila">Crear subtramas con columna y fila</h3>
 <p>Hemos visto en ejercicios anteriores que los alumnos con más faltas (<code>"absences"</code>) tienden a tener notas finales más bajas (<code>"G3"</code>). ¿Se mantiene esta relación independientemente de cuánto tiempo estudien los alumnos cada semana?</p>
 <p>Para responder a esto, observaremos la relación entre el número de faltas de asistencia a clase de un alumno y su calificación final en el curso, creando subtramas separadas en función del tiempo de estudio semanal de cada alumnos (<code>"study_time"</code>).</p>
-<div id="167a3d1b" class="cell" data-execution_count="10">
+<div id="05938826" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>student_data <span class="op">=</span> pd.read_csv(<span class="st">'./data/student-alcohol-consumption.csv'</span>, index_col<span class="op">=</span><span class="dv">0</span>)</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>student_data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -502,7 +507,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol type="1">
 <li>Modifica el código paora utilizar <code>relplot()</code> en lugar de <code>scatterplot()</code>.</li>
 </ol>
-<div id="cde93332" class="cell" data-execution_count="11">
+<div id="fb324c18" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Change to use relplot() instead of scatterplot()</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>sns.relplot(x<span class="op">=</span><span class="st">'absences'</span>, y<span class="op">=</span><span class="st">'G3'</span>,</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>            data<span class="op">=</span>student_data,</span>
@@ -521,7 +526,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol start="2" type="1">
 <li>Modifica el código para crear un gráfico de dispersión para cada nivel de la variable <code>"study_time"</code>, ordenado en columnas.</li>
 </ol>
-<div id="c61ede2d" class="cell" data-execution_count="12">
+<div id="fb3eead1" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Change to make subplots based on study time</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>sns.relplot(x<span class="op">=</span><span class="st">'absences'</span>, y<span class="op">=</span><span class="st">'G3'</span>,</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>            data<span class="op">=</span>student_data,</span>
@@ -540,7 +545,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol start="3" type="1">
 <li>Adapta tu código para crear un gráfico de dispersión para cada nivel del tiempo de estudio semanal de un alumno, esta vez ordenado en filas.</li>
 </ol>
-<div id="c5b7e9c6" class="cell" data-execution_count="13">
+<div id="371978e2" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Change this scatter plot to arrange the plots in rows instead of columns</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>sns.relplot(x<span class="op">=</span><span class="st">'absences'</span>, y<span class="op">=</span><span class="st">'G3'</span>,</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>            data<span class="op">=</span>student_data,</span>
@@ -568,7 +573,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol type="1">
 <li>Utiliza <code>relplot()</code> para crear un gráfico de dispersión con <code>"G1"</code> en el eje x y <code>"G3"</code> en el eje y, utilizando el DataFrame <code>student_data</code></li>
 </ol>
-<div id="64ca9148" class="cell" data-execution_count="14">
+<div id="24919552" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a scatter plot fo G1 vs. G3</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>sns.relplot(x<span class="op">=</span><span class="st">'G1'</span>, y<span class="op">=</span><span class="st">'G3'</span>,</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>            data<span class="op">=</span>student_data,</span>
@@ -587,7 +592,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol start="2" type="1">
 <li>Crea subtramas <strong>de columnas</strong> en función de su el alumno recibió ayuda de la escuela (<code>"schoolsup"</code>), ordenadas de forma que “si” vaya antes que “no”.</li>
 </ol>
-<div id="ed6cc0ea" class="cell" data-execution_count="15">
+<div id="70c49857" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Adjust to add subplots based on school support</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>sns.relplot(x<span class="op">=</span><span class="st">'G1'</span>, y<span class="op">=</span><span class="st">'G3'</span>,</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>            data<span class="op">=</span>student_data,</span>
@@ -608,7 +613,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol start="3" type="1">
 <li>Añade subgrupos <strong>de filas</strong> en función de su el alumno recibió ayuda de la familia (<code>"famsup"</code>), ordenados de forma que “si” vaya antes que “no”. Esto dará lugar a subtramas basadas en dos factores.</li>
 </ol>
-<div id="1a0cfe9c" class="cell" data-execution_count="16">
+<div id="f79ff319" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Adjust further to add subplots based on family support</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>sns.relplot(x<span class="op">=</span><span class="st">'G1'</span>, y<span class="op">=</span><span class="st">'G3'</span>,</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>            data<span class="op">=</span>student_data,</span>
@@ -651,7 +656,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul></li>
 <li>Subgrupos con tamaño de punto</li>
 </ul>
-<div id="482cf19a" class="cell" data-execution_count="17">
+<div id="0a1913af" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -672,7 +677,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Tamaño de punto y hue</li>
 </ul>
-<div id="3764e938" class="cell" data-execution_count="18">
+<div id="288c77fd" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -693,7 +698,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Subbrupos con estilo de punto</li>
 </ul>
-<div id="335879a8" class="cell" data-execution_count="19">
+<div id="4f90828a" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -714,7 +719,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Cambiando la transparencia del punto</li>
 </ul>
-<div id="264124eb" class="cell" data-execution_count="20">
+<div id="ebe077b8" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -739,7 +744,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>En este ejercicio, exploraremos el conjunto de datos <code>mpg</code> de Seaborn, que contiene una fila por modelo de coche e incluye información como el año de fabricación del coche, el número de millas por galón (“M.P.G.”) que alcanza, la potencia de su motor (medida en “caballos”) y su país de origen.</p>
 <p>¿Cuál es la relación entre la potencia del motor de un coche (<code>"horsepower"</code>) y su eficiencia de combustible (<code>"mpg"</code>)? ¿Y cómo varía esta relación según el número de cilindros (<code>"cylinders"</code>) que tenga el coche? Averigüémoslo.</p>
 <p>Sigamos utilizando <code>relplot()</code> en lugar de <code>scatterplot()</code> ya que ofrece más flexibilidad.</p>
-<div id="42753fe4" class="cell" data-execution_count="21">
+<div id="aa92e7f1" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>mpg <span class="op">=</span> pd.read_csv(<span class="st">'./data/mpg.csv'</span>)</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>mpg.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -834,7 +839,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol type="1">
 <li>Utiliza <code>relplot()</code> y el DataFrame <code>mpg</code> para crear un gráfico de dispersión con <code>"horsepower"</code> en el eje x y <code>"mpg"</code> en el eje y. Varía el tamaño de los puntos según el número de cilindros del coche (<code>"cylinders"</code>).</li>
 </ol>
-<div id="fe3aed07" class="cell" data-execution_count="22">
+<div id="a4cb7194" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import Matplotlib and Seaborn</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
@@ -857,7 +862,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol start="2" type="1">
 <li>Para que el gráfico se más fácil de leer, utiliza <code>hue</code> para variar el color de los puntos según el número de cilindros del coche (<code>"cylinders"</code>).</li>
 </ol>
-<div id="6992863d" class="cell" data-execution_count="23">
+<div id="a3b5a83d" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -888,7 +893,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Utiliza <code>relplot()</code> y el DataFrame <code>mpg</code> para crear un gráfico de dispersión con <code>"acceleration"</code> en el eje x y <code>"mpg"</code> en el eje y. Varía el estilo y el color de los puntos de la trama según el país de origen (<code>"origin"</code>).</li>
 </ul>
-<div id="91e795a7" class="cell" data-execution_count="24">
+<div id="21fd067c" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import Matplotlib and Seaborn</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
@@ -913,8 +918,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 </section>
 </section>
-<section id="intruducción-a-los-gráficos-lineales" class="level2">
-<h2 class="anchored" data-anchor-id="intruducción-a-los-gráficos-lineales">Intruducción a los gráficos lineales</h2>
+<section id="introducción-a-los-gráficos-lineales" class="level2">
+<h2 class="anchored" data-anchor-id="introducción-a-los-gráficos-lineales">Introducción a los gráficos lineales</h2>
 <ul>
 <li>Qué son los diagramas de lineas?
 <ul>
@@ -930,7 +935,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul></li>
 <li>Ejemplo de Scatterplot</li>
 </ul>
-<div id="4045ecaa" class="cell" data-execution_count="25">
+<div id="0957f9da" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -943,7 +948,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Ejemplot de lineplot</li>
 </ul>
-<div id="b5112871" class="cell" data-execution_count="26">
+<div id="d1505c86" class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -956,7 +961,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Subgrupos por localización</li>
 </ul>
-<div id="f0135783" class="cell" data-execution_count="27">
+<div id="9d6c0e33" class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -971,7 +976,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Añadiendo marcadores</li>
 </ul>
-<div id="c42a1a88" class="cell" data-execution_count="28">
+<div id="6482b1f2" class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -987,7 +992,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Apagando los estilos de líneas</li>
 </ul>
-<div id="8892ce7a" class="cell" data-execution_count="29">
+<div id="c81a6361" class="cell" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1002,8 +1007,217 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><img src="images/paste-5.png" class="img-fluid" width="370"></p>
 <ul>
-<li>Múltiples observaciones</li>
+<li>Múltiples observaciones por valor de x
+<ul>
+<li>Scatter plot</li>
+</ul></li>
 </ul>
+<div id="06e8ef47" class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>sns.relplot(x<span class="op">=</span><span class="st">'hour'</span>, y<span class="op">=</span><span class="st">'NO_2'</span>,</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>            data<span class="op">=</span>air_df,</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>            kind<span class="op">=</span><span class="st">'scatter'</span>)</span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><img src="images/paste-6.png" class="img-fluid" width="370"></p>
+<ul>
+<li>Line plot</li>
+</ul>
+<div id="d0a3114d" class="cell" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>sns.relplot(x<span class="op">=</span><span class="st">'hour'</span>, y<span class="op">=</span><span class="st">'NO_2'</span>,</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>            data<span class="op">=</span>air_df,</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>            kind<span class="op">=</span><span class="st">'Line'</span>)</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><img src="images/paste-7.png" class="img-fluid" width="378"></p>
+<pre><code>- La región sombreada es el intervalo de confianza
+    - Asuma que el dataset es una muestra aleatoria
+    - Hay 95% de confianza que la media está dentro de este intervalo.
+    - Indicar la incertidumbre de nuestra estimación.</code></pre>
+<ul>
+<li>Reemplzando el intervalo de confianza con la desviación estándar.</li>
+</ul>
+<div id="3045774f" class="cell" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>sns.relplot(x<span class="op">=</span><span class="st">'hour'</span>, y<span class="op">=</span><span class="st">'NO_2'</span>,</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>            data<span class="op">=</span>air_df,</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>            kind<span class="op">=</span><span class="st">'line'</span>,</span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>            ci<span class="op">=</span><span class="st">'sd'</span>)</span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><img src="images/paste-8.png" class="img-fluid" width="370"></p>
+<ul>
+<li>Desactivando el intervalo de confianza</li>
+</ul>
+<div id="975642cf" class="cell" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>sns.relplot(x<span class="op">=</span><span class="st">'hour'</span>, y<span class="op">=</span><span class="st">'NO_2'</span>,</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>            data<span class="op">=</span>air_df,</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>            kind<span class="op">=</span><span class="st">'line'</span>,</span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>            ci<span class="op">=</span><span class="va">None</span>)</span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><img src="images/paste-9.png" class="img-fluid" width="370"></p>
+<section id="interpretación-de-gráficos-lineales" class="level3">
+<h3 class="anchored" data-anchor-id="interpretación-de-gráficos-lineales">Interpretación de gráficos lineales</h3>
+<p>En este ejercicio, seguiremos explorando el conjunto de datos <code>mpg</code> de Seaborn, que contiene una fila por modelo de coche e incluye información como el año de fabricación del coche, su eficacia de combustible (medida en “millas por galón” o “M.P.G”) y su país de origen (USA, Europa o Japón).</p>
+<p>¿Cómo ha cambiado con el tiempo la media de millas por galón que alcanzan estos coches? ¡Utilicemos gráficos lineales para averiguarlo!</p>
+<section id="instrucciones-4" class="level4">
+<h4 class="anchored" data-anchor-id="instrucciones-4">Instrucciones</h4>
+<ol type="1">
+<li>Utiliza <code>relplot()</code> y el DataFrame <code>mpg</code> para crear un gráfico de líneas con <code>"model_year"</code> en el eje x y <code>"mpg"</code> en el eje y.</li>
+</ol>
+<div id="1fa916f9" class="cell" data-execution_count="34">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import Matplotlib and Seaborn</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a line plot</span></span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>sns.relplot(x<span class="op">=</span><span class="st">'model_year'</span>, y<span class="op">=</span><span class="st">'mpg'</span>,</span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>            data<span class="op">=</span>mpg,</span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>            kind<span class="op">=</span><span class="st">'line'</span>)</span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Show plot</span></span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="02_Visualizar_dos_variables_cuantitativas_files/figure-html/cell-35-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="2" type="1">
+<li><strong>Preguntas</strong></li>
+</ol>
+<p>¿Cuál de las siguientes no es una interpretación correcta de este gráfico?</p>
+<p><strong>Respuestas posibles</strong></p>
+<ul class="task-list">
+<li><label><input type="checkbox">El promedio de millas por galón ha aumentado generalmente con el tiempo.</label></li>
+<li><label><input type="checkbox" checked="">La distribución de millas por galón es menor en 1973 que en 1977.</label></li>
+<li><label><input type="checkbox">El intervalo de confianza del 95 % para la media de millas por galón en 1970 es de aproximadamente 16 - 19,5 millas por galón.</label></li>
+<li><label><input type="checkbox">Este gráfico supone nuestros datos son una muestra aleatoria de todos los coches de US, Europa y Japón.</label></li>
+</ul>
+<p>La región sombreada representa un intervalo de confianza para la media, no la distribución de las observaciones.</p>
+</section>
+</section>
+<section id="visualización-de-la-desviación-estándar-con-gráfico-de-líneas" class="level3">
+<h3 class="anchored" data-anchor-id="visualización-de-la-desviación-estándar-con-gráfico-de-líneas">Visualización de la desviación estándar con gráfico de líneas</h3>
+<p>En el último ejercicio, vimos cómo ha cambiado a lo largo del tiempo la media de millas por galón que alcanzan los coches. Ahora utilicemos un gráfico lineal para visualizar cómo ha cambiado la distribución de millas por galón a lo largo del tiempo.</p>
+<section id="instrucciones-5" class="level4">
+<h4 class="anchored" data-anchor-id="instrucciones-5">Instrucciones</h4>
+<ul>
+<li>Cambia el gráfico para que el área sombreada muestre la desviación estándar en lugar del intervalo de confianza para la media.</li>
+</ul>
+<div id="a3a52937" class="cell" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Make the shaded area show the standard deviation</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>sns.relplot(x<span class="op">=</span><span class="st">'model_year'</span>, y<span class="op">=</span><span class="st">'mpg'</span>,</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>            data<span class="op">=</span>mpg,</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>            kind<span class="op">=</span><span class="st">'line'</span>,</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>            errorbar<span class="op">=</span><span class="st">'sd'</span>) <span class="co"># el parámetro ci fue deprecado</span></span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Show plot</span></span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="02_Visualizar_dos_variables_cuantitativas_files/figure-html/cell-36-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>A diferencia del gráfico en el último ejercicio, este gráfico nos muestra la distribución de millas por galón para todos los coches en cada año.</p>
+</section>
+</section>
+<section id="trazar-subgrupos-en-gráficos-de-líneas" class="level3">
+<h3 class="anchored" data-anchor-id="trazar-subgrupos-en-gráficos-de-líneas">Trazar subgrupos en gráficos de líneas</h3>
+<p>Sigamos examinando el conjunto de datos <code>mpg</code>. Hemos visto que la media de millas por galón de los coches ha aumentado con el tiempo, pero, ¿cómo ha cambiado la media de caballos de los coches con el tiempo? ¿Y difiere esta tendencia según el país de origen?</p>
+<section id="instrucciones-6" class="level4">
+<h4 class="anchored" data-anchor-id="instrucciones-6">Instrucciones</h4>
+<ol type="1">
+<li>Utiliza <code>relplot()</code> y el DataFrame <code>mpg</code> para crear un gráfico de líneas con <code>"model_year"</code> en el eje x y <code>"horse_power"</code> en el eje y. Desactiva los intervalos de confianza en el gráfico.</li>
+</ol>
+<div id="aba7ca0a" class="cell" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import matplotlib and Seaborn</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Create line plot of model year vs. horsepower</span></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>sns.relplot(x<span class="op">=</span><span class="st">'model_year'</span>, y<span class="op">=</span><span class="st">'horsepower'</span>,</span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>            data<span class="op">=</span>mpg,</span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>            kind<span class="op">=</span><span class="st">'line'</span>,</span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>            errorbar<span class="op">=</span><span class="va">None</span>)</span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Show plot</span></span>
+<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="02_Visualizar_dos_variables_cuantitativas_files/figure-html/cell-37-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="2" type="1">
+<li>Crea líneas diferentes para cada país (<code>"origin"</code>) que varíen tanto en estilo de línea como en color.</li>
+</ol>
+<div id="9c09366d" class="cell" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create line plot of model year vs. horsepower</span></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>sns.relplot(x<span class="op">=</span><span class="st">'model_year'</span>, y<span class="op">=</span><span class="st">'horsepower'</span>,</span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>            data<span class="op">=</span>mpg,</span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>            kind<span class="op">=</span><span class="st">'line'</span>,</span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>            errorbar<span class="op">=</span><span class="va">None</span>,</span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>            style<span class="op">=</span><span class="st">'origin'</span>,</span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>            hue<span class="op">=</span><span class="st">'origin'</span>)</span>
+<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Show plot</span></span>
+<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="02_Visualizar_dos_variables_cuantitativas_files/figure-html/cell-38-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="3" type="1">
+<li>Añade marcadores para cada punto de datos a las líneas.</li>
+</ol>
+<ul>
+<li>Utiliza el parámetro <code>dashes</code> para utilizar líneas continuas para todos los países, permitiendo al mismpo tiempo diferentes estilos de marcador para cada línea.</li>
+</ul>
+<div id="2ea7820a" class="cell" data-execution_count="38">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>sns.relplot(x<span class="op">=</span><span class="st">'model_year'</span>, y<span class="op">=</span><span class="st">'horsepower'</span>,</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>            data<span class="op">=</span>mpg,</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>            kind<span class="op">=</span><span class="st">'line'</span>,</span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>            errorbar<span class="op">=</span><span class="va">None</span>,</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>            style<span class="op">=</span><span class="st">'origin'</span>,</span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>            hue<span class="op">=</span><span class="st">'origin'</span>,</span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>            markers<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a>            dashes<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Show plot</span></span>
+<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="02_Visualizar_dos_variables_cuantitativas_files/figure-html/cell-39-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Ahora hemos añadido subgrupos, podemos ver que esta tendencia a la baja en la potencia fue más pronunciada entre los coches de EE.UU.</p>
+</section>
+</section>
 </section>
 
 </main>

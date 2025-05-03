@@ -402,7 +402,7 @@ plt.show()
 
 Los coches de EE.UU tienden a acelerar más rápido y obtener menos millas por galón en comparación con los coches de Europa y Japón.
 
-## Intruducción a los gráficos lineales
+## Introducción a los gráficos lineales
 
 -   Qué son los diagramas de lineas?
     -   Hay dos tipos de gráficos relacionales: scatterpltos y lineplots
@@ -503,4 +503,199 @@ plt.show()
 
 ![](images/paste-5.png){width="370"}
 
--   Múltiples observaciones
+-   Múltiples observaciones por valor de x
+    -   Scatter plot
+
+```{python}
+#| echo: true
+#| eval: false
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+sns.relplot(x='hour', y='NO_2',
+            data=air_df,
+            kind='scatter')
+
+plt.show()
+```
+
+![](images/paste-6.png){width="370"}
+
+-   Line plot
+
+```{python}
+#| echo: true
+#| eval: false
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+sns.relplot(x='hour', y='NO_2',
+            data=air_df,
+            kind='Line')
+
+plt.show()
+```
+
+![](images/paste-7.png){width="378"}
+
+```         
+- La región sombreada es el intervalo de confianza
+    - Asuma que el dataset es una muestra aleatoria
+    - Hay 95% de confianza que la media está dentro de este intervalo.
+    - Indicar la incertidumbre de nuestra estimación.
+```
+
+-   Reemplzando el intervalo de confianza con la desviación estándar.
+
+```{python}
+#| echo: true
+#| eval: false
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+sns.relplot(x='hour', y='NO_2',
+            data=air_df,
+            kind='line',
+            ci='sd')
+plt.show()
+```
+
+![](images/paste-8.png){width="370"}
+
+-   Desactivando el intervalo de confianza
+
+```{python}
+#| echo: true
+#| eval: false
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+sns.relplot(x='hour', y='NO_2',
+            data=air_df,
+            kind='line',
+            ci=None)
+plt.show()
+```
+
+![](images/paste-9.png){width="370"}
+
+
+### Interpretación de gráficos lineales
+
+En este ejercicio, seguiremos explorando el conjunto de datos `mpg` de Seaborn, que contiene una fila por modelo de coche e incluye información como el año de fabricación del coche, su eficacia de combustible (medida en "millas por galón" o "M.P.G") y su país de origen (USA, Europa o Japón).
+
+¿Cómo ha cambiado con el tiempo la media de millas por galón que alcanzan estos coches? ¡Utilicemos gráficos lineales para averiguarlo!
+
+#### Instrucciones
+
+1. Utiliza `relplot()` y el DataFrame `mpg` para crear un gráfico de líneas con `"model_year"` en el eje x y `"mpg"` en el eje y.
+
+
+```{python}
+# Import Matplotlib and Seaborn
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Create a line plot
+sns.relplot(x='model_year', y='mpg',
+            data=mpg,
+            kind='line')
+# Show plot
+plt.show()
+```
+
+2. **Preguntas**
+
+¿Cuál de las siguientes no es una interpretación correcta de este gráfico?
+
+**Respuestas posibles**
+
+- [ ] El promedio de millas por galón ha aumentado generalmente con el tiempo.
+- [X] La distribución de millas por galón es menor en 1973 que en 1977.
+- [ ] El intervalo de confianza del 95 % para la media de millas por galón en 1970 es de aproximadamente 16 - 19,5 millas por galón.
+- [ ] Este gráfico supone nuestros datos son una muestra aleatoria de todos los coches de US, Europa y Japón.
+
+La región sombreada representa un intervalo de confianza para la media, no la distribución de las observaciones.
+
+
+### Visualización de la desviación estándar con gráfico de líneas
+
+En el último ejercicio, vimos cómo ha cambiado a lo largo del tiempo la media de millas por galón que alcanzan los coches. Ahora utilicemos un gráfico lineal para visualizar cómo ha cambiado la distribución de millas por galón a lo largo del tiempo.
+
+
+#### Instrucciones
+
+- Cambia el gráfico para que el área sombreada muestre la desviación estándar en lugar del intervalo de confianza para la media.
+
+```{python}
+# Make the shaded area show the standard deviation
+sns.relplot(x='model_year', y='mpg',
+            data=mpg,
+            kind='line',
+            errorbar='sd') # el parámetro ci fue deprecado
+# Show plot
+plt.show()
+```
+
+A diferencia del gráfico en el último ejercicio, este gráfico nos muestra la distribución de millas por galón para todos los coches en cada año.
+
+### Trazar subgrupos en gráficos de líneas
+
+Sigamos examinando el conjunto de datos `mpg`. Hemos visto que la media de millas por galón de los coches ha aumentado con el tiempo, pero, ¿cómo ha cambiado la media de caballos de los coches con el tiempo? ¿Y difiere esta tendencia según el país de origen?
+
+#### Instrucciones
+
+1. Utiliza `relplot()` y el DataFrame `mpg` para crear un gráfico de líneas con `"model_year"` en el eje x y `"horse_power"` en el eje y. Desactiva los intervalos de confianza en el gráfico.
+
+
+```{python}
+# Import matplotlib and Seaborn
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Create line plot of model year vs. horsepower
+sns.relplot(x='model_year', y='horsepower',
+            data=mpg,
+            kind='line',
+            errorbar=None)
+# Show plot
+plt.show()
+```
+
+2. Crea líneas diferentes para cada país (`"origin"`) que varíen tanto en estilo de línea como en color.
+
+
+```{python}
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Create line plot of model year vs. horsepower
+sns.relplot(x='model_year', y='horsepower',
+            data=mpg,
+            kind='line',
+            errorbar=None,
+            style='origin',
+            hue='origin')
+# Show plot
+plt.show()
+```
+
+3. Añade marcadores para cada punto de datos a las líneas.
+
+- Utiliza el parámetro `dashes` para utilizar líneas continuas para todos los países, permitiendo al mismpo tiempo diferentes estilos de marcador para cada línea.
+
+
+```{python}
+sns.relplot(x='model_year', y='horsepower',
+            data=mpg,
+            kind='line',
+            errorbar=None,
+            style='origin',
+            hue='origin',
+            markers=True,
+            dashes=False)
+# Show plot
+plt.show()
+```
+
+Ahora hemos añadido subgrupos, podemos ver que esta tendencia a la baja en la potencia fue más pronunciada entre los coches de EE.UU.
