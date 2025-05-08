@@ -1,0 +1,1180 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "title: \"Visualizar dos variables cuantitativas\"\n",
+        "author: \"Edwin John Fredy Reyes Aguirre\"\n",
+        "date: today\n",
+        "toc: true\n",
+        "toc-title: \"Contenido\"\n",
+        "---\n",
+        "\n",
+        "\n",
+        "En este capíulo, crearás y personalizarás gráficos que visualizan la relación entre dos variables cuantitativas. Para ello, utilizarás gráficos se dispersión y de líneas para explorar cómo cambia el nivel de contaminación atmosférica en una ciudad a lo largo de un día y cómo se relacionan los caballos de potencia con la eficiencia del combustible en los coches. También verás otra gran ventaja de utilizar Seaborn: ¡la posibilidad de crear fácilmente subtramas en una sola figura!\n",
+        "\n",
+        "## Introducción a las plots (tramas) y subplots (subtramas) relacionales\n",
+        "\n",
+        "-   Gráficos relacionales\n",
+        "\n",
+        "    -   Altura vs Peso\n",
+        "    -   Número de ausencias de un alumno vs Nota final\n",
+        "    -   GDP vs Personas que saben leer y escribir\n",
+        "\n",
+        "-   Intruducción a relplot()\n",
+        "\n",
+        "    -   Crea gráficos relacionales: scatterplots o line plots\n",
+        "\n",
+        "    -   ¿Por qué usar `relplot()` en lugar de `scatterplot()`?\n",
+        "\n",
+        "        -   `relplot()` permite crear subgráficos en una sola figura.\n",
+        "\n",
+        "-   Scatterplot() vs relplot()\n"
+      ],
+      "id": "de56d838"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "md-indent": "    "
+      },
+      "source": [
+        "# para poder mostrar el dataset en los ejemplos\n",
+        "import pandas as pd\n",
+        "tips = pd.read_csv('./data/tips.csv')"
+      ],
+      "id": "365bba89",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "    -   Usando `scatterplot()`\n"
+      ],
+      "id": "b8575ab9"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "md-indent": "    "
+      },
+      "source": [
+        "import seaborn as sns\n",
+        "import matplotlib.pyplot as plt\n",
+        "\n",
+        "sns.scatterplot(x='total_bill',\n",
+        "                y='tip',\n",
+        "                data=tips)\n",
+        "plt.show()"
+      ],
+      "id": "25af673e",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "    -   Usando `relplot()`\n"
+      ],
+      "id": "d137357c"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "md-indent": "    "
+      },
+      "source": [
+        "import seaborn as sns\n",
+        "import matplotlib.pyplot as plt\n",
+        "\n",
+        "sns.relplot(x='total_bill',\n",
+        "            y='tip',\n",
+        "            data=tips,\n",
+        "            kind='scatter')\n",
+        "plt.show()"
+      ],
+      "id": "092e449b",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "-   Subplots en columnas\n"
+      ],
+      "id": "f924727f"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import seaborn as sns\n",
+        "import matplotlib.pyplot as plt\n",
+        "\n",
+        "sns.relplot(x='total_bill',\n",
+        "            y='tip',\n",
+        "            data=tips,\n",
+        "            kind='scatter',\n",
+        "            col='smoker')\n",
+        "plt.show()"
+      ],
+      "id": "35d50e58",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "-   Subplots en filas\n"
+      ],
+      "id": "96a284cb"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import seaborn as sns\n",
+        "import matplotlib.pyplot as plt\n",
+        "\n",
+        "sns.relplot(x='total_bill',\n",
+        "            y='tip',\n",
+        "            data=tips,\n",
+        "            kind='scatter',\n",
+        "            row='smoker')\n",
+        "plt.show()"
+      ],
+      "id": "40bc6c5e",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "-   Subplots en filas y columnas\n"
+      ],
+      "id": "9aedc011"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import seaborn as sns\n",
+        "import matplotlib.pyplot as plt\n",
+        "\n",
+        "sns.relplot(x='total_bill',\n",
+        "            y='tip',\n",
+        "            data=tips,\n",
+        "            kind='scatter',\n",
+        "            col='smoker',\n",
+        "            row='time')\n",
+        "plt.show()"
+      ],
+      "id": "4b5af7a4",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "-   Subgrupos por día de la semana\n"
+      ],
+      "id": "f2ba19aa"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import seaborn as sns\n",
+        "import matplotlib.pyplot as plt\n",
+        "\n",
+        "sns.relplot(x='total_bill',\n",
+        "            y='tip',\n",
+        "            data=tips,\n",
+        "            kind='scatter',\n",
+        "            col='day')\n",
+        "plt.show()"
+      ],
+      "id": "f82edbc4",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "El gráfico se ve pequeño si todos estan en la misma fila\n",
+        "\n",
+        "-   Wrapping columns\n",
+        "    -   Se pueden establecer dos gráficos por fila\n"
+      ],
+      "id": "ffd6f2f2"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import seaborn as sns\n",
+        "import matplotlib.pyplot as plt\n",
+        "\n",
+        "sns.relplot(x='total_bill',\n",
+        "            y='tip',\n",
+        "            data=tips,\n",
+        "            kind='scatter',\n",
+        "            col='day',\n",
+        "            col_wrap=2)\n",
+        "plt.show()"
+      ],
+      "id": "c15e6d3a",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "-   Orden de las columnas\n"
+      ],
+      "id": "aedb85f1"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import seaborn as sns\n",
+        "import matplotlib.pyplot as plt\n",
+        "\n",
+        "sns.relplot(x='total_bill',\n",
+        "            y='tip',\n",
+        "            data=tips,\n",
+        "            kind='scatter',\n",
+        "            col='day',\n",
+        "            col_wrap=2,\n",
+        "            col_order=['Thur',\n",
+        "                       'Fri',\n",
+        "                       'Sat',\n",
+        "                       'Sun'])\n",
+        "plt.show()"
+      ],
+      "id": "8927d52a",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### Crear subtramas con columna y fila\n",
+        "\n",
+        "Hemos visto en ejercicios anteriores que los alumnos con más faltas (`\"absences\"`) tienden a tener notas finales más bajas (`\"G3\"`). ¿Se mantiene esta relación independientemente de cuánto tiempo estudien los alumnos cada semana?\n",
+        "\n",
+        "Para responder a esto, observaremos la relación entre el número de faltas de asistencia a clase de un alumno y su calificación final en el curso, creando subtramas separadas en función del tiempo de estudio semanal de cada alumnos (`\"study_time\"`).\n"
+      ],
+      "id": "389063e2"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import pandas as pd\n",
+        "student_data = pd.read_csv('./data/student-alcohol-consumption.csv', index_col=0)\n",
+        "student_data.head()"
+      ],
+      "id": "52ab0ef0",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "#### Instrucciones\n",
+        "\n",
+        "1.  Modifica el código paora utilizar `relplot()` en lugar de `scatterplot()`.\n"
+      ],
+      "id": "7b9697f5"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Change to use relplot() instead of scatterplot()\n",
+        "sns.relplot(x='absences', y='G3',\n",
+        "            data=student_data,\n",
+        "            kind='scatter')\n",
+        "\n",
+        "# Show plot\n",
+        "plt.show()"
+      ],
+      "id": "2dfb466a",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "2.  Modifica el código para crear un gráfico de dispersión para cada nivel de la variable `\"study_time\"`, ordenado en columnas.\n"
+      ],
+      "id": "ab9fb4c1"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Change to make subplots based on study time\n",
+        "sns.relplot(x='absences', y='G3',\n",
+        "            data=student_data,\n",
+        "            kind='scatter',\n",
+        "            col='study_time')\n",
+        "# Show plot\n",
+        "plt.show()"
+      ],
+      "id": "bc1e2839",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "3.  Adapta tu código para crear un gráfico de dispersión para cada nivel del tiempo de estudio semanal de un alumno, esta vez ordenado en filas.\n"
+      ],
+      "id": "821182e4"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Change this scatter plot to arrange the plots in rows instead of columns\n",
+        "sns.relplot(x='absences', y='G3',\n",
+        "            data=student_data,\n",
+        "            kind='scatter',\n",
+        "            row='study_time')\n",
+        "# Show plot\n",
+        "plt.show()"
+      ],
+      "id": "6211e72f",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Debido a que estos subgráficos tenían un gran rango de valores x, es más fácil leerlos dispuestos en filas en lugar de columnas.\n",
+        "\n",
+        "### Crear subtramas de dos factores\n",
+        "\n",
+        "Sigamos examinando el conjunto de datos `student_data` de alumnos de secundaria. Aquí queremos responder a la siguiente pregunta: ¿la nota del primer semestre de un alumno (`\"G1\"`) tiende a correlacionarse con su nota final (`\"G3\"`)?\n",
+        "\n",
+        "Hay muchos aspectos de la vida de un alumno que pueden dar lugar a una nota final más alta o más baja en la clase. Por ejemplo, algunos alumnos reciben apoyo educativo adicional de su centro escolar (`\"schoolsup\"`) o de su familia (`\"famsup\"`), lo que podría traducirse en mejores notas. Intentamos controlar estos dos factores creando subtramas en función de si el alumno recibió apoyo educativo adicional de su escuela o de su familia.\n",
+        "\n",
+        "#### Instrucciones\n",
+        "\n",
+        "1.  Utiliza `relplot()` para crear un gráfico de dispersión con `\"G1\"` en el eje x y `\"G3\"` en el eje y, utilizando el DataFrame `student_data`\n"
+      ],
+      "id": "af100663"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Create a scatter plot fo G1 vs. G3\n",
+        "sns.relplot(x='G1', y='G3',\n",
+        "            data=student_data,\n",
+        "            kind='scatter',\n",
+        "            )\n",
+        "# Show plot\n",
+        "plt.show()"
+      ],
+      "id": "c5774862",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "2.  Crea subtramas **de columnas** en función de su el alumno recibió ayuda de la escuela (`\"schoolsup\"`), ordenadas de forma que \"si\" vaya antes que \"no\".\n"
+      ],
+      "id": "1852901b"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Adjust to add subplots based on school support\n",
+        "sns.relplot(x='G1', y='G3',\n",
+        "            data=student_data,\n",
+        "            kind='scatter',\n",
+        "            col='schoolsup',\n",
+        "            col_order=['yes', 'no']\n",
+        "            )\n",
+        "# Show plot\n",
+        "plt.show()"
+      ],
+      "id": "c0f47154",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "3.  Añade subgrupos **de filas** en función de su el alumno recibió ayuda de la familia (`\"famsup\"`), ordenados de forma que \"si\" vaya antes que \"no\". Esto dará lugar a subtramas basadas en dos factores.\n"
+      ],
+      "id": "58df970e"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Adjust further to add subplots based on family support\n",
+        "sns.relplot(x='G1', y='G3',\n",
+        "            data=student_data,\n",
+        "            kind='scatter',\n",
+        "            col='schoolsup',\n",
+        "            col_order=['yes', 'no'],\n",
+        "            row='famsup',\n",
+        "            row_order=['yes', 'no'])\n",
+        "# Show plot\n",
+        "plt.show()"
+      ],
+      "id": "f591990f",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Parece que la nota del primer semestre si correlaciona con la nota final, independientemente dl tipo de apoyo que recibió el estudiante.\n",
+        "\n",
+        "## Personalizar gráficos de dispersión\n",
+        "\n",
+        "-   Resumen Scatter plot\n",
+        "    -   Muestran la realción entre dos variables cuantitativas.\n",
+        "    -   Hemos visto:\n",
+        "        -   Subplots (`col` y `row`)\n",
+        "        -   Subgrupos con color (`hue`)\n",
+        "    -   Nuevas personalizaciones:\n",
+        "        -   Subgrupos con tamaño de punto y estilo.\n",
+        "        -   Cambio en la transparencia de los puntos.\n",
+        "    -   Se pueden utilizar en `scatterplot()` y `relplot()`\n",
+        "-   Subgrupos con tamaño de punto\n"
+      ],
+      "id": "62f98cc8"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import seaborn as sns\n",
+        "import matplotlib.pyplot as plt\n",
+        "\n",
+        "sns.relplot(x='total_bill', y='tip',\n",
+        "            data=tips,\n",
+        "            kind='scatter',\n",
+        "            size='size')\n",
+        "plt.show()"
+      ],
+      "id": "369a1cec",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "El gráfico anterior es difícil de leer pues todos los puntos son del mismo color. Su visualización puede facilitarse utilizando lo siguiente:\n",
+        "\n",
+        "-   Tamaño de punto y hue\n"
+      ],
+      "id": "f000731a"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import seaborn as sns\n",
+        "import matplotlib.pyplot as plt\n",
+        "\n",
+        "sns.relplot(x='total_bill', y='tip',\n",
+        "            data=tips,\n",
+        "            kind='scatter',\n",
+        "            size='size',\n",
+        "            hue='size')\n",
+        "plt.show()"
+      ],
+      "id": "d7b2ba83",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "-   Subbrupos con estilo de punto\n"
+      ],
+      "id": "e86d86c7"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import seaborn as sns\n",
+        "import matplotlib.pyplot as plt\n",
+        "\n",
+        "sns.relplot(x='total_bill', y='tip',\n",
+        "            data=tips,\n",
+        "            kind='scatter',\n",
+        "            hue='smoker',\n",
+        "            size='smoker')\n",
+        "plt.show()"
+      ],
+      "id": "a512af43",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "-   Cambiando la transparencia del punto\n"
+      ],
+      "id": "51840509"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import seaborn as sns\n",
+        "import matplotlib.pyplot as plt\n",
+        "\n",
+        "# Set alpha to be between 0 and 1\n",
+        "sns.relplot(x='total_bill', y='tip',\n",
+        "            data=tips,\n",
+        "            kind='scatter',\n",
+        "            alpha=0.4)\n",
+        "\n",
+        "plt.show()"
+      ],
+      "id": "c5aee9fd",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Este último gráfico es muy útil cuando hay gran concentración de puntos\n",
+        "\n",
+        "### Cambiar el tamaño de los puntos del diagrama del dispersión\n",
+        "\n",
+        "En este ejercicio, exploraremos el conjunto de datos `mpg` de Seaborn, que contiene una fila por modelo de coche e incluye información como el año de fabricación del coche, el número de millas por galón (\"M.P.G.\") que alcanza, la potencia de su motor (medida en \"caballos\") y su país de origen.\n",
+        "\n",
+        "¿Cuál es la relación entre la potencia del motor de un coche (`\"horsepower\"`) y su eficiencia de combustible (`\"mpg\"`)? ¿Y cómo varía esta relación según el número de cilindros (`\"cylinders\"`) que tenga el coche? Averigüémoslo.\n",
+        "\n",
+        "Sigamos utilizando `relplot()` en lugar de `scatterplot()` ya que ofrece más flexibilidad.\n"
+      ],
+      "id": "650e4bd4"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import pandas as pd\n",
+        "mpg = pd.read_csv('./data/mpg.csv')\n",
+        "mpg.head()"
+      ],
+      "id": "e0a0db22",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "#### Instrucciones\n",
+        "\n",
+        "1.  Utiliza `relplot()` y el DataFrame `mpg` para crear un gráfico de dispersión con `\"horsepower\"` en el eje x y `\"mpg\"` en el eje y. Varía el tamaño de los puntos según el número de cilindros del coche (`\"cylinders\"`).\n"
+      ],
+      "id": "49fed124"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Import Matplotlib and Seaborn\n",
+        "import matplotlib.pyplot as plt\n",
+        "import seaborn as sns\n",
+        "\n",
+        "# Create scatter plot of horsepower vs. mpg\n",
+        "sns.relplot(x='horsepower', y='mpg',\n",
+        "            data=mpg,\n",
+        "            kind='scatter',\n",
+        "            size='cylinders')\n",
+        "# Show plot\n",
+        "plt.show()"
+      ],
+      "id": "5b430b79",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "2.  Para que el gráfico se más fácil de leer, utiliza `hue` para variar el color de los puntos según el número de cilindros del coche (`\"cylinders\"`).\n"
+      ],
+      "id": "849efe3a"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import matplotlib.pyplot as plt\n",
+        "import seaborn as sns\n",
+        "\n",
+        "sns.relplot(x='horsepower', y='mpg',\n",
+        "            data=mpg,\n",
+        "            kind='scatter',\n",
+        "            size='cylinders',\n",
+        "            hue='cylinders')\n",
+        "# Show plot\n",
+        "plt.show()"
+      ],
+      "id": "49a8e535",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Los coches con mayor potencia tienden a tener un menor número de millas por galón. También tienden a tener un mayor número de cilindros.\n",
+        "\n",
+        "### Cambiar el estilo de los puntos del gráfico de dispersión\n",
+        "\n",
+        "Sigamos explorando el conjunto de datos `mpg` de Seaborn observando la relación entre la velocidad a la que se puede acelerar un coche (`\"acceleration\"`) y su eficiencia de combustible (`\"mpg\"`). ¿Varían estas propiedades según el país de origen (`\"origin\"`)?\n",
+        "\n",
+        "Observa que la variable `\"acceleration\"` es el tiempo de aceleración de 0 a 60 millas por hora, en segundos. Los valores más altos indican una aceleración más lenta.\n",
+        "\n",
+        "#### Instrucciones\n",
+        "\n",
+        "-   Utiliza `relplot()` y el DataFrame `mpg` para crear un gráfico de dispersión con `\"acceleration\"` en el eje x y `\"mpg\"` en el eje y. Varía el estilo y el color de los puntos de la trama según el país de origen (`\"origin\"`).\n"
+      ],
+      "id": "b6ef905d"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Import Matplotlib and Seaborn\n",
+        "import matplotlib.pyplot as plt\n",
+        "import seaborn as sns\n",
+        "\n",
+        "# Create a scatter plot of acceleration vs. mpg\n",
+        "sns.relplot(x='acceleration', y='mpg',\n",
+        "            data=mpg,\n",
+        "            kind='scatter',\n",
+        "            style='origin',\n",
+        "            hue='origin')\n",
+        "# Show plot\n",
+        "plt.show()"
+      ],
+      "id": "4df71165",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Los coches de EE.UU tienden a acelerar más rápido y obtener menos millas por galón en comparación con los coches de Europa y Japón.\n",
+        "\n",
+        "## Introducción a los gráficos lineales\n",
+        "\n",
+        "-   Qué son los diagramas de lineas?\n",
+        "    -   Hay dos tipos de gráficos relacionales: scatterpltos y lineplots\n",
+        "\n",
+        "    -   Scatterplots\n",
+        "\n",
+        "        -   Cada punto en el gráfico es una observación independiente.\n",
+        "\n",
+        "    -   Lineplots\n",
+        "\n",
+        "        -   Cada punto representa la misma cosa, típicamente seguida por el tiempo.\n",
+        "-   Ejemplo de Scatterplot\n"
+      ],
+      "id": "dfb6fa47"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| eval: false\n",
+        "#| echo: true\n",
+        "import matplotlib.pyplot as plt\n",
+        "import seaborn as sns\n",
+        "\n",
+        "sns.relplot(x='hour', y='NO_2_mean',\n",
+        "            data=air_df_mean,\n",
+        "            kind='scatter')\n",
+        "plt.show()"
+      ],
+      "id": "082df192",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "![](images/paste-1.png){width=\"370\"}\n",
+        "\n",
+        "-   Ejemplot de lineplot\n"
+      ],
+      "id": "243cc796"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| eval: false\n",
+        "#| echo: true\n",
+        "import matplotlib.pyplot as plt\n",
+        "import seaborn as sns\n",
+        "\n",
+        "sns.relplot(x='hour', y='NO_2_mean',\n",
+        "            data=air_df_mean,\n",
+        "            kind='Line')\n",
+        "plt.show()"
+      ],
+      "id": "265bf25c",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "![](images/paste-2.png){width=\"370\"}\n",
+        "\n",
+        "-   Subgrupos por localización\n"
+      ],
+      "id": "80a18d54"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| eval: false\n",
+        "#| echo: true\n",
+        "import matplotlib.pyplot as plt\n",
+        "import seaborn as sns\n",
+        "\n",
+        "sns.relplot(x='hour', y='NO_2_mean',\n",
+        "            data=air_df_mean,\n",
+        "            kind='Line',\n",
+        "            style='location',\n",
+        "            hue='location')\n",
+        "plt.show()"
+      ],
+      "id": "ade91409",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "![](images/paste-3.png){width=\"370\"}\n",
+        "\n",
+        "-   Añadiendo marcadores\n"
+      ],
+      "id": "27bf83e7"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| eval: false\n",
+        "#| echo: true\n",
+        "import matplotlib.pyplot as plt\n",
+        "import seaborn as sns\n",
+        "\n",
+        "sns.relplot(x='hour', y='NO_2_mean',\n",
+        "            data=air_df_mean,\n",
+        "            kind='Line',\n",
+        "            style='location',\n",
+        "            hue='location',\n",
+        "            markers=True)\n",
+        "plt.show()"
+      ],
+      "id": "3d8001af",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "![](images/paste-4.png){width=\"370\"}\n",
+        "\n",
+        "-   Apagando los estilos de líneas\n"
+      ],
+      "id": "22a34195"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| eval: false\n",
+        "#| echo: true\n",
+        "import matplotlib.pyplot as plt\n",
+        "import seaborn as sns\n",
+        "\n",
+        "sns.relplot(x='hour', y='NO_2_mean',\n",
+        "            data=air_df_mean,\n",
+        "            kind='Line',\n",
+        "            style='location',\n",
+        "            hue='location',\n",
+        "            markers=True,\n",
+        "            dashes=False)\n",
+        "plt.show()"
+      ],
+      "id": "2fc21854",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "![](images/paste-5.png){width=\"370\"}\n",
+        "\n",
+        "-   Múltiples observaciones por valor de x\n",
+        "    -   Scatter plot\n"
+      ],
+      "id": "f8c2101e"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| eval: false\n",
+        "import matplotlib.pyplot as plt\n",
+        "import seaborn as sns\n",
+        "\n",
+        "sns.relplot(x='hour', y='NO_2',\n",
+        "            data=air_df,\n",
+        "            kind='scatter')\n",
+        "\n",
+        "plt.show()"
+      ],
+      "id": "c5d9de27",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "![](images/paste-6.png){width=\"370\"}\n",
+        "\n",
+        "-   Line plot\n"
+      ],
+      "id": "7dad7de6"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| eval: false\n",
+        "import matplotlib.pyplot as plt\n",
+        "import seaborn as sns\n",
+        "\n",
+        "sns.relplot(x='hour', y='NO_2',\n",
+        "            data=air_df,\n",
+        "            kind='Line')\n",
+        "\n",
+        "plt.show()"
+      ],
+      "id": "a39b5e98",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "![](images/paste-7.png){width=\"378\"}\n",
+        "\n",
+        "```         \n",
+        "- La región sombreada es el intervalo de confianza\n",
+        "    - Asuma que el dataset es una muestra aleatoria\n",
+        "    - Hay 95% de confianza que la media está dentro de este intervalo.\n",
+        "    - Indicar la incertidumbre de nuestra estimación.\n",
+        "```\n",
+        "\n",
+        "-   Reemplzando el intervalo de confianza con la desviación estándar.\n"
+      ],
+      "id": "7526bcd1"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| eval: false\n",
+        "import matplotlib.pyplot as plt\n",
+        "import seaborn as sns\n",
+        "\n",
+        "sns.relplot(x='hour', y='NO_2',\n",
+        "            data=air_df,\n",
+        "            kind='line',\n",
+        "            ci='sd')\n",
+        "plt.show()"
+      ],
+      "id": "f2824187",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "![](images/paste-8.png){width=\"370\"}\n",
+        "\n",
+        "-   Desactivando el intervalo de confianza\n"
+      ],
+      "id": "72a3a30d"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| eval: false\n",
+        "import matplotlib.pyplot as plt\n",
+        "import seaborn as sns\n",
+        "\n",
+        "sns.relplot(x='hour', y='NO_2',\n",
+        "            data=air_df,\n",
+        "            kind='line',\n",
+        "            ci=None)\n",
+        "plt.show()"
+      ],
+      "id": "b84f0f0f",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "![](images/paste-9.png){width=\"370\"}\n",
+        "\n",
+        "\n",
+        "### Interpretación de gráficos lineales\n",
+        "\n",
+        "En este ejercicio, seguiremos explorando el conjunto de datos `mpg` de Seaborn, que contiene una fila por modelo de coche e incluye información como el año de fabricación del coche, su eficacia de combustible (medida en \"millas por galón\" o \"M.P.G\") y su país de origen (USA, Europa o Japón).\n",
+        "\n",
+        "¿Cómo ha cambiado con el tiempo la media de millas por galón que alcanzan estos coches? ¡Utilicemos gráficos lineales para averiguarlo!\n",
+        "\n",
+        "#### Instrucciones\n",
+        "\n",
+        "1. Utiliza `relplot()` y el DataFrame `mpg` para crear un gráfico de líneas con `\"model_year\"` en el eje x y `\"mpg\"` en el eje y.\n"
+      ],
+      "id": "93f01e41"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Import Matplotlib and Seaborn\n",
+        "import matplotlib.pyplot as plt\n",
+        "import seaborn as sns\n",
+        "\n",
+        "# Create a line plot\n",
+        "sns.relplot(x='model_year', y='mpg',\n",
+        "            data=mpg,\n",
+        "            kind='line')\n",
+        "# Show plot\n",
+        "plt.show()"
+      ],
+      "id": "38d058a3",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "2. **Preguntas**\n",
+        "\n",
+        "¿Cuál de las siguientes no es una interpretación correcta de este gráfico?\n",
+        "\n",
+        "**Respuestas posibles**\n",
+        "\n",
+        "- [ ] El promedio de millas por galón ha aumentado generalmente con el tiempo.\n",
+        "- [X] La distribución de millas por galón es menor en 1973 que en 1977.\n",
+        "- [ ] El intervalo de confianza del 95 % para la media de millas por galón en 1970 es de aproximadamente 16 - 19,5 millas por galón.\n",
+        "- [ ] Este gráfico supone nuestros datos son una muestra aleatoria de todos los coches de US, Europa y Japón.\n",
+        "\n",
+        "La región sombreada representa un intervalo de confianza para la media, no la distribución de las observaciones.\n",
+        "\n",
+        "\n",
+        "### Visualización de la desviación estándar con gráfico de líneas\n",
+        "\n",
+        "En el último ejercicio, vimos cómo ha cambiado a lo largo del tiempo la media de millas por galón que alcanzan los coches. Ahora utilicemos un gráfico lineal para visualizar cómo ha cambiado la distribución de millas por galón a lo largo del tiempo.\n",
+        "\n",
+        "\n",
+        "#### Instrucciones\n",
+        "\n",
+        "- Cambia el gráfico para que el área sombreada muestre la desviación estándar en lugar del intervalo de confianza para la media.\n"
+      ],
+      "id": "e09ecc7c"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Make the shaded area show the standard deviation\n",
+        "sns.relplot(x='model_year', y='mpg',\n",
+        "            data=mpg,\n",
+        "            kind='line',\n",
+        "            errorbar='sd') # el parámetro ci fue deprecado\n",
+        "# Show plot\n",
+        "plt.show()"
+      ],
+      "id": "fb659b99",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "A diferencia del gráfico en el último ejercicio, este gráfico nos muestra la distribución de millas por galón para todos los coches en cada año.\n",
+        "\n",
+        "### Trazar subgrupos en gráficos de líneas\n",
+        "\n",
+        "Sigamos examinando el conjunto de datos `mpg`. Hemos visto que la media de millas por galón de los coches ha aumentado con el tiempo, pero, ¿cómo ha cambiado la media de caballos de los coches con el tiempo? ¿Y difiere esta tendencia según el país de origen?\n",
+        "\n",
+        "#### Instrucciones\n",
+        "\n",
+        "1. Utiliza `relplot()` y el DataFrame `mpg` para crear un gráfico de líneas con `\"model_year\"` en el eje x y `\"horse_power\"` en el eje y. Desactiva los intervalos de confianza en el gráfico.\n"
+      ],
+      "id": "37438375"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Import matplotlib and Seaborn\n",
+        "import matplotlib.pyplot as plt\n",
+        "import seaborn as sns\n",
+        "\n",
+        "# Create line plot of model year vs. horsepower\n",
+        "sns.relplot(x='model_year', y='horsepower',\n",
+        "            data=mpg,\n",
+        "            kind='line',\n",
+        "            errorbar=None)\n",
+        "# Show plot\n",
+        "plt.show()"
+      ],
+      "id": "cf0aea8e",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "2. Crea líneas diferentes para cada país (`\"origin\"`) que varíen tanto en estilo de línea como en color.\n"
+      ],
+      "id": "78233a7e"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import matplotlib.pyplot as plt\n",
+        "import seaborn as sns\n",
+        "\n",
+        "# Create line plot of model year vs. horsepower\n",
+        "sns.relplot(x='model_year', y='horsepower',\n",
+        "            data=mpg,\n",
+        "            kind='line',\n",
+        "            errorbar=None,\n",
+        "            style='origin',\n",
+        "            hue='origin')\n",
+        "# Show plot\n",
+        "plt.show()"
+      ],
+      "id": "7626f525",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "3. Añade marcadores para cada punto de datos a las líneas.\n",
+        "\n",
+        "- Utiliza el parámetro `dashes` para utilizar líneas continuas para todos los países, permitiendo al mismpo tiempo diferentes estilos de marcador para cada línea.\n"
+      ],
+      "id": "5ceac28e"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "sns.relplot(x='model_year', y='horsepower',\n",
+        "            data=mpg,\n",
+        "            kind='line',\n",
+        "            errorbar=None,\n",
+        "            style='origin',\n",
+        "            hue='origin',\n",
+        "            markers=True,\n",
+        "            dashes=False)\n",
+        "# Show plot\n",
+        "plt.show()"
+      ],
+      "id": "aa9fd73c",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Ahora hemos añadido subgrupos, podemos ver que esta tendencia a la baja en la potencia fue más pronunciada entre los coches de EE.UU."
+      ],
+      "id": "af70c411"
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "name": "python3",
+      "language": "python",
+      "display_name": "Python 3 (ipykernel)",
+      "path": "C:\\Users\\Edwin Reyes\\AppData\\Local\\Programs\\Python\\Python313\\share\\jupyter\\kernels\\python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}
