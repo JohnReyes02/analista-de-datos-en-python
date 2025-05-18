@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Edwin John Fredy Reyes Aguirre">
-<meta name="dcterms.date" content="2025-05-17">
+<meta name="dcterms.date" content="2025-05-18">
 
 <title>Visualizar una variable categórica y una cuantitativa</title>
 <style>
@@ -94,7 +94,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#crea-e-interpreta-un-diagrama-de-cajas" id="toc-crea-e-interpreta-un-diagrama-de-cajas" class="nav-link" data-scroll-target="#crea-e-interpreta-un-diagrama-de-cajas">Crea e interpreta un diagrama de cajas</a></li>
   <li><a href="#omitir-valores-atípicos" id="toc-omitir-valores-atípicos" class="nav-link" data-scroll-target="#omitir-valores-atípicos">Omitir valores atípicos</a></li>
+  <li><a href="#ajustar-los-bigotes" id="toc-ajustar-los-bigotes" class="nav-link" data-scroll-target="#ajustar-los-bigotes">Ajustar los bigotes</a></li>
   </ul></li>
+  <li><a href="#gráfico-de-puntos" id="toc-gráfico-de-puntos" class="nav-link" data-scroll-target="#gráfico-de-puntos">Gráfico de puntos</a></li>
   </ul>
 </nav>
 </div>
@@ -119,7 +121,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">May 17, 2025</p>
+      <p class="date">May 18, 2025</p>
     </div>
   </div>
   
@@ -150,7 +152,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul></li>
 <li><p>countplot() vs.&nbsp;catplot()</p></li>
 </ul>
-<div id="fa038aae" class="cell" data-execution_count="1">
+<div id="fc97cc9a" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> <span class="im">from</span> django.conf <span class="im">import</span> settings</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>sns.countplot(x<span class="op">=</span><span class="st">'how_masculine'</span>,</span>
@@ -158,7 +160,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="8834933a" class="cell" data-execution_count="2">
+<div id="e8b74b7d" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -171,7 +173,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Cambiando el orden</li>
 </ul>
-<div id="c5f304e5" class="cell" data-execution_count="3">
+<div id="3068986a" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>category_order<span class="op">=</span>[<span class="st">'No answer'</span>,</span>
@@ -192,7 +194,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Muestran la media de una variable cuantitativa por categoría</li>
 </ul></li>
 </ul>
-<div id="8b1c16e4" class="cell" data-execution_count="4">
+<div id="3887f9ce" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -211,7 +213,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul></li>
 <li><p>Desactivando los intervalos de confianza</p></li>
 </ul>
-<div id="34e9f5a2" class="cell" data-execution_count="5">
+<div id="809e31d6" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.plyplot <span class="im">as</span> plt</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -225,13 +227,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Cambiando la orientación de las barras</li>
 </ul>
-<div id="48c78e99" class="cell" data-execution_count="6">
+<div id="13d917f2" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>sns.catplot(x<span class="op">=</span><span class="st">'total_bill'</span>, y<span class="op">=</span><span class="st">'day'</span>,</span>
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>            data<span class="op">=</span>tips,</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>            kind<span class="op">=</span><span class="st">'bar'</span>,)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>            kind<span class="op">=</span><span class="st">'bar'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img src="images/paste-15.png" class="img-fluid" width="370"></p>
 <p>Es común poner la variable categórica en el eje x</p>
@@ -239,7 +241,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="gráficos-de-recuento">Gráficos de recuento</h3>
 <p>En este ejercicio, volveremos a explorar nuestro conjunto de datos que contiene las respuestas a una encuesta enviada a los jóvenes. Podríamos sospechar que los jóvenes pasan mucho tiempo en internet, pero ¿Cuánto declaran utilizar internet al día? Utilicemos un gráfico de recunto para desglosar el número de respuestas de la encuesta en cada categoría y luego exploremos si cambia en función de la edad.</p>
 <p>Como recordatorio, para crear un gráfico de recuento, utilizaremos la función <code>catplot()</code> y especificaremos el nombre de la variable categórica a contar (<code>x=____</code>), el DataFrame de pandas a utilizar (<code>data=____</code>), y el tipo de gráfico (<code>kind="count"</code>).</p>
-<div id="4fd51d69" class="cell" data-execution_count="7">
+<div id="52455e20" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
@@ -387,7 +389,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol type="1">
 <li>Utiliza <code>sns.catplot()</code> para crear un gráfico de recuento utilizando el DataFrame <code>survery_data</code> con <code>"Internet usage"</code> en el eje x.</li>
 </ol>
-<div id="a2ed4d4a" class="cell" data-execution_count="8">
+<div id="a4595576" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create count plot of internet usage</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>sns.catplot(x<span class="op">=</span><span class="st">'Internet usage'</span>,</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>            data<span class="op">=</span>survey_data,</span>
@@ -406,7 +408,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol start="2" type="1">
 <li>Haz que las barras sean horizontales en lugar de verticales</li>
 </ol>
-<div id="9b9f2e92" class="cell" data-execution_count="9">
+<div id="97fa7403" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Change the orientation of the plot</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>sns.catplot(y<span class="op">=</span><span class="st">'Internet usage'</span>,</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>            data<span class="op">=</span>survey_data,</span>
@@ -425,7 +427,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol start="3" type="1">
 <li>Separa este gráfico en dos subtramas de columnas contiguas en función de <code>"Age Category"</code>, que separa a los encuestados en menores de 21 años y mayores de 21 años. A partir de 21 años.</li>
 </ol>
-<div id="dd0de71b" class="cell" data-execution_count="10">
+<div id="33d2b72e" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Separate ubti cikynb subplots based on age category</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>sns.catplot(y<span class="op">=</span><span class="st">'Internet usage'</span>,</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>            data<span class="op">=</span>survey_data,</span>
@@ -454,7 +456,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Utiliza el DataFrame <code>survey_data</code> y <code>sns.catplot()</code> para crear un gráfico de barras con <code>"Gender"</code> en el eje x y <code>"Interested in Math"</code> en el eje y.</li>
 </ul>
-<div id="1ddd2bae" class="cell" data-execution_count="11">
+<div id="2d381def" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -479,7 +481,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="personalizar-gráficos-de-barras" class="level3">
 <h3 class="anchored" data-anchor-id="personalizar-gráficos-de-barras">Personalizar gráficos de barras</h3>
 <p>En este ejercicio, exploraremos datos de alumnos de secundaria. La variable <code>"study_time"</code> registra el tiempo de estudio semanal declarado por cada estudiante como una de las siguientes categorías: <code>"&lt;2 hours"</code>, <code>"2 to 5 hours"</code>, <code>"5 to 10 hours"</code>, o <code>"&gt;10 hours"</code>. ¿Los alumnos que declaran estudiar más tienden a obtener mejores notas finales Comparemos la nota media final entre los alumnos de cada categoría mediante un diagrama de barras.</p>
-<div id="e89a1dce" class="cell" data-execution_count="12">
+<div id="7dc0834c" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
@@ -651,7 +653,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol type="1">
 <li>Utiliza <code>sns.catplot()</code> para crear un gráfico de barras con <code>"study_time"</code> en el eje x y la calificación final (<code>"G3"</code>) en el eje y, utilizando el DataFrame <code>student_data</code>.</li>
 </ol>
-<div id="e2a23f75" class="cell" data-execution_count="13">
+<div id="332dca97" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create bar plot of average final grade in each study category</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>sns.catplot(x<span class="op">=</span><span class="st">'study_time'</span>, y<span class="op">=</span><span class="st">'G3'</span>,</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>            data<span class="op">=</span>student_data,</span>
@@ -670,7 +672,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol start="2" type="1">
 <li>Utilizando el parámetro <code>order</code> y la lista <code>category_order</code> que se proporciona, reorganiza las barras para que estén en orden de menor tiempo de estudio a mayor.</li>
 </ol>
-<div id="fa85f691" class="cell" data-execution_count="14">
+<div id="f0d35cef" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># List of categories from lowest to highest</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>category_order <span class="op">=</span> [<span class="st">'&lt;2 hours'</span>,</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>                  <span class="st">'2 to 5 hours'</span>,</span>
@@ -696,7 +698,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol start="3" type="1">
 <li>Actualiza el gráfico para que ya no muestre los intervalos de confianza.</li>
 </ol>
-<div id="2b2813f4" class="cell" data-execution_count="15">
+<div id="f150c585" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># List of categories from lowest to highest</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>category_order <span class="op">=</span> [<span class="st">'&lt;2 hours'</span>,</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>                  <span class="st">'2 to 5 hours'</span>,</span>
@@ -738,7 +740,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Cómo crear un diagrama de caja en Seaborn</li>
 </ul>
-<div id="85da9a03" class="cell" data-execution_count="16">
+<div id="e3b19a0c" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -751,7 +753,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Cambiar el orden de las categorías</li>
 </ul>
-<div id="01cef496" class="cell" data-execution_count="17">
+<div id="15371478" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -766,7 +768,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Omitir los valores atípicos usando <code>sym</code></li>
 </ul>
-<div id="a9d0d5dd" class="cell" data-execution_count="18">
+<div id="3c7b586e" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -786,7 +788,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Muestra los valores mínimo y máximo: <code>whis=[0, 100]</code></li>
 </ul></li>
 </ul>
-<div id="2253b6d1" class="cell" data-execution_count="19">
+<div id="1be1c1c2" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -806,7 +808,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol type="1">
 <li>Utiliza <code>sns.catplot()</code>, y el DataFrame <code>student_data</code> para crear un gráfico de caja con <code>"study_time"</code> en el eje x y <code>"G3"</code> en el eje y. Establece el orden de las categorías en <code>study_time_order</code>.</li>
 </ol>
-<div id="800fcf23" class="cell" data-execution_count="20">
+<div id="5603fe81" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify the category ordering</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>study_time_order <span class="op">=</span> [<span class="st">'&lt;2 hours'</span>, <span class="st">'2 to 5 hours'</span>,</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>                    <span class="st">'5 to 10 hours'</span>, <span class="st">'&gt;10 hours'</span>]</span>
@@ -850,7 +852,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Utiliza <code>sns.catplot()</code> para crear un gráfico de caja con el DataFrame <code>student_data</code>, poniendo <code>internet</code> en el eje x y <code>"G3"</code> en el eje y.</li>
 </ul>
-<div id="ca0b1814" class="cell" data-execution_count="21">
+<div id="bfd17d94" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a box plot with subgroups and omit the outliers</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>sns.catplot(x<span class="op">=</span><span class="st">'internet'</span>, y<span class="op">=</span><span class="st">'G3'</span>,</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>            data<span class="op">=</span>student_data,</span>
@@ -872,6 +874,184 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Las calificaciones medianas son bastante similares entre cada grupo, pero la dispersión de la distribución parece mayor entre los estudiantes que tienen acceso a internet.</p>
 </section>
 </section>
+<section id="ajustar-los-bigotes" class="level3">
+<h3 class="anchored" data-anchor-id="ajustar-los-bigotes">Ajustar los bigotes</h3>
+<p>En la lección vimos que múltiples formas de definir los bigotes en un diagrama de caja. En esta serie de ejercicios, seguiermos utilizando el conjunto de datos <code>student_data</code> para comparar la distribución de las calificaciones finales (<code>"G3"</code>) entre los estudiantes que mantienen un relación romántica y los que no. Utilizaremos la variable <code>"romantic"</code>, que es un indicador si/no de si el alumno tiene una relación romántica.</p>
+<p>Vamos a crear un diagrama de cajas para ver esta relación y probar distintas formas de definir los bigotes.</p>
+<section id="instrucciones-5" class="level4">
+<h4 class="anchored" data-anchor-id="instrucciones-5">Instrucciones</h4>
+<ol type="1">
+<li>Ajusta el código para que los bigotes del diagrama de caja se extiendan hata 0,5 * IQR. Recuerda: el IQR es el rango intercuartílico.</li>
+</ol>
+<div id="82b2e4ff" class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the whiskers to 0.5 * IQR</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>sns.catplot(x<span class="op">=</span><span class="st">'romantic'</span>, y<span class="op">=</span><span class="st">'G3'</span>,</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>            data<span class="op">=</span>student_data,</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>            kind<span class="op">=</span><span class="st">'box'</span>,</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>            whis<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Show plot</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="03_Visualizar_variable_categorica_cuantitativa_files/figure-html/cell-23-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="2" type="1">
+<li>Cambia el código para que los bigotes se extiendan hasta los percentiles 5 y 95</li>
+</ol>
+<div id="9e0afdb8" class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extend the whiskers to the 5th and 95th percentile</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>sns.catplot(x<span class="op">=</span><span class="st">'romantic'</span>, y<span class="op">=</span><span class="st">'G3'</span>,</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>            data<span class="op">=</span>student_data,</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>            kind<span class="op">=</span><span class="st">'box'</span>,</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>            whis<span class="op">=</span>[<span class="dv">5</span>, <span class="dv">95</span>])</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Show plot</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="03_Visualizar_variable_categorica_cuantitativa_files/figure-html/cell-24-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="3" type="1">
+<li>Cambia el código para que los bigotes se extiendan hsta los valores mínimo y máximo.</li>
+</ol>
+<div id="44845a24" class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the wiskers at the min and max values</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>sns.catplot(x<span class="op">=</span><span class="st">'romantic'</span>, y<span class="op">=</span><span class="st">'G3'</span>,</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>            data<span class="op">=</span>student_data,</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>            kind<span class="op">=</span><span class="st">'box'</span>,</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>            whis<span class="op">=</span>[<span class="dv">0</span>, <span class="dv">100</span>])</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Show plot</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="03_Visualizar_variable_categorica_cuantitativa_files/figure-html/cell-25-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>La nota media es la misma entre estos dos grupos, pero la nota máxima es más alta entre los estudiantes que no están en una relación romántica.</p>
+</section>
+</section>
+</section>
+<section id="gráfico-de-puntos" class="level2">
+<h2 class="anchored" data-anchor-id="gráfico-de-puntos">Gráfico de puntos</h2>
+<ul>
+<li>¿Qué son los gráficos de puntos?
+<ul>
+<li>Los puntos muestran la media de una variable cuantitativa.</li>
+<li>Las líneas verticales muestran los intervalos de confianza del 95%.</li>
+</ul></li>
+<li>Gráficos de puntos vs Gráficos de líneas
+<ul>
+<li>Ambos muestran:
+<ul>
+<li>La media de una variable cuantitativa.</li>
+<li>Los intervalos de confianza del 95% para la media</li>
+</ul></li>
+<li>Diferencias:
+<ul>
+<li>Los gráficos de línea tienen variables cuantitativas (usualmente tiempo) en el eje x.</li>
+<li>Los gráficos de puntos son variables categóricas en el eje x.</li>
+</ul></li>
+</ul></li>
+<li>Gráficos de puntos vs Gráficos de barras
+<ul>
+<li>Ambos muestran:
+<ul>
+<li>La media de una variable cuantitativa.</li>
+<li>Los intervalos de confianza del 95% para la media</li>
+</ul></li>
+</ul></li>
+</ul>
+<p><img src="images/paste-21.png" class="img-fluid" width="540"></p>
+<ul>
+<li>Crear un Gráfico de puntos</li>
+</ul>
+<div id="2aa5c6b4" class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>sns.catplot(x<span class="op">=</span><span class="st">'age'</span>, y<span class="op">=</span><span class="st">'masculinity_important'</span>,</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>            data<span class="op">=</span>masculinity_data,</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>            kind<span class="op">=</span><span class="st">'point'</span>,</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>            hue<span class="op">=</span><span class="st">'feel_masculine'</span>)</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><img src="images/paste-22.png" class="img-fluid" width="370"></p>
+<ul>
+<li>Desconectando los puntos</li>
+</ul>
+<div id="30fbb513" class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>sns.catplot(x<span class="op">=</span><span class="st">'age'</span>, y<span class="op">=</span><span class="st">'masculinity_important'</span>,</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>            data<span class="op">=</span>masculinity_data,</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>            kind<span class="op">=</span><span class="st">'point'</span>,</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>            hue<span class="op">=</span><span class="st">'feel_masculine'</span>,</span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>            join<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><img src="images/paste-23.png" class="img-fluid" width="370"></p>
+<ul>
+<li>Desplegando la mediana</li>
+</ul>
+<div id="7c628099" class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> median</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>sns.catplot(x<span class="op">=</span><span class="st">'smoker'</span>, y<span class="op">=</span><span class="st">'total_bill'</span>,</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>            data<span class="op">=</span>tips,</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>            kind<span class="op">=</span><span class="st">'point'</span>,</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>            estimator<span class="op">=</span>median)</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><img src="images/paste-24.png" class="img-fluid" width="370"></p>
+<ul>
+<li>Personalizar los intervalos de confianza</li>
+</ul>
+<div id="61299692" class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>sns.catplot(x<span class="op">=</span><span class="st">'smoker'</span>, y<span class="op">=</span><span class="st">'total_bill'</span>,</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>            data<span class="op">=</span>tips,</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>            kind<span class="op">=</span><span class="st">'point'</span>,</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>            capsize<span class="op">=</span><span class="fl">0.2</span>)</span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><img src="images/paste-25.png" class="img-fluid" width="370"></p>
+<ul>
+<li>Desactivar los intervalos de confianza</li>
+</ul>
+<div id="831b267c" class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>sns.catplot(x<span class="op">=</span><span class="st">'smoker'</span>, y<span class="op">=</span><span class="st">'total_bill'</span>,</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>            data<span class="op">=</span>tips,</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>            kind<span class="op">=</span><span class="st">'point'</span>,</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>            ci<span class="op">=</span><span class="va">None</span>)</span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><img src="images/paste-26.png" class="img-fluid" width="370"></p>
 </section>
 
 </main>

@@ -122,7 +122,7 @@ import seaborn as sns
 
 sns.catplot(x='total_bill', y='day',
             data=tips,
-            kind='bar',)
+            kind='bar')
 ```
 
 ![](images/paste-15.png){width="370"}
@@ -362,7 +362,6 @@ plt.show()
 
 ![](images/paste-20.png){width="370"}
 
-
 ### Crea e interpreta un diagrama de cajas
 
 Sigamos utilizando el conjunto de datos `student_data`. En un ejercicio anterior, exploramos la realción entre el estudio y la nota final utlizando un digrama de barras para comparar la nota final media (`"G3"`) entre los estudiantes de diferentes categorías de `"study_time"`.
@@ -371,8 +370,7 @@ En este ejercicio, intentaremos utilizar un diagrama de cajas para ver esta rela
 
 #### Instrucciones
 
-1. Utiliza `sns.catplot()`, y el DataFrame `student_data` para crear un gráfico de caja con `"study_time"` en el eje x y `"G3"` en el eje y. Establece el orden de las categorías en `study_time_order`.
-
+1.  Utiliza `sns.catplot()`, y el DataFrame `student_data` para crear un gráfico de caja con `"study_time"` en el eje x y `"G3"` en el eje y. Establece el orden de las categorías en `study_time_order`.
 
 ```{python}
 # Specify the category ordering
@@ -389,22 +387,20 @@ sns.catplot(x='study_time', y='G3',
 plt.show()
 ```
 
-2. **Pregunta**
-¿ Cuál de las siguientes es una interpretación correcta de este diagrama de caja?
+2.  **Pregunta** ¿ Cuál de las siguientes es una interpretación correcta de este diagrama de caja?
 
 **Respuestas Posibles**
 
-- [ ] El percentil 75 de las notas es más alto entre los alumnos que estudian más de 10 horas a la semana.
-- [ ] No hay valores atípicos en estos gráficos de caja.
-- [ ] El percentil 5 de las notas entre los alumnos que estudian memnos de 2 horas es de 5,0.
-- [X] La nota media entre los alumnos que estudian menos de 2 horas es de 10,0.
+-   [ ] El percentil 75 de las notas es más alto entre los alumnos que estudian más de 10 horas a la semana.
+-   [ ] No hay valores atípicos en estos gráficos de caja.
+-   [ ] El percentil 5 de las notas entre los alumnos que estudian memnos de 2 horas es de 5,0.
+-   [x] La nota media entre los alumnos que estudian menos de 2 horas es de 10,0.
 
 La línea del medio de cada caja representa la mediana.
 
-
 ### Omitir valores atípicos
 
-Ahora vamos a utilizar el conjunto de datos `student_data` para ocmparar la distribución de las calificaciones finales (`"G3"`) entre los estudiantes que tienen acceso a internet en casa y los que no. Para ello, utilizaremos la variable `"internet", que es un indicador binario (si/no) de si un alumno tiene acceso a internet en casa.
+Ahora vamos a utilizar el conjunto de datos `student_data` para ocmparar la distribución de las calificaciones finales (`"G3"`) entre los estudiantes que tienen acceso a internet en casa y los que no. Para ello, utilizaremos la variable \`"internet", que es un indicador binario (si/no) de si un alumno tiene acceso a internet en casa.
 
 Dado que internet puede ser menos accesible en las zonas rurales, añadiremos subgrupos en función de dónde viva el alumno. Pra ello, podemos utilizar la varible `"location"`, que es un indicador de su un estudiante vive en una localidad urbana ("Urban") o rural ("Rural").
 
@@ -412,9 +408,7 @@ Como recordatorio, puedes omitir los valores atípicos en los gráficos de caja 
 
 #### Instrucciones
 
-- Utiliza `sns.catplot()` para crear un gráfico de caja con el DataFrame `student_data`, poniendo `internet` en el eje x y `"G3"` en el eje y.
-
-
+-   Utiliza `sns.catplot()` para crear un gráfico de caja con el DataFrame `student_data`, poniendo `internet` en el eje x y `"G3"` en el eje y.
 
 ```{python}
 # Create a box plot with subgroups and omit the outliers
@@ -430,3 +424,163 @@ plt.show()
 ```
 
 Las calificaciones medianas son bastante similares entre cada grupo, pero la dispersión de la distribución parece mayor entre los estudiantes que tienen acceso a internet.
+
+### Ajustar los bigotes
+
+En la lección vimos que múltiples formas de definir los bigotes en un diagrama de caja. En esta serie de ejercicios, seguiermos utilizando el conjunto de datos `student_data` para comparar la distribución de las calificaciones finales (`"G3"`) entre los estudiantes que mantienen un relación romántica y los que no. Utilizaremos la variable `"romantic"`, que es un indicador si/no de si el alumno tiene una relación romántica.
+
+Vamos a crear un diagrama de cajas para ver esta relación y probar distintas formas de definir los bigotes.
+
+#### Instrucciones
+
+1.  Ajusta el código para que los bigotes del diagrama de caja se extiendan hata 0,5 \* IQR. Recuerda: el IQR es el rango intercuartílico.
+
+```{python}
+# Set the whiskers to 0.5 * IQR
+sns.catplot(x='romantic', y='G3',
+            data=student_data,
+            kind='box',
+            whis=0.5)
+
+# Show plot
+plt.show()
+```
+
+2.  Cambia el código para que los bigotes se extiendan hasta los percentiles 5 y 95
+
+```{python}
+# Extend the whiskers to the 5th and 95th percentile
+sns.catplot(x='romantic', y='G3',
+            data=student_data,
+            kind='box',
+            whis=[5, 95])
+
+# Show plot
+plt.show()
+```
+
+3.  Cambia el código para que los bigotes se extiendan hsta los valores mínimo y máximo.
+
+```{python}
+# Set the wiskers at the min and max values
+sns.catplot(x='romantic', y='G3',
+            data=student_data,
+            kind='box',
+            whis=[0, 100])
+
+# Show plot
+plt.show()
+```
+
+La nota media es la misma entre estos dos grupos, pero la nota máxima es más alta entre los estudiantes que no están en una relación romántica.
+
+## Gráfico de puntos
+
+-   ¿Qué son los gráficos de puntos?
+    -   Los puntos muestran la media de una variable cuantitativa.
+    -   Las líneas verticales muestran los intervalos de confianza del 95%.
+-   Gráficos de puntos vs Gráficos de líneas
+    -   Ambos muestran:
+        -   La media de una variable cuantitativa.
+        -   Los intervalos de confianza del 95% para la media
+    -   Diferencias:
+        -   Los gráficos de línea tienen variables cuantitativas (usualmente tiempo) en el eje x.
+        -   Los gráficos de puntos son variables categóricas en el eje x.
+-   Gráficos de puntos vs Gráficos de barras
+    -   Ambos muestran:
+        -   La media de una variable cuantitativa.
+        -   Los intervalos de confianza del 95% para la media
+
+![](images/paste-21.png){width="540"}
+
+-   Crear un Gráfico de puntos
+
+```{python}
+#| echo: true
+#| eval: false
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+sns.catplot(x='age', y='masculinity_important',
+            data=masculinity_data,
+            kind='point',
+            hue='feel_masculine')
+            
+plt.show()
+```
+
+![](images/paste-22.png){width="370"}
+
+-   Desconectando los puntos
+
+```{python}
+#| echo: true
+#| eval: false
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+sns.catplot(x='age', y='masculinity_important',
+            data=masculinity_data,
+            kind='point',
+            hue='feel_masculine',
+            join=False)
+            
+plt.show()
+```
+
+![](images/paste-23.png){width="370"}
+
+-   Desplegando la mediana
+
+```{python}
+#| echo: true
+#| eval: false
+import matplotlib.pyplot as plt
+import seaborn as sns
+from numpy import median
+
+sns.catplot(x='smoker', y='total_bill',
+            data=tips,
+            kind='point',
+            estimator=median)
+            
+plt.show()
+```
+
+![](images/paste-24.png){width="370"}
+
+-   Personalizar los intervalos de confianza
+
+```{python}
+#| echo: true
+#| eval: false
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+sns.catplot(x='smoker', y='total_bill',
+            data=tips,
+            kind='point',
+            capsize=0.2)
+            
+plt.show()
+```
+
+![](images/paste-25.png){width="370"}
+
+-   Desactivar los intervalos de confianza
+
+```{python}
+#| echo: true
+#| eval: false
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+sns.catplot(x='smoker', y='total_bill',
+            data=tips,
+            kind='point',
+            ci=None)
+            
+plt.show()
+```
+
+![](images/paste-26.png){width="370"}
