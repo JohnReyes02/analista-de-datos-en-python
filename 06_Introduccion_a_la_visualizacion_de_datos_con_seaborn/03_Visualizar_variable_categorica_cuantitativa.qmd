@@ -129,13 +129,11 @@ sns.catplot(x='total_bill', y='day',
 
 Es común poner la variable categórica en el eje x
 
-
 ### Gráficos de recuento
 
 En este ejercicio, volveremos a explorar nuestro conjunto de datos que contiene las respuestas a una encuesta enviada a los jóvenes. Podríamos sospechar que los jóvenes pasan mucho tiempo en internet, pero ¿Cuánto declaran utilizar internet al día? Utilicemos un gráfico de recunto para desglosar el número de respuestas de la encuesta en cada categoría y luego exploremos si cambia en función de la edad.
 
 Como recordatorio, para crear un gráfico de recuento, utilizaremos la función `catplot()` y especificaremos el nombre de la variable categórica a contar (`x=____`), el DataFrame de pandas a utilizar (`data=____`), y el tipo de gráfico (`kind="count"`).
-
 
 ```{python}
 import pandas as pd
@@ -150,8 +148,7 @@ survey_data.head()
 
 #### Instrucciones
 
-1. Utiliza `sns.catplot()` para crear un gráfico de recuento utilizando el DataFrame `survery_data` con `"Internet usage"` en el eje x.
-
+1.  Utiliza `sns.catplot()` para crear un gráfico de recuento utilizando el DataFrame `survery_data` con `"Internet usage"` en el eje x.
 
 ```{python}
 # Create count plot of internet usage
@@ -163,8 +160,7 @@ sns.catplot(x='Internet usage',
 plt.show()
 ```
 
-2. Haz que las barras sean horizontales en lugar de verticales
-
+2.  Haz que las barras sean horizontales en lugar de verticales
 
 ```{python}
 # Change the orientation of the plot
@@ -176,8 +172,7 @@ sns.catplot(y='Internet usage',
 plt.show()
 ```
 
-3. Separa este gráfico en dos subtramas de columnas contiguas en función de `"Age Category"`, que separa a los encuestados en menores de 21 años y mayores de 21 años. A partir de 21 años.
-
+3.  Separa este gráfico en dos subtramas de columnas contiguas en función de `"Age Category"`, que separa a los encuestados en menores de 21 años y mayores de 21 años. A partir de 21 años.
 
 ```{python}
 # Separate ubti cikynb subplots based on age category
@@ -191,3 +186,247 @@ plt.show()
 ```
 
 Parece que la mayoría de los jóvenes usan internet durante pocas horas todos los días, independientemente de su edad.
+
+### Diagramas de barras con porcentajes
+
+Sigamos explorando las respuestas a una encuesta enviada a los jóvenes. La variable `"Interested in Math"` es `True` si la persona declaró estar interesada o muy interesada en las matemáticas, y `False` en caso contrario. ¿Qué porcentaje de jóvenes afirma estar interesado en las matemáticas, y varía esto en función del género? Utilicemos un diagrama de barras para averiguarlo.
+
+Como recordatorio, crearemos un gráfico de barras utilizando la función `catplot()`, proporcionando el nombre de la varible categórica a poner en el eje x (`x=____`), el nombre de la variable cuantitativa a resumir en el eje y (`y=____`), el DataFrame de pandas a utilizar (`data=____`), y el tipo de gráfico categórico (`kind="bar"`).
+
+#### Instrucciones
+
+-   Utiliza el DataFrame `survey_data` y `sns.catplot()` para crear un gráfico de barras con `"Gender"` en el eje x y `"Interested in Math"` en el eje y.
+
+```{python}
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Create a bar plot of interest in math, separated by gender 
+sns.catplot(x='Gender', y='Interested in Math',
+            data=survey_data,
+            kind='bar')
+
+# Show plot
+plt.show()
+```
+
+Cuando la variable y es Verdadero/Falso, los gráficos de barras mostrarán el porcentaje de respuestas que informan Verdadero. Este gráfico nos muestra que los hombres informan un interés mucho mayor en las matemáticas en comparación con las mujeres.
+
+### Personalizar gráficos de barras
+
+En este ejercicio, exploraremos datos de alumnos de secundaria. La variable `"study_time"` registra el tiempo de estudio semanal declarado por cada estudiante como una de las siguientes categorías: `"<2 hours"`, `"2 to 5 hours"`, `"5 to 10 hours"`, o `">10 hours"`. ¿Los alumnos que declaran estudiar más tienden a obtener mejores notas finales Comparemos la nota media final entre los alumnos de cada categoría mediante un diagrama de barras.
+
+```{python}
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+ruta = './data/student-alcohol-consumption.csv'
+student_data = pd.read_csv(ruta, index_col=0)
+student_data.head()
+```
+
+#### Instrucciones
+
+1.  Utiliza `sns.catplot()` para crear un gráfico de barras con `"study_time"` en el eje x y la calificación final (`"G3"`) en el eje y, utilizando el DataFrame `student_data`.
+
+```{python}
+# Create bar plot of average final grade in each study category
+sns.catplot(x='study_time', y='G3',
+            data=student_data,
+            kind='bar')
+
+# Show plot
+plt.show()
+```
+
+2.  Utilizando el parámetro `order` y la lista `category_order` que se proporciona, reorganiza las barras para que estén en orden de menor tiempo de estudio a mayor.
+
+```{python}
+# List of categories from lowest to highest
+category_order = ['<2 hours',
+                  '2 to 5 hours',
+                  '5 to 10 hours',
+                  '>10 hours']
+
+# Rearrange the categories
+sns.catplot(x='study_time', y='G3',
+            data=student_data,
+            kind='bar',
+            order=category_order)
+
+# Show plot
+plt.show()
+```
+
+3.  Actualiza el gráfico para que ya no muestre los intervalos de confianza.
+
+```{python}
+# List of categories from lowest to highest
+category_order = ['<2 hours',
+                  '2 to 5 hours',
+                  '5 to 10 hours',
+                  '>10 hours']
+
+# Rearrange the categories
+sns.catplot(x='study_time', y='G3',
+            data=student_data,
+            kind='bar',
+            order=category_order,
+            errorbar=None) # ci=None deprecated
+
+# Show plot
+plt.show()
+```
+
+Los estudiantes en nuestra muestra que estudiaron más tienen un promedio de calificaciones ligeramente más alto, pero no es una relación fuerte.
+
+## Diagramas de caja
+
+-   ¿Qué es un diagrama de caja?
+    -   Muestra la distribución de datos cuantitativos.
+    -   Se puede ver la mediana, la dispersión, la asimetría y los datos atípicos.
+    -   Facilita la comparación entre grupos.
+
+![](images/paste-16.png){width="370"}
+
+-   Cómo crear un diagrama de caja en Seaborn
+
+```{python}
+#| echo: true
+#| eval: false
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+g = sns.catplot(x='time', y='total_bill',
+                data=tips,
+                kind='box')
+plt.show()
+```
+
+![](images/paste-17.png){width="370"}
+
+-   Cambiar el orden de las categorías
+
+```{python}
+#| echo: true
+#| eval: false
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+g = sns.catplot(x='time', y='total_bill',
+                data=tips,
+                kind='box',
+                order=['Dinner',
+                        'Lunch'])
+plt.show()
+```
+
+![](images/paste-18.png){width="370"}
+
+-   Omitir los valores atípicos usando `sym`
+
+```{python}
+#| echo: true
+#| eval: false
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+g = sns.catplot(x='time', y='total_bill',
+                data=tips,
+                kind='box',
+                sym='')
+plt.show()
+```
+
+![](images/paste-19.png){width="370"}
+
+-   Cambiando los bigotes usando `whis`
+    -   Por defecto, los bigotes se extienden a 1.5 \* el rango intercuartil.
+    -   Puede ser extendido a 2.0 \* IQR: `whis=2.0`
+    -   Muestra los percentiles 5 y 95: `whis=[5, 95]`
+    -   Muestra los valores mínimo y máximo: `whis=[0, 100]`
+
+```{python}
+#| echo: true
+#| eval: false
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+g = sns.catplot(x='time', y='total_bill',
+                data=tips,
+                kind='box',
+                whis=[0, 100])
+plt.show()
+```
+
+![](images/paste-20.png){width="370"}
+
+
+### Crea e interpreta un diagrama de cajas
+
+Sigamos utilizando el conjunto de datos `student_data`. En un ejercicio anterior, exploramos la realción entre el estudio y la nota final utlizando un digrama de barras para comparar la nota final media (`"G3"`) entre los estudiantes de diferentes categorías de `"study_time"`.
+
+En este ejercicio, intentaremos utilizar un diagrama de cajas para ver esta relación. Como recordatorio, para crear un gráfico de caja tendrás que utilizar la función `catplot()` y especificar el nombre de la variable categórica a poner en el eje x (`x=____`), el nombre de la variable cuantitativa a resumir en el eje y (`y=____`), el DataFrme de pandas a utilizar (`data=____`), y el timpo de gráfico (`kind="box"`).
+
+#### Instrucciones
+
+1. Utiliza `sns.catplot()`, y el DataFrame `student_data` para crear un gráfico de caja con `"study_time"` en el eje x y `"G3"` en el eje y. Establece el orden de las categorías en `study_time_order`.
+
+
+```{python}
+# Specify the category ordering
+study_time_order = ['<2 hours', '2 to 5 hours',
+                    '5 to 10 hours', '>10 hours']
+
+# Create a box plot and set the order of the categories
+sns.catplot(x='study_time', y='G3',
+            data=student_data,
+            kind='box',
+            order=study_time_order)
+
+# Show plot
+plt.show()
+```
+
+2. **Pregunta**
+¿ Cuál de las siguientes es una interpretación correcta de este diagrama de caja?
+
+**Respuestas Posibles**
+
+- [ ] El percentil 75 de las notas es más alto entre los alumnos que estudian más de 10 horas a la semana.
+- [ ] No hay valores atípicos en estos gráficos de caja.
+- [ ] El percentil 5 de las notas entre los alumnos que estudian memnos de 2 horas es de 5,0.
+- [X] La nota media entre los alumnos que estudian menos de 2 horas es de 10,0.
+
+La línea del medio de cada caja representa la mediana.
+
+
+### Omitir valores atípicos
+
+Ahora vamos a utilizar el conjunto de datos `student_data` para ocmparar la distribución de las calificaciones finales (`"G3"`) entre los estudiantes que tienen acceso a internet en casa y los que no. Para ello, utilizaremos la variable `"internet", que es un indicador binario (si/no) de si un alumno tiene acceso a internet en casa.
+
+Dado que internet puede ser menos accesible en las zonas rurales, añadiremos subgrupos en función de dónde viva el alumno. Pra ello, podemos utilizar la varible `"location"`, que es un indicador de su un estudiante vive en una localidad urbana ("Urban") o rural ("Rural").
+
+Como recordatorio, puedes omitir los valores atípicos en los gráficos de caja estableciendo el parámetro `sym` iguan a una cadena vacía (`""`).
+
+#### Instrucciones
+
+- Utiliza `sns.catplot()` para crear un gráfico de caja con el DataFrame `student_data`, poniendo `internet` en el eje x y `"G3"` en el eje y.
+
+
+
+```{python}
+# Create a box plot with subgroups and omit the outliers
+sns.catplot(x='internet', y='G3',
+            data=student_data,
+            kind='box',
+            col='location',
+            hue='location',
+            showfliers=False)
+
+# Show plot
+plt.show()
+```
+
+Las calificaciones medianas son bastante similares entre cada grupo, pero la dispersión de la distribución parece mayor entre los estudiantes que tienen acceso a internet.

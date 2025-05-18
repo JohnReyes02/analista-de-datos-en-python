@@ -682,7 +682,7 @@ plt.show()
 
 3. Añade marcadores para cada punto de datos a las líneas.
 
-- Utiliza el parámetro `dashes` para utilizar líneas continuas para todos los países, permitiendo al mismpo tiempo diferentes estilos de marcador para cada línea.
+- Utiliza el parámetro `dashes` para utilizar líneas continuas para todos los países, permitiendo al mismo tiempo diferentes estilos de marcador para cada línea.
 
 
 ```{python}
