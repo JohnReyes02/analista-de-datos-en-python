@@ -1,0 +1,184 @@
+---
+title: "Personalizar los gráficos de Seaborn"
+author: "Edwin John Fredy Reyes Aguirre"
+date: today
+toc: true
+toc-title: "Contenido"
+---
+
+En este último capítulo, aprenderás a añadir títulos informativos a los gráficos y etiquetas a los ejes, ¡que son una de las partes más importantes de cualquier visualización de datos! También aprenderás a personalizar el estilo de tus visualizaciones para orientar más rápidamente a tu audiencia hacia los puntos clave. Después, pondrás en común todo lo que has aprendido en los ejercicios finales del curso.
+
+## Cambiar el estilo y el color de la trama
+
+-   Por qué personalizar?
+    -   Razones para cambiar de estilo:
+        -   Preferencias personales
+        -   Mejorar la legibilidad
+        -   Guiar la interpretación
+-   Cambiando los estilos de las figuras
+    -   Los estilos de las figuras incluyen el fondo y los ejes
+    -   Opciones: "white", "dark", "whitegrid", "darkgrid", "ticks"
+    -   Para establecer uno de ellos como estilo global para todos los gráficos se utiliza `sns.set_style()`
+-   Estilo de figura por defecto ("white")
+    -   Si solo nos interesa la tendencia general:
+
+```{python}
+#| echo: true
+#| eval: false
+sns.catplot(x='age', y='masculinity_important',
+            data=masculinity_data,
+            hue='feel_masculine',
+            kind='point')
+plt.show()
+```
+
+![](images/paste-27.png){width="370"}
+
+-   Estilo de figura: "whitegrid"
+    -   Para determinar valores específicos:
+
+```{python}
+#| echo: true
+#| eval: false
+sns.set_style('whitegrid')
+
+sns.catplot(x='age', y='masculinity_important',
+            data=masculinity_data,
+            hue='feel_masculine',
+            kind='point')
+plt.show()
+```
+
+![](images/paste-28.png){width="370"}
+
+-   Cambiando la paleta
+    -   Los cambios en la paleta de la figura, cambia el color de los elementos principales del gráfico
+    -   `sns.set_palette()`
+    -   Use las paletas preestablecidas o personalizadas
+-   Paletas divergentes
+
+![](images/paste-29.png){width="370"}
+
+-   Ejemplo (Paleta divergente)
+
+```{python}
+#| echo: true
+#| eval: false
+sns.set_palette('RdBu')
+
+category_order = ["No answer",
+                  "Not al all",
+                  "Not very",
+                  "Somewhat",
+                  "Very"]
+
+sns.catplot(x='how_masculine',
+            data=masculinity_data,
+            kind='count',
+            order=category_order)
+plt.show()
+```
+
+![](images/paste-30.png){width="370"}
+
+-   Paletas secuenciales
+
+![](images/paste-31.png){width="370"}
+
+-   Ejemplo de paleta secuencial
+
+![](images/paste-32.png){width="370"}
+
+-   Paletas personalizadas
+
+```{python}
+#| echo: true
+#| eval: false
+custom_palette = ["red", "green", "orange", "blue",
+                  "yellow", "purple"]
+
+sns.set_palette(custom_palette)
+```
+
+![](images/paste-34.png){width="370"}
+
+```{python}
+#| echo: true
+#| eval: false
+custom_palette = ["#FBB4AE", "#B3CDE3", "#CCEBC5",
+                  "#DECBE4", "#FED9A6", "#FFFFCC",
+                  "#E5B8BD", "#FDDAEC", "#F2F2F2"]
+
+sns.set_palette(custom_palette)
+```
+
+![](images/paste-33.png){width="370"}
+
+-   Cambiar la escala del gráfico
+
+    -   En las figuras "context" cambia la escala de los elementos y etiquetas del gráfico
+
+    -   \`sns.set_context()\`
+
+    -   Del mas pequeño al más grande: "paper", "notebook", "talk", "poster".
+
+-   Contexto por defecto: "paper"
+
+```{python}
+#| echo: true
+#| eval: false
+sns.catplot(x='age',
+            y='masculinity_important',
+            data=masculinity_data,
+            hue='feel_masculine',
+            kind='point')
+
+plt.show()
+```
+
+![](images/paste-35.png){width="370"}
+
+-   Contexto grande: "talk"
+    - Presentaciones donde el público este mas alejado del gráfico
+
+```{python}
+#| echo: true
+#| eval: false
+sns.set_context('talk')
+
+sns.catplot(x='age',
+            y='masculinity_important',
+            data=masculinity_data,
+            hue='feel_masculine',
+            kind='point')
+
+plt.show()
+```
+
+![](images/paste-36.png){width="370"}
+
+### Cambiar de estilo y de paleta
+
+### Cambiar la escala
+
+### Utilizar una paleta personalizada
+
+## Añadir títulos y etiquetas: Parte 1
+
+### FacetGrids vs. AxesSubplots
+
+### Añadir un título a un objeto FacetGrid
+
+## Añadir títulos y etiquetas: Parte 2
+
+### Añadir un título y etiquetas de eje
+
+### Rotar etiquetas x-tick
+
+## Unirlo Todo
+
+### Diagrama de cajas con subgrupos
+
+### Diagrama de barras con subgrupos y subtramas
+
+## ¡Bien hecho! ¿Y ahora qué?
