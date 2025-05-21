@@ -159,9 +159,196 @@ plt.show()
 
 ### Cambiar de estilo y de paleta
 
+Vamos a nuestro conjunto de datos que contiene los resultados de una encuestra realizada a jóvenes sobre sus hábitos y preferencias. Hemos proportcionado el código para crear un gráfico de recuento de sus respuestas  a la pregunta "¿Con qué frecuencia escuchas los consejos de tus padres?". Ahora vamos a cambiar el estilo y la paleta para que esta trama sea más fácil de interpretar.
+
+```{python}
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+ruta = './data/young-people-survey-responses.csv'
+survey_data = pd.read_csv(ruta, index_col=0)
+survey_data.head()
+```
+
+Transformación de los datos de la columna `"Parents' advice"`
+
+```{python}
+survey_data["Parents' advice"] = survey_data["Parents' advice"].map({1: 'Never',
+                                                                     2: 'Rarely',
+                                                                     3: 'Sometimes',
+                                                                     4: 'Often',
+                                                                     5: 'Always'})
+```
+
+#### Instrucciones
+
+1. Configura el estilo en `"whitegrid"` para ayudar al público a determinar el número de respuestas de cada categoría.
+
+```{python}
+# Set the style to "whitegrid"
+sns.set_style('whitegrid')
+
+# Create a count plot or survey responses
+category_order = ['Never', 'Rarely', 'Sometimes',
+                  'Often', 'Always']
+
+sns.catplot(x="Parents' advice",
+            data=survey_data,
+            kind='count',
+            order=category_order)
+
+# Show plot
+plt.show()
+```
+
+2. Establece la paleta de colores en la paleta secuencial denominada `"Purples`.
+
+```{python}
+# Set the color palette to "Purples"
+sns.set_style('whitegrid')
+sns.set_palette('Purples')
+
+# Create a count plot or survey responses
+category_order = ['Never', 'Rarely', 'Sometimes',
+                  'Often', 'Always']
+
+sns.catplot(x="Parents' advice",
+            data=survey_data,
+            kind='count',
+            order=category_order,
+            hue="Parents' advice", legend=False)
+
+# Show plot
+plt.show()
+```
+
+3. Cambia la paleta de colores a la paleta divergente `"RdBu"`
+
+```{python}
+# Change the color palette to "RdBu"
+sns.set_style('whitegrid')
+sns.set_palette('RdBu')
+
+# Create a count plot or survey responses
+category_order = ['Never', 'Rarely', 'Sometimes',
+                  'Often', 'Always']
+
+sns.catplot(x="Parents' advice",
+            data=survey_data,
+            kind='count', 
+            hue="Parents' advice", legend=False,
+            order=category_order)
+
+# Show plot
+plt.show()
+```
+Este estilo y la paleta de colores divergente resaltan mejor la diferencia entre el número de jóvenes que suelen escuchar los consejos de sus padres frente a los que no lo hacen.
+
+
 ### Cambiar la escala
 
+En este ejercicio, seguiremos examinando el conjunto de datos que contienen las respuestas de una encuesta a jóvenes. ¿Varía el porcentaje de personas que declaran sentirse solas en función del número de hermanos que tienen? Averigüémoslo utlizando un diagrama de barras, al tiempo que exploramos las cuatro escalas de diagrama diferentes de Seaborn. ("contextos").
+
+#### Instrucciones
+
+1. Establece la escala ("contexto") en `"paper"`, que es la más pequieña de las opciones de escala.
+
+```{python}
+# Set the context to "paper"
+sns.set_context('paper')
+
+# Create bar plot
+sns.catplot(x='Siblings', y='Loneliness',
+            data=survey_data, 
+            kind='bar', 
+            hue='Siblings', legend=False)
+
+# Show plot
+plt.show()
+```
+
+2. Cambia el contexto a `"notebook"` para aumentar la escala.
+
+```{python}
+# Change the context to "notebook"
+sns.set_context("notebook")
+
+# Create a bar plot
+sns.catplot(x='Siblings', y='Loneliness',
+            data=survey_data, 
+            kind='bar', 
+            hue='Siblings', legend=False)
+
+# Show plot
+plt.show()
+```
+
+3. Cambia el contexto a `"talk"` para aumentar la escala.
+
+```{python}
+# Change the context to "notebook"
+sns.set_context("talk")
+
+# Create a bar plot
+sns.catplot(x='Siblings', y='Loneliness',
+            data=survey_data, 
+            kind='bar', 
+            hue='Siblings', legend=False)
+
+# Show plot
+plt.show()
+```
+
+4. Cambia el contexto a `"poster"`, que es la mayor escala disponbible.
+
+```{python}
+# Change the context to "poster"
+sns.set_context("poster")
+
+# Create a bar plot
+sns.catplot(x='Siblings', y='Loneliness',
+            data=survey_data, 
+            kind='bar', 
+            hue='Siblings', legend=False)
+
+# Show plot
+plt.show()
+```
+
+Cada nombre de contexto da la sugerencia de Seaborn sobre cuándo usar una escala de gráfico dada (es un artículo, en un cuadrno de iPythonm en una charla/presentación o en una sesión de póster).
+
+
 ### Utilizar una paleta personalizada
+
+Hasta ahora, hemos analizado varias cosas en el conjunto de datos de las respuestas a las encuestas de los jóvenes, como el uso que hacen de internet, la frecuencia con que escuchan a sus padres y cuántos de ellos dicen sentirse solos. Sin embargo, algo que no hemos hecho es un resumen básico del tipo de personas que responden a esta encuesta, incluyendo su edad y género. Proporcionar estos resúmenes básicos es siempre una buena práctica cuando se trata de un conjunto de datos desconocido.
+
+El código proporcionado creará un diagrama de cajas que mostrará la distribución de edades de los encuestados masculinos frente a los femeninos. Vamos a ajustar el código para personalizar la apariencia , esta vez utilizando una paleta de colores personalizada.
+
+#### Instrucciones
+
+- Establece el estilo en `"darkgrid"`.
+
+- Establece una paleta de colores personalizada con los códigos hexadecimales de color `"#39A7D0"` y `"#36ADA4"`.
+
+```{python}
+sns.set_context('notebook')
+
+# Set the style to "darkgrid"
+sns.set_style('darkgrid')
+
+# Set a custom color palette
+sns.set_palette(['#39A7D0', '#36ADA4'])
+
+# Create the box plot of age distribution by gender
+sns.catplot(x='Gender', y='Age',
+            data=survey_data, kind='box',
+            hue='Gender', legend=False)  # se agregan pues palette sera deprecated
+
+# Show plot
+plt.show()
+```
+
 
 ## Añadir títulos y etiquetas: Parte 1
 
