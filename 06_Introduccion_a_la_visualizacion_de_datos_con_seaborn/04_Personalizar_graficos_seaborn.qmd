@@ -139,7 +139,7 @@ plt.show()
 ![](images/paste-35.png){width="370"}
 
 -   Contexto grande: "talk"
-    - Presentaciones donde el público este mas alejado del gráfico
+    -   Presentaciones donde el público este mas alejado del gráfico
 
 ```{python}
 #| echo: true
@@ -159,7 +159,7 @@ plt.show()
 
 ### Cambiar de estilo y de paleta
 
-Vamos a nuestro conjunto de datos que contiene los resultados de una encuestra realizada a jóvenes sobre sus hábitos y preferencias. Hemos proportcionado el código para crear un gráfico de recuento de sus respuestas  a la pregunta "¿Con qué frecuencia escuchas los consejos de tus padres?". Ahora vamos a cambiar el estilo y la paleta para que esta trama sea más fácil de interpretar.
+Vamos a nuestro conjunto de datos que contiene los resultados de una encuestra realizada a jóvenes sobre sus hábitos y preferencias. Hemos proportcionado el código para crear un gráfico de recuento de sus respuestas a la pregunta "¿Con qué frecuencia escuchas los consejos de tus padres?". Ahora vamos a cambiar el estilo y la paleta para que esta trama sea más fácil de interpretar.
 
 ```{python}
 import pandas as pd
@@ -183,7 +183,7 @@ survey_data["Parents' advice"] = survey_data["Parents' advice"].map({1: 'Never',
 
 #### Instrucciones
 
-1. Configura el estilo en `"whitegrid"` para ayudar al público a determinar el número de respuestas de cada categoría.
+1.  Configura el estilo en `"whitegrid"` para ayudar al público a determinar el número de respuestas de cada categoría.
 
 ```{python}
 # Set the style to "whitegrid"
@@ -202,7 +202,7 @@ sns.catplot(x="Parents' advice",
 plt.show()
 ```
 
-2. Establece la paleta de colores en la paleta secuencial denominada `"Purples`.
+2.  Establece la paleta de colores en la paleta secuencial denominada `"Purples`.
 
 ```{python}
 # Set the color palette to "Purples"
@@ -223,7 +223,7 @@ sns.catplot(x="Parents' advice",
 plt.show()
 ```
 
-3. Cambia la paleta de colores a la paleta divergente `"RdBu"`
+3.  Cambia la paleta de colores a la paleta divergente `"RdBu"`
 
 ```{python}
 # Change the color palette to "RdBu"
@@ -243,8 +243,8 @@ sns.catplot(x="Parents' advice",
 # Show plot
 plt.show()
 ```
-Este estilo y la paleta de colores divergente resaltan mejor la diferencia entre el número de jóvenes que suelen escuchar los consejos de sus padres frente a los que no lo hacen.
 
+Este estilo y la paleta de colores divergente resaltan mejor la diferencia entre el número de jóvenes que suelen escuchar los consejos de sus padres frente a los que no lo hacen.
 
 ### Cambiar la escala
 
@@ -252,7 +252,7 @@ En este ejercicio, seguiremos examinando el conjunto de datos que contienen las 
 
 #### Instrucciones
 
-1. Establece la escala ("contexto") en `"paper"`, que es la más pequieña de las opciones de escala.
+1.  Establece la escala ("contexto") en `"paper"`, que es la más pequieña de las opciones de escala.
 
 ```{python}
 # Set the context to "paper"
@@ -268,7 +268,7 @@ sns.catplot(x='Siblings', y='Loneliness',
 plt.show()
 ```
 
-2. Cambia el contexto a `"notebook"` para aumentar la escala.
+2.  Cambia el contexto a `"notebook"` para aumentar la escala.
 
 ```{python}
 # Change the context to "notebook"
@@ -284,7 +284,7 @@ sns.catplot(x='Siblings', y='Loneliness',
 plt.show()
 ```
 
-3. Cambia el contexto a `"talk"` para aumentar la escala.
+3.  Cambia el contexto a `"talk"` para aumentar la escala.
 
 ```{python}
 # Change the context to "notebook"
@@ -300,7 +300,7 @@ sns.catplot(x='Siblings', y='Loneliness',
 plt.show()
 ```
 
-4. Cambia el contexto a `"poster"`, que es la mayor escala disponbible.
+4.  Cambia el contexto a `"poster"`, que es la mayor escala disponbible.
 
 ```{python}
 # Change the context to "poster"
@@ -318,7 +318,6 @@ plt.show()
 
 Cada nombre de contexto da la sugerencia de Seaborn sobre cuándo usar una escala de gráfico dada (es un artículo, en un cuadrno de iPythonm en una charla/presentación o en una sesión de póster).
 
-
 ### Utilizar una paleta personalizada
 
 Hasta ahora, hemos analizado varias cosas en el conjunto de datos de las respuestas a las encuestas de los jóvenes, como el uso que hacen de internet, la frecuencia con que escuchan a sus padres y cuántos de ellos dicen sentirse solos. Sin embargo, algo que no hemos hecho es un resumen básico del tipo de personas que responden a esta encuesta, incluyendo su edad y género. Proporcionar estos resúmenes básicos es siempre una buena práctica cuando se trata de un conjunto de datos desconocido.
@@ -327,9 +326,9 @@ El código proporcionado creará un diagrama de cajas que mostrará la distribuc
 
 #### Instrucciones
 
-- Establece el estilo en `"darkgrid"`.
+-   Establece el estilo en `"darkgrid"`.
 
-- Establece una paleta de colores personalizada con los códigos hexadecimales de color `"#39A7D0"` y `"#36ADA4"`.
+-   Establece una paleta de colores personalizada con los códigos hexadecimales de color `"#39A7D0"` y `"#36ADA4"`.
 
 ```{python}
 sns.set_context('notebook')
@@ -349,10 +348,103 @@ sns.catplot(x='Gender', y='Age',
 plt.show()
 ```
 
+Parece que la edad media es la misma para hombres y mujeres, pero la distribución de las mujeres se inclina hacia edades más jóvenes que la de los hombres.
 
 ## Añadir títulos y etiquetas: Parte 1
 
+-   Creando visualizaciones informativas
+    -   Se añade un título.
+    -   Las etiquetas de los ejes son informativas.
+    -   Las etiquetas del eje x estan giradas para mayor claridad.
+
+![](images/paste-37.png){width="570"}
+
+-   Objetos FacetGrid vs. AxesSubplot
+
+    -   Los gráficos de Seaborn creean dos diferentes tipos de objetos: `FacetGrid` y `AxesSubplot`.
+
+```{python}
+#| echo: true
+#| eval: false
+g = sns.scatterplot(x='height', y='weight', data=df)
+type(g)
+```
+
+ > matplotlib.axes._subplots.AxesSubplot
+
+-   FacetGrid vacío
+
+    -   Esta formado por uno o varios AxesSuubplots
+
+        ![](images/paste-38.png){width="370"}
+
+-   Objetos FacetGrid vs. AxesSubplot
+
+    | Tipo de Objeto | Tipo de gráfico                  | Características      |
+    |----------------|----------------------------------|----------------------|
+    | `FacetGrid`    | `relplot()`, `catplot()`         | Puede crear subplots |
+    | `AxesSubplot`  | `scatterplot`, `countplot`, etc. | Crea un solo gráfico |
+
+-   Añadiendo un título al FacetGrid
+
+```{python}
+#| echo: true
+#| eval: false
+g = sns.catplot(x='Region', y='Birthrate',
+                data=gdp_data, kind='box')
+
+g.fig.suptitle('New Title',
+                y=1.03)
+
+plt.show()
+```
+
+![](images/paste-39.png){width="370"}
+
+
 ### FacetGrids vs. AxesSubplots
+
+En la lección reciente, aprendimos que las funciones de trazado de Seaborn crean dos tipos diferentes de objetos: objetos `FacetGrid` y objetos `AxesSubplot`. El método para añadir un título a tu gráfico variará en función del tipo de objeto que sea.
+
+En el código proporcionadom hemos utilizado `relplot()` con el conjunto de datos de millas por galón para crear un gráfico de dispersión que muestra la realación entre el peso de un coche y su potencia. Este gráfico de dispersión se asigna a la variable `g`. Identifiquemos de qué tipo de objeto se trata.
+
+```{python}
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+ruta = './data/mpg.csv'
+mpg = pd.read_csv(ruta)
+mpg.head()
+```
+
+#### Instrucciones
+
+1. Identifica qué tipo de objeto es el gráfico `g` y asígnalo a la variable `type_of_g`
+
+```{python}
+# Create a scatter plot
+g = sns.relplot(x='weight', y='horsepower',
+                    data=mpg, kind='scatter')
+
+# Identify plot type
+type_of_g = type(g)
+
+# Print type
+print(type_of_g)
+```
+2. **Pregunta**
+
+Acabamos de ver que `sns.relplot()` crea objetos FacetGrid. ¿Qué otra función Seaborn crea un objeto FacetGrid en lugar de un objeto AxesSubplot?
+
+**Respuestas posibles**
+
+- [X] `sns.catplot()`
+- [ ] `sns.scatterplot()`
+- [ ] `sns.boxplot()`
+- [ ] `sns.countplot()`
+
+`catplot()` admite la creación de subgráficos, por lo que crea un objeto `FacetGrid`.
 
 ### Añadir un título a un objeto FacetGrid
 

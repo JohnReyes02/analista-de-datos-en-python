@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Edwin John Fredy Reyes Aguirre">
-<meta name="dcterms.date" content="2025-05-21">
+<meta name="dcterms.date" content="2025-05-22">
 
 <title>Personalizar los gráficos de Seaborn</title>
 <style>
@@ -68,7 +68,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="04_Personalizar_graficos_seaborn_files/libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="04_Personalizar_graficos_seaborn_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="04_Personalizar_graficos_seaborn_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="04_Personalizar_graficos_seaborn_files/libs/bootstrap/bootstrap-1bc8a17f135ab3d594c857e9f48e611b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="04_Personalizar_graficos_seaborn_files/libs/bootstrap/bootstrap-c0367b04c37547644fece4185067e4a7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
@@ -130,7 +130,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">May 21, 2025</p>
+      <p class="date">May 22, 2025</p>
     </div>
   </div>
   
@@ -166,7 +166,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Si solo nos interesa la tendencia general:</li>
 </ul></li>
 </ul>
-<div id="a5d72186" class="cell" data-execution_count="1">
+<div id="6764e2a7" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>sns.catplot(x<span class="op">=</span><span class="st">'age'</span>, y<span class="op">=</span><span class="st">'masculinity_important'</span>,</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>            data<span class="op">=</span>masculinity_data,</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>            hue<span class="op">=</span><span class="st">'feel_masculine'</span>,</span>
@@ -180,7 +180,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Para determinar valores específicos:</li>
 </ul></li>
 </ul>
-<div id="f1e779db" class="cell" data-execution_count="2">
+<div id="79fe0a9d" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>sns.set_style(<span class="st">'whitegrid'</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>sns.catplot(x<span class="op">=</span><span class="st">'age'</span>, y<span class="op">=</span><span class="st">'masculinity_important'</span>,</span>
@@ -203,7 +203,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Ejemplo (Paleta divergente)</li>
 </ul>
-<div id="a66da45a" class="cell" data-execution_count="3">
+<div id="d39a8b0e" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>sns.set_palette(<span class="st">'RdBu'</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>category_order <span class="op">=</span> [<span class="st">"No answer"</span>,</span>
@@ -230,14 +230,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Paletas personalizadas</li>
 </ul>
-<div id="de216a27" class="cell" data-execution_count="4">
+<div id="772c4c36" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>custom_palette <span class="op">=</span> [<span class="st">"red"</span>, <span class="st">"green"</span>, <span class="st">"orange"</span>, <span class="st">"blue"</span>,</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"yellow"</span>, <span class="st">"purple"</span>]</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>sns.set_palette(custom_palette)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img src="images/paste-34.png" class="img-fluid" width="370"></p>
-<div id="1abba85b" class="cell" data-execution_count="5">
+<div id="422f4836" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>custom_palette <span class="op">=</span> [<span class="st">"#FBB4AE"</span>, <span class="st">"#B3CDE3"</span>, <span class="st">"#CCEBC5"</span>,</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"#DECBE4"</span>, <span class="st">"#FED9A6"</span>, <span class="st">"#FFFFCC"</span>,</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"#E5B8BD"</span>, <span class="st">"#FDDAEC"</span>, <span class="st">"#F2F2F2"</span>]</span>
@@ -254,7 +254,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul></li>
 <li><p>Contexto por defecto: “paper”</p></li>
 </ul>
-<div id="41f9ff8a" class="cell" data-execution_count="6">
+<div id="70d2cba3" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>sns.catplot(x<span class="op">=</span><span class="st">'age'</span>,</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>            y<span class="op">=</span><span class="st">'masculinity_important'</span>,</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>            data<span class="op">=</span>masculinity_data,</span>
@@ -270,7 +270,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Presentaciones donde el público este mas alejado del gráfico</li>
 </ul></li>
 </ul>
-<div id="92fd2173" class="cell" data-execution_count="7">
+<div id="58bbbebc" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>sns.set_context(<span class="st">'talk'</span>)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>sns.catplot(x<span class="op">=</span><span class="st">'age'</span>,</span>
@@ -285,7 +285,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="cambiar-de-estilo-y-de-paleta" class="level3">
 <h3 class="anchored" data-anchor-id="cambiar-de-estilo-y-de-paleta">Cambiar de estilo y de paleta</h3>
 <p>Vamos a nuestro conjunto de datos que contiene los resultados de una encuestra realizada a jóvenes sobre sus hábitos y preferencias. Hemos proportcionado el código para crear un gráfico de recuento de sus respuestas a la pregunta “¿Con qué frecuencia escuchas los consejos de tus padres?”. Ahora vamos a cambiar el estilo y la paleta para que esta trama sea más fácil de interpretar.</p>
-<div id="57dca918" class="cell" data-execution_count="8">
+<div id="a164cf5e" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
@@ -293,7 +293,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>ruta <span class="op">=</span> <span class="st">'./data/young-people-survey-responses.csv'</span></span>
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>survey_data <span class="op">=</span> pd.read_csv(ruta, index_col<span class="op">=</span><span class="dv">0</span>)</span>
 <span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>survey_data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="1">
+<div class="cell-output cell-output-display" data-execution_count="13">
 <div>
 
 
@@ -428,7 +428,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Transformación de los datos de la columna <code>"Parents' advice"</code></p>
-<div id="2ea09651" class="cell" data-execution_count="9">
+<div id="02c7c5d6" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>survey_data[<span class="st">"Parents' advice"</span>] <span class="op">=</span> survey_data[<span class="st">"Parents' advice"</span>].<span class="bu">map</span>({<span class="dv">1</span>: <span class="st">'Never'</span>,</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>                                                                     <span class="dv">2</span>: <span class="st">'Rarely'</span>,</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>                                                                     <span class="dv">3</span>: <span class="st">'Sometimes'</span>,</span>
@@ -440,7 +440,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol type="1">
 <li>Configura el estilo en <code>"whitegrid"</code> para ayudar al público a determinar el número de respuestas de cada categoría.</li>
 </ol>
-<div id="7cf01ed7" class="cell" data-execution_count="10">
+<div id="e6a960e4" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the style to "whitegrid"</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>sns.set_style(<span class="st">'whitegrid'</span>)</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -458,7 +458,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="04_Personalizar_graficos_seaborn_files/figure-html/cell-11-output-1.png" width="487" height="470" class="figure-img"></p>
+<p><img src="04_Personalizar_graficos_seaborn_files/figure-html/cell-11-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -466,7 +466,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol start="2" type="1">
 <li>Establece la paleta de colores en la paleta secuencial denominada <code>"Purples</code>.</li>
 </ol>
-<div id="1f80c7eb" class="cell" data-execution_count="11">
+<div id="d7699468" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the color palette to "Purples"</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>sns.set_style(<span class="st">'whitegrid'</span>)</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>sns.set_palette(<span class="st">'Purples'</span>)</span>
@@ -486,7 +486,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="04_Personalizar_graficos_seaborn_files/figure-html/cell-12-output-1.png" width="470" height="470" class="figure-img"></p>
+<p><img src="04_Personalizar_graficos_seaborn_files/figure-html/cell-12-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -494,7 +494,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol start="3" type="1">
 <li>Cambia la paleta de colores a la paleta divergente <code>"RdBu"</code></li>
 </ol>
-<div id="dc33d08b" class="cell" data-execution_count="12">
+<div id="a5b6cd5e" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Change the color palette to "RdBu"</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>sns.set_style(<span class="st">'whitegrid'</span>)</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>sns.set_palette(<span class="st">'RdBu'</span>)</span>
@@ -514,7 +514,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="04_Personalizar_graficos_seaborn_files/figure-html/cell-13-output-1.png" width="470" height="470" class="figure-img"></p>
+<p><img src="04_Personalizar_graficos_seaborn_files/figure-html/cell-13-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -530,7 +530,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol type="1">
 <li>Establece la escala (“contexto”) en <code>"paper"</code>, que es la más pequieña de las opciones de escala.</li>
 </ol>
-<div id="268a4282" class="cell" data-execution_count="13">
+<div id="fdd2441c" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the context to "paper"</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>sns.set_context(<span class="st">'paper'</span>)</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -545,7 +545,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="04_Personalizar_graficos_seaborn_files/figure-html/cell-14-output-1.png" width="471" height="472" class="figure-img"></p>
+<p><img src="04_Personalizar_graficos_seaborn_files/figure-html/cell-14-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -553,7 +553,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol start="2" type="1">
 <li>Cambia el contexto a <code>"notebook"</code> para aumentar la escala.</li>
 </ol>
-<div id="181bce55" class="cell" data-execution_count="14">
+<div id="7236a2c0" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Change the context to "notebook"</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>sns.set_context(<span class="st">"notebook"</span>)</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -568,7 +568,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="04_Personalizar_graficos_seaborn_files/figure-html/cell-15-output-1.png" width="464" height="464" class="figure-img"></p>
+<p><img src="04_Personalizar_graficos_seaborn_files/figure-html/cell-15-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -576,7 +576,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol start="3" type="1">
 <li>Cambia el contexto a <code>"talk"</code> para aumentar la escala.</li>
 </ol>
-<div id="984fcaba" class="cell" data-execution_count="15">
+<div id="b6d8d900" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Change the context to "notebook"</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>sns.set_context(<span class="st">"talk"</span>)</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -591,7 +591,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="04_Personalizar_graficos_seaborn_files/figure-html/cell-16-output-1.png" width="447" height="447" class="figure-img"></p>
+<p><img src="04_Personalizar_graficos_seaborn_files/figure-html/cell-16-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -599,7 +599,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol start="4" type="1">
 <li>Cambia el contexto a <code>"poster"</code>, que es la mayor escala disponbible.</li>
 </ol>
-<div id="1bfd083e" class="cell" data-execution_count="16">
+<div id="042a38c4" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Change the context to "poster"</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>sns.set_context(<span class="st">"poster"</span>)</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -614,7 +614,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="04_Personalizar_graficos_seaborn_files/figure-html/cell-17-output-1.png" width="430" height="430" class="figure-img"></p>
+<p><img src="04_Personalizar_graficos_seaborn_files/figure-html/cell-17-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -632,7 +632,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Establece el estilo en <code>"darkgrid"</code>.</p></li>
 <li><p>Establece una paleta de colores personalizada con los códigos hexadecimales de color <code>"#39A7D0"</code> y <code>"#36ADA4"</code>.</p></li>
 </ul>
-<div id="203634b5" class="cell" data-execution_count="17">
+<div id="dacda9b4" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>sns.set_context(<span class="st">'notebook'</span>)</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the style to "darkgrid"</span></span>
@@ -651,18 +651,221 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="04_Personalizar_graficos_seaborn_files/figure-html/cell-18-output-1.png" width="464" height="464" class="figure-img"></p>
+<p><img src="04_Personalizar_graficos_seaborn_files/figure-html/cell-18-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
+<p>Parece que la edad media es la misma para hombres y mujeres, pero la distribución de las mujeres se inclina hacia edades más jóvenes que la de los hombres.</p>
 </section>
 </section>
 </section>
 <section id="añadir-títulos-y-etiquetas-parte-1" class="level2">
 <h2 class="anchored" data-anchor-id="añadir-títulos-y-etiquetas-parte-1">Añadir títulos y etiquetas: Parte 1</h2>
+<ul>
+<li>Creando visualizaciones informativas
+<ul>
+<li>Se añade un título.</li>
+<li>Las etiquetas de los ejes son informativas.</li>
+<li>Las etiquetas del eje x estan giradas para mayor claridad.</li>
+</ul></li>
+</ul>
+<p><img src="images/paste-37.png" class="img-fluid" width="570"></p>
+<ul>
+<li><p>Objetos FacetGrid vs.&nbsp;AxesSubplot</p>
+<ul>
+<li>Los gráficos de Seaborn creean dos diferentes tipos de objetos: <code>FacetGrid</code> y <code>AxesSubplot</code>.</li>
+</ul></li>
+</ul>
+<div id="ea17b775" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> sns.scatterplot(x<span class="op">=</span><span class="st">'height'</span>, y<span class="op">=</span><span class="st">'weight'</span>, data<span class="op">=</span>df)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(g)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<blockquote class="blockquote">
+<p>matplotlib.axes._subplots.AxesSubplot</p>
+</blockquote>
+<ul>
+<li><p>FacetGrid vacío</p>
+<ul>
+<li><p>Esta formado por uno o varios AxesSuubplots</p>
+<p><img src="images/paste-38.png" class="img-fluid" width="370"></p></li>
+</ul></li>
+<li><p>Objetos FacetGrid vs.&nbsp;AxesSubplot</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 22%">
+<col style="width: 47%">
+<col style="width: 30%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Tipo de Objeto</th>
+<th>Tipo de gráfico</th>
+<th>Características</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>FacetGrid</code></td>
+<td><code>relplot()</code>, <code>catplot()</code></td>
+<td>Puede crear subplots</td>
+</tr>
+<tr class="even">
+<td><code>AxesSubplot</code></td>
+<td><code>scatterplot</code>, <code>countplot</code>, etc.</td>
+<td>Crea un solo gráfico</td>
+</tr>
+</tbody>
+</table></li>
+<li><p>Añadiendo un título al FacetGrid</p></li>
+</ul>
+<div id="bdc0f31d" class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> sns.catplot(x<span class="op">=</span><span class="st">'Region'</span>, y<span class="op">=</span><span class="st">'Birthrate'</span>,</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>                data<span class="op">=</span>gdp_data, kind<span class="op">=</span><span class="st">'box'</span>)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>g.fig.suptitle(<span class="st">'New Title'</span>,</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>                y<span class="op">=</span><span class="fl">1.03</span>)</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><img src="images/paste-39.png" class="img-fluid" width="370"></p>
 <section id="facetgrids-vs.-axessubplots" class="level3">
 <h3 class="anchored" data-anchor-id="facetgrids-vs.-axessubplots">FacetGrids vs.&nbsp;AxesSubplots</h3>
+<p>En la lección reciente, aprendimos que las funciones de trazado de Seaborn crean dos tipos diferentes de objetos: objetos <code>FacetGrid</code> y objetos <code>AxesSubplot</code>. El método para añadir un título a tu gráfico variará en función del tipo de objeto que sea.</p>
+<p>En el código proporcionadom hemos utilizado <code>relplot()</code> con el conjunto de datos de millas por galón para crear un gráfico de dispersión que muestra la realación entre el peso de un coche y su potencia. Este gráfico de dispersión se asigna a la variable <code>g</code>. Identifiquemos de qué tipo de objeto se trata.</p>
+<div id="c3c01eb4" class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>ruta <span class="op">=</span> <span class="st">'./data/mpg.csv'</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>mpg <span class="op">=</span> pd.read_csv(ruta)</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>mpg.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="23">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">mpg</th>
+<th data-quarto-table-cell-role="th">cylinders</th>
+<th data-quarto-table-cell-role="th">displacement</th>
+<th data-quarto-table-cell-role="th">horsepower</th>
+<th data-quarto-table-cell-role="th">weight</th>
+<th data-quarto-table-cell-role="th">acceleration</th>
+<th data-quarto-table-cell-role="th">model_year</th>
+<th data-quarto-table-cell-role="th">origin</th>
+<th data-quarto-table-cell-role="th">name</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>18.0</td>
+<td>8</td>
+<td>307.0</td>
+<td>130.0</td>
+<td>3504</td>
+<td>12.0</td>
+<td>70</td>
+<td>usa</td>
+<td>chevrolet chevelle malibu</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>15.0</td>
+<td>8</td>
+<td>350.0</td>
+<td>165.0</td>
+<td>3693</td>
+<td>11.5</td>
+<td>70</td>
+<td>usa</td>
+<td>buick skylark 320</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>18.0</td>
+<td>8</td>
+<td>318.0</td>
+<td>150.0</td>
+<td>3436</td>
+<td>11.0</td>
+<td>70</td>
+<td>usa</td>
+<td>plymouth satellite</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>16.0</td>
+<td>8</td>
+<td>304.0</td>
+<td>150.0</td>
+<td>3433</td>
+<td>12.0</td>
+<td>70</td>
+<td>usa</td>
+<td>amc rebel sst</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>17.0</td>
+<td>8</td>
+<td>302.0</td>
+<td>140.0</td>
+<td>3449</td>
+<td>10.5</td>
+<td>70</td>
+<td>usa</td>
+<td>ford torino</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<section id="instrucciones-3" class="level4">
+<h4 class="anchored" data-anchor-id="instrucciones-3">Instrucciones</h4>
+<ol type="1">
+<li>Identifica qué tipo de objeto es el gráfico <code>g</code> y asígnalo a la variable <code>type_of_g</code></li>
+</ol>
+<div id="8645e0a0" class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a scatter plot</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> sns.relplot(x<span class="op">=</span><span class="st">'weight'</span>, y<span class="op">=</span><span class="st">'horsepower'</span>,</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>                    data<span class="op">=</span>mpg, kind<span class="op">=</span><span class="st">'scatter'</span>)</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Identify plot type</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>type_of_g <span class="op">=</span> <span class="bu">type</span>(g)</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Print type</span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(type_of_g)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'seaborn.axisgrid.FacetGrid'&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="04_Personalizar_graficos_seaborn_files/figure-html/cell-22-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="2" type="1">
+<li><strong>Pregunta</strong></li>
+</ol>
+<p>Acabamos de ver que <code>sns.relplot()</code> crea objetos FacetGrid. ¿Qué otra función Seaborn crea un objeto FacetGrid en lugar de un objeto AxesSubplot?</p>
+<p><strong>Respuestas posibles</strong></p>
+<ul class="task-list">
+<li><label><input type="checkbox" checked=""><code>sns.catplot()</code></label></li>
+<li><label><input type="checkbox"><code>sns.scatterplot()</code></label></li>
+<li><label><input type="checkbox"><code>sns.boxplot()</code></label></li>
+<li><label><input type="checkbox"><code>sns.countplot()</code></label></li>
+</ul>
+<p><code>catplot()</code> admite la creación de subgráficos, por lo que crea un objeto <code>FacetGrid</code>.</p>
+</section>
 </section>
 <section id="añadir-un-título-a-un-objeto-facetgrid" class="level3">
 <h3 class="anchored" data-anchor-id="añadir-un-título-a-un-objeto-facetgrid">Añadir un título a un objeto FacetGrid</h3>
