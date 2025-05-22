@@ -423,6 +423,8 @@ mpg.head()
 1. Identifica qué tipo de objeto es el gráfico `g` y asígnalo a la variable `type_of_g`
 
 ```{python}
+sns.set_style('white')
+
 # Create a scatter plot
 g = sns.relplot(x='weight', y='horsepower',
                     data=mpg, kind='scatter')
@@ -446,7 +448,29 @@ Acabamos de ver que `sns.relplot()` crea objetos FacetGrid. ¿Qué otra función
 
 `catplot()` admite la creación de subgráficos, por lo que crea un objeto `FacetGrid`.
 
+
 ### Añadir un título a un objeto FacetGrid
+
+En el ejercicio anterior, utilizamos `relplot()` con el conjunto de datos de millas por galón para crear un gráfico de dispersión que mostrara la relación entre el peso de un coche y su potencia. Esto creó el objeto `FacetGrid`. 
+Ahora que sabemos qué tipo de objeto es, vamos a añadir un título a esta trama.
+
+#### Instrucciones
+
+- Añade un título a esta trama: `"Car Wight vs. Horsepower"`.
+
+```{python}
+# Create a scatter plot
+g = sns.relplot(x='weight', y='horsepower',
+            data=mpg, kind='scatter')
+
+# Add a title "Car Weight vs. Horsepower"
+g.fig.suptitle('Car Weight vs. Horsepower')
+
+# Show plot
+plt.show()
+```
+
+Parece que el peso de un coche está correlacionado positivamente con su potencia.
 
 ## Añadir títulos y etiquetas: Parte 2
 
