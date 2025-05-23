@@ -370,7 +370,7 @@ g = sns.scatterplot(x='height', y='weight', data=df)
 type(g)
 ```
 
- > matplotlib.axes._subplots.AxesSubplot
+> matplotlib.axes.\_subplots.AxesSubplot
 
 -   FacetGrid vacío
 
@@ -401,7 +401,6 @@ plt.show()
 
 ![](images/paste-39.png){width="370"}
 
-
 ### FacetGrids vs. AxesSubplots
 
 En la lección reciente, aprendimos que las funciones de trazado de Seaborn crean dos tipos diferentes de objetos: objetos `FacetGrid` y objetos `AxesSubplot`. El método para añadir un título a tu gráfico variará en función del tipo de objeto que sea.
@@ -420,7 +419,7 @@ mpg.head()
 
 #### Instrucciones
 
-1. Identifica qué tipo de objeto es el gráfico `g` y asígnalo a la variable `type_of_g`
+1.  Identifica qué tipo de objeto es el gráfico `g` y asígnalo a la variable `type_of_g`
 
 ```{python}
 sns.set_style('white')
@@ -435,28 +434,27 @@ type_of_g = type(g)
 # Print type
 print(type_of_g)
 ```
-2. **Pregunta**
+
+2.  **Pregunta**
 
 Acabamos de ver que `sns.relplot()` crea objetos FacetGrid. ¿Qué otra función Seaborn crea un objeto FacetGrid en lugar de un objeto AxesSubplot?
 
 **Respuestas posibles**
 
-- [X] `sns.catplot()`
-- [ ] `sns.scatterplot()`
-- [ ] `sns.boxplot()`
-- [ ] `sns.countplot()`
+-   [x] `sns.catplot()`
+-   [ ] `sns.scatterplot()`
+-   [ ] `sns.boxplot()`
+-   [ ] `sns.countplot()`
 
 `catplot()` admite la creación de subgráficos, por lo que crea un objeto `FacetGrid`.
 
-
 ### Añadir un título a un objeto FacetGrid
 
-En el ejercicio anterior, utilizamos `relplot()` con el conjunto de datos de millas por galón para crear un gráfico de dispersión que mostrara la relación entre el peso de un coche y su potencia. Esto creó el objeto `FacetGrid`. 
-Ahora que sabemos qué tipo de objeto es, vamos a añadir un título a esta trama.
+En el ejercicio anterior, utilizamos `relplot()` con el conjunto de datos de millas por galón para crear un gráfico de dispersión que mostrara la relación entre el peso de un coche y su potencia. Esto creó el objeto `FacetGrid`. Ahora que sabemos qué tipo de objeto es, vamos a añadir un título a esta trama.
 
 #### Instrucciones
 
-- Añade un título a esta trama: `"Car Wight vs. Horsepower"`.
+-   Añade un título a esta trama: `"Car Wight vs. Horsepower"`.
 
 ```{python}
 # Create a scatter plot
@@ -474,7 +472,136 @@ Parece que el peso de un coche está correlacionado positivamente con su potenci
 
 ## Añadir títulos y etiquetas: Parte 2
 
+-   Añadiendo un título a AxesSubplot
+
+    -   FacetGrid
+
+    ```{python}
+    #| echo: true
+    #| eval: false
+    g = sns.catplot(x='Region', y='Birthrate',
+                    data=gdp_data,
+                    kind='box')
+
+    g.fig.suptitle('New Title',
+                   y=1.03)
+    ```
+
+AxesSubplot
+
+```{python}
+#| echo: true
+#| eval: false
+g = sns.boxplot(x='Region', y='Birtrate',
+                data=gdp_data)
+
+g.set_title('New Title',
+            y=1.03)
+```
+
+-   Títulos para subgráficos
+
+```{python}
+#| echo: true
+#| eval: false
+g = sns.catplot(x='Region', y='Birthrate',
+                data=gdp_data, kind='box',
+                col='Group')
+
+# Título general
+g.fig.suptitle('New Title',
+                y=1.03)
+
+# Título de cada gráfico
+g.set_title('This is {col_name}')
+```
+
+![](images/paste-40.png){width="570"}
+
+-   Añadir etiquetas a los ejes
+
+```{python}
+#| echo: true
+#| eval: false
+g = sns.catplot(x='Region', y='Birthrate',
+                data=gdp_data, kind='box',
+                col='Group')
+
+g.set(xlabel='New X Label',
+      ylabel='New Y Label')
+
+plt.show()
+```
+
+![](images/paste-41.png){width="370"}
+
+-   Rotando las etiquetas del eje x
+
+```{python}
+#| echo: true
+#| eval: false
+g = sns.catplot(x='Region', y='Birthrate',
+                data=gdp_data, kind='box',
+                col='Group')
+
+plt.xticks(rotation=90)
+plt.show()
+```
+
+![](images/paste-42.png){width="370"}
+
+
 ### Añadir un título y etiquetas de eje
+
+Sigamos examinando el conjunto de datos de millas por galón. Esta vez crearemos un gráfico lineal para responder a la pregunta: ¿Cómo cambia a lo largo del tiempo la media de millas por galón que alcanzan los coches en cada uno de los tres lugares de origen? Para mejorar la legibilidad de este gráfico, añadiremos un título y etiquetas de eje más informativas.
+
+En el código proporcionado, creamos el gráfico de líneas utilizando la función `lineplot()`. Ten encuenta que `lineplot()` no admite la creación de subtramas, por lo que devuelve un obejeto `AxesSubplot` en lugar d eun objeto `FacetGrid`.
+
+```{python}
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+ruta = './data/mpg_mean.csv'
+mpg_mean = pd.read_csv(ruta, index_col=0)
+mpg_mean.head()
+```
+
+#### Instrucciones
+
+1. Añade el siguiente título a la trama: `"Average MPG Over Time"`.
+
+```{python}
+# Create a line plot
+g = sns.lineplot(x='model_year', y='mpg_mean',
+                 data=mpg_mean, hue='origin')
+
+# Add title "Average MPG Over Time"
+g.set_title('Average MPG Over Time')
+
+# Show plot
+plt.show()
+```
+
+2. Etiqueta el eje x como `"Car Model Year"` y el eje y como `"Average MPG"`.
+
+```{python}
+# Create a line plot
+g = sns.lineplot(x='model_year', y='mpg_mean',
+                 data=mpg_mean, hue='origin')
+
+# Add title "Average MPG Over Time"
+g.set_title('Average MPG Over Time')
+
+# Add x-axis and y-axis labels
+g.set(xlabel='Car Model Year',
+      ylabel='Average MPG')
+
+# Show plot
+plt.show()
+```
+
+El promedio de millas por galón logrado está aumentando con el tiempo para los tres lugares de origen, pero EE.UU.j siempre es más bajo que Europa y Japón.
 
 ### Rotar etiquetas x-tick
 
