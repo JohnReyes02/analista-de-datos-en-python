@@ -33,7 +33,7 @@
         "\n",
         "-   countplot() vs. catplot()\n"
       ],
-      "id": "3a3bba08"
+      "id": "b9e0d26c"
     },
     {
       "cell_type": "code",
@@ -48,7 +48,7 @@
         "\n",
         "plt.show()"
       ],
-      "id": "028f664c",
+      "id": "b55a11c4",
       "execution_count": null,
       "outputs": []
     },
@@ -67,7 +67,7 @@
         "\n",
         "plt.show()"
       ],
-      "id": "4c3b585f",
+      "id": "1e754474",
       "execution_count": null,
       "outputs": []
     },
@@ -77,7 +77,7 @@
       "source": [
         "-   Cambiando el orden\n"
       ],
-      "id": "24a47310"
+      "id": "27dfdba6"
     },
     {
       "cell_type": "code",
@@ -98,7 +98,7 @@
         "            order=category_order)\n",
         "plt.show()"
       ],
-      "id": "867d8d5a",
+      "id": "2b887449",
       "execution_count": null,
       "outputs": []
     },
@@ -112,7 +112,7 @@
         "\n",
         "    -   Muestran la media de una variable cuantitativa por categoría\n"
       ],
-      "id": "351e30d7"
+      "id": "eba4674b"
     },
     {
       "cell_type": "code",
@@ -128,7 +128,7 @@
         "            kind='bar')\n",
         "plt.show()"
       ],
-      "id": "de35d792",
+      "id": "594308cd",
       "execution_count": null,
       "outputs": []
     },
@@ -146,7 +146,7 @@
         "\n",
         "-   Desactivando los intervalos de confianza\n"
       ],
-      "id": "c470d313"
+      "id": "be46060e"
     },
     {
       "cell_type": "code",
@@ -163,7 +163,7 @@
         "            ci=None)\n",
         "plt.show()"
       ],
-      "id": "c3a43f5c",
+      "id": "31ddea67",
       "execution_count": null,
       "outputs": []
     },
@@ -175,7 +175,7 @@
         "\n",
         "-   Cambiando la orientación de las barras\n"
       ],
-      "id": "0d424115"
+      "id": "525535fe"
     },
     {
       "cell_type": "code",
@@ -190,7 +190,7 @@
         "            data=tips,\n",
         "            kind='bar')"
       ],
-      "id": "b686cd1a",
+      "id": "3e3cb523",
       "execution_count": null,
       "outputs": []
     },
@@ -208,7 +208,7 @@
         "\n",
         "Como recordatorio, para crear un gráfico de recuento, utilizaremos la función `catplot()` y especificaremos el nombre de la variable categórica a contar (`x=____`), el DataFrame de pandas a utilizar (`data=____`), y el tipo de gráfico (`kind=\"count\"`).\n"
       ],
-      "id": "5f8597e8"
+      "id": "36d3468c"
     },
     {
       "cell_type": "code",
@@ -223,7 +223,7 @@
         "survey_data = pd.read_csv(ruta, index_col=0)\n",
         "survey_data.head()"
       ],
-      "id": "a7b1874a",
+      "id": "0bb37375",
       "execution_count": null,
       "outputs": []
     },
@@ -235,7 +235,7 @@
         "\n",
         "1.  Utiliza `sns.catplot()` para crear un gráfico de recuento utilizando el DataFrame `survery_data` con `\"Internet usage\"` en el eje x.\n"
       ],
-      "id": "ac494496"
+      "id": "3d300dd5"
     },
     {
       "cell_type": "code",
@@ -249,7 +249,7 @@
         "# Show plot\n",
         "plt.show()"
       ],
-      "id": "adc19ec3",
+      "id": "9efb57c5",
       "execution_count": null,
       "outputs": []
     },
@@ -259,7 +259,7 @@
       "source": [
         "2.  Haz que las barras sean horizontales en lugar de verticales\n"
       ],
-      "id": "d025c216"
+      "id": "556158ee"
     },
     {
       "cell_type": "code",
@@ -273,7 +273,7 @@
         "# Show plot\n",
         "plt.show()"
       ],
-      "id": "3bc83cc1",
+      "id": "fb797204",
       "execution_count": null,
       "outputs": []
     },
@@ -283,7 +283,7 @@
       "source": [
         "3.  Separa este gráfico en dos subtramas de columnas contiguas en función de `\"Age Category\"`, que separa a los encuestados en menores de 21 años y mayores de 21 años. A partir de 21 años.\n"
       ],
-      "id": "ba72504b"
+      "id": "95b32133"
     },
     {
       "cell_type": "code",
@@ -298,7 +298,7 @@
         "# Show plot\n",
         "plt.show()"
       ],
-      "id": "58a9464c",
+      "id": "9185e35c",
       "execution_count": null,
       "outputs": []
     },
@@ -318,7 +318,7 @@
         "\n",
         "-   Utiliza el DataFrame `survey_data` y `sns.catplot()` para crear un gráfico de barras con `\"Gender\"` en el eje x y `\"Interested in Math\"` en el eje y.\n"
       ],
-      "id": "65cbd99d"
+      "id": "a2f182a5"
     },
     {
       "cell_type": "code",
@@ -335,7 +335,7 @@
         "# Show plot\n",
         "plt.show()"
       ],
-      "id": "54e553e6",
+      "id": "1e9f0470",
       "execution_count": null,
       "outputs": []
     },
@@ -349,7 +349,7 @@
         "\n",
         "En este ejercicio, exploraremos datos de alumnos de secundaria. La variable `\"study_time\"` registra el tiempo de estudio semanal declarado por cada estudiante como una de las siguientes categorías: `\"<2 hours\"`, `\"2 to 5 hours\"`, `\"5 to 10 hours\"`, o `\">10 hours\"`. ¿Los alumnos que declaran estudiar más tienden a obtener mejores notas finales Comparemos la nota media final entre los alumnos de cada categoría mediante un diagrama de barras.\n"
       ],
-      "id": "cb8b4816"
+      "id": "227744bf"
     },
     {
       "cell_type": "code",
@@ -363,7 +363,7 @@
         "student_data = pd.read_csv(ruta, index_col=0)\n",
         "student_data.head()"
       ],
-      "id": "1616021c",
+      "id": "14a6f375",
       "execution_count": null,
       "outputs": []
     },
@@ -375,7 +375,7 @@
         "\n",
         "1.  Utiliza `sns.catplot()` para crear un gráfico de barras con `\"study_time\"` en el eje x y la calificación final (`\"G3\"`) en el eje y, utilizando el DataFrame `student_data`.\n"
       ],
-      "id": "47daead6"
+      "id": "9be0ef6e"
     },
     {
       "cell_type": "code",
@@ -389,7 +389,7 @@
         "# Show plot\n",
         "plt.show()"
       ],
-      "id": "abbb4034",
+      "id": "a4ef6f1f",
       "execution_count": null,
       "outputs": []
     },
@@ -399,7 +399,7 @@
       "source": [
         "2.  Utilizando el parámetro `order` y la lista `category_order` que se proporciona, reorganiza las barras para que estén en orden de menor tiempo de estudio a mayor.\n"
       ],
-      "id": "84484ada"
+      "id": "00522bcc"
     },
     {
       "cell_type": "code",
@@ -420,7 +420,7 @@
         "# Show plot\n",
         "plt.show()"
       ],
-      "id": "14036b9c",
+      "id": "95f0c3d9",
       "execution_count": null,
       "outputs": []
     },
@@ -430,7 +430,7 @@
       "source": [
         "3.  Actualiza el gráfico para que ya no muestre los intervalos de confianza.\n"
       ],
-      "id": "7a1c340d"
+      "id": "f6ea8ab1"
     },
     {
       "cell_type": "code",
@@ -452,7 +452,7 @@
         "# Show plot\n",
         "plt.show()"
       ],
-      "id": "efa8f017",
+      "id": "2a400fe8",
       "execution_count": null,
       "outputs": []
     },
@@ -473,7 +473,7 @@
         "\n",
         "-   Cómo crear un diagrama de caja en Seaborn\n"
       ],
-      "id": "7e9937c2"
+      "id": "1e123ea9"
     },
     {
       "cell_type": "code",
@@ -489,7 +489,7 @@
         "                kind='box')\n",
         "plt.show()"
       ],
-      "id": "4352a0c4",
+      "id": "533f333c",
       "execution_count": null,
       "outputs": []
     },
@@ -501,7 +501,7 @@
         "\n",
         "-   Cambiar el orden de las categorías\n"
       ],
-      "id": "3081d6cd"
+      "id": "ee9eb015"
     },
     {
       "cell_type": "code",
@@ -519,7 +519,7 @@
         "                        'Lunch'])\n",
         "plt.show()"
       ],
-      "id": "8df79d18",
+      "id": "c6ded07c",
       "execution_count": null,
       "outputs": []
     },
@@ -531,7 +531,7 @@
         "\n",
         "-   Omitir los valores atípicos usando `sym`\n"
       ],
-      "id": "a9dae01e"
+      "id": "09a269c6"
     },
     {
       "cell_type": "code",
@@ -548,7 +548,7 @@
         "                sym='')\n",
         "plt.show()"
       ],
-      "id": "bb4ebf42",
+      "id": "b82b931e",
       "execution_count": null,
       "outputs": []
     },
@@ -564,7 +564,7 @@
         "    -   Muestra los percentiles 5 y 95: `whis=[5, 95]`\n",
         "    -   Muestra los valores mínimo y máximo: `whis=[0, 100]`\n"
       ],
-      "id": "da3d82c8"
+      "id": "c379b251"
     },
     {
       "cell_type": "code",
@@ -581,7 +581,7 @@
         "                whis=[0, 100])\n",
         "plt.show()"
       ],
-      "id": "5e47358b",
+      "id": "0e2b0ebb",
       "execution_count": null,
       "outputs": []
     },
@@ -601,7 +601,7 @@
         "\n",
         "1.  Utiliza `sns.catplot()`, y el DataFrame `student_data` para crear un gráfico de caja con `\"study_time\"` en el eje x y `\"G3\"` en el eje y. Establece el orden de las categorías en `study_time_order`.\n"
       ],
-      "id": "b0d41c88"
+      "id": "0c9d1947"
     },
     {
       "cell_type": "code",
@@ -620,7 +620,7 @@
         "# Show plot\n",
         "plt.show()"
       ],
-      "id": "82af073e",
+      "id": "8706d097",
       "execution_count": null,
       "outputs": []
     },
@@ -651,7 +651,7 @@
         "\n",
         "-   Utiliza `sns.catplot()` para crear un gráfico de caja con el DataFrame `student_data`, poniendo `internet` en el eje x y `\"G3\"` en el eje y.\n"
       ],
-      "id": "bccd97a8"
+      "id": "50c61201"
     },
     {
       "cell_type": "code",
@@ -668,7 +668,7 @@
         "# Show plot\n",
         "plt.show()"
       ],
-      "id": "4da6b5b7",
+      "id": "8ebfa628",
       "execution_count": null,
       "outputs": []
     },
@@ -688,7 +688,7 @@
         "\n",
         "1.  Ajusta el código para que los bigotes del diagrama de caja se extiendan hata 0,5 \\* IQR. Recuerda: el IQR es el rango intercuartílico.\n"
       ],
-      "id": "cb85ac12"
+      "id": "76a472e3"
     },
     {
       "cell_type": "code",
@@ -703,7 +703,7 @@
         "# Show plot\n",
         "plt.show()"
       ],
-      "id": "589c2b75",
+      "id": "ea9073a7",
       "execution_count": null,
       "outputs": []
     },
@@ -713,7 +713,7 @@
       "source": [
         "2.  Cambia el código para que los bigotes se extiendan hasta los percentiles 5 y 95\n"
       ],
-      "id": "d7e9c6c0"
+      "id": "11deeb6f"
     },
     {
       "cell_type": "code",
@@ -728,7 +728,7 @@
         "# Show plot\n",
         "plt.show()"
       ],
-      "id": "aa0f078d",
+      "id": "2e396370",
       "execution_count": null,
       "outputs": []
     },
@@ -738,7 +738,7 @@
       "source": [
         "3.  Cambia el código para que los bigotes se extiendan hsta los valores mínimo y máximo.\n"
       ],
-      "id": "7cf6deff"
+      "id": "65523767"
     },
     {
       "cell_type": "code",
@@ -753,7 +753,7 @@
         "# Show plot\n",
         "plt.show()"
       ],
-      "id": "86369c28",
+      "id": "99994815",
       "execution_count": null,
       "outputs": []
     },
@@ -784,7 +784,7 @@
         "\n",
         "-   Crear un Gráfico de puntos\n"
       ],
-      "id": "edab21c1"
+      "id": "18711460"
     },
     {
       "cell_type": "code",
@@ -802,7 +802,7 @@
         "            \n",
         "plt.show()"
       ],
-      "id": "a8d11da2",
+      "id": "9ee10073",
       "execution_count": null,
       "outputs": []
     },
@@ -814,7 +814,7 @@
         "\n",
         "-   Desconectando los puntos\n"
       ],
-      "id": "cbddb42f"
+      "id": "6ace6b1b"
     },
     {
       "cell_type": "code",
@@ -833,7 +833,7 @@
         "            \n",
         "plt.show()"
       ],
-      "id": "54502d94",
+      "id": "de573d64",
       "execution_count": null,
       "outputs": []
     },
@@ -845,7 +845,7 @@
         "\n",
         "-   Desplegando la mediana\n"
       ],
-      "id": "18a7b037"
+      "id": "7a10d3d4"
     },
     {
       "cell_type": "code",
@@ -864,7 +864,7 @@
         "            \n",
         "plt.show()"
       ],
-      "id": "e8950d6f",
+      "id": "b5cddff4",
       "execution_count": null,
       "outputs": []
     },
@@ -876,7 +876,7 @@
         "\n",
         "-   Personalizar los intervalos de confianza\n"
       ],
-      "id": "0a5d2f6c"
+      "id": "9599f93c"
     },
     {
       "cell_type": "code",
@@ -894,7 +894,7 @@
         "            \n",
         "plt.show()"
       ],
-      "id": "00324e36",
+      "id": "31f00212",
       "execution_count": null,
       "outputs": []
     },
@@ -906,7 +906,7 @@
         "\n",
         "-   Desactivar los intervalos de confianza\n"
       ],
-      "id": "33a2e900"
+      "id": "633e9110"
     },
     {
       "cell_type": "code",
@@ -924,7 +924,7 @@
         "            \n",
         "plt.show()"
       ],
-      "id": "3364f6ee",
+      "id": "656f2983",
       "execution_count": null,
       "outputs": []
     },
@@ -946,7 +946,7 @@
         "\n",
         "1. Utiliza `sns.catplot()` y el DataFrame `student_data` para crear un gráfico de puntos con `\"famrel\"` en el eje x y el número de ausencias (`\"absences\"`) en el eje y.\n"
       ],
-      "id": "aa39dbd9"
+      "id": "e6fc04a3"
     },
     {
       "cell_type": "code",
@@ -960,7 +960,7 @@
         "# Show plot\n",
         "plt.show()"
       ],
-      "id": "825bbaa8",
+      "id": "537bcb47",
       "execution_count": null,
       "outputs": []
     },
@@ -970,7 +970,7 @@
       "source": [
         "2. Añade \"mayúsculas\" al final de los intervalos de confianza con el tamaño `0.2`.\n"
       ],
-      "id": "74a43726"
+      "id": "f23285e7"
     },
     {
       "cell_type": "code",
@@ -985,7 +985,7 @@
         "# Show plot\n",
         "plt.show()"
       ],
-      "id": "eabf76ee",
+      "id": "40c21c01",
       "execution_count": null,
       "outputs": []
     },
@@ -995,7 +995,7 @@
       "source": [
         "3. Elimina las líneas que unen los puntos de cada categoría.\n"
       ],
-      "id": "a2257d7c"
+      "id": "0c88bbc6"
     },
     {
       "cell_type": "code",
@@ -1011,7 +1011,7 @@
         "# Show plot\n",
         "plt.show()"
       ],
-      "id": "5b62885e",
+      "id": "80ca21a1",
       "execution_count": null,
       "outputs": []
     },
@@ -1031,7 +1031,7 @@
         "\n",
         "1. Utiliza `sns.catplot()` y el DataFrame `student_data` para crear un gráfico de puntos con el estado de la relación (`\"romantic\"`) en el eje x y el número de ausencias (`\"absences\"`) en el eje y. Colorea los puntos según la escuela a la que asistan (`\"school\"`).\n"
       ],
-      "id": "f3565eab"
+      "id": "ac4d503c"
     },
     {
       "cell_type": "code",
@@ -1046,7 +1046,7 @@
         "# Show plot\n",
         "plt.show()"
       ],
-      "id": "0366b45c",
+      "id": "9efbf761",
       "execution_count": null,
       "outputs": []
     },
@@ -1056,7 +1056,7 @@
       "source": [
         "2. Desactiva los intervalos de confianza del gráfico.\n"
       ],
-      "id": "4ac589da"
+      "id": "aba296bb"
     },
     {
       "cell_type": "code",
@@ -1072,7 +1072,7 @@
         "# Show plot\n",
         "plt.show()"
       ],
-      "id": "f30aad35",
+      "id": "5e97b5ef",
       "execution_count": null,
       "outputs": []
     },
@@ -1082,7 +1082,7 @@
       "source": [
         "3. Como puede haber valores atípicos de alumnos con muchas ausencias, utiliza la función `median` que hemos importado de `numpy` para mostar la mediana de número de ausencias en lugar de la media.\n"
       ],
-      "id": "68f28366"
+      "id": "a4f3926b"
     },
     {
       "cell_type": "code",
@@ -1102,7 +1102,7 @@
         "# Show plot\n",
         "plt.show()"
       ],
-      "id": "ba9b2766",
+      "id": "0f51f88c",
       "execution_count": null,
       "outputs": []
     },
@@ -1112,15 +1112,15 @@
       "source": [
         "Parece que los estudiantes en relaciones románticas tienen un promedio y una mediana más altos de ausencias en la escuela GP, pero esta asociación no se mantiene en la escuela MS."
       ],
-      "id": "5e6f53d9"
+      "id": "2d6ef8b5"
     }
   ],
   "metadata": {
     "kernelspec": {
-      "name": "venv",
+      "name": "python3",
       "language": "python",
-      "display_name": "Python (venv)",
-      "path": "/Users/edwinmacmini/Library/Jupyter/kernels/venv"
+      "display_name": "Python 3 (ipykernel)",
+      "path": "C:\\Users\\Edwin Reyes\\AppData\\Local\\Programs\\Python\\Python313\\share\\jupyter\\kernels\\python3"
     }
   },
   "nbformat": 4,

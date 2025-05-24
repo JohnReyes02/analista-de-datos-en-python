@@ -550,7 +550,6 @@ plt.show()
 
 ![](images/paste-42.png){width="370"}
 
-
 ### Añadir un título y etiquetas de eje
 
 Sigamos examinando el conjunto de datos de millas por galón. Esta vez crearemos un gráfico lineal para responder a la pregunta: ¿Cómo cambia a lo largo del tiempo la media de millas por galón que alcanzan los coches en cada uno de los tres lugares de origen? Para mejorar la legibilidad de este gráfico, añadiremos un título y etiquetas de eje más informativas.
@@ -569,7 +568,7 @@ mpg_mean.head()
 
 #### Instrucciones
 
-1. Añade el siguiente título a la trama: `"Average MPG Over Time"`.
+1.  Añade el siguiente título a la trama: `"Average MPG Over Time"`.
 
 ```{python}
 # Create a line plot
@@ -583,7 +582,7 @@ g.set_title('Average MPG Over Time')
 plt.show()
 ```
 
-2. Etiqueta el eje x como `"Car Model Year"` y el eje y como `"Average MPG"`.
+2.  Etiqueta el eje x como `"Car Model Year"` y el eje y como `"Average MPG"`.
 
 ```{python}
 # Create a line plot
@@ -605,9 +604,159 @@ El promedio de millas por galón logrado está aumentando con el tiempo para los
 
 ### Rotar etiquetas x-tick
 
+En este ejercicio, seguiremos ecaminando el conjunto de datos de millas por galón. En el código proporcionado, creamos un gráfico de puntos que muestra la aceleración media de los coches en cada uno de los tres lugares de origen. Observa que la variable `"acceleration"` es el tiempo de aceleración de 0 a 60 millas por hora, en segundos. Los valores más altos indican una aceleración más lenta.
+
+Utilicemos este gráfico para practicar la rotación de las etiquetas x-tick. Recuerda que la función para rotar las etiquetas x-tick es una función independiente de Matplotlib y no una función aplicada al propio objeto gráfico.
+
+#### Instrucciones
+
+-   Gira 90 grados las etiquetas x-tick.
+
+```{python}
+# Create point plot
+sns.catplot(x='origin', y='acceleration',
+            data=mpg, kind='point',
+            linestyle='none', capsize=0.1)  # join=False deprecated
+
+# Rotate x-tick labels
+plt.xticks(rotation=90)
+
+# Show plot
+plt.show()
+
+```
+
+Dado que los valores más altos indican una aceleración más lenta, parece que los coches de Japón y Europa tienen una aceleración significativamente más lenta en comparación con los de EE.UU.
+
 ## Unirlo Todo
 
+-   Inicio Para importar Seaborn:
+
+```{python}
+#| echo: true
+#| eval: false
+import seaborn as sns
+```
+
+Para importar Matplotlib:
+
+```{python}
+#| echo: true
+#| eval: false
+import matplotlib.pyplot as plt
+```
+
+Para mostrar un gráfico:
+
+```{python}
+#| echo: true
+#| eval: false
+plt.show()
+```
+
+-   Gráficos Relacionales
+    -   Muestran la relación entre dos variables cuantitativas.
+    -   Ejemplos: scatter plots, line plots
+
+```{python}
+#| echo: true
+#| eval: false
+sns.relplot(x='x_variable_name',
+            y='y_variable_name',
+            data=pandas_df,
+            kind='scatter')
+```
+
+-   Gráficos Categóricos
+    -   Describen la distribución de una variable cuantitativa dentro de categorías definida por una variable categórica
+    -   Ejemplos: bar plots, count plots, box plots, pint plots
+
+```{python}
+#| echo: true
+#| eval: false
+sns.catplot(x='x_variable_name',
+            y='y_variable_name',
+            data=pandas_df,
+            kind='bar')
+```
+
+-   Añadiendo una tercer variable (hue)
+
+    -   Configurar `hue` creatra subgrupos que son desplegados como diferentes colores en un solo gráfico
+
+    ![](images/paste-43.png){width="370"}
+
+-   Añadiendo una tercer variable (row/col)
+
+    -   Configurar `row` y/o `col` en `relplot()` o `catplot()` creará subgrupos que son desplegados en subgráficos separados.
+
+    ![](images/paste-44.png){width="370"}
+
+-   Personalización
+
+    -   Cambiar el fondo: `sns.set_style()`
+
+    -   Cambiar los colores de los elementos principales: `sns.set_palette()`
+
+    -   Cambiar la escala: `sns.set_context()`
+
+    -   Añadir un título
+
+        | Tipo de Objeto | Tipo de gráfico                      | Cómo añadir un título |
+        |------------------|----------------------------------|---------------------|
+        | `FacetGrid`    | `relplot()`, `catplot()`             | `g.fig.suptitle()`    |
+        | `AxesSubplot`  | `scatterplot()`, `countplot()`, etc. | `g.set_title()`       |
+
+-   Toques finales
+
+    -   Añadir etiquetas al eje x y eje y
+
+```{python}
+#| echo: true
+#| eval: false
+g.set(xlabel='new x-axis label',
+      ylabel='new y-axis label')
+```
+
+Rotar etiquetas el eje x
+
+```{python}
+#| echo: true
+#| eval: false
+plt.xticks(rotation=90)
+```
+
 ### Diagrama de cajas con subgrupos
+
+En este ejercicio, examinaremos el conjunto de datos que contiene las respuestas de una encuesta  realizada a jóvenes. Una de las preguntas que se hicieron a los jóvenes fue: "¿Te interesa tener mascotas?" Exploraremos si la distribución de edades de los que responden "si" tiende a ser mayor o menor que la de los que responden "no", distinguiendo según el género.
+
+```{python}
+survey_data['Interested in Pets'] = survey_data['Pets'].apply(
+    lambda x: 'Yes' if x >= 4.0 else 'No')
+```
+
+#### Instrucciones
+
+- Configura la paleta de colores en `"Blues"`.
+- Añade subgrupos para colorear los gráficos de caja en función de `"Interested in Pets"`.
+- Establece el título del objeto `FacetGrid` `g` en `"Age of Those Interested in Pets vs. Not".
+- Realiza la visualización del gráfico utlizando una función Matplotlib.
+
+```{python}
+# Set palette to "Blues"
+sns.set_palette('Blues')
+
+# Adjust to add subgroups based on "Interested in Pets"
+# g = sns.catplot(x='Gender', y='Age',
+#               data=survey_data,
+#              kind='box', hue='Interested in Pets')
+
+# Set title to "Age of Those Interested in Pets vs. Not"
+# g.fig.suptitle('Age of Those Interested in Pets vs. Not')
+
+# Show plot
+plt.show()
+```
 
 ### Diagrama de barras con subgrupos y subtramas
 
