@@ -1,0 +1,136 @@
+---
+title: "Conocer un conjunto de datos"
+author: "Edwin John Fredy Reyes Aguirre"
+date: today
+toc: true
+toc-title: "Contenido"
+---
+
+¿Cuál el la mejor manera de abordar un nuevo conjunto de datos? Aprende a validar y resumir datos categóricos y numéricos y a crear visualizaciones Seaborn para comunicar tus conclusiones.
+
+## Exploración inicial
+
+-   Análisis Exploratorio de Datos
+    -   Es el proceso de limpiar y revisar datos para:
+        -   Obterner información (Estadística descriptiva, correlaciones)
+        -   Genrar hipótesis
+-   Una primera mirada con .head()
+
+```{python}
+#| echo: true
+#| eval: false
+books = pd.read_csv('books.csv')
+books.head()
+```
+
+![](images/paste-3.png)
+
+-   Reuniendo más .info()
+
+```{python}
+#| echo: true
+#| eval: false
+books.info()
+```
+
+![](images/paste-2.png)
+
+-   Una mirada cercana a las columnas categóricas
+
+```{python}
+#| echo: true
+#| eval: false
+books.value_counts('genre')
+```
+
+![](images/paste-4.png)
+
+-   Columnas numéricas con .describe()
+
+```{python}
+#| echo: true
+#| eval: false  
+books.describe()
+```
+
+![](images/paste-5.png)
+
+-   Visualizando datos numéricos
+
+```{python}
+#| echo: true
+#| eval: false
+import seaborn as sns
+import matplotlib.pyplot as plt
+sns.histplot(data=books, x='rating')
+plt.show()
+```
+
+![](images/paste-6.png){width="370"}
+
+-   Ajustando la anchura del bin
+
+```{python}
+#| echo: true
+#| eval: false
+sns.histplot(data=books, x='rating', binwidth=.1)
+plt.show()
+```
+
+![](images/paste-7.png){width="370"}
+
+
+### Funciones para la exploración inicial
+
+Estás investigando las tasas de desempleo en todo el mundo y te han dado un nuevo conjunto de datos con el que trabajar. Los datos se han guardado y cargado para ti como un DataFrame de pandas llamado `unemployment`. Nunca antes habías visto los datos, así que tu primera tarea es utilizar unas cuantas funciones de pandas para conocer estos nuevos datos.
+
+```{python}
+import pandas as pd
+
+ruta = './data/clean_unemployment.csv'
+unemployment = pd.read_csv(ruta)
+```
+
+#### Instrucciones
+
+1. Utiliza una función de pandas para imprimir las cinco primeras filas del DataFrame `unemployment`.
+
+```{python}
+# Print the first five rows of unemployment
+print(unemployment.head())
+```
+
+2. Utiliza una función pandas para imprimir un resumen de los valores y tipos de datos de las columnas que no faltan del DataFrame `unemployment`.
+
+```{python}
+# Print a summary of non-missing values and data types in the unemployment DataFrame]
+print(unemployment.info())
+```
+
+3. Imprime las estadísticas de resument (recuento, media, desviación estándar, valores mínimo, máximo y cuartil) de cada columna numérica en `unemployment`.
+
+```{python}
+# Print summary statistics for numerical columns in unemployment
+print(unemployment.describe())
+```
+Ahora haz aprendido que `unemployment` contiene 182 filas de datos de países, incluyendo `country_code`, `country_name`, `continent` y porcentajes de desempleo desde 2010 hasta 2021. ¡Si miraste muy de cerca, podrías haber notado que a algunos países les falta información en la columna `continent`! Continuemos explorando estos datos en el próximo ejercicio.
+
+### Contar valores categóricos
+
+### Desempleo mundial en 2021
+
+## Validación de datos
+
+### Detectar tipos de datos
+
+### Validar continentes
+
+### Rango de validación
+
+## Resumen de datos
+
+### Resúmenes con .groupby() y .agg()
+
+### Agregaciones con nombre
+
+### Visualizar resúmenes categóricos
