@@ -117,7 +117,43 @@ Ahora haz aprendido que `unemployment` contiene 182 filas de datos de países, i
 
 ### Contar valores categóricos
 
+Recordemos del ejercicio anterior que el DataFrame `unemployment` contiene 182 filas de datos de países que incluyen `country_code`, `country_name`, `continent` y porcentajes de desempleo de 2010 a 2021.
+
+Ahora vas a explorar los datos categóricos contenidos en `unemployment` para comprender los datos que contiene relacionados con cada continente.
+
+#### Instrucciones
+
+- Utiliza un método para contar los valores asociados a cada `continent` en el DataFrame `unemployment`.
+
+```{python}
+# Count the values associated with each continent in unemployment
+print(unemployment['continent'].value_counts())
+```
+
+¿Sabías que hay 23 países en América del Norte, que incluye países en el Caribe y América Central? Puede que hayas notado que América del Norte tiene 18 puntos de datos en el DataFrame `unemployment`, por lo que nos falta información de algunos de los países en nuestro conjunto de datos.
+
 ### Desempleo mundial en 2021
+
+¡Es hora de explorar algunos de los datos numéricos en `unemployment`! ¿Cuál fue el desempleo típico en un año determinado? ¿Cuál era la tasa de desempleo mínima y máxima, y cómo era la distribución de las tasas de desempleo en el mundo? Un histogrpama es una buena forma de hacerse una idea de las respuestas a estas preguntas.
+
+Tu tarea en este ejercicio es crear un histograma que muestre la distribución de las tasas de paro mundiales en 2021.
+
+#### Instrucciones
+
+- Importa las bibliotecas de visualización necesarias
+- Crea un histograma de la distribución de los porcentajes de desempleo de 2021 en todos los países en `unemployment`; muestra un punto pocentual completo en cada casilla.
+
+```{python}
+# Import the required visualization libraries
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Create a histogram of 2021 unemployment; show a full percent in each bin
+sns.histplot(x='2021', data=unemployment, binwidth=1)
+plt.show()
+```
+
+Parece que el desempleo en el 2021 se mantuvo alrededor del 3% al 8% para la mayoría de los países en el conjunto de datos, pero algunos países experimentaron un desempleo muy alto del 20% al 35%.
 
 ## Validación de datos
 

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Edwin John Fredy Reyes Aguirre">
-<meta name="dcterms.date" content="2025-05-27">
+<meta name="dcterms.date" content="2025-05-28">
 
 <title>Conocer un conjunto de datos</title>
 <style>
@@ -68,7 +68,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="01_Conocer_un_conjunto_de_datos_files/libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="01_Conocer_un_conjunto_de_datos_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="01_Conocer_un_conjunto_de_datos_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="01_Conocer_un_conjunto_de_datos_files/libs/bootstrap/bootstrap-c0367b04c37547644fece4185067e4a7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="01_Conocer_un_conjunto_de_datos_files/libs/bootstrap/bootstrap-1bc8a17f135ab3d594c857e9f48e611b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
 
 </head>
@@ -123,7 +123,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">May 27, 2025</p>
+      <p class="date">May 28, 2025</p>
     </div>
   </div>
   
@@ -149,7 +149,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul></li>
 <li>Una primera mirada con .head()</li>
 </ul>
-<div id="b79832a8" class="cell" data-execution_count="1">
+<div id="de092c3b" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>books <span class="op">=</span> pd.read_csv(<span class="st">'books.csv'</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>books.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -157,28 +157,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Reuniendo más .info()</li>
 </ul>
-<div id="944e6804" class="cell" data-execution_count="2">
+<div id="182c6afe" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>books.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img src="images/paste-2.png" class="img-fluid"></p>
 <ul>
 <li>Una mirada cercana a las columnas categóricas</li>
 </ul>
-<div id="d606ee04" class="cell" data-execution_count="3">
+<div id="0f8b570e" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>books.value_counts(<span class="st">'genre'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img src="images/paste-4.png" class="img-fluid"></p>
 <ul>
 <li>Columnas numéricas con .describe()</li>
 </ul>
-<div id="aaa7e745" class="cell" data-execution_count="4">
+<div id="025183e2" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>books.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img src="images/paste-5.png" class="img-fluid"></p>
 <ul>
 <li>Visualizando datos numéricos</li>
 </ul>
-<div id="92d6c053" class="cell" data-execution_count="5">
+<div id="70c11c31" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>sns.histplot(data<span class="op">=</span>books, x<span class="op">=</span><span class="st">'rating'</span>)</span>
@@ -188,7 +188,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Ajustando la anchura del bin</li>
 </ul>
-<div id="8641af3d" class="cell" data-execution_count="6">
+<div id="6de97dc6" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>sns.histplot(data<span class="op">=</span>books, x<span class="op">=</span><span class="st">'rating'</span>, binwidth<span class="op">=</span><span class="fl">.1</span>)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -196,7 +196,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="funciones-para-la-exploración-inicial" class="level3">
 <h3 class="anchored" data-anchor-id="funciones-para-la-exploración-inicial">Funciones para la exploración inicial</h3>
 <p>Estás investigando las tasas de desempleo en todo el mundo y te han dado un nuevo conjunto de datos con el que trabajar. Los datos se han guardado y cargado para ti como un DataFrame de pandas llamado <code>unemployment</code>. Nunca antes habías visto los datos, así que tu primera tarea es utilizar unas cuantas funciones de pandas para conocer estos nuevos datos.</p>
-<div id="f003c2a4" class="cell" data-execution_count="7">
+<div id="3b606485" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>ruta <span class="op">=</span> <span class="st">'./data/clean_unemployment.csv'</span></span>
@@ -207,7 +207,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol type="1">
 <li>Utiliza una función de pandas para imprimir las cinco primeras filas del DataFrame <code>unemployment</code>.</li>
 </ol>
-<div id="be6a53dc" class="cell" data-execution_count="8">
+<div id="1152e610" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the first five rows of unemployment</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(unemployment.head())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -229,7 +229,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol start="2" type="1">
 <li>Utiliza una función pandas para imprimir un resumen de los valores y tipos de datos de las columnas que no faltan del DataFrame <code>unemployment</code>.</li>
 </ol>
-<div id="18e2211b" class="cell" data-execution_count="9">
+<div id="20048942" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print a summary of non-missing values and data types in the unemployment DataFrame]</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(unemployment.info())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -261,7 +261,7 @@ None</code></pre>
 <ol start="3" type="1">
 <li>Imprime las estadísticas de resument (recuento, media, desviación estándar, valores mínimo, máximo y cuartil) de cada columna numérica en <code>unemployment</code>.</li>
 </ol>
-<div id="1315e1f6" class="cell" data-execution_count="10">
+<div id="be2624e0" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print summary statistics for numerical columns in unemployment</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(unemployment.describe())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -291,9 +291,58 @@ max     26.540000   27.040000   26.910000   28.470000   29.220000   33.560000  <
 </section>
 <section id="contar-valores-categóricos" class="level3">
 <h3 class="anchored" data-anchor-id="contar-valores-categóricos">Contar valores categóricos</h3>
+<p>Recordemos del ejercicio anterior que el DataFrame <code>unemployment</code> contiene 182 filas de datos de países que incluyen <code>country_code</code>, <code>country_name</code>, <code>continent</code> y porcentajes de desempleo de 2010 a 2021.</p>
+<p>Ahora vas a explorar los datos categóricos contenidos en <code>unemployment</code> para comprender los datos que contiene relacionados con cada continente.</p>
+<section id="instrucciones-1" class="level4">
+<h4 class="anchored" data-anchor-id="instrucciones-1">Instrucciones</h4>
+<ul>
+<li>Utiliza un método para contar los valores asociados a cada <code>continent</code> en el DataFrame <code>unemployment</code>.</li>
+</ul>
+<div id="d0272863" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Count the values associated with each continent in unemployment</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(unemployment[<span class="st">'continent'</span>].value_counts())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>continent
+Africa           53
+Asia             47
+Europe           39
+North America    18
+South America    12
+Oceania           8
+Name: count, dtype: int64</code></pre>
+</div>
+</div>
+<p>¿Sabías que hay 23 países en América del Norte, que incluye países en el Caribe y América Central? Puede que hayas notado que América del Norte tiene 18 puntos de datos en el DataFrame <code>unemployment</code>, por lo que nos falta información de algunos de los países en nuestro conjunto de datos.</p>
+</section>
 </section>
 <section id="desempleo-mundial-en-2021" class="level3">
 <h3 class="anchored" data-anchor-id="desempleo-mundial-en-2021">Desempleo mundial en 2021</h3>
+<p>¡Es hora de explorar algunos de los datos numéricos en <code>unemployment</code>! ¿Cuál fue el desempleo típico en un año determinado? ¿Cuál era la tasa de desempleo mínima y máxima, y cómo era la distribución de las tasas de desempleo en el mundo? Un histogrpama es una buena forma de hacerse una idea de las respuestas a estas preguntas.</p>
+<p>Tu tarea en este ejercicio es crear un histograma que muestre la distribución de las tasas de paro mundiales en 2021.</p>
+<section id="instrucciones-2" class="level4">
+<h4 class="anchored" data-anchor-id="instrucciones-2">Instrucciones</h4>
+<ul>
+<li>Importa las bibliotecas de visualización necesarias</li>
+<li>Crea un histograma de la distribución de los porcentajes de desempleo de 2021 en todos los países en <code>unemployment</code>; muestra un punto pocentual completo en cada casilla.</li>
+</ul>
+<div id="921503ad" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import the required visualization libraries</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a histogram of 2021 unemployment; show a full percent in each bin</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>sns.histplot(x<span class="op">=</span><span class="st">'2021'</span>, data<span class="op">=</span>unemployment, binwidth<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="01_Conocer_un_conjunto_de_datos_files/figure-html/cell-13-output-1.png" width="590" height="429" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Parece que el desempleo en el 2021 se mantuvo alrededor del 3% al 8% para la mayoría de los países en el conjunto de datos, pero algunos países experimentaron un desempleo muy alto del 20% al 35%.</p>
+</section>
 </section>
 </section>
 <section id="validación-de-datos" class="level2">
