@@ -79,7 +79,6 @@ plt.show()
 
 ![](images/paste-7.png){width="370"}
 
-
 ### Funciones para la exploración inicial
 
 Estás investigando las tasas de desempleo en todo el mundo y te han dado un nuevo conjunto de datos con el que trabajar. Los datos se han guardado y cargado para ti como un DataFrame de pandas llamado `unemployment`. Nunca antes habías visto los datos, así que tu primera tarea es utilizar unas cuantas funciones de pandas para conocer estos nuevos datos.
@@ -93,26 +92,27 @@ unemployment = pd.read_csv(ruta)
 
 #### Instrucciones
 
-1. Utiliza una función de pandas para imprimir las cinco primeras filas del DataFrame `unemployment`.
+1.  Utiliza una función de pandas para imprimir las cinco primeras filas del DataFrame `unemployment`.
 
 ```{python}
 # Print the first five rows of unemployment
 print(unemployment.head())
 ```
 
-2. Utiliza una función pandas para imprimir un resumen de los valores y tipos de datos de las columnas que no faltan del DataFrame `unemployment`.
+2.  Utiliza una función pandas para imprimir un resumen de los valores y tipos de datos de las columnas que no faltan del DataFrame `unemployment`.
 
 ```{python}
 # Print a summary of non-missing values and data types in the unemployment DataFrame]
 print(unemployment.info())
 ```
 
-3. Imprime las estadísticas de resument (recuento, media, desviación estándar, valores mínimo, máximo y cuartil) de cada columna numérica en `unemployment`.
+3.  Imprime las estadísticas de resument (recuento, media, desviación estándar, valores mínimo, máximo y cuartil) de cada columna numérica en `unemployment`.
 
 ```{python}
 # Print summary statistics for numerical columns in unemployment
 print(unemployment.describe())
 ```
+
 Ahora haz aprendido que `unemployment` contiene 182 filas de datos de países, incluyendo `country_code`, `country_name`, `continent` y porcentajes de desempleo desde 2010 hasta 2021. ¡Si miraste muy de cerca, podrías haber notado que a algunos países les falta información en la columna `continent`! Continuemos explorando estos datos en el próximo ejercicio.
 
 ### Contar valores categóricos
@@ -123,7 +123,7 @@ Ahora vas a explorar los datos categóricos contenidos en `unemployment` para co
 
 #### Instrucciones
 
-- Utiliza un método para contar los valores asociados a cada `continent` en el DataFrame `unemployment`.
+-   Utiliza un método para contar los valores asociados a cada `continent` en el DataFrame `unemployment`.
 
 ```{python}
 # Count the values associated with each continent in unemployment
@@ -140,8 +140,8 @@ Tu tarea en este ejercicio es crear un histograma que muestre la distribución d
 
 #### Instrucciones
 
-- Importa las bibliotecas de visualización necesarias
-- Crea un histograma de la distribución de los porcentajes de desempleo de 2021 en todos los países en `unemployment`; muestra un punto pocentual completo en cada casilla.
+-   Importa las bibliotecas de visualización necesarias
+-   Crea un histograma de la distribución de los porcentajes de desempleo de 2021 en todos los países en `unemployment`; muestra un punto pocentual completo en cada casilla.
 
 ```{python}
 # Import the required visualization libraries
@@ -156,6 +156,116 @@ plt.show()
 Parece que el desempleo en el 2021 se mantuvo alrededor del 3% al 8% para la mayoría de los países en el conjunto de datos, pero algunos países experimentaron un desempleo muy alto del 20% al 35%.
 
 ## Validación de datos
+
+-   Validando los tipos de datos
+
+```{python}
+#| echo: true
+#| eval: false
+books.dtypes
+```
+
+![](images/paste-8.png){width="370"}
+
+-   Actualizando los tipos de datos
+
+```{python}
+#| echo: true
+#| eval: false
+books['year'] = books['year'].astype(int)
+books.dtypes
+```
+
+![](images/paste-9.png)
+
+| Tipo       | Nombre Python |
+|------------|---------------|
+| String     | `str`         |
+| Integer    | `int`         |
+| Float      | `float`       |
+| Dictionary | `dict`        |
+| List       | `list`        |
+| Boolean    | `bool`        |
+
+-   Validando datos categóricos
+
+```{python}
+#| echo: true
+#| eval: false
+books['genre'].isin(['Fiction', 'Non Fiction'])
+```
+
+![](images/paste-10.png){width="370"}
+
+Para validar los datos que no están en la lista
+
+```{python}
+#| echo: true
+#| eval: false
+~books['genre'].isin(['Fiction', 'Non Fiction'])
+```
+
+![](images/paste-11.png){width="370"}
+
+Para filtrar el DataFrame por los valores en nuestra lista
+
+```{python}
+#| echo: true
+#| eval: false
+books[books['genre'].isin(['Fiction', 'Non Fiction'])].head()
+```
+
+![](images/paste-12.png)
+
+-   Validando los datos numéricos
+
+Para ver solo las columnas numéricas en un DataFrame:
+
+```{python}
+#| echo: true
+#| eval: false
+books.select_dtypes('number').head()
+```
+
+Para conocer un intervalo específico:
+
+```{python}
+#| echo: true
+#| eval: false
+books['year'].min()
+```
+
+![](images/paste-13.png){width="370"}
+
+```{python}
+#| echo: true
+#| eval: false
+books['year'].max()
+```
+
+![](images/paste-14.png){width="370" height="40"}
+
+Se puede ver una imagen más detallada de la distribución de los datos, utilizando boxplot:
+
+```{python}
+#| echo: true
+#| eval: false
+sns.boxplot(data=books, x='year')
+plt.show()
+```
+
+![](images/paste-15.png){width="370"}
+
+También se puede ver los datos agrupados por una variable categórica.
+
+```{python}
+#| echo: true
+#| eval: false
+sns.boxplot(data=books, x='year', y='genre')
+plt.show()
+```
+
+![](images/paste-16.png){width="370"}
 
 ### Detectar tipos de datos
 

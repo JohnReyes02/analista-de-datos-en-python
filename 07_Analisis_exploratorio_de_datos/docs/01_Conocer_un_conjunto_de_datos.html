@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Edwin John Fredy Reyes Aguirre">
-<meta name="dcterms.date" content="2025-05-28">
+<meta name="dcterms.date" content="2025-05-29">
 
 <title>Conocer un conjunto de datos</title>
 <style>
@@ -68,7 +68,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="01_Conocer_un_conjunto_de_datos_files/libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="01_Conocer_un_conjunto_de_datos_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="01_Conocer_un_conjunto_de_datos_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="01_Conocer_un_conjunto_de_datos_files/libs/bootstrap/bootstrap-1bc8a17f135ab3d594c857e9f48e611b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="01_Conocer_un_conjunto_de_datos_files/libs/bootstrap/bootstrap-c0367b04c37547644fece4185067e4a7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
 
 </head>
@@ -123,7 +123,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">May 28, 2025</p>
+      <p class="date">May 29, 2025</p>
     </div>
   </div>
   
@@ -149,7 +149,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul></li>
 <li>Una primera mirada con .head()</li>
 </ul>
-<div id="de092c3b" class="cell" data-execution_count="1">
+<div id="52aa0d8b" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>books <span class="op">=</span> pd.read_csv(<span class="st">'books.csv'</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>books.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -157,28 +157,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Reuniendo más .info()</li>
 </ul>
-<div id="182c6afe" class="cell" data-execution_count="2">
+<div id="a5bf77e2" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>books.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img src="images/paste-2.png" class="img-fluid"></p>
 <ul>
 <li>Una mirada cercana a las columnas categóricas</li>
 </ul>
-<div id="0f8b570e" class="cell" data-execution_count="3">
+<div id="7bcffb95" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>books.value_counts(<span class="st">'genre'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img src="images/paste-4.png" class="img-fluid"></p>
 <ul>
 <li>Columnas numéricas con .describe()</li>
 </ul>
-<div id="025183e2" class="cell" data-execution_count="4">
+<div id="99caee5f" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>books.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img src="images/paste-5.png" class="img-fluid"></p>
 <ul>
 <li>Visualizando datos numéricos</li>
 </ul>
-<div id="70c11c31" class="cell" data-execution_count="5">
+<div id="676123d4" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>sns.histplot(data<span class="op">=</span>books, x<span class="op">=</span><span class="st">'rating'</span>)</span>
@@ -188,7 +188,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Ajustando la anchura del bin</li>
 </ul>
-<div id="6de97dc6" class="cell" data-execution_count="6">
+<div id="b4a78399" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>sns.histplot(data<span class="op">=</span>books, x<span class="op">=</span><span class="st">'rating'</span>, binwidth<span class="op">=</span><span class="fl">.1</span>)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -196,7 +196,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="funciones-para-la-exploración-inicial" class="level3">
 <h3 class="anchored" data-anchor-id="funciones-para-la-exploración-inicial">Funciones para la exploración inicial</h3>
 <p>Estás investigando las tasas de desempleo en todo el mundo y te han dado un nuevo conjunto de datos con el que trabajar. Los datos se han guardado y cargado para ti como un DataFrame de pandas llamado <code>unemployment</code>. Nunca antes habías visto los datos, así que tu primera tarea es utilizar unas cuantas funciones de pandas para conocer estos nuevos datos.</p>
-<div id="3b606485" class="cell" data-execution_count="7">
+<div id="16f22ace" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>ruta <span class="op">=</span> <span class="st">'./data/clean_unemployment.csv'</span></span>
@@ -207,7 +207,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol type="1">
 <li>Utiliza una función de pandas para imprimir las cinco primeras filas del DataFrame <code>unemployment</code>.</li>
 </ol>
-<div id="1152e610" class="cell" data-execution_count="8">
+<div id="c62070b5" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the first five rows of unemployment</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(unemployment.head())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -229,7 +229,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol start="2" type="1">
 <li>Utiliza una función pandas para imprimir un resumen de los valores y tipos de datos de las columnas que no faltan del DataFrame <code>unemployment</code>.</li>
 </ol>
-<div id="20048942" class="cell" data-execution_count="9">
+<div id="9a56e7fc" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print a summary of non-missing values and data types in the unemployment DataFrame]</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(unemployment.info())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -261,7 +261,7 @@ None</code></pre>
 <ol start="3" type="1">
 <li>Imprime las estadísticas de resument (recuento, media, desviación estándar, valores mínimo, máximo y cuartil) de cada columna numérica en <code>unemployment</code>.</li>
 </ol>
-<div id="be2624e0" class="cell" data-execution_count="10">
+<div id="0207259f" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print summary statistics for numerical columns in unemployment</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(unemployment.describe())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -298,7 +298,7 @@ max     26.540000   27.040000   26.910000   28.470000   29.220000   33.560000  <
 <ul>
 <li>Utiliza un método para contar los valores asociados a cada <code>continent</code> en el DataFrame <code>unemployment</code>.</li>
 </ul>
-<div id="d0272863" class="cell" data-execution_count="11">
+<div id="8d0c6eb2" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Count the values associated with each continent in unemployment</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(unemployment[<span class="st">'continent'</span>].value_counts())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -325,7 +325,7 @@ Name: count, dtype: int64</code></pre>
 <li>Importa las bibliotecas de visualización necesarias</li>
 <li>Crea un histograma de la distribución de los porcentajes de desempleo de 2021 en todos los países en <code>unemployment</code>; muestra un punto pocentual completo en cada casilla.</li>
 </ul>
-<div id="921503ad" class="cell" data-execution_count="12">
+<div id="af9ba5f5" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import the required visualization libraries</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -336,7 +336,7 @@ Name: count, dtype: int64</code></pre>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="01_Conocer_un_conjunto_de_datos_files/figure-html/cell-13-output-1.png" width="590" height="429" class="figure-img"></p>
+<p><img src="01_Conocer_un_conjunto_de_datos_files/figure-html/cell-13-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -347,6 +347,100 @@ Name: count, dtype: int64</code></pre>
 </section>
 <section id="validación-de-datos" class="level2">
 <h2 class="anchored" data-anchor-id="validación-de-datos">Validación de datos</h2>
+<ul>
+<li>Validando los tipos de datos</li>
+</ul>
+<div id="53f88d40" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>books.dtypes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><img src="images/paste-8.png" class="img-fluid" width="370"></p>
+<ul>
+<li>Actualizando los tipos de datos</li>
+</ul>
+<div id="5ac74d65" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>books[<span class="st">'year'</span>] <span class="op">=</span> books[<span class="st">'year'</span>].astype(<span class="bu">int</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>books.dtypes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><img src="images/paste-9.png" class="img-fluid"></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Tipo</th>
+<th>Nombre Python</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>String</td>
+<td><code>str</code></td>
+</tr>
+<tr class="even">
+<td>Integer</td>
+<td><code>int</code></td>
+</tr>
+<tr class="odd">
+<td>Float</td>
+<td><code>float</code></td>
+</tr>
+<tr class="even">
+<td>Dictionary</td>
+<td><code>dict</code></td>
+</tr>
+<tr class="odd">
+<td>List</td>
+<td><code>list</code></td>
+</tr>
+<tr class="even">
+<td>Boolean</td>
+<td><code>bool</code></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Validando datos categóricos</li>
+</ul>
+<div id="6a56e12e" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>books[<span class="st">'genre'</span>].isin([<span class="st">'Fiction'</span>, <span class="st">'Non Fiction'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><img src="images/paste-10.png" class="img-fluid" width="370"></p>
+<p>Para validar los datos que no están en la lista</p>
+<div id="e8b3aad3" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="op">~</span>books[<span class="st">'genre'</span>].isin([<span class="st">'Fiction'</span>, <span class="st">'Non Fiction'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><img src="images/paste-11.png" class="img-fluid" width="370"></p>
+<p>Para filtrar el DataFrame por los valores en nuestra lista</p>
+<div id="be68c558" class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>books[books[<span class="st">'genre'</span>].isin([<span class="st">'Fiction'</span>, <span class="st">'Non Fiction'</span>])].head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><img src="images/paste-12.png" class="img-fluid"></p>
+<ul>
+<li>Validando los datos numéricos</li>
+</ul>
+<p>Para ver solo las columnas numéricas en un DataFrame:</p>
+<div id="91735fe2" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>books.select_dtypes(<span class="st">'number'</span>).head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Para conocer un intervalo específico:</p>
+<div id="1dbe1814" class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>books[<span class="st">'year'</span>].<span class="bu">min</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><img src="images/paste-13.png" class="img-fluid" width="370"></p>
+<div id="450c2c1f" class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>books[<span class="st">'year'</span>].<span class="bu">max</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><img src="images/paste-14.png" width="370" height="40"></p>
+<p>Se puede ver una imagen más detallada de la distribución de los datos, utilizando boxplot:</p>
+<div id="af8a2c60" class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>sns.boxplot(data<span class="op">=</span>books, x<span class="op">=</span><span class="st">'year'</span>)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><img src="images/paste-15.png" class="img-fluid" width="370"></p>
+<p>También se puede ver los datos agrupados por una variable categórica.</p>
+<div id="015215e1" class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>sns.boxplot(data<span class="op">=</span>books, x<span class="op">=</span><span class="st">'year'</span>, y<span class="op">=</span><span class="st">'genre'</span>)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><img src="images/paste-16.png" class="img-fluid" width="370"></p>
 <section id="detectar-tipos-de-datos" class="level3">
 <h3 class="anchored" data-anchor-id="detectar-tipos-de-datos">Detectar tipos de datos</h3>
 </section>
