@@ -267,11 +267,101 @@ plt.show()
 
 ![](images/paste-16.png){width="370"}
 
+
 ### Detectar tipos de datos
+
+¡Se ha modificado una columna en el DataFrame `unemployment` y ahora tiene un tipo de datos incorrecto! Este tipo de datos te impedirá realizar una exploración y un análisis eficaces, por lo que tu tarea consiste en identificar qué columna tiene un tipo de datos incorrecto y, a continuación, corregirlo.
+
+```{python}
+#| echo: false
+#| eval: true
+unemployment['2019'] = unemployment['2019'].astype('object')
+```
+
+#### Instrucciones
+
+**Pregunta**
+
+1. ¿Cuál de las siguientes columnas requiere una actualización de su tipo de datos?
+
+```{python}
+print(unemployment.dtypes)
+```
+
+
+**Respuestas posibles**
+
+- [ ] `country_name`
+- [ ] `continent`
+- [X] `2019`
+- [ ] `2021`
+
+2.
+
+- Actualiza el tipo de datos de la columna `2019` de `unemployment` a `float`.
+- ¡Vuelve a imprimir el `dtypes` del DataFrame `umemployment` para comprobar que se ha actualizado el tipo de datos!
+
+```{python}
+# Update the data type of the 2019 column to a float
+unemployment['2019'] = unemployment['2019'].astype('float')
+
+# Print the dtypes to check your work
+print(unemployment.dtypes)
+```
+
+Cambiar el tipo de dato de la columna `2019` significa que ahora puedes realizar cálculos sobre ella, incluyendo validar su rango.
+
 
 ### Validar continentes
 
+Tu colega te ha informado de que los datos sobre el desempleo de los países de Oceanía no son fiables, y te gustaría  identificar y excluir a estos países de tus datos de `unemployment`. ¡La función `.isin()` puede ayudarte con eso!
+
+Tu tarea consiste en utilizar `isin()` para identificar los países que no están en Oceanía. Estos países deberían devolver `True` mientras que los países de Oceanía deberán devolver `False`. Esto te permitirá utilizar los resultados de `isin()` para filtrar rápidamente los países de Oceanía utilizando la indexación booleana.
+
+### Instrucciones
+
+1. Defina una Serie Booleana que describan si cada `continent` está o no fuera de `Oceanía`; llama a esta Serie `not_oceania`.
+
+```{python}
+# Define a Series describing whether each continent is outside of Oceania
+not_oceania = ~unemployment['continent'].isin(['Oceania'])
+```
+
+2. Utiliza la indexación booleana para imprimir el DataFrame `unemployment` sin ninguno de los datos relacionados con los países de Oceanía.
+
+```{python}
+# Define a Series describing whether each continent is outside of Oceania
+not_oceania = ~unemployment['continent'].isin(['Oceania'])
+
+# Print unemployment without records related  to countries in Oceania
+print(unemployment[not_oceania])
+```
+
+Validaste datos categóricos y usaste tu validación `.isin()` para excluir datos en los que no estabas interesado. Filtrar los datos que no necesitas al comienzo de tu proceso de EDA es una excelente manera de organizarte para la exploración que está por venir.
+
+
 ### Rango de validación
+
+Ahora es el momento de validar nuestros datos numéricos. En la lección anterior vimos, utilizando `.describe()`, que la mayor tasa de desempleo durante 2021 fue de casi el 34 %, mientras que la más baja estuvo justo por encima de cero.
+
+Tu tarea en este ejercicio es obtener información mucho más detallada sobre el rango de los datos de `unemployment` utilizando el diagrama de caja de Seaborn, y también visualizarás el rango de las tasas de desempleo en cada continente para comprender las diferencias de rango geográfico.
+
+#### Instrucciones
+
+- Imprime las tasas de desempleo mínima y máximam en este orden, durante 2021.
+- Crea un diagrama de caja de las tasas de desempleo de 2021 (en el eje x), desglosadas por continente (en el eje y).
+
+```{python}
+# Print the minimum an maximum unemployment rates during 2021
+print(unemployment['2021'].min(), unemployment['2021'].max())
+
+# Create a boxplot of 2021 unemployment rates, broken down by continent
+sns.boxplot(data=unemployment, x='2021', y='continent', 
+            hue='continent', legend=False)
+plt.show()
+```
+
+Observa cómo varían los rangos de desempleo entre continentes. Por ejemplo, el percentil 50 de África es más bajo que el de América del Norte, pero el rango es mucho más amplio.
 
 ## Resumen de datos
 
