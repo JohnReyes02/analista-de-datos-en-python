@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Edwin John Fredy Reyes Aguirre">
-<meta name="dcterms.date" content="2025-05-30">
+<meta name="dcterms.date" content="2025-06-06">
 
 <title>Conocer un conjunto de datos</title>
 <style>
@@ -124,7 +124,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">May 30, 2025</p>
+      <p class="date">June 6, 2025</p>
     </div>
   </div>
   
@@ -150,7 +150,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul></li>
 <li>Una primera mirada con .head()</li>
 </ul>
-<div id="5a3e9b7d" class="cell" data-execution_count="1">
+<div id="5adeabe6" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>books <span class="op">=</span> pd.read_csv(<span class="st">'books.csv'</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>books.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -158,28 +158,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Reuniendo más .info()</li>
 </ul>
-<div id="b9cd57bb" class="cell" data-execution_count="2">
+<div id="94c1ba15" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>books.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img src="images/paste-2.png" class="img-fluid"></p>
 <ul>
 <li>Una mirada cercana a las columnas categóricas</li>
 </ul>
-<div id="68661071" class="cell" data-execution_count="3">
+<div id="ba2dc0a2" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>books.value_counts(<span class="st">'genre'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img src="images/paste-4.png" class="img-fluid"></p>
 <ul>
 <li>Columnas numéricas con .describe()</li>
 </ul>
-<div id="78e9d14e" class="cell" data-execution_count="4">
+<div id="567e4590" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>books.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img src="images/paste-5.png" class="img-fluid"></p>
 <ul>
 <li>Visualizando datos numéricos</li>
 </ul>
-<div id="6e8e8376" class="cell" data-execution_count="5">
+<div id="86999418" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>sns.histplot(data<span class="op">=</span>books, x<span class="op">=</span><span class="st">'rating'</span>)</span>
@@ -189,7 +189,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Ajustando la anchura del bin</li>
 </ul>
-<div id="ff97facc" class="cell" data-execution_count="6">
+<div id="96531cb7" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>sns.histplot(data<span class="op">=</span>books, x<span class="op">=</span><span class="st">'rating'</span>, binwidth<span class="op">=</span><span class="fl">.1</span>)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -197,7 +197,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="funciones-para-la-exploración-inicial" class="level3">
 <h3 class="anchored" data-anchor-id="funciones-para-la-exploración-inicial">Funciones para la exploración inicial</h3>
 <p>Estás investigando las tasas de desempleo en todo el mundo y te han dado un nuevo conjunto de datos con el que trabajar. Los datos se han guardado y cargado para ti como un DataFrame de pandas llamado <code>unemployment</code>. Nunca antes habías visto los datos, así que tu primera tarea es utilizar unas cuantas funciones de pandas para conocer estos nuevos datos.</p>
-<div id="2581388b" class="cell" data-execution_count="7">
+<div id="2d95ac76" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>ruta <span class="op">=</span> <span class="st">'./data/clean_unemployment.csv'</span></span>
@@ -208,7 +208,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol type="1">
 <li>Utiliza una función de pandas para imprimir las cinco primeras filas del DataFrame <code>unemployment</code>.</li>
 </ol>
-<div id="1e076f86" class="cell" data-execution_count="8">
+<div id="310c6884" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the first five rows of unemployment</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(unemployment.head())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -230,7 +230,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol start="2" type="1">
 <li>Utiliza una función pandas para imprimir un resumen de los valores y tipos de datos de las columnas que no faltan del DataFrame <code>unemployment</code>.</li>
 </ol>
-<div id="74ec9871" class="cell" data-execution_count="9">
+<div id="a69d62e0" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print a summary of non-missing values and data types in the unemployment DataFrame]</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(unemployment.info())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -262,7 +262,7 @@ None</code></pre>
 <ol start="3" type="1">
 <li>Imprime las estadísticas de resument (recuento, media, desviación estándar, valores mínimo, máximo y cuartil) de cada columna numérica en <code>unemployment</code>.</li>
 </ol>
-<div id="3bd926c1" class="cell" data-execution_count="10">
+<div id="ba96056f" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print summary statistics for numerical columns in unemployment</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(unemployment.describe())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -299,7 +299,7 @@ max     26.540000   27.040000   26.910000   28.470000   29.220000   33.560000  <
 <ul>
 <li>Utiliza un método para contar los valores asociados a cada <code>continent</code> en el DataFrame <code>unemployment</code>.</li>
 </ul>
-<div id="4f671baf" class="cell" data-execution_count="11">
+<div id="10e95934" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Count the values associated with each continent in unemployment</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(unemployment[<span class="st">'continent'</span>].value_counts())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -326,7 +326,7 @@ Name: count, dtype: int64</code></pre>
 <li>Importa las bibliotecas de visualización necesarias</li>
 <li>Crea un histograma de la distribución de los porcentajes de desempleo de 2021 en todos los países en <code>unemployment</code>; muestra un punto pocentual completo en cada casilla.</li>
 </ul>
-<div id="fe4fcf97" class="cell" data-execution_count="12">
+<div id="d77697ba" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import the required visualization libraries</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -351,14 +351,14 @@ Name: count, dtype: int64</code></pre>
 <ul>
 <li>Validando los tipos de datos</li>
 </ul>
-<div id="0348959b" class="cell" data-execution_count="13">
+<div id="e5dae9f8" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>books.dtypes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img src="images/paste-8.png" class="img-fluid" width="370"></p>
 <ul>
 <li>Actualizando los tipos de datos</li>
 </ul>
-<div id="ece53b74" class="cell" data-execution_count="14">
+<div id="e22afec5" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>books[<span class="st">'year'</span>] <span class="op">=</span> books[<span class="st">'year'</span>].astype(<span class="bu">int</span>)</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>books.dtypes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -400,17 +400,17 @@ Name: count, dtype: int64</code></pre>
 <ul>
 <li>Validando datos categóricos</li>
 </ul>
-<div id="a019eea2" class="cell" data-execution_count="15">
+<div id="de8c19bf" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>books[<span class="st">'genre'</span>].isin([<span class="st">'Fiction'</span>, <span class="st">'Non Fiction'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img src="images/paste-10.png" class="img-fluid" width="370"></p>
 <p>Para validar los datos que no están en la lista</p>
-<div id="3eeb31c6" class="cell" data-execution_count="16">
+<div id="6139a110" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="op">~</span>books[<span class="st">'genre'</span>].isin([<span class="st">'Fiction'</span>, <span class="st">'Non Fiction'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img src="images/paste-11.png" class="img-fluid" width="370"></p>
 <p>Para filtrar el DataFrame por los valores en nuestra lista</p>
-<div id="9ae842af" class="cell" data-execution_count="17">
+<div id="3909ed5a" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>books[books[<span class="st">'genre'</span>].isin([<span class="st">'Fiction'</span>, <span class="st">'Non Fiction'</span>])].head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img src="images/paste-12.png" class="img-fluid"></p>
@@ -418,26 +418,26 @@ Name: count, dtype: int64</code></pre>
 <li>Validando los datos numéricos</li>
 </ul>
 <p>Para ver solo las columnas numéricas en un DataFrame:</p>
-<div id="5762c9fb" class="cell" data-execution_count="18">
+<div id="20f43bce" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>books.select_dtypes(<span class="st">'number'</span>).head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Para conocer un intervalo específico:</p>
-<div id="98173cd4" class="cell" data-execution_count="19">
+<div id="5131e5b0" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>books[<span class="st">'year'</span>].<span class="bu">min</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img src="images/paste-13.png" class="img-fluid" width="370"></p>
-<div id="403a8642" class="cell" data-execution_count="20">
+<div id="4e9a8a7c" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>books[<span class="st">'year'</span>].<span class="bu">max</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img src="images/paste-14.png" width="370" height="40"></p>
 <p>Se puede ver una imagen más detallada de la distribución de los datos, utilizando boxplot:</p>
-<div id="c4093a05" class="cell" data-execution_count="21">
+<div id="06f73261" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>sns.boxplot(data<span class="op">=</span>books, x<span class="op">=</span><span class="st">'year'</span>)</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img src="images/paste-15.png" class="img-fluid" width="370"></p>
 <p>También se puede ver los datos agrupados por una variable categórica.</p>
-<div id="778f0a2b" class="cell" data-execution_count="22">
+<div id="eb612c76" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>sns.boxplot(data<span class="op">=</span>books, x<span class="op">=</span><span class="st">'year'</span>, y<span class="op">=</span><span class="st">'genre'</span>)</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -451,7 +451,7 @@ Name: count, dtype: int64</code></pre>
 <ol type="1">
 <li>¿Cuál de las siguientes columnas requiere una actualización de su tipo de datos?</li>
 </ol>
-<div id="42c1f260" class="cell" data-execution_count="24">
+<div id="c0f4c3e3" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(unemployment.dtypes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>country_code     object
@@ -486,7 +486,7 @@ dtype: object</code></pre>
 <li>Actualiza el tipo de datos de la columna <code>2019</code> de <code>unemployment</code> a <code>float</code>.</li>
 <li>¡Vuelve a imprimir el <code>dtypes</code> del DataFrame <code>umemployment</code> para comprobar que se ha actualizado el tipo de datos!</li>
 </ul>
-<div id="a84c5347" class="cell" data-execution_count="25">
+<div id="41742d8a" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Update the data type of the 2019 column to a float</span></span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>unemployment[<span class="st">'2019'</span>] <span class="op">=</span> unemployment[<span class="st">'2019'</span>].astype(<span class="st">'float'</span>)</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -524,14 +524,14 @@ dtype: object</code></pre>
 <ol type="1">
 <li>Defina una Serie Booleana que describan si cada <code>continent</code> está o no fuera de <code>Oceanía</code>; llama a esta Serie <code>not_oceania</code>.</li>
 </ol>
-<div id="c5cef0ee" class="cell" data-execution_count="26">
+<div id="24dcc1b2" class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a Series describing whether each continent is outside of Oceania</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>not_oceania <span class="op">=</span> <span class="op">~</span>unemployment[<span class="st">'continent'</span>].isin([<span class="st">'Oceania'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="2" type="1">
 <li>Utiliza la indexación booleana para imprimir el DataFrame <code>unemployment</code> sin ninguno de los datos relacionados con los países de Oceanía.</li>
 </ol>
-<div id="efa055fd" class="cell" data-execution_count="27">
+<div id="96804415" class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a Series describing whether each continent is outside of Oceania</span></span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>not_oceania <span class="op">=</span> <span class="op">~</span>unemployment[<span class="st">'continent'</span>].isin([<span class="st">'Oceania'</span>])</span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -579,7 +579,7 @@ dtype: object</code></pre>
 <li>Imprime las tasas de desempleo mínima y máximam en este orden, durante 2021.</li>
 <li>Crea un diagrama de caja de las tasas de desempleo de 2021 (en el eje x), desglosadas por continente (en el eje y).</li>
 </ul>
-<div id="753ae9d4" class="cell" data-execution_count="28">
+<div id="2fba5c76" class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the minimum an maximum unemployment rates during 2021</span></span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(unemployment[<span class="st">'2021'</span>].<span class="bu">min</span>(), unemployment[<span class="st">'2021'</span>].<span class="bu">max</span>())</span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -604,14 +604,231 @@ dtype: object</code></pre>
 </section>
 <section id="resumen-de-datos" class="level2">
 <h2 class="anchored" data-anchor-id="resumen-de-datos">Resumen de datos</h2>
+<ul>
+<li>Explorando grupo de datos
+<ul>
+<li><code>.groupby()</code> grupo de datos por categoría.</li>
+<li>Función de agregación indica cómo se resume un grupo de datos.</li>
+</ul></li>
+</ul>
+<div id="db7ade9b" class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>books.groupby(<span class="st">'genre'</span>).mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><img src="images/paste-17.png" class="img-fluid"></p>
+<ul>
+<li><p>Funciones de agregación</p>
+<ul>
+<li><p>Suma: <code>.sum()</code></p></li>
+<li><p>Conteo: <code>.cont</code></p></li>
+<li><p>Mínimo: <code>.min()</code></p></li>
+<li><p>Máximo: <code>.max()</code></p></li>
+<li><p>Varianza: <code>.var()</code></p></li>
+<li><p>Desviación estándar: <code>.std()</code></p></li>
+</ul></li>
+<li><p>Agregación de datos no agrupados</p>
+<ul>
+<li><p><code>.agg()</code> aplica funciones de agregación a través de un DataFrame</p></li>
+<li><p>Por defecto agrega todas las filas de una columna determinada</p></li>
+<li><p>Se suele utilizar cuando queremos más de una función</p></li>
+<li><p>Solo lo aplica a las columnas numéricas</p></li>
+</ul></li>
+</ul>
+<div id="91545307" class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>books.agg([<span class="st">'mean'</span>, <span class="st">'std'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><img src="images/paste-18.png" class="img-fluid"></p>
+<ul>
+<li>Especificando agregaciones para columnas</li>
+</ul>
+<div id="dfa7fcd7" class="cell" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>books.agg({<span class="st">'rating'</span>: [<span class="st">'mean'</span>, <span class="st">'std'</span>], <span class="st">'year'</span>: [<span class="st">'median'</span>]})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><img src="images/paste-19.png" class="img-fluid"></p>
+<ul>
+<li>Nombrando columnas resumen</li>
+</ul>
+<div id="d9020c7f" class="cell" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>books.groupby(<span class="st">'genre'</span>).agg(</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>    mean_rating <span class="op">=</span> (<span class="st">'rating'</span>, <span class="st">'mean'</span>),</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>    std_rating <span class="op">=</span> (<span class="st">'rating'</span>, <span class="st">'std'</span>),</span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>    median_year <span class="op">=</span> (<span class="st">'year'</span>, <span class="st">'median'</span>)</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><img src="images/paste-20.png" class="img-fluid"></p>
+<ul>
+<li><p>Visualizando resúmenes categoricos</p>
+<ul>
+<li>Calculan automáticamente la media de una variable cuantitativa</li>
+</ul></li>
+</ul>
+<div id="8d69cc7e" class="cell" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>sns.barplot(data<span class="op">=</span>books, x<span class="op">=</span><span class="st">'genre'</span>, y<span class="op">=</span><span class="st">'rating'</span>)</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><img src="images/paste-21.png" class="img-fluid" width="370"></p>
 <section id="resúmenes-con-.groupby-y-.agg" class="level3">
 <h3 class="anchored" data-anchor-id="resúmenes-con-.groupby-y-.agg">Resúmenes con .groupby() y .agg()</h3>
+<p>En este ejercicio, explorarás las medias y desviaciones estándar de los datos anuales de desempleo. En primer lugar, encontrarás las medias y desviaciones estándar independientemente del continente para observar las tendencias mundiales del desempleo. Después, comprobarás las tendencias del desempleo desglosadas por continente.</p>
+<div id="3df319a8" class="cell" data-execution_count="34">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>ruta <span class="op">=</span> <span class="st">'./data/clean_unemployment.csv'</span></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>unemployment <span class="op">=</span> pd.read_csv(ruta)</span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(unemployment.head())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  country_code          country_name      continent   2010   2011   2012  \
+0          AFG           Afghanistan           Asia  11.35  11.05  11.34   
+1          AGO                Angola         Africa   9.43   7.36   7.35   
+2          ALB               Albania         Europe  14.09  13.48  13.38   
+3          ARE  United Arab Emirates           Asia   2.48   2.30   2.18   
+4          ARG             Argentina  South America   7.71   7.18   7.22   
+
+    2013   2014   2015   2016   2017   2018   2019   2020   2021  
+0  11.19  11.14  11.13  11.16  11.18  11.15  11.22  11.71  13.28  
+1   7.37   7.37   7.39   7.41   7.41   7.42   7.42   8.33   8.53  
+2  15.87  18.05  17.19  15.42  13.62  12.30  11.47  13.33  11.82  
+3   2.04   1.91   1.77   1.64   2.46   2.35   2.23   3.19   3.36  
+4   7.10   7.27   7.52   8.11   8.35   9.22   9.84  11.46  10.90  </code></pre>
+</div>
+</div>
+<section id="instrucciones-6" class="level4">
+<h4 class="anchored" data-anchor-id="instrucciones-6">Instrucciones</h4>
+<ol type="1">
+<li>Imprime la media y las desviación estándar d elas tasas de paro de cada año (en ese orden).</li>
+</ol>
+<div id="b00931e8" class="cell" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the mean and standard deviation of rates by year</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(unemployment[</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>    [<span class="st">'2010'</span>, <span class="st">'2011'</span>, <span class="st">'2012'</span>, <span class="st">'2013'</span>, <span class="st">'2014'</span>, <span class="st">'2015'</span>, <span class="st">'2016'</span>, <span class="st">'2017'</span>, <span class="st">'2018'</span>, <span class="st">'2019'</span>, <span class="st">'2020'</span>]</span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>].agg([<span class="st">'mean'</span>, <span class="st">'std'</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          2010      2011      2012      2013      2014      2015      2016  \
+mean  8.409286  8.315440  8.317967  8.344780  8.179670  8.058901  7.925879   
+std   6.248887  6.266795  6.367270  6.416041  6.284241  6.161170  6.045439   
+
+          2017      2018      2019      2020  
+mean  7.668626  7.426429  7.243736  8.420934  
+std   5.902152  5.818915  5.696573  6.040915  </code></pre>
+</div>
+</div>
+<ol start="2" type="1">
+<li>Imprime la media y la desviación estándar (en ese orden) de las tasas de paro de cada año agrupadas por continente.</li>
+</ol>
+<div id="be623424" class="cell" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print yearly mean and standard deviation grouped by continent</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(unemployment[</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>    [<span class="st">'continent'</span>, <span class="st">'2010'</span>, <span class="st">'2011'</span>, <span class="st">'2012'</span>, <span class="st">'2013'</span>, <span class="st">'2014'</span>, <span class="st">'2015'</span>, <span class="st">'2016'</span>, <span class="st">'2017'</span>, <span class="st">'2018'</span>, <span class="st">'2019'</span>, <span class="st">'2020'</span>]</span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>].groupby(<span class="st">"continent"</span>).agg([<span class="st">'mean'</span>, <span class="st">'std'</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                    2010                 2011                 2012            \
+                    mean       std       mean       std       mean       std   
+continent                                                                      
+Africa          9.343585  7.411259   9.369245  7.401556   9.240755  7.264542   
+Asia            6.240638  5.146175   5.942128  4.779575   5.835319  4.756904   
+Europe         11.008205  6.392063  10.947949  6.539538  11.325641  7.003527   
+North America   8.663333  5.115805   8.563333  5.377041   8.448889  5.495819   
+Oceania         3.622500  2.054721   3.647500  2.008466   4.103750  2.723118   
+South America   6.870833  2.807058   6.518333  2.801577   6.410833  2.936508   
+
+                    2013                 2014            ...      2016  \
+                    mean       std       mean       std  ...      mean   
+continent                                                ...             
+Africa          9.132453  7.309285   9.121321  7.291359  ...  9.277547   
+Asia            5.852128  4.668405   5.853191  4.681301  ...  6.094894   
+Europe         11.466667  6.969209  10.971282  6.759765  ...  9.394615   
+North America   8.840556  6.081829   8.512222  5.801927  ...  7.941111   
+Oceania         3.980000  2.640119   3.976250  2.659205  ...  3.877500   
+South America   6.335000  2.808780   6.347500  2.834332  ...  7.230833   
+
+                             2017                2018                2019  \
+                    std      mean       std      mean       std      mean   
+continent                                                                   
+Africa         7.459439  9.284528  7.407620  9.237925  7.358425  9.264340   
+Asia           5.051796  6.171277  5.277201  6.090213  5.409128  5.949149   
+Europe         5.822793  8.359744  5.177845  7.427436  4.738206  6.764359   
+North America  5.503090  7.391111  5.326446  7.281111  5.253180  7.095000   
+Oceania        2.477866  3.872500  2.492834  3.851250  2.455893  3.773750   
+South America  3.052309  7.281667  3.398994  7.496667  3.408856  7.719167   
+
+                              2020            
+                    std       mean       std  
+continent                                     
+Africa         7.455293  10.307736  7.928166  
+Asia           5.254008   7.012340  5.699609  
+Europe         4.124734   7.470513  4.071218  
+North America  4.770490   9.297778  4.963045  
+Oceania        2.369068   4.273750  2.617490  
+South America  3.379845  10.275000  3.411263  
+
+[6 rows x 22 columns]</code></pre>
+</div>
+</div>
+<p>Estos datos están bien resumidos, pero es un poco largo. ¿Qué pasaríasi quisieras enfocarte en un resumen de solo un año y hacerlo más legible? ¡Inténtalo en el siguiente ejercicio!</p>
+</section>
 </section>
 <section id="agregaciones-con-nombre" class="level3">
 <h3 class="anchored" data-anchor-id="agregaciones-con-nombre">Agregaciones con nombre</h3>
+<p>Ya has visto cómo <code>.groupby()</code> y <code>.agg()</code> pueden combinarse para mostrar resúmenes para categorías. A veces, es útil nombrar nuevas columnas al agregar, para que se quede claro en la salida del código qué agregaciones se están aplicando y dónde.</p>
+<p>Tu tarea consiste en crear un DataFrame llamado <code>continent_summary</code> que muestre una fila por cada continente. Las columnas del DataFram,e contendrán la tasa de paro media de cada continente en 2021, así como la desviación estándar de la tasa de empleo del 2021. Y por supuesto, ¡renombrarás las columnas para que su contenido quede claro!</p>
+<section id="instrucciones-7" class="level4">
+<h4 class="anchored" data-anchor-id="instrucciones-7">Instrucciones</h4>
+<ul>
+<li><p>Crea una columna llamada <code>mean_rate_2021</code> que muestre la tasa de paro media de 2021 para cada continente.</p></li>
+<li><p>Crea una columna llamada <code>std_rate_2021</code> que muestre la desviación estándar de la tasa de paro de 2021 para cada continente.</p></li>
+</ul>
+<div id="4758f99f" class="cell" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>continent_sumary <span class="op">=</span> unemployment[</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>    [<span class="st">'continent'</span>, <span class="st">'2021'</span>]</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>].groupby(<span class="st">'continent'</span>).agg(</span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Create the mean_rate_2021 column</span></span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>    mean_rate_2021 <span class="op">=</span> (<span class="st">'2021'</span>, <span class="st">'mean'</span>),</span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Create the std_rate_2021 column</span></span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>    std_rate_2021 <span class="op">=</span> (<span class="st">'2021'</span>, <span class="st">'std'</span>),</span>
+<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(continent_sumary)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>               mean_rate_2021  std_rate_2021
+continent                                   
+Africa              10.473585       8.131636
+Asia                 6.906170       5.414745
+Europe               7.414872       3.947825
+North America        9.155000       5.076482
+Oceania              4.280000       2.671522
+South America        9.924167       3.611624</code></pre>
+</div>
+</div>
+<p>El desempleo promedio de 2021 varió ampliamente por continente, y también lo hizo el desempleo dentro de esos continentes.</p>
+</section>
 </section>
 <section id="visualizar-resúmenes-categóricos" class="level3">
 <h3 class="anchored" data-anchor-id="visualizar-resúmenes-categóricos">Visualizar resúmenes categóricos</h3>
+<p>Como has aprendido en este capítulo, Seaborn tiene muchas visualizaciones estupendas para la exploración, incluido un gráfico de barras para mostrar un valor medio agregado por categoría de datos.</p>
+<p>En Seaborn, los gráficos de barras incluyen una barra vertical que indica el intervalo de confianza del 95 % para la media categórica. Como los intervalos de confianza se calculan utilizando tanto el número de valores como la variabilidad de esos valores, dan una indicación útil de hasta qué punto se puede confiar en los datos.</p>
+<p>Tu tarea consiste en crear un diagrama de barras para visualizar las medias y los intervalos de confianza de las tasas de desempleo en los distintos continentes.</p>
+<div id="664d7b55" class="cell" data-execution_count="38">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="instrucciones-8" class="level4">
+<h4 class="anchored" data-anchor-id="instrucciones-8">Instrucciones</h4>
+<ul>
+<li>Crea un diagrama de barras que muestre los continentes en el eje x y lsus respectivas tasas medias de desempleo en 2021 en el eje y.</li>
+</ul>
+<div id="f1c16811" class="cell" data-execution_count="39">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a bar plot of continents and their average unemployment</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>sns.barplot(data<span class="op">=</span>unemployment, x<span class="op">=</span><span class="st">'continent'</span>, y<span class="op">=</span><span class="st">'2021'</span>,</span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>            hue<span class="op">=</span><span class="st">'continent'</span>, legend<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="01_Conocer_un_conjunto_de_datos_files/figure-html/cell-40-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Aunque Europa tiene un mayor desempleo promedio que Asia, también tiene un intervalo de confianza más pequeño para ese promedio, por lo que el valor promedio es más confiable.</p>
+</section>
 </section>
 </section>
 

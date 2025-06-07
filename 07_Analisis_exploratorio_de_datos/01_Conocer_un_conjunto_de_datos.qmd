@@ -267,7 +267,6 @@ plt.show()
 
 ![](images/paste-16.png){width="370"}
 
-
 ### Detectar tipos de datos
 
 ¡Se ha modificado una columna en el DataFrame `unemployment` y ahora tiene un tipo de datos incorrecto! Este tipo de datos te impedirá realizar una exploración y un análisis eficaces, por lo que tu tarea consiste en identificar qué columna tiene un tipo de datos incorrecto y, a continuación, corregirlo.
@@ -282,24 +281,23 @@ unemployment['2019'] = unemployment['2019'].astype('object')
 
 **Pregunta**
 
-1. ¿Cuál de las siguientes columnas requiere una actualización de su tipo de datos?
+1.  ¿Cuál de las siguientes columnas requiere una actualización de su tipo de datos?
 
 ```{python}
 print(unemployment.dtypes)
 ```
 
-
 **Respuestas posibles**
 
-- [ ] `country_name`
-- [ ] `continent`
-- [X] `2019`
-- [ ] `2021`
+-   [ ] `country_name`
+-   [ ] `continent`
+-   [x] `2019`
+-   [ ] `2021`
 
-2.
+2.  
 
-- Actualiza el tipo de datos de la columna `2019` de `unemployment` a `float`.
-- ¡Vuelve a imprimir el `dtypes` del DataFrame `umemployment` para comprobar que se ha actualizado el tipo de datos!
+-   Actualiza el tipo de datos de la columna `2019` de `unemployment` a `float`.
+-   ¡Vuelve a imprimir el `dtypes` del DataFrame `umemployment` para comprobar que se ha actualizado el tipo de datos!
 
 ```{python}
 # Update the data type of the 2019 column to a float
@@ -311,23 +309,22 @@ print(unemployment.dtypes)
 
 Cambiar el tipo de dato de la columna `2019` significa que ahora puedes realizar cálculos sobre ella, incluyendo validar su rango.
 
-
 ### Validar continentes
 
-Tu colega te ha informado de que los datos sobre el desempleo de los países de Oceanía no son fiables, y te gustaría  identificar y excluir a estos países de tus datos de `unemployment`. ¡La función `.isin()` puede ayudarte con eso!
+Tu colega te ha informado de que los datos sobre el desempleo de los países de Oceanía no son fiables, y te gustaría identificar y excluir a estos países de tus datos de `unemployment`. ¡La función `.isin()` puede ayudarte con eso!
 
 Tu tarea consiste en utilizar `isin()` para identificar los países que no están en Oceanía. Estos países deberían devolver `True` mientras que los países de Oceanía deberán devolver `False`. Esto te permitirá utilizar los resultados de `isin()` para filtrar rápidamente los países de Oceanía utilizando la indexación booleana.
 
 ### Instrucciones
 
-1. Defina una Serie Booleana que describan si cada `continent` está o no fuera de `Oceanía`; llama a esta Serie `not_oceania`.
+1.  Defina una Serie Booleana que describan si cada `continent` está o no fuera de `Oceanía`; llama a esta Serie `not_oceania`.
 
 ```{python}
 # Define a Series describing whether each continent is outside of Oceania
 not_oceania = ~unemployment['continent'].isin(['Oceania'])
 ```
 
-2. Utiliza la indexación booleana para imprimir el DataFrame `unemployment` sin ninguno de los datos relacionados con los países de Oceanía.
+2.  Utiliza la indexación booleana para imprimir el DataFrame `unemployment` sin ninguno de los datos relacionados con los países de Oceanía.
 
 ```{python}
 # Define a Series describing whether each continent is outside of Oceania
@@ -339,7 +336,6 @@ print(unemployment[not_oceania])
 
 Validaste datos categóricos y usaste tu validación `.isin()` para excluir datos en los que no estabas interesado. Filtrar los datos que no necesitas al comienzo de tu proceso de EDA es una excelente manera de organizarte para la exploración que está por venir.
 
-
 ### Rango de validación
 
 Ahora es el momento de validar nuestros datos numéricos. En la lección anterior vimos, utilizando `.describe()`, que la mayor tasa de desempleo durante 2021 fue de casi el 34 %, mientras que la más baja estuvo justo por encima de cero.
@@ -348,8 +344,8 @@ Tu tarea en este ejercicio es obtener información mucho más detallada sobre el
 
 #### Instrucciones
 
-- Imprime las tasas de desempleo mínima y máximam en este orden, durante 2021.
-- Crea un diagrama de caja de las tasas de desempleo de 2021 (en el eje x), desglosadas por continente (en el eje y).
+-   Imprime las tasas de desempleo mínima y máximam en este orden, durante 2021.
+-   Crea un diagrama de caja de las tasas de desempleo de 2021 (en el eje x), desglosadas por continente (en el eje y).
 
 ```{python}
 # Print the minimum an maximum unemployment rates during 2021
@@ -365,8 +361,173 @@ Observa cómo varían los rangos de desempleo entre continentes. Por ejemplo, el
 
 ## Resumen de datos
 
+-   Explorando grupo de datos
+    -   `.groupby()` grupo de datos por categoría.
+    -   Función de agregación indica cómo se resume un grupo de datos.
+
+```{python}
+#| echo: true
+#| eval: false
+books.groupby('genre').mean()
+```
+
+![](images/paste-17.png)
+
+-   Funciones de agregación
+
+    -   Suma: `.sum()`
+
+    -   Conteo: `.cont`
+
+    -   Mínimo: `.min()`
+
+    -   Máximo: `.max()`
+
+    -   Varianza: `.var()`
+
+    -   Desviación estándar: `.std()`
+
+-   Agregación de datos no agrupados
+
+    -   `.agg()` aplica funciones de agregación a través de un DataFrame
+
+    -   Por defecto agrega todas las filas de una columna determinada
+
+    -   Se suele utilizar cuando queremos más de una función
+
+    -   Solo lo aplica a las columnas numéricas
+
+```{python}
+#| echo: true
+#| eval: false
+books.agg(['mean', 'std'])
+```
+
+![](images/paste-18.png)
+
+-   Especificando agregaciones para columnas
+
+```{python}
+#| echo: true
+#| eval: false
+books.agg({'rating': ['mean', 'std'], 'year': ['median']})
+```
+
+![](images/paste-19.png)
+
+-   Nombrando columnas resumen
+
+```{python}
+#| echo: true
+#| eval: false
+books.groupby('genre').agg(
+    mean_rating = ('rating', 'mean'),
+    std_rating = ('rating', 'std'),
+    median_year = ('year', 'median')
+)
+```
+
+![](images/paste-20.png)
+
+-   Visualizando resúmenes categoricos
+
+    -   Calculan automáticamente la media de una variable cuantitativa
+
+```{python}
+#| echo: true
+#| eval: false
+sns.barplot(data=books, x='genre', y='rating')
+plt.show()
+```
+
+![](images/paste-21.png){width="370"}
+
+
 ### Resúmenes con .groupby() y .agg()
+
+En este ejercicio, explorarás las medias y desviaciones estándar de los datos anuales de desempleo. En primer lugar, encontrarás las medias y desviaciones estándar independientemente del continente para observar las tendencias mundiales del desempleo. Después, comprobarás las tendencias del desempleo desglosadas por continente.
+
+```{python}
+import pandas as pd
+
+ruta = './data/clean_unemployment.csv'
+unemployment = pd.read_csv(ruta)
+print(unemployment.head())
+```
+
+#### Instrucciones
+
+1. Imprime la media y las desviación estándar d elas tasas de paro de cada año (en ese orden).
+
+```{python}
+# Print the mean and standard deviation of rates by year
+print(unemployment[
+    ['2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020']
+].agg(['mean', 'std']))
+```
+
+2. Imprime la media y la desviación estándar (en ese orden) de las tasas de paro de cada año agrupadas por continente.
+
+```{python}
+# Print yearly mean and standard deviation grouped by continent
+print(unemployment[
+    ['continent', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020']
+].groupby("continent").agg(['mean', 'std']))
+```
+Estos datos están bien resumidos, pero es un poco largo. ¿Qué pasaríasi quisieras enfocarte en un resumen de solo un año y hacerlo más legible? ¡Inténtalo en el siguiente ejercicio!
+
 
 ### Agregaciones con nombre
 
+Ya has visto cómo `.groupby()` y `.agg()` pueden combinarse para mostrar resúmenes para categorías. A veces, es útil nombrar nuevas columnas al agregar, para que se quede claro en la salida del código qué agregaciones se están aplicando y dónde.
+
+Tu tarea consiste en crear un DataFrame llamado `continent_summary` que muestre una fila por cada continente. Las columnas del DataFram,e contendrán la tasa de paro media de cada continente en 2021, así como la desviación estándar de la tasa de empleo del 2021. Y por supuesto, ¡renombrarás las columnas para que su contenido quede claro!
+
+#### Instrucciones
+
+- Crea una columna llamada `mean_rate_2021` que muestre la tasa de paro media de 2021 para cada continente.
+
+- Crea una columna llamada `std_rate_2021` que muestre la desviación estándar de la tasa de paro de 2021 para cada continente. 
+
+```{python}
+continent_sumary = unemployment[
+    ['continent', '2021']
+].groupby('continent').agg(
+    # Create the mean_rate_2021 column
+    mean_rate_2021 = ('2021', 'mean'),
+    # Create the std_rate_2021 column
+    std_rate_2021 = ('2021', 'std'),
+)
+print(continent_sumary)
+```
+
+El desempleo promedio de 2021 varió ampliamente por continente, y también lo hizo el desempleo dentro de esos continentes.
+
+
 ### Visualizar resúmenes categóricos
+
+Como has aprendido en este capítulo, Seaborn tiene muchas visualizaciones estupendas para la exploración, incluido un gráfico de barras para mostrar un valor medio agregado por categoría de datos.
+
+En Seaborn, los gráficos de barras incluyen una barra vertical que indica el intervalo de confianza del 95 % para la media categórica. Como los intervalos de confianza se calculan utilizando tanto el número de valores como la variabilidad de esos valores, dan una indicación útil de hasta qué punto se puede confiar en los datos.
+
+Tu tarea consiste en crear un diagrama de barras para visualizar las medias y los intervalos de confianza de las tasas de desempleo en los distintos continentes.
+
+
+```{python}
+import matplotlib.pyplot as plt
+import seaborn as sns
+```
+
+#### Instrucciones
+
+- Crea un diagrama de barras que muestre los continentes en el eje x y lsus respectivas tasas medias de desempleo en 2021 en el eje y.
+
+
+```{python}
+# Create a bar plot of continents and their average unemployment
+sns.barplot(data=unemployment, x='continent', y='2021',
+            hue='continent', legend=False)
+plt.show()
+```
+
+Aunque Europa tiene un mayor desempleo promedio que Asia, también tiene un intervalo de confianza más pequeño para ese promedio, por lo que el valor promedio es más confiable.
