@@ -1,0 +1,42 @@
+---
+title: "Análisis Exploratorio de Datos en Python"
+format: html
+---
+
+# Bienvenido
+
+Este curso interactivo cubre el proceso de **exploración y análisis de datos** en Python, desde entender un nuevo dataset hasta la limpieza e imputación de valores.
+
+📊 Nivel: Intermedio  
+🕒 Duración estimada: 4 horas  
+🎥 Incluye código, visualizaciones y ejercicios
+
+---
+
+## Descripción
+
+Así que tienes algunos datos interesantes, ¿por dónde empiezas tu análisis? Este curso cubrirá el proceso de exploración y análisis de datos, desde la comprensión de lo que se incluye en un conjunto de datos hasta la incorporación de los resultados de la exploración a un flujo de trabajo de ciencia de datos.
+
+
+Utilizando datos sobre cifras de desempleo y precios de billetes de avión, aprovecharás Python para resumir y validar datos, calcular, identificar y reemplazar valores perdidos, y limpiar valores numéricos y categóricos. A lo largo del curso, crearás hermosas visualizaciones Seaborn para comprender las variables y sus relaciones.
+
+
+Por ejemplo, examinarás cómo se relacionan el consumo de alcohol y el rendimiento de los alumnos. Por último, el curso mostrará cómo los hallazgos exploratorios alimentan los flujos de trabajo de la ciencia de datos creando nuevas características, equilibrando características categóricas y generando hipótesis a partir de los hallazgos.
+
+
+Al final de este curso, tendrás la confianza necesaria para realizar tu propio análisis exploratorio de datos (EDA) en Python. ¡Serás capaz de explicar tus conclusiones visualmente a los demás y sugerir los siguientes pasos para recopilar información a partir de tus datos!
+
+## Módulos del curso
+
+1. Conocer un conjunto de datos  
+2. Limpieza e imputación de datos
+
+## Datasets
+
+Este curso utiliza los siguientes archivos:
+
+- `unemployment.csv`
+- `data_science_salaries.csv`
+- `books.csv`
+- `divorce.csv`
+- `planes.csv`

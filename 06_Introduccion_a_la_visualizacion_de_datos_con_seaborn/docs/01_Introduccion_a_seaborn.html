@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Edwin John Fredy Reyes Aguirre">
-<meta name="dcterms.date" content="2025-05-07">
+<meta name="dcterms.date" content="2025-06-08">
 
-<title>Introducción a Seaborn</title>
+<title>Introducción a Seaborn – Introducción a la Visualización de Datos con Python</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -59,28 +59,127 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="01_Introduccion_a_seaborn_files/libs/clipboard/clipboard.min.js"></script>
-<script src="01_Introduccion_a_seaborn_files/libs/quarto-html/quarto.js"></script>
-<script src="01_Introduccion_a_seaborn_files/libs/quarto-html/popper.min.js"></script>
-<script src="01_Introduccion_a_seaborn_files/libs/quarto-html/tippy.umd.min.js"></script>
-<script src="01_Introduccion_a_seaborn_files/libs/quarto-html/anchor.min.js"></script>
-<link href="01_Introduccion_a_seaborn_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="01_Introduccion_a_seaborn_files/libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="01_Introduccion_a_seaborn_files/libs/bootstrap/bootstrap.min.js"></script>
-<link href="01_Introduccion_a_seaborn_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="01_Introduccion_a_seaborn_files/libs/bootstrap/bootstrap-1bc8a17f135ab3d594c857e9f48e611b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./02_Visualizar_dos_variables_cuantitativas.html" rel="next">
+<link href="./index.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-ab13e3869911c666bdfefe24be244e71.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
+
 </head>
 
-<body>
+<body class="nav-sidebar floating">
 
-<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
-<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-  <nav id="TOC" role="doc-toc" class="toc-active">
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01_Introduccion_a_seaborn.html"><span class="chapter-title">Introducción a Seaborn</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Introducción a la Visualización de Datos con Python</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">index.html</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01_Introduccion_a_seaborn.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Introducción a Seaborn</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02_Visualizar_dos_variables_cuantitativas.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Visualizar dos variables cuantitativas</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03_Visualizar_variable_categorica_cuantitativa.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Visualizar una variable categórica y una cuantitativa</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04_Personalizar_graficos_seaborn.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Personalizar los gráficos de Seaborn</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Contenido</h2>
    
   <ul>
@@ -101,12 +200,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   </ul>
 </nav>
-</div>
+    </div>
+<!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Introducción a Seaborn</h1>
+<h1 class="title"><span class="chapter-title">Introducción a Seaborn</span></h1>
 </div>
 
 
@@ -123,7 +223,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">May 7, 2025</p>
+      <p class="date">June 8, 2025</p>
     </div>
   </div>
   
@@ -157,14 +257,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul></li>
 <li>Cómo iniciar?</li>
 </ul>
-<div id="4dff3e8c" class="cell" data-execution_count="1">
+<div id="9c6547b5" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns  <span class="co"># Samuel Norman Seaborn (sns)</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>Ejemplo 1: Scatter plot</li>
 </ul>
-<div id="33fb78ae" class="cell" data-execution_count="2">
+<div id="192bddc4" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>height <span class="op">=</span> [<span class="dv">62</span>, <span class="dv">64</span>, <span class="dv">69</span>, <span class="dv">75</span>, <span class="dv">66</span>,</span>
@@ -184,7 +284,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Ejemplo 2: Crear un count plot</li>
 </ul>
-<div id="ff470543" class="cell" data-execution_count="3">
+<div id="c8a40bcd" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>gender <span class="op">=</span> [<span class="st">'Female'</span>, <span class="st">'Female'</span>,</span>
@@ -204,7 +304,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="hacer-un-gráfico-de-dispersión-con-listas">Hacer un gráfico de dispersión con listas</h3>
 <p>En este ejecicio, utilizaremos un conjunto de datos que contiene información sobre 227 países. Este conjunto de datos contiene mucha información interesante sobre cada país, como sus tasas de natalidad y mortalidad y su producto interno bruto (GDP). GDP es el valor de todos los bienes y servicios producidas en un año, expresado en dólares por persona.</p>
 <p>Hemos creado tres listas de datos a partir de este conjunto de datos para que puedas empezar. <code>gdp</code> es una lista que contiene el valor de GDP por país, expresado en dólares por persona. <code>phones</code> es una lista con el número de teléfonos móviles por cada 1000 personas en este país. Por último <code>percent_literate</code> es una lista que contiene el porcentaje de la población de cada país que sabe leer y escribir.</p>
-<div id="84d571fb" class="cell" data-execution_count="4">
+<div id="e90e50a9" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>ruta <span class="op">=</span> <span class="st">'./data/countries-of-the-world.csv'</span></span>
@@ -362,7 +462,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="e415f3b0" class="cell" data-execution_count="5">
+<div id="31f6ce91" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convertir a numerico los datos tipo object</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Phones (per 1000)'</span>] <span class="op">=</span> df[<span class="st">'Phones (per 1000)'</span>].<span class="bu">str</span>.replace(<span class="st">','</span>, <span class="st">'.'</span>).astype(<span class="bu">float</span>)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Literacy (%)'</span>] <span class="op">=</span> df[<span class="st">'Literacy (%)'</span>].<span class="bu">str</span>.replace(<span class="st">','</span>, <span class="st">'.'</span>).astype(<span class="bu">float</span>)</span>
@@ -377,7 +477,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol type="1">
 <li>Importa Matplotlib y Seaborn utilizando la convención de nomenclatura estándar.</li>
 </ol>
-<div id="0df6b67f" class="cell" data-execution_count="6">
+<div id="177e7a2c" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import Matplotlib and Seaborn</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -385,7 +485,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol start="2" type="1">
 <li>Crea un gráfico de dispersión de GDP (<code>gdp</code>) frente al número de teléfonos por cada 1000 personas (<code>phones</code>).</li>
 </ol>
-<div id="eea2b491" class="cell" data-execution_count="7">
+<div id="e4f30dd0" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create scatterplot with GDP on x-axis and number of phones on the y-axis</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(x<span class="op">=</span>gdp, y<span class="op">=</span>phones)</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -400,7 +500,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol start="3" type="1">
 <li>Combina el diagrama de dispersión para que muestre el porcentaje de la población que sabe leer y escribir (<code>percent_literate</code>) en el eje y.</li>
 </ol>
-<div id="ea46214a" class="cell" data-execution_count="8">
+<div id="826f8e0b" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(x<span class="op">=</span>gdp, y<span class="op">=</span>percent_literate)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
@@ -418,7 +518,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="hacer-un-gráfico-de-recuento-con-una-lista">Hacer un gráfico de recuento con una lista</h3>
 <p>En el ejercicio anterior, exploramos un conjunto de datos que contienen información sobre 227 países. Exploremos más a fondo estos dato: concretamente, ¿cuántos países hay en cada región del mundo?</p>
 <p>Para ello, tendremos que utilizar un gráfico de recuento. Los gráficos de recuento toman una lista categórica y devuelven barras que representan el número de entradas de la lista por categoría. Puedes crear una aquí utilizando una lista de regiones para cada país, que es uva variable llamada <code>region</code>.</p>
-<div id="e5e5a5b6" class="cell" data-execution_count="9">
+<div id="b046c9d2" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Se convierte la columna Region en lista y se quitan los espacios</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>region <span class="op">=</span> df[<span class="st">'Region'</span>].tolist()</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>region <span class="op">=</span> [item.strip() <span class="cf">for</span> item <span class="kw">in</span> region]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -430,7 +530,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Utiliza Seaborn para crear un gráfico de recuento con <code>region</code> en el eje y.</li>
 <li>Visualiza el gráfico</li>
 </ul>
-<div id="b33f93a1" class="cell" data-execution_count="10">
+<div id="afe3d49a" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import Matplotlib and Seaborn</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
@@ -463,7 +563,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul></li>
 <li>Trabajando con DataFrames</li>
 </ul>
-<div id="6e9c61f4" class="cell" data-execution_count="11">
+<div id="0a5eec49" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'masculinity.csv'</span>)</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -471,7 +571,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Usando DataFrames con countplot()</li>
 </ul>
-<div id="b5f34693" class="cell" data-execution_count="12">
+<div id="c5995a50" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
@@ -493,10 +593,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Lee el archivo csv situado en <code>csv_filepath</code> en un DataFrame llamado <code>df</code>.</li>
 <li>Imprime la cabecera de <code>df</code> para mostrar las cinco primeras filas.</li>
 </ul>
-<div id="3d1ee689" class="cell" data-execution_count="13">
+<div id="21b0af07" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>csv_filepath <span class="op">=</span> <span class="st">'./data/1.2.1_example_csv.csv'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="569f27e7" class="cell" data-execution_count="14">
+<div id="2935e645" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import pandas</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -538,10 +638,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Utilizando la función <code>countplot()</code> con los argumentos <code>x=</code> y <code>data=</code> para crear un gráfico de recuento con los valores de la columna <code>"Spiders"</code> en el eje x.</li>
 <li>Visualiza el gráfico.</li>
 </ul>
-<div id="f03ae95e" class="cell" data-execution_count="15">
+<div id="2bcf99ea" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>csv_filepath <span class="op">=</span> <span class="st">'./data/young-people-survey-responses.csv'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="0cc6603d" class="cell" data-execution_count="16">
+<div id="8c2d461f" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import Matplotlib, pandas and Seaborn</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -573,7 +673,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Dataset Tips</li>
 </ul>
-<div id="8236d834" class="cell" data-execution_count="17">
+<div id="fb3f91e7" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>tips <span class="op">=</span> pd.read_csv(<span class="st">'./data/tips.csv'</span>)</span>
@@ -655,7 +755,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Un Scatter plot básico</li>
 </ul>
-<div id="496a3496" class="cell" data-execution_count="18">
+<div id="95c315a7" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(x<span class="op">=</span><span class="st">'total_bill'</span>,</span>
@@ -674,7 +774,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Un Scatter plot con hue</li>
 </ul>
-<div id="d1abb2f2" class="cell" data-execution_count="19">
+<div id="11839ceb" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(x<span class="op">=</span><span class="st">'total_bill'</span>,</span>
@@ -694,7 +794,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Configurando el orden del hue</li>
 </ul>
-<div id="01ad7bf8" class="cell" data-execution_count="20">
+<div id="7c665609" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(x<span class="op">=</span><span class="st">'total_bill'</span>,</span>
@@ -716,7 +816,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Especificando los colores de hue</li>
 </ul>
-<div id="c024f835" class="cell" data-execution_count="21">
+<div id="d6b3bb3b" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>hue_colors <span class="op">=</span> {<span class="st">'Yes'</span>: <span class="st">'black'</span>,</span>
@@ -739,7 +839,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Usando hue con count plots</li>
 </ul>
-<div id="9213c348" class="cell" data-execution_count="22">
+<div id="ded9dcba" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -760,7 +860,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="gráficos-de-tono-y-dispersión">Gráficos de tono y dispersión</h3>
 <p>En el video anterior aprendimos como <code>hue</code> nos permite hacer fácilmente subgrupos dentro de los gráficos de Seaborn. Vamos a probarlo explorando los datos de los alumnos de secundaria. Tenemos mucha información sobre cada alumno, como su edad, dónde vive, sus hábitos de estudio y sus actividades extraescolares.</p>
 <p>Por ahora, nos fijaremos en la relación entgre el número de faltas que tienen en la escuela y su calificación final en el curso, segmentada por el lugar donde vive el alumno (zona rural frente a zona urbana).</p>
-<div id="b54cf413" class="cell" data-execution_count="23">
+<div id="bb7117d1" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>student_data <span class="op">=</span> pd.read_csv(<span class="st">'./data/student-alcohol-consumption.csv'</span>, index_col<span class="op">=</span><span class="dv">0</span>)</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>student_data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="20">
@@ -927,7 +1027,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol type="1">
 <li>Crea un gráfico de dispersión con <code>absensces</code> en el eje x y la calificación final (<code>"G3"</code>) en el eje y utilizando el DataFrame <code>student_data</code>. Colorea los puntos del gráfico en función de <code>"location"</code> (urbano vs.&nbsp;rural)</li>
 </ol>
-<div id="4502e9fa" class="cell" data-execution_count="24">
+<div id="abbcecfd" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import Matplotlib and Seaborn</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
@@ -951,7 +1051,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol start="2" type="1">
 <li>Haz que <code>rural</code> aparezca antes que <code>urban</code> en la leyenda del gráfico.</li>
 </ol>
-<div id="aabddd7e" class="cell" data-execution_count="25">
+<div id="1df091e9" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import Matplotlib and Seaborn</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
@@ -988,7 +1088,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Añade subgrupos al gráfico, utilizando la variable <code>"location"`` y utliliza el diccionario</code>palette_colors` para que los subgrupos de ubicación sean verdes o azules.</li>
 </ul></li>
 </ul>
-<div id="f38aa841" class="cell" data-execution_count="26">
+<div id="d4c2ef5f" class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import Matplotlib and Seaborn</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
@@ -1014,12 +1114,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Los estudiantes en GP tienden a venir de una ubicación urbana, pero los estudiantes en MS están más equitativamente divididos.</p>
+
+
 </section>
 </section>
 </section>
 
-</main>
-<!-- /main column -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -1437,6 +1538,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./index.html" class="pagination-link" aria-label="index.html">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">index.html</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./02_Visualizar_dos_variables_cuantitativas.html" class="pagination-link" aria-label="Visualizar dos variables cuantitativas">
+        <span class="nav-page-text"><span class="chapter-title">Visualizar dos variables cuantitativas</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 
 

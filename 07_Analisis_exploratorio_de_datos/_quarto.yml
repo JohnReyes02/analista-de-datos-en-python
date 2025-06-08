@@ -1,2 +1,25 @@
-project: 
+project:
+  type: book
   output-dir: docs
+
+
+book:
+  title: "Análisis Exploratorio de Datos en Python"
+  author: "Edwin John Fredy Reyes Aguirre"
+  date: today
+  chapters:
+    - index.qmd
+    - 01_Conocer_un_conjunto_de_datos.qmd
+    - 02_Limpieza_e_imputacion_de_datos.qmd
+    - 03_Relaciones_en_los_datos.qmd
+    - 04_Convertir_analisis_exploratorio_en_accion.qmd
+
+format:
+  html:
+    theme: simplex
+    toc: true
+    toc-title: 'Contenido'
+    number-sections: false
+    code-copy: true
+    code-overflow: wrap
+    fig-align: center
