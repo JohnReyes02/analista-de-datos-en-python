@@ -4,18 +4,22 @@ project:
 
 book:
   title: "Introducción a la Estadística en Python"
+  reader-mode: false
+
   author: "Edwin John Fredy Reyes Aguirre"
   date: today
   chapters:
     - index.qmd
-    - 01_Sintesis_estadistica.qmd
-    - 02_Numeros_aleatorios_y_probabilidad.qmd
-    - 03_Mas_distribuciones_y_teorema_limite_central.qmd
-    - 04_Correlacion_y_diseno_de_experimentos.qmd
+    - part: Capítulos
+      chapters:
+        - 01_Sintesis_estadistica.qmd
+        - 02_Numeros_aleatorios_y_probabilidad.qmd
+        - 03_Mas_distribuciones_y_teorema_limite_central.qmd
+        - 04_Correlacion_y_diseno_de_experimentos.qmd
 
 format:
   html:
-    theme: simplex
+    theme: cosmo
     toc: true
     toc-title: 'Contenido'
     number-sections: false

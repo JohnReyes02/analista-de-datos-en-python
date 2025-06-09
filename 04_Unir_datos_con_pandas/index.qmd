@@ -1,15 +1,24 @@
----
-title: "Unir datos con pandas"
-author: "Edwin John Fredy Reyes Aguirre"
-date: today
-format: html
+# Bienvenida
+
+📊 Nivel: Intermedio  
+🕒 Duración estimada: 4 horas  
+🎥 Incluye código, visualizaciones y ejercicios
+
 ---
 
 # Descripción
 
 Ser capaz de combinar y trabajar con múltiples conjuntos de datos es una habilidad esencial para cualquier aspirante a científico de datos. pandas es una piedra angular crucial del ecosistema de ciencia de datos de Python, y Stack Overflow registra 5 millones de visitas a preguntas sobre pandas. Aprende a manejar múltiples DataFrames combinándolos, organizándolos, uniéndolos y remodelándolos mediante pandas. Trabajarás con conjuntos de datos del Banco Mundial y de la ciudad de Chicago. Terminarás el curso con un sólido conjunto de habilidades para unir datos en pandas.
 
-## Contenido del curso:
+## Módulos del curso
 
-1. [Conceptos básicos de la fusión de datos](1_conceptos_basicos_de_la_fusion_de_datos.html)
+1. Conceptos básicos de la fusión de datos
+2. Fusionar tablas con distintos tipos de unión
+3. Fusión y concatenación avanzadas
+4. Fusionar datos ordenados y series temporales
 
+## Datasets
+
+Este curso utiliza los siguientes archivos:
+
+- 

@@ -1,9 +1,4 @@
----
-title: "Análisis Exploratorio de Datos en Python"
-format: html
----
-
-# Bienvenido
+# Bienvenida
 
 Este curso interactivo cubre el proceso de **exploración y análisis de datos** en Python, desde entender un nuevo dataset hasta la limpieza e imputación de valores.
 
@@ -30,6 +25,8 @@ Al final de este curso, tendrás la confianza necesaria para realizar tu propio 
 
 1. Conocer un conjunto de datos  
 2. Limpieza e imputación de datos
+3. Relaciones en los datos
+4. Convertir el análisis exploratorio en acción
 
 ## Datasets
 

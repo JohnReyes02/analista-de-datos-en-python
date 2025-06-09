@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Edwin John Fredy Reyes Aguirre">
-<meta name="dcterms.date" content="2025-06-08">
 
-<title>Correlación y diseño de experimentos – Introducción a la Estadística en Python</title>
+<title>4 Correlación y diseño de experimentos – Introducción a la Estadística en Python</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -75,7 +73,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-ab13e3869911c666bdfefe24be244e71.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-0f23b73bebd85e44a76b93a8b14b039d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -105,10 +103,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
 
-
-
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
-
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -151,7 +146,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./04_Correlacion_y_diseno_de_experimentos.html"><span class="chapter-title">Correlación y diseño de experimentos</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01_Sintesis_estadistica.html">Capítulos</a></li><li class="breadcrumb-item"><a href="./04_Correlacion_y_diseno_de_experimentos.html"><span class="chapter-title">4 Correlación y diseño de experimentos</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -178,29 +173,40 @@ window.Quarto = {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">index.html</span></a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Bienvenida</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Capítulos</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01_Sintesis_estadistica.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Síntesis estadística</span></a>
+  <a href="./01_Sintesis_estadistica.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">1 Síntesis estadística</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02_Numeros_aleatorios_y_probabilidad.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">02_Numeros_aleatorios_y_probabilidad.html</span></a>
+  <a href="./02_Numeros_aleatorios_y_probabilidad.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2 Números aleatorios y probabilidad</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03_Mas_distribuciones_y_teorema_limite_central.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Mas distribuciones y el teorema del límite central</span></a>
+  <a href="./03_Mas_distribuciones_y_teorema_limite_central.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">3 Mas distribuciones y el teorema del límite central</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04_Correlacion_y_diseno_de_experimentos.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Correlación y diseño de experimentos</span></a>
+  <a href="./04_Correlacion_y_diseno_de_experimentos.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">4 Correlación y diseño de experimentos</span></a>
   </div>
 </li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -235,28 +241,16 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01_Sintesis_estadistica.html">Capítulos</a></li><li class="breadcrumb-item"><a href="./04_Correlacion_y_diseno_de_experimentos.html"><span class="chapter-title">4 Correlación y diseño de experimentos</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">Correlación y diseño de experimentos</span></h1>
+<h1 class="title"><span class="chapter-title">4 Correlación y diseño de experimentos</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Edwin John Fredy Reyes Aguirre </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">June 8, 2025</p>
-    </div>
-  </div>
   
     
   </div>
@@ -330,7 +324,7 @@ window.Quarto = {
 </table></li>
 <li><p>Visualización de relaciones</p></li>
 </ul>
-<div id="149394bc" class="cell" data-execution_count="1">
+<div id="df678246" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(x<span class="op">=</span><span class="st">'sleep_total'</span>, y<span class="op">=</span><span class="st">'sleep_rem'</span>, data<span class="op">=</span>msleep)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -339,7 +333,7 @@ window.Quarto = {
 <ul>
 <li>Añadir una linea de tendencia</li>
 </ul>
-<div id="f78413c1" class="cell" data-execution_count="2">
+<div id="616e0997" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>sns.lmplot(x<span class="op">=</span><span class="st">'sleep_total'</span>, y<span class="op">=</span><span class="st">'sleep_rem'</span>, data<span class="op">=</span>msleep, ci<span class="op">=</span><span class="va">None</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -348,10 +342,10 @@ window.Quarto = {
 <ul>
 <li>Calcular el coeficiente de correlación entre dos series</li>
 </ul>
-<div id="065bd86c" class="cell" data-execution_count="3">
+<div id="003d9253" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>msleep[<span class="st">'sleep_total'</span>].corr(msleep[<span class="st">'sleep_rem'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="ff2d0b4b" class="cell" data-execution_count="4">
+<div id="79660f3e" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>msleep[<span class="st">'sleep_rem'</span>].corr(msleep[<span class="st">'sleep_total'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
@@ -387,13 +381,13 @@ window.Quarto = {
 <h3 class="anchored" data-anchor-id="relaciones-entre-variables">Relaciones entre variables</h3>
 <p>En este capítulo, trabajarás con un conjunto de datos <code>world_happiness</code> que contiene los resultados de <a href="https://worldhappiness.report/ed/2019/">2019 World Happiness Report</a>. El informe puntúa a diferentes países en función de lo felices que son sus habitantes. También clasifica a cada país en función de diversos aspectos sociales, como el apoyo social, la libertad, la corrupción y otros. El conjunto de datos también incluye el GDP per cápita y la esperanza de vida de cada país.</p>
 <p>En este ejercicio, examinarás la relación entre la esperanza de vida de un país (<code>life_exp</code>) y la puntuación de felicidad (<code>happiness_score</code>) tanto visual como cuantitativamente. <code>seaborn</code> como <code>sns</code>, <code>matplotlib.pyplot</code> como <code>plt</code> y <code>pandas</code> como <code>pd</code> están cargados y <code>world_happiness</code> está disponible.</p>
-<div id="afcb85b8" class="cell" data-execution_count="5">
+<div id="6bbc6019" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="97af9a59" class="cell" data-execution_count="6">
+<div id="e7fe9e17" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>world_happiness <span class="op">=</span> pd.read_csv(<span class="st">'./data/world_happiness.csv'</span>)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(world_happiness.head())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -421,7 +415,7 @@ window.Quarto = {
 <li><p>Crea un diagrama de dispersión de <code>happiness_score</code> frente a <code>life_exp</code> (sin línea de tendencia) utilizando <code>seaborn</code>.</p></li>
 <li><p>Muestra el gráfico.</p></li>
 </ul>
-<div id="2e2afb3a" class="cell" data-execution_count="7">
+<div id="e94c57fe" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a scatterplot of happiness_score vs. life_exp ando show</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(x<span class="op">=</span><span class="st">'life_exp'</span>, y<span class="op">=</span><span class="st">'happiness_score'</span>, data<span class="op">=</span>world_happiness)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -430,7 +424,7 @@ window.Quarto = {
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="04_Correlacion_y_diseno_de_experimentos_files/figure-html/cell-8-output-1.png" width="593" height="429" class="figure-img"></p>
+<p><img src="04_Correlacion_y_diseno_de_experimentos_files/figure-html/cell-8-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -442,7 +436,7 @@ window.Quarto = {
 <li><p>Crea un diagrama de dispersión de <code>happiness_score</code> frente a <code>life_exp</code> con una línea de tendencia lineal utilizando <code>seaborn</code>, estableciendo <code>ci</code> en <code>None</code>.</p></li>
 <li><p>Muestra el gráfico.</p></li>
 </ul>
-<div id="bcfa3596" class="cell" data-execution_count="8">
+<div id="5dcd78da" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create scatterplot of happiness_score vs life_exp with trendline</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>sns.lmplot(x<span class="op">=</span><span class="st">'life_exp'</span>, y<span class="op">=</span><span class="st">'happiness_score'</span>, data<span class="op">=</span>world_happiness, ci<span class="op">=</span><span class="va">None</span>)</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -451,7 +445,7 @@ window.Quarto = {
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="04_Correlacion_y_diseno_de_experimentos_files/figure-html/cell-9-output-1.png" width="470" height="470" class="figure-img"></p>
+<p><img src="04_Correlacion_y_diseno_de_experimentos_files/figure-html/cell-9-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -471,13 +465,13 @@ window.Quarto = {
 <ol start="4" type="1">
 <li>Calcula la correlación entre <code>life_exp</code> y <code>happiness_score</code>. Guárdala como <code>cor</code>.</li>
 </ol>
-<div id="b714a8a4" class="cell" data-execution_count="9">
+<div id="17fcf32b" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Correlation between life_exp and happiness_score</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>cor <span class="op">=</span>  world_happiness[<span class="st">'life_exp'</span>].corr(world_happiness[<span class="st">'happiness_score'</span>])</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(cor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.7802249053272062</code></pre>
+<pre><code>0.7802249053272065</code></pre>
 </div>
 </div>
 <p>Los diagramas de dispersión con líneas de tendencia son una excelente manera de verificar que una relación estre dos variables es realmente lineal.</p>
@@ -532,7 +526,7 @@ window.Quarto = {
 <li><p>Crea un diagrama de dispersión <code>seaborn</code> (sin línea de tendencia) que muestre la relación entre <code>gdp_per_cap</code> (en el eje X) y <code>life_exp</code> (en el eje Y).</p></li>
 <li><p>Muestra el gráfico.</p></li>
 </ul>
-<div id="84d624eb" class="cell" data-execution_count="10">
+<div id="7de18fbb" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Scatterplot of gdp_per_cap and life_exp</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(x<span class="op">=</span><span class="st">'gdp_per_cap'</span>, y<span class="op">=</span><span class="st">'life_exp'</span>, data<span class="op">=</span>world_happiness)</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -541,7 +535,7 @@ window.Quarto = {
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="04_Correlacion_y_diseno_de_experimentos_files/figure-html/cell-11-output-1.png" width="585" height="429" class="figure-img"></p>
+<p><img src="04_Correlacion_y_diseno_de_experimentos_files/figure-html/cell-11-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -549,7 +543,7 @@ window.Quarto = {
 <ol start="2" type="1">
 <li>Calcula la correlación entre <code>gdp_per_cap</code> y <code>life_exp</code> y guárdala como <code>cor</code>.</li>
 </ol>
-<div id="721804e5" class="cell" data-execution_count="11">
+<div id="1a574098" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Correlation between gdp_per_cap and life_exp</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>cor <span class="op">=</span> world_happiness[<span class="st">'gdp_per_cap'</span>].corr(world_happiness[<span class="st">'life_exp'</span>])</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -579,7 +573,7 @@ window.Quarto = {
 <ol type="1">
 <li>Crea un diagrama de dispersión de <code>happiness_score</code> frente a <code>gdp_per_cap</code> y calcula la correlación entre ambos.</li>
 </ol>
-<div id="86d6f45b" class="cell" data-execution_count="12">
+<div id="b69e7f32" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Scatterplot of happiness_score vs. gdp_per_cap</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(x<span class="op">=</span><span class="st">'gdp_per_cap'</span>, y<span class="op">=</span><span class="st">'happiness_score'</span>, data<span class="op">=</span>world_happiness)</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
@@ -590,18 +584,18 @@ window.Quarto = {
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="04_Correlacion_y_diseno_de_experimentos_files/figure-html/cell-13-output-1.png" width="593" height="429" class="figure-img"></p>
+<p><img src="04_Correlacion_y_diseno_de_experimentos_files/figure-html/cell-13-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.7279733012222976</code></pre>
+<pre><code>0.7279733012222978</code></pre>
 </div>
 </div>
 <ol start="2" type="1">
 <li>Añade una nueva columna a <code>world_happiness</code> llamada <code>log_gdp_per_cap</code> que contenga el logaritmo de <code>gdp_per_cap</code>. Crea un diagrama de dispersión <code>seaborn</code> de <code>happiness_score</code> frente a <code>log_gdp_per_cap</code> y <code>happiness_score</code>. Calcula la correlación enre <code>log_gdp_per_cap</code> y <code>happiness_score</code>.</li>
 </ol>
-<div id="d7bb3042" class="cell" data-execution_count="13">
+<div id="d7e8b484" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create log_gdp_per_cap column</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>world_happiness[<span class="st">'log_gdp_per_cap'</span>] <span class="op">=</span> np.log(world_happiness[<span class="st">'gdp_per_cap'</span>])</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -615,7 +609,7 @@ window.Quarto = {
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="04_Correlacion_y_diseno_de_experimentos_files/figure-html/cell-14-output-1.png" width="593" height="429" class="figure-img"></p>
+<p><img src="04_Correlacion_y_diseno_de_experimentos_files/figure-html/cell-14-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -629,7 +623,7 @@ window.Quarto = {
 <section id="el-azúcar-aumenta-la-felicidad" class="level3">
 <h3 class="anchored" data-anchor-id="el-azúcar-aumenta-la-felicidad">El azúcar aumenta la felicidad?</h3>
 <p>Se ha añadido una nueva columna a <code>world_happiness</code> llamada <code>grams_sugar_per_day</code>, que contiene la cantidad media de azúcar ingerida por persona y día en cada país. En este ejercicio, examinarás el efecto del consumo medio de azúcar de un país en su puntuación de felicidad.</p>
-<div id="45a306c4" class="cell" data-execution_count="14">
+<div id="9c8c7f67" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>world_happiness <span class="op">=</span> pd.read_csv(<span class="st">'./data/world_happiness_add_sugar.csv'</span>, index_col<span class="op">=</span><span class="dv">0</span>)</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>world_happiness</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
@@ -812,7 +806,7 @@ window.Quarto = {
 <li><p>Crea un diagrama de dispersión <code>seaborn</code> que muestre la relación entre <code>grams_sugar_per_day</code> (en el eje X) y <code>happiness_score</code> (en el eje Y).</p></li>
 <li><p>Calcula la correlación entre <code>grams_sugar_per_day</code> y <code>happiness_score</code>.</p></li>
 </ul>
-<div id="593f46f6" class="cell" data-execution_count="15">
+<div id="1f12a64a" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Scatterplot of grams_sugar_per_day and happiness_score</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(x<span class="op">=</span><span class="st">'grams_sugar_per_day'</span>, y<span class="op">=</span><span class="st">'happiness_score'</span>, data<span class="op">=</span>world_happiness)</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
@@ -823,7 +817,7 @@ window.Quarto = {
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="04_Correlacion_y_diseno_de_experimentos_files/figure-html/cell-16-output-1.png" width="597" height="429" class="figure-img"></p>
+<p><img src="04_Correlacion_y_diseno_de_experimentos_files/figure-html/cell-16-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1417,8 +1411,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./03_Mas_distribuciones_y_teorema_limite_central.html" class="pagination-link" aria-label="Mas distribuciones y el teorema del límite central">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Mas distribuciones y el teorema del límite central</span></span>
+      <a href="./03_Mas_distribuciones_y_teorema_limite_central.html" class="pagination-link" aria-label="3 Mas distribuciones y el teorema del límite central">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">3 Mas distribuciones y el teorema del límite central</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

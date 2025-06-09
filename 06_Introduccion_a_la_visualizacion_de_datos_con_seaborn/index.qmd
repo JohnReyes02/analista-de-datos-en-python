@@ -1,0 +1,32 @@
+# Bienvenida
+
+📊 Nivel: Principiante  
+🕒 Duración estimada: 4 horas  
+🎥 Incluye código, visualizaciones y ejercicios
+
+---
+
+## Descripción
+
+Seaborn es una potente biblioteca de Python que facilita la creación de visualizaciones de datos informativas y atractivas. Este curso de 4 horas proporciona una introducción a cómo puedes utilizar Seaborn para crear diversos gráficos, incluidos gráficos de dispersión, de recuento, de barras y de cajas, y cómo puedes personalizar tus visualizaciones.
+
+Explorarás esta biblioteca y crearás gráficos Seaborn basados en diversos conjuntos de datos del mundo real, como la exploración de cómo cambia la contaminación atmosférica en una ciudad a lo largo del día y el estudio de lo que les gusta hacer a los jóvenes en su tiempo libre. Estos datos te darán la oportunidad de conocer de primera mano las ventajas de Seaborn, incluyendo cómo puedes crear fácilmente subtramas en una sola figura y cómo calcular automáticamente los intervalos de confianza.
+
+Al final de este curso, serás capaz de utilizar Seaborn en diversas situaciones para explorar tus datos y comunicar eficazmente a otros los resultados de tus análisis de datos. Estas habilidades son muy solicitadas para analistas de datos, científicos de datos y cualquier otro trabajo que pueda implicar la creación de visualizaciones de datos. Si quieres continuar tu aprendizaje, este curso forma parte de varios programas, incluido el programa de visualización de datos, donde podrás añadir más bibliotecas y técnicas a tu conjunto de habilidades.
+
+## Módulos del curso
+
+1. Conocer un conjunto de datos  
+2. Limpieza e imputación de datos
+3. Relaciones en los datos
+4. Convertir el análisis exploratorio en acción
+
+## Datasets
+
+Este curso utiliza los siguientes archivos:
+
+- `unemployment.csv`
+- `data_science_salaries.csv`
+- `books.csv`
+- `divorce.csv`
+- `planes.csv`

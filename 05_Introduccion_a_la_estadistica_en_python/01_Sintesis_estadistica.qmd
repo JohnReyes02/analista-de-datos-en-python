@@ -1,9 +1,5 @@
 ---
-title: "Síntesis estadística"
-author: "Edwin John Fredy Reyes Aguirre"
-date: today
-toc: true
-toc-title: "Contenido"
+title: "1 Síntesis estadística"
 ---
 
 La síntesis estadística te proporciona las herramientas que necesitas para condensar conjuntos de datos masivos y revelar lo más destacado. En este capítulo explorarás la síntesis estadística, lo que incluye la media, la mediana y la desviación típica, y aprenderás a realizar una interpretación exacta. También desarrollarás tus competencias de pensamiento crítico, lo que te permitirá elegir la mejor síntesis estadística para tus datos.

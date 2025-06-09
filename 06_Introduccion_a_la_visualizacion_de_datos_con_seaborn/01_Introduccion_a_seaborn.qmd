@@ -1,9 +1,5 @@
 ---
-title: "Introducción a Seaborn"
-author: "Edwin John Fredy Reyes Aguirre"
-date: today
-toc: true
-toc-title: "Contenido"
+title: "1 Introducción a Seaborn"
 ---
 
 Qué es Seaborn y cuándo debes utilizarlo? En este capítulo, ¡Lo descubrirás! Además, aprenderás a crear gráficos de dispersión y de recuento tanto con listas de datos como con DataFrames de pandas. También conocerás una de las grandes ventajas de utilizar Seaborn: la posibilidad de añadir fácilmente una tercera varible a tus gráficos utilizando el color para representar diferentes subgrupos.

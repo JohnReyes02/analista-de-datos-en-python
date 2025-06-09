@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Edwin John Fredy Reyes Aguirre">
-<meta name="dcterms.date" content="2025-06-08">
 
-<title>Síntesis estadística – Introducción a la Estadística en Python</title>
+<title>1 Síntesis estadística – Introducción a la Estadística en Python</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -76,7 +74,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-ab13e3869911c666bdfefe24be244e71.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-0f23b73bebd85e44a76b93a8b14b039d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -117,7 +115,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01_Sintesis_estadistica.html"><span class="chapter-title">Síntesis estadística</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01_Sintesis_estadistica.html">Capítulos</a></li><li class="breadcrumb-item"><a href="./01_Sintesis_estadistica.html"><span class="chapter-title">1 Síntesis estadística</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -144,29 +142,40 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">index.html</span></a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Bienvenida</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Capítulos</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01_Sintesis_estadistica.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Síntesis estadística</span></a>
+  <a href="./01_Sintesis_estadistica.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">1 Síntesis estadística</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02_Numeros_aleatorios_y_probabilidad.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">02_Numeros_aleatorios_y_probabilidad.html</span></a>
+  <a href="./02_Numeros_aleatorios_y_probabilidad.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2 Números aleatorios y probabilidad</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03_Mas_distribuciones_y_teorema_limite_central.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Mas distribuciones y el teorema del límite central</span></a>
+  <a href="./03_Mas_distribuciones_y_teorema_limite_central.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">3 Mas distribuciones y el teorema del límite central</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04_Correlacion_y_diseno_de_experimentos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Correlación y diseño de experimentos</span></a>
+  <a href="./04_Correlacion_y_diseno_de_experimentos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4 Correlación y diseño de experimentos</span></a>
   </div>
 </li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -199,28 +208,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01_Sintesis_estadistica.html">Capítulos</a></li><li class="breadcrumb-item"><a href="./01_Sintesis_estadistica.html"><span class="chapter-title">1 Síntesis estadística</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">Síntesis estadística</span></h1>
+<h1 class="title"><span class="chapter-title">1 Síntesis estadística</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Edwin John Fredy Reyes Aguirre </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">June 8, 2025</p>
-    </div>
-  </div>
   
     
   </div>
@@ -394,10 +391,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="media-y-mediana">Media y mediana</h3>
 <p>En este capítulo, trabajarás con el conjunto de datos <code>food_consumption</code> del 2018 Food Carbon Footprint Index, de nu3. El conjunto de datos <code>food_consumption</code> contiene el número de kilogramos de alimentos consumidos por persona y año en cada <code>country</code> y categoría de alimentos (<code>consumption</code>), y su huella de carbono (<code>co2_emissions</code>) medida en kilogramos de dióxido de carbono, o CO2.</p>
 <p>En este ejercicio, calcularás medidas de tendencia central para comparar el consumo de alimentos en US y Bélgica utilizando tus competencias en pandas y numpy.</p>
-<div id="ee50b7d7" class="cell" data-execution_count="1">
+<div id="ab2b7f86" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="577b6e88" class="cell" data-execution_count="2">
+<div id="ff99bf25" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>food_consumption <span class="op">=</span> pd.read_csv(<span class="st">'../datasets/food_consumption.csv'</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(food_consumption.head())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -417,7 +414,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Calcula la media del consumption de alimentos en el DataFrame usa_consumption.</p></li>
 <li><p>Calcula la mediana del consumption de alimentos en el DataFrame usa_consumption.</p></li>
 </ul>
-<div id="fb0d67eb" class="cell" data-execution_count="3">
+<div id="4f91a906" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import numpy with alias np</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -450,11 +447,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Subdivide food_consumption para obtener las filas en las que el <code>food_category</code> es <code>rice</code>.</p></li>
 <li><p>Crea un histograma de <code>co2_emissions</code> en el DataFrame <code>rice_consumption</code> y muestra el gráfico.</p></li>
 </ul>
-<div id="44c90e86" class="cell" data-execution_count="4">
+<div id="57896915" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import matplotlib.pyplot with alias plt</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="18be00b6" class="cell" data-execution_count="5">
+<div id="62b7d67b" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Subset for food_category equals rice</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>rice_consumption <span class="op">=</span> food_consumption[food_consumption[<span class="st">'food_category'</span>] <span class="op">==</span> <span class="st">'rice'</span>]</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(rice_consumption.head())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -467,14 +464,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 52          53  New Zealand          rice         9.16         11.72</code></pre>
 </div>
 </div>
-<div id="2f06378f" class="cell" data-execution_count="6">
+<div id="361108d3" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Histogram of co2_emissions for rice and show plot</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>plt.hist(rice_consumption[<span class="st">'co2_emission'</span>])</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="01_Sintesis_estadistica_files/figure-html/cell-7-output-1.png" width="566" height="412" class="figure-img"></p>
+<p><img src="01_Sintesis_estadistica_files/figure-html/cell-7-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -495,7 +492,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Utiliza <code>.agg()</code> para calcular la media y la mediana de <code>co2_emissions</code> para el arroz.</li>
 </ul>
-<div id="4a6589c0" class="cell" data-execution_count="7">
+<div id="39085e82" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Subset for food_category equals rice</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>rice_consumption <span class="op">=</span> food_consumption[food_consumption[<span class="st">'food_category'</span>] <span class="op">==</span> <span class="st">'rice'</span>]</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(rice_consumption)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -516,7 +513,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 [130 rows x 5 columns]</code></pre>
 </div>
 </div>
-<div id="8ff638b1" class="cell" data-execution_count="8">
+<div id="93382dee" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate mean and median of co2_emission with .agg()</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(rice_consumption[<span class="st">'co2_emission'</span>].agg([<span class="st">'mean'</span>, <span class="st">'median'</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -993,13 +990,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link" aria-label="index.html">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">index.html</span></span>
+      <a href="./index.html" class="pagination-link" aria-label="Bienvenida">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Bienvenida</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./02_Numeros_aleatorios_y_probabilidad.html" class="pagination-link" aria-label="02_Numeros_aleatorios_y_probabilidad.html">
-        <span class="nav-page-text"><span class="chapter-title">02_Numeros_aleatorios_y_probabilidad.html</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./02_Numeros_aleatorios_y_probabilidad.html" class="pagination-link" aria-label="2 Números aleatorios y probabilidad">
+        <span class="nav-page-text"><span class="chapter-title">2 Números aleatorios y probabilidad</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

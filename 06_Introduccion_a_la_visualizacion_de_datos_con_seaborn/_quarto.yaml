@@ -4,18 +4,22 @@ project:
 
 book:
   title: "Introducción a la Visualización de Datos con Python"
+  reader-mode: false
+  
   author: "Edwin John Fredy Reyes Aguirre"
   date: today
   chapters:
     - index.qmd
-    - 01_Introduccion_a_seaborn.qmd
-    - 02_Visualizar_dos_variables_cuantitativas.qmd
-    - 03_Visualizar_variable_categorica_cuantitativa.qmd
-    - 04_Personalizar_graficos_seaborn.qmd
+    - part: Capítulos
+      chapters:
+        - 01_Introduccion_a_seaborn.qmd
+        - 02_Visualizar_dos_variables_cuantitativas.qmd
+        - 03_Visualizar_variable_categorica_cuantitativa.qmd
+        - 04_Personalizar_graficos_seaborn.qmd
 
 format:
   html:
-    theme: simplex
+    theme: cosmo
     toc: true
     toc-title: 'Contenido'
     number-sections: false

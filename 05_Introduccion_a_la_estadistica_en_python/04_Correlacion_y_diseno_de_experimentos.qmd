@@ -1,9 +1,5 @@
 ---
-title: "Correlación y diseño de experimentos"
-author: "Edwin John Fredy Reyes Aguirre"
-date: today
-toc: true
-toc-title: "Contenido"
+title: "4 Correlación y diseño de experimentos"
 ---
 
 En este capítulo, aprenderás a cuantificar la fuerza de una relación lineal entre dos variables, y explorarás cómo las variables de confusión pueden afectar a la relación entre otras dos variables. También verás cómo el diseño de un estudio puede influir en sus resultados, cambiar la forma en que deben analizarse los datos y afectar potencialmente a la fiabilidad de tus conclusiones.

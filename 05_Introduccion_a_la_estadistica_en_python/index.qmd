@@ -1,0 +1,27 @@
+# Bienvenida
+
+📊 Nivel: Intermedio  
+🕒 Duración estimada: 4 horas  
+🎥 Incluye código, visualizaciones y ejercicios
+
+---
+
+## Descripción
+
+La estadística es el estudio de cómo recopilar, analizar y extraer conclusiones a partir de los datos. Es una herramienta enormemente valiosa que puedes utilizar para enfocar el futuro e inferir la respuesta a montones de preguntas. Por ejemplo, ¿cuál es la probabilidad de que alguien compre tu producto, cuántas llamadas recibirá tu equipo de asistencia y cuántas tallas de vaqueros deberías fabricar para que le queden bien al 95 % de la población? En este curso, descubrirás cómo responder a preguntas como estas a medida que aumentas tus competencias estadísticas y aprendes a calcular medias, utilizar diagramas de dispersión para mostrar la relación entre valores numéricos y calcular la correlación. También abordarás la probabilidad, columna vertebral del razonamiento estadístico, y aprenderás a utilizar Python para realizar un estudio bien diseñado que te permita extraer tus propias conclusiones a partir de los datos.
+
+## Módulos del curso
+
+1. Síntesis estadística 
+2. Números aleatorios y probabilidad
+3. Más distribuciones y el teorema del límite central
+4. Correlación y diseño de experimentos
+
+## Datasets
+
+Este curso utiliza los siguientes archivos:
+
+- `amir_deals.csv`
+- `food_consumption.csv`
+- `world_happiness_add_sugar.csv`
+- `world_happiness.csv`

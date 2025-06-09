@@ -1,9 +1,5 @@
 ---
-title: "Mas distribuciones y el teorema del límite central"
-author: "Edwin John Fredy Reyes Aguirre"
-date: today
-toc: true
-toc-title: "Contenido"
+title: "3 Mas distribuciones y el teorema del límite central"
 ---
 ## La distribución normal
 

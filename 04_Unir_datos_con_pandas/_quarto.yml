@@ -1,2 +1,25 @@
 project:
-  output-dir: _outputs
+  type: book
+  output-dir: docs
+
+book:
+  title: "Unir datos con Pandas"
+  reader-mode: false
+
+  author: "Edwin John Fredy Reyes Aguirre"
+  date: today
+  chapters:
+    - index.qmd
+    - part: Capítulos
+      chapters:
+        - 01_Conceptos_basicos_de_la_fusion_de_datos.qmd
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+    toc-title: 'Contenido'
+    number-sections: false
+    code-copy: true
+    code-overflow: wrap
+    fig-align: center

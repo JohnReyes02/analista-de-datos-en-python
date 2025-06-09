@@ -1,9 +1,5 @@
 ---
-title: "Visualizar dos variables cuantitativas"
-author: "Edwin John Fredy Reyes Aguirre"
-date: today
-toc: true
-toc-title: "Contenido"
+title: "2 Visualizar dos variables cuantitativas"
 ---
 
 En este capíulo, crearás y personalizarás gráficos que visualizan la relación entre dos variables cuantitativas. Para ello, utilizarás gráficos se dispersión y de líneas para explorar cómo cambia el nivel de contaminación atmosférica en una ciudad a lo largo de un día y cómo se relacionan los caballos de potencia con la eficiencia del combustible en los coches. También verás otra gran ventaja de utilizar Seaborn: ¡la posibilidad de crear fácilmente subtramas en una sola figura!

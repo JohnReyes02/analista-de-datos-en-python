@@ -1,9 +1,5 @@
 ---
-title: "Visualizar una variable categórica y una cuantitativa"
-author: "Edwin John Fredy Reyes Aguirre"
-date: today
-toc: true
-toc-title: "Contenido"
+title: "3 Visualizar una variable categórica y una cuantitativa"
 ---
 
 Las variables categóricas están presentes en casi todos los conjuntos de datos, pero destacan especialmente en los datos de encuestas. En este capítulo aprenderás a crear y personalizar gráficos categóricos, como gráficos de caja, gráficos de barras, gráficos de recuentro y gráficos de puntos. Por el camino, explorarás datos de encuestas a jóvenes sobre sus intereses, a estudiantes sobre sus hábitos de estudio y a hombres adultos sobre sus sentimientos acerca de la masculinidad.
