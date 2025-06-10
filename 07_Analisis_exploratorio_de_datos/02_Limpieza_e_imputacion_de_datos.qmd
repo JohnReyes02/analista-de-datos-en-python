@@ -1,7 +1,88 @@
----
+```{=html}
+<!-- ---
 title: "2 Limpieza e imputación de datos"
-# author: "Edwin John Fredy Reyes Aguirre"
-# date: today
-# toc: true
-# toc-title: "Contenido"
----
+--- -->
+```
+
+# Limpieza e imputación de datos
+
+Explorar y analizar datos a menudo significa tratar con valores perdidos, tipos de datos incorrectos y valores atípicos. En este capítulo, aprenderás técnicas para gestionar estos problemas y agilizar tus procesos en EDA.
+
+## Tratar los datos que faltan
+
+-   Por qué un dato faltante es un problema?
+
+    -   Afectan las distribuciones
+    -   Los datos de la población son menos repreesntativos
+    -   Puede resultar en conclusiones incorrectas
+
+-   Ejemplo datos de profesionales de datos
+
+| Column | Description | Data type |
+|--------------------|------------------------------------|----------------|
+| `Working_Year` | Year the data was obtained | Float |
+| `Designation` | Job title | String |
+| `Experience` | Experience level e.g., `"Mid"`, `"Senior"` | String |
+| `Employment_Satus` | Type of employment contract e.g., `"FT"`, `"PT"` | String |
+| `Employee_Location` | Country of employment | String |
+| `Company_Size` | Labels for company size e.g., `"S"`, `"M"`, `"L"` | String |
+| `Remote_Working_Ratio` | Porcentage of time working remotely | Integer |
+| `Salary_USD` | Salary in US dollars | Float |
+
+-   Revisando los datos faltantes
+
+```{python}
+#| echo: true
+#| eval: false
+print(salaries.isna().sum())
+```
+
+![](images/paste-22.png)
+
+-   Estrategias para el manejo de datos faltantes
+
+    -   Eliminar los datos faltantes
+
+        -   5 % o menos del total de valores
+
+    -   Imputar la media, mediana o la moda
+
+        -   Depende de la distribución y contexto
+
+    -   Imputar por sub-grupos
+
+        -   Diferentes niveles de experiencia tienen diferente mediana en el salario
+
+-   Eliminando valores faltantes
+
+```{python}
+#| echo: true
+#| eval: false
+threshold = len(salaries) * 0.05
+print(threhold)
+```
+
+![](images/paste-23.png)
+
+```{python}
+#| echo: true
+#| eval: false
+cols_to_drop = salaries.columns[salaries.isna().sum() <= threshold]
+print(cols_to_drop)
+```
+
+![](images/paste-24.png)
+
+```{python}
+#| echo: true
+#| eval: false
+salaries.dropna(subset=cols_to_drop, inplace=True) # Para actualizar el DataFrame
+```
+
+-   Imputando una estadística de resumen
+
+## Convertir y analizar datos categóricos
+
+## Trabajar con datos numéricos
+
+## Gestión de valores atípicos

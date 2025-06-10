@@ -1,0 +1,54 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Pruebas de hipótesis en Python",
+    "section": "",
+    "text": "Bienvenida\n📊 Nivel: Intermedio\n🕒 Duración estimada: 4 horas\n🎥 Incluye código, visualizaciones y ejercicios",
+    "crumbs": [
+      "Bienvenida"
+    ]
+  },
+  {
+    "objectID": "index.html#descripción",
+    "href": "index.html#descripción",
+    "title": "Pruebas de hipótesis en Python",
+    "section": "Descripción",
+    "text": "Descripción\nLas pruebas de hipótesis te permiten responder a preguntas sobre tus conjuntos de datos de forma estadísticamente rigurosa. En este curso, desarrollarás tus competencias analíticas en Python aprendiendo cómo y cuándo utilizar pruebas comunes como las pruebas t, las pruebas de proporción y las pruebas χ². Trabajando con datos del mundo real, incluidos datos de cadena de suministro y comentarios de usuarios de Stack Overflow sobre envíos de suministros médicos, comprenderás en profundidad cómo funcionan estas pruebas y los supuestos clave que las sustentan. También descubrirás cómo pueden utilizarse pruebas no paramétricas para superar las limitaciones de las pruebas de hipótesis tradicionales.",
+    "crumbs": [
+      "Bienvenida"
+    ]
+  },
+  {
+    "objectID": "index.html#módulos-del-curso",
+    "href": "index.html#módulos-del-curso",
+    "title": "Pruebas de hipótesis en Python",
+    "section": "Módulos del curso",
+    "text": "Módulos del curso\n\nFundamentos de las pruebas de hipótesis\nPruebas de dos muestras y ANOVA\nPruebas de proporción\nPruebas no paramétricas",
+    "crumbs": [
+      "Bienvenida"
+    ]
+  },
+  {
+    "objectID": "intro.html",
+    "href": "intro.html",
+    "title": "Introduction",
+    "section": "",
+    "text": "This is a book created from markdown and executable code.\nSee @knuth84 for additional discussion of literate programming.",
+    "crumbs": [
+      "Capítulos",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "summary.html",
+    "href": "summary.html",
+    "title": "Summary",
+    "section": "",
+    "text": "In summary, this book has no content whatsoever.",
+    "crumbs": [
+      "Capítulos",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Summary</span>"
+    ]
+  }
+]

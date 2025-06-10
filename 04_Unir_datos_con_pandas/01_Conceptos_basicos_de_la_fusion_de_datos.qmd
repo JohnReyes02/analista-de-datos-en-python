@@ -1,5 +1,5 @@
 ---
-title: "1 Conceptos Básicos de la fusión de datos"
+title: "Conceptos Básicos de la fusión de datos"
 ---
 
 Aprende a fusionar datos dispares mediante uniones internas. Combinando información de múltiples fuentes, descubrirás perspectivas convincentes que antes podían estar ocultas. También aprenderás cómo la relación entre esas fuentes, de uno a uno o de uno a muchos, puede afectar a tu resultado.

@@ -1,0 +1,45 @@
+project:
+  type: book
+  output-dir: docs
+
+book:
+  title: "Pruebas de hipótesis en Python"
+  reader-mode: false
+
+  author: "Edwin John Fredy Reyes Aguirre"
+  date: today
+
+  sidebar:
+    style: docked
+    search: true
+  
+  # En esta seccion se enlaza el repositorio de GitHub
+  repo-url: https://github.com/JohnReyes02/Datacamp
+  repo-subdir: Analista_de_datos_en_python/09_Pruebas_de_hipotesis_en_python
+  repo-branch: main
+  repo-actions: [edit, issue, source]
+  sharing: [twitter, facebook, linkedin]
+
+  chapters:
+    - index.qmd
+    - part: Capítulos
+      chapters:
+        - intro.qmd
+        - references.qmd
+        - summary.qmd
+
+format:
+  html:
+    theme: 
+      light: flatly
+      dark: darkly
+    code-link: false
+    toc: true
+    toc-title: 'Contenido'
+    number-sections: false
+    code-copy: true
+    code-overflow: wrap
+    fig-align: center
+
+
+

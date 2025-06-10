@@ -1,4 +1,4 @@
-# Bienvenida
+# Bienvenida {.unnumbered}
 
 📊 Nivel: Principiante  
 🕒 Duración estimada: 4 horas  

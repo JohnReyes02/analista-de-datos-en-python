@@ -1,0 +1,18 @@
+# Bienvenida {.unnumbered}
+
+📊 Nivel: Intermedio  
+🕒 Duración estimada: 4 horas  
+🎥 Incluye código, visualizaciones y ejercicios
+
+---
+
+## Descripción
+
+El muestreo en Python es la piedra angular de la estadística de inferencia y las pruebas de hipótesis. Es una poderosa habilidad utilizada en el análisis de encuestas y el diseño experimental para sacar conclusiones sin encuestar a toda una población. En este curso de Muestreo en Python, descubrirás cuándo utilizar el muestreo y cómo realizar tipos comunes de muestreo, desde el muestreo aleatorio simple hasta métodos más complejos como el muestreo estratificado y por clústeres. Utilizando conjuntos de datos del mundo real, como valoraciones de café, canciones de Spotify y bajas de empleados, aprenderás a estimar estadísticas de población y a cuantificar la incertidumbre en tus estimaciones generando distribuciones de muestreo y distribuciones bootstrap.
+
+## Módulos del curso
+
+1. Introducción al muestreo
+2. Métodos de muestreo
+3. Distribuciones muestrales
+4. Distribuciones Bootstrap

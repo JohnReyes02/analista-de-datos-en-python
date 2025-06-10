@@ -1,0 +1,18 @@
+# Bienvenida {.unnumbered}
+
+📊 Nivel: Intermedio  
+🕒 Duración estimada: 4 horas  
+🎥 Incluye código, visualizaciones y ejercicios
+
+---
+
+## Descripción
+
+Las pruebas de hipótesis te permiten responder a preguntas sobre tus conjuntos de datos de forma estadísticamente rigurosa. En este curso, desarrollarás tus competencias analíticas en Python aprendiendo cómo y cuándo utilizar pruebas comunes como las pruebas t, las pruebas de proporción y las pruebas χ². Trabajando con datos del mundo real, incluidos datos de cadena de suministro y comentarios de usuarios de Stack Overflow sobre envíos de suministros médicos, comprenderás en profundidad cómo funcionan estas pruebas y los supuestos clave que las sustentan. También descubrirás cómo pueden utilizarse pruebas no paramétricas para superar las limitaciones de las pruebas de hipótesis tradicionales.
+
+## Módulos del curso
+
+1. Fundamentos de las pruebas de hipótesis 
+2. Pruebas de dos muestras y ANOVA
+3. Pruebas de proporción
+4. Pruebas no paramétricas

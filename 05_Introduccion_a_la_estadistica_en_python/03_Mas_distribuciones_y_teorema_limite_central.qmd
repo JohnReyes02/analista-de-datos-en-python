@@ -1,5 +1,5 @@
 ---
-title: "3 Mas distribuciones y el teorema del límite central"
+title: "Mas distribuciones y el teorema del límite central"
 ---
 ## La distribución normal
 

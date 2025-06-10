@@ -1,10 +1,12 @@
 ---
-title: "1 Conocer un conjunto de datos"
+# title: "1 Conocer un conjunto de datos"
 # author: "Edwin John Fredy Reyes Aguirre"
 # date: today
 # toc: true
 # toc-title: "Contenido"
 ---
+
+# Conocer un conjunto de datos
 
 ¿Cuál el la mejor manera de abordar un nuevo conjunto de datos? Aprende a validar y resumir datos categóricos y numéricos y a crear visualizaciones Seaborn para comunicar tus conclusiones.
 

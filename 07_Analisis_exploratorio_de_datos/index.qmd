@@ -1,4 +1,4 @@
-# Bienvenida
+# Bienvenida {.unnumbered}
 
 Este curso interactivo cubre el proceso de **exploración y análisis de datos** en Python, desde entender un nuevo dataset hasta la limpieza e imputación de valores.
 

@@ -1,4 +1,4 @@
-# Bienvenida
+# Bienvenida {.unnumbered}
 
 📊 Nivel: Intermedio  
 🕒 Duración estimada: 4 horas  

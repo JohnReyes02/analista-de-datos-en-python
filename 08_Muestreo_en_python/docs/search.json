@@ -1,0 +1,54 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Muestreo en Python",
+    "section": "",
+    "text": "Bienvenida\n📊 Nivel: Intermedio\n🕒 Duración estimada: 4 horas\n🎥 Incluye código, visualizaciones y ejercicios",
+    "crumbs": [
+      "Bienvenida"
+    ]
+  },
+  {
+    "objectID": "index.html#descripción",
+    "href": "index.html#descripción",
+    "title": "Muestreo en Python",
+    "section": "Descripción",
+    "text": "Descripción\nEl muestreo en Python es la piedra angular de la estadística de inferencia y las pruebas de hipótesis. Es una poderosa habilidad utilizada en el análisis de encuestas y el diseño experimental para sacar conclusiones sin encuestar a toda una población. En este curso de Muestreo en Python, descubrirás cuándo utilizar el muestreo y cómo realizar tipos comunes de muestreo, desde el muestreo aleatorio simple hasta métodos más complejos como el muestreo estratificado y por clústeres. Utilizando conjuntos de datos del mundo real, como valoraciones de café, canciones de Spotify y bajas de empleados, aprenderás a estimar estadísticas de población y a cuantificar la incertidumbre en tus estimaciones generando distribuciones de muestreo y distribuciones bootstrap.",
+    "crumbs": [
+      "Bienvenida"
+    ]
+  },
+  {
+    "objectID": "index.html#módulos-del-curso",
+    "href": "index.html#módulos-del-curso",
+    "title": "Muestreo en Python",
+    "section": "Módulos del curso",
+    "text": "Módulos del curso\n\nIntroducción al muestreo\nMétodos de muestreo\nDistribuciones muestrales\nDistribuciones Bootstrap",
+    "crumbs": [
+      "Bienvenida"
+    ]
+  },
+  {
+    "objectID": "intro.html",
+    "href": "intro.html",
+    "title": "Introduction",
+    "section": "",
+    "text": "This is a book created from markdown and executable code.\nSee @knuth84 for additional discussion of literate programming.",
+    "crumbs": [
+      "Capítulos",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "summary.html",
+    "href": "summary.html",
+    "title": "Summary",
+    "section": "",
+    "text": "In summary, this book has no content whatsoever.",
+    "crumbs": [
+      "Capítulos",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Summary</span>"
+    ]
+  }
+]

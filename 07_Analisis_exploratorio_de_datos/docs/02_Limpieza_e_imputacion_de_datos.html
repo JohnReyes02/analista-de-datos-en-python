@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>2 Limpieza e imputación de datos – Análisis Exploratorio de Datos en Python</title>
+<title>Limpieza e imputación de datos – Análisis Exploratorio de Datos en Python</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -37,10 +71,12 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-0f23b73bebd85e44a76b93a8b14b039d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-ede4997d1aa2d49dd7dff0ee71c8d46e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-4909038f391676d0e746676f7305d10d.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -72,7 +108,7 @@ ul.task-list li input[type="checkbox"] {
 
 </head>
 
-<body class="nav-sidebar floating">
+<body class="nav-sidebar docked">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -81,7 +117,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01_Conocer_un_conjunto_de_datos.html">Capítulos</a></li><li class="breadcrumb-item"><a href="./02_Limpieza_e_imputacion_de_datos.html"><span class="chapter-title">2 Limpieza e imputación de datos</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01_Conocer_un_conjunto_de_datos.html">Capítulos</a></li><li class="breadcrumb-item"><a href="./02_Limpieza_e_imputacion_de_datos.html"><span class="chapter-title">Limpieza e imputación de datos</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -93,10 +129,37 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Análisis Exploratorio de Datos en Python</a> 
+        <div class="sidebar-tools-main tools-wide">
+    <a href="https://github.com/JohnReyes02/Datacamp/tree/main/Analista_de_datos_en_python/07_Analisis_exploratorio_de_datos/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <div class="dropdown">
+      <a href="" title="Share" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Share"><i class="bi bi-share"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
+              <i class="bi bi-twitter pe-1"></i>
+            Twitter
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://www.facebook.com/sharer/sharer.php?u=|url|">
+              <i class="bi bi-facebook pe-1"></i>
+            Facebook
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://www.linkedin.com/sharing/share-offsite/?url=|url|">
+              <i class="bi bi-linkedin pe-1"></i>
+            LinkedIn
+            </a>
+          </li>
+      </ul>
+    </div>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -108,7 +171,8 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Bienvenida</span></a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bienvenida</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -122,22 +186,22 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01_Conocer_un_conjunto_de_datos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">1 Conocer un conjunto de datos</span></a>
+  <a href="./01_Conocer_un_conjunto_de_datos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Conocer un conjunto de datos</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02_Limpieza_e_imputacion_de_datos.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">2 Limpieza e imputación de datos</span></a>
+  <a href="./02_Limpieza_e_imputacion_de_datos.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Limpieza e imputación de datos</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03_Relaciones_en_los_datos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">3 Relaciones en los datos</span></a>
+  <a href="./03_Relaciones_en_los_datos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Relaciones en los datos</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04_Convertir_analisis_exploratorio_en_accion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4 Convertir el análisis exploratorio en acción</span></a>
+  <a href="./04_Convertir_analisis_exploratorio_en_accion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Convertir el análisis exploratorio en acción</span></a>
   </div>
 </li>
       </ul>
@@ -147,15 +211,24 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contenido</h2>
+   
+  <ul>
+  <li><a href="#tratar-los-datos-que-faltan" id="toc-tratar-los-datos-que-faltan" class="nav-link active" data-scroll-target="#tratar-los-datos-que-faltan">Tratar los datos que faltan</a></li>
+  <li><a href="#convertir-y-analizar-datos-categóricos" id="toc-convertir-y-analizar-datos-categóricos" class="nav-link" data-scroll-target="#convertir-y-analizar-datos-categóricos">Convertir y analizar datos categóricos</a></li>
+  <li><a href="#trabajar-con-datos-numéricos" id="toc-trabajar-con-datos-numéricos" class="nav-link" data-scroll-target="#trabajar-con-datos-numéricos">Trabajar con datos numéricos</a></li>
+  <li><a href="#gestión-de-valores-atípicos" id="toc-gestión-de-valores-atípicos" class="nav-link" data-scroll-target="#gestión-de-valores-atípicos">Gestión de valores atípicos</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/JohnReyes02/Datacamp/edit/main/Analista_de_datos_en_python/07_Analisis_exploratorio_de_datos/02_Limpieza_e_imputacion_de_datos.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/JohnReyes02/Datacamp/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/JohnReyes02/Datacamp/blob/main/Analista_de_datos_en_python/07_Analisis_exploratorio_de_datos/02_Limpieza_e_imputacion_de_datos.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01_Conocer_un_conjunto_de_datos.html">Capítulos</a></li><li class="breadcrumb-item"><a href="./02_Limpieza_e_imputacion_de_datos.html"><span class="chapter-title">2 Limpieza e imputación de datos</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01_Conocer_un_conjunto_de_datos.html">Capítulos</a></li><li class="breadcrumb-item"><a href="./02_Limpieza_e_imputacion_de_datos.html"><span class="chapter-title">Limpieza e imputación de datos</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">2 Limpieza e imputación de datos</span></h1>
+<h1 class="title"><span class="chapter-title">Limpieza e imputación de datos</span></h1>
 </div>
 
 
@@ -172,8 +245,130 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<!-- ---
+title: "2 Limpieza e imputación de datos"
+--- -->
+<p>Explorar y analizar datos a menudo significa tratar con valores perdidos, tipos de datos incorrectos y valores atípicos. En este capítulo, aprenderás técnicas para gestionar estos problemas y agilizar tus procesos en EDA.</p>
+<section id="tratar-los-datos-que-faltan" class="level2">
+<h2 class="anchored" data-anchor-id="tratar-los-datos-que-faltan">Tratar los datos que faltan</h2>
+<ul>
+<li><p>Por qué un dato faltante es un problema?</p>
+<ul>
+<li>Afectan las distribuciones</li>
+<li>Los datos de la población son menos repreesntativos</li>
+<li>Puede resultar en conclusiones incorrectas</li>
+</ul></li>
+<li><p>Ejemplo datos de profesionales de datos</p></li>
+</ul>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 27%">
+<col style="width: 50%">
+<col style="width: 22%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Column</th>
+<th>Description</th>
+<th>Data type</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>Working_Year</code></td>
+<td>Year the data was obtained</td>
+<td>Float</td>
+</tr>
+<tr class="even">
+<td><code>Designation</code></td>
+<td>Job title</td>
+<td>String</td>
+</tr>
+<tr class="odd">
+<td><code>Experience</code></td>
+<td>Experience level e.g., <code>"Mid"</code>, <code>"Senior"</code></td>
+<td>String</td>
+</tr>
+<tr class="even">
+<td><code>Employment_Satus</code></td>
+<td>Type of employment contract e.g., <code>"FT"</code>, <code>"PT"</code></td>
+<td>String</td>
+</tr>
+<tr class="odd">
+<td><code>Employee_Location</code></td>
+<td>Country of employment</td>
+<td>String</td>
+</tr>
+<tr class="even">
+<td><code>Company_Size</code></td>
+<td>Labels for company size e.g., <code>"S"</code>, <code>"M"</code>, <code>"L"</code></td>
+<td>String</td>
+</tr>
+<tr class="odd">
+<td><code>Remote_Working_Ratio</code></td>
+<td>Porcentage of time working remotely</td>
+<td>Integer</td>
+</tr>
+<tr class="even">
+<td><code>Salary_USD</code></td>
+<td>Salary in US dollars</td>
+<td>Float</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Revisando los datos faltantes</li>
+</ul>
+<div id="f561bc62" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(salaries.isna().<span class="bu">sum</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><img src="images/paste-22.png" class="img-fluid"></p>
+<ul>
+<li><p>Estrategias para el manejo de datos faltantes</p>
+<ul>
+<li><p>Eliminar los datos faltantes</p>
+<ul>
+<li>5 % o menos del total de valores</li>
+</ul></li>
+<li><p>Imputar la media, mediana o la moda</p>
+<ul>
+<li>Depende de la distribución y contexto</li>
+</ul></li>
+<li><p>Imputar por sub-grupos</p>
+<ul>
+<li>Diferentes niveles de experiencia tienen diferente mediana en el salario</li>
+</ul></li>
+</ul></li>
+<li><p>Eliminando valores faltantes</p></li>
+</ul>
+<div id="c4427b0c" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>threshold <span class="op">=</span> <span class="bu">len</span>(salaries) <span class="op">*</span> <span class="fl">0.05</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(threhold)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><img src="images/paste-23.png" class="img-fluid"></p>
+<div id="7ce3e4a8" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>cols_to_drop <span class="op">=</span> salaries.columns[salaries.isna().<span class="bu">sum</span>() <span class="op">&lt;=</span> threshold]</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(cols_to_drop)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><img src="images/paste-24.png" class="img-fluid"></p>
+<div id="6550dcc0" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>salaries.dropna(subset<span class="op">=</span>cols_to_drop, inplace<span class="op">=</span><span class="va">True</span>) <span class="co"># Para actualizar el DataFrame</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Imputando una estadística de resumen</li>
+</ul>
+</section>
+<section id="convertir-y-analizar-datos-categóricos" class="level2">
+<h2 class="anchored" data-anchor-id="convertir-y-analizar-datos-categóricos">Convertir y analizar datos categóricos</h2>
+</section>
+<section id="trabajar-con-datos-numéricos" class="level2">
+<h2 class="anchored" data-anchor-id="trabajar-con-datos-numéricos">Trabajar con datos numéricos</h2>
+</section>
+<section id="gestión-de-valores-atípicos" class="level2">
+<h2 class="anchored" data-anchor-id="gestión-de-valores-atípicos">Gestión de valores atípicos</h2>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -196,6 +391,150 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {
@@ -595,13 +934,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./01_Conocer_un_conjunto_de_datos.html" class="pagination-link" aria-label="1 Conocer un conjunto de datos">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">1 Conocer un conjunto de datos</span></span>
+      <a href="./01_Conocer_un_conjunto_de_datos.html" class="pagination-link" aria-label="Conocer un conjunto de datos">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Conocer un conjunto de datos</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./03_Relaciones_en_los_datos.html" class="pagination-link" aria-label="3 Relaciones en los datos">
-        <span class="nav-page-text"><span class="chapter-title">3 Relaciones en los datos</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./03_Relaciones_en_los_datos.html" class="pagination-link" aria-label="Relaciones en los datos">
+        <span class="nav-page-text"><span class="chapter-title">Relaciones en los datos</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -610,4 +949,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-</body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/JohnReyes02/Datacamp/edit/main/Analista_de_datos_en_python/07_Analisis_exploratorio_de_datos/02_Limpieza_e_imputacion_de_datos.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/JohnReyes02/Datacamp/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/JohnReyes02/Datacamp/blob/main/Analista_de_datos_en_python/07_Analisis_exploratorio_de_datos/02_Limpieza_e_imputacion_de_datos.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div></div></footer></body></html>

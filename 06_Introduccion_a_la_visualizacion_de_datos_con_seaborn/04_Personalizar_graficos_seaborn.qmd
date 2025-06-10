@@ -1,5 +1,5 @@
 ---
-title: "4 Personalizar los gráficos de Seaborn"
+title: "Personalizar los gráficos de Seaborn"
 ---
 
 En este último capítulo, aprenderás a añadir títulos informativos a los gráficos y etiquetas a los ejes, ¡que son una de las partes más importantes de cualquier visualización de datos! También aprenderás a personalizar el estilo de tus visualizaciones para orientar más rápidamente a tu audiencia hacia los puntos clave. Después, pondrás en común todo lo que has aprendido en los ejercicios finales del curso.
