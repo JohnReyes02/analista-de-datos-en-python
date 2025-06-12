@@ -421,10 +421,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="media-y-mediana">Media y mediana</h3>
 <p>En este capítulo, trabajarás con el conjunto de datos <code>food_consumption</code> del 2018 Food Carbon Footprint Index, de nu3. El conjunto de datos <code>food_consumption</code> contiene el número de kilogramos de alimentos consumidos por persona y año en cada <code>country</code> y categoría de alimentos (<code>consumption</code>), y su huella de carbono (<code>co2_emissions</code>) medida en kilogramos de dióxido de carbono, o CO2.</p>
 <p>En este ejercicio, calcularás medidas de tendencia central para comparar el consumo de alimentos en US y Bélgica utilizando tus competencias en pandas y numpy.</p>
-<div id="1fe09ffd" class="cell" data-execution_count="1">
+<div id="7d64fd74" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="e8746644" class="cell" data-execution_count="2">
+<div id="9f8d0fd6" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>food_consumption <span class="op">=</span> pd.read_csv(<span class="st">'../datasets/food_consumption.csv'</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(food_consumption.head())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -444,7 +444,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Calcula la media del consumption de alimentos en el DataFrame usa_consumption.</p></li>
 <li><p>Calcula la mediana del consumption de alimentos en el DataFrame usa_consumption.</p></li>
 </ul>
-<div id="65a5a11a" class="cell" data-execution_count="3">
+<div id="17ffd6ea" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import numpy with alias np</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -477,11 +477,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Subdivide food_consumption para obtener las filas en las que el <code>food_category</code> es <code>rice</code>.</p></li>
 <li><p>Crea un histograma de <code>co2_emissions</code> en el DataFrame <code>rice_consumption</code> y muestra el gráfico.</p></li>
 </ul>
-<div id="677b5408" class="cell" data-execution_count="4">
+<div id="0e7231e8" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import matplotlib.pyplot with alias plt</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="3f8f1a41" class="cell" data-execution_count="5">
+<div id="5a803c44" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Subset for food_category equals rice</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>rice_consumption <span class="op">=</span> food_consumption[food_consumption[<span class="st">'food_category'</span>] <span class="op">==</span> <span class="st">'rice'</span>]</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(rice_consumption.head())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -494,7 +494,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 52          53  New Zealand          rice         9.16         11.72</code></pre>
 </div>
 </div>
-<div id="ed496421" class="cell" data-execution_count="6">
+<div id="0a130c4e" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Histogram of co2_emissions for rice and show plot</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>plt.hist(rice_consumption[<span class="st">'co2_emission'</span>])</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -522,7 +522,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Utiliza <code>.agg()</code> para calcular la media y la mediana de <code>co2_emissions</code> para el arroz.</li>
 </ul>
-<div id="b1f2088b" class="cell" data-execution_count="7">
+<div id="becf8967" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Subset for food_category equals rice</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>rice_consumption <span class="op">=</span> food_consumption[food_consumption[<span class="st">'food_category'</span>] <span class="op">==</span> <span class="st">'rice'</span>]</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(rice_consumption)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -543,7 +543,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 [130 rows x 5 columns]</code></pre>
 </div>
 </div>
-<div id="f0574a86" class="cell" data-execution_count="8">
+<div id="4930c3fc" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate mean and median of co2_emission with .agg()</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(rice_consumption[<span class="st">'co2_emission'</span>].agg([<span class="st">'mean'</span>, <span class="st">'median'</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">

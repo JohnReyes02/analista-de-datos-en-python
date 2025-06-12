@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>4 Personalizar los gráficos de Seaborn – Introducción a la Visualización de Datos con Python</title>
+<title>Personalizar los gráficos de Seaborn – Introducción a la Visualización de Datos con Python</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -70,10 +70,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-0f23b73bebd85e44a76b93a8b14b039d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-ede4997d1aa2d49dd7dff0ee71c8d46e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-4909038f391676d0e746676f7305d10d.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -108,7 +110,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </head>
 
-<body class="nav-sidebar floating">
+<body class="nav-sidebar docked">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -117,7 +119,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01_Introduccion_a_seaborn.html">Capítulos</a></li><li class="breadcrumb-item"><a href="./04_Personalizar_graficos_seaborn.html"><span class="chapter-title">4 Personalizar los gráficos de Seaborn</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01_Introduccion_a_seaborn.html">Capítulos</a></li><li class="breadcrumb-item"><a href="./04_Personalizar_graficos_seaborn.html"><span class="chapter-title">Personalizar los gráficos de Seaborn</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -129,10 +131,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Introducción a la Visualización de Datos con Python</a> 
+        <div class="sidebar-tools-main tools-wide">
+    <a href="https://github.com/JohnReyes02/Datacamp/tree/main/Analista_de_datos_en_python/06_Introduccion_a_la_visualizacion_de_datos_con_seaborn/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <div class="dropdown">
+      <a href="" title="Share" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Share"><i class="bi bi-share"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
+              <i class="bi bi-twitter pe-1"></i>
+            Twitter
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://www.facebook.com/sharer/sharer.php?u=|url|">
+              <i class="bi bi-facebook pe-1"></i>
+            Facebook
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://www.linkedin.com/sharing/share-offsite/?url=|url|">
+              <i class="bi bi-linkedin pe-1"></i>
+            LinkedIn
+            </a>
+          </li>
+      </ul>
+    </div>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -144,7 +173,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Bienvenida</span></a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bienvenida</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -158,22 +188,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01_Introduccion_a_seaborn.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">1 Introducción a Seaborn</span></a>
+  <a href="./01_Introduccion_a_seaborn.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Introducción a Seaborn</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02_Visualizar_dos_variables_cuantitativas.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2 Visualizar dos variables cuantitativas</span></a>
+  <a href="./02_Visualizar_dos_variables_cuantitativas.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Visualizar dos variables cuantitativas</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03_Visualizar_variable_categorica_cuantitativa.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">3 Visualizar una variable categórica y una cuantitativa</span></a>
+  <a href="./03_Visualizar_variable_categorica_cuantitativa.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Visualizar una variable categórica y una cuantitativa</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04_Personalizar_graficos_seaborn.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">4 Personalizar los gráficos de Seaborn</span></a>
+  <a href="./04_Personalizar_graficos_seaborn.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Personalizar los gráficos de Seaborn</span></a>
   </div>
 </li>
       </ul>
@@ -211,14 +241,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#bien-hecho-y-ahora-qué" id="toc-bien-hecho-y-ahora-qué" class="nav-link" data-scroll-target="#bien-hecho-y-ahora-qué">¡Bien hecho! ¿Y ahora qué?</a></li>
   </ul>
-</nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/JohnReyes02/Datacamp/edit/main/Analista_de_datos_en_python/06_Introduccion_a_la_visualizacion_de_datos_con_seaborn/04_Personalizar_graficos_seaborn.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/JohnReyes02/Datacamp/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/JohnReyes02/Datacamp/blob/main/Analista_de_datos_en_python/06_Introduccion_a_la_visualizacion_de_datos_con_seaborn/04_Personalizar_graficos_seaborn.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01_Introduccion_a_seaborn.html">Capítulos</a></li><li class="breadcrumb-item"><a href="./04_Personalizar_graficos_seaborn.html"><span class="chapter-title">4 Personalizar los gráficos de Seaborn</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01_Introduccion_a_seaborn.html">Capítulos</a></li><li class="breadcrumb-item"><a href="./04_Personalizar_graficos_seaborn.html"><span class="chapter-title">Personalizar los gráficos de Seaborn</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">4 Personalizar los gráficos de Seaborn</span></h1>
+<h1 class="title"><span class="chapter-title">Personalizar los gráficos de Seaborn</span></h1>
 </div>
 
 
@@ -259,7 +289,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Si solo nos interesa la tendencia general:</li>
 </ul></li>
 </ul>
-<div id="eea23547" class="cell" data-execution_count="1">
+<div id="8cf8c798" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>sns.catplot(x<span class="op">=</span><span class="st">'age'</span>, y<span class="op">=</span><span class="st">'masculinity_important'</span>,</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>            data<span class="op">=</span>masculinity_data,</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>            hue<span class="op">=</span><span class="st">'feel_masculine'</span>,</span>
@@ -273,7 +303,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Para determinar valores específicos:</li>
 </ul></li>
 </ul>
-<div id="47a8089f" class="cell" data-execution_count="2">
+<div id="4ed4c44c" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>sns.set_style(<span class="st">'whitegrid'</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>sns.catplot(x<span class="op">=</span><span class="st">'age'</span>, y<span class="op">=</span><span class="st">'masculinity_important'</span>,</span>
@@ -296,7 +326,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Ejemplo (Paleta divergente)</li>
 </ul>
-<div id="1318d651" class="cell" data-execution_count="3">
+<div id="1295403f" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>sns.set_palette(<span class="st">'RdBu'</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>category_order <span class="op">=</span> [<span class="st">"No answer"</span>,</span>
@@ -323,14 +353,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Paletas personalizadas</li>
 </ul>
-<div id="5e30c767" class="cell" data-execution_count="4">
+<div id="2113456a" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>custom_palette <span class="op">=</span> [<span class="st">"red"</span>, <span class="st">"green"</span>, <span class="st">"orange"</span>, <span class="st">"blue"</span>,</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"yellow"</span>, <span class="st">"purple"</span>]</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>sns.set_palette(custom_palette)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img src="images/paste-34.png" class="img-fluid" width="370"></p>
-<div id="177f6161" class="cell" data-execution_count="5">
+<div id="3b099103" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>custom_palette <span class="op">=</span> [<span class="st">"#FBB4AE"</span>, <span class="st">"#B3CDE3"</span>, <span class="st">"#CCEBC5"</span>,</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"#DECBE4"</span>, <span class="st">"#FED9A6"</span>, <span class="st">"#FFFFCC"</span>,</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"#E5B8BD"</span>, <span class="st">"#FDDAEC"</span>, <span class="st">"#F2F2F2"</span>]</span>
@@ -347,7 +377,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul></li>
 <li><p>Contexto por defecto: “paper”</p></li>
 </ul>
-<div id="e986e946" class="cell" data-execution_count="6">
+<div id="09532170" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>sns.catplot(x<span class="op">=</span><span class="st">'age'</span>,</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>            y<span class="op">=</span><span class="st">'masculinity_important'</span>,</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>            data<span class="op">=</span>masculinity_data,</span>
@@ -363,7 +393,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Presentaciones donde el público este mas alejado del gráfico</li>
 </ul></li>
 </ul>
-<div id="a329b09d" class="cell" data-execution_count="7">
+<div id="dcec5da1" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>sns.set_context(<span class="st">'talk'</span>)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>sns.catplot(x<span class="op">=</span><span class="st">'age'</span>,</span>
@@ -378,7 +408,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="cambiar-de-estilo-y-de-paleta" class="level3">
 <h3 class="anchored" data-anchor-id="cambiar-de-estilo-y-de-paleta">Cambiar de estilo y de paleta</h3>
 <p>Vamos a nuestro conjunto de datos que contiene los resultados de una encuestra realizada a jóvenes sobre sus hábitos y preferencias. Hemos proportcionado el código para crear un gráfico de recuento de sus respuestas a la pregunta “¿Con qué frecuencia escuchas los consejos de tus padres?”. Ahora vamos a cambiar el estilo y la paleta para que esta trama sea más fácil de interpretar.</p>
-<div id="5606f92d" class="cell" data-execution_count="8">
+<div id="5e5313be" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
@@ -521,7 +551,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Transformación de los datos de la columna <code>"Parents' advice"</code></p>
-<div id="18e60866" class="cell" data-execution_count="9">
+<div id="a80d7292" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>survey_data[<span class="st">"Parents' advice"</span>] <span class="op">=</span> survey_data[<span class="st">"Parents' advice"</span>].<span class="bu">map</span>({<span class="dv">1</span>: <span class="st">'Never'</span>,</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>                                                                     <span class="dv">2</span>: <span class="st">'Rarely'</span>,</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>                                                                     <span class="dv">3</span>: <span class="st">'Sometimes'</span>,</span>
@@ -533,7 +563,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol type="1">
 <li>Configura el estilo en <code>"whitegrid"</code> para ayudar al público a determinar el número de respuestas de cada categoría.</li>
 </ol>
-<div id="0dbfe726" class="cell" data-execution_count="10">
+<div id="bd427554" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the style to "whitegrid"</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>sns.set_style(<span class="st">'whitegrid'</span>)</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -559,7 +589,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol start="2" type="1">
 <li>Establece la paleta de colores en la paleta secuencial denominada <code>"Purples</code>.</li>
 </ol>
-<div id="cb759bd6" class="cell" data-execution_count="11">
+<div id="35c9e76c" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the color palette to "Purples"</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>sns.set_style(<span class="st">'whitegrid'</span>)</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>sns.set_palette(<span class="st">'Purples'</span>)</span>
@@ -587,7 +617,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol start="3" type="1">
 <li>Cambia la paleta de colores a la paleta divergente <code>"RdBu"</code></li>
 </ol>
-<div id="a5d6f570" class="cell" data-execution_count="12">
+<div id="a47b4523" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Change the color palette to "RdBu"</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>sns.set_style(<span class="st">'whitegrid'</span>)</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>sns.set_palette(<span class="st">'RdBu'</span>)</span>
@@ -623,7 +653,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol type="1">
 <li>Establece la escala (“contexto”) en <code>"paper"</code>, que es la más pequieña de las opciones de escala.</li>
 </ol>
-<div id="eebaaf34" class="cell" data-execution_count="13">
+<div id="8120544a" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the context to "paper"</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>sns.set_context(<span class="st">'paper'</span>)</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -646,7 +676,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol start="2" type="1">
 <li>Cambia el contexto a <code>"notebook"</code> para aumentar la escala.</li>
 </ol>
-<div id="7f113455" class="cell" data-execution_count="14">
+<div id="b577401e" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Change the context to "notebook"</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>sns.set_context(<span class="st">"notebook"</span>)</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -669,7 +699,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol start="3" type="1">
 <li>Cambia el contexto a <code>"talk"</code> para aumentar la escala.</li>
 </ol>
-<div id="47cf81c0" class="cell" data-execution_count="15">
+<div id="82ff221e" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Change the context to "notebook"</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>sns.set_context(<span class="st">"talk"</span>)</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -692,7 +722,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol start="4" type="1">
 <li>Cambia el contexto a <code>"poster"</code>, que es la mayor escala disponbible.</li>
 </ol>
-<div id="8e25e241" class="cell" data-execution_count="16">
+<div id="16f14080" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Change the context to "poster"</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>sns.set_context(<span class="st">"poster"</span>)</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -725,7 +755,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Establece el estilo en <code>"darkgrid"</code>.</p></li>
 <li><p>Establece una paleta de colores personalizada con los códigos hexadecimales de color <code>"#39A7D0"</code> y <code>"#36ADA4"</code>.</p></li>
 </ul>
-<div id="f0f8b24b" class="cell" data-execution_count="17">
+<div id="a3f99fe7" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>sns.set_context(<span class="st">'notebook'</span>)</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the style to "darkgrid"</span></span>
@@ -770,7 +800,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Los gráficos de Seaborn creean dos diferentes tipos de objetos: <code>FacetGrid</code> y <code>AxesSubplot</code>.</li>
 </ul></li>
 </ul>
-<div id="2d81cf6e" class="cell" data-execution_count="18">
+<div id="5155a43f" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> sns.scatterplot(x<span class="op">=</span><span class="st">'height'</span>, y<span class="op">=</span><span class="st">'weight'</span>, data<span class="op">=</span>df)</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(g)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -812,7 +842,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table></li>
 <li><p>Añadiendo un título al FacetGrid</p></li>
 </ul>
-<div id="69289d25" class="cell" data-execution_count="19">
+<div id="73e8e597" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> sns.catplot(x<span class="op">=</span><span class="st">'Region'</span>, y<span class="op">=</span><span class="st">'Birthrate'</span>,</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>                data<span class="op">=</span>gdp_data, kind<span class="op">=</span><span class="st">'box'</span>)</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -826,7 +856,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="facetgrids-vs.-axessubplots">FacetGrids vs.&nbsp;AxesSubplots</h3>
 <p>En la lección reciente, aprendimos que las funciones de trazado de Seaborn crean dos tipos diferentes de objetos: objetos <code>FacetGrid</code> y objetos <code>AxesSubplot</code>. El método para añadir un título a tu gráfico variará en función del tipo de objeto que sea.</p>
 <p>En el código proporcionadom hemos utilizado <code>relplot()</code> con el conjunto de datos de millas por galón para crear un gráfico de dispersión que muestra la realación entre el peso de un coche y su potencia. Este gráfico de dispersión se asigna a la variable <code>g</code>. Identifiquemos de qué tipo de objeto se trata.</p>
-<div id="ba84fc8a" class="cell" data-execution_count="20">
+<div id="8b85bbbf" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
@@ -925,7 +955,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol type="1">
 <li>Identifica qué tipo de objeto es el gráfico <code>g</code> y asígnalo a la variable <code>type_of_g</code></li>
 </ol>
-<div id="816ddc7a" class="cell" data-execution_count="21">
+<div id="a14a96a8" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>sns.set_style(<span class="st">'white'</span>)</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a scatter plot</span></span>
@@ -970,7 +1000,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Añade un título a esta trama: <code>"Car Wight vs. Horsepower"</code>.</li>
 </ul>
-<div id="55c5f005" class="cell" data-execution_count="22">
+<div id="d037ece3" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a scatter plot</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> sns.relplot(x<span class="op">=</span><span class="st">'weight'</span>, y<span class="op">=</span><span class="st">'horsepower'</span>,</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>            data<span class="op">=</span>mpg, kind<span class="op">=</span><span class="st">'scatter'</span>)</span>
@@ -999,7 +1029,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>FacetGrid</li>
 </ul>
-<div id="104d9ee2" class="cell" data-execution_count="23">
+<div id="3ff390d9" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> sns.catplot(x<span class="op">=</span><span class="st">'Region'</span>, y<span class="op">=</span><span class="st">'Birthrate'</span>,</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>                data<span class="op">=</span>gdp_data,</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>                kind<span class="op">=</span><span class="st">'box'</span>)</span>
@@ -1009,7 +1039,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div></li>
 </ul>
 <p>AxesSubplot</p>
-<div id="1fe8fcd8" class="cell" data-execution_count="24">
+<div id="14783854" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> sns.boxplot(x<span class="op">=</span><span class="st">'Region'</span>, y<span class="op">=</span><span class="st">'Birtrate'</span>,</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>                data<span class="op">=</span>gdp_data)</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1019,7 +1049,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Títulos para subgráficos</li>
 </ul>
-<div id="b685bffc" class="cell" data-execution_count="25">
+<div id="a552a44a" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> sns.catplot(x<span class="op">=</span><span class="st">'Region'</span>, y<span class="op">=</span><span class="st">'Birthrate'</span>,</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>                data<span class="op">=</span>gdp_data, kind<span class="op">=</span><span class="st">'box'</span>,</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>                col<span class="op">=</span><span class="st">'Group'</span>)</span>
@@ -1035,7 +1065,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Añadir etiquetas a los ejes</li>
 </ul>
-<div id="51bd7741" class="cell" data-execution_count="26">
+<div id="2cdb8740" class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> sns.catplot(x<span class="op">=</span><span class="st">'Region'</span>, y<span class="op">=</span><span class="st">'Birthrate'</span>,</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>                data<span class="op">=</span>gdp_data, kind<span class="op">=</span><span class="st">'box'</span>,</span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>                col<span class="op">=</span><span class="st">'Group'</span>)</span>
@@ -1049,7 +1079,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Rotando las etiquetas del eje x</li>
 </ul>
-<div id="9a745633" class="cell" data-execution_count="27">
+<div id="b4343e32" class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> sns.catplot(x<span class="op">=</span><span class="st">'Region'</span>, y<span class="op">=</span><span class="st">'Birthrate'</span>,</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>                data<span class="op">=</span>gdp_data, kind<span class="op">=</span><span class="st">'box'</span>,</span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>                col<span class="op">=</span><span class="st">'Group'</span>)</span>
@@ -1062,7 +1092,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="añadir-un-título-y-etiquetas-de-eje">Añadir un título y etiquetas de eje</h3>
 <p>Sigamos examinando el conjunto de datos de millas por galón. Esta vez crearemos un gráfico lineal para responder a la pregunta: ¿Cómo cambia a lo largo del tiempo la media de millas por galón que alcanzan los coches en cada uno de los tres lugares de origen? Para mejorar la legibilidad de este gráfico, añadiremos un título y etiquetas de eje más informativas.</p>
 <p>En el código proporcionado, creamos el gráfico de líneas utilizando la función <code>lineplot()</code>. Ten encuenta que <code>lineplot()</code> no admite la creación de subtramas, por lo que devuelve un obejeto <code>AxesSubplot</code> en lugar d eun objeto <code>FacetGrid</code>.</p>
-<div id="3397c4ff" class="cell" data-execution_count="28">
+<div id="647a539a" class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
@@ -1125,7 +1155,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol type="1">
 <li>Añade el siguiente título a la trama: <code>"Average MPG Over Time"</code>.</li>
 </ol>
-<div id="883de893" class="cell" data-execution_count="29">
+<div id="f20a6e35" class="cell" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a line plot</span></span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> sns.lineplot(x<span class="op">=</span><span class="st">'model_year'</span>, y<span class="op">=</span><span class="st">'mpg_mean'</span>,</span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>                 data<span class="op">=</span>mpg_mean, hue<span class="op">=</span><span class="st">'origin'</span>)</span>
@@ -1146,7 +1176,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol start="2" type="1">
 <li>Etiqueta el eje x como <code>"Car Model Year"</code> y el eje y como <code>"Average MPG"</code>.</li>
 </ol>
-<div id="f8675cc0" class="cell" data-execution_count="30">
+<div id="5a57efff" class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a line plot</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> sns.lineplot(x<span class="op">=</span><span class="st">'model_year'</span>, y<span class="op">=</span><span class="st">'mpg_mean'</span>,</span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>                 data<span class="op">=</span>mpg_mean, hue<span class="op">=</span><span class="st">'origin'</span>)</span>
@@ -1180,7 +1210,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Gira 90 grados las etiquetas x-tick.</li>
 </ul>
-<div id="d0727026" class="cell" data-execution_count="31">
+<div id="e96a0c19" class="cell" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create point plot</span></span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>sns.catplot(x<span class="op">=</span><span class="st">'origin'</span>, y<span class="op">=</span><span class="st">'acceleration'</span>,</span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>            data<span class="op">=</span>mpg, kind<span class="op">=</span><span class="st">'point'</span>,</span>
@@ -1208,15 +1238,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Inicio Para importar Seaborn:</li>
 </ul>
-<div id="992c5549" class="cell" data-execution_count="32">
+<div id="24877694" class="cell" data-execution_count="32">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Para importar Matplotlib:</p>
-<div id="e4cfd810" class="cell" data-execution_count="33">
+<div id="69aa4de6" class="cell" data-execution_count="33">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Para mostrar un gráfico:</p>
-<div id="fecc436c" class="cell" data-execution_count="34">
+<div id="0bda5faf" class="cell" data-execution_count="34">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
@@ -1226,7 +1256,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Ejemplos: scatter plots, line plots</li>
 </ul></li>
 </ul>
-<div id="ee5e9406" class="cell" data-execution_count="35">
+<div id="dd002623" class="cell" data-execution_count="35">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>sns.relplot(x<span class="op">=</span><span class="st">'x_variable_name'</span>,</span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>            y<span class="op">=</span><span class="st">'y_variable_name'</span>,</span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>            data<span class="op">=</span>pandas_df,</span>
@@ -1239,7 +1269,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Ejemplos: bar plots, count plots, box plots, pint plots</li>
 </ul></li>
 </ul>
-<div id="abfa02bb" class="cell" data-execution_count="36">
+<div id="777955c3" class="cell" data-execution_count="36">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>sns.catplot(x<span class="op">=</span><span class="st">'x_variable_name'</span>,</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>            y<span class="op">=</span><span class="st">'y_variable_name'</span>,</span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>            data<span class="op">=</span>pandas_df,</span>
@@ -1294,18 +1324,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Añadir etiquetas al eje x y eje y</li>
 </ul></li>
 </ul>
-<div id="bb0cffef" class="cell" data-execution_count="37">
+<div id="cdf96fb5" class="cell" data-execution_count="37">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>g.<span class="bu">set</span>(xlabel<span class="op">=</span><span class="st">'new x-axis label'</span>,</span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>      ylabel<span class="op">=</span><span class="st">'new y-axis label'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Rotar etiquetas el eje x</p>
-<div id="88273799" class="cell" data-execution_count="38">
+<div id="6631df31" class="cell" data-execution_count="38">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">90</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="diagrama-de-cajas-con-subgrupos" class="level3">
 <h3 class="anchored" data-anchor-id="diagrama-de-cajas-con-subgrupos">Diagrama de cajas con subgrupos</h3>
 <p>En este ejercicio, examinaremos el conjunto de datos que contiene las respuestas de una encuesta realizada a jóvenes. Una de las preguntas que se hicieron a los jóvenes fue: “¿Te interesa tener mascotas?” Exploraremos si la distribución de edades de los que responden “si” tiende a ser mayor o menor que la de los que responden “no”, distinguiendo según el género.</p>
-<div id="e5298cf6" class="cell" data-execution_count="39">
+<div id="c06aa84d" class="cell" data-execution_count="39">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>survey_data[<span class="st">'Interested in Pets'</span>] <span class="op">=</span> survey_data[<span class="st">'Pets'</span>].<span class="bu">apply</span>(</span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">lambda</span> x: <span class="st">'Yes'</span> <span class="cf">if</span> x <span class="op">&gt;=</span> <span class="fl">4.0</span> <span class="cf">else</span> <span class="st">'No'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -1317,7 +1347,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Establece el título del objeto <code>FacetGrid</code> <code>g</code> en `“Age of Those Interested in Pets vs.&nbsp;Not”.</li>
 <li>Realiza la visualización del gráfico utlizando una función Matplotlib.</li>
 </ul>
-<div id="30ddbbf7" class="cell" data-execution_count="40">
+<div id="5ceed455" class="cell" data-execution_count="40">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set palette to "Blues"</span></span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>sns.set_palette(<span class="st">'Blues'</span>)</span>
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1346,7 +1376,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="diagrama-de-barras-con-subgrupos-y-subtramas">Diagrama de barras con subgrupos y subtramas</h3>
 <p>En este ejercicio, volveremos a nuestro conjunto de datos de la encuesta a jóvenes e investigaremos si la proporción de personas a las que les gusta la música tecno (<code>"Likes Techno"</code>) varía según su género. (<code>"Gender"</code>) o su lugar de residencia (<code>"Village - town"</code>). ¡Este ejercicio nos dará la oportunidad de practicar las muchas cosas que hemos aprendido a lo largo de este curso!</p>
 <p>Antes hay que transformar la columna ‘Techno’ por ‘Likes Techno’</p>
-<div id="2a680237" class="cell" data-execution_count="41">
+<div id="8ecdbe13" class="cell" data-execution_count="41">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>survey_data[<span class="st">'Likes Techno'</span>] <span class="op">=</span> survey_data[<span class="st">'Techno'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="va">True</span> <span class="cf">if</span> x <span class="op">&gt;=</span> <span class="fl">4.0</span> <span class="cf">else</span> <span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="instrucciones-8" class="level4">
@@ -1357,7 +1387,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Añade el título <code>"Percentage of Young People Who Like Techno"</code> a esta trama <code>FacetGrid</code>.</li>
 <li>Etiqueta el eje x <code>"Location of Residence"</code> y el eje y <code>"% Who Like Techno"</code></li>
 </ul>
-<div id="270d5d68" class="cell" data-execution_count="42">
+<div id="65dd2ce9" class="cell" data-execution_count="42">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>plt.style.use(<span class="st">'seaborn-v0_8'</span>)</span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the figure style to "dark"</span></span>
@@ -1425,6 +1455,150 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {
@@ -1824,8 +1998,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./03_Visualizar_variable_categorica_cuantitativa.html" class="pagination-link" aria-label="3 Visualizar una variable categórica y una cuantitativa">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">3 Visualizar una variable categórica y una cuantitativa</span></span>
+      <a href="./03_Visualizar_variable_categorica_cuantitativa.html" class="pagination-link" aria-label="Visualizar una variable categórica y una cuantitativa">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Visualizar una variable categórica y una cuantitativa</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
@@ -1836,4 +2010,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-</body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/JohnReyes02/Datacamp/edit/main/Analista_de_datos_en_python/06_Introduccion_a_la_visualizacion_de_datos_con_seaborn/04_Personalizar_graficos_seaborn.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/JohnReyes02/Datacamp/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/JohnReyes02/Datacamp/blob/main/Analista_de_datos_en_python/06_Introduccion_a_la_visualizacion_de_datos_con_seaborn/04_Personalizar_graficos_seaborn.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div></div></footer></body></html>

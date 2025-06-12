@@ -1,9 +1,3 @@
-```{=html}
-<!-- ---
-title: "2 Limpieza e imputación de datos"
---- -->
-```
-
 # Limpieza e imputación de datos
 
 Explorar y analizar datos a menudo significa tratar con valores perdidos, tipos de datos incorrectos y valores atípicos. En este capítulo, aprenderás técnicas para gestionar estos problemas y agilizar tus procesos en EDA.
@@ -19,7 +13,7 @@ Explorar y analizar datos a menudo significa tratar con valores perdidos, tipos 
 -   Ejemplo datos de profesionales de datos
 
 | Column | Description | Data type |
-|--------------------|------------------------------------|----------------|
+|--------------------|---------------------------------|-------------------|
 | `Working_Year` | Year the data was obtained | Float |
 | `Designation` | Job title | String |
 | `Experience` | Experience level e.g., `"Mid"`, `"Senior"` | String |
@@ -80,6 +74,199 @@ salaries.dropna(subset=cols_to_drop, inplace=True) # Para actualizar el DataFram
 ```
 
 -   Imputando una estadística de resumen
+
+```{python}
+#| echo: true
+#| eval: false
+cols_with_missing_values = salaries.columns[salaries.isna().sum() > 0]
+print(cols_with_missing_values)
+```
+
+![](images/paste-25.png)
+
+```{python}
+#| echo: true
+#| eval: false
+    for col in cols_with_missing_values[:-1]:
+        salaries[col].fillna(salaries[col].mode()[0])
+```
+
+-   Revisando los valores faltantes que faltan
+
+```{python}
+#| echo: true
+#| eval: false
+print(salaries.isna().sum())
+```
+
+![](images/paste-26.png)
+
+-   Imputando por subgrupo
+
+```{python}
+#| echo: true
+#| eval: false
+salaries_dict = salaries.groupby('Experience')['Salary_USD'].median().to_dict()
+print(salaries_dict)
+```
+
+![](images/paste-27.png)
+
+```{python}
+#| echo: true
+#| eval: false
+salaries['Salary_USD'] = salaries['Salary_USD'].fillna(salaries['Experience'].map(salaries_dict))
+```
+
+![](images/paste-28.png)
+
+### Tratar los datos que faltan
+
+Es importante tratar los datos que faltan antes de empezar el análisis.
+
+Un enfoque consiste en descartar los valores que faltan si representan una pequeña proporción, normalmente el 5 %, de los datos.
+
+Trabajando con un conjunto de datos sobre precios de tiquetes de avión, almacenado como un DataFrame de pandas llamado `planes`, tendrás que contar el número de valores perdidos en todas las columnas, calcular el cinco porciento de todos los valores, utilizar este umbral para eliminar observaciones y comprobar cuántos valores perdidos quedan en el conjunto de datos.
+
+```{python}
+import pandas as pd
+
+ruta = './data/planes.csv'
+planes = pd.read_csv(ruta)
+print(planes.head)
+```
+
+#### Instrucciones
+
+1. Imprime el número de valores perdidos en cada columna del DataFrame
+
+```{python}
+# Count the number of missing values in each column
+print(planes.isna().sum())
+```
+
+2. Calcula a cuántas observaciones equivale el cinco porciento del DataFrame `planes`
+
+```{python}
+# Find the five percent threshold
+threshold = len(planes) * 0.05
+print(threshold)
+```
+
+3. 
+
+- Crea `cols_to_drop` aplicando una indexación booleana a las columnas del DataFrame con valores perdidos menores o iguales que el umbral.
+
+- Utiliza este filtro para eliminar los valores que faltan y guardar el DataFrame actualizado.
+
+```{python}
+# Create a filter
+cols_to_drop = planes.columns[planes.isna().sum() <= threshold]
+print(cols_to_drop)
+
+# Drop missing values for columns below the threshold
+planes.dropna(subset=cols_to_drop, inplace=True)
+
+print(planes.isna().sum())
+```
+
+Al crear un umbral de valores faltantes y usarlo para filtrar columnas, haz logrado eliminar los valores faltantes de todas las columnas excepto `"Additinal_Info"` y `"Price"`.
+
+
+### Estrategias para datos que faltan
+
+La regla del cinco porciento ha funcionado muy bien en tu conjunto de dato `planes`, ¡eliminando los valores perdidos de nueve de las 11 columnas!
+
+Ahora tienes que decidir qué hacer con las columnas `"Additional_Info"` y `"Price"`, a las que les faltan los valores `300` y `368` respectivamente.
+
+Primero echarás un vistazo a lo que contiene `"Additional_Info"`, y después visualizarás el precio de los billetes de avión de distintas compañías aéreas.
+
+```{python}
+import matplotlib.pyplot as plt
+import seaborn as sns
+```
+
+#### Instrucciones
+
+1. Imprime los valores y frecuencias de `"Additional_Info"`.
+
+```{python}
+# Check the values of the Additional_Info column
+print(planes['Additional_Info'].value_counts())
+```
+
+2. Crea un boxplot de `"Price"` frente a `"Airline"`
+
+```{python}
+# Create a box plot of Price by Airline
+sns.boxplot(data=planes, x='Airline', y='Price',
+            hue='Airline', legend=False)
+
+plt.show()
+```
+
+3. **Pregunta**
+
+- ¿Cómo debes tratar los valores que faltan en `"Additional_Info"` y `"Price"`.?
+
+**Respuestas Posibles**
+
+- [ ] Elimina la columna `"Additional_Info"` e imputa la media para los valores que faltan de `"Price"`.
+- [ ] Elimina los valores de `"No info"` de `"Additiona_Info"` e imputa la mediana de los valores que faltan de `"Price"`.
+- [ ] Elimina la columna `"Additional_Info"` e imputa la media por `"Airline"` para los valores que falten de `"Price"`.
+- [X] Elimina la columna `"Additional_Info"` e imputa la mediana por `"Airline"` para los valores que falten de `"Price"`.
+
+No necesitamos la columna `"Additional_Info"`, y deberías imputar la mediana de `"Price"` por `"Airline"` para representar los datos con precisión.
+
+
+### Imputar los precios de los aviones que faltan
+
+!Ahora solo queda una columna con valores perdidos!
+
+Has eliminado la columna `"Additional_Info"` de `planes`, el último paso es imputar los datos  que faltan en la columna `"Price"` del conjunto de datos.
+
+Como recordatorio, tú generaste este diagrama de caja, que sugería que imputar el precio medio basándose en el `"Airline"` ¡es un enfoque sólido!
+
+
+```{python}
+# Eliminamos la columna Additional_Info
+planes = planes.drop('Additional_Info', axis=1)
+planes.columns
+```
+#### Instrucciones
+
+1. Agrupa `planes` por aerolínea y calcula el precio medio.
+
+```{python}
+# Calculate median plane ticket prices by Airplane
+airline_prices = planes.groupby('Airline')['Price'].median()
+
+print(airline_prices)
+```
+
+2. Convierte los precios medios agrupados en un diccionario.
+
+```{python}
+# Convert to a dictionary
+prices_dict = airline_prices.to_dict()
+print(prices_dict)
+```
+
+3. 
+
+- Imputa condicionalmente los valores perdidos de `"Price"` asignando los valores de la columna `"Airline"` en función de `prices_dict`
+
+- Comprueba si faltan valores
+
+```{python}
+# Map the dictionary to missing values of Price by Airline
+planes['Price'] = planes['Price'].fillna(planes['Airline'].map(prices_dict))
+
+# Check for missing values
+print(planes.isna().sum())
+```
+
+Convertiste un DataFrame agrupado a un diccionario y luego lo usaste para llenar condicionalmente los valores faltantes de `"Price"` basándote en `"Airline"`. Ahora vamos a explorar cómo realizar análisis exploratorio en datos categóricos.
 
 ## Convertir y analizar datos categóricos
 

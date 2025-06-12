@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>3 Mas distribuciones y el teorema del límite central – Introducción a la Estadística en Python</title>
+<title>Mas distribuciones y el teorema del límite central – Introducción a la Estadística en Python</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -71,10 +71,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-0f23b73bebd85e44a76b93a8b14b039d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-ede4997d1aa2d49dd7dff0ee71c8d46e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-4909038f391676d0e746676f7305d10d.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -135,7 +137,7 @@ window.Quarto = {
 
 </head>
 
-<body class="nav-sidebar floating">
+<body class="nav-sidebar docked">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -144,7 +146,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01_Sintesis_estadistica.html">Capítulos</a></li><li class="breadcrumb-item"><a href="./03_Mas_distribuciones_y_teorema_limite_central.html"><span class="chapter-title">3 Mas distribuciones y el teorema del límite central</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01_Sintesis_estadistica.html">Capítulos</a></li><li class="breadcrumb-item"><a href="./03_Mas_distribuciones_y_teorema_limite_central.html"><span class="chapter-title">Mas distribuciones y el teorema del límite central</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -156,10 +158,37 @@ window.Quarto = {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Introducción a la Estadística en Python</a> 
+        <div class="sidebar-tools-main tools-wide">
+    <a href="https://github.com/JohnReyes02/Datacamp/tree/main/Analista_de_datos_en_python/05_Introduccion_a_la_estadistica_en_python/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <div class="dropdown">
+      <a href="" title="Share" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Share"><i class="bi bi-share"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
+              <i class="bi bi-twitter pe-1"></i>
+            Twitter
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://www.facebook.com/sharer/sharer.php?u=|url|">
+              <i class="bi bi-facebook pe-1"></i>
+            Facebook
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://www.linkedin.com/sharing/share-offsite/?url=|url|">
+              <i class="bi bi-linkedin pe-1"></i>
+            LinkedIn
+            </a>
+          </li>
+      </ul>
+    </div>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -171,7 +200,8 @@ window.Quarto = {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Bienvenida</span></a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bienvenida</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -185,22 +215,22 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01_Sintesis_estadistica.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">1 Síntesis estadística</span></a>
+  <a href="./01_Sintesis_estadistica.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Síntesis estadística</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02_Numeros_aleatorios_y_probabilidad.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2 Números aleatorios y probabilidad</span></a>
+  <a href="./02_Numeros_aleatorios_y_probabilidad.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Números aleatorios y probabilidad</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03_Mas_distribuciones_y_teorema_limite_central.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">3 Mas distribuciones y el teorema del límite central</span></a>
+  <a href="./03_Mas_distribuciones_y_teorema_limite_central.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Mas distribuciones y el teorema del límite central</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04_Correlacion_y_diseno_de_experimentos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4 Correlación y diseño de experimentos</span></a>
+  <a href="./04_Correlacion_y_diseno_de_experimentos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Correlación y diseño de experimentos</span></a>
   </div>
 </li>
       </ul>
@@ -240,14 +270,14 @@ window.Quarto = {
   <li><a href="#la-disttibución-t" id="toc-la-disttibución-t" class="nav-link" data-scroll-target="#la-disttibución-t">La disttibución t</a></li>
   </ul></li>
   </ul>
-</nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/JohnReyes02/Datacamp/edit/main/Analista_de_datos_en_python/05_Introduccion_a_la_estadistica_en_python/03_Mas_distribuciones_y_teorema_limite_central.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/JohnReyes02/Datacamp/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/JohnReyes02/Datacamp/blob/main/Analista_de_datos_en_python/05_Introduccion_a_la_estadistica_en_python/03_Mas_distribuciones_y_teorema_limite_central.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01_Sintesis_estadistica.html">Capítulos</a></li><li class="breadcrumb-item"><a href="./03_Mas_distribuciones_y_teorema_limite_central.html"><span class="chapter-title">3 Mas distribuciones y el teorema del límite central</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01_Sintesis_estadistica.html">Capítulos</a></li><li class="breadcrumb-item"><a href="./03_Mas_distribuciones_y_teorema_limite_central.html"><span class="chapter-title">Mas distribuciones y el teorema del límite central</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">3 Mas distribuciones y el teorema del límite central</span></h1>
+<h1 class="title"><span class="chapter-title">Mas distribuciones y el teorema del límite central</span></h1>
 </div>
 
 
@@ -362,7 +392,7 @@ window.Quarto = {
 <ol type="1">
 <li>Importa <code>poisson</code> de <code>scipy.stats</code> y calcula la problabilidad de que Amir responda a 5 clientes potenciales en un día, dado que responde a una media de 4.</li>
 </ol>
-<div id="a70e27e4" class="cell" data-execution_count="1">
+<div id="5b380076" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import poisson from scipy.stats</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> poisson</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -376,7 +406,7 @@ window.Quarto = {
 <ol start="2" type="1">
 <li>El compañero de trabajo de Amir responde a una media de 5.5 clientes potenciales al día. Cuál es la probabilidad a que responda a 5 clientes potenciales en un día?</li>
 </ol>
-<div id="7441fa4f" class="cell" data-execution_count="2">
+<div id="4aa7f507" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Probability of 5 responses</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>prob_coworker <span class="op">=</span> poisson.pmf(<span class="dv">5</span>, <span class="fl">5.5</span>)  <span class="co"># (deseado, media)</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(prob_coworker)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -387,7 +417,7 @@ window.Quarto = {
 <ol start="3" type="1">
 <li>Cuál es la probabilidad de que Amir responda a 2 o menos clientes potenciales en en un día?</li>
 </ol>
-<div id="ccce67a8" class="cell" data-execution_count="3">
+<div id="c1e4e1a1" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Probability of 2 or fewer responses</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>prob_2_or_less <span class="op">=</span> poisson.cdf(<span class="dv">2</span>, <span class="dv">4</span>) <span class="co"># &lt;= cdf(deseado, media)</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(prob_2_or_less)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -398,7 +428,7 @@ window.Quarto = {
 <ol start="4" type="1">
 <li>Cuál es la probabilidad de que Amir responda a más de 10 clientes potenciales en 1 día?</li>
 </ol>
-<div id="3c1233a7" class="cell" data-execution_count="4">
+<div id="d241b719" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Probability of &gt; 10 responses</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>prob_over_10 <span class="op">=</span> <span class="dv">1</span> <span class="op">-</span> poisson.cdf(<span class="dv">10</span>, <span class="dv">4</span>)</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(prob_over_10)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -492,7 +522,7 @@ window.Quarto = {
 <ol type="1">
 <li>Importa <code>expon</code> desde <code>scipy.stats</code>. Cuál es la probabilidad de que Amir tarde menos de una hora en responder a un cliente potencial.</li>
 </ol>
-<div id="83b838ee" class="cell" data-execution_count="5">
+<div id="716592b1" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import expon from scipy.stats</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> expon</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -505,7 +535,7 @@ window.Quarto = {
 <ol start="2" type="1">
 <li>Cuál es la probabilidad de que Amir tarde más de 4 horas en responder a un cliente potencial?</li>
 </ol>
-<div id="32589529" class="cell" data-execution_count="6">
+<div id="d2928f24" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print probability response takes &gt; 4</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">1</span> <span class="op">-</span> expon.cdf(<span class="dv">4</span>, scale<span class="op">=</span><span class="fl">2.5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -515,7 +545,7 @@ window.Quarto = {
 <ol start="3" type="1">
 <li>Cuál es la probabilidad de que Amir tarde 3-4 horas en responder a un cliente potencial?</li>
 </ol>
-<div id="53239f24" class="cell" data-execution_count="7">
+<div id="087cd921" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print probability response takes 3-4 hours</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(expon.cdf(<span class="dv">4</span>, scale<span class="op">=</span><span class="fl">2.5</span>) <span class="op">-</span> expon.cdf(<span class="dv">3</span>, scale<span class="op">=</span><span class="fl">2.5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -560,6 +590,150 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {
@@ -959,13 +1133,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./02_Numeros_aleatorios_y_probabilidad.html" class="pagination-link" aria-label="2 Números aleatorios y probabilidad">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">2 Números aleatorios y probabilidad</span></span>
+      <a href="./02_Numeros_aleatorios_y_probabilidad.html" class="pagination-link" aria-label="Números aleatorios y probabilidad">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Números aleatorios y probabilidad</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./04_Correlacion_y_diseno_de_experimentos.html" class="pagination-link" aria-label="4 Correlación y diseño de experimentos">
-        <span class="nav-page-text"><span class="chapter-title">4 Correlación y diseño de experimentos</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./04_Correlacion_y_diseno_de_experimentos.html" class="pagination-link" aria-label="Correlación y diseño de experimentos">
+        <span class="nav-page-text"><span class="chapter-title">Correlación y diseño de experimentos</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -974,4 +1148,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-</body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/JohnReyes02/Datacamp/edit/main/Analista_de_datos_en_python/05_Introduccion_a_la_estadistica_en_python/03_Mas_distribuciones_y_teorema_limite_central.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/JohnReyes02/Datacamp/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/JohnReyes02/Datacamp/blob/main/Analista_de_datos_en_python/05_Introduccion_a_la_estadistica_en_python/03_Mas_distribuciones_y_teorema_limite_central.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div></div></footer></body></html>

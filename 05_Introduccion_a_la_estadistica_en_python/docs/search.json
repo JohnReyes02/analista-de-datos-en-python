@@ -46,56 +46,56 @@
   {
     "objectID": "03_Mas_distribuciones_y_teorema_limite_central.html",
     "href": "03_Mas_distribuciones_y_teorema_limite_central.html",
-    "title": "3 Mas distribuciones y el teorema del límite central",
+    "title": "Mas distribuciones y el teorema del límite central",
     "section": "",
     "text": "La distribución normal",
     "crumbs": [
       "Capítulos",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>3 Mas distribuciones y el teorema del límite central</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Mas distribuciones y el teorema del límite central</span>"
     ]
   },
   {
     "objectID": "03_Mas_distribuciones_y_teorema_limite_central.html#la-distribución-normal",
     "href": "03_Mas_distribuciones_y_teorema_limite_central.html#la-distribución-normal",
-    "title": "3 Mas distribuciones y el teorema del límite central",
+    "title": "Mas distribuciones y el teorema del límite central",
     "section": "",
     "text": "Distribución de las ventas de Amir\n\n\nProbabilidades de la distribución normal\n\n\nSimulación de ventas en nuevas condiciones de mercado\n\n\nQué mercado es el mejor?",
     "crumbs": [
       "Capítulos",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>3 Mas distribuciones y el teorema del límite central</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Mas distribuciones y el teorema del límite central</span>"
     ]
   },
   {
     "objectID": "03_Mas_distribuciones_y_teorema_limite_central.html#teorema-del-límite-central",
     "href": "03_Mas_distribuciones_y_teorema_limite_central.html#teorema-del-límite-central",
-    "title": "3 Mas distribuciones y el teorema del límite central",
+    "title": "Mas distribuciones y el teorema del límite central",
     "section": "Teorema del límite central",
     "text": "Teorema del límite central\n\nVisualizar distribuciones muestrales\n\n\nCTL en acción\n\n\nLa media de las medias",
     "crumbs": [
       "Capítulos",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>3 Mas distribuciones y el teorema del límite central</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Mas distribuciones y el teorema del límite central</span>"
     ]
   },
   {
     "objectID": "03_Mas_distribuciones_y_teorema_limite_central.html#la-distribución-de-poisson",
     "href": "03_Mas_distribuciones_y_teorema_limite_central.html#la-distribución-de-poisson",
-    "title": "3 Mas distribuciones y el teorema del límite central",
+    "title": "Mas distribuciones y el teorema del límite central",
     "section": "La distribución de Poisson",
     "text": "La distribución de Poisson\n\nProceso de Poisson\n\nProcesos que parecen ocurrir a un ritmo determinado, pero completamente aleatorio.\nEjemplos:\n\nEl número de animales adoptados de un refugio por semana.\nEl número de personas que llegan a un restaurante cada hora.\nEl número de terremotos al año en California.\n\nLa unidad de tiempo, como, horas, semanas o años es irrelevante siempre que sean coherentes.\n\nDistrubición de Poisson\n\nLa probabilidad de que ocurra un número determinado de sucesos en un periodo de tiempo.\nEjemplos\n\nProbabilidad de &gt;= 5 animales adoptados en una semana.\nProbabilidad de que 12 personas lleguen a un restaurante en una hora.\nProbabilidad &lt; 20 terremotos en California en un año.\n\n\nLambda (\\(\\lambda\\))\n\n\\(\\lambda\\): Número de eventos promedio por intervalo de tiempo.\n\nNúmero promedio de adopciones por semana = 8.\n\n\n\nLambda es el pico de la distribución\n\nCTL continúa aplicando\n\n\n\nIdentificar lambda\nAhora que has aprendido sobre la distribución de Poisson, sabes que su forma se describe mediante un valor llamado lambda. En este ejercicio emparejarás histogramas con valores lambda.\n\n\n\n\n\n\n\n\nlambda = 1\nlambda = 4\nlambda = 8\n\n\n\n\n\n\n\n\n\n\nLa distribución de Poisson es una familia de distribuciones, igual que las distribuciones uniforme, binomial o normal.\n\n\nSeguimiento de las respuestas de los clientes potenciales\nTu empresa utiliza un software de ventas para hacer un seguimiento de los nuevos clientes potenciales. Los organiza en una cola para que cualquiera pueda hacer el seguimiento de uno cuando tenga un poco de tiempo libre. Dado que el número de respuestas de clientes potenciales es un resultado contable a lo largo de un periodo de tiempo, esta situación corresponde a una distribución de Poisson. De media, Amir responde a 4 clientes potenciales cada día. En este ejercicio, calcularás las probabilidades de que Amir responda a distintos números de clientes potenciales.\n\nInstrucciones:\n\nImporta poisson de scipy.stats y calcula la problabilidad de que Amir responda a 5 clientes potenciales en un día, dado que responde a una media de 4.\n\n\n# Import poisson from scipy.stats\nfrom scipy.stats import poisson\n\n# Probability of 5 responses\nprob_5 = poisson.pmf(5, 4) # (deseado, media)\nprint(prob_5)\n\n0.1562934518505317\n\n\n\nEl compañero de trabajo de Amir responde a una media de 5.5 clientes potenciales al día. Cuál es la probabilidad a que responda a 5 clientes potenciales en un día?\n\n\n# Probability of 5 responses\nprob_coworker = poisson.pmf(5, 5.5)  # (deseado, media)\nprint(prob_coworker)\n\n0.17140068409793663\n\n\n\nCuál es la probabilidad de que Amir responda a 2 o menos clientes potenciales en en un día?\n\n\n# Probability of 2 or fewer responses\nprob_2_or_less = poisson.cdf(2, 4) # &lt;= cdf(deseado, media)\nprint(prob_2_or_less)\n\n0.2381033055535443\n\n\n\nCuál es la probabilidad de que Amir responda a más de 10 clientes potenciales en 1 día?\n\n\n# Probability of &gt; 10 responses\nprob_over_10 = 1 - poisson.cdf(10, 4)\nprint(prob_over_10)\n\n0.0028397661205137315\n\n\nTener en cuenta que si se proporciona poisson.pmf o poisson.cdf con un número no entero , arroja un error ya que la distribución de Poisson solo se aplica a enteros.",
     "crumbs": [
       "Capítulos",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>3 Mas distribuciones y el teorema del límite central</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Mas distribuciones y el teorema del límite central</span>"
     ]
   },
   {
     "objectID": "03_Mas_distribuciones_y_teorema_limite_central.html#más-distribuciones-de-probabilidad",
     "href": "03_Mas_distribuciones_y_teorema_limite_central.html#más-distribuciones-de-probabilidad",
-    "title": "3 Mas distribuciones y el teorema del límite central",
+    "title": "Mas distribuciones y el teorema del límite central",
     "section": "Más distribuciones de probabilidad",
     "text": "Más distribuciones de probabilidad\n\nDistribución exponencial\n\nProbabilidad en que transcurra cierto tiempo entre eventos de Poisson.\nEjemplos\n\nProbabilidad &gt; 1 día entre adopciones.\nProbabilidad &lt; 10 minutos entre llegadas a restaurantes.\nProbabilidad de 6 a 8 meses entre terremotos.\n\nTambién usa lambda \\(\\lambda\\)\nContinua (tiempo)\nValor esperado de la distribución exponencial\n\nMide la frecuencia en terminos de tiempo entre sucesos.\n\n\nDistribución T (estudiante)\n\nForma similar a la distribución normal.\n\n\nGrados de libertad (DoF)\n\nTiene un parámetro de grados de libertad (df) que afecta el grosor de las colas de la distribución.\n\n\nBajo df = Colas más gruesas y mayor desviación estandar.\nAlto df = Similar a la distribución normal.\n\n\nDistribución Log-normal\n\nLas variables que siguen una distribución log-normal tiene un logaritmo que se distribuye normalmente. Da lugar a distribuciones sesgadas.\nEjemplos\n\nDuración de las partidas de ajedrez.\nLa presión arterial en adultos.\nNúmero de hospitalizaciones en el brote de SARS en el 2003.\n\n\n\n\nArrastrar y colocar distribuciones\nLlegados a este punto, has aprendido sobre tantas distribuciones de probabilidad diferentes que puede ser difícil recordar cuál es cuál. En este ejercicio, practicarás la distinción entre distribuciones y la identificación de la distribución que mejor se ajusta a distintas situaciones.\n\n\n\n\n\n\n\n\nPoisson\nExponencial\nBinomial\n\n\n\n\nNúmero de clientes que entran a una tienda cada hora.\nTiempo que transcurre hasta que alguien paga su préstamo.\nNúmero de personas de un grupo de 30 que aprueban el examen de conducir.\n\n\nNúmero de productos vendidos cada semana.\nTiempo que transcurre hasta que el siguiente cliente realiza su compra.\n\n\n\n\n\n\nTiempo de modelado entre clientes potenciales\nPara evaluar mejor el rendimiento de Amir, quieres saber cuánto tarda en responder a un cliente potencial después de abrirlo. De media, responde a 1 solicitud cada 2,5 horas. En este ejercicio, calcularás las probabilidades de que pasen diferentes cantidades de tiempo entre que Amir recibe un cliente potencial y envía una respuesta.\n\nInstrucciones:\n\nImporta expon desde scipy.stats. Cuál es la probabilidad de que Amir tarde menos de una hora en responder a un cliente potencial.\n\n\n# Import expon from scipy.stats\nfrom scipy.stats import expon\n\n# Print probability response takes &lt; 1 hour\nprint(expon.cdf(1, scale=2.5))\n\n0.3296799539643607\n\n\n\nCuál es la probabilidad de que Amir tarde más de 4 horas en responder a un cliente potencial?\n\n\n# Print probability response takes &gt; 4\nprint(1 - expon.cdf(4, scale=2.5))\n\n0.20189651799465536\n\n\n\nCuál es la probabilidad de que Amir tarde 3-4 horas en responder a un cliente potencial?\n\n\n# Print probability response takes 3-4 hours\nprint(expon.cdf(4, scale=2.5) - expon.cdf(3, scale=2.5))\n\n0.09929769391754684\n\n\nHay solo alrededor de un 20% de probabilidad de que Amir tarde más de 4 horas en responder, así que es bastante rápido en sus respuestas.\n\n\n\nLa disttibución t\nQué afirmación no es cierta respecto a la distrubución t?\n\nLa distribución t tiene colas más gruesas que la distribución normal.\nUna distribución t con altos grados de libertad se parece a la distribución normal.\nEl número de grados de libertad afecta a la varianza de la distribución.\nLa distribución t está sesgada.",
     "crumbs": [
       "Capítulos",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>3 Mas distribuciones y el teorema del límite central</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Mas distribuciones y el teorema del límite central</span>"
     ]
   },
   {
