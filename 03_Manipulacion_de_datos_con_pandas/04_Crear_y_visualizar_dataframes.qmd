@@ -1,0 +1,3 @@
+# Crear y visualizar DataFrames
+
+Aprende a visualizar el contenido de tus DataFrames, a tratar los valores de datos que faltan y a importar y exportar datos a archivos CSV.

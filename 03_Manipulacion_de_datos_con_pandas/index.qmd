@@ -1,0 +1,18 @@
+# Bienvenida {.unnumbered}
+
+📊 Nivel: Principiante  
+🕒 Duración estimada: 4 horas  
+🎥 Incluye código, visualizaciones y ejercicios
+
+---
+
+## Descripcion
+
+Pandas es la biblioteca de Python más popular del mundo, utilizada para todo, desde la manipulación de datos hasta el análisis de datos. En este curso, aprenderás a manipular los DataFrames, mientras extraes, filtras y transformas conjuntos de datos del mundo real para su análisis. Utilizando pandas explorarás todos los conceptos básicos de la ciencia de datos. Utilizando datos del mundo real, como cifras de ventas de Walmart y series temporales de temperatura global, aprenderás a importar, limpiar, calcular estadísticas y crear visualizaciones, ¡utilizando pandas para aumentar la potencia de Python!
+
+## Módulos del curso
+
+1. Transformación de DataFrames 
+2. Agregar DataFrames
+3. Segmentar e indexar DataFrames
+4. Crear y visualizar DataFrames

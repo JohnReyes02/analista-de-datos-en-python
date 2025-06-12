@@ -3,8 +3,8 @@ project:
   output-dir: docs
 
 book:
-  title: "Unir datos con Pandas"
-  reader-mode: false
+  title: "Manipulación de datos con pandas"
+  reader-mode: true
 
   author: "Edwin John Fredy Reyes Aguirre"
   date: today
@@ -15,7 +15,7 @@ book:
 
   # En esta seccion se enlaza el repositorio de GitHub
   repo-url: https://github.com/JohnReyes02/Datacamp
-  repo-subdir: Analista_de_datos_en_python/04_Unir_datos_con_pandas
+  repo-subdir: Analista_de_datos_en_python\03_Manipulacion_de_datos_con_pandas
   repo-branch: main
   repo-actions: [edit, issue, source]
   sharing: [twitter, facebook, linkedin]
@@ -24,19 +24,23 @@ book:
     - index.qmd
     - part: Capítulos
       chapters:
-        - 01_Conceptos_basicos_de_la_fusion_de_datos.qmd
-        - 02_Fusionar_tablas_distintos_tipos.qmd
-        - 03_Fusion_y_concatenacion_avanzadas.qmd
-        - 04_Fusionar_datos_ordenados_y_series_temporales.qmd
+        - 01_Transformacion_de_dataframes.qmd
+        - 02_Agregar_dataframes.qmd
+        - 03_Segmentar_e_indexar_dataframes.qmd
+        - 04_Crear_y_visualizar_dataframes.qmd
 
 format:
   html:
     theme: 
       light: flatly
       dark: darkly
+    code-link: false
     toc: true
     toc-title: 'Contenido'
     number-sections: false
     code-copy: true
     code-overflow: wrap
     fig-align: center
+
+
+

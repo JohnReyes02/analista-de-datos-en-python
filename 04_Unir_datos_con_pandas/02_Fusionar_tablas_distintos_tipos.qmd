@@ -1,0 +1,3 @@
+# Fusionar tablas con distintos tipos de unión
+
+Lleva tu conocimiento de las uniones al siguiente nivel. En este capítulo, trabajarás con datos de películas de TMDb mientras aprendes sobre las uniones izquierda, derecha y externa. También descubrirás cómo fusionar una tabla consigo misma y cómo fusionar en un índice DataFrame.

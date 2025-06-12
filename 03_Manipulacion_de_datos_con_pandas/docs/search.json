@@ -1,0 +1,98 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Manipulación de datos con pandas",
+    "section": "",
+    "text": "Bienvenida\n📊 Nivel: Principiante\n🕒 Duración estimada: 4 horas\n🎥 Incluye código, visualizaciones y ejercicios",
+    "crumbs": [
+      "Bienvenida"
+    ]
+  },
+  {
+    "objectID": "index.html#descripcion",
+    "href": "index.html#descripcion",
+    "title": "Manipulación de datos con pandas",
+    "section": "Descripcion",
+    "text": "Descripcion\nPandas es la biblioteca de Python más popular del mundo, utilizada para todo, desde la manipulación de datos hasta el análisis de datos. En este curso, aprenderás a manipular los DataFrames, mientras extraes, filtras y transformas conjuntos de datos del mundo real para su análisis. Utilizando pandas explorarás todos los conceptos básicos de la ciencia de datos. Utilizando datos del mundo real, como cifras de ventas de Walmart y series temporales de temperatura global, aprenderás a importar, limpiar, calcular estadísticas y crear visualizaciones, ¡utilizando pandas para aumentar la potencia de Python!",
+    "crumbs": [
+      "Bienvenida"
+    ]
+  },
+  {
+    "objectID": "index.html#módulos-del-curso",
+    "href": "index.html#módulos-del-curso",
+    "title": "Manipulación de datos con pandas",
+    "section": "Módulos del curso",
+    "text": "Módulos del curso\n\nTransformación de DataFrames\nAgregar DataFrames\nSegmentar e indexar DataFrames\nCrear y visualizar DataFrames",
+    "crumbs": [
+      "Bienvenida"
+    ]
+  },
+  {
+    "objectID": "intro.html",
+    "href": "intro.html",
+    "title": "Introduction",
+    "section": "",
+    "text": "This is a book created from markdown and executable code.\nSee @knuth84 for additional discussion of literate programming.",
+    "crumbs": [
+      "Capítulos",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "summary.html",
+    "href": "summary.html",
+    "title": "Summary",
+    "section": "",
+    "text": "In summary, this book has no content whatsoever.",
+    "crumbs": [
+      "Capítulos",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Summary</span>"
+    ]
+  },
+  {
+    "objectID": "04_Crear_y_visualizar_dataframes.html",
+    "href": "04_Crear_y_visualizar_dataframes.html",
+    "title": "Crear y visualizar DataFrames",
+    "section": "",
+    "text": "Aprende a visualizar el contenido de tus DataFrames, a tratar los valores de datos que faltan y a importar y exportar datos a archivos CSV.",
+    "crumbs": [
+      "Capítulos",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Crear y visualizar DataFrames</span>"
+    ]
+  },
+  {
+    "objectID": "01_Transformacion_de_dataframes.html",
+    "href": "01_Transformacion_de_dataframes.html",
+    "title": "Transformación de DataFrames",
+    "section": "",
+    "text": "Vamos a tratar los fundamentos de pandas. Aprende a inspeccionar los DataFrames y a realizar manipulaciones básicas, como ordenar filas, hacer subconjuntos y añadir nuevas columnas.",
+    "crumbs": [
+      "Capítulos",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Transformación de DataFrames</span>"
+    ]
+  },
+  {
+    "objectID": "02_Agregar_dataframes.html",
+    "href": "02_Agregar_dataframes.html",
+    "title": "Agregar DataFrames",
+    "section": "",
+    "text": "En este capítulo, calcularás estadísticas sumarias en columnas del DataFrame y dominarás las estadísticas sumarias agrupadas y las tablas dinámicas.",
+    "crumbs": [
+      "Capítulos",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Agregar DataFrames</span>"
+    ]
+  },
+  {
+    "objectID": "03_Segmentar_e_indexar_dataframes.html",
+    "href": "03_Segmentar_e_indexar_dataframes.html",
+    "title": "Segmentar e indexar DataFrames",
+    "section": "",
+    "text": "Los índices son nombres de filas y columnas sobrecargados. Aprende cómo pueden combinarse con la segmentación para obtener un potente subconjunto del DataFrame.",
+    "crumbs": [
+      "Capítulos",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Segmentar e indexar DataFrames</span>"
+    ]
+  }
+]

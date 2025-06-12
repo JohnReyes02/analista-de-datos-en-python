@@ -75,8 +75,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-ede4997d1aa2d49dd7dff0ee71c8d46e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-4909038f391676d0e746676f7305d10d.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-b17230bfe5c1c1a17e6bd600670c5145.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-20d87d490373df57c880857ccdca8cc5.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -321,7 +321,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Revisando los datos faltantes</li>
 </ul>
-<div id="e88af874" class="cell" data-execution_count="1">
+<div id="3765e710" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(salaries.isna().<span class="bu">sum</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img src="images/paste-22.png" class="img-fluid"></p>
@@ -343,47 +343,47 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul></li>
 <li><p>Eliminando valores faltantes</p></li>
 </ul>
-<div id="092f141d" class="cell" data-execution_count="2">
+<div id="b9a8fdb8" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>threshold <span class="op">=</span> <span class="bu">len</span>(salaries) <span class="op">*</span> <span class="fl">0.05</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(threhold)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img src="images/paste-23.png" class="img-fluid"></p>
-<div id="1ef76496" class="cell" data-execution_count="3">
+<div id="e058102e" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>cols_to_drop <span class="op">=</span> salaries.columns[salaries.isna().<span class="bu">sum</span>() <span class="op">&lt;=</span> threshold]</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(cols_to_drop)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img src="images/paste-24.png" class="img-fluid"></p>
-<div id="87deceed" class="cell" data-execution_count="4">
+<div id="e1608752" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>salaries.dropna(subset<span class="op">=</span>cols_to_drop, inplace<span class="op">=</span><span class="va">True</span>) <span class="co"># Para actualizar el DataFrame</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>Imputando una estadística de resumen</li>
 </ul>
-<div id="8f38121e" class="cell" data-execution_count="5">
+<div id="b452ef20" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>cols_with_missing_values <span class="op">=</span> salaries.columns[salaries.isna().<span class="bu">sum</span>() <span class="op">&gt;</span> <span class="dv">0</span>]</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(cols_with_missing_values)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img src="images/paste-25.png" class="img-fluid"></p>
-<div id="7f8e1965" class="cell" data-execution_count="6">
+<div id="f7697e97" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> col <span class="kw">in</span> cols_with_missing_values[:<span class="op">-</span><span class="dv">1</span>]:</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>        salaries[col].fillna(salaries[col].mode()[<span class="dv">0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>Revisando los valores faltantes que faltan</li>
 </ul>
-<div id="dc3b5b52" class="cell" data-execution_count="7">
+<div id="03c225a4" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(salaries.isna().<span class="bu">sum</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img src="images/paste-26.png" class="img-fluid"></p>
 <ul>
 <li>Imputando por subgrupo</li>
 </ul>
-<div id="44d12c32" class="cell" data-execution_count="8">
+<div id="343ff5b6" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>salaries_dict <span class="op">=</span> salaries.groupby(<span class="st">'Experience'</span>)[<span class="st">'Salary_USD'</span>].median().to_dict()</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(salaries_dict)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img src="images/paste-27.png" class="img-fluid"></p>
-<div id="3227dea7" class="cell" data-execution_count="9">
+<div id="17c51d08" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>salaries[<span class="st">'Salary_USD'</span>] <span class="op">=</span> salaries[<span class="st">'Salary_USD'</span>].fillna(salaries[<span class="st">'Experience'</span>].<span class="bu">map</span>(salaries_dict))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img src="images/paste-28.png" class="img-fluid"></p>
@@ -392,7 +392,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Es importante tratar los datos que faltan antes de empezar el análisis.</p>
 <p>Un enfoque consiste en descartar los valores que faltan si representan una pequeña proporción, normalmente el 5 %, de los datos.</p>
 <p>Trabajando con un conjunto de datos sobre precios de tiquetes de avión, almacenado como un DataFrame de pandas llamado <code>planes</code>, tendrás que contar el número de valores perdidos en todas las columnas, calcular el cinco porciento de todos los valores, utilizar este umbral para eliminar observaciones y comprobar cuántos valores perdidos quedan en el conjunto de datos.</p>
-<div id="206b7608" class="cell" data-execution_count="10">
+<div id="d6d1aff8" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>ruta <span class="op">=</span> <span class="st">'./data/planes.csv'</span></span>
@@ -446,7 +446,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol type="1">
 <li>Imprime el número de valores perdidos en cada columna del DataFrame</li>
 </ol>
-<div id="940c6370" class="cell" data-execution_count="11">
+<div id="21e4d018" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Count the number of missing values in each column</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(planes.isna().<span class="bu">sum</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -467,7 +467,7 @@ dtype: int64</code></pre>
 <ol start="2" type="1">
 <li>Calcula a cuántas observaciones equivale el cinco porciento del DataFrame <code>planes</code></li>
 </ol>
-<div id="49ab46d5" class="cell" data-execution_count="12">
+<div id="875ce238" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the five percent threshold</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>threshold <span class="op">=</span> <span class="bu">len</span>(planes) <span class="op">*</span> <span class="fl">0.05</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(threshold)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -482,7 +482,7 @@ dtype: int64</code></pre>
 <li><p>Crea <code>cols_to_drop</code> aplicando una indexación booleana a las columnas del DataFrame con valores perdidos menores o iguales que el umbral.</p></li>
 <li><p>Utiliza este filtro para eliminar los valores que faltan y guardar el DataFrame actualizado.</p></li>
 </ul>
-<div id="0bdae581" class="cell" data-execution_count="13">
+<div id="43a56b7d" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a filter</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>cols_to_drop <span class="op">=</span> planes.columns[planes.isna().<span class="bu">sum</span>() <span class="op">&lt;=</span> threshold]</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(cols_to_drop)</span>
@@ -517,7 +517,7 @@ dtype: int64</code></pre>
 <p>La regla del cinco porciento ha funcionado muy bien en tu conjunto de dato <code>planes</code>, ¡eliminando los valores perdidos de nueve de las 11 columnas!</p>
 <p>Ahora tienes que decidir qué hacer con las columnas <code>"Additional_Info"</code> y <code>"Price"</code>, a las que les faltan los valores <code>300</code> y <code>368</code> respectivamente.</p>
 <p>Primero echarás un vistazo a lo que contiene <code>"Additional_Info"</code>, y después visualizarás el precio de los billetes de avión de distintas compañías aéreas.</p>
-<div id="8523bf21" class="cell" data-execution_count="14">
+<div id="8d20743b" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -526,7 +526,7 @@ dtype: int64</code></pre>
 <ol type="1">
 <li>Imprime los valores y frecuencias de <code>"Additional_Info"</code>.</li>
 </ol>
-<div id="4d00a0d5" class="cell" data-execution_count="15">
+<div id="21ce8b1b" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the values of the Additional_Info column</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(planes[<span class="st">'Additional_Info'</span>].value_counts())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -546,7 +546,7 @@ Name: count, dtype: int64</code></pre>
 <ol start="2" type="1">
 <li>Crea un boxplot de <code>"Price"</code> frente a <code>"Airline"</code></li>
 </ol>
-<div id="94c5e0a5" class="cell" data-execution_count="16">
+<div id="9be15e77" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a box plot of Price by Airline</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>sns.boxplot(data<span class="op">=</span>planes, x<span class="op">=</span><span class="st">'Airline'</span>, y<span class="op">=</span><span class="st">'Price'</span>,</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>            hue<span class="op">=</span><span class="st">'Airline'</span>, legend<span class="op">=</span><span class="va">False</span>)</span>
@@ -555,7 +555,7 @@ Name: count, dtype: int64</code></pre>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="02_Limpieza_e_imputacion_de_datos_files/figure-html/cell-17-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="02_Limpieza_e_imputacion_de_datos_files/figure-html/cell-17-output-1.png" width="610" height="429" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -581,7 +581,7 @@ Name: count, dtype: int64</code></pre>
 <p>!Ahora solo queda una columna con valores perdidos!</p>
 <p>Has eliminado la columna <code>"Additional_Info"</code> de <code>planes</code>, el último paso es imputar los datos que faltan en la columna <code>"Price"</code> del conjunto de datos.</p>
 <p>Como recordatorio, tú generaste este diagrama de caja, que sugería que imputar el precio medio basándose en el <code>"Airline"</code> ¡es un enfoque sólido!</p>
-<div id="c60aac17" class="cell" data-execution_count="17">
+<div id="ec490e90" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Eliminamos la columna Additional_Info</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>planes <span class="op">=</span> planes.drop(<span class="st">'Additional_Info'</span>, axis<span class="op">=</span><span class="dv">1</span>)</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>planes.columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -596,7 +596,7 @@ Name: count, dtype: int64</code></pre>
 <ol type="1">
 <li>Agrupa <code>planes</code> por aerolínea y calcula el precio medio.</li>
 </ol>
-<div id="e5de6827" class="cell" data-execution_count="18">
+<div id="bc89e409" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate median plane ticket prices by Airplane</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>airline_prices <span class="op">=</span> planes.groupby(<span class="st">'Airline'</span>)[<span class="st">'Price'</span>].median()</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -617,7 +617,7 @@ Name: Price, dtype: float64</code></pre>
 <ol start="2" type="1">
 <li>Convierte los precios medios agrupados en un diccionario.</li>
 </ol>
-<div id="b5d0e353" class="cell" data-execution_count="19">
+<div id="ff60b2cf" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert to a dictionary</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>prices_dict <span class="op">=</span> airline_prices.to_dict()</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(prices_dict)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -632,7 +632,7 @@ Name: Price, dtype: float64</code></pre>
 <li><p>Imputa condicionalmente los valores perdidos de <code>"Price"</code> asignando los valores de la columna <code>"Airline"</code> en función de <code>prices_dict</code></p></li>
 <li><p>Comprueba si faltan valores</p></li>
 </ul>
-<div id="ad6c4943" class="cell" data-execution_count="20">
+<div id="d0c6f85b" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Map the dictionary to missing values of Price by Airline</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>planes[<span class="st">'Price'</span>] <span class="op">=</span> planes[<span class="st">'Price'</span>].fillna(planes[<span class="st">'Airline'</span>].<span class="bu">map</span>(prices_dict))</span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>

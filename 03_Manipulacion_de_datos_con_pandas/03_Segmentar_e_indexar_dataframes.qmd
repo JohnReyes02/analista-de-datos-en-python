@@ -1,0 +1,3 @@
+# Segmentar e indexar DataFrames
+
+Los índices son nombres de filas y columnas sobrecargados. Aprende cómo pueden combinarse con la segmentación para obtener un potente subconjunto del DataFrame.

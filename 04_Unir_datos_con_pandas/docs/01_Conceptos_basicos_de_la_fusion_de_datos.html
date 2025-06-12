@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>1 Conceptos Básicos de la fusión de datos – Unir datos con Pandas</title>
+<title>Conceptos Básicos de la fusión de datos – Unir datos con Pandas</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,6 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./02_Fusionar_tablas_distintos_tipos.html" rel="next">
 <link href="./index.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -74,8 +75,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-ede4997d1aa2d49dd7dff0ee71c8d46e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-4909038f391676d0e746676f7305d10d.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-b17230bfe5c1c1a17e6bd600670c5145.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-20d87d490373df57c880857ccdca8cc5.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -105,7 +106,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
 
+
+
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
 
 
 </head>
@@ -119,7 +123,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01_Conceptos_basicos_de_la_fusion_de_datos.html">Capítulos</a></li><li class="breadcrumb-item"><a href="./01_Conceptos_basicos_de_la_fusion_de_datos.html"><span class="chapter-title">1 Conceptos Básicos de la fusión de datos</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01_Conceptos_basicos_de_la_fusion_de_datos.html">Capítulos</a></li><li class="breadcrumb-item"><a href="./01_Conceptos_basicos_de_la_fusion_de_datos.html"><span class="chapter-title">Conceptos Básicos de la fusión de datos</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -188,7 +192,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01_Conceptos_basicos_de_la_fusion_de_datos.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">1 Conceptos Básicos de la fusión de datos</span></a>
+  <a href="./01_Conceptos_basicos_de_la_fusion_de_datos.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Conceptos Básicos de la fusión de datos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02_Fusionar_tablas_distintos_tipos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Fusionar tablas con distintos tipos de unión</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03_Fusion_y_concatenacion_avanzadas.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Fusión y concatenación avanzadas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04_Fusionar_datos_ordenados_y_series_temporales.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Fusionar datos ordenados y series temporales</span></a>
   </div>
 </li>
       </ul>
@@ -219,9 +238,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01_Conceptos_basicos_de_la_fusion_de_datos.html">Capítulos</a></li><li class="breadcrumb-item"><a href="./01_Conceptos_basicos_de_la_fusion_de_datos.html"><span class="chapter-title">1 Conceptos Básicos de la fusión de datos</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01_Conceptos_basicos_de_la_fusion_de_datos.html">Capítulos</a></li><li class="breadcrumb-item"><a href="./01_Conceptos_basicos_de_la_fusion_de_datos.html"><span class="chapter-title">Conceptos Básicos de la fusión de datos</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">1 Conceptos Básicos de la fusión de datos</span></h1>
+<h1 class="title"><span class="chapter-title">Conceptos Básicos de la fusión de datos</span></h1>
 </div>
 
 
@@ -244,10 +263,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="qué-columna-elegiremos-para-fusionar" class="level3">
 <h3 class="anchored" data-anchor-id="qué-columna-elegiremos-para-fusionar">Qué columna elegiremos para fusionar?</h3>
 <p>Chicago proporciona una lista de propietarios de taxis y vehículos con licencia para operar en la ciudad, por seguridad pública. Tu objetivo es unir dos tablas. Una tabla se llama <code>taxi_owners</code> y contiene información sobre los propietarios de las empresas de taxis, mientras que la otra se llama <code>taxi_veh</code>e incluye información sobre cada vehículo de taxi.</p>
-<div id="75359912" class="cell" data-execution_count="1">
+<div id="b3d0ab3c" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="10c314e0" class="cell" data-execution_count="2">
+<div id="8742548a" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>taxi_owners <span class="op">=</span> pd.read_pickle(<span class="st">'./data/taxi_owners.p'</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>taxi_owners.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
@@ -312,7 +331,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="a4096d1d" class="cell" data-execution_count="3">
+<div id="5533cf4e" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>taxi_veh <span class="op">=</span> pd.read_pickle(<span class="st">'./data/taxi_vehicles.p'</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>taxi_veh.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
@@ -403,7 +422,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol type="1">
 <li>Fusiona <code>taxi_owners</code> con <code>taxi_veh</code> en la columna <code>vid</code> y guarda el resultado en <code>taxi_own_veh</code>.</li>
 </ol>
-<div id="388c4274" class="cell" data-execution_count="4">
+<div id="e9c977ee" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Merge the taxi_owners and taxi_veh tables</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>taxi_own_veh <span class="op">=</span> taxi_owners.merge(taxi_veh, on<span class="op">=</span><span class="st">'vid'</span>)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>taxi_own_veh.head()</span>
@@ -419,7 +438,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol start="2" type="1">
 <li>Establece los sufijos izquierdo y derecho de la tabla para las columnas solapadas de la fusión en <code>_own</code> y <code>_veh</code>, respectivamente.</li>
 </ol>
-<div id="f29e28cb" class="cell" data-execution_count="5">
+<div id="e6df8bda" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Merge the taxi_owners and taxi_veh tables setting a suffix</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>taxi_own_veh <span class="op">=</span> taxi_owners.merge(taxi_veh, on<span class="op">=</span><span class="st">'vid'</span>, suffixes<span class="op">=</span>(<span class="st">'_own'</span>, <span class="st">'_veh'</span>))</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>taxi_own_veh.head()</span>
@@ -435,7 +454,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol start="3" type="1">
 <li>Selecciona la columna <code>fuel_type</code> de <code>taxi_own_veh</code> e imprime <code>value_counts()</code> para encontrar los <code>fuel_type</code> más utilizados.</li>
 </ol>
-<div id="effb9112" class="cell" data-execution_count="6">
+<div id="b8282dc4" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Merge the taxi_owners and taxi_veh tables setting a suffix</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>taxi_own_veh <span class="op">=</span> taxi_owners.merge(taxi_veh, on<span class="op">=</span><span class="st">'vid'</span>, suffixes<span class="op">=</span>(<span class="st">'_own'</span>, <span class="st">'_veh'</span>))</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -455,7 +474,7 @@ Name: count, dtype: int64</code></pre>
 <section id="uniones-internas-y-número-de-filas-devueltas" class="level3">
 <h3 class="anchored" data-anchor-id="uniones-internas-y-número-de-filas-devueltas">Uniones internas y número de filas devueltas</h3>
 <p>Todas las fusiones que has estudiado hasta ahora se llaman uniones internas. Es necesario comprender que las uniones internas solo devuelven las filas con valores coincidentes en ambas tablas. Explorarás esto más a fondo revisando la fusión entre las tablas <code>wards</code> y <code>census</code>, y comparándola después con fusiones de copias de estas tablas ligeramente alteradas, denominadas <code>wards_altered</code> y <code>census_altered</code>. La primera fila de la columna <code>wards</code> se ha modificado en las tablas alteradas. Examinarás cómo afecta esto a la fusión entre ellos.</p>
-<div id="1ab97e5f" class="cell" data-execution_count="7">
+<div id="1ae0086d" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>wards <span class="op">=</span> pd.read_pickle(<span class="st">'./data/ward.p'</span>)</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>wards.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
@@ -514,7 +533,7 @@ Name: count, dtype: int64</code></pre>
 </div>
 </div>
 </div>
-<div id="4653d651" class="cell" data-execution_count="8">
+<div id="a95b0693" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>census <span class="op">=</span> pd.read_pickle(<span class="st">'./data/census.p'</span>)</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>census.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
@@ -585,7 +604,7 @@ Name: count, dtype: int64</code></pre>
 </div>
 </div>
 </div>
-<div id="8de0d87b" class="cell" data-execution_count="9">
+<div id="4a08f812" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>wards_altered <span class="op">=</span> wards.copy()</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>wards_altered.loc[<span class="dv">0</span>, <span class="st">'ward'</span>] <span class="op">=</span> <span class="dv">61</span></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>wards_altered.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -645,7 +664,7 @@ Name: count, dtype: int64</code></pre>
 </div>
 </div>
 </div>
-<div id="e94e81d7" class="cell" data-execution_count="10">
+<div id="e5bd39c3" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>census_altered <span class="op">=</span> census.copy()</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>census_altered.loc[<span class="dv">0</span>, <span class="st">'ward'</span>] <span class="op">=</span> <span class="va">None</span></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>census_altered.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -722,7 +741,7 @@ Name: count, dtype: int64</code></pre>
 <ol type="1">
 <li>Fusiona <code>wards</code> y <code>census</code> en la columna <code>ward</code> y guarda el resultado en <code>ward_census</code>.</li>
 </ol>
-<div id="4c6a79d1" class="cell" data-execution_count="11">
+<div id="bb33eecd" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Merge the wards and census tables on the ward column</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>ward_census <span class="op">=</span> wards.merge(census, on<span class="op">=</span><span class="st">'ward'</span>)</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -735,7 +754,7 @@ Name: count, dtype: int64</code></pre>
 <ol start="2" type="1">
 <li>Fusiona las tablas <code>merge_altered</code> y <code>census</code> en la columna <code>ward</code> y observa la diferencia en las filas devueltas.</li>
 </ol>
-<div id="36f35d37" class="cell" data-execution_count="12">
+<div id="1ce048f7" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the first few rows of the wards_altered table to view the change</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(wards_altered[[<span class="st">'ward'</span>]].head())</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -757,7 +776,7 @@ wards_altered_census table shape: (49, 9)</code></pre>
 <ol start="3" type="1">
 <li>Fusiona las tablas <code>wards</code> y <code>census_altered</code> en la columna <code>ward</code> y observa la diferencia en las filas devueltas.</li>
 </ol>
-<div id="3f9a9215" class="cell" data-execution_count="13">
+<div id="8274a065" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the first few rows of the wards_altered table to view the change</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(census_altered[[<span class="st">'ward'</span>]].head())</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -809,7 +828,7 @@ wards_altered_census table shape: (49, 9)</code></pre>
 <section id="fusión-de-uno-a-muchos" class="level3">
 <h3 class="anchored" data-anchor-id="fusión-de-uno-a-muchos">Fusión de uno a muchos</h3>
 <p>Una empresa puede tener uno o varios propietarios. En este ejercicio, seguirás adquiriendo experiencia con las uniones de uno a muchos fusionando una tabla de propietarios de empresas, llamada <code>biz_owners</code>, con la tabla <code>licenses</code>. Recuerda de la lección de video que, con una relación de uno a muchos, una fila de la tabla izquierda puede repetirse si está relacionada con varias filas de la tabla de la derecha. En esta lección, profundizarás en este tema averiguando cuál es el título de propietario de empresa más habitual (por ejemplo, secretario, CEO, o vicepresidente).</p>
-<div id="cb6ba26d" class="cell" data-execution_count="14">
+<div id="227cfd69" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>licenses <span class="op">=</span> pd.read_pickle(<span class="st">'./data/licenses.p'</span>)</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>licenses.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="14">
@@ -880,7 +899,7 @@ wards_altered_census table shape: (49, 9)</code></pre>
 </div>
 </div>
 </div>
-<div id="f0b516b1" class="cell" data-execution_count="15">
+<div id="13eb98c8" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>biz_owners <span class="op">=</span> pd.read_pickle(<span class="st">'./data/business_owners.p'</span>)</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>biz_owners.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="15">
@@ -1516,6 +1535,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./02_Fusionar_tablas_distintos_tipos.html" class="pagination-link" aria-label="Fusionar tablas con distintos tipos de unión">
+        <span class="nav-page-text"><span class="chapter-title">Fusionar tablas con distintos tipos de unión</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
