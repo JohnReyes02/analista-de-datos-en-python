@@ -138,14 +138,14 @@ print(planes.head)
 
 #### Instrucciones
 
-1. Imprime el número de valores perdidos en cada columna del DataFrame
+1.  Imprime el número de valores perdidos en cada columna del DataFrame
 
 ```{python}
 # Count the number of missing values in each column
 print(planes.isna().sum())
 ```
 
-2. Calcula a cuántas observaciones equivale el cinco porciento del DataFrame `planes`
+2.  Calcula a cuántas observaciones equivale el cinco porciento del DataFrame `planes`
 
 ```{python}
 # Find the five percent threshold
@@ -153,11 +153,11 @@ threshold = len(planes) * 0.05
 print(threshold)
 ```
 
-3. 
+3.  
 
-- Crea `cols_to_drop` aplicando una indexación booleana a las columnas del DataFrame con valores perdidos menores o iguales que el umbral.
+-   Crea `cols_to_drop` aplicando una indexación booleana a las columnas del DataFrame con valores perdidos menores o iguales que el umbral.
 
-- Utiliza este filtro para eliminar los valores que faltan y guardar el DataFrame actualizado.
+-   Utiliza este filtro para eliminar los valores que faltan y guardar el DataFrame actualizado.
 
 ```{python}
 # Create a filter
@@ -171,7 +171,6 @@ print(planes.isna().sum())
 ```
 
 Al crear un umbral de valores faltantes y usarlo para filtrar columnas, haz logrado eliminar los valores faltantes de todas las columnas excepto `"Additinal_Info"` y `"Price"`.
-
 
 ### Estrategias para datos que faltan
 
@@ -188,14 +187,14 @@ import seaborn as sns
 
 #### Instrucciones
 
-1. Imprime los valores y frecuencias de `"Additional_Info"`.
+1.  Imprime los valores y frecuencias de `"Additional_Info"`.
 
 ```{python}
 # Check the values of the Additional_Info column
 print(planes['Additional_Info'].value_counts())
 ```
 
-2. Crea un boxplot de `"Price"` frente a `"Airline"`
+2.  Crea un boxplot de `"Price"` frente a `"Airline"`
 
 ```{python}
 # Create a box plot of Price by Airline
@@ -205,37 +204,36 @@ sns.boxplot(data=planes, x='Airline', y='Price',
 plt.show()
 ```
 
-3. **Pregunta**
+3.  **Pregunta**
 
-- ¿Cómo debes tratar los valores que faltan en `"Additional_Info"` y `"Price"`.?
+-   ¿Cómo debes tratar los valores que faltan en `"Additional_Info"` y `"Price"`.?
 
 **Respuestas Posibles**
 
-- [ ] Elimina la columna `"Additional_Info"` e imputa la media para los valores que faltan de `"Price"`.
-- [ ] Elimina los valores de `"No info"` de `"Additiona_Info"` e imputa la mediana de los valores que faltan de `"Price"`.
-- [ ] Elimina la columna `"Additional_Info"` e imputa la media por `"Airline"` para los valores que falten de `"Price"`.
-- [X] Elimina la columna `"Additional_Info"` e imputa la mediana por `"Airline"` para los valores que falten de `"Price"`.
+-   [ ] Elimina la columna `"Additional_Info"` e imputa la media para los valores que faltan de `"Price"`.
+-   [ ] Elimina los valores de `"No info"` de `"Additiona_Info"` e imputa la mediana de los valores que faltan de `"Price"`.
+-   [ ] Elimina la columna `"Additional_Info"` e imputa la media por `"Airline"` para los valores que falten de `"Price"`.
+-   [x] Elimina la columna `"Additional_Info"` e imputa la mediana por `"Airline"` para los valores que falten de `"Price"`.
 
 No necesitamos la columna `"Additional_Info"`, y deberías imputar la mediana de `"Price"` por `"Airline"` para representar los datos con precisión.
-
 
 ### Imputar los precios de los aviones que faltan
 
 !Ahora solo queda una columna con valores perdidos!
 
-Has eliminado la columna `"Additional_Info"` de `planes`, el último paso es imputar los datos  que faltan en la columna `"Price"` del conjunto de datos.
+Has eliminado la columna `"Additional_Info"` de `planes`, el último paso es imputar los datos que faltan en la columna `"Price"` del conjunto de datos.
 
 Como recordatorio, tú generaste este diagrama de caja, que sugería que imputar el precio medio basándose en el `"Airline"` ¡es un enfoque sólido!
-
 
 ```{python}
 # Eliminamos la columna Additional_Info
 planes = planes.drop('Additional_Info', axis=1)
 planes.columns
 ```
+
 #### Instrucciones
 
-1. Agrupa `planes` por aerolínea y calcula el precio medio.
+1.  Agrupa `planes` por aerolínea y calcula el precio medio.
 
 ```{python}
 # Calculate median plane ticket prices by Airplane
@@ -244,7 +242,7 @@ airline_prices = planes.groupby('Airline')['Price'].median()
 print(airline_prices)
 ```
 
-2. Convierte los precios medios agrupados en un diccionario.
+2.  Convierte los precios medios agrupados en un diccionario.
 
 ```{python}
 # Convert to a dictionary
@@ -252,11 +250,11 @@ prices_dict = airline_prices.to_dict()
 print(prices_dict)
 ```
 
-3. 
+3.  
 
-- Imputa condicionalmente los valores perdidos de `"Price"` asignando los valores de la columna `"Airline"` en función de `prices_dict`
+-   Imputa condicionalmente los valores perdidos de `"Price"` asignando los valores de la columna `"Airline"` en función de `prices_dict`
 
-- Comprueba si faltan valores
+-   Comprueba si faltan valores
 
 ```{python}
 # Map the dictionary to missing values of Price by Airline
@@ -269,6 +267,99 @@ print(planes.isna().sum())
 Convertiste un DataFrame agrupado a un diccionario y luego lo usaste para llenar condicionalmente los valores faltantes de `"Price"` basándote en `"Airline"`. Ahora vamos a explorar cómo realizar análisis exploratorio en datos categóricos.
 
 ## Convertir y analizar datos categóricos
+
+-   Previsualizar los datos
+
+```{python}
+#| echo: true
+#| eval: false
+print(salaries.select_dtypes('object').head())
+```
+
+![](images/paste-29.png)
+
+-   Títulos de los trabajos
+
+```{python}
+#| echo: true
+#| eval: false
+print(salaries['Designation'].value_counts())
+```
+
+![](images/paste-30.png)
+
+```{python}
+#| echo: true
+#| eval: false
+print(salaries['Designation'].nunique())
+```
+
+![](images/paste-31.png)
+
+![](images/paste-32.png)
+
+-   Extrayendo valores desde las categorías
+
+    -   El formato actual de los datos limita la capacidad de generar información.
+
+    -   `pandas.Series.str.contains()`
+
+        -   Busca en una columna una cadena especifica o múltiples cadenas.
+
+```{python}
+#| echo: true
+#| eval: eval
+salaries['Designation'].str.contains('Scientist')
+```
+
+![](images/paste-33.png)
+
+-   Filtrar filas que contienen una o más frases
+
+    -   Palabras de interes: Machine Learning o AI
+
+```{python}
+#| echo: true
+#| eval: false
+salaries['Designation'].str.contains('Machine Learning|AI')
+```
+
+![](images/paste-34.png)
+
+-   Buscar múltiples frases en una cadena de caracteres
+
+    -   Palabras de interes: Cualquiera que inicies con Data
+
+```{python}
+#| echo: true
+#| eval: false
+salaries['Designation'].str.contains('ˆData')
+```
+
+![](images/paste-35.png)
+
+Ahora que se tiene una idea de cómo funciona este método, definamos una lista de títulos de trabajo que queremos encontrar:
+
+```{python}
+#| echo: true
+#| eval: false
+jopb_categories = ['Data Science', 'Data Analytics',
+                   'Data Engineering', 'Machine Learning',
+                   'Managerial', 'Consultant']
+```
+
+Luego necesitamos crear variables que contengan nuestros filtros
+
+```{python}
+#| echo: true
+#| eval: false
+data_science = 'Data Scientist|NLP'
+data_analyst = 'Analyst|Analytics'
+data_engineer = 'Data Engineer|ETL|Architect|Infrastructure'
+ml_engineer = 'Machine Learning|ML|Bid Data|AI'
+nanager = 'Manager|Head|Director|Lead|Principal|Staff'
+consultant = 'Consultant|Freelance'
+```
 
 ## Trabajar con datos numéricos
 
