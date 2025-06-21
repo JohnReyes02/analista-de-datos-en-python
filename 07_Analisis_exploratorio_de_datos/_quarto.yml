@@ -38,6 +38,6 @@ format:
     toc: true
     toc-title: 'Contenido'
     number-sections: false
-    code-copy: true
+    code-copy: false # Para que se habilite copiar el codigo
     code-overflow: wrap
     fig-align: center

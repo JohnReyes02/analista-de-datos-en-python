@@ -308,7 +308,7 @@ print(salaries['Designation'].nunique())
 
 ```{python}
 #| echo: true
-#| eval: eval
+#| eval: false
 salaries['Designation'].str.contains('Scientist')
 ```
 
@@ -328,7 +328,7 @@ salaries['Designation'].str.contains('Machine Learning|AI')
 
 -   Buscar múltiples frases en una cadena de caracteres
 
-    -   Palabras de interes: Cualquiera que inicies con Data
+    -   Palabras de interes: Cualquiera que inicie con Data
 
 ```{python}
 #| echo: true
@@ -343,7 +343,7 @@ Ahora que se tiene una idea de cómo funciona este método, definamos una lista 
 ```{python}
 #| echo: true
 #| eval: false
-jopb_categories = ['Data Science', 'Data Analytics',
+job_categories = ['Data Science', 'Data Analytics',
                    'Data Engineering', 'Machine Learning',
                    'Managerial', 'Consultant']
 ```
@@ -357,9 +357,78 @@ data_science = 'Data Scientist|NLP'
 data_analyst = 'Analyst|Analytics'
 data_engineer = 'Data Engineer|ETL|Architect|Infrastructure'
 ml_engineer = 'Machine Learning|ML|Bid Data|AI'
-nanager = 'Manager|Head|Director|Lead|Principal|Staff'
+manager = 'Manager|Head|Director|Lead|Principal|Staff'
 consultant = 'Consultant|Freelance'
 ```
+
+El siguiente paso es crear una lista con nuestro rango de condiciones para el método `str.contains`
+
+```{python}
+#| echo: true
+#| eval: false
+conditions = [
+    (salaries['Designation'].str.contains(data_science)),
+    (salaries['Designation'].str.contains(data_analyst)),
+    (salaries['Designation'].str.contains(data_engineer)),
+    (salaries['Designation'].str.contains(ml_engineer)),
+    (salaries['Designation'].str.contains(manager)),
+    (salaries['Designation'].str.contains(consultant))
+]
+```
+
+Finalmente, podemos crear nuestra nueva columna `Job_Category` usando la función de selección de Numpy
+
+```{python}
+#| echo: true
+#| eval: false
+salaries['Job_Category'] = np.select(conditions,
+                                     job_categories,
+                                     default='Other')
+```
+
+Al obtener una vista previa de la Designación y nuestra nueva columna Job_Category, podemos verificar los primeros cinco valores.
+
+```{python}
+#| echo: true
+#| eval: false
+print(salaries[['Designation', 'Job_Category']].head())
+```
+
+![](images/paste-36.png)
+
+-   Visualización de la frecuencia de la categoría job
+
+```{python}
+#| echo: true
+#| eval: false
+sns.countplot(data=salaries, x='Job_Category')
+plt.show()
+```
+
+![](images/paste-37.png)
+
+### Encontrar el número de valores únicos
+
+Te gustaría practicar algunas de las habilidades de manipulación y análisis de datos categóricos que acabas de ver. Para ayudarte a identificar qué datos podrían reformatearse para extraer valor, vas a averiguar qué columnas no numéricas del conjunto de datos `planes` tienen un gran número de valores únicos.
+
+#### Instrucciones
+
+- Filtra `planes` para las columnas que sean del tipo datos `"object"`.
+
+- Recorre las columnas del conjunto de datos.
+
+- Añade el iterador de columna a la sentencia print  y, a continucación, llama a la función para que devuelva el número de valores únicos de la columna.
+
+```{python}
+# Filter the DataFrame for objects columns
+non_numeric = planes.select_dtypes('object')
+
+# Loop through columns
+for column in non_numeric.columns:
+    # Print the number of unique values
+    print(f"Number of unique values in {column} column: {non_numeric[column].nunique()}")
+```
+Curiosamente, `"Duration"` es actualmente una columna de tipo objeto cuando debería ser una columna numérica, ¡y tiene 362 valores únicos! Vamos a averiguar más sobre esta columna.
 
 ## Trabajar con datos numéricos
 

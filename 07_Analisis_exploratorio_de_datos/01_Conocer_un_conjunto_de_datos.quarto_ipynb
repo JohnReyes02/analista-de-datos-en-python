@@ -25,7 +25,7 @@
         "        -   Genrar hipótesis\n",
         "-   Una primera mirada con .head()\n"
       ],
-      "id": "efecdb13"
+      "id": "97547211"
     },
     {
       "cell_type": "code",
@@ -36,7 +36,7 @@
         "books = pd.read_csv('books.csv')\n",
         "books.head()"
       ],
-      "id": "9e85a069",
+      "id": "b0d32e58",
       "execution_count": null,
       "outputs": []
     },
@@ -48,7 +48,7 @@
         "\n",
         "-   Reuniendo más .info()\n"
       ],
-      "id": "eadfb24e"
+      "id": "25a67f3a"
     },
     {
       "cell_type": "code",
@@ -58,7 +58,7 @@
         "#| eval: false\n",
         "books.info()"
       ],
-      "id": "d3fba633",
+      "id": "807c9286",
       "execution_count": null,
       "outputs": []
     },
@@ -70,7 +70,7 @@
         "\n",
         "-   Una mirada cercana a las columnas categóricas\n"
       ],
-      "id": "5f41cee2"
+      "id": "d8bc32ac"
     },
     {
       "cell_type": "code",
@@ -80,7 +80,7 @@
         "#| eval: false\n",
         "books.value_counts('genre')"
       ],
-      "id": "dd0adec2",
+      "id": "46daf3b8",
       "execution_count": null,
       "outputs": []
     },
@@ -92,7 +92,7 @@
         "\n",
         "-   Columnas numéricas con .describe()\n"
       ],
-      "id": "45f2281b"
+      "id": "0f1ca197"
     },
     {
       "cell_type": "code",
@@ -102,7 +102,7 @@
         "#| eval: false  \n",
         "books.describe()"
       ],
-      "id": "50fd8d86",
+      "id": "0e2a2bcc",
       "execution_count": null,
       "outputs": []
     },
@@ -114,7 +114,7 @@
         "\n",
         "-   Visualizando datos numéricos\n"
       ],
-      "id": "2858e859"
+      "id": "bdd5d26d"
     },
     {
       "cell_type": "code",
@@ -127,7 +127,7 @@
         "sns.histplot(data=books, x='rating')\n",
         "plt.show()"
       ],
-      "id": "0d231689",
+      "id": "0b26b63f",
       "execution_count": null,
       "outputs": []
     },
@@ -139,7 +139,7 @@
         "\n",
         "-   Ajustando la anchura del bin\n"
       ],
-      "id": "ec341157"
+      "id": "d9829d9c"
     },
     {
       "cell_type": "code",
@@ -150,7 +150,7 @@
         "sns.histplot(data=books, x='rating', binwidth=.1)\n",
         "plt.show()"
       ],
-      "id": "50e5884c",
+      "id": "709ee110",
       "execution_count": null,
       "outputs": []
     },
@@ -164,7 +164,7 @@
         "\n",
         "Estás investigando las tasas de desempleo en todo el mundo y te han dado un nuevo conjunto de datos con el que trabajar. Los datos se han guardado y cargado para ti como un DataFrame de pandas llamado `unemployment`. Nunca antes habías visto los datos, así que tu primera tarea es utilizar unas cuantas funciones de pandas para conocer estos nuevos datos.\n"
       ],
-      "id": "075dd4f2"
+      "id": "4a3115d3"
     },
     {
       "cell_type": "code",
@@ -175,7 +175,7 @@
         "ruta = './data/clean_unemployment.csv'\n",
         "unemployment = pd.read_csv(ruta)"
       ],
-      "id": "24296cd4",
+      "id": "8ae4f301",
       "execution_count": null,
       "outputs": []
     },
@@ -187,7 +187,7 @@
         "\n",
         "1.  Utiliza una función de pandas para imprimir las cinco primeras filas del DataFrame `unemployment`.\n"
       ],
-      "id": "2207e939"
+      "id": "52b5f855"
     },
     {
       "cell_type": "code",
@@ -196,7 +196,7 @@
         "# Print the first five rows of unemployment\n",
         "print(unemployment.head())"
       ],
-      "id": "3288945d",
+      "id": "ab5e844a",
       "execution_count": null,
       "outputs": []
     },
@@ -206,7 +206,7 @@
       "source": [
         "2.  Utiliza una función pandas para imprimir un resumen de los valores y tipos de datos de las columnas que no faltan del DataFrame `unemployment`.\n"
       ],
-      "id": "308c92b3"
+      "id": "fb5376d6"
     },
     {
       "cell_type": "code",
@@ -215,7 +215,7 @@
         "# Print a summary of non-missing values and data types in the unemployment DataFrame]\n",
         "print(unemployment.info())"
       ],
-      "id": "77246bd7",
+      "id": "a9e74588",
       "execution_count": null,
       "outputs": []
     },
@@ -225,7 +225,7 @@
       "source": [
         "3.  Imprime las estadísticas de resument (recuento, media, desviación estándar, valores mínimo, máximo y cuartil) de cada columna numérica en `unemployment`.\n"
       ],
-      "id": "5357347c"
+      "id": "2976aa98"
     },
     {
       "cell_type": "code",
@@ -234,7 +234,7 @@
         "# Print summary statistics for numerical columns in unemployment\n",
         "print(unemployment.describe())"
       ],
-      "id": "d4809edf",
+      "id": "33b23063",
       "execution_count": null,
       "outputs": []
     },
@@ -254,7 +254,7 @@
         "\n",
         "-   Utiliza un método para contar los valores asociados a cada `continent` en el DataFrame `unemployment`.\n"
       ],
-      "id": "34512aa8"
+      "id": "855ec10f"
     },
     {
       "cell_type": "code",
@@ -263,7 +263,7 @@
         "# Count the values associated with each continent in unemployment\n",
         "print(unemployment['continent'].value_counts())"
       ],
-      "id": "52b8d05c",
+      "id": "e83fa591",
       "execution_count": null,
       "outputs": []
     },
@@ -284,7 +284,7 @@
         "-   Importa las bibliotecas de visualización necesarias\n",
         "-   Crea un histograma de la distribución de los porcentajes de desempleo de 2021 en todos los países en `unemployment`; muestra un punto pocentual completo en cada casilla.\n"
       ],
-      "id": "0f59d101"
+      "id": "4560b4d5"
     },
     {
       "cell_type": "code",
@@ -298,7 +298,7 @@
         "sns.histplot(x='2021', data=unemployment, binwidth=1)\n",
         "plt.show()"
       ],
-      "id": "4389048c",
+      "id": "d56a038c",
       "execution_count": null,
       "outputs": []
     },
@@ -312,7 +312,7 @@
         "\n",
         "-   Validando los tipos de datos\n"
       ],
-      "id": "561b1246"
+      "id": "768e1d52"
     },
     {
       "cell_type": "code",
@@ -322,7 +322,7 @@
         "#| eval: false\n",
         "books.dtypes"
       ],
-      "id": "346e2994",
+      "id": "d793fca1",
       "execution_count": null,
       "outputs": []
     },
@@ -334,7 +334,7 @@
         "\n",
         "-   Actualizando los tipos de datos\n"
       ],
-      "id": "b551ecc1"
+      "id": "4ce8371d"
     },
     {
       "cell_type": "code",
@@ -345,7 +345,7 @@
         "books['year'] = books['year'].astype(int)\n",
         "books.dtypes"
       ],
-      "id": "51fb8456",
+      "id": "4e53b47a",
       "execution_count": null,
       "outputs": []
     },
@@ -366,7 +366,7 @@
         "\n",
         "-   Validando datos categóricos\n"
       ],
-      "id": "72ccf185"
+      "id": "f1c0cedd"
     },
     {
       "cell_type": "code",
@@ -376,7 +376,7 @@
         "#| eval: false\n",
         "books['genre'].isin(['Fiction', 'Non Fiction'])"
       ],
-      "id": "d2adef02",
+      "id": "9c4085e7",
       "execution_count": null,
       "outputs": []
     },
@@ -388,7 +388,7 @@
         "\n",
         "Para validar los datos que no están en la lista\n"
       ],
-      "id": "cce95d1d"
+      "id": "082b3384"
     },
     {
       "cell_type": "code",
@@ -398,7 +398,7 @@
         "#| eval: false\n",
         "~books['genre'].isin(['Fiction', 'Non Fiction'])"
       ],
-      "id": "af09842b",
+      "id": "6c222859",
       "execution_count": null,
       "outputs": []
     },
@@ -410,7 +410,7 @@
         "\n",
         "Para filtrar el DataFrame por los valores en nuestra lista\n"
       ],
-      "id": "c66742c5"
+      "id": "5c6c0560"
     },
     {
       "cell_type": "code",
@@ -420,7 +420,7 @@
         "#| eval: false\n",
         "books[books['genre'].isin(['Fiction', 'Non Fiction'])].head()"
       ],
-      "id": "8a27569d",
+      "id": "2573dffe",
       "execution_count": null,
       "outputs": []
     },
@@ -434,7 +434,7 @@
         "\n",
         "Para ver solo las columnas numéricas en un DataFrame:\n"
       ],
-      "id": "28d6f052"
+      "id": "f9c429b9"
     },
     {
       "cell_type": "code",
@@ -444,7 +444,7 @@
         "#| eval: false\n",
         "books.select_dtypes('number').head()"
       ],
-      "id": "11cc042e",
+      "id": "bc986e37",
       "execution_count": null,
       "outputs": []
     },
@@ -454,7 +454,7 @@
       "source": [
         "Para conocer un intervalo específico:\n"
       ],
-      "id": "e2766c3f"
+      "id": "de3ef72d"
     },
     {
       "cell_type": "code",
@@ -464,7 +464,7 @@
         "#| eval: false\n",
         "books['year'].min()"
       ],
-      "id": "f31a6f1a",
+      "id": "e117e903",
       "execution_count": null,
       "outputs": []
     },
@@ -474,7 +474,7 @@
       "source": [
         "![](images/paste-13.png){width=\"370\"}\n"
       ],
-      "id": "ea4d2699"
+      "id": "ef39a560"
     },
     {
       "cell_type": "code",
@@ -484,7 +484,7 @@
         "#| eval: false\n",
         "books['year'].max()"
       ],
-      "id": "de24784a",
+      "id": "aba2c13b",
       "execution_count": null,
       "outputs": []
     },
@@ -496,7 +496,7 @@
         "\n",
         "Se puede ver una imagen más detallada de la distribución de los datos, utilizando boxplot:\n"
       ],
-      "id": "79f03fcc"
+      "id": "424c0a28"
     },
     {
       "cell_type": "code",
@@ -507,7 +507,7 @@
         "sns.boxplot(data=books, x='year')\n",
         "plt.show()"
       ],
-      "id": "df5c2153",
+      "id": "186305ff",
       "execution_count": null,
       "outputs": []
     },
@@ -519,7 +519,7 @@
         "\n",
         "También se puede ver los datos agrupados por una variable categórica.\n"
       ],
-      "id": "bb8c2765"
+      "id": "4b0b5a3a"
     },
     {
       "cell_type": "code",
@@ -530,7 +530,7 @@
         "sns.boxplot(data=books, x='year', y='genre')\n",
         "plt.show()"
       ],
-      "id": "45a96b11",
+      "id": "2145150b",
       "execution_count": null,
       "outputs": []
     },
@@ -544,7 +544,7 @@
         "\n",
         "¡Se ha modificado una columna en el DataFrame `unemployment` y ahora tiene un tipo de datos incorrecto! Este tipo de datos te impedirá realizar una exploración y un análisis eficaces, por lo que tu tarea consiste en identificar qué columna tiene un tipo de datos incorrecto y, a continuación, corregirlo.\n"
       ],
-      "id": "91eeeed3"
+      "id": "548fb2be"
     },
     {
       "cell_type": "code",
@@ -554,7 +554,7 @@
         "#| eval: true\n",
         "unemployment['2019'] = unemployment['2019'].astype('object')"
       ],
-      "id": "bcefad84",
+      "id": "758716bd",
       "execution_count": null,
       "outputs": []
     },
@@ -568,7 +568,7 @@
         "\n",
         "1.  ¿Cuál de las siguientes columnas requiere una actualización de su tipo de datos?\n"
       ],
-      "id": "57807532"
+      "id": "5a4eb75f"
     },
     {
       "cell_type": "code",
@@ -576,7 +576,7 @@
       "source": [
         "print(unemployment.dtypes)"
       ],
-      "id": "2c47490e",
+      "id": "a496a5fd",
       "execution_count": null,
       "outputs": []
     },
@@ -596,7 +596,7 @@
         "-   Actualiza el tipo de datos de la columna `2019` de `unemployment` a `float`.\n",
         "-   ¡Vuelve a imprimir el `dtypes` del DataFrame `umemployment` para comprobar que se ha actualizado el tipo de datos!\n"
       ],
-      "id": "a1a4c032"
+      "id": "d71b589f"
     },
     {
       "cell_type": "code",
@@ -608,7 +608,7 @@
         "# Print the dtypes to check your work\n",
         "print(unemployment.dtypes)"
       ],
-      "id": "babc431d",
+      "id": "a0b7f22c",
       "execution_count": null,
       "outputs": []
     },
@@ -628,7 +628,7 @@
         "\n",
         "1.  Defina una Serie Booleana que describan si cada `continent` está o no fuera de `Oceanía`; llama a esta Serie `not_oceania`.\n"
       ],
-      "id": "92903f2f"
+      "id": "7c4c9580"
     },
     {
       "cell_type": "code",
@@ -637,7 +637,7 @@
         "# Define a Series describing whether each continent is outside of Oceania\n",
         "not_oceania = ~unemployment['continent'].isin(['Oceania'])"
       ],
-      "id": "f64e703e",
+      "id": "cb654ba6",
       "execution_count": null,
       "outputs": []
     },
@@ -647,7 +647,7 @@
       "source": [
         "2.  Utiliza la indexación booleana para imprimir el DataFrame `unemployment` sin ninguno de los datos relacionados con los países de Oceanía.\n"
       ],
-      "id": "945e29d7"
+      "id": "0305e72e"
     },
     {
       "cell_type": "code",
@@ -659,7 +659,7 @@
         "# Print unemployment without records related  to countries in Oceania\n",
         "print(unemployment[not_oceania])"
       ],
-      "id": "4791e64b",
+      "id": "e592fa77",
       "execution_count": null,
       "outputs": []
     },
@@ -680,7 +680,7 @@
         "-   Imprime las tasas de desempleo mínima y máximam en este orden, durante 2021.\n",
         "-   Crea un diagrama de caja de las tasas de desempleo de 2021 (en el eje x), desglosadas por continente (en el eje y).\n"
       ],
-      "id": "2bb74753"
+      "id": "4e1a919b"
     },
     {
       "cell_type": "code",
@@ -694,7 +694,7 @@
         "            hue='continent', legend=False)\n",
         "plt.show()"
       ],
-      "id": "708d263d",
+      "id": "721bdfcd",
       "execution_count": null,
       "outputs": []
     },
@@ -710,7 +710,7 @@
         "    -   `.groupby()` grupo de datos por categoría.\n",
         "    -   Función de agregación indica cómo se resume un grupo de datos.\n"
       ],
-      "id": "f203b05a"
+      "id": "ad7fa3b5"
     },
     {
       "cell_type": "code",
@@ -720,7 +720,7 @@
         "#| eval: false\n",
         "books.groupby('genre').mean()"
       ],
-      "id": "db6f3b0e",
+      "id": "389a3fba",
       "execution_count": null,
       "outputs": []
     },
@@ -754,7 +754,7 @@
         "\n",
         "    -   Solo lo aplica a las columnas numéricas\n"
       ],
-      "id": "140967ae"
+      "id": "cc6c970c"
     },
     {
       "cell_type": "code",
@@ -764,7 +764,7 @@
         "#| eval: false\n",
         "books.agg(['mean', 'std'])"
       ],
-      "id": "21001b9d",
+      "id": "544a6820",
       "execution_count": null,
       "outputs": []
     },
@@ -776,7 +776,7 @@
         "\n",
         "-   Especificando agregaciones para columnas\n"
       ],
-      "id": "65160c61"
+      "id": "c44dfd8f"
     },
     {
       "cell_type": "code",
@@ -786,7 +786,7 @@
         "#| eval: false\n",
         "books.agg({'rating': ['mean', 'std'], 'year': ['median']})"
       ],
-      "id": "b205e17f",
+      "id": "50523e7f",
       "execution_count": null,
       "outputs": []
     },
@@ -798,7 +798,7 @@
         "\n",
         "-   Nombrando columnas resumen\n"
       ],
-      "id": "92b6bf8f"
+      "id": "5bf1734b"
     },
     {
       "cell_type": "code",
@@ -812,7 +812,7 @@
         "    median_year = ('year', 'median')\n",
         ")"
       ],
-      "id": "7e931798",
+      "id": "aead0f53",
       "execution_count": null,
       "outputs": []
     },
@@ -826,7 +826,7 @@
         "\n",
         "    -   Calculan automáticamente la media de una variable cuantitativa\n"
       ],
-      "id": "f3989c25"
+      "id": "00c1dcdf"
     },
     {
       "cell_type": "code",
@@ -837,7 +837,7 @@
         "sns.barplot(data=books, x='genre', y='rating')\n",
         "plt.show()"
       ],
-      "id": "60ddaf66",
+      "id": "c22307e2",
       "execution_count": null,
       "outputs": []
     },
@@ -852,7 +852,7 @@
         "\n",
         "En este ejercicio, explorarás las medias y desviaciones estándar de los datos anuales de desempleo. En primer lugar, encontrarás las medias y desviaciones estándar independientemente del continente para observar las tendencias mundiales del desempleo. Después, comprobarás las tendencias del desempleo desglosadas por continente.\n"
       ],
-      "id": "cae11737"
+      "id": "a4cc1190"
     },
     {
       "cell_type": "code",
@@ -864,7 +864,7 @@
         "unemployment = pd.read_csv(ruta)\n",
         "print(unemployment.head())"
       ],
-      "id": "a057e47f",
+      "id": "23d02d38",
       "execution_count": null,
       "outputs": []
     },
@@ -876,7 +876,7 @@
         "\n",
         "1. Imprime la media y las desviación estándar d elas tasas de paro de cada año (en ese orden).\n"
       ],
-      "id": "874c7c56"
+      "id": "93d1a550"
     },
     {
       "cell_type": "code",
@@ -887,7 +887,7 @@
         "    ['2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020']\n",
         "].agg(['mean', 'std']))"
       ],
-      "id": "41e394dd",
+      "id": "5ac10d08",
       "execution_count": null,
       "outputs": []
     },
@@ -897,7 +897,7 @@
       "source": [
         "2. Imprime la media y la desviación estándar (en ese orden) de las tasas de paro de cada año agrupadas por continente.\n"
       ],
-      "id": "5b1e8cf4"
+      "id": "e21b9a68"
     },
     {
       "cell_type": "code",
@@ -908,7 +908,7 @@
         "    ['continent', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020']\n",
         "].groupby(\"continent\").agg(['mean', 'std']))"
       ],
-      "id": "7dec0fb0",
+      "id": "f6256993",
       "execution_count": null,
       "outputs": []
     },
@@ -931,7 +931,7 @@
         "\n",
         "- Crea una columna llamada `std_rate_2021` que muestre la desviación estándar de la tasa de paro de 2021 para cada continente. \n"
       ],
-      "id": "4d7b922c"
+      "id": "f2a6062b"
     },
     {
       "cell_type": "code",
@@ -947,7 +947,7 @@
         ")\n",
         "print(continent_sumary)"
       ],
-      "id": "609575f0",
+      "id": "2c3bdb48",
       "execution_count": null,
       "outputs": []
     },
@@ -966,7 +966,7 @@
         "\n",
         "Tu tarea consiste en crear un diagrama de barras para visualizar las medias y los intervalos de confianza de las tasas de desempleo en los distintos continentes.\n"
       ],
-      "id": "66d61d4b"
+      "id": "b30bd5ba"
     },
     {
       "cell_type": "code",
@@ -975,7 +975,7 @@
         "import matplotlib.pyplot as plt\n",
         "import seaborn as sns"
       ],
-      "id": "ff92ba46",
+      "id": "3e8f0e87",
       "execution_count": null,
       "outputs": []
     },
@@ -987,7 +987,7 @@
         "\n",
         "- Crea un diagrama de barras que muestre los continentes en el eje x y lsus respectivas tasas medias de desempleo en 2021 en el eje y.\n"
       ],
-      "id": "4efcb096"
+      "id": "0fad022b"
     },
     {
       "cell_type": "code",
@@ -998,7 +998,7 @@
         "            hue='continent', legend=False)\n",
         "plt.show()"
       ],
-      "id": "c64394be",
+      "id": "554066c9",
       "execution_count": null,
       "outputs": []
     },
@@ -1008,7 +1008,7 @@
       "source": [
         "Aunque Europa tiene un mayor desempleo promedio que Asia, también tiene un intervalo de confianza más pequeño para ese promedio, por lo que el valor promedio es más confiable."
       ],
-      "id": "3a765f97"
+      "id": "19bb841e"
     }
   ],
   "metadata": {
