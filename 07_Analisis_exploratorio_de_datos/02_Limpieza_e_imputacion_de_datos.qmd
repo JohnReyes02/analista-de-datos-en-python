@@ -59,8 +59,8 @@ print(threhold)
 ![](images/paste-23.png)
 
 ```{python}
-#| echo: true
-#| eval: false
+# | echo: true
+# | eval: false
 cols_to_drop = salaries.columns[salaries.isna().sum() <= threshold]
 print(cols_to_drop)
 ```
@@ -289,8 +289,8 @@ print(salaries['Designation'].value_counts())
 ![](images/paste-30.png)
 
 ```{python}
-#| echo: true
-#| eval: false
+# | echo: true
+# | eval: false
 print(salaries['Designation'].nunique())
 ```
 
@@ -331,8 +331,8 @@ salaries['Designation'].str.contains('Machine Learning|AI')
     -   Palabras de interes: Cualquiera que inicie con Data
 
 ```{python}
-#| echo: true
-#| eval: false
+# | echo: true
+# | eval: false
 salaries['Designation'].str.contains('ˆData')
 ```
 
