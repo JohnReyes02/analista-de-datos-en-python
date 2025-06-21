@@ -1,0 +1,3 @@
+# Transformación de DataFrames
+
+Vamos a tratar los fundamentos de pandas. Aprende a inspeccionar los DataFrames y a realizar manipulaciones básicas, como ordenar filas, hacer subconjuntos y añadir nuevas columnas.

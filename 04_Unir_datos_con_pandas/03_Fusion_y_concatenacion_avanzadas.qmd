@@ -1,0 +1,3 @@
+# Fusión y concatenación avanzadas
+
+En este capítulo, aprovecharás potentes técnicas de filtrado, incluidas las semiuniones y las antiuniones. También aprenderás a pegar DataFrames combinándolos verticalmente y a utilizar la función pandas.concat para crear nuevos conjuntos de datos. Por último, como los datos rara vez están limpios, también aprenderás a validar tus estructuras de datos recién combinadas.
