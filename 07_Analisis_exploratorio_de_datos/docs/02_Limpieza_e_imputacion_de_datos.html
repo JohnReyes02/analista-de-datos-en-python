@@ -75,8 +75,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-b17230bfe5c1c1a17e6bd600670c5145.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-20d87d490373df57c880857ccdca8cc5.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-ede4997d1aa2d49dd7dff0ee71c8d46e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-4909038f391676d0e746676f7305d10d.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -225,6 +225,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#convertir-y-analizar-datos-categóricos" id="toc-convertir-y-analizar-datos-categóricos" class="nav-link" data-scroll-target="#convertir-y-analizar-datos-categóricos">Convertir y analizar datos categóricos</a>
   <ul class="collapse">
   <li><a href="#encontrar-el-número-de-valores-únicos" id="toc-encontrar-el-número-de-valores-únicos" class="nav-link" data-scroll-target="#encontrar-el-número-de-valores-únicos">Encontrar el número de valores únicos</a></li>
+  <li><a href="#categoría-de-duración-de-vuelos" id="toc-categoría-de-duración-de-vuelos" class="nav-link" data-scroll-target="#categoría-de-duración-de-vuelos">Categoría de duración de vuelos</a></li>
+  <li><a href="#añadir-categorías-de-duración" id="toc-añadir-categorías-de-duración" class="nav-link" data-scroll-target="#añadir-categorías-de-duración">Añadir categorías de duración</a></li>
   </ul></li>
   <li><a href="#trabajar-con-datos-numéricos" id="toc-trabajar-con-datos-numéricos" class="nav-link" data-scroll-target="#trabajar-con-datos-numéricos">Trabajar con datos numéricos</a></li>
   <li><a href="#gestión-de-valores-atípicos" id="toc-gestión-de-valores-atípicos" class="nav-link" data-scroll-target="#gestión-de-valores-atípicos">Gestión de valores atípicos</a></li>
@@ -324,7 +326,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Revisando los datos faltantes</li>
 </ul>
-<div id="4e53f26e" class="cell" data-execution_count="1">
+<div id="86f5c409" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(salaries.isna().<span class="bu">sum</span>())</span></code></pre></div>
 </div>
 <p><img src="images/paste-22.png" class="img-fluid"></p>
@@ -346,47 +348,47 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul></li>
 <li><p>Eliminando valores faltantes</p></li>
 </ul>
-<div id="e43eafba" class="cell" data-execution_count="2">
+<div id="2ab9aa3d" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>threshold <span class="op">=</span> <span class="bu">len</span>(salaries) <span class="op">*</span> <span class="fl">0.05</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(threhold)</span></code></pre></div>
 </div>
 <p><img src="images/paste-23.png" class="img-fluid"></p>
-<div id="abbc7045" class="cell" data-execution_count="3">
+<div id="c3819784" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>cols_to_drop <span class="op">=</span> salaries.columns[salaries.isna().<span class="bu">sum</span>() <span class="op">&lt;=</span> threshold]</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(cols_to_drop)</span></code></pre></div>
 </div>
 <p><img src="images/paste-24.png" class="img-fluid"></p>
-<div id="03df78c9" class="cell" data-execution_count="4">
+<div id="33391b1e" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>salaries.dropna(subset<span class="op">=</span>cols_to_drop, inplace<span class="op">=</span><span class="va">True</span>) <span class="co"># Para actualizar el DataFrame</span></span></code></pre></div>
 </div>
 <ul>
 <li>Imputando una estadística de resumen</li>
 </ul>
-<div id="06f244b4" class="cell" data-execution_count="5">
+<div id="5f288099" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>cols_with_missing_values <span class="op">=</span> salaries.columns[salaries.isna().<span class="bu">sum</span>() <span class="op">&gt;</span> <span class="dv">0</span>]</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(cols_with_missing_values)</span></code></pre></div>
 </div>
 <p><img src="images/paste-25.png" class="img-fluid"></p>
-<div id="6b67396e" class="cell" data-execution_count="6">
+<div id="7058923a" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> col <span class="kw">in</span> cols_with_missing_values[:<span class="op">-</span><span class="dv">1</span>]:</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>        salaries[col].fillna(salaries[col].mode()[<span class="dv">0</span>])</span></code></pre></div>
 </div>
 <ul>
 <li>Revisando los valores faltantes que faltan</li>
 </ul>
-<div id="9bfc9ae1" class="cell" data-execution_count="7">
+<div id="0d86b04e" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(salaries.isna().<span class="bu">sum</span>())</span></code></pre></div>
 </div>
 <p><img src="images/paste-26.png" class="img-fluid"></p>
 <ul>
 <li>Imputando por subgrupo</li>
 </ul>
-<div id="f164f2b5" class="cell" data-execution_count="8">
+<div id="5a06493b" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>salaries_dict <span class="op">=</span> salaries.groupby(<span class="st">'Experience'</span>)[<span class="st">'Salary_USD'</span>].median().to_dict()</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(salaries_dict)</span></code></pre></div>
 </div>
 <p><img src="images/paste-27.png" class="img-fluid"></p>
-<div id="4c3c0e6d" class="cell" data-execution_count="9">
+<div id="88331990" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>salaries[<span class="st">'Salary_USD'</span>] <span class="op">=</span> salaries[<span class="st">'Salary_USD'</span>].fillna(salaries[<span class="st">'Experience'</span>].<span class="bu">map</span>(salaries_dict))</span></code></pre></div>
 </div>
 <p><img src="images/paste-28.png" class="img-fluid"></p>
@@ -395,7 +397,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Es importante tratar los datos que faltan antes de empezar el análisis.</p>
 <p>Un enfoque consiste en descartar los valores que faltan si representan una pequeña proporción, normalmente el 5 %, de los datos.</p>
 <p>Trabajando con un conjunto de datos sobre precios de tiquetes de avión, almacenado como un DataFrame de pandas llamado <code>planes</code>, tendrás que contar el número de valores perdidos en todas las columnas, calcular el cinco porciento de todos los valores, utilizar este umbral para eliminar observaciones y comprobar cuántos valores perdidos quedan en el conjunto de datos.</p>
-<div id="dd123903" class="cell" data-execution_count="10">
+<div id="91ac05d9" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>ruta <span class="op">=</span> <span class="st">'./data/planes.csv'</span></span>
@@ -449,7 +451,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol type="1">
 <li>Imprime el número de valores perdidos en cada columna del DataFrame</li>
 </ol>
-<div id="117081ed" class="cell" data-execution_count="11">
+<div id="834179d5" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Count the number of missing values in each column</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(planes.isna().<span class="bu">sum</span>())</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -470,7 +472,7 @@ dtype: int64</code></pre>
 <ol start="2" type="1">
 <li>Calcula a cuántas observaciones equivale el cinco porciento del DataFrame <code>planes</code></li>
 </ol>
-<div id="3aaf4307" class="cell" data-execution_count="12">
+<div id="e2a08851" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the five percent threshold</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>threshold <span class="op">=</span> <span class="bu">len</span>(planes) <span class="op">*</span> <span class="fl">0.05</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(threshold)</span></code></pre></div>
@@ -485,7 +487,7 @@ dtype: int64</code></pre>
 <li><p>Crea <code>cols_to_drop</code> aplicando una indexación booleana a las columnas del DataFrame con valores perdidos menores o iguales que el umbral.</p></li>
 <li><p>Utiliza este filtro para eliminar los valores que faltan y guardar el DataFrame actualizado.</p></li>
 </ul>
-<div id="f2e889b7" class="cell" data-execution_count="13">
+<div id="ff8880e2" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a filter</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>cols_to_drop <span class="op">=</span> planes.columns[planes.isna().<span class="bu">sum</span>() <span class="op">&lt;=</span> threshold]</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(cols_to_drop)</span>
@@ -520,7 +522,7 @@ dtype: int64</code></pre>
 <p>La regla del cinco porciento ha funcionado muy bien en tu conjunto de dato <code>planes</code>, ¡eliminando los valores perdidos de nueve de las 11 columnas!</p>
 <p>Ahora tienes que decidir qué hacer con las columnas <code>"Additional_Info"</code> y <code>"Price"</code>, a las que les faltan los valores <code>300</code> y <code>368</code> respectivamente.</p>
 <p>Primero echarás un vistazo a lo que contiene <code>"Additional_Info"</code>, y después visualizarás el precio de los billetes de avión de distintas compañías aéreas.</p>
-<div id="c470cdca" class="cell" data-execution_count="14">
+<div id="6c33048a" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span></code></pre></div>
 </div>
@@ -529,7 +531,7 @@ dtype: int64</code></pre>
 <ol type="1">
 <li>Imprime los valores y frecuencias de <code>"Additional_Info"</code>.</li>
 </ol>
-<div id="7925caa0" class="cell" data-execution_count="15">
+<div id="d549828d" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the values of the Additional_Info column</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(planes[<span class="st">'Additional_Info'</span>].value_counts())</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -549,7 +551,7 @@ Name: count, dtype: int64</code></pre>
 <ol start="2" type="1">
 <li>Crea un boxplot de <code>"Price"</code> frente a <code>"Airline"</code></li>
 </ol>
-<div id="2d6873fd" class="cell" data-execution_count="16">
+<div id="6cd67d9e" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a box plot of Price by Airline</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>sns.boxplot(data<span class="op">=</span>planes, x<span class="op">=</span><span class="st">'Airline'</span>, y<span class="op">=</span><span class="st">'Price'</span>,</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>            hue<span class="op">=</span><span class="st">'Airline'</span>, legend<span class="op">=</span><span class="va">False</span>)</span>
@@ -584,7 +586,7 @@ Name: count, dtype: int64</code></pre>
 <p>!Ahora solo queda una columna con valores perdidos!</p>
 <p>Has eliminado la columna <code>"Additional_Info"</code> de <code>planes</code>, el último paso es imputar los datos que faltan en la columna <code>"Price"</code> del conjunto de datos.</p>
 <p>Como recordatorio, tú generaste este diagrama de caja, que sugería que imputar el precio medio basándose en el <code>"Airline"</code> ¡es un enfoque sólido!</p>
-<div id="da1efe51" class="cell" data-execution_count="17">
+<div id="6c3f5b20" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Eliminamos la columna Additional_Info</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>planes <span class="op">=</span> planes.drop(<span class="st">'Additional_Info'</span>, axis<span class="op">=</span><span class="dv">1</span>)</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>planes.columns</span></code></pre></div>
@@ -599,7 +601,7 @@ Name: count, dtype: int64</code></pre>
 <ol type="1">
 <li>Agrupa <code>planes</code> por aerolínea y calcula el precio medio.</li>
 </ol>
-<div id="f5e160bd" class="cell" data-execution_count="18">
+<div id="374a8f01" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate median plane ticket prices by Airplane</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>airline_prices <span class="op">=</span> planes.groupby(<span class="st">'Airline'</span>)[<span class="st">'Price'</span>].median()</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -620,7 +622,7 @@ Name: Price, dtype: float64</code></pre>
 <ol start="2" type="1">
 <li>Convierte los precios medios agrupados en un diccionario.</li>
 </ol>
-<div id="e9c2c8e1" class="cell" data-execution_count="19">
+<div id="78407722" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert to a dictionary</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>prices_dict <span class="op">=</span> airline_prices.to_dict()</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(prices_dict)</span></code></pre></div>
@@ -635,7 +637,7 @@ Name: Price, dtype: float64</code></pre>
 <li><p>Imputa condicionalmente los valores perdidos de <code>"Price"</code> asignando los valores de la columna <code>"Airline"</code> en función de <code>prices_dict</code></p></li>
 <li><p>Comprueba si faltan valores</p></li>
 </ul>
-<div id="6f8a018e" class="cell" data-execution_count="20">
+<div id="31f9af65" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Map the dictionary to missing values of Price by Airline</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>planes[<span class="st">'Price'</span>] <span class="op">=</span> planes[<span class="st">'Price'</span>].fillna(planes[<span class="st">'Airline'</span>].<span class="bu">map</span>(prices_dict))</span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -664,18 +666,18 @@ dtype: int64</code></pre>
 <ul>
 <li>Previsualizar los datos</li>
 </ul>
-<div id="4951f974" class="cell" data-execution_count="21">
+<div id="4a04546c" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(salaries.select_dtypes(<span class="st">'object'</span>).head())</span></code></pre></div>
 </div>
 <p><img src="images/paste-29.png" class="img-fluid"></p>
 <ul>
 <li>Títulos de los trabajos</li>
 </ul>
-<div id="02b56eda" class="cell" data-execution_count="22">
+<div id="f19e443d" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(salaries[<span class="st">'Designation'</span>].value_counts())</span></code></pre></div>
 </div>
 <p><img src="images/paste-30.png" class="img-fluid"></p>
-<div id="2aac3511" class="cell" data-execution_count="23">
+<div id="ff1a9445" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(salaries[<span class="st">'Designation'</span>].nunique())</span></code></pre></div>
 </div>
 <p><img src="images/paste-31.png" class="img-fluid"></p>
@@ -690,7 +692,7 @@ dtype: int64</code></pre>
 </ul></li>
 </ul></li>
 </ul>
-<div id="21acb408" class="cell" data-execution_count="24">
+<div id="96aaf032" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>salaries[<span class="st">'Designation'</span>].<span class="bu">str</span>.contains(<span class="st">'Scientist'</span>)</span></code></pre></div>
 </div>
 <p><img src="images/paste-33.png" class="img-fluid"></p>
@@ -700,7 +702,7 @@ dtype: int64</code></pre>
 <li>Palabras de interes: Machine Learning o AI</li>
 </ul></li>
 </ul>
-<div id="f20040c7" class="cell" data-execution_count="25">
+<div id="e9df2395" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>salaries[<span class="st">'Designation'</span>].<span class="bu">str</span>.contains(<span class="st">'Machine Learning|AI'</span>)</span></code></pre></div>
 </div>
 <p><img src="images/paste-34.png" class="img-fluid"></p>
@@ -710,18 +712,18 @@ dtype: int64</code></pre>
 <li>Palabras de interes: Cualquiera que inicie con Data</li>
 </ul></li>
 </ul>
-<div id="0d70b338" class="cell" data-execution_count="26">
+<div id="01c72423" class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>salaries[<span class="st">'Designation'</span>].<span class="bu">str</span>.contains(<span class="st">'ˆData'</span>)</span></code></pre></div>
 </div>
 <p><img src="images/paste-35.png" class="img-fluid"></p>
 <p>Ahora que se tiene una idea de cómo funciona este método, definamos una lista de títulos de trabajo que queremos encontrar:</p>
-<div id="aee35102" class="cell" data-execution_count="27">
+<div id="47d17da7" class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>job_categories <span class="op">=</span> [<span class="st">'Data Science'</span>, <span class="st">'Data Analytics'</span>,</span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'Data Engineering'</span>, <span class="st">'Machine Learning'</span>,</span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'Managerial'</span>, <span class="st">'Consultant'</span>]</span></code></pre></div>
 </div>
 <p>Luego necesitamos crear variables que contengan nuestros filtros</p>
-<div id="6f3c72ac" class="cell" data-execution_count="28">
+<div id="01c3113f" class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>data_science <span class="op">=</span> <span class="st">'Data Scientist|NLP'</span></span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>data_analyst <span class="op">=</span> <span class="st">'Analyst|Analytics'</span></span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>data_engineer <span class="op">=</span> <span class="st">'Data Engineer|ETL|Architect|Infrastructure'</span></span>
@@ -730,7 +732,7 @@ dtype: int64</code></pre>
 <span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>consultant <span class="op">=</span> <span class="st">'Consultant|Freelance'</span></span></code></pre></div>
 </div>
 <p>El siguiente paso es crear una lista con nuestro rango de condiciones para el método <code>str.contains</code></p>
-<div id="7abcfc7c" class="cell" data-execution_count="29">
+<div id="2208ebab" class="cell" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>conditions <span class="op">=</span> [</span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>    (salaries[<span class="st">'Designation'</span>].<span class="bu">str</span>.contains(data_science)),</span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>    (salaries[<span class="st">'Designation'</span>].<span class="bu">str</span>.contains(data_analyst)),</span>
@@ -741,20 +743,20 @@ dtype: int64</code></pre>
 <span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>]</span></code></pre></div>
 </div>
 <p>Finalmente, podemos crear nuestra nueva columna <code>Job_Category</code> usando la función de selección de Numpy</p>
-<div id="ee59c567" class="cell" data-execution_count="30">
+<div id="2a4ad9d4" class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>salaries[<span class="st">'Job_Category'</span>] <span class="op">=</span> np.select(conditions,</span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>                                     job_categories,</span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>                                     default<span class="op">=</span><span class="st">'Other'</span>)</span></code></pre></div>
 </div>
 <p>Al obtener una vista previa de la Designación y nuestra nueva columna Job_Category, podemos verificar los primeros cinco valores.</p>
-<div id="fc16dca1" class="cell" data-execution_count="31">
+<div id="1097bbb5" class="cell" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(salaries[[<span class="st">'Designation'</span>, <span class="st">'Job_Category'</span>]].head())</span></code></pre></div>
 </div>
 <p><img src="images/paste-36.png" class="img-fluid"></p>
 <ul>
 <li>Visualización de la frecuencia de la categoría job</li>
 </ul>
-<div id="71a607e9" class="cell" data-execution_count="32">
+<div id="05fe4288" class="cell" data-execution_count="32">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>sns.countplot(data<span class="op">=</span>salaries, x<span class="op">=</span><span class="st">'Job_Category'</span>)</span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div>
 </div>
@@ -769,7 +771,7 @@ dtype: int64</code></pre>
 <li><p>Recorre las columnas del conjunto de datos.</p></li>
 <li><p>Añade el iterador de columna a la sentencia print y, a continucación, llama a la función para que devuelva el número de valores únicos de la columna.</p></li>
 </ul>
-<div id="6ca4031a" class="cell" data-execution_count="33">
+<div id="0674ef19" class="cell" data-execution_count="33">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter the DataFrame for objects columns</span></span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>non_numeric <span class="op">=</span> planes.select_dtypes(<span class="st">'object'</span>)</span>
 <span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -790,6 +792,95 @@ Number of unique values in Total_Stops column: 5</code></pre>
 </div>
 </div>
 <p>Curiosamente, <code>"Duration"</code> es actualmente una columna de tipo objeto cuando debería ser una columna numérica, ¡y tiene 362 valores únicos! Vamos a averiguar más sobre esta columna.</p>
+</section>
+</section>
+<section id="categoría-de-duración-de-vuelos" class="level3">
+<h3 class="anchored" data-anchor-id="categoría-de-duración-de-vuelos">Categoría de duración de vuelos</h3>
+<p>Como has visto, hay 362 valores únicos en la columna <code>"Duration"</code> de <code>planes</code>. Llamando a <code>planes['Duration'].head()</code>, vemos los siguientes valores.</p>
+<div id="3f49961e" class="cell" data-execution_count="34">
+<div class="cell-output cell-output-display" data-execution_count="13">
+<pre><code>0        19h
+1     5h 25m
+2     4h 45m
+3     2h 25m
+4    15h 30m
+Name: Duration, dtype: object</code></pre>
+</div>
+</div>
+<p>Parece que no será sencillo convertirlo a números. Sin embargo, ¡podrías clasificar los vuelos por duración y examinar la frecuencia de las distintas longitudes de vuelo!</p>
+<p>Crearás una columna <code>"Duration_Category"</code> en el DataFrame <code>planes</code>. Antes tendrás que crear una lista de valores que deseas insertar en el DataFrame, seguida de los valores existentes a partir de los cuales deben crearse.</p>
+<section id="instrucciones-4" class="level4">
+<h4 class="anchored" data-anchor-id="instrucciones-4">Instrucciones</h4>
+<ol type="1">
+<li>Crea una lista de categorías que contengan <code>"Short-haul"</code>, <code>"Medium"</code> y <code>"Long-haul"</code>.</li>
+</ol>
+<div id="38002eba" class="cell" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a list of categories</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>flight_categories <span class="op">=</span> [<span class="st">'Short-haul'</span>, <span class="st">'Medium'</span>, <span class="st">'Long-haul'</span>]</span></code></pre></div>
+</div>
+<ol start="2" type="1">
+<li></li>
+</ol>
+<ul>
+<li><p>Crea <code>short_flights</code>, una cadena para capturar valores de <code>"0h"</code>, <code>"1h"</code>, <code>"2h"</code>, <code>"3h"</code>, <code>"4h"</code> teniendo cuidado de evitar valores como <code>"10h"</code>.</p></li>
+<li><p>Crea <code>medium_flights</code> para capturar cualquier valor entre cinco y nueve horas. ~</p></li>
+<li><p>Crea <code>long_flights</code> para capturar cualquier valor comprendido entre 10 y 16 horas, ambos inclusive.</p></li>
+</ul>
+<div id="1029e4d3" class="cell" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a list of categories</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>flight_categories <span class="op">=</span> [<span class="st">'Short-haul'</span>, <span class="st">'Medium'</span>, <span class="st">'Long-haul'</span>]</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create short-haul values</span></span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>short_flights <span class="op">=</span> <span class="st">'^0h|^1h|^2h|^3h|^4h'</span></span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Create medium-haul values</span></span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a>medium_flights <span class="op">=</span> <span class="st">'^5h|^6h|^7h|^8h|^9h'</span></span>
+<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Create long-haul values</span></span>
+<span id="cb46-11"><a href="#cb46-11" aria-hidden="true" tabindex="-1"></a>long_flights <span class="op">=</span> <span class="st">'^10h|^11h|^12h|^13h|^14h|^15h|^16h'</span></span></code></pre></div>
+</div>
+<p>Ahora has creado tus categorías y valores, es hora de agregar condicionalmente las categorías en el DataFrame</p>
+</section>
+</section>
+<section id="añadir-categorías-de-duración" class="level3">
+<h3 class="anchored" data-anchor-id="añadir-categorías-de-duración">Añadir categorías de duración</h3>
+<p>Ahora que has configurado las categorías y los valores que quieres capturar, ¡es hora de construir una nueva columna para analizar la frecuencia de los vuelos según su duración!</p>
+<p>Las variables<code>flight_categories</code>, <code>short_flights</code>, <code>medium_flights</code> y <code>long_flights</code> que creaste anteriormente están a tu disposición.</p>
+<div id="456aedf7" class="cell" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code></pre></div>
+</div>
+<section id="instrucciones-5" class="level4">
+<h4 class="anchored" data-anchor-id="instrucciones-5">Instrucciones</h4>
+<ul>
+<li><p>Crea <code>conditions</code>, una lista que contenga subconjuntos de <code>planes['Duration']</code> basados en <code>short_flights</code>, <code>medium_flights</code> y <code>long_flights</code>.</p></li>
+<li><p>Crea la columna <code>"Duration_Category"</code> llamando a una función que acepte tu lista <code>conditions</code> y <code>flight_categories</code>, estableciendo los valores no encontrados en <code>"Extreme duration"</code>.</p></li>
+<li><p>Crea un gráfico fque muestre el recuento de cada categoría.</p></li>
+</ul>
+<div id="9844906d" class="cell" data-execution_count="38">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create conditions for values in flight_categories to be created</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>conditions <span class="op">=</span> [</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>    (planes[<span class="st">'Duration'</span>].<span class="bu">str</span>.contains(short_flights)),</span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>    (planes[<span class="st">'Duration'</span>].<span class="bu">str</span>.contains(medium_flights)),</span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>    (planes[<span class="st">'Duration'</span>].<span class="bu">str</span>.contains(long_flights))</span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply the conditions list to the flight_categories</span></span>
+<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a>planes[<span class="st">'Duration_Category'</span>] <span class="op">=</span> np.select(conditions, flight_categories,</span>
+<span id="cb48-10"><a href="#cb48-10" aria-hidden="true" tabindex="-1"></a>                                        default<span class="op">=</span><span class="st">'Extreme duration'</span>)</span>
+<span id="cb48-11"><a href="#cb48-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-12"><a href="#cb48-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the counts of each categoryß</span></span>
+<span id="cb48-13"><a href="#cb48-13" aria-hidden="true" tabindex="-1"></a>sns.countplot(data<span class="op">=</span>planes, x<span class="op">=</span><span class="st">'Duration_Category'</span>,</span>
+<span id="cb48-14"><a href="#cb48-14" aria-hidden="true" tabindex="-1"></a>              hue<span class="op">=</span><span class="st">'Duration_Category'</span>, legend<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb48-15"><a href="#cb48-15" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="02_Limpieza_e_imputacion_de_datos_files/figure-html/cell-39-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>¡Está claro que la mayoría de los vuelos son de corta distancia.</p>
 </section>
 </section>
 </section>

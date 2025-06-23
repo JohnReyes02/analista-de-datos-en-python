@@ -430,6 +430,91 @@ for column in non_numeric.columns:
 ```
 Curiosamente, `"Duration"` es actualmente una columna de tipo objeto cuando debería ser una columna numérica, ¡y tiene 362 valores únicos! Vamos a averiguar más sobre esta columna.
 
+### Categoría de duración de vuelos
+
+Como has visto, hay 362 valores únicos en la columna `"Duration"` de `planes`. Llamando a `planes['Duration'].head()`, vemos los siguientes valores.
+
+```{python}
+#| echo: false
+planes['Duration'].head()
+```
+
+Parece que no será sencillo convertirlo a números. Sin embargo, ¡podrías clasificar los vuelos por duración y examinar la frecuencia de las distintas longitudes de vuelo!
+
+Crearás una columna `"Duration_Category"` en el DataFrame `planes`. Antes tendrás que crear una lista de valores que deseas insertar en el DataFrame, seguida de los valores existentes a partir de los cuales deben crearse.
+
+#### Instrucciones
+
+1. Crea una lista de categorías que contengan `"Short-haul"`, `"Medium"` y `"Long-haul"`.
+
+```{python}
+# Create a list of categories
+flight_categories = ['Short-haul', 'Medium', 'Long-haul']
+```
+
+2. 
+
+- Crea `short_flights`, una cadena para capturar valores de `"0h"`, `"1h"`, `"2h"`, `"3h"`, `"4h"` teniendo cuidado de evitar valores como `"10h"`.
+
+- Crea `medium_flights` para capturar cualquier valor entre cinco y nueve horas.
+~
+- Crea `long_flights` para capturar cualquier valor comprendido entre 10 y 16 horas, ambos inclusive.
+
+```{python}
+# Create a list of categories
+flight_categories = ['Short-haul', 'Medium', 'Long-haul']
+
+# Create short-haul values
+short_flights = '^0h|^1h|^2h|^3h|^4h'
+
+# Create medium-haul values
+medium_flights = '^5h|^6h|^7h|^8h|^9h'
+
+# Create long-haul values
+long_flights = '^10h|^11h|^12h|^13h|^14h|^15h|^16h'
+
+```
+
+Ahora has creado tus categorías y valores, es hora de agregar condicionalmente las categorías en el DataFrame
+
+### Añadir categorías de duración
+
+Ahora que has configurado las categorías y los valores que quieres capturar, ¡es hora de construir una nueva columna para analizar la frecuencia de los vuelos según su duración!
+
+Las variables`flight_categories`, `short_flights`, `medium_flights` y `long_flights` que creaste anteriormente están a tu disposición.
+
+```{python}
+import numpy as np
+```
+
+#### Instrucciones
+
+- Crea `conditions`, una lista que contenga subconjuntos de `planes['Duration']` basados en `short_flights`, `medium_flights` y `long_flights`.
+
+- Crea la columna `"Duration_Category"` llamando a una función que acepte tu lista `conditions` y `flight_categories`, estableciendo los valores no encontrados en `"Extreme duration"`.
+
+- Crea un gráfico fque muestre el recuento de cada categoría.
+
+```{python}
+# Create conditions for values in flight_categories to be created
+conditions = [
+    (planes['Duration'].str.contains(short_flights)),
+    (planes['Duration'].str.contains(medium_flights)),
+    (planes['Duration'].str.contains(long_flights))
+]
+
+# Apply the conditions list to the flight_categories
+planes['Duration_Category'] = np.select(conditions, flight_categories,
+                                        default='Extreme duration')
+
+# Plot the counts of each categoryß
+sns.countplot(data=planes, x='Duration_Category',
+              hue='Duration_Category', legend=False)
+plt.show()
+```
+
+¡Está claro que la mayoría de los vuelos son de corta distancia.
+
 ## Trabajar con datos numéricos
 
 ## Gestión de valores atípicos
