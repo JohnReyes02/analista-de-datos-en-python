@@ -228,7 +228,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#categoría-de-duración-de-vuelos" id="toc-categoría-de-duración-de-vuelos" class="nav-link" data-scroll-target="#categoría-de-duración-de-vuelos">Categoría de duración de vuelos</a></li>
   <li><a href="#añadir-categorías-de-duración" id="toc-añadir-categorías-de-duración" class="nav-link" data-scroll-target="#añadir-categorías-de-duración">Añadir categorías de duración</a></li>
   </ul></li>
-  <li><a href="#trabajar-con-datos-numéricos" id="toc-trabajar-con-datos-numéricos" class="nav-link" data-scroll-target="#trabajar-con-datos-numéricos">Trabajar con datos numéricos</a></li>
+  <li><a href="#trabajar-con-datos-numéricos" id="toc-trabajar-con-datos-numéricos" class="nav-link" data-scroll-target="#trabajar-con-datos-numéricos">Trabajar con datos numéricos</a>
+  <ul class="collapse">
+  <li><a href="#duración-del-vuelo" id="toc-duración-del-vuelo" class="nav-link" data-scroll-target="#duración-del-vuelo">Duración del vuelo</a></li>
+  <li><a href="#añadir-estadísticas-descriptivas" id="toc-añadir-estadísticas-descriptivas" class="nav-link" data-scroll-target="#añadir-estadísticas-descriptivas">Añadir estadísticas descriptivas</a></li>
+  </ul></li>
   <li><a href="#gestión-de-valores-atípicos" id="toc-gestión-de-valores-atípicos" class="nav-link" data-scroll-target="#gestión-de-valores-atípicos">Gestión de valores atípicos</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/JohnReyes02/Datacamp/edit/main/Analista_de_datos_en_python/07_Analisis_exploratorio_de_datos/02_Limpieza_e_imputacion_de_datos.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/JohnReyes02/Datacamp/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/JohnReyes02/Datacamp/blob/main/Analista_de_datos_en_python/07_Analisis_exploratorio_de_datos/02_Limpieza_e_imputacion_de_datos.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
@@ -326,7 +330,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Revisando los datos faltantes</li>
 </ul>
-<div id="86f5c409" class="cell" data-execution_count="1">
+<div id="b6778242" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(salaries.isna().<span class="bu">sum</span>())</span></code></pre></div>
 </div>
 <p><img src="images/paste-22.png" class="img-fluid"></p>
@@ -348,47 +352,47 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul></li>
 <li><p>Eliminando valores faltantes</p></li>
 </ul>
-<div id="2ab9aa3d" class="cell" data-execution_count="2">
+<div id="f40ae1b6" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>threshold <span class="op">=</span> <span class="bu">len</span>(salaries) <span class="op">*</span> <span class="fl">0.05</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(threhold)</span></code></pre></div>
 </div>
 <p><img src="images/paste-23.png" class="img-fluid"></p>
-<div id="c3819784" class="cell" data-execution_count="3">
+<div id="d5ae7508" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>cols_to_drop <span class="op">=</span> salaries.columns[salaries.isna().<span class="bu">sum</span>() <span class="op">&lt;=</span> threshold]</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(cols_to_drop)</span></code></pre></div>
 </div>
 <p><img src="images/paste-24.png" class="img-fluid"></p>
-<div id="33391b1e" class="cell" data-execution_count="4">
+<div id="1af18a6e" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>salaries.dropna(subset<span class="op">=</span>cols_to_drop, inplace<span class="op">=</span><span class="va">True</span>) <span class="co"># Para actualizar el DataFrame</span></span></code></pre></div>
 </div>
 <ul>
 <li>Imputando una estadística de resumen</li>
 </ul>
-<div id="5f288099" class="cell" data-execution_count="5">
+<div id="1f14fb13" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>cols_with_missing_values <span class="op">=</span> salaries.columns[salaries.isna().<span class="bu">sum</span>() <span class="op">&gt;</span> <span class="dv">0</span>]</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(cols_with_missing_values)</span></code></pre></div>
 </div>
 <p><img src="images/paste-25.png" class="img-fluid"></p>
-<div id="7058923a" class="cell" data-execution_count="6">
+<div id="fb0ee236" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> col <span class="kw">in</span> cols_with_missing_values[:<span class="op">-</span><span class="dv">1</span>]:</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>        salaries[col].fillna(salaries[col].mode()[<span class="dv">0</span>])</span></code></pre></div>
 </div>
 <ul>
 <li>Revisando los valores faltantes que faltan</li>
 </ul>
-<div id="0d86b04e" class="cell" data-execution_count="7">
+<div id="5fba9cf8" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(salaries.isna().<span class="bu">sum</span>())</span></code></pre></div>
 </div>
 <p><img src="images/paste-26.png" class="img-fluid"></p>
 <ul>
 <li>Imputando por subgrupo</li>
 </ul>
-<div id="5a06493b" class="cell" data-execution_count="8">
+<div id="acfbd31b" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>salaries_dict <span class="op">=</span> salaries.groupby(<span class="st">'Experience'</span>)[<span class="st">'Salary_USD'</span>].median().to_dict()</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(salaries_dict)</span></code></pre></div>
 </div>
 <p><img src="images/paste-27.png" class="img-fluid"></p>
-<div id="88331990" class="cell" data-execution_count="9">
+<div id="cbf37ffe" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>salaries[<span class="st">'Salary_USD'</span>] <span class="op">=</span> salaries[<span class="st">'Salary_USD'</span>].fillna(salaries[<span class="st">'Experience'</span>].<span class="bu">map</span>(salaries_dict))</span></code></pre></div>
 </div>
 <p><img src="images/paste-28.png" class="img-fluid"></p>
@@ -397,7 +401,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Es importante tratar los datos que faltan antes de empezar el análisis.</p>
 <p>Un enfoque consiste en descartar los valores que faltan si representan una pequeña proporción, normalmente el 5 %, de los datos.</p>
 <p>Trabajando con un conjunto de datos sobre precios de tiquetes de avión, almacenado como un DataFrame de pandas llamado <code>planes</code>, tendrás que contar el número de valores perdidos en todas las columnas, calcular el cinco porciento de todos los valores, utilizar este umbral para eliminar observaciones y comprobar cuántos valores perdidos quedan en el conjunto de datos.</p>
-<div id="91ac05d9" class="cell" data-execution_count="10">
+<div id="a6a3cb77" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>ruta <span class="op">=</span> <span class="st">'./data/planes.csv'</span></span>
@@ -451,7 +455,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol type="1">
 <li>Imprime el número de valores perdidos en cada columna del DataFrame</li>
 </ol>
-<div id="834179d5" class="cell" data-execution_count="11">
+<div id="6d6befff" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Count the number of missing values in each column</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(planes.isna().<span class="bu">sum</span>())</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -472,7 +476,7 @@ dtype: int64</code></pre>
 <ol start="2" type="1">
 <li>Calcula a cuántas observaciones equivale el cinco porciento del DataFrame <code>planes</code></li>
 </ol>
-<div id="e2a08851" class="cell" data-execution_count="12">
+<div id="deb9fdab" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the five percent threshold</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>threshold <span class="op">=</span> <span class="bu">len</span>(planes) <span class="op">*</span> <span class="fl">0.05</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(threshold)</span></code></pre></div>
@@ -487,7 +491,7 @@ dtype: int64</code></pre>
 <li><p>Crea <code>cols_to_drop</code> aplicando una indexación booleana a las columnas del DataFrame con valores perdidos menores o iguales que el umbral.</p></li>
 <li><p>Utiliza este filtro para eliminar los valores que faltan y guardar el DataFrame actualizado.</p></li>
 </ul>
-<div id="ff8880e2" class="cell" data-execution_count="13">
+<div id="a40c4218" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a filter</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>cols_to_drop <span class="op">=</span> planes.columns[planes.isna().<span class="bu">sum</span>() <span class="op">&lt;=</span> threshold]</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(cols_to_drop)</span>
@@ -522,7 +526,7 @@ dtype: int64</code></pre>
 <p>La regla del cinco porciento ha funcionado muy bien en tu conjunto de dato <code>planes</code>, ¡eliminando los valores perdidos de nueve de las 11 columnas!</p>
 <p>Ahora tienes que decidir qué hacer con las columnas <code>"Additional_Info"</code> y <code>"Price"</code>, a las que les faltan los valores <code>300</code> y <code>368</code> respectivamente.</p>
 <p>Primero echarás un vistazo a lo que contiene <code>"Additional_Info"</code>, y después visualizarás el precio de los billetes de avión de distintas compañías aéreas.</p>
-<div id="6c33048a" class="cell" data-execution_count="14">
+<div id="52d852d2" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span></code></pre></div>
 </div>
@@ -531,7 +535,7 @@ dtype: int64</code></pre>
 <ol type="1">
 <li>Imprime los valores y frecuencias de <code>"Additional_Info"</code>.</li>
 </ol>
-<div id="d549828d" class="cell" data-execution_count="15">
+<div id="d5c4717c" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the values of the Additional_Info column</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(planes[<span class="st">'Additional_Info'</span>].value_counts())</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -551,7 +555,7 @@ Name: count, dtype: int64</code></pre>
 <ol start="2" type="1">
 <li>Crea un boxplot de <code>"Price"</code> frente a <code>"Airline"</code></li>
 </ol>
-<div id="6cd67d9e" class="cell" data-execution_count="16">
+<div id="cd371ae5" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a box plot of Price by Airline</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>sns.boxplot(data<span class="op">=</span>planes, x<span class="op">=</span><span class="st">'Airline'</span>, y<span class="op">=</span><span class="st">'Price'</span>,</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>            hue<span class="op">=</span><span class="st">'Airline'</span>, legend<span class="op">=</span><span class="va">False</span>)</span>
@@ -586,7 +590,7 @@ Name: count, dtype: int64</code></pre>
 <p>!Ahora solo queda una columna con valores perdidos!</p>
 <p>Has eliminado la columna <code>"Additional_Info"</code> de <code>planes</code>, el último paso es imputar los datos que faltan en la columna <code>"Price"</code> del conjunto de datos.</p>
 <p>Como recordatorio, tú generaste este diagrama de caja, que sugería que imputar el precio medio basándose en el <code>"Airline"</code> ¡es un enfoque sólido!</p>
-<div id="6c3f5b20" class="cell" data-execution_count="17">
+<div id="36d57c68" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Eliminamos la columna Additional_Info</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>planes <span class="op">=</span> planes.drop(<span class="st">'Additional_Info'</span>, axis<span class="op">=</span><span class="dv">1</span>)</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>planes.columns</span></code></pre></div>
@@ -601,7 +605,7 @@ Name: count, dtype: int64</code></pre>
 <ol type="1">
 <li>Agrupa <code>planes</code> por aerolínea y calcula el precio medio.</li>
 </ol>
-<div id="374a8f01" class="cell" data-execution_count="18">
+<div id="9b2575dd" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate median plane ticket prices by Airplane</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>airline_prices <span class="op">=</span> planes.groupby(<span class="st">'Airline'</span>)[<span class="st">'Price'</span>].median()</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -622,7 +626,7 @@ Name: Price, dtype: float64</code></pre>
 <ol start="2" type="1">
 <li>Convierte los precios medios agrupados en un diccionario.</li>
 </ol>
-<div id="78407722" class="cell" data-execution_count="19">
+<div id="1e80726d" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert to a dictionary</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>prices_dict <span class="op">=</span> airline_prices.to_dict()</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(prices_dict)</span></code></pre></div>
@@ -637,7 +641,7 @@ Name: Price, dtype: float64</code></pre>
 <li><p>Imputa condicionalmente los valores perdidos de <code>"Price"</code> asignando los valores de la columna <code>"Airline"</code> en función de <code>prices_dict</code></p></li>
 <li><p>Comprueba si faltan valores</p></li>
 </ul>
-<div id="31f9af65" class="cell" data-execution_count="20">
+<div id="495ca049" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Map the dictionary to missing values of Price by Airline</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>planes[<span class="st">'Price'</span>] <span class="op">=</span> planes[<span class="st">'Price'</span>].fillna(planes[<span class="st">'Airline'</span>].<span class="bu">map</span>(prices_dict))</span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -666,18 +670,18 @@ dtype: int64</code></pre>
 <ul>
 <li>Previsualizar los datos</li>
 </ul>
-<div id="4a04546c" class="cell" data-execution_count="21">
+<div id="e469d486" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(salaries.select_dtypes(<span class="st">'object'</span>).head())</span></code></pre></div>
 </div>
 <p><img src="images/paste-29.png" class="img-fluid"></p>
 <ul>
 <li>Títulos de los trabajos</li>
 </ul>
-<div id="f19e443d" class="cell" data-execution_count="22">
+<div id="6aac90b1" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(salaries[<span class="st">'Designation'</span>].value_counts())</span></code></pre></div>
 </div>
 <p><img src="images/paste-30.png" class="img-fluid"></p>
-<div id="ff1a9445" class="cell" data-execution_count="23">
+<div id="7dd4f418" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(salaries[<span class="st">'Designation'</span>].nunique())</span></code></pre></div>
 </div>
 <p><img src="images/paste-31.png" class="img-fluid"></p>
@@ -692,7 +696,7 @@ dtype: int64</code></pre>
 </ul></li>
 </ul></li>
 </ul>
-<div id="96aaf032" class="cell" data-execution_count="24">
+<div id="f5d43241" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>salaries[<span class="st">'Designation'</span>].<span class="bu">str</span>.contains(<span class="st">'Scientist'</span>)</span></code></pre></div>
 </div>
 <p><img src="images/paste-33.png" class="img-fluid"></p>
@@ -702,7 +706,7 @@ dtype: int64</code></pre>
 <li>Palabras de interes: Machine Learning o AI</li>
 </ul></li>
 </ul>
-<div id="e9df2395" class="cell" data-execution_count="25">
+<div id="ecd10cc0" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>salaries[<span class="st">'Designation'</span>].<span class="bu">str</span>.contains(<span class="st">'Machine Learning|AI'</span>)</span></code></pre></div>
 </div>
 <p><img src="images/paste-34.png" class="img-fluid"></p>
@@ -712,18 +716,18 @@ dtype: int64</code></pre>
 <li>Palabras de interes: Cualquiera que inicie con Data</li>
 </ul></li>
 </ul>
-<div id="01c72423" class="cell" data-execution_count="26">
+<div id="1d8a578e" class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>salaries[<span class="st">'Designation'</span>].<span class="bu">str</span>.contains(<span class="st">'ˆData'</span>)</span></code></pre></div>
 </div>
 <p><img src="images/paste-35.png" class="img-fluid"></p>
 <p>Ahora que se tiene una idea de cómo funciona este método, definamos una lista de títulos de trabajo que queremos encontrar:</p>
-<div id="47d17da7" class="cell" data-execution_count="27">
+<div id="48ff0647" class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>job_categories <span class="op">=</span> [<span class="st">'Data Science'</span>, <span class="st">'Data Analytics'</span>,</span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'Data Engineering'</span>, <span class="st">'Machine Learning'</span>,</span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'Managerial'</span>, <span class="st">'Consultant'</span>]</span></code></pre></div>
 </div>
 <p>Luego necesitamos crear variables que contengan nuestros filtros</p>
-<div id="01c3113f" class="cell" data-execution_count="28">
+<div id="f37e7d6a" class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>data_science <span class="op">=</span> <span class="st">'Data Scientist|NLP'</span></span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>data_analyst <span class="op">=</span> <span class="st">'Analyst|Analytics'</span></span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>data_engineer <span class="op">=</span> <span class="st">'Data Engineer|ETL|Architect|Infrastructure'</span></span>
@@ -732,7 +736,7 @@ dtype: int64</code></pre>
 <span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>consultant <span class="op">=</span> <span class="st">'Consultant|Freelance'</span></span></code></pre></div>
 </div>
 <p>El siguiente paso es crear una lista con nuestro rango de condiciones para el método <code>str.contains</code></p>
-<div id="2208ebab" class="cell" data-execution_count="29">
+<div id="a51c3356" class="cell" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>conditions <span class="op">=</span> [</span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>    (salaries[<span class="st">'Designation'</span>].<span class="bu">str</span>.contains(data_science)),</span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>    (salaries[<span class="st">'Designation'</span>].<span class="bu">str</span>.contains(data_analyst)),</span>
@@ -743,20 +747,20 @@ dtype: int64</code></pre>
 <span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>]</span></code></pre></div>
 </div>
 <p>Finalmente, podemos crear nuestra nueva columna <code>Job_Category</code> usando la función de selección de Numpy</p>
-<div id="2a4ad9d4" class="cell" data-execution_count="30">
+<div id="f837bf53" class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>salaries[<span class="st">'Job_Category'</span>] <span class="op">=</span> np.select(conditions,</span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>                                     job_categories,</span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>                                     default<span class="op">=</span><span class="st">'Other'</span>)</span></code></pre></div>
 </div>
 <p>Al obtener una vista previa de la Designación y nuestra nueva columna Job_Category, podemos verificar los primeros cinco valores.</p>
-<div id="1097bbb5" class="cell" data-execution_count="31">
+<div id="b2299219" class="cell" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(salaries[[<span class="st">'Designation'</span>, <span class="st">'Job_Category'</span>]].head())</span></code></pre></div>
 </div>
 <p><img src="images/paste-36.png" class="img-fluid"></p>
 <ul>
 <li>Visualización de la frecuencia de la categoría job</li>
 </ul>
-<div id="05fe4288" class="cell" data-execution_count="32">
+<div id="bbb2fdb0" class="cell" data-execution_count="32">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>sns.countplot(data<span class="op">=</span>salaries, x<span class="op">=</span><span class="st">'Job_Category'</span>)</span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div>
 </div>
@@ -771,7 +775,7 @@ dtype: int64</code></pre>
 <li><p>Recorre las columnas del conjunto de datos.</p></li>
 <li><p>Añade el iterador de columna a la sentencia print y, a continucación, llama a la función para que devuelva el número de valores únicos de la columna.</p></li>
 </ul>
-<div id="0674ef19" class="cell" data-execution_count="33">
+<div id="02bea4ee" class="cell" data-execution_count="33">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter the DataFrame for objects columns</span></span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>non_numeric <span class="op">=</span> planes.select_dtypes(<span class="st">'object'</span>)</span>
 <span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -797,7 +801,7 @@ Number of unique values in Total_Stops column: 5</code></pre>
 <section id="categoría-de-duración-de-vuelos" class="level3">
 <h3 class="anchored" data-anchor-id="categoría-de-duración-de-vuelos">Categoría de duración de vuelos</h3>
 <p>Como has visto, hay 362 valores únicos en la columna <code>"Duration"</code> de <code>planes</code>. Llamando a <code>planes['Duration'].head()</code>, vemos los siguientes valores.</p>
-<div id="3f49961e" class="cell" data-execution_count="34">
+<div id="501593ba" class="cell" data-execution_count="34">
 <div class="cell-output cell-output-display" data-execution_count="13">
 <pre><code>0        19h
 1     5h 25m
@@ -814,7 +818,7 @@ Name: Duration, dtype: object</code></pre>
 <ol type="1">
 <li>Crea una lista de categorías que contengan <code>"Short-haul"</code>, <code>"Medium"</code> y <code>"Long-haul"</code>.</li>
 </ol>
-<div id="38002eba" class="cell" data-execution_count="35">
+<div id="67c6f3ea" class="cell" data-execution_count="35">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a list of categories</span></span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>flight_categories <span class="op">=</span> [<span class="st">'Short-haul'</span>, <span class="st">'Medium'</span>, <span class="st">'Long-haul'</span>]</span></code></pre></div>
 </div>
@@ -826,7 +830,7 @@ Name: Duration, dtype: object</code></pre>
 <li><p>Crea <code>medium_flights</code> para capturar cualquier valor entre cinco y nueve horas. ~</p></li>
 <li><p>Crea <code>long_flights</code> para capturar cualquier valor comprendido entre 10 y 16 horas, ambos inclusive.</p></li>
 </ul>
-<div id="1029e4d3" class="cell" data-execution_count="36">
+<div id="79e56598" class="cell" data-execution_count="36">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a list of categories</span></span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>flight_categories <span class="op">=</span> [<span class="st">'Short-haul'</span>, <span class="st">'Medium'</span>, <span class="st">'Long-haul'</span>]</span>
 <span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -846,7 +850,7 @@ Name: Duration, dtype: object</code></pre>
 <h3 class="anchored" data-anchor-id="añadir-categorías-de-duración">Añadir categorías de duración</h3>
 <p>Ahora que has configurado las categorías y los valores que quieres capturar, ¡es hora de construir una nueva columna para analizar la frecuencia de los vuelos según su duración!</p>
 <p>Las variables<code>flight_categories</code>, <code>short_flights</code>, <code>medium_flights</code> y <code>long_flights</code> que creaste anteriormente están a tu disposición.</p>
-<div id="456aedf7" class="cell" data-execution_count="37">
+<div id="a780a1ff" class="cell" data-execution_count="37">
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code></pre></div>
 </div>
 <section id="instrucciones-5" class="level4">
@@ -856,7 +860,7 @@ Name: Duration, dtype: object</code></pre>
 <li><p>Crea la columna <code>"Duration_Category"</code> llamando a una función que acepte tu lista <code>conditions</code> y <code>flight_categories</code>, estableciendo los valores no encontrados en <code>"Extreme duration"</code>.</p></li>
 <li><p>Crea un gráfico fque muestre el recuento de cada categoría.</p></li>
 </ul>
-<div id="9844906d" class="cell" data-execution_count="38">
+<div id="6eaedd31" class="cell" data-execution_count="38">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create conditions for values in flight_categories to be created</span></span>
 <span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>conditions <span class="op">=</span> [</span>
 <span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>    (planes[<span class="st">'Duration'</span>].<span class="bu">str</span>.contains(short_flights)),</span>
@@ -886,6 +890,242 @@ Name: Duration, dtype: object</code></pre>
 </section>
 <section id="trabajar-con-datos-numéricos" class="level2">
 <h2 class="anchored" data-anchor-id="trabajar-con-datos-numéricos">Trabajar con datos numéricos</h2>
+<ul>
+<li>El dataset origina de los salarios</li>
+</ul>
+<div id="c34fb300" class="cell" data-execution_count="39">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(salaries.info())</span></code></pre></div>
+</div>
+<p><img src="images/paste-38.png" class="img-fluid"></p>
+<ul>
+<li>Salario en Rupias</li>
+</ul>
+<div id="0e6e0dda" class="cell" data-execution_count="40">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(salaries[<span class="st">'Salary_In_Rupees'</span>].head())</span></code></pre></div>
+</div>
+<p><img src="images/paste-39.png" class="img-fluid"></p>
+<ul>
+<li><p>Convirtiendo cadena de caracteres en números</p>
+<ul>
+<li><p>Remover las comas de los valores <code>Salary_In_Rupees</code></p></li>
+<li><p>Convertir la columna a tipo de dato <code>float</code></p></li>
+<li><p>Crear una nueva columna convirtiendo la moneda a dólares</p></li>
+</ul></li>
+</ul>
+<div id="c74f18ab" class="cell" data-execution_count="41">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>pd.Series.<span class="bu">str</span>.replace(<span class="st">'Caracter a remover'</span>, <span class="st">'Caracter a reemplazar'</span>)</span></code></pre></div>
+</div>
+<div id="9e8ed140" class="cell" data-execution_count="42">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>salaries[<span class="st">'Salary_In_Rupees'</span>] <span class="op">=</span> salaries[<span class="st">'Salary_In_Rupees'</span>].<span class="bu">str</span>.replace(<span class="st">','</span>, <span class="st">''</span>)</span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(salaries[<span class="st">'Salary_In_Rupees'</span>].head())</span></code></pre></div>
+</div>
+<p><img src="images/paste-40.png" class="img-fluid"></p>
+<div id="999823cc" class="cell" data-execution_count="43">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>salaries[<span class="st">'Salary_In_Rupees'</span>] <span class="op">=</span> salaries[<span class="st">'Salary_In_Rupees'</span>].astype(<span class="bu">float</span>) </span></code></pre></div>
+</div>
+<p>1 Indian Rupee = 0.012 US Dollars</p>
+<div id="f36652a6" class="cell" data-execution_count="44">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>salaries[<span class="st">'Salary_USD'</span>] <span class="op">=</span> salaries[<span class="st">'Salary_In_Rupees'</span>] <span class="op">*</span> <span class="fl">0.012</span></span></code></pre></div>
+</div>
+<ul>
+<li>Previsualizando la nueva columna</li>
+</ul>
+<div id="66c6737d" class="cell" data-execution_count="45">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(salaries[[<span class="st">'Salary_In_Rupees'</span>, <span class="st">'Salary_USD'</span>]].head())</span></code></pre></div>
+</div>
+<p><img src="images/paste-41.png" class="img-fluid"></p>
+<ul>
+<li>Añadiendo un resumen esrtadístico al DataFrame</li>
+</ul>
+<div id="e3089ea2" class="cell" data-execution_count="46">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>salaries.groupby(<span class="st">'Company_Size'</span>)[<span class="st">'Salary_USD'</span>].mean()</span></code></pre></div>
+</div>
+<p><img src="images/paste-42.png" class="img-fluid"></p>
+<p>Calculo de la desviación estándar de los salarios por experiencia:</p>
+<p><img src="images/paste-43.png" class="img-fluid"></p>
+<div id="4f331471" class="cell" data-execution_count="47">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>salaries[<span class="st">'std_dev'</span>] <span class="op">=</span> salaries.groupby(<span class="st">'Experience'</span>) \ </span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>                      [<span class="st">'Salary_USD'</span>].transform(<span class="kw">lambda</span> x: x.std())</span></code></pre></div>
+</div>
+<div id="4abce402" class="cell" data-execution_count="48">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(salaries[[<span class="st">'Experience'</span>, <span class="st">'std_dev'</span>]].value_counts())</span></code></pre></div>
+</div>
+<p><img src="images/paste-44.png" class="img-fluid"></p>
+<p>Repitamos el proceso para otros datos estadísticos:</p>
+<div id="d76af0f0" class="cell" data-execution_count="49">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>salaries[<span class="st">'median_by_comp_size'</span>] <span class="op">=</span> salaries.groupby(<span class="st">'Company_Size'</span>) <span class="op">\</span></span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>                                  [<span class="st">'Salary_USD'</span>].transform(<span class="kw">lambda</span> x: x.median())</span></code></pre></div>
+</div>
+<div id="8578e385" class="cell" data-execution_count="50">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(salaries[[<span class="st">'Company_Size'</span>, <span class="st">'median_by_comp_size'</span>]].head())</span></code></pre></div>
+</div>
+<p><img src="images/paste-45.png" class="img-fluid"></p>
+<section id="duración-del-vuelo" class="level3">
+<h3 class="anchored" data-anchor-id="duración-del-vuelo">Duración del vuelo</h3>
+<p>Te gustaría analizar la duración de los vuelos, pero por desgracia, la columna <code>"Duration"</code> de DataFrame <code>planes</code> contiene actualmente valores de cadena.</p>
+<p>Tendrás que limpiar la columna y convertirla al tipo de datos correcto para el análisis.</p>
+<div id="920ed78f" class="cell" data-execution_count="51">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> duration_to_decimal_str(duration_str: <span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">str</span>:</span>
+<span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">'''</span></span>
+<span id="cb61-5"><a href="#cb61-5" aria-hidden="true" tabindex="-1"></a><span class="co">    Convierte una duración de vuelo de formato '2h 30m' a una cadena en formato decimal en horas, como '2.5h'.</span></span>
+<span id="cb61-6"><a href="#cb61-6" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb61-7"><a href="#cb61-7" aria-hidden="true" tabindex="-1"></a><span class="co">    Parámetros:</span></span>
+<span id="cb61-8"><a href="#cb61-8" aria-hidden="true" tabindex="-1"></a><span class="co">    -----------</span></span>
+<span id="cb61-9"><a href="#cb61-9" aria-hidden="true" tabindex="-1"></a><span class="co">    duration_str : str</span></span>
+<span id="cb61-10"><a href="#cb61-10" aria-hidden="true" tabindex="-1"></a><span class="co">        Cadena de texto que representa la duración de un vuelo, como '2h 30m', '45m', '19h', etc.</span></span>
+<span id="cb61-11"><a href="#cb61-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-12"><a href="#cb61-12" aria-hidden="true" tabindex="-1"></a><span class="co">    Retorna:</span></span>
+<span id="cb61-13"><a href="#cb61-13" aria-hidden="true" tabindex="-1"></a><span class="co">    --------</span></span>
+<span id="cb61-14"><a href="#cb61-14" aria-hidden="true" tabindex="-1"></a><span class="co">    str</span></span>
+<span id="cb61-15"><a href="#cb61-15" aria-hidden="true" tabindex="-1"></a><span class="co">        Cadena con duración expresada en horas decimales, con un solo decimal y el sufijo 'h'. Ej: '2.5h'</span></span>
+<span id="cb61-16"><a href="#cb61-16" aria-hidden="true" tabindex="-1"></a><span class="co">    '''</span></span>
+<span id="cb61-17"><a href="#cb61-17" aria-hidden="true" tabindex="-1"></a>    horas <span class="op">=</span> re.search(<span class="vs">r'(\d+)\s*h'</span>, duration_str)</span>
+<span id="cb61-18"><a href="#cb61-18" aria-hidden="true" tabindex="-1"></a>    minutos <span class="op">=</span> re.search(<span class="vs">r'(\d+)\s*m'</span>, duration_str)</span>
+<span id="cb61-19"><a href="#cb61-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-20"><a href="#cb61-20" aria-hidden="true" tabindex="-1"></a>    h <span class="op">=</span> <span class="bu">int</span>(horas.group(<span class="dv">1</span>)) <span class="cf">if</span> horas <span class="cf">else</span> <span class="dv">0</span></span>
+<span id="cb61-21"><a href="#cb61-21" aria-hidden="true" tabindex="-1"></a>    m <span class="op">=</span> <span class="bu">int</span>(minutos.group(<span class="dv">1</span>)) <span class="cf">if</span> minutos <span class="cf">else</span> <span class="dv">0</span></span>
+<span id="cb61-22"><a href="#cb61-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-23"><a href="#cb61-23" aria-hidden="true" tabindex="-1"></a>    decimal_hours <span class="op">=</span> <span class="bu">round</span>(h <span class="op">+</span> m <span class="op">/</span> <span class="dv">60</span>, <span class="dv">1</span>)</span>
+<span id="cb61-24"><a href="#cb61-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="ss">f'</span><span class="sc">{</span>decimal_hours<span class="sc">}</span><span class="ss">h'</span></span>
+<span id="cb61-25"><a href="#cb61-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-26"><a href="#cb61-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-27"><a href="#cb61-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-28"><a href="#cb61-28" aria-hidden="true" tabindex="-1"></a>planes[<span class="st">'Duration'</span>] <span class="op">=</span> planes[<span class="st">'Duration'</span>].<span class="bu">apply</span>(duration_to_decimal_str)</span></code></pre></div>
+</div>
+<section id="instrucciones-6" class="level4">
+<h4 class="anchored" data-anchor-id="instrucciones-6">Instrucciones</h4>
+<ol type="1">
+<li>Imprime los cinco primeros valores de la columna <code>"Duration"</code>.</li>
+</ol>
+<div id="2f1a0b5a" class="cell" data-execution_count="52">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Preview the column</span></span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(planes[<span class="st">'Duration'</span>].head())</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0    19.0h
+1     5.4h
+2     4.8h
+3     2.4h
+4    15.5h
+Name: Duration, dtype: object</code></pre>
+</div>
+</div>
+<ol start="2" type="1">
+<li>Retira <code>"h"</code> de la columna</li>
+</ol>
+<div id="d5d88baf" class="cell" data-execution_count="53">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove the string character</span></span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>planes[<span class="st">'Duration'</span>] <span class="op">=</span> planes[<span class="st">'Duration'</span>].<span class="bu">str</span>.replace(<span class="st">'h'</span>, <span class="st">''</span>)</span>
+<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(planes[<span class="st">'Duration'</span>].head())</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0    19.0
+1     5.4
+2     4.8
+3     2.4
+4    15.5
+Name: Duration, dtype: object</code></pre>
+</div>
+</div>
+<ol start="3" type="1">
+<li>Convierte la columna al tipo de datos <code>float</code>.</li>
+</ol>
+<div id="74d33aa0" class="cell" data-execution_count="54">
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert to float data type</span></span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>planes[<span class="st">'Duration'</span>] <span class="op">=</span> planes[<span class="st">'Duration'</span>].astype(<span class="bu">float</span>)</span>
+<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(planes[<span class="st">'Duration'</span>].head())</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0    19.0
+1     5.4
+2     4.8
+3     2.4
+4    15.5
+Name: Duration, dtype: float64</code></pre>
+</div>
+</div>
+<ol start="4" type="1">
+<li>Traza un histograma de los valores de <code>"Duration"</code></li>
+</ol>
+<div id="6995e6c6" class="cell" data-execution_count="55">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot a histogram</span></span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>sns.histplot(data<span class="op">=</span>planes, x<span class="op">=</span><span class="st">'Duration'</span>)</span>
+<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="02_Limpieza_e_imputacion_de_datos_files/figure-html/cell-56-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="añadir-estadísticas-descriptivas" class="level3">
+<h3 class="anchored" data-anchor-id="añadir-estadísticas-descriptivas">Añadir estadísticas descriptivas</h3>
+<p>Ahora <code>"Duration"</code> y <code>"Price"</code>contienen valores numéricos en el DataFrame <code>planes</code>, y te gustaría calcular para ellos estadísticas de resumen condicionadas a los valores de otras columnas.</p>
+<section id="instrucciones-7" class="level4">
+<h4 class="anchored" data-anchor-id="instrucciones-7">Instrucciones</h4>
+<ol type="1">
+<li>Añade una columna a <code>planes</code> que contenga la desviación estándar de <code>"Price"</code> basada en <code>"Airline"</code>.</li>
+</ol>
+<div id="39d3fd71" class="cell" data-execution_count="56">
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Price standard deviation by Airline</span></span>
+<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>planes[<span class="st">'airline_price_st_dev'</span>] <span class="op">=</span> planes.groupby(<span class="st">'Airline'</span>)[<span class="st">'Price'</span>].transform(<span class="kw">lambda</span> x: x.std())</span>
+<span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(planes[[<span class="st">'Airline'</span>, <span class="st">'airline_price_st_dev'</span>]].value_counts())</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Airline            airline_price_st_dev
+Jet Airways        4159.846432             3082
+IndiGo             2245.529140             1632
+Air India          3692.609285             1399
+Multiple carriers  3558.323763              959
+SpiceJet           1798.900648              653
+Vistara            2888.915498              376
+Air Asia           1979.826234              260
+GoAir              2764.926625              147
+Name: count, dtype: int64</code></pre>
+</div>
+</div>
+<ol start="2" type="1">
+<li>Calcula la mediana de <code>"Duration"</code> en <code>"Airline"</code>, almacenándola como una columna llamada <code>"airline_median_duration"</code>.</li>
+</ol>
+<div id="5a006bf6" class="cell" data-execution_count="57">
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Median Duration by Airline</span></span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>planes[<span class="st">'airline_median_duration'</span>] <span class="op">=</span> planes.groupby(<span class="st">'Airline'</span>)[<span class="st">'Duration'</span>].transform(<span class="kw">lambda</span> x: x.median())</span>
+<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(planes[[<span class="st">'Airline'</span>, <span class="st">'airline_median_duration'</span>]].value_counts())</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Airline            airline_median_duration
+Jet Airways        13.3                       3082
+IndiGo             2.9                        1632
+Air India          15.5                       1399
+Multiple carriers  10.2                        959
+SpiceJet           2.5                         653
+Vistara            3.2                         376
+Air Asia           2.8                         260
+GoAir              2.9                         147
+Name: count, dtype: int64</code></pre>
+</div>
+</div>
+<ol start="3" type="1">
+<li>Encuenta la media <code>"Price"</code> por <code>"Destination"</code>, guardándola como una columna llamada <code>"price_destination_mean"</code>.</li>
+</ol>
+<div id="1c35b3f7" class="cell" data-execution_count="58">
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Mean Price by Destination</span></span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>planes[<span class="st">'price_destination_mean'</span>] <span class="op">=</span> planes.groupby(<span class="st">'Destination'</span>)[<span class="st">'Price'</span>].transform(<span class="kw">lambda</span> x: x.mean())</span>
+<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(planes[[<span class="st">'Destination'</span>, <span class="st">'price_destination_mean'</span>]].value_counts())</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Destination  price_destination_mean
+Cochin       10473.585927              3631
+Banglore     9093.622872               2291
+Delhi        5248.541082                998
+New Delhi    11579.306944               720
+Hyderabad    5190.274021                562
+Kolkata      4907.156863                306
+Name: count, dtype: int64</code></pre>
+</div>
+</div>
+<p>Parece que Jet Airways tiene la mayor desviación estándar en precio, Air India tiene la mayor duración median, y Nueva Delhi, en promedio, es el destiono más caro. Ahora veamos cómo manejar los datos atípicos.</p>
+</section>
+</section>
 </section>
 <section id="gestión-de-valores-atípicos" class="level2">
 <h2 class="anchored" data-anchor-id="gestión-de-valores-atípicos">Gestión de valores atípicos</h2>

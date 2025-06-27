@@ -413,11 +413,11 @@ Te gustaría practicar algunas de las habilidades de manipulación y análisis d
 
 #### Instrucciones
 
-- Filtra `planes` para las columnas que sean del tipo datos `"object"`.
+-   Filtra `planes` para las columnas que sean del tipo datos `"object"`.
 
-- Recorre las columnas del conjunto de datos.
+-   Recorre las columnas del conjunto de datos.
 
-- Añade el iterador de columna a la sentencia print  y, a continucación, llama a la función para que devuelva el número de valores únicos de la columna.
+-   Añade el iterador de columna a la sentencia print y, a continucación, llama a la función para que devuelva el número de valores únicos de la columna.
 
 ```{python}
 # Filter the DataFrame for objects columns
@@ -428,6 +428,7 @@ for column in non_numeric.columns:
     # Print the number of unique values
     print(f"Number of unique values in {column} column: {non_numeric[column].nunique()}")
 ```
+
 Curiosamente, `"Duration"` es actualmente una columna de tipo objeto cuando debería ser una columna numérica, ¡y tiene 362 valores únicos! Vamos a averiguar más sobre esta columna.
 
 ### Categoría de duración de vuelos
@@ -445,20 +446,20 @@ Crearás una columna `"Duration_Category"` en el DataFrame `planes`. Antes tendr
 
 #### Instrucciones
 
-1. Crea una lista de categorías que contengan `"Short-haul"`, `"Medium"` y `"Long-haul"`.
+1.  Crea una lista de categorías que contengan `"Short-haul"`, `"Medium"` y `"Long-haul"`.
 
 ```{python}
 # Create a list of categories
 flight_categories = ['Short-haul', 'Medium', 'Long-haul']
 ```
 
-2. 
+2.  
 
-- Crea `short_flights`, una cadena para capturar valores de `"0h"`, `"1h"`, `"2h"`, `"3h"`, `"4h"` teniendo cuidado de evitar valores como `"10h"`.
+-   Crea `short_flights`, una cadena para capturar valores de `"0h"`, `"1h"`, `"2h"`, `"3h"`, `"4h"` teniendo cuidado de evitar valores como `"10h"`.
 
-- Crea `medium_flights` para capturar cualquier valor entre cinco y nueve horas.
-~
-- Crea `long_flights` para capturar cualquier valor comprendido entre 10 y 16 horas, ambos inclusive.
+-   Crea `medium_flights` para capturar cualquier valor entre cinco y nueve horas. \~
+
+-   Crea `long_flights` para capturar cualquier valor comprendido entre 10 y 16 horas, ambos inclusive.
 
 ```{python}
 # Create a list of categories
@@ -489,11 +490,11 @@ import numpy as np
 
 #### Instrucciones
 
-- Crea `conditions`, una lista que contenga subconjuntos de `planes['Duration']` basados en `short_flights`, `medium_flights` y `long_flights`.
+-   Crea `conditions`, una lista que contenga subconjuntos de `planes['Duration']` basados en `short_flights`, `medium_flights` y `long_flights`.
 
-- Crea la columna `"Duration_Category"` llamando a una función que acepte tu lista `conditions` y `flight_categories`, estableciendo los valores no encontrados en `"Extreme duration"`.
+-   Crea la columna `"Duration_Category"` llamando a una función que acepte tu lista `conditions` y `flight_categories`, estableciendo los valores no encontrados en `"Extreme duration"`.
 
-- Crea un gráfico fque muestre el recuento de cada categoría.
+-   Crea un gráfico fque muestre el recuento de cada categoría.
 
 ```{python}
 # Create conditions for values in flight_categories to be created
@@ -516,5 +517,222 @@ plt.show()
 ¡Está claro que la mayoría de los vuelos son de corta distancia.
 
 ## Trabajar con datos numéricos
+
+-   El dataset origina de los salarios
+
+```{python}
+#| echo: true
+#| eval: false
+print(salaries.info())
+```
+
+![](images/paste-38.png)
+
+-   Salario en Rupias
+
+```{python}
+#| echo: true
+#| eval: false
+print(salaries['Salary_In_Rupees'].head())
+```
+
+![](images/paste-39.png)
+
+-   Convirtiendo cadena de caracteres en números
+
+    -   Remover las comas de los valores `Salary_In_Rupees`
+
+    -   Convertir la columna a tipo de dato `float`
+
+    -   Crear una nueva columna convirtiendo la moneda a dólares
+
+```{python}
+#| echo: true
+#| eval: false
+pd.Series.str.replace('Caracter a remover', 'Caracter a reemplazar')
+```
+
+```{python}
+#| echo: true
+#| eval: false
+salaries['Salary_In_Rupees'] = salaries['Salary_In_Rupees'].str.replace(',', '')
+print(salaries['Salary_In_Rupees'].head())
+```
+
+![](images/paste-40.png)
+
+```{python}
+#| echo: true
+#| eval: false
+salaries['Salary_In_Rupees'] = salaries['Salary_In_Rupees'].astype(float) 
+```
+
+1 Indian Rupee = 0.012 US Dollars
+
+```{python}
+#| echo: true
+#| eval: false
+salaries['Salary_USD'] = salaries['Salary_In_Rupees'] * 0.012
+```
+
+-   Previsualizando la nueva columna
+
+```{python}
+#| echo: true
+#| eval: false
+print(salaries[['Salary_In_Rupees', 'Salary_USD']].head())
+```
+
+![](images/paste-41.png)
+
+-   Añadiendo un resumen esrtadístico al DataFrame
+
+```{python}
+#| echo: true
+#| eval: false
+salaries.groupby('Company_Size')['Salary_USD'].mean()
+```
+
+![](images/paste-42.png)
+
+Calculo de la desviación estándar de los salarios por experiencia:
+
+![](images/paste-43.png)
+
+```{python}
+#| echo: true
+#| eval: false
+salaries['std_dev'] = salaries.groupby('Experience') \ 
+                      ['Salary_USD'].transform(lambda x: x.std())
+```
+
+```{python}
+#| echo: true
+#| eval: false
+print(salaries[['Experience', 'std_dev']].value_counts())
+```
+
+![](images/paste-44.png)
+
+Repitamos el proceso para otros datos estadísticos:
+
+```{python}
+#| echo: true
+#| eval: false
+salaries['median_by_comp_size'] = salaries.groupby('Company_Size') \
+                                  ['Salary_USD'].transform(lambda x: x.median())
+```
+
+```{python}
+#| echo: true
+#| eval: false
+print(salaries[['Company_Size', 'median_by_comp_size']].head())
+```
+
+![](images/paste-45.png)
+
+### Duración del vuelo
+
+Te gustaría analizar la duración de los vuelos, pero por desgracia, la columna `"Duration"` de DataFrame `planes` contiene actualmente valores de cadena.
+
+Tendrás que limpiar la columna y convertirla al tipo de datos correcto para el análisis.
+
+```{python}
+import re
+
+def duration_to_decimal_str(duration_str: str) -> str:
+    '''
+    Convierte una duración de vuelo de formato '2h 30m' a una cadena en formato decimal en horas, como '2.5h'.
+    
+    Parámetros:
+    -----------
+    duration_str : str
+        Cadena de texto que representa la duración de un vuelo, como '2h 30m', '45m', '19h', etc.
+
+    Retorna:
+    --------
+    str
+        Cadena con duración expresada en horas decimales, con un solo decimal y el sufijo 'h'. Ej: '2.5h'
+    '''
+    horas = re.search(r'(\d+)\s*h', duration_str)
+    minutos = re.search(r'(\d+)\s*m', duration_str)
+
+    h = int(horas.group(1)) if horas else 0
+    m = int(minutos.group(1)) if minutos else 0
+
+    decimal_hours = round(h + m / 60, 1)
+    return f'{decimal_hours}h'
+
+
+
+planes['Duration'] = planes['Duration'].apply(duration_to_decimal_str)
+
+```
+
+#### Instrucciones
+
+1. Imprime los cinco primeros valores de la columna `"Duration"`.
+
+```{python}
+# Preview the column
+print(planes['Duration'].head())
+```
+
+2. Retira `"h"` de la columna
+
+```{python}
+# Remove the string character
+planes['Duration'] = planes['Duration'].str.replace('h', '')
+print(planes['Duration'].head())
+```
+
+3. Convierte la columna al tipo de datos `float`.
+
+```{python}
+# Convert to float data type
+planes['Duration'] = planes['Duration'].astype(float)
+print(planes['Duration'].head())
+```
+
+4. Traza un histograma de los valores de `"Duration"`
+
+```{python}
+# Plot a histogram
+sns.histplot(data=planes, x='Duration')
+plt.show()
+```
+
+
+### Añadir estadísticas descriptivas
+
+Ahora `"Duration"` y `"Price"`contienen valores numéricos en el DataFrame `planes`, y te gustaría calcular para ellos estadísticas de resumen condicionadas a los valores de otras columnas.
+
+#### Instrucciones
+
+1. Añade una columna a `planes` que contenga la desviación estándar de `"Price"` basada en `"Airline"`.
+
+```{python}
+# Price standard deviation by Airline
+planes['airline_price_st_dev'] = planes.groupby('Airline')['Price'].transform(lambda x: x.std())
+print(planes[['Airline', 'airline_price_st_dev']].value_counts())
+```
+
+2. Calcula la mediana de `"Duration"` en `"Airline"`, almacenándola como una columna llamada `"airline_median_duration"`.
+
+```{python}
+# Median Duration by Airline
+planes['airline_median_duration'] = planes.groupby('Airline')['Duration'].transform(lambda x: x.median())
+print(planes[['Airline', 'airline_median_duration']].value_counts())
+```
+
+3. Encuenta la media `"Price"` por `"Destination"`, guardándola como una columna llamada `"price_destination_mean"`.
+
+```{python}
+# Mean Price by Destination
+planes['price_destination_mean'] = planes.groupby('Destination')['Price'].transform(lambda x: x.mean())
+print(planes[['Destination', 'price_destination_mean']].value_counts())
+```
+
+Parece que Jet Airways tiene la mayor desviación estándar en precio, Air India tiene la mayor duración median, y Nueva Delhi, en promedio, es el destiono más caro. Ahora veamos cómo manejar los datos atípicos.
 
 ## Gestión de valores atípicos
