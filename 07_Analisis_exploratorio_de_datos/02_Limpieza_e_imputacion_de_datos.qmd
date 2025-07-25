@@ -671,14 +671,14 @@ planes['Duration'] = planes['Duration'].apply(duration_to_decimal_str)
 
 #### Instrucciones
 
-1. Imprime los cinco primeros valores de la columna `"Duration"`.
+1.  Imprime los cinco primeros valores de la columna `"Duration"`.
 
 ```{python}
 # Preview the column
 print(planes['Duration'].head())
 ```
 
-2. Retira `"h"` de la columna
+2.  Retira `"h"` de la columna
 
 ```{python}
 # Remove the string character
@@ -686,7 +686,7 @@ planes['Duration'] = planes['Duration'].str.replace('h', '')
 print(planes['Duration'].head())
 ```
 
-3. Convierte la columna al tipo de datos `float`.
+3.  Convierte la columna al tipo de datos `float`.
 
 ```{python}
 # Convert to float data type
@@ -694,7 +694,7 @@ planes['Duration'] = planes['Duration'].astype(float)
 print(planes['Duration'].head())
 ```
 
-4. Traza un histograma de los valores de `"Duration"`
+4.  Traza un histograma de los valores de `"Duration"`
 
 ```{python}
 # Plot a histogram
@@ -702,14 +702,13 @@ sns.histplot(data=planes, x='Duration')
 plt.show()
 ```
 
-
 ### Añadir estadísticas descriptivas
 
 Ahora `"Duration"` y `"Price"`contienen valores numéricos en el DataFrame `planes`, y te gustaría calcular para ellos estadísticas de resumen condicionadas a los valores de otras columnas.
 
 #### Instrucciones
 
-1. Añade una columna a `planes` que contenga la desviación estándar de `"Price"` basada en `"Airline"`.
+1.  Añade una columna a `planes` que contenga la desviación estándar de `"Price"` basada en `"Airline"`.
 
 ```{python}
 # Price standard deviation by Airline
@@ -717,7 +716,7 @@ planes['airline_price_st_dev'] = planes.groupby('Airline')['Price'].transform(la
 print(planes[['Airline', 'airline_price_st_dev']].value_counts())
 ```
 
-2. Calcula la mediana de `"Duration"` en `"Airline"`, almacenándola como una columna llamada `"airline_median_duration"`.
+2.  Calcula la mediana de `"Duration"` en `"Airline"`, almacenándola como una columna llamada `"airline_median_duration"`.
 
 ```{python}
 # Median Duration by Airline
@@ -725,7 +724,7 @@ planes['airline_median_duration'] = planes.groupby('Airline')['Duration'].transf
 print(planes[['Airline', 'airline_median_duration']].value_counts())
 ```
 
-3. Encuenta la media `"Price"` por `"Destination"`, guardándola como una columna llamada `"price_destination_mean"`.
+3.  Encuenta la media `"Price"` por `"Destination"`, guardándola como una columna llamada `"price_destination_mean"`.
 
 ```{python}
 # Mean Price by Destination
@@ -736,3 +735,117 @@ print(planes[['Destination', 'price_destination_mean']].value_counts())
 Parece que Jet Airways tiene la mayor desviación estándar en precio, Air India tiene la mayor duración median, y Nueva Delhi, en promedio, es el destiono más caro. Ahora veamos cómo manejar los datos atípicos.
 
 ## Gestión de valores atípicos
+
+-   Qué es un outlier?
+    -   Es una observación que está muy alejada de otros puntos de datos.
+-   Usando estadística descriptiva
+
+```{python}
+#| echo: true
+#| eval: false
+print(salaries['Salary_USD'].describe())
+```
+
+![](images/paste-46.png)
+
+-   Usando el rango intercuartil
+
+    -   Rango intercuartil (IQR)
+
+        -   IQR = 75th - 25th percentil
+
+        -   Upper outliers \> 75th percentile + (1.5 \* IQR)
+
+        -   Lower Outliers \< 25th percentile - (1.5 \* IQR)
+
+```{python}
+#| echo: true
+#| eval: false
+sns.boxplot(data=salaries, y='Salaary_USD')
+plt.show()
+```
+
+![](images/paste-47.png)
+
+-   Identificando Umbrales
+
+```{python}
+#| echo: true
+#| eval: false
+# 75th percentil
+seventy_fifth = salaries['Salary_USD'].quantile(0.75)
+
+# 25th percentil
+twenty_fifth = salaries['Salary_USD'].quantile(0.25)
+
+# Interquartil range
+salaries_iqr = seventy_fifth - twenty_fifth
+
+print(salaries_iqr)
+
+```
+
+![](images/paste-48.png)
+
+```{python}
+#| echo: true
+#| eval: false
+# Upper threshold
+upper = seventy_fifth + (1.5 * salaries_iqr)
+
+# Lower threshold
+lower = twenty_fifth - (1.5 * salaries_iqr)
+
+print(upper, lower)
+```
+
+![](images/paste-49.png)
+
+-   Subdividiendo nuestros datos
+
+```{python}
+#| echo: true
+#| eval: false
+salaries[(salaries['Salary_USD'] < lower) | (salaries['Salary_USD'] > upper)] \
+        [['Experience', 'Employee_Location', 'Salary_USD']]
+```
+
+![](images/paste-50.png)
+
+-   ¿ Por qué buscar los Outliers?
+
+    -   Los Outliers son valores extremos
+
+        -   Pueden no representar con precisión los datos
+
+    -   Pueden sesgar la media y la desviación estándar
+
+    -   Pruebas de estadística y modelos de machine learning requieren datos que tengan una distribución normal y no esten sesgados.
+
+-   Qué hacer con los Outliers?
+
+    -   Preguntas que nos debemos hacer:
+
+        -   Por qué existen los outliers?
+
+        -   Los valores son precisos?
+
+-   Eliminación de Outliers
+
+```{python}
+#| echo: true
+#| eval: false
+no_outliers = salaries[(salaries['Salar_USD'] > lower) & (salaries['Salary_USD'] < upper)]
+```
+
+```{python}
+#| echo: true
+#| eval: false
+print(no_outliers['Salary_USD'].describe())
+```
+
+![](images/paste-51.png)
+
+-   Distribución de Salarios
+
+![](images/paste-52.png)
