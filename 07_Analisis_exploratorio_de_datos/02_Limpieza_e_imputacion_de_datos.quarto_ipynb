@@ -1,1625 +1,1981 @@
 {
-  "cells": [
-    {
-      "cell_type": "markdown",
-      "metadata": {},
-      "source": [
-        "# Limpieza e imputación de datos\n",
-        "\n",
-        "Explorar y analizar datos a menudo significa tratar con valores perdidos, tipos de datos incorrectos y valores atípicos. En este capítulo, aprenderás técnicas para gestionar estos problemas y agilizar tus procesos en EDA.\n",
-        "\n",
-        "## Tratar los datos que faltan\n",
-        "\n",
-        "-   Por qué un dato faltante es un problema?\n",
-        "\n",
-        "    -   Afectan las distribuciones\n",
-        "    -   Los datos de la población son menos repreesntativos\n",
-        "    -   Puede resultar en conclusiones incorrectas\n",
-        "\n",
-        "-   Ejemplo datos de profesionales de datos\n",
-        "\n",
-        "| Column | Description | Data type |\n",
-        "|--------------------|---------------------------------|-------------------|\n",
-        "| `Working_Year` | Year the data was obtained | Float |\n",
-        "| `Designation` | Job title | String |\n",
-        "| `Experience` | Experience level e.g., `\"Mid\"`, `\"Senior\"` | String |\n",
-        "| `Employment_Satus` | Type of employment contract e.g., `\"FT\"`, `\"PT\"` | String |\n",
-        "| `Employee_Location` | Country of employment | String |\n",
-        "| `Company_Size` | Labels for company size e.g., `\"S\"`, `\"M\"`, `\"L\"` | String |\n",
-        "| `Remote_Working_Ratio` | Porcentage of time working remotely | Integer |\n",
-        "| `Salary_USD` | Salary in US dollars | Float |\n",
-        "\n",
-        "-   Revisando los datos faltantes"
-      ],
-      "id": "4bc42295"
-    },
-    {
-      "cell_type": "code",
-      "metadata": {},
-      "source": [
-        "#| echo: true\n",
-        "#| eval: false\n",
-        "print(salaries.isna().sum())"
-      ],
-      "id": "268dd6ae",
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {},
-      "source": [
-        "![](images/paste-22.png)\n",
-        "\n",
-        "-   Estrategias para el manejo de datos faltantes\n",
-        "\n",
-        "    -   Eliminar los datos faltantes\n",
-        "\n",
-        "        -   5 % o menos del total de valores\n",
-        "\n",
-        "    -   Imputar la media, mediana o la moda\n",
-        "\n",
-        "        -   Depende de la distribución y contexto\n",
-        "\n",
-        "    -   Imputar por sub-grupos\n",
-        "\n",
-        "        -   Diferentes niveles de experiencia tienen diferente mediana en el salario\n",
-        "\n",
-        "-   Eliminando valores faltantes"
-      ],
-      "id": "436b5fc0"
-    },
-    {
-      "cell_type": "code",
-      "metadata": {},
-      "source": [
-        "#| echo: true\n",
-        "#| eval: false\n",
-        "threshold = len(salaries) * 0.05\n",
-        "print(threhold)"
-      ],
-      "id": "70b684b2",
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {},
-      "source": [
-        "![](images/paste-23.png)"
-      ],
-      "id": "83784d1a"
-    },
-    {
-      "cell_type": "code",
-      "metadata": {},
-      "source": [
-        "# | echo: true\n",
-        "# | eval: false\n",
-        "cols_to_drop = salaries.columns[salaries.isna().sum() <= threshold]\n",
-        "print(cols_to_drop)"
-      ],
-      "id": "a68c311c",
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {},
-      "source": [
-        "![](images/paste-24.png)"
-      ],
-      "id": "0bad7398"
-    },
-    {
-      "cell_type": "code",
-      "metadata": {},
-      "source": [
-        "#| echo: true\n",
-        "#| eval: false\n",
-        "salaries.dropna(subset=cols_to_drop, inplace=True) # Para actualizar el DataFrame"
-      ],
-      "id": "092da4d1",
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {},
-      "source": [
-        "-   Imputando una estadística de resumen"
-      ],
-      "id": "bd93d9e8"
-    },
-    {
-      "cell_type": "code",
-      "metadata": {},
-      "source": [
-        "#| echo: true\n",
-        "#| eval: false\n",
-        "cols_with_missing_values = salaries.columns[salaries.isna().sum() > 0]\n",
-        "print(cols_with_missing_values)"
-      ],
-      "id": "027162a6",
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {},
-      "source": [
-        "![](images/paste-25.png)"
-      ],
-      "id": "c557e71f"
-    },
-    {
-      "cell_type": "code",
-      "metadata": {},
-      "source": [
-        "#| echo: true\n",
-        "#| eval: false\n",
-        "    for col in cols_with_missing_values[:-1]:\n",
-        "        salaries[col].fillna(salaries[col].mode()[0])"
-      ],
-      "id": "b3cb6687",
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {},
-      "source": [
-        "-   Revisando los valores faltantes que faltan"
-      ],
-      "id": "de3303b7"
-    },
-    {
-      "cell_type": "code",
-      "metadata": {},
-      "source": [
-        "#| echo: true\n",
-        "#| eval: false\n",
-        "print(salaries.isna().sum())"
-      ],
-      "id": "96739b26",
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {},
-      "source": [
-        "![](images/paste-26.png)\n",
-        "\n",
-        "-   Imputando por subgrupo"
-      ],
-      "id": "c4e105ca"
-    },
-    {
-      "cell_type": "code",
-      "metadata": {},
-      "source": [
-        "#| echo: true\n",
-        "#| eval: false\n",
-        "salaries_dict = salaries.groupby('Experience')['Salary_USD'].median().to_dict()\n",
-        "print(salaries_dict)"
-      ],
-      "id": "62fb98b3",
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {},
-      "source": [
-        "![](images/paste-27.png)"
-      ],
-      "id": "6f86c386"
-    },
-    {
-      "cell_type": "code",
-      "metadata": {},
-      "source": [
-        "#| echo: true\n",
-        "#| eval: false\n",
-        "salaries['Salary_USD'] = salaries['Salary_USD'].fillna(salaries['Experience'].map(salaries_dict))"
-      ],
-      "id": "bfffd751",
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {},
-      "source": [
-        "![](images/paste-28.png)\n",
-        "\n",
-        "### Tratar los datos que faltan\n",
-        "\n",
-        "Es importante tratar los datos que faltan antes de empezar el análisis.\n",
-        "\n",
-        "Un enfoque consiste en descartar los valores que faltan si representan una pequeña proporción, normalmente el 5 %, de los datos.\n",
-        "\n",
-        "Trabajando con un conjunto de datos sobre precios de tiquetes de avión, almacenado como un DataFrame de pandas llamado `planes`, tendrás que contar el número de valores perdidos en todas las columnas, calcular el cinco porciento de todos los valores, utilizar este umbral para eliminar observaciones y comprobar cuántos valores perdidos quedan en el conjunto de datos."
-      ],
-      "id": "89972b77"
-    },
-    {
-      "cell_type": "code",
-      "metadata": {},
-      "source": [
-        "import pandas as pd\n",
-        "\n",
-        "ruta = './data/planes.csv'\n",
-        "planes = pd.read_csv(ruta)\n",
-        "print(planes.head)"
-      ],
-      "id": "e762b9f6",
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {},
-      "source": [
-        "#### Instrucciones\n",
-        "\n",
-        "1.  Imprime el número de valores perdidos en cada columna del DataFrame"
-      ],
-      "id": "c8f48a16"
-    },
-    {
-      "cell_type": "code",
-      "metadata": {},
-      "source": [
-        "# Count the number of missing values in each column\n",
-        "print(planes.isna().sum())"
-      ],
-      "id": "d887fec5",
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {},
-      "source": [
-        "2.  Calcula a cuántas observaciones equivale el cinco porciento del DataFrame `planes`"
-      ],
-      "id": "e10e5f28"
-    },
-    {
-      "cell_type": "code",
-      "metadata": {},
-      "source": [
-        "# Find the five percent threshold\n",
-        "threshold = len(planes) * 0.05\n",
-        "print(threshold)"
-      ],
-      "id": "4950c2f7",
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {},
-      "source": [
-        "3.  \n",
-        "\n",
-        "-   Crea `cols_to_drop` aplicando una indexación booleana a las columnas del DataFrame con valores perdidos menores o iguales que el umbral.\n",
-        "\n",
-        "-   Utiliza este filtro para eliminar los valores que faltan y guardar el DataFrame actualizado."
-      ],
-      "id": "7064969f"
-    },
-    {
-      "cell_type": "code",
-      "metadata": {},
-      "source": [
-        "# Create a filter\n",
-        "cols_to_drop = planes.columns[planes.isna().sum() <= threshold]\n",
-        "print(cols_to_drop)\n",
-        "\n",
-        "# Drop missing values for columns below the threshold\n",
-        "planes.dropna(subset=cols_to_drop, inplace=True)\n",
-        "\n",
-        "print(planes.isna().sum())"
-      ],
-      "id": "1944152b",
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {},
-      "source": [
-        "Al crear un umbral de valores faltantes y usarlo para filtrar columnas, haz logrado eliminar los valores faltantes de todas las columnas excepto `\"Additinal_Info\"` y `\"Price\"`.\n",
-        "\n",
-        "### Estrategias para datos que faltan\n",
-        "\n",
-        "La regla del cinco porciento ha funcionado muy bien en tu conjunto de dato `planes`, ¡eliminando los valores perdidos de nueve de las 11 columnas!\n",
-        "\n",
-        "Ahora tienes que decidir qué hacer con las columnas `\"Additional_Info\"` y `\"Price\"`, a las que les faltan los valores `300` y `368` respectivamente.\n",
-        "\n",
-        "Primero echarás un vistazo a lo que contiene `\"Additional_Info\"`, y después visualizarás el precio de los billetes de avión de distintas compañías aéreas."
-      ],
-      "id": "d30216b1"
-    },
-    {
-      "cell_type": "code",
-      "metadata": {},
-      "source": [
-        "import matplotlib.pyplot as plt\n",
-        "import seaborn as sns"
-      ],
-      "id": "d19967e1",
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {},
-      "source": [
-        "#### Instrucciones\n",
-        "\n",
-        "1.  Imprime los valores y frecuencias de `\"Additional_Info\"`."
-      ],
-      "id": "fb372371"
-    },
-    {
-      "cell_type": "code",
-      "metadata": {},
-      "source": [
-        "# Check the values of the Additional_Info column\n",
-        "print(planes['Additional_Info'].value_counts())"
-      ],
-      "id": "e1652f40",
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {},
-      "source": [
-        "2.  Crea un boxplot de `\"Price\"` frente a `\"Airline\"`"
-      ],
-      "id": "ab150569"
-    },
-    {
-      "cell_type": "code",
-      "metadata": {},
-      "source": [
-        "# Create a box plot of Price by Airline\n",
-        "sns.boxplot(data=planes, x='Airline', y='Price',\n",
-        "            hue='Airline', legend=False)\n",
-        "\n",
-        "plt.show()"
-      ],
-      "id": "0c77aead",
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {},
-      "source": [
-        "3.  **Pregunta**\n",
-        "\n",
-        "-   ¿Cómo debes tratar los valores que faltan en `\"Additional_Info\"` y `\"Price\"`.?\n",
-        "\n",
-        "**Respuestas Posibles**\n",
-        "\n",
-        "-   [ ] Elimina la columna `\"Additional_Info\"` e imputa la media para los valores que faltan de `\"Price\"`.\n",
-        "-   [ ] Elimina los valores de `\"No info\"` de `\"Additiona_Info\"` e imputa la mediana de los valores que faltan de `\"Price\"`.\n",
-        "-   [ ] Elimina la columna `\"Additional_Info\"` e imputa la media por `\"Airline\"` para los valores que falten de `\"Price\"`.\n",
-        "-   [x] Elimina la columna `\"Additional_Info\"` e imputa la mediana por `\"Airline\"` para los valores que falten de `\"Price\"`.\n",
-        "\n",
-        "No necesitamos la columna `\"Additional_Info\"`, y deberías imputar la mediana de `\"Price\"` por `\"Airline\"` para representar los datos con precisión.\n",
-        "\n",
-        "### Imputar los precios de los aviones que faltan\n",
-        "\n",
-        "!Ahora solo queda una columna con valores perdidos!\n",
-        "\n",
-        "Has eliminado la columna `\"Additional_Info\"` de `planes`, el último paso es imputar los datos que faltan en la columna `\"Price\"` del conjunto de datos.\n",
-        "\n",
-        "Como recordatorio, tú generaste este diagrama de caja, que sugería que imputar el precio medio basándose en el `\"Airline\"` ¡es un enfoque sólido!"
-      ],
-      "id": "21104abc"
-    },
-    {
-      "cell_type": "code",
-      "metadata": {},
-      "source": [
-        "# Eliminamos la columna Additional_Info\n",
-        "planes = planes.drop('Additional_Info', axis=1)\n",
-        "planes.columns"
-      ],
-      "id": "2a39dd53",
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {},
-      "source": [
-        "#### Instrucciones\n",
-        "\n",
-        "1.  Agrupa `planes` por aerolínea y calcula el precio medio."
-      ],
-      "id": "1bb34d7d"
-    },
-    {
-      "cell_type": "code",
-      "metadata": {},
-      "source": [
-        "# Calculate median plane ticket prices by Airplane\n",
-        "airline_prices = planes.groupby('Airline')['Price'].median()\n",
-        "\n",
-        "print(airline_prices)"
-      ],
-      "id": "1b672fdf",
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {},
-      "source": [
-        "2.  Convierte los precios medios agrupados en un diccionario."
-      ],
-      "id": "fbffe2e8"
-    },
-    {
-      "cell_type": "code",
-      "metadata": {},
-      "source": [
-        "# Convert to a dictionary\n",
-        "prices_dict = airline_prices.to_dict()\n",
-        "print(prices_dict)"
-      ],
-      "id": "c40bb26c",
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {},
-      "source": [
-        "3.  \n",
-        "\n",
-        "-   Imputa condicionalmente los valores perdidos de `\"Price\"` asignando los valores de la columna `\"Airline\"` en función de `prices_dict`\n",
-        "\n",
-        "-   Comprueba si faltan valores"
-      ],
-      "id": "ec45b7bc"
-    },
-    {
-      "cell_type": "code",
-      "metadata": {},
-      "source": [
-        "# Map the dictionary to missing values of Price by Airline\n",
-        "planes['Price'] = planes['Price'].fillna(planes['Airline'].map(prices_dict))\n",
-        "\n",
-        "# Check for missing values\n",
-        "print(planes.isna().sum())"
-      ],
-      "id": "799d9843",
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {},
-      "source": [
-        "Convertiste un DataFrame agrupado a un diccionario y luego lo usaste para llenar condicionalmente los valores faltantes de `\"Price\"` basándote en `\"Airline\"`. Ahora vamos a explorar cómo realizar análisis exploratorio en datos categóricos.\n",
-        "\n",
-        "## Convertir y analizar datos categóricos\n",
-        "\n",
-        "-   Previsualizar los datos"
-      ],
-      "id": "2f0f6e4c"
-    },
-    {
-      "cell_type": "code",
-      "metadata": {},
-      "source": [
-        "#| echo: true\n",
-        "#| eval: false\n",
-        "print(salaries.select_dtypes('object').head())"
-      ],
-      "id": "a6d5933f",
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {},
-      "source": [
-        "![](images/paste-29.png)\n",
-        "\n",
-        "-   Títulos de los trabajos"
-      ],
-      "id": "36c73045"
-    },
-    {
-      "cell_type": "code",
-      "metadata": {},
-      "source": [
-        "#| echo: true\n",
-        "#| eval: false\n",
-        "print(salaries['Designation'].value_counts())"
-      ],
-      "id": "6df9e1d5",
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {},
-      "source": [
-        "![](images/paste-30.png)"
-      ],
-      "id": "6b782421"
-    },
-    {
-      "cell_type": "code",
-      "metadata": {},
-      "source": [
-        "# | echo: true\n",
-        "# | eval: false\n",
-        "print(salaries['Designation'].nunique())"
-      ],
-      "id": "e9172ede",
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {},
-      "source": [
-        "![](images/paste-31.png)\n",
-        "\n",
-        "![](images/paste-32.png)\n",
-        "\n",
-        "-   Extrayendo valores desde las categorías\n",
-        "\n",
-        "    -   El formato actual de los datos limita la capacidad de generar información.\n",
-        "\n",
-        "    -   `pandas.Series.str.contains()`\n",
-        "\n",
-        "        -   Busca en una columna una cadena especifica o múltiples cadenas."
-      ],
-      "id": "5bb9b7fe"
-    },
-    {
-      "cell_type": "code",
-      "metadata": {},
-      "source": [
-        "#| echo: true\n",
-        "#| eval: false\n",
-        "salaries['Designation'].str.contains('Scientist')"
-      ],
-      "id": "c941b546",
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {},
-      "source": [
-        "![](images/paste-33.png)\n",
-        "\n",
-        "-   Filtrar filas que contienen una o más frases\n",
-        "\n",
-        "    -   Palabras de interes: Machine Learning o AI"
-      ],
-      "id": "7d7d282c"
-    },
-    {
-      "cell_type": "code",
-      "metadata": {},
-      "source": [
-        "#| echo: true\n",
-        "#| eval: false\n",
-        "salaries['Designation'].str.contains('Machine Learning|AI')"
-      ],
-      "id": "7df1b495",
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {},
-      "source": [
-        "![](images/paste-34.png)\n",
-        "\n",
-        "-   Buscar múltiples frases en una cadena de caracteres\n",
-        "\n",
-        "    -   Palabras de interes: Cualquiera que inicie con Data"
-      ],
-      "id": "6c62e6ef"
-    },
-    {
-      "cell_type": "code",
-      "metadata": {},
-      "source": [
-        "# | echo: true\n",
-        "# | eval: false\n",
-        "salaries['Designation'].str.contains('ˆData')"
-      ],
-      "id": "910553f4",
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {},
-      "source": [
-        "![](images/paste-35.png)\n",
-        "\n",
-        "Ahora que se tiene una idea de cómo funciona este método, definamos una lista de títulos de trabajo que queremos encontrar:"
-      ],
-      "id": "286ef99d"
-    },
-    {
-      "cell_type": "code",
-      "metadata": {},
-      "source": [
-        "#| echo: true\n",
-        "#| eval: false\n",
-        "job_categories = ['Data Science', 'Data Analytics',\n",
-        "                   'Data Engineering', 'Machine Learning',\n",
-        "                   'Managerial', 'Consultant']"
-      ],
-      "id": "278a3d64",
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {},
-      "source": [
-        "Luego necesitamos crear variables que contengan nuestros filtros"
-      ],
-      "id": "9908974b"
-    },
-    {
-      "cell_type": "code",
-      "metadata": {},
-      "source": [
-        "#| echo: true\n",
-        "#| eval: false\n",
-        "data_science = 'Data Scientist|NLP'\n",
-        "data_analyst = 'Analyst|Analytics'\n",
-        "data_engineer = 'Data Engineer|ETL|Architect|Infrastructure'\n",
-        "ml_engineer = 'Machine Learning|ML|Bid Data|AI'\n",
-        "manager = 'Manager|Head|Director|Lead|Principal|Staff'\n",
-        "consultant = 'Consultant|Freelance'"
-      ],
-      "id": "6a0998bb",
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {},
-      "source": [
-        "El siguiente paso es crear una lista con nuestro rango de condiciones para el método `str.contains`"
-      ],
-      "id": "7e08fc4d"
-    },
-    {
-      "cell_type": "code",
-      "metadata": {},
-      "source": [
-        "#| echo: true\n",
-        "#| eval: false\n",
-        "conditions = [\n",
-        "    (salaries['Designation'].str.contains(data_science)),\n",
-        "    (salaries['Designation'].str.contains(data_analyst)),\n",
-        "    (salaries['Designation'].str.contains(data_engineer)),\n",
-        "    (salaries['Designation'].str.contains(ml_engineer)),\n",
-        "    (salaries['Designation'].str.contains(manager)),\n",
-        "    (salaries['Designation'].str.contains(consultant))\n",
-        "]"
-      ],
-      "id": "3631f35b",
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {},
-      "source": [
-        "Finalmente, podemos crear nuestra nueva columna `Job_Category` usando la función de selección de Numpy"
-      ],
-      "id": "76885589"
-    },
-    {
-      "cell_type": "code",
-      "metadata": {},
-      "source": [
-        "#| echo: true\n",
-        "#| eval: false\n",
-        "salaries['Job_Category'] = np.select(conditions,\n",
-        "                                     job_categories,\n",
-        "                                     default='Other')"
-      ],
-      "id": "ea127935",
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {},
-      "source": [
-        "Al obtener una vista previa de la Designación y nuestra nueva columna Job_Category, podemos verificar los primeros cinco valores."
-      ],
-      "id": "66bf010b"
-    },
-    {
-      "cell_type": "code",
-      "metadata": {},
-      "source": [
-        "#| echo: true\n",
-        "#| eval: false\n",
-        "print(salaries[['Designation', 'Job_Category']].head())"
-      ],
-      "id": "e519b71f",
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {},
-      "source": [
-        "![](images/paste-36.png)\n",
-        "\n",
-        "-   Visualización de la frecuencia de la categoría job"
-      ],
-      "id": "84aac38b"
-    },
-    {
-      "cell_type": "code",
-      "metadata": {},
-      "source": [
-        "#| echo: true\n",
-        "#| eval: false\n",
-        "sns.countplot(data=salaries, x='Job_Category')\n",
-        "plt.show()"
-      ],
-      "id": "0ea8fd2f",
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {},
-      "source": [
-        "![](images/paste-37.png)\n",
-        "\n",
-        "### Encontrar el número de valores únicos\n",
-        "\n",
-        "Te gustaría practicar algunas de las habilidades de manipulación y análisis de datos categóricos que acabas de ver. Para ayudarte a identificar qué datos podrían reformatearse para extraer valor, vas a averiguar qué columnas no numéricas del conjunto de datos `planes` tienen un gran número de valores únicos.\n",
-        "\n",
-        "#### Instrucciones\n",
-        "\n",
-        "-   Filtra `planes` para las columnas que sean del tipo datos `\"object\"`.\n",
-        "\n",
-        "-   Recorre las columnas del conjunto de datos.\n",
-        "\n",
-        "-   Añade el iterador de columna a la sentencia print y, a continucación, llama a la función para que devuelva el número de valores únicos de la columna."
-      ],
-      "id": "0a16c366"
-    },
-    {
-      "cell_type": "code",
-      "metadata": {},
-      "source": [
-        "# Filter the DataFrame for objects columns\n",
-        "non_numeric = planes.select_dtypes('object')\n",
-        "\n",
-        "# Loop through columns\n",
-        "for column in non_numeric.columns:\n",
-        "    # Print the number of unique values\n",
-        "    print(f\"Number of unique values in {column} column: {non_numeric[column].nunique()}\")"
-      ],
-      "id": "c0eace49",
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {},
-      "source": [
-        "Curiosamente, `\"Duration\"` es actualmente una columna de tipo objeto cuando debería ser una columna numérica, ¡y tiene 362 valores únicos! Vamos a averiguar más sobre esta columna.\n",
-        "\n",
-        "### Categoría de duración de vuelos\n",
-        "\n",
-        "Como has visto, hay 362 valores únicos en la columna `\"Duration\"` de `planes`. Llamando a `planes['Duration'].head()`, vemos los siguientes valores."
-      ],
-      "id": "e9e07469"
-    },
-    {
-      "cell_type": "code",
-      "metadata": {},
-      "source": [
-        "#| echo: false\n",
-        "planes['Duration'].head()"
-      ],
-      "id": "db4583d6",
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {},
-      "source": [
-        "Parece que no será sencillo convertirlo a números. Sin embargo, ¡podrías clasificar los vuelos por duración y examinar la frecuencia de las distintas longitudes de vuelo!\n",
-        "\n",
-        "Crearás una columna `\"Duration_Category\"` en el DataFrame `planes`. Antes tendrás que crear una lista de valores que deseas insertar en el DataFrame, seguida de los valores existentes a partir de los cuales deben crearse.\n",
-        "\n",
-        "#### Instrucciones\n",
-        "\n",
-        "1.  Crea una lista de categorías que contengan `\"Short-haul\"`, `\"Medium\"` y `\"Long-haul\"`."
-      ],
-      "id": "927df418"
-    },
-    {
-      "cell_type": "code",
-      "metadata": {},
-      "source": [
-        "# Create a list of categories\n",
-        "flight_categories = ['Short-haul', 'Medium', 'Long-haul']"
-      ],
-      "id": "ea49add7",
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {},
-      "source": [
-        "2.  \n",
-        "\n",
-        "-   Crea `short_flights`, una cadena para capturar valores de `\"0h\"`, `\"1h\"`, `\"2h\"`, `\"3h\"`, `\"4h\"` teniendo cuidado de evitar valores como `\"10h\"`.\n",
-        "\n",
-        "-   Crea `medium_flights` para capturar cualquier valor entre cinco y nueve horas. \\~\n",
-        "\n",
-        "-   Crea `long_flights` para capturar cualquier valor comprendido entre 10 y 16 horas, ambos inclusive."
-      ],
-      "id": "572ca336"
-    },
-    {
-      "cell_type": "code",
-      "metadata": {},
-      "source": [
-        "# Create a list of categories\n",
-        "flight_categories = ['Short-haul', 'Medium', 'Long-haul']\n",
-        "\n",
-        "# Create short-haul values\n",
-        "short_flights = '^0h|^1h|^2h|^3h|^4h'\n",
-        "\n",
-        "# Create medium-haul values\n",
-        "medium_flights = '^5h|^6h|^7h|^8h|^9h'\n",
-        "\n",
-        "# Create long-haul values\n",
-        "long_flights = '^10h|^11h|^12h|^13h|^14h|^15h|^16h'"
-      ],
-      "id": "cc2d049d",
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {},
-      "source": [
-        "Ahora has creado tus categorías y valores, es hora de agregar condicionalmente las categorías en el DataFrame\n",
-        "\n",
-        "### Añadir categorías de duración\n",
-        "\n",
-        "Ahora que has configurado las categorías y los valores que quieres capturar, ¡es hora de construir una nueva columna para analizar la frecuencia de los vuelos según su duración!\n",
-        "\n",
-        "Las variables`flight_categories`, `short_flights`, `medium_flights` y `long_flights` que creaste anteriormente están a tu disposición."
-      ],
-      "id": "f2f042a6"
-    },
-    {
-      "cell_type": "code",
-      "metadata": {},
-      "source": [
-        "import numpy as np"
-      ],
-      "id": "bae6aa26",
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {},
-      "source": [
-        "#### Instrucciones\n",
-        "\n",
-        "-   Crea `conditions`, una lista que contenga subconjuntos de `planes['Duration']` basados en `short_flights`, `medium_flights` y `long_flights`.\n",
-        "\n",
-        "-   Crea la columna `\"Duration_Category\"` llamando a una función que acepte tu lista `conditions` y `flight_categories`, estableciendo los valores no encontrados en `\"Extreme duration\"`.\n",
-        "\n",
-        "-   Crea un gráfico fque muestre el recuento de cada categoría."
-      ],
-      "id": "74beaed4"
-    },
-    {
-      "cell_type": "code",
-      "metadata": {},
-      "source": [
-        "# Create conditions for values in flight_categories to be created\n",
-        "conditions = [\n",
-        "    (planes['Duration'].str.contains(short_flights)),\n",
-        "    (planes['Duration'].str.contains(medium_flights)),\n",
-        "    (planes['Duration'].str.contains(long_flights))\n",
-        "]\n",
-        "\n",
-        "# Apply the conditions list to the flight_categories\n",
-        "planes['Duration_Category'] = np.select(conditions, flight_categories,\n",
-        "                                        default='Extreme duration')\n",
-        "\n",
-        "# Plot the counts of each categoryß\n",
-        "sns.countplot(data=planes, x='Duration_Category',\n",
-        "              hue='Duration_Category', legend=False)\n",
-        "plt.show()"
-      ],
-      "id": "3932f7ca",
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {},
-      "source": [
-        "¡Está claro que la mayoría de los vuelos son de corta distancia.\n",
-        "\n",
-        "## Trabajar con datos numéricos\n",
-        "\n",
-        "-   El dataset origina de los salarios"
-      ],
-      "id": "99a1cd48"
-    },
-    {
-      "cell_type": "code",
-      "metadata": {},
-      "source": [
-        "#| echo: true\n",
-        "#| eval: false\n",
-        "print(salaries.info())"
-      ],
-      "id": "70495a0f",
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {},
-      "source": [
-        "![](images/paste-38.png)\n",
-        "\n",
-        "-   Salario en Rupias"
-      ],
-      "id": "527cf28c"
-    },
-    {
-      "cell_type": "code",
-      "metadata": {},
-      "source": [
-        "#| echo: true\n",
-        "#| eval: false\n",
-        "print(salaries['Salary_In_Rupees'].head())"
-      ],
-      "id": "1fb0131f",
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {},
-      "source": [
-        "![](images/paste-39.png)\n",
-        "\n",
-        "-   Convirtiendo cadena de caracteres en números\n",
-        "\n",
-        "    -   Remover las comas de los valores `Salary_In_Rupees`\n",
-        "\n",
-        "    -   Convertir la columna a tipo de dato `float`\n",
-        "\n",
-        "    -   Crear una nueva columna convirtiendo la moneda a dólares"
-      ],
-      "id": "45fbafc6"
-    },
-    {
-      "cell_type": "code",
-      "metadata": {},
-      "source": [
-        "#| echo: true\n",
-        "#| eval: false\n",
-        "pd.Series.str.replace('Caracter a remover', 'Caracter a reemplazar')"
-      ],
-      "id": "e9f7ba40",
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "code",
-      "metadata": {},
-      "source": [
-        "#| echo: true\n",
-        "#| eval: false\n",
-        "salaries['Salary_In_Rupees'] = salaries['Salary_In_Rupees'].str.replace(',', '')\n",
-        "print(salaries['Salary_In_Rupees'].head())"
-      ],
-      "id": "bd5a1082",
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {},
-      "source": [
-        "![](images/paste-40.png)"
-      ],
-      "id": "4313031e"
-    },
-    {
-      "cell_type": "code",
-      "metadata": {},
-      "source": [
-        "#| echo: true\n",
-        "#| eval: false\n",
-        "salaries['Salary_In_Rupees'] = salaries['Salary_In_Rupees'].astype(float) "
-      ],
-      "id": "2c47d942",
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {},
-      "source": [
-        "1 Indian Rupee = 0.012 US Dollars"
-      ],
-      "id": "667919ae"
-    },
-    {
-      "cell_type": "code",
-      "metadata": {},
-      "source": [
-        "#| echo: true\n",
-        "#| eval: false\n",
-        "salaries['Salary_USD'] = salaries['Salary_In_Rupees'] * 0.012"
-      ],
-      "id": "898b6679",
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {},
-      "source": [
-        "-   Previsualizando la nueva columna"
-      ],
-      "id": "c9ddbc9a"
-    },
-    {
-      "cell_type": "code",
-      "metadata": {},
-      "source": [
-        "#| echo: true\n",
-        "#| eval: false\n",
-        "print(salaries[['Salary_In_Rupees', 'Salary_USD']].head())"
-      ],
-      "id": "d87a0af5",
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {},
-      "source": [
-        "![](images/paste-41.png)\n",
-        "\n",
-        "-   Añadiendo un resumen esrtadístico al DataFrame"
-      ],
-      "id": "23a1aed5"
-    },
-    {
-      "cell_type": "code",
-      "metadata": {},
-      "source": [
-        "#| echo: true\n",
-        "#| eval: false\n",
-        "salaries.groupby('Company_Size')['Salary_USD'].mean()"
-      ],
-      "id": "d96dc6fc",
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {},
-      "source": [
-        "![](images/paste-42.png)\n",
-        "\n",
-        "Calculo de la desviación estándar de los salarios por experiencia:\n",
-        "\n",
-        "![](images/paste-43.png)"
-      ],
-      "id": "cceb6d24"
-    },
-    {
-      "cell_type": "code",
-      "metadata": {},
-      "source": [
-        "#| echo: true\n",
-        "#| eval: false\n",
-        "salaries['std_dev'] = salaries.groupby('Experience') \\ \n",
-        "                      ['Salary_USD'].transform(lambda x: x.std())"
-      ],
-      "id": "e7840116",
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "code",
-      "metadata": {},
-      "source": [
-        "#| echo: true\n",
-        "#| eval: false\n",
-        "print(salaries[['Experience', 'std_dev']].value_counts())"
-      ],
-      "id": "a4e2eee0",
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {},
-      "source": [
-        "![](images/paste-44.png)\n",
-        "\n",
-        "Repitamos el proceso para otros datos estadísticos:"
-      ],
-      "id": "698e738b"
-    },
-    {
-      "cell_type": "code",
-      "metadata": {},
-      "source": [
-        "#| echo: true\n",
-        "#| eval: false\n",
-        "salaries['median_by_comp_size'] = salaries.groupby('Company_Size') \\\n",
-        "                                  ['Salary_USD'].transform(lambda x: x.median())"
-      ],
-      "id": "8bf530e1",
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "code",
-      "metadata": {},
-      "source": [
-        "#| echo: true\n",
-        "#| eval: false\n",
-        "print(salaries[['Company_Size', 'median_by_comp_size']].head())"
-      ],
-      "id": "1bb489ae",
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {},
-      "source": [
-        "![](images/paste-45.png)\n",
-        "\n",
-        "### Duración del vuelo\n",
-        "\n",
-        "Te gustaría analizar la duración de los vuelos, pero por desgracia, la columna `\"Duration\"` de DataFrame `planes` contiene actualmente valores de cadena.\n",
-        "\n",
-        "Tendrás que limpiar la columna y convertirla al tipo de datos correcto para el análisis."
-      ],
-      "id": "4e6d8bd4"
-    },
-    {
-      "cell_type": "code",
-      "metadata": {},
-      "source": [
-        "import re\n",
-        "\n",
-        "def duration_to_decimal_str(duration_str: str) -> str:\n",
-        "    '''\n",
-        "    Convierte una duración de vuelo de formato '2h 30m' a una cadena en formato decimal en horas, como '2.5h'.\n",
-        "    \n",
-        "    Parámetros:\n",
-        "    -----------\n",
-        "    duration_str : str\n",
-        "        Cadena de texto que representa la duración de un vuelo, como '2h 30m', '45m', '19h', etc.\n",
-        "\n",
-        "    Retorna:\n",
-        "    --------\n",
-        "    str\n",
-        "        Cadena con duración expresada en horas decimales, con un solo decimal y el sufijo 'h'. Ej: '2.5h'\n",
-        "    '''\n",
-        "    horas = re.search(r'(\\d+)\\s*h', duration_str)\n",
-        "    minutos = re.search(r'(\\d+)\\s*m', duration_str)\n",
-        "\n",
-        "    h = int(horas.group(1)) if horas else 0\n",
-        "    m = int(minutos.group(1)) if minutos else 0\n",
-        "\n",
-        "    decimal_hours = round(h + m / 60, 1)\n",
-        "    return f'{decimal_hours}h'\n",
-        "\n",
-        "\n",
-        "\n",
-        "planes['Duration'] = planes['Duration'].apply(duration_to_decimal_str)"
-      ],
-      "id": "c07e2134",
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {},
-      "source": [
-        "#### Instrucciones\n",
-        "\n",
-        "1.  Imprime los cinco primeros valores de la columna `\"Duration\"`."
-      ],
-      "id": "08e1e94a"
-    },
-    {
-      "cell_type": "code",
-      "metadata": {},
-      "source": [
-        "# Preview the column\n",
-        "print(planes['Duration'].head())"
-      ],
-      "id": "a16bb447",
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {},
-      "source": [
-        "2.  Retira `\"h\"` de la columna"
-      ],
-      "id": "b89ee223"
-    },
-    {
-      "cell_type": "code",
-      "metadata": {},
-      "source": [
-        "# Remove the string character\n",
-        "planes['Duration'] = planes['Duration'].str.replace('h', '')\n",
-        "print(planes['Duration'].head())"
-      ],
-      "id": "be95aaca",
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {},
-      "source": [
-        "3.  Convierte la columna al tipo de datos `float`."
-      ],
-      "id": "cb706087"
-    },
-    {
-      "cell_type": "code",
-      "metadata": {},
-      "source": [
-        "# Convert to float data type\n",
-        "planes['Duration'] = planes['Duration'].astype(float)\n",
-        "print(planes['Duration'].head())"
-      ],
-      "id": "a48db3ee",
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {},
-      "source": [
-        "4.  Traza un histograma de los valores de `\"Duration\"`"
-      ],
-      "id": "2131c99b"
-    },
-    {
-      "cell_type": "code",
-      "metadata": {},
-      "source": [
-        "# Plot a histogram\n",
-        "sns.histplot(data=planes, x='Duration')\n",
-        "plt.show()"
-      ],
-      "id": "5a678e1a",
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {},
-      "source": [
-        "### Añadir estadísticas descriptivas\n",
-        "\n",
-        "Ahora `\"Duration\"` y `\"Price\"`contienen valores numéricos en el DataFrame `planes`, y te gustaría calcular para ellos estadísticas de resumen condicionadas a los valores de otras columnas.\n",
-        "\n",
-        "#### Instrucciones\n",
-        "\n",
-        "1.  Añade una columna a `planes` que contenga la desviación estándar de `\"Price\"` basada en `\"Airline\"`."
-      ],
-      "id": "3e5d614b"
-    },
-    {
-      "cell_type": "code",
-      "metadata": {},
-      "source": [
-        "# Price standard deviation by Airline\n",
-        "planes['airline_price_st_dev'] = planes.groupby('Airline')['Price'].transform(lambda x: x.std())\n",
-        "print(planes[['Airline', 'airline_price_st_dev']].value_counts())"
-      ],
-      "id": "c592c723",
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {},
-      "source": [
-        "2.  Calcula la mediana de `\"Duration\"` en `\"Airline\"`, almacenándola como una columna llamada `\"airline_median_duration\"`."
-      ],
-      "id": "1f15368e"
-    },
-    {
-      "cell_type": "code",
-      "metadata": {},
-      "source": [
-        "# Median Duration by Airline\n",
-        "planes['airline_median_duration'] = planes.groupby('Airline')['Duration'].transform(lambda x: x.median())\n",
-        "print(planes[['Airline', 'airline_median_duration']].value_counts())"
-      ],
-      "id": "6b58749c",
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {},
-      "source": [
-        "3.  Encuenta la media `\"Price\"` por `\"Destination\"`, guardándola como una columna llamada `\"price_destination_mean\"`."
-      ],
-      "id": "b7b146ad"
-    },
-    {
-      "cell_type": "code",
-      "metadata": {},
-      "source": [
-        "# Mean Price by Destination\n",
-        "planes['price_destination_mean'] = planes.groupby('Destination')['Price'].transform(lambda x: x.mean())\n",
-        "print(planes[['Destination', 'price_destination_mean']].value_counts())"
-      ],
-      "id": "3047a800",
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {},
-      "source": [
-        "Parece que Jet Airways tiene la mayor desviación estándar en precio, Air India tiene la mayor duración median, y Nueva Delhi, en promedio, es el destiono más caro. Ahora veamos cómo manejar los datos atípicos.\n",
-        "\n",
-        "## Gestión de valores atípicos\n",
-        "\n",
-        "-   Qué es un outlier?\n",
-        "    -   Es una observación que está muy alejada de otros puntos de datos.\n",
-        "-   Usando estadística descriptiva"
-      ],
-      "id": "e0e6e258"
-    },
-    {
-      "cell_type": "code",
-      "metadata": {},
-      "source": [
-        "#| echo: true\n",
-        "#| eval: false\n",
-        "print(salaries['Salary_USD'].describe())"
-      ],
-      "id": "9c055eb7",
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {},
-      "source": [
-        "![](images/paste-46.png)\n",
-        "\n",
-        "-   Usando el rango intercuartil\n",
-        "\n",
-        "    -   Rango intercuartil (IQR)\n",
-        "\n",
-        "        -   IQR = 75th - 25th percentil\n",
-        "\n",
-        "        -   Upper outliers \\> 75th percentile + (1.5 \\* IQR)\n",
-        "\n",
-        "        -   Lower Outliers \\< 25th percentile - (1.5 \\* IQR)"
-      ],
-      "id": "c4f0c396"
-    },
-    {
-      "cell_type": "code",
-      "metadata": {},
-      "source": [
-        "#| echo: true\n",
-        "#| eval: false\n",
-        "sns.boxplot(data=salaries, y='Salaary_USD')\n",
-        "plt.show()"
-      ],
-      "id": "0451c53e",
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {},
-      "source": [
-        "![](images/paste-47.png)\n",
-        "\n",
-        "-   Identificando Umbrales"
-      ],
-      "id": "9371b08d"
-    },
-    {
-      "cell_type": "code",
-      "metadata": {},
-      "source": [
-        "#| echo: true\n",
-        "#| eval: false\n",
-        "# 75th percentil\n",
-        "seventy_fifth = salaries['Salary_USD'].quantile(0.75)\n",
-        "\n",
-        "# 25th percentil\n",
-        "twenty_fifth = salaries['Salary_USD'].quantile(0.25)\n",
-        "\n",
-        "# Interquartil range\n",
-        "salaries_iqr = seventy_fifth - twenty_fifth\n",
-        "\n",
-        "print(salaries_iqr)"
-      ],
-      "id": "fa23e758",
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {},
-      "source": [
-        "![](images/paste-48.png)"
-      ],
-      "id": "95b91ad5"
-    },
-    {
-      "cell_type": "code",
-      "metadata": {},
-      "source": [
-        "#| echo: true\n",
-        "#| eval: false\n",
-        "# Upper threshold\n",
-        "upper = seventy_fifth + (1.5 * salaries_iqr)\n",
-        "\n",
-        "# Lower threshold\n",
-        "lower = twenty_fifth - (1.5 * salaries_iqr)\n",
-        "\n",
-        "print(upper, lower)"
-      ],
-      "id": "fc5267be",
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {},
-      "source": [
-        "![](images/paste-49.png)\n",
-        "\n",
-        "-   Subdividiendo nuestros datos"
-      ],
-      "id": "f9a8f522"
-    },
-    {
-      "cell_type": "code",
-      "metadata": {},
-      "source": [
-        "#| echo: true\n",
-        "#| eval: false\n",
-        "salaries[(salaries['Salary_USD'] < lower) | (salaries['Salary_USD'] > upper)] \\\n",
-        "        [['Experience', 'Employee_Location', 'Salary_USD']]"
-      ],
-      "id": "00822181",
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {},
-      "source": [
-        "![](images/paste-50.png)\n",
-        "\n",
-        "-   ¿ Por qué buscar los Outliers?\n",
-        "\n",
-        "    -   Los Outliers son valores extremos\n",
-        "\n",
-        "        -   Pueden no representar con precisión los datos\n",
-        "\n",
-        "    -   Pueden sesgar la media y la desviación estándar\n",
-        "\n",
-        "    -   Pruebas de estadística y modelos de machine learning requieren datos que tengan una distribución normal y no esten sesgados.\n",
-        "\n",
-        "-   Qué hacer con los Outliers?\n",
-        "\n",
-        "    -   Preguntas que nos debemos hacer:\n",
-        "\n",
-        "        -   Por qué existen los outliers?\n",
-        "\n",
-        "        -   Los valores son precisos?\n",
-        "\n",
-        "-   Eliminación de Outliers"
-      ],
-      "id": "fce4b126"
-    },
-    {
-      "cell_type": "code",
-      "metadata": {},
-      "source": [
-        "#| echo: true\n",
-        "#| eval: false\n",
-        "no_outliers = salaries[(salaries['Salar_USD'] > lower) & (salaries['Salary_USD'] < upper)]"
-      ],
-      "id": "0b620d90",
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "code",
-      "metadata": {},
-      "source": [
-        "#| echo: true\n",
-        "#| eval: false\n",
-        "print(no_outliers['Salary_USD'].describe())"
-      ],
-      "id": "66845f18",
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {},
-      "source": [
-        "![](images/paste-51.png)\n",
-        "\n",
-        "-   Distribución de Salarios\n",
-        "\n",
-        "![](images/paste-52.png)"
-      ],
-      "id": "26ba7134"
-    }
-  ],
-  "metadata": {
-    "kernelspec": {
-      "name": "python3",
-      "language": "python",
-      "display_name": "Python 3 (ipykernel)",
-      "path": "/Users/macbookairedwin/Documents/Datacamp/Analista_de_datos_en_python/entorno_analista_datos/share/jupyter/kernels/python3"
-    }
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "id": "0eeea39c",
+   "metadata": {},
+   "source": [
+    "# Limpieza e imputación de datos\n",
+    "\n",
+    "Explorar y analizar datos a menudo significa tratar con valores perdidos, tipos de datos incorrectos y valores atípicos. En este capítulo, aprenderás técnicas para gestionar estos problemas y agilizar tus procesos en EDA.\n",
+    "\n",
+    "## Tratar los datos que faltan\n",
+    "\n",
+    "-   Por qué un dato faltante es un problema?\n",
+    "\n",
+    "    -   Afectan las distribuciones\n",
+    "    -   Los datos de la población son menos repreesntativos\n",
+    "    -   Puede resultar en conclusiones incorrectas\n",
+    "\n",
+    "-   Ejemplo datos de profesionales de datos\n",
+    "\n",
+    "| Column | Description | Data type |\n",
+    "|--------------------|---------------------------------|-------------------|\n",
+    "| `Working_Year` | Year the data was obtained | Float |\n",
+    "| `Designation` | Job title | String |\n",
+    "| `Experience` | Experience level e.g., `\"Mid\"`, `\"Senior\"` | String |\n",
+    "| `Employment_Satus` | Type of employment contract e.g., `\"FT\"`, `\"PT\"` | String |\n",
+    "| `Employee_Location` | Country of employment | String |\n",
+    "| `Company_Size` | Labels for company size e.g., `\"S\"`, `\"M\"`, `\"L\"` | String |\n",
+    "| `Remote_Working_Ratio` | Porcentage of time working remotely | Integer |\n",
+    "| `Salary_USD` | Salary in US dollars | Float |\n",
+    "\n",
+    "-   Revisando los datos faltantes"
+   ]
   },
-  "nbformat": 4,
-  "nbformat_minor": 5
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "5f8ea364",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#| echo: true\n",
+    "#| eval: false\n",
+    "print(salaries.isna().sum())"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "111290d2",
+   "metadata": {},
+   "source": [
+    "![](images/paste-22.png)\n",
+    "\n",
+    "-   Estrategias para el manejo de datos faltantes\n",
+    "\n",
+    "    -   Eliminar los datos faltantes\n",
+    "\n",
+    "        -   5 % o menos del total de valores\n",
+    "\n",
+    "    -   Imputar la media, mediana o la moda\n",
+    "\n",
+    "        -   Depende de la distribución y contexto\n",
+    "\n",
+    "    -   Imputar por sub-grupos\n",
+    "\n",
+    "        -   Diferentes niveles de experiencia tienen diferente mediana en el salario\n",
+    "\n",
+    "-   Eliminando valores faltantes"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "b82c2a86",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#| echo: true\n",
+    "#| eval: false\n",
+    "threshold = len(salaries) * 0.05\n",
+    "print(threhold)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "d64c6a9f",
+   "metadata": {},
+   "source": [
+    "![](images/paste-23.png)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "id": "9a46a0bf",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# | echo: true\n",
+    "# | eval: false\n",
+    "cols_to_drop = salaries.columns[salaries.isna().sum() <= threshold]\n",
+    "print(cols_to_drop)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "8c3268dd",
+   "metadata": {},
+   "source": [
+    "![](images/paste-24.png)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "id": "f5917e9f",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#| echo: true\n",
+    "#| eval: false\n",
+    "salaries.dropna(subset=cols_to_drop, inplace=True) # Para actualizar el DataFrame"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "000a32d6",
+   "metadata": {},
+   "source": [
+    "-   Imputando una estadística de resumen"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "id": "1a0716bf",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#| echo: true\n",
+    "#| eval: false\n",
+    "cols_with_missing_values = salaries.columns[salaries.isna().sum() > 0]\n",
+    "print(cols_with_missing_values)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "8a248f4d",
+   "metadata": {},
+   "source": [
+    "![](images/paste-25.png)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "id": "f1867165",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#| echo: true\n",
+    "#| eval: false\n",
+    "    for col in cols_with_missing_values[:-1]:\n",
+    "        salaries[col].fillna(salaries[col].mode()[0])"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "cd49a8ef",
+   "metadata": {},
+   "source": [
+    "-   Revisando los valores faltantes que faltan"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "id": "11e94826",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#| echo: true\n",
+    "#| eval: false\n",
+    "print(salaries.isna().sum())"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "111085d2",
+   "metadata": {},
+   "source": [
+    "![](images/paste-26.png)\n",
+    "\n",
+    "-   Imputando por subgrupo"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "id": "f94ee92c",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#| echo: true\n",
+    "#| eval: false\n",
+    "salaries_dict = salaries.groupby('Experience')['Salary_USD'].median().to_dict()\n",
+    "print(salaries_dict)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "5dd15fe3",
+   "metadata": {},
+   "source": [
+    "![](images/paste-27.png)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "id": "424fc82a",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#| echo: true\n",
+    "#| eval: false\n",
+    "salaries['Salary_USD'] = salaries['Salary_USD'].fillna(salaries['Experience'].map(salaries_dict))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "2538c3d1",
+   "metadata": {},
+   "source": [
+    "![](images/paste-28.png)\n",
+    "\n",
+    "### Tratar los datos que faltan\n",
+    "\n",
+    "Es importante tratar los datos que faltan antes de empezar el análisis.\n",
+    "\n",
+    "Un enfoque consiste en descartar los valores que faltan si representan una pequeña proporción, normalmente el 5 %, de los datos.\n",
+    "\n",
+    "Trabajando con un conjunto de datos sobre precios de tiquetes de avión, almacenado como un DataFrame de pandas llamado `planes`, tendrás que contar el número de valores perdidos en todas las columnas, calcular el cinco porciento de todos los valores, utilizar este umbral para eliminar observaciones y comprobar cuántos valores perdidos quedan en el conjunto de datos."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "id": "df1fc478",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "<bound method NDFrame.head of            Airline Date_of_Journey    Source Destination  \\\n",
+      "0      Jet Airways       9/06/2019     Delhi      Cochin   \n",
+      "1           IndiGo      12/05/2019   Kolkata    Banglore   \n",
+      "2           IndiGo      01/03/2019  Banglore   New Delhi   \n",
+      "3         SpiceJet      24/06/2019   Kolkata    Banglore   \n",
+      "4      Jet Airways      12/03/2019  Banglore   New Delhi   \n",
+      "...            ...             ...       ...         ...   \n",
+      "10655     Air Asia       9/04/2019   Kolkata    Banglore   \n",
+      "10656    Air India      27/04/2019   Kolkata    Banglore   \n",
+      "10657  Jet Airways      27/04/2019  Banglore       Delhi   \n",
+      "10658      Vistara      01/03/2019  Banglore   New Delhi   \n",
+      "10659    Air India       9/05/2019     Delhi      Cochin   \n",
+      "\n",
+      "                       Route Dep_Time  Arrival_Time Duration Total_Stops  \\\n",
+      "0      DEL → LKO → BOM → COK    09:25  04:25 10 Jun      19h     2 stops   \n",
+      "1            CCU → NAG → BLR    18:05         23:30   5h 25m      1 stop   \n",
+      "2            BLR → NAG → DEL    16:50         21:35   4h 45m      1 stop   \n",
+      "3                  CCU → BLR    09:00         11:25   2h 25m    non-stop   \n",
+      "4            BLR → BOM → DEL    18:55  10:25 13 Mar  15h 30m      1 stop   \n",
+      "...                      ...      ...           ...      ...         ...   \n",
+      "10655              CCU → BLR    19:55         22:25   2h 30m    non-stop   \n",
+      "10656              CCU → BLR    20:45         23:20   2h 35m    non-stop   \n",
+      "10657              BLR → DEL      NaN         11:20       3h    non-stop   \n",
+      "10658              BLR → DEL    11:30         14:10   2h 40m    non-stop   \n",
+      "10659  DEL → GOI → BOM → COK    10:55         19:15   8h 20m     2 stops   \n",
+      "\n",
+      "                   Additional_Info    Price  \n",
+      "0                          No info  13882.0  \n",
+      "1                          No info   6218.0  \n",
+      "2                          No info  13302.0  \n",
+      "3                          No info   3873.0  \n",
+      "4      In-flight meal not included  11087.0  \n",
+      "...                            ...      ...  \n",
+      "10655                      No info   4107.0  \n",
+      "10656                      No info   4145.0  \n",
+      "10657                          NaN   7229.0  \n",
+      "10658                      No info  12648.0  \n",
+      "10659                      No info  11753.0  \n",
+      "\n",
+      "[10660 rows x 11 columns]>\n"
+     ]
+    }
+   ],
+   "source": [
+    "import pandas as pd\n",
+    "\n",
+    "ruta = './data/planes.csv'\n",
+    "planes = pd.read_csv(ruta)\n",
+    "print(planes.head)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "85eedc83",
+   "metadata": {},
+   "source": [
+    "#### Instrucciones\n",
+    "\n",
+    "1.  Imprime el número de valores perdidos en cada columna del DataFrame"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "id": "aeed51d2",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Airline            427\n",
+      "Date_of_Journey    322\n",
+      "Source             187\n",
+      "Destination        347\n",
+      "Route              256\n",
+      "Dep_Time           260\n",
+      "Arrival_Time       194\n",
+      "Duration           214\n",
+      "Total_Stops        212\n",
+      "Additional_Info    589\n",
+      "Price              616\n",
+      "dtype: int64\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Count the number of missing values in each column\n",
+    "print(planes.isna().sum())"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "10d1f1e3",
+   "metadata": {},
+   "source": [
+    "2.  Calcula a cuántas observaciones equivale el cinco porciento del DataFrame `planes`"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "id": "a51c3447",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "533.0\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Find the five percent threshold\n",
+    "threshold = len(planes) * 0.05\n",
+    "print(threshold)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "0b986154",
+   "metadata": {},
+   "source": [
+    "3.  \n",
+    "\n",
+    "-   Crea `cols_to_drop` aplicando una indexación booleana a las columnas del DataFrame con valores perdidos menores o iguales que el umbral.\n",
+    "\n",
+    "-   Utiliza este filtro para eliminar los valores que faltan y guardar el DataFrame actualizado."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "id": "28bbf1ce",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Index(['Airline', 'Date_of_Journey', 'Source', 'Destination', 'Route',\n",
+      "       'Dep_Time', 'Arrival_Time', 'Duration', 'Total_Stops'],\n",
+      "      dtype='object')\n",
+      "Airline              0\n",
+      "Date_of_Journey      0\n",
+      "Source               0\n",
+      "Destination          0\n",
+      "Route                0\n",
+      "Dep_Time             0\n",
+      "Arrival_Time         0\n",
+      "Duration             0\n",
+      "Total_Stops          0\n",
+      "Additional_Info    300\n",
+      "Price              368\n",
+      "dtype: int64\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Create a filter\n",
+    "cols_to_drop = planes.columns[planes.isna().sum() <= threshold]\n",
+    "print(cols_to_drop)\n",
+    "\n",
+    "# Drop missing values for columns below the threshold\n",
+    "planes.dropna(subset=cols_to_drop, inplace=True)\n",
+    "\n",
+    "print(planes.isna().sum())"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "474f552c",
+   "metadata": {},
+   "source": [
+    "Al crear un umbral de valores faltantes y usarlo para filtrar columnas, haz logrado eliminar los valores faltantes de todas las columnas excepto `\"Additinal_Info\"` y `\"Price\"`.\n",
+    "\n",
+    "### Estrategias para datos que faltan\n",
+    "\n",
+    "La regla del cinco porciento ha funcionado muy bien en tu conjunto de dato `planes`, ¡eliminando los valores perdidos de nueve de las 11 columnas!\n",
+    "\n",
+    "Ahora tienes que decidir qué hacer con las columnas `\"Additional_Info\"` y `\"Price\"`, a las que les faltan los valores `300` y `368` respectivamente.\n",
+    "\n",
+    "Primero echarás un vistazo a lo que contiene `\"Additional_Info\"`, y después visualizarás el precio de los billetes de avión de distintas compañías aéreas."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "id": "4e987db1",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import matplotlib.pyplot as plt\n",
+    "import seaborn as sns"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "1c85d664",
+   "metadata": {},
+   "source": [
+    "#### Instrucciones\n",
+    "\n",
+    "1.  Imprime los valores y frecuencias de `\"Additional_Info\"`."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 15,
+   "id": "15402488",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Additional_Info\n",
+      "No info                         6399\n",
+      "In-flight meal not included     1525\n",
+      "No check-in baggage included     258\n",
+      "1 Long layover                    14\n",
+      "Change airports                    7\n",
+      "No Info                            2\n",
+      "Business class                     1\n",
+      "Red-eye flight                     1\n",
+      "2 Long layover                     1\n",
+      "Name: count, dtype: int64\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Check the values of the Additional_Info column\n",
+    "print(planes['Additional_Info'].value_counts())"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "e7d2615f",
+   "metadata": {},
+   "source": [
+    "2.  Crea un boxplot de `\"Price\"` frente a `\"Airline\"`"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 16,
+   "id": "150e73ce",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "image/png": "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7dvbG0I96rle13IACF0gphyMxNGald/lrn3KKxWWd955p7npppvMkiVL7GvlypWzQZqbBil0lulHkq3jLEvFNhIVL17cdkF1/wDwhsohjSTfuXNnW0Ptpud6XcvJGQMQukCsfv365tVXX8322htvvGGb9Q7HgQMHzN69e+0cadKwYUPbPLhv3774Okrur1u3rg2S1Nuydu3aZt68efHlWtdpjkzVNgD4l26adAOoWrBk1DNby50bMAAITSD22GOPme7du5uuXbuazMxMW5uln7///e95+v9PP/202bBhg/1906ZNdlqeEiVKxEeH79Spk50rTUNLaEA0DSmhHo633nprfBv6P3pNy7SO1lWNVceOHVO2DQD+pTQCneM//PBD0uUrVqywy52UBAAITSB25pln2toljQHWunVrW6M1e/ZsmwyfF7NmzTINGjSwY3fpcf369fb/V69e3S7XHGkaUuLTTz+1CfFt27a1gZ8S+h333nuvufHGG+0yraMmiJkzZ5qyZcumbBsA/EvnuCa2njJlis3ZdNNzva7lzLkIwM+Y4ugIMMUR4I9ek8o1VU6YmiNVE6YgbOvWrTZpPzGfNcyY9BuIyFyTTzzxhB2FXjVjji+//NLMmTPH1jJFhdeBGIUu8Fswpt6RqtFWTpiaI1UT1rNnz8gEYdoHo0ePtmVwVPcBEKlA7IQTTrDTB7mHflBAcMYZZ9jxfKLCq0DMKXQ/+eST+GtqIqbQRZRF9cYksVZQnReUNxfVWkEgEoGYeh0mG2tLhV+Uuop7EYip0FVeW1ZW1kHL1OFh3LhxFLpAhDz00EN2AFsFXO5hPFQuKUCrVauWGTBggKfvEYiijDzGCIeVrH/88cebBQsWZHtNz2vWrHk4m0M+aFBZJwhTzeRVV11lH0WvazmAaGAsNSD48j8CqzGmR48e9gR//PHHTb169cz3339v7r//fjuEBQqOCtOVK1fa3zWVi3v8JDVFqFeolmu9KDXNAFGVn7HUKBOAEAViGglfuQfdunUzu3fvtsM93H777XbOSBScL774wj5Wq1btoIJXz/W6hgLReu3atfPoXQLwYiw1lQGJeXKMpQaENBDTia3BW/WzefNmO54YCp7yQJymYVm3bp3tHKGmyRo1atimYQViznoAojGW2oQJE+yYiXPnzo33mtT8vZr/l7HUgBAGYm4EYYVHA+a+9NJLZuHChXb0f/ek4/oenKlc8jqwLoDgu+yyy0zv3r3tbCUXX3yxadKkic3Z1eDUmraNlgogJIHYaaedZr799tt4jUyRIkWSrhel4SsKm+bA1H7XHa+CsJIlS5o9e/bYR9VMipYzVyYQHTNmzLA9pdU78p133jFvvvlmvEZMteNa3rRpU6/fJoAjDcQefPDB+O95nVMSqacusM50LgrC3I/OcgDR6jXZp08f0759+4NyxFQrpk5VdOABQhCIdenSxT6qqlsX+8svv9zWxKDwKCcscU69RFqu9ZQzBiDc6DUJRDBHrFixYnb4imuuuaZg3hFy5G72Pe+880ynTp3MkiVL7IwGr7/+enykfa1HIAZEp9fkV199ZcaPH3/QFEennnoqvSaBMCbrN2jQwHz33XfmlFNOSf07Qo40rZFj4MCB9tHJB9Oj5v901jvrrLM8epcACotquZScr7k21XtaTZTOFEeTJ0+2PSmVH0ZtGBCyQOzqq6+2vfbUG6d27dqmaNH/DdDfpk2bVL4/uKgrukPJ+pUrV872PNl6AKJBs9VlZmaaX375xT4exux1ADxwWHNNugOvbBv7/x59UVHYc03efPPN8Z6rxYsXt8m5jRs3tsNZKCl379698R6u7tozAOGkJHwNX6FUkVmzZsV7T0vVqlVN27ZtzdSpU23PSWrFgJBM+q2q7vnz55vmzZubc845x0SZF5N+O82PuX1HAMJP+aDXXXedLX90I+zuzKOyScW7yimNP+jMSQvAXzFCvpomNb+h5pNUk5h64YwbN84WAig8qglzar5yWg4gGpwkfDVFahwx9W5354hpHDEFaCTrA/6VvI0xB8OGDTMTJ040mzZtMv/85z/N008/XXDvDEm1bNnyiJYDCB+lizz11FP2/C9RooR91HO9Tq4Y4G/5apqsUKGCrQlzcsGqV69uNm7caKLKy6bJRx991M4v9/3335t69eqZG264wdx///12GU2TQDQoZ1S5owq+VBuuskhFuspolU2qPc/KyrI5o8odBRDwpskDBw7EpzbS2DQa3BWFR1OXiHPHm1j7pddV6Gq9Dh06ePQuAXjBfU+tcpqaMCAY8hWIaSqdhx56KFu0534uAwYMSN27QzZffPGFfVQNWDInn3yy+c9//mPXIxADwk9zTIpaKDSe2L///e94AKaBnjXQq3s9AAEPxDSJrOY1c2jQUPfznCYCR2qcffbZ5vPPP7fNkcksX748vh6A6FAgNm/ePHPJJZfYgGzBggXm3XffjdRwQkAkArGPP/644N4JcqVarieeeMI2PyogczdN6rled9YDEH7K2XVugpWa8NZbb9nUBD1XTooCMdWQMdckELKR9eGd1q1b24BYifkqeNUcqZowJwjTciCqg5sq4NBQDVEJOjT3r5x//vk2h1cddRR4qbekxnrU44cffhhfD4D/cHYGjHLwlJenYEzBl3LCHArCyNFD1Pz000+2V6DSJBSMKPhQ7+KePXuGPjfK6TCluX9ffPFFc99998WDUXWo6tGjR7b1AIRkiiN4N3yFm8Z0mzNnjp3h4Prrry/0vw/4IQhTwKUATOejM3SDzkcFZJoMO8zBmGoBlYpQsmRJU61aNdO5c2dz4oknmhUrVpgpU6aY9evX205Waq6MSi0hEOrhK+APmmJq8ODB8XnlNJbQ9OnTbXNl06ZNvX57QKHRINMq5DR9T+Ko8pr+R8uHDBliwkrBlWr/9Jlr1qxpHnvssXitoDrtaBwx7ROCMMC/qBELWI2YgrDevXvbnI82bdrEc8SUB6Lmh6FDhxKMIRJUG6RegprcWrXDOhcdOidVS6xZQN5+++1QByJRrxUEgh4j5GuKI3hPI+or90PB1uzZs83w4cPto57rdS0HokABiFx22WXZgjDRc73uXi/MFHi5B3F1gjGGFAL8j0AsQNatW2fv8FW4KvfjjjvuMIMGDbKPeq7XtVzrAVGj4/7LL7+M3PGvGq/y5cubRo0a2Row0aOe63UtB+Bf5IgFiHJeRM0sygd55pln7DhBqgnTYLs7duwwW7dutevVqFHD67cLFCinue3VV1+1OZJbtmyJL6tSpYrNj9LNSZib5dQ8qyErlKyvuSb79u0bz5NTsr72iQJTrRfm5lkgyAjEAqRSpUr2UQHXzz//bPr06ZOt0NXr7vUQHVEcQ0uf89RTTzXLli2zzxs2bGjOPPNMO83P4sWL7WtaHub9oe9cuWE650eOHBlvolW5oCR+DV+hsoIBXQH/IhALkLS0NPuoWjA1SarZQQWsRtg//fTTba8x93qIzhhaGsbEqR0999xzIzGGlmzcuNE+KhF2yZIlNgBzEtWVKOssDytnoNbGjRsnzZPT6wrEGNAV8C/OzgBxF6Zdu3aNJ+aKOymXQjc6Qdhf/vIXWxuSWDuq11VDEuZgTE1uaopX7+HEUeVVM+aMKq/1wtpU7wzUqrkl1TMrseeoXnevB8B/uGIHiLswTRx1xP2cQjcalISdU5OUAjEtD/NMC07OpD6vgrHE5tkPPvjABmJhzpnUZ1XAqc+t77xjx46mcuXKNjds2rRp9nXVkmq9qIhiMz2CjUAsQNyFqWq9zjvvPHPssceaDRs2mE8++SQegEWp0I0qXWw0pY9qwpI1SWmE9ccffzzUSdoaxFVU66NATJ/T/VkXLlyYbb0wD+iqPLmdO3eaJ598MluHBaUvhD1PzhH1ZnoEF8NXBJDugJs1a2bnm9QI4nrUc6frOsJPd/y62KgGLBlNc6PlWi+sVMulwVxnzpyZrcek6Lle1/Kw1oY5NF6absYUiLVr187ceuut9lGdd/S6M55aFJrpVfupm5OxY8fax9WrV9vXozCWHIKLK3eAOIVJiRIl7LhhyoPRMBZ61HO97l4P4eVM6qycsGQ012AUmqQ0rZdqgq+55hrzxBNP2OZIPeq5XtfysJsxY0a8HNDgzs8995x9dMoHLY9SM3379u3tDYoe9VyvM5Ya/IymyQAqU6aMWblypf0R9YoS5YZkZmZ6/O5QGNTUpGYXJearaSoxSVuva3nYm6Q0o4Sm9dKMEprYWj+imrAozL3qbqJW4JGYH6VawbA3UdNMj6AjEAsQJ8/BaYZRT0knR0zJ+s7r5ENEg3Jf1OyiH11s1BypmjAFYepNqCFOokDB1muvvWZ7R6ppSjlhYW+OzKmJOjFPzt1EHdYgJD/N9GHdBwg2ArEAcRciqm6/5ZZb4hffUaNG2Ytv4noILwXcanpRs4vu+N0JygrCohaQK/iKSgCWrIk6WSAShSZq9sHBonhTEmQEYgEyceLE+O9qglRzjDNuknsQV613/fXXe/QuUZgUbGmICrrsR1NiE7VT8+MEJ1FooqaZ/n/mz59vBg8ebDZv3hx/LSrN9EFWJJY4IBXyTCN366TXya6RvAvazTffbL799ltTvXp1c8opp9gBLDWQpQIxpwu7kvZPO+00240bQPipc47KBpUFKotUpCttQWWTygaVBWGvHXUPbpysmT7sgxs7QVjv3r3t0EbKF2zSpIkd2kV5guq4olxKgjF/xggEYj4JxPbs2WOrkw9Ficia4FiF7Lhx48yvv/5qu6yXK1fOJvDfeOONthC+6qqrTIcOHQ65LVVXa6JgAMEPQpQvqEBMZZK7llyParoOexDi7Ad9ViXuR3EcsSuvvNJs377dTJ061Xbccih3WL2IK1SoYHMpUXgIxAIWiKkHZLdu3UxhGT9+vKlTp06h/T0g1TcmqRTkG5OHHnrIjpelWp/EpknVEtWqVSvUMywkimIzvc6Va6+91t6A33fffQct15AuupF/+eWXyRnzYYxAjphP6ORQcJQbJWF///339nfVjDnNEE48Xa9ePdOvX788/T3AzxcWbkzyP3SDnkd96IbEnqNR4Ez3pebIZDT5uwKxME/3FWQEYj6hu/G8XAjGjBljbrvtNvP111/Hgy/nsUGDBmb48OEF/l4Bv9yYJDZN6SbkcHqMBvXi5AzdoMDjwQcfPGh6nwsvvJChGyIgcbqvRFGY7ivICMQCyAm2nnnmGZszppywO+64w+u3BRT6jUkyCsKCWLt1JJN+q+mxWrVqtmZMQzhoKAclqg8cODByQzdEkXu6r+7dux+UIxaV6b6CikAswJQPoEAst8R8AOGkWi5ddJWkrQm/nQuwgjHNP6skbfUkpDYs/DREhXpN6jtXr0k1R6omzOk1GYXpvoKKQAwAAkq5X6rxUA3iPffcYzp27GiDMb02bdo0O5SBfo9SjlhURX26ryAjEAOAgFLul4at6NWrl82pU62YQxdgva6LMzli0RDl6b6CjEAMAAKeIzZixAibI6YZNapUqWJHVp8+fbp9XcvJEYuWKE73FWQEYgAQshwx0WwbyhfSa9SGAf5V1Is/2rdvX1O/fn07Irym69FYN2vXrs22jqpVL730UluA6A5PQzZkZWVlW+e5554ztWvXtuPlKDFRU/6kehvwP+W/6Lt2j6EERClHTLlgyhFTYvby5cvto57rdU3xw7kB+JcngZgzRY+qzzV3op67e/4p50EBlHr7/Pzzz3ZsFAVI7hGDX3nlFfO3v/3N5kXobrBHjx7m4osvjgd0qdgG/E3jRmnspMsuu8xcd9119lGjjOt1IEo5YjruNYK+Bm9VOaZHPdf54YwjBsCnYj6waNEijUga27p1q33+8ccfx4oVKxbbtGlTfJ3p06fHSpcuHcvIyLDPW7duHbvrrruybadhw4axAQMGpGwbibKysmLp6enxny1bttj3rd+98OOPP8bOPfdc+xg1a9eujV166aWxG264Ifbuu+/Gli9fbh/1XK9rOaIliufDzp07bTmmY995vnr1avsoel3LnedRkLgPAK8oNshLjOBJjVii999/3969OQmlixcvNnXr1rXNiQ6NiaP5mpzpfbRO8+bNs21H6yxatChl20ikEbvVhOn8uPMxULg0ua9qOzW/nsbM0bhJetRzva7lQNgp7UIj6GvwVpVteq6ecnrUc72u5VHIEaOGHEHleSA2e/Zs88gjj5hRo0bFX9u5c6edKd7NCdK07FDr5LY8P9tIpOlTVLg5P8rNgHfz6ym3UAGxmzO/npaTF4Mo6Nmzp80D0wTf7hwxPdfrWh52Crb0eZUrqtkFxo4dax81GbpeJxiDn3naa/Ktt96ydy4vvfSSrc1wKIlfOVtuTo6Dlh1qndyW52cbiYoXL25/4I/59VQLlsyJJ57I/HoIvD179tjxoPJCN4nKeX3sscdszpimNVLnIwUhe/fuNStXrsx1GxruQAPDBr2G3Lk5U/mgnqPaB1quaaAAP/IsEJs0aZIdbHDq1KmmXbt22ZY1bNjQFhyqcXKa/+bPn29PsHr16sXXmTdvnq39cGgdjSydqm3An1RrqQuN5tNLFoytWLGC+fUQeArCunXrdlj/VzciKtv0k1fqtBTEOTqdGnLVgOVUQ67OC8wuAL8q5tWk1WrLV42Y8hcS6bVTTz3Vzpv17LPP2poNtfWrN1BaWppdR0Hcn//8Zxs0nXnmmebFF1+0uV833nhjyrYB/+fF6I7XXfhGLS8G4aUaKgVH+aEmONWOKZ9Vk5/n9+8FETXkCDpPArHbb7/djm9z0UUXZXv93XfftRdQjQStebIUKGmcMVWX667miSeeiK979dVXmw0bNtimzY0bN5rTTjvNvP322+b444+3y1OxDfiX8l7U5KAffa8qbFUTpiBMeTG6EAFBpjLrcGuoFIQFsXYrFTXkqvlS0KXXFXhRQw6/8yQQi8XUo/PQ1ItSQdGhaIBW/RTkNuBPutAoH0S5H2p20B2vClsF8odTGwAg2DXkEyZMsGNFzp07N14etGjRwqxatSpyNeSJwSj8jSmOEFgKtpSAS6EDRJuGqlAailo4NCh3kyZN7CDe6j26b98+O8tAFKhpevTo0WbOnDnZbk7VgsDNqX8RiCHwFHwRgAHRNWPGDBtoqBXknXfesWkpTo2YhrDQ8qZNm5ooDOGh3qPquKBmWjXXKl1Dr6sFgWDMnwjEAACB5e41qWGQEmvIVSsWhV6TDOERXJ4P6AoAQKp6TbpnF0jsNRlWDHIdbARiCDwVLhpRm0IGiB53r8lkotBrMj9DeMB/aJpEYJGYCoBxBRnkOuioEUMgMbccAEfU59tMnPzdLSrBaJARiCHwialK0NVdoB71XK9rOYBojSuoXpNKzNcMKnrU86j0Fox6MBpkNE0icJhbDkCiqI8r6B7k2j35O4Nc+x+BGAKHueUA5CTq4wq6Z67Jyyw28B5NkwgcekkBQM55s3379rV5s3okb9b/CMQQOCSmAkB25M0GF4EYAonEVAD4DQO6Bhs5YghNYmrRokXtOEIkpgKIct5sYocF8mb9jUAMgUYyKoCoc/Jmv/rqKzN+/PiDBrk+9dRTyZv1MQIxBJIST2+++WZbE+YEY3qcN2+eWbBggR1xn1oxAFGgWq4mTZrYFoLjjz/eDu2j2jF1aJo0aZL59NNPTdOmTakN8ylyxBBIw4YNM7/++qupUqWKuf/++20PIT3quV7XcgCImiJFithH5wbVeQ7/okYMgaP8B1XBK+hSzZeTnKo7QOWIXXfddbZmjAFdAUSByjq1BKiT0rJly+yA1u6mSfWefOGFFygTfYpADIHjjIdz+eWXJ+0hpNdffPFFu95pp53m0bsEgMJN1m/evLnp0qXLQcn66lU+atQokvV9iqZJAABCNMi1gq0TTjghHnQxyLW/EYghcJwk/BkzZiQd0FWvu9cDgDBjkOtgo2kSgaPCRFXw8+fPN7fccosdwHXnzp2mXLlydgTpLVu22OUUOgCiQvlhGtBaPxrAVWOHqSZMQZjKSI2vCH8iEEMg3XXXXTYXYtWqVfHXFIzpx1kOAFEc5DoxWZ9Brv2NQAyBpCAst+UaOwcAokLB1oABAw5K1oe/EYgh0OrXr2/69etn1qxZY5NTdef3zTffeP22AMAzCr4IwIKDQAyB88c//jH+u3LCunbtmq0a3r3ev/71L4/eJQAAuSMQQ+D88ssv8d9VE3bHHXfYwV03b95spk+fnnQ9AAD8iEAMgVO9evV4kFWzZk3zzDPPxGvEWrRoYVauXBlfDwAAPyMQQ+CMGTPGXHLJJfZ3TXWkyb9LlChhsrKy7DL3egAQZHv27DHr1q0rtL9Xo0YNU7JkyUL7eyAQKzBqJlPPlcKY6sd5LEhK/FTznx+oN5BDwdeIESNyXC8qCav0kgLCSUFYt27dCu3vjR8/3tSpU6fQ/h4IxAosCOvcpavZk5lRKH9PvQYLWsm0UmbK5Em+CMaKFSuW0vWCTEG4Jj6fM2dOtg4LGtyRcYOA4FMNlYKj/JYLui4czvhh+nthsCtAN6fhv1J5dAAoCMs8+QJzIK2cCbqimTuNWT7Lfi4/BGL79u1L6XpBpcJWo2ir52ifPn3MSSedZOea00jael2DOxKMAcGmZsLDraHS+R+12q2fAnhzSiBWgBSExUoHf5LVA8ZfMjMzU7peUGkEbQVhCrhKly5tX1Mw1qpVKxuIabkGdwSAKPgpoDenBGIInA8//DD+e5EiRUwsFov/Ls5zrVevXj0TRqqd/Oyzz2xh4wRhDj3XXHOa5kTr+aFanpxJAAXt+YDenBKIIXA0dpjj+OOPN1dddZWpXLmynez71VdfjS93rxc2yn1QtbsKmWQ04a+W+6HDgoKwrp07m4w9e0KTM1mqZEkzacoUgjHAJ3YF7ObUjUAMgdOoUSPb/u+MI/bUU0/ZWrCiRYuaM888Mx6Aab2wUgKqch9U7Z4sGFuxYoVdrvW8poJPQZhmB61kgm+rMWbynj2+yZkEYAJ1c5qIQAyBo1owx9y5c+O/HzhwINtz93pho4JECajKfVC1u/sOMD093b6u5X4qcBSEHWt+az4Ott+avgH4R8UA3ZwmKur1GwDyS5N7p3K9oFIvoK1bt9rch2nTptlqeT3quV7XciBqVFOpWvGCzkmEf29O09PTsy3z682pgxoxBE5ex7kJy3g4OVHvn4cfftgMHjzYNs86qlatal/3Y+8goKAEcdgCpJa+a92I6kc5YWqOVE2YgjDdnGpcNT8iEEPg5HW6D60X5mBMF55HHnnE9hK64YYb4h0WVCum1/3aVRtItaAOW4DU0nes71q9I5WY7w7ID2dw28JCIIbAWbZsWZ7XC3Mglqyrtlx44YW+7qoNpFpQhy1A6inY0ncdpJH1yRFD4GzcuDH+e/HixbMtcz93rxfWrtqqfteFR7V/X375pX10umprOXkyCLvEc8GNcyG6jj76aJsn7PcgTKgRQ+D8+OOP8d/37t1rp/AoU6aM+fXXX83KlSuTrhfWrtp79uwxnTp1smN1uXPE1FTp167aQCoFedgCQAjEEDgVKlTI9twdfB1qvTBRdbvGTRs6dKitBWzXrp05+eSTzfLly+2MAnpdy/3YVTuqmF2gYAR52AIUnIkTJ9qOG+ecc465/vrrjZ8RiCFw8jptUVinN3IugsWKFTNZWVl24NrZs2eb9957z15wmjRpYr766iu7nBoAf7CzC3TpajIyM8Izu0BaKTNp8iTPg7EgjqmHgnPbbbeZr7/+Ov7822+/NS+88IJp0KCBGT58uPEjAjEETuIYMUe6XhApF0xBmCxatMhccMEF8Z5iH3zwgX1dy8PeczQo7OwCmRmm5UlXmLJpwa+Z2Z25zXz+w3TfzC7gHrbgiiuusO9Jwe/06dN9PWwBUisxCHPT61rux2CMQKwAFcncacLAb59DeVGpXC+InGmc1PyqWrCZM2fGl+kitG/fPrN9+3a7HoGYfygIK1/K+8AlbBhTD+IEYRrKR3myTkA+YcIEO7RPTkGa1wjEClCp5bO8fguhtGrVqpSuF0Tqqi+qkShZsqQpUqSInW9Tj6oJdIJQZz0gzBhTDxMnToz/ftppp5mnn37aTnunXNmzzz47Pj+x1vNbzhiBWAHKOPkCE0srZ8JQI+anoLJcuez7tHz58qZatWpm/fr1ZseOHTmuFyZpaWn2Ub3BdNFRweI0TaqgWbt2bbb1gDBjTD188skn8d8157CCsGRzEGs9ArEIURAWKx38fBC/cdfyKCFdwZcTgOm5muUS1wsbfU7HL7/8Yr755hvbe1KPep5sPSDM44hpRP2cxhHTKOtaj4T98GrQoIH5/vvv7e9qGejQoYPtuLRgwQLz7rvvZlvPbyilETjunCcn6Er2PMy5UU7gWbZsWVvr9eabb9ofUV5EZmam2b17t10vzPsBYBwxyFVXXWVeffVV+7tqQa+++mr7e5s2bUzt2rXNs88+G1/PbwjEEDhKTk/lekGmnpFObpjzmJGRYQe6BaKAccSQOAexgi71jtRNqF5X2ejwY09yAjEEjqatSOV6QeQkHisQ092+U9DoUbVhek1BGQnKCDJ1OnFfYHPSuHFj2zOuVq1a2fIidS7odS1X7zn3DBTJ6AKtzi8Inp07s/fuV1n4888/57peZAOxl19+2Tz33HNmyZIltt1ed+/uXBZnvA+17SoRW2PEqAuyLizODu7fv78dpE1NL2oHHjFihDn99NNTug3404YNG/K8nt/ufFJFTSw6rnXsKuhyc56rswJNMQgyBWHdunXL8/o333xzjr0q87Kd8ePH2ynTEDynnnqqfdR0dxrk2uklKRpdX+Mtaho8Zz0T9UBMVcS9evWyTSg9evTItkyBmaZrufHGG+1I4apuvuiii+xF5+6777brDBkyxIwdO9YuV1W0esPo/3z33Xc2ZyYV24B/vfXWW/Hf1eSgrslOUPLFF1/EAxGtpxMyjHSMu3uIJqPlJCgjyHQjpeAorzder7zyir35doYt0A22coWOPfbYPP89BFONGjVsBy0N4KvxE++55574MCbKHVMQpuV+/I49CcQU8MjHH3980LLXX3/dXkgHDhxoa8nq169v7rvvPvPMM8/EgyjVXN177712mWjdMWPG2DFj1C01FduAf2k+RYdOLPWYcg/guGnTpoPWC5u8ziWo9TSmjh9ssf/+L1cjqH77HCgMaibMaw2V1jvrrLPM0qVL7Y2+coRo4YiWBx54wAZgGr5HA/s6ebPu5X7kuxyxxYsX21oMd1Nls2bNzI8//mjbdrVjNVBn8+bN48u1rv6Pqh4VRKViG8moCdXdK081eih87hNL3dLVRV13QMoJ02Cm3bt3P2i9sNHdnaNmzZrmmmuuiY8iPXXq1HhuhHs9r03x+g0gEtQ05X5EdDRt2tQ8+eST5tFHH43fkOt6rxv0+++/3y73I98FYgqUNG2Lm9PbxQmiJNk6ThJeKraRjOYr0yjN8DY5t0WLFmblypX2dwVdGsxVNZsaQ0uDuiZbL2zJuapud+jOv0SJErZ7fsOGDe3Exx07djxoPa911tQjJvi0RwkqAX9q2rSpee211+x1xLlB92NzpK8DMSUYJza76ALjLHOCKM2jl7iOagZStY1k+vXrZwcNdNeIqQ0a3iXnioIvdwDmmDx5sv0JY3Luxo0b47937drVHotONXypUqWSruc1nSnHmjDUUga/eRUIY+/ZRMoN1P/N7Ybc6xt03wViuqOfNGmSbQJ0mhbnz59v6tatG5+yRoOzzZs3z9Z4iNZVc6TTpJiKbSSjkcv1A++Tc9XZQjVgOVENmXIA8/L3gkjd9B1OECZ6dDeZu9eD93Zn/nZDGHRh+RwI7w36kSjsG3RPAjEl0ivfSmMgiSJWBUJqXunUqZPp27evHWpCiXUajE8X3bvuuiv+/5WIqdc0Yq5GTf773/9uAySnOSYV24C/k3M1/IkCra+++uqgZcr903cbZu7eoO7BChOfh7XXaFB9/sN0r98CPKY8TvVmLkhOi1BeO/UcCfXKVn6qX3rPOvTZ1YqllKL8jqdY2DfongRimpT4T3/6U/y5M1zERx99ZFq3bm2HlLj11ltts59qsG655ZZ4b0fRBVgHctu2bW1Ol9qEZ86cGd+ODowj3Qb8zwm2Ro0aZZsgu3TpYr9nwK9annSFKZtWMRQ1YgSVhxeEde3S1WRkFk5HLwUiBa1UWikzafKkAg3GSuaj92wiBWF+Tz/xJBDT+F76yYkm5XQPSZBIeTAa90s/BbkNBIOGQ1Eg5gyLEgVOzmNe1mMcMf9QEFa+VMHWHsC/dPOvIOwvja41x5SuZIJuY/pWM3LRy/ZzFXStWJj5LkcMQO7cQ7OkYj0AhUdBWI2yx3j9NuATlNIFqGjmTnPAhONzwF/c49mlYj0AgDcIxAqAmoJKppUyZvksExb6PDRx+ce///3vg8bA0xxqy5Yty9ZsqfXCPPk5AAQdgVgBUFv5lMmTCqVnzOH2CvFjzxjknbu3qObZVPA1d+7c+HNnHkqtp7n2AAD+RCBWQBS0FFbgEoReIUgtZ6YISZz82/3cvR4AwH8IxIAAymuQTy0m4M/ehmEQls/hNQIxIIB+//vfHzQci8ba0eDI7gFdE9cD4D0N+QA4CMSAAEqcB03BV2ZmZq7reWlrSOZppA4ARyps44jhyBCIAQGU18m8/TDptzp6lCpZ0kzes8eEhT4PvYhxuBhHDG4EYkAAHXPMMSldryApT23SlCn0IgaAJAjEgAD65ZdfUrpeQaMXMQAkVzSH1wH42Pvvv5/S9QAA3iAQAwIor0n4fkrWBwAcjKZJIIDOO++8bKPrH2o9+MfuzP9NPxVkYfkcgB8QiAEBdNRRR6V0PRRCz9G0UubzH6absNDnyW/P0c2bNxdKpw33Y0Gi0wZSgUAMBYqCt2Bs2LAhpeuhEHqORnz+WZUFXbp0STreXUHQfihoaWlpZvLkyb4oE4KE60J2BGIo0JPtui6dTXrmntAUvKXTSpqXJk8p0IJXo+OvW7fukOu89957edqW1mvduvUh16lRowa5ZIUg6j1HdeFVENaoSnlTuljwa2rT9+03izbvsJ+LQCzvCMgPRiCGAqMCSkHY3Q12m2NL7zdBtyH9KPPU16bAC14FYd26dSu0bY0fP953F22El4KwsiW49ESVE5DXr1/flCpVygRdRkaG+eabb47ousDZgAKnIOy4sge8fhuBoRoqBUeHMnz4cDNv3rxct9WsWTNz22235fr3AKAwKQgrW7as12/DFwjEAJ9RM2FuNVRDhw41rVq1ynVbWi+I8tI8m8qcEJpnAXiFQAwIqIoVK5pt27YdcnlQHUnz7OHkhNA8C8ArBGJAQL3xxhvm8ssvTxqMKQjT8jA3z6b67wGAFwjEgABzgq3evXvbnDHlhAW1OTK/zbNAUG1M32rCICyfw2sEYkAIKCFfTXm5JeYD8H5g35GLXjZRHthX0tPTTRikp+BzEIihwG1ID8eUpmH5HICX0vfuM1H9HAzs+z9Lly4tkPcTRARiKHBPfZ3/uyUA4bRoy04TZVEf2Ndx+umnm9KlS5sw1IgdaVBJIIYCd3eDXebY0gdCUSNGUAkcmUaVy5nSxYuFokYs6kHlkVAQxjhivwn+2QDfUxAW5QFdmVcN+B8FYYysD/wPZwNQwEFY566dzZ6M8My3WbJUSTNlUsHOtwkAUUEghkKZozGqn0M1YQrC9p+935gw1MLvNmbPF3uY6BjAEc/RGAYZKfgcBGIo0Cas0mkl7UTZYaHPczhdtW0QVr4g3hEABIfKz7S0NDtRdlikpaUd3nXh/xGIocCoxuSlyVPoqg0gLn3ffhMGYfkchU3l5+TJk7kuuBCIoUDRVfv/7TbhEJbPAc9qQhZt3mHC4khrQqKK60J2BGJAITjqi3DkyQGHi5qQw7Nnzx6zbt26QutFrXlXNcUYCg+BGFDABXWJtBImKzPLhIU+D7UAOBzUhOSfgjBNX1ZYvajHjx8fiv0WJARiQAHSReflyS9TCwAcBmqDfntPCo4K8+/5zZ6QHwcEYkABoxYAODzUBhkbEPjtPRW2dSE/DgjEAAC+RG0QonAcEIgBAHyJ2iBE4Tgo6vUbAAAAiCoCMQAAAI8QiAEhsGzZsmyPAIBgIEcMvhL2bsqpNmnSJPP888+bWCxmnz/66KPmscceMz179jRdu3b1+u0BAHJBIAZfCXs35VQHYaNHj7a/V6tWzaxfvz7+6LxOMBZc3JQA0UAg5hMUutHoppzKY0E1YTJw4EBTtGhRG4jefvvt5sCBA+bBBx+0y88+++zAHgtRx00JEA1FYk6bBvItIyPDlC5d2qSnp5tSpUod0bZWrlx52IXu4aDQ9S+OBRzuzdmRICAHvIkRCMR8EohR6CI/x8Ibb7xhXn/9dXPhhRcmbX586aWXzKxZs0ynTp3M5ZdffshtcSwAgHcxAk2TPhH2AeuQ2mPhvPPOs4GYekkmW/e7776Lr8dxBQD+xfAVQAA1atTIFClSxKxZs8b88MMP2ZbpuV7Xcq0HAPAvasSAgNIQFeod2b17d3PCCSeYZs2amXnz5tkgzFkOAPA3AjEgoJzcMPWOVPDlBGCqCWMcMQAIBpL1fZKsDxyJRYsWmSVLlpgzzjiD5kgA8AF6TRYCAjEAAHAkMQLJ+gAAAB6JfCCmCsGHH37YjqVUpkwZ06pVK7N06VKv3xYAAIiAyAdiQ4YMMWPHjjXvvfee2bx5s2nZsqVp166d2b17t9dvDQAAhFzkA7ERI0aYe++919SvX9+24WrevqysLDNt2rSD1t27d69t83X/AAAAHK5IB2I7duwwq1atMs2bN4+/VqxYMdvrTL3QEg0aNMgm3jk/lStXLuR3DAAAwiTSgdjOnTvtY4UKFbK9XrFixfgyt379+tneD87Pli1bCu29AgCA8In0gK7lypWzj9u3b8/2+rZt20zNmjUPWr948eL2BwAAIBUiXSNWvnx5U7t2bTstjGPfvn1m8eLFDIoJAAAKXKQDMenVq5ftOakhK5R8r6EsVOvVsWNHr98aAAAIuUg3TYp6TO7atcu0bdvW5oU1bdrUzJw505QtWzbX/+tMSkDvSQAA4ObEBrlNYMQUR0dg69at9JwEAAA5Use+SpUq5bicQOwIHDhwwCb6p6WlmSJFingSbSsQ1Jcc5bku2Q/sA2EfsA+EfcA+8Ms+UHiVmZlpR2YoWjTnTLDIN00eCe3YQ0W5hUUHWVRPNjf2A/tA2AfsA2EfsA/8sA805mhuIp+sDwAA4BUCMQAAAI8QiAWYpmPScBt6jDL2A/tA2AfsA2EfsA+Ctg9I1gcAAPAINWIAAAAeIRADAADwCIEYAACARwjEAuSiiy4yAwcO9PpteO66664zN954Y/z573//ezN+/HgTZn7/7lu3bm0eeOCBQ65zyy23mJtuuinP2xw3bpw57rjjTBAMHjzYXHjhhUe0jfzun1TSftb+ljVr1tgp3n788UcTdvqcH3/8sfGzKJRvfjwvCvXYULI+8qdbt26xrl275mndhx9+ONayZcs8b/uhhx5S54nYyJEjY2F13nnnxfr163fY/1/7Xt/BoYwbN87u96OPPjpWrly52EknnRT705/+FFu4cGHMCz/++GPs2muvjVWvXj1WpkwZ+3jRRRfF1q1bV+jv5aOPPrLHmH5GjRqVbdnOnTtjZcuWtcuWL19uX1u5cmW253n5TrX+rFmzjuh9/vOf/4zVrFkzFiZjx461+6ZPnz4p22Yq9rX2s/a3X3z99dexzp072/OkdOnS9v21adPG7r/8atWqld1H//3vf2N+c8UVV8Quv/zypMt0jJx22mn5Pq/37t0bC5qxBXBeOG644Qa77XfffTfmV9SI+ci+ffvMCy+8YKdlGDlyZL7//969ewvkfQXNzTffbPr27Wt69eplVq5caXbs2GHmzJljzj77bPPGG2948p4uvvhic/TRR5ulS5ea3bt3m0WLFpk//vGPnkyN5fjd735nRo8ene21iRMnmlq1ann2nvwsKyvroNcUB+m8zasRI0bY83vs2LFmz549h9x2VM/vjz76yDRv3txUrVrVnre7du0yK1asMP369TPTp0/P17b+85//mE8//fSwytT9+/fbaewK0l/+8hfz1ltvmZ9++inb6zoedIxoeWHLy7GYaiNyOC/y4lDnhaY3mjp1qt22/oZveR0JBr1GLCMjI3b//ffH6tatG6tQoULs3HPPjde6vPTSS7HixYvHihYtamtB9PPpp5/muN2pU6fGihUrFnvvvfdsBP/ZZ5/lWuvw5JNPxlq0aGHvGidPnhyrUqVKbObMmfH3VqpUKXvX5bjlllti3bt3t79/88039i5T/0e1Rs2bN4998MEH8XXPOeecWP/+/bO9h1deeSV2zDHHxPbs2RNbvXq1rdWpWLGi/f+///3vD/n5kn2OWrVqxR555BG7HdXEaD++/vrr2db/xz/+ETv++ONj5cuXj/Xo0SN29dVXZ6sR0zZeeOEF+/ucOXPsfvnwww9zfR/btm2L/fnPf7Z325UrV461b98+tmzZsliqbd682b6nBQsWHPJOVsdLnTp17OfUd7Zhw4Ycv/u1a9fGunTpYt+7av3OOOOM+Pb37dsXGzJkSOzUU0+130vjxo1js2fPPujv3XfffbEaNWrEvvzyy9jbb79tv38dqzoe3DVgJUqUsM91jOkYvvnmmw+q6XW/v9/97nd2/bS0NLu+9muymmR9b6oBPv/88+16On6cYzdZjVhunysZ1YJ06NAhduyx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",
+      "text/plain": [
+       "<Figure size 672x480 with 1 Axes>"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    }
+   ],
+   "source": [
+    "# Create a box plot of Price by Airline\n",
+    "sns.boxplot(data=planes, x='Airline', y='Price',\n",
+    "            hue='Airline', legend=False)\n",
+    "\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "c8261489",
+   "metadata": {},
+   "source": [
+    "3.  **Pregunta**\n",
+    "\n",
+    "-   ¿Cómo debes tratar los valores que faltan en `\"Additional_Info\"` y `\"Price\"`.?\n",
+    "\n",
+    "**Respuestas Posibles**\n",
+    "\n",
+    "-   [ ] Elimina la columna `\"Additional_Info\"` e imputa la media para los valores que faltan de `\"Price\"`.\n",
+    "-   [ ] Elimina los valores de `\"No info\"` de `\"Additiona_Info\"` e imputa la mediana de los valores que faltan de `\"Price\"`.\n",
+    "-   [ ] Elimina la columna `\"Additional_Info\"` e imputa la media por `\"Airline\"` para los valores que falten de `\"Price\"`.\n",
+    "-   [x] Elimina la columna `\"Additional_Info\"` e imputa la mediana por `\"Airline\"` para los valores que falten de `\"Price\"`.\n",
+    "\n",
+    "No necesitamos la columna `\"Additional_Info\"`, y deberías imputar la mediana de `\"Price\"` por `\"Airline\"` para representar los datos con precisión.\n",
+    "\n",
+    "### Imputar los precios de los aviones que faltan\n",
+    "\n",
+    "!Ahora solo queda una columna con valores perdidos!\n",
+    "\n",
+    "Has eliminado la columna `\"Additional_Info\"` de `planes`, el último paso es imputar los datos que faltan en la columna `\"Price\"` del conjunto de datos.\n",
+    "\n",
+    "Como recordatorio, tú generaste este diagrama de caja, que sugería que imputar el precio medio basándose en el `\"Airline\"` ¡es un enfoque sólido!"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 17,
+   "id": "d5c55fbf",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "Index(['Airline', 'Date_of_Journey', 'Source', 'Destination', 'Route',\n",
+       "       'Dep_Time', 'Arrival_Time', 'Duration', 'Total_Stops', 'Price'],\n",
+       "      dtype='object')"
+      ]
+     },
+     "execution_count": 8,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# Eliminamos la columna Additional_Info\n",
+    "planes = planes.drop('Additional_Info', axis=1)\n",
+    "planes.columns"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "b0e7dd8b",
+   "metadata": {},
+   "source": [
+    "#### Instrucciones\n",
+    "\n",
+    "1.  Agrupa `planes` por aerolínea y calcula el precio medio."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 18,
+   "id": "da9a7250",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Airline\n",
+      "Air Asia              5192.0\n",
+      "Air India             9443.0\n",
+      "GoAir                 5003.5\n",
+      "IndiGo                5054.0\n",
+      "Jet Airways          11507.0\n",
+      "Multiple carriers    10197.0\n",
+      "SpiceJet              3873.0\n",
+      "Vistara               8028.0\n",
+      "Name: Price, dtype: float64\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Calculate median plane ticket prices by Airplane\n",
+    "airline_prices = planes.groupby('Airline')['Price'].median()\n",
+    "\n",
+    "print(airline_prices)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "b64b592a",
+   "metadata": {},
+   "source": [
+    "2.  Convierte los precios medios agrupados en un diccionario."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 19,
+   "id": "2c984c12",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "{'Air Asia': 5192.0, 'Air India': 9443.0, 'GoAir': 5003.5, 'IndiGo': 5054.0, 'Jet Airways': 11507.0, 'Multiple carriers': 10197.0, 'SpiceJet': 3873.0, 'Vistara': 8028.0}\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Convert to a dictionary\n",
+    "prices_dict = airline_prices.to_dict()\n",
+    "print(prices_dict)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "6ead96fc",
+   "metadata": {},
+   "source": [
+    "3.  \n",
+    "\n",
+    "-   Imputa condicionalmente los valores perdidos de `\"Price\"` asignando los valores de la columna `\"Airline\"` en función de `prices_dict`\n",
+    "\n",
+    "-   Comprueba si faltan valores"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 20,
+   "id": "0fe40a70",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Airline            0\n",
+      "Date_of_Journey    0\n",
+      "Source             0\n",
+      "Destination        0\n",
+      "Route              0\n",
+      "Dep_Time           0\n",
+      "Arrival_Time       0\n",
+      "Duration           0\n",
+      "Total_Stops        0\n",
+      "Price              0\n",
+      "dtype: int64\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Map the dictionary to missing values of Price by Airline\n",
+    "planes['Price'] = planes['Price'].fillna(planes['Airline'].map(prices_dict))\n",
+    "\n",
+    "# Check for missing values\n",
+    "print(planes.isna().sum())"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "002514d0",
+   "metadata": {},
+   "source": [
+    "Convertiste un DataFrame agrupado a un diccionario y luego lo usaste para llenar condicionalmente los valores faltantes de `\"Price\"` basándote en `\"Airline\"`. Ahora vamos a explorar cómo realizar análisis exploratorio en datos categóricos.\n",
+    "\n",
+    "## Convertir y analizar datos categóricos\n",
+    "\n",
+    "-   Previsualizar los datos"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 21,
+   "id": "8e45f993",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#| echo: true\n",
+    "#| eval: false\n",
+    "print(salaries.select_dtypes('object').head())"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "a8f8d79e",
+   "metadata": {},
+   "source": [
+    "![](images/paste-29.png)\n",
+    "\n",
+    "-   Títulos de los trabajos"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 22,
+   "id": "deb2af87",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#| echo: true\n",
+    "#| eval: false\n",
+    "print(salaries['Designation'].value_counts())"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "88efe1e6",
+   "metadata": {},
+   "source": [
+    "![](images/paste-30.png)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 23,
+   "id": "3fcbcd8d",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# | echo: true\n",
+    "# | eval: false\n",
+    "print(salaries['Designation'].nunique())"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "8d2b17d6",
+   "metadata": {},
+   "source": [
+    "![](images/paste-31.png)\n",
+    "\n",
+    "![](images/paste-32.png)\n",
+    "\n",
+    "-   Extrayendo valores desde las categorías\n",
+    "\n",
+    "    -   El formato actual de los datos limita la capacidad de generar información.\n",
+    "\n",
+    "    -   `pandas.Series.str.contains()`\n",
+    "\n",
+    "        -   Busca en una columna una cadena especifica o múltiples cadenas."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 24,
+   "id": "97ca189d",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#| echo: true\n",
+    "#| eval: false\n",
+    "salaries['Designation'].str.contains('Scientist')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "bfee01fc",
+   "metadata": {},
+   "source": [
+    "![](images/paste-33.png)\n",
+    "\n",
+    "-   Filtrar filas que contienen una o más frases\n",
+    "\n",
+    "    -   Palabras de interes: Machine Learning o AI"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 25,
+   "id": "9b277d59",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#| echo: true\n",
+    "#| eval: false\n",
+    "salaries['Designation'].str.contains('Machine Learning|AI')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "a153baaa",
+   "metadata": {},
+   "source": [
+    "![](images/paste-34.png)\n",
+    "\n",
+    "-   Buscar múltiples frases en una cadena de caracteres\n",
+    "\n",
+    "    -   Palabras de interes: Cualquiera que inicie con Data"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 26,
+   "id": "95bb5729",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# | echo: true\n",
+    "# | eval: false\n",
+    "salaries['Designation'].str.contains('ˆData')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "43ad0932",
+   "metadata": {},
+   "source": [
+    "![](images/paste-35.png)\n",
+    "\n",
+    "Ahora que se tiene una idea de cómo funciona este método, definamos una lista de títulos de trabajo que queremos encontrar:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 27,
+   "id": "e8d184b4",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#| echo: true\n",
+    "#| eval: false\n",
+    "job_categories = ['Data Science', 'Data Analytics',\n",
+    "                   'Data Engineering', 'Machine Learning',\n",
+    "                   'Managerial', 'Consultant']"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "d23961b6",
+   "metadata": {},
+   "source": [
+    "Luego necesitamos crear variables que contengan nuestros filtros"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 28,
+   "id": "9ee25f41",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#| echo: true\n",
+    "#| eval: false\n",
+    "data_science = 'Data Scientist|NLP'\n",
+    "data_analyst = 'Analyst|Analytics'\n",
+    "data_engineer = 'Data Engineer|ETL|Architect|Infrastructure'\n",
+    "ml_engineer = 'Machine Learning|ML|Bid Data|AI'\n",
+    "manager = 'Manager|Head|Director|Lead|Principal|Staff'\n",
+    "consultant = 'Consultant|Freelance'"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "32928712",
+   "metadata": {},
+   "source": [
+    "El siguiente paso es crear una lista con nuestro rango de condiciones para el método `str.contains`"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 29,
+   "id": "80715e10",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#| echo: true\n",
+    "#| eval: false\n",
+    "conditions = [\n",
+    "    (salaries['Designation'].str.contains(data_science)),\n",
+    "    (salaries['Designation'].str.contains(data_analyst)),\n",
+    "    (salaries['Designation'].str.contains(data_engineer)),\n",
+    "    (salaries['Designation'].str.contains(ml_engineer)),\n",
+    "    (salaries['Designation'].str.contains(manager)),\n",
+    "    (salaries['Designation'].str.contains(consultant))\n",
+    "]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "052ae8d0",
+   "metadata": {},
+   "source": [
+    "Finalmente, podemos crear nuestra nueva columna `Job_Category` usando la función de selección de Numpy"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 30,
+   "id": "afbc45d1",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#| echo: true\n",
+    "#| eval: false\n",
+    "salaries['Job_Category'] = np.select(conditions,\n",
+    "                                     job_categories,\n",
+    "                                     default='Other')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "5e397a9c",
+   "metadata": {},
+   "source": [
+    "Al obtener una vista previa de la Designación y nuestra nueva columna Job_Category, podemos verificar los primeros cinco valores."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 31,
+   "id": "87f63cf8",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#| echo: true\n",
+    "#| eval: false\n",
+    "print(salaries[['Designation', 'Job_Category']].head())"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "b0a84828",
+   "metadata": {},
+   "source": [
+    "![](images/paste-36.png)\n",
+    "\n",
+    "-   Visualización de la frecuencia de la categoría job"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 32,
+   "id": "cbd166b5",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#| echo: true\n",
+    "#| eval: false\n",
+    "sns.countplot(data=salaries, x='Job_Category')\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "1bd7a9e8",
+   "metadata": {},
+   "source": [
+    "![](images/paste-37.png)\n",
+    "\n",
+    "### Encontrar el número de valores únicos\n",
+    "\n",
+    "Te gustaría practicar algunas de las habilidades de manipulación y análisis de datos categóricos que acabas de ver. Para ayudarte a identificar qué datos podrían reformatearse para extraer valor, vas a averiguar qué columnas no numéricas del conjunto de datos `planes` tienen un gran número de valores únicos.\n",
+    "\n",
+    "#### Instrucciones\n",
+    "\n",
+    "-   Filtra `planes` para las columnas que sean del tipo datos `\"object\"`.\n",
+    "\n",
+    "-   Recorre las columnas del conjunto de datos.\n",
+    "\n",
+    "-   Añade el iterador de columna a la sentencia print y, a continucación, llama a la función para que devuelva el número de valores únicos de la columna."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 33,
+   "id": "0deb2756",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Number of unique values in Airline column: 8\n",
+      "Number of unique values in Date_of_Journey column: 44\n",
+      "Number of unique values in Source column: 5\n",
+      "Number of unique values in Destination column: 6\n",
+      "Number of unique values in Route column: 122\n",
+      "Number of unique values in Dep_Time column: 218\n",
+      "Number of unique values in Arrival_Time column: 1220\n",
+      "Number of unique values in Duration column: 362\n",
+      "Number of unique values in Total_Stops column: 5\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Filter the DataFrame for objects columns\n",
+    "non_numeric = planes.select_dtypes('object')\n",
+    "\n",
+    "# Loop through columns\n",
+    "for column in non_numeric.columns:\n",
+    "    # Print the number of unique values\n",
+    "    print(f\"Number of unique values in {column} column: {non_numeric[column].nunique()}\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "8919194e",
+   "metadata": {},
+   "source": [
+    "Curiosamente, `\"Duration\"` es actualmente una columna de tipo objeto cuando debería ser una columna numérica, ¡y tiene 362 valores únicos! Vamos a averiguar más sobre esta columna.\n",
+    "\n",
+    "### Categoría de duración de vuelos\n",
+    "\n",
+    "Como has visto, hay 362 valores únicos en la columna `\"Duration\"` de `planes`. Llamando a `planes['Duration'].head()`, vemos los siguientes valores."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 34,
+   "id": "99ae894e",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "0        19h\n",
+       "1     5h 25m\n",
+       "2     4h 45m\n",
+       "3     2h 25m\n",
+       "4    15h 30m\n",
+       "Name: Duration, dtype: object"
+      ]
+     },
+     "execution_count": 13,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "#| echo: false\n",
+    "planes['Duration'].head()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "9893ea75",
+   "metadata": {},
+   "source": [
+    "Parece que no será sencillo convertirlo a números. Sin embargo, ¡podrías clasificar los vuelos por duración y examinar la frecuencia de las distintas longitudes de vuelo!\n",
+    "\n",
+    "Crearás una columna `\"Duration_Category\"` en el DataFrame `planes`. Antes tendrás que crear una lista de valores que deseas insertar en el DataFrame, seguida de los valores existentes a partir de los cuales deben crearse.\n",
+    "\n",
+    "#### Instrucciones\n",
+    "\n",
+    "1.  Crea una lista de categorías que contengan `\"Short-haul\"`, `\"Medium\"` y `\"Long-haul\"`."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 35,
+   "id": "15deec7d",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Create a list of categories\n",
+    "flight_categories = ['Short-haul', 'Medium', 'Long-haul']"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "b7e03999",
+   "metadata": {},
+   "source": [
+    "2.  \n",
+    "\n",
+    "-   Crea `short_flights`, una cadena para capturar valores de `\"0h\"`, `\"1h\"`, `\"2h\"`, `\"3h\"`, `\"4h\"` teniendo cuidado de evitar valores como `\"10h\"`.\n",
+    "\n",
+    "-   Crea `medium_flights` para capturar cualquier valor entre cinco y nueve horas. \\~\n",
+    "\n",
+    "-   Crea `long_flights` para capturar cualquier valor comprendido entre 10 y 16 horas, ambos inclusive."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 36,
+   "id": "34dbe4ad",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Create a list of categories\n",
+    "flight_categories = ['Short-haul', 'Medium', 'Long-haul']\n",
+    "\n",
+    "# Create short-haul values\n",
+    "short_flights = '^0h|^1h|^2h|^3h|^4h'\n",
+    "\n",
+    "# Create medium-haul values\n",
+    "medium_flights = '^5h|^6h|^7h|^8h|^9h'\n",
+    "\n",
+    "# Create long-haul values\n",
+    "long_flights = '^10h|^11h|^12h|^13h|^14h|^15h|^16h'"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "13ddc3ae",
+   "metadata": {},
+   "source": [
+    "Ahora has creado tus categorías y valores, es hora de agregar condicionalmente las categorías en el DataFrame\n",
+    "\n",
+    "### Añadir categorías de duración\n",
+    "\n",
+    "Ahora que has configurado las categorías y los valores que quieres capturar, ¡es hora de construir una nueva columna para analizar la frecuencia de los vuelos según su duración!\n",
+    "\n",
+    "Las variables`flight_categories`, `short_flights`, `medium_flights` y `long_flights` que creaste anteriormente están a tu disposición."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 37,
+   "id": "c6be0085",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import numpy as np"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "3b80961c",
+   "metadata": {},
+   "source": [
+    "#### Instrucciones\n",
+    "\n",
+    "-   Crea `conditions`, una lista que contenga subconjuntos de `planes['Duration']` basados en `short_flights`, `medium_flights` y `long_flights`.\n",
+    "\n",
+    "-   Crea la columna `\"Duration_Category\"` llamando a una función que acepte tu lista `conditions` y `flight_categories`, estableciendo los valores no encontrados en `\"Extreme duration\"`.\n",
+    "\n",
+    "-   Crea un gráfico fque muestre el recuento de cada categoría."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 38,
+   "id": "5c05ec74",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "image/png": "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/Pz8cNmECRMiaWlpMetUeb0sixcvDudlZ2e7eR999FFM2fPOOy8yb968cF1t27aNWd65c+fInXfeedx61q9f7273798/Mm7cuJj7PPzww5HLLrusyP195513IrVq1Yrk5uaG89544w23Tm13cft0yy23RAYPHhzebt269XGPW5ROnTpFnnzyyfC2Huftt98udt1//vOfIwkJCZEvv/wyZp817y9/+UtY/tJLL41ZR9euXSOPPvpo5FR+H6anp0d27NgRady4cSQnJydy4403RqZMmRK+nzZv3hy5++67IzfccEPMfefPnx9p165d+P8ZZ5wROXr0aLhcz3/0YaLw66vXcvbs2THrjH6dli9f7m5v3749XP7zn/880r59+5j7dOjQITJz5sxKe07ild7PDz30UKRbt27u2JOcnBwZPXp05MiRI+Fz/cknn4TlMzIyIhdccIH7/7PPPov5/EteXp47Pr300kvh69uyZctIQUFBzOMW9ToX914cOnRozLzmzZtHXn755TJ9zqPfr4Fgv4JjZ1HHmJoo+NxHO3bsWCQxMTHy2muvHfccP/LII+7/5557zr139NoHxowZE+nXr5/7f9WqVe44v2/fvnD5okWLYo7zRanIsfXqq6+O3HvvvcUe4wu/H7TtrVq1ipxKqMmqhOsjqjYpetIvgICqY1WDpaY9VZ2W9TIEquoNBL8C9etfzY3BpGaA6F8nanqJ1rBhw5h5uh1U54t+0T7xxBMx69Qvj+I60eqxVP2s6uWitrM8Ct9Pv3rvuOMON19V1NoW/eLRL6KyUq2ImlG0jdG//nVbv9oDagaJpucleE5OZWoCUBW/LoquZuHbbrstZrleb/3SjH69f/azn7lfq8Hrq+Yd1QSe6OtbWOH3YVHv1Xh4DXzT+1mXCVOttmoDVMOg2uRHHnmkyPd39POqz4eoy0FANVZqNo7+fOh2aX28VD76ZJ/o2u+SPl+V8TlH8bKzs+3w4cMxr7Gcd955Ma+xmor12hf1Gul7RcdRNelFf49Fi37t1RJSltf+q6++ct+XasrWd4hee9WSxvtrz4WHPFMzycsvv+y+8IYPH+6aTIKQUqtW8Rk3elnQ30LNA6q2ryxar85UUj+usn6J6yCpg3uwD4Xb6PXBPHjwYMw89Yk644wzYuYV3vdx48a5ams1h+qLXgd59UmLvupTaQd+3U/b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",
+      "text/plain": [
+       "<Figure size 672x480 with 1 Axes>"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    }
+   ],
+   "source": [
+    "# Create conditions for values in flight_categories to be created\n",
+    "conditions = [\n",
+    "    (planes['Duration'].str.contains(short_flights)),\n",
+    "    (planes['Duration'].str.contains(medium_flights)),\n",
+    "    (planes['Duration'].str.contains(long_flights))\n",
+    "]\n",
+    "\n",
+    "# Apply the conditions list to the flight_categories\n",
+    "planes['Duration_Category'] = np.select(conditions, flight_categories,\n",
+    "                                        default='Extreme duration')\n",
+    "\n",
+    "# Plot the counts of each categoryß\n",
+    "sns.countplot(data=planes, x='Duration_Category',\n",
+    "              hue='Duration_Category', legend=False)\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "a2c7cd57",
+   "metadata": {},
+   "source": [
+    "¡Está claro que la mayoría de los vuelos son de corta distancia.\n",
+    "\n",
+    "## Trabajar con datos numéricos\n",
+    "\n",
+    "-   El dataset origina de los salarios"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 39,
+   "id": "9db27c5b",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#| echo: true\n",
+    "#| eval: false\n",
+    "print(salaries.info())"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "f2d3835a",
+   "metadata": {},
+   "source": [
+    "![](images/paste-38.png)\n",
+    "\n",
+    "-   Salario en Rupias"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 40,
+   "id": "10667672",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#| echo: true\n",
+    "#| eval: false\n",
+    "print(salaries['Salary_In_Rupees'].head())"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "c6606bf0",
+   "metadata": {},
+   "source": [
+    "![](images/paste-39.png)\n",
+    "\n",
+    "-   Convirtiendo cadena de caracteres en números\n",
+    "\n",
+    "    -   Remover las comas de los valores `Salary_In_Rupees`\n",
+    "\n",
+    "    -   Convertir la columna a tipo de dato `float`\n",
+    "\n",
+    "    -   Crear una nueva columna convirtiendo la moneda a dólares"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 41,
+   "id": "24d48c70",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#| echo: true\n",
+    "#| eval: false\n",
+    "pd.Series.str.replace('Caracter a remover', 'Caracter a reemplazar')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 42,
+   "id": "b7fba024",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#| echo: true\n",
+    "#| eval: false\n",
+    "salaries['Salary_In_Rupees'] = salaries['Salary_In_Rupees'].str.replace(',', '')\n",
+    "print(salaries['Salary_In_Rupees'].head())"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "645cac1e",
+   "metadata": {},
+   "source": [
+    "![](images/paste-40.png)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 43,
+   "id": "ce5d7c3d",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#| echo: true\n",
+    "#| eval: false\n",
+    "salaries['Salary_In_Rupees'] = salaries['Salary_In_Rupees'].astype(float) "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "7191cf33",
+   "metadata": {},
+   "source": [
+    "1 Indian Rupee = 0.012 US Dollars"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 44,
+   "id": "bfdcd708",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#| echo: true\n",
+    "#| eval: false\n",
+    "salaries['Salary_USD'] = salaries['Salary_In_Rupees'] * 0.012"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "ac2d0c3e",
+   "metadata": {},
+   "source": [
+    "-   Previsualizando la nueva columna"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 45,
+   "id": "496bce5c",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#| echo: true\n",
+    "#| eval: false\n",
+    "print(salaries[['Salary_In_Rupees', 'Salary_USD']].head())"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "3603dc13",
+   "metadata": {},
+   "source": [
+    "![](images/paste-41.png)\n",
+    "\n",
+    "-   Añadiendo un resumen esrtadístico al DataFrame"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 46,
+   "id": "46709df7",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#| echo: true\n",
+    "#| eval: false\n",
+    "salaries.groupby('Company_Size')['Salary_USD'].mean()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "2a28af6b",
+   "metadata": {},
+   "source": [
+    "![](images/paste-42.png)\n",
+    "\n",
+    "Calculo de la desviación estándar de los salarios por experiencia:\n",
+    "\n",
+    "![](images/paste-43.png)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 47,
+   "id": "619ca756",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#| echo: true\n",
+    "#| eval: false\n",
+    "salaries['std_dev'] = salaries.groupby('Experience') \\ \n",
+    "                      ['Salary_USD'].transform(lambda x: x.std())"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 48,
+   "id": "2de2b512",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#| echo: true\n",
+    "#| eval: false\n",
+    "print(salaries[['Experience', 'std_dev']].value_counts())"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "3478548e",
+   "metadata": {},
+   "source": [
+    "![](images/paste-44.png)\n",
+    "\n",
+    "Repitamos el proceso para otros datos estadísticos:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 49,
+   "id": "0d4e35a2",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#| echo: true\n",
+    "#| eval: false\n",
+    "salaries['median_by_comp_size'] = salaries.groupby('Company_Size') \\\n",
+    "                                  ['Salary_USD'].transform(lambda x: x.median())"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 50,
+   "id": "de413228",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#| echo: true\n",
+    "#| eval: false\n",
+    "print(salaries[['Company_Size', 'median_by_comp_size']].head())"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "d3a5e8d5",
+   "metadata": {},
+   "source": [
+    "![](images/paste-45.png)\n",
+    "\n",
+    "### Duración del vuelo\n",
+    "\n",
+    "Te gustaría analizar la duración de los vuelos, pero por desgracia, la columna `\"Duration\"` de DataFrame `planes` contiene actualmente valores de cadena.\n",
+    "\n",
+    "Tendrás que limpiar la columna y convertirla al tipo de datos correcto para el análisis."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 51,
+   "id": "cc3b7647",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import re\n",
+    "\n",
+    "def duration_to_decimal_str(duration_str: str) -> str:\n",
+    "    '''\n",
+    "    Convierte una duración de vuelo de formato '2h 30m' a una cadena en formato decimal en horas, como '2.5h'.\n",
+    "    \n",
+    "    Parámetros:\n",
+    "    -----------\n",
+    "    duration_str : str\n",
+    "        Cadena de texto que representa la duración de un vuelo, como '2h 30m', '45m', '19h', etc.\n",
+    "\n",
+    "    Retorna:\n",
+    "    --------\n",
+    "    str\n",
+    "        Cadena con duración expresada en horas decimales, con un solo decimal y el sufijo 'h'. Ej: '2.5h'\n",
+    "    '''\n",
+    "    horas = re.search(r'(\\d+)\\s*h', duration_str)\n",
+    "    minutos = re.search(r'(\\d+)\\s*m', duration_str)\n",
+    "\n",
+    "    h = int(horas.group(1)) if horas else 0\n",
+    "    m = int(minutos.group(1)) if minutos else 0\n",
+    "\n",
+    "    decimal_hours = round(h + m / 60, 1)\n",
+    "    return f'{decimal_hours}h'\n",
+    "\n",
+    "\n",
+    "\n",
+    "planes['Duration'] = planes['Duration'].apply(duration_to_decimal_str)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "99cc1e9a",
+   "metadata": {},
+   "source": [
+    "#### Instrucciones\n",
+    "\n",
+    "1.  Imprime los cinco primeros valores de la columna `\"Duration\"`."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 52,
+   "id": "e309c8d8",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "0    19.0h\n",
+      "1     5.4h\n",
+      "2     4.8h\n",
+      "3     2.4h\n",
+      "4    15.5h\n",
+      "Name: Duration, dtype: object\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Preview the column\n",
+    "print(planes['Duration'].head())"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "479cd809",
+   "metadata": {},
+   "source": [
+    "2.  Retira `\"h\"` de la columna"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 53,
+   "id": "3c121888",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "0    19.0\n",
+      "1     5.4\n",
+      "2     4.8\n",
+      "3     2.4\n",
+      "4    15.5\n",
+      "Name: Duration, dtype: object\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Remove the string character\n",
+    "planes['Duration'] = planes['Duration'].str.replace('h', '')\n",
+    "print(planes['Duration'].head())"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "773c5932",
+   "metadata": {},
+   "source": [
+    "3.  Convierte la columna al tipo de datos `float`."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 54,
+   "id": "05f1d758",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "0    19.0\n",
+      "1     5.4\n",
+      "2     4.8\n",
+      "3     2.4\n",
+      "4    15.5\n",
+      "Name: Duration, dtype: float64\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Convert to float data type\n",
+    "planes['Duration'] = planes['Duration'].astype(float)\n",
+    "print(planes['Duration'].head())"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "6c4ec014",
+   "metadata": {},
+   "source": [
+    "4.  Traza un histograma de los valores de `\"Duration\"`"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 55,
+   "id": "e778a61e",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "image/png": "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",
+      "text/plain": [
+       "<Figure size 672x480 with 1 Axes>"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    }
+   ],
+   "source": [
+    "# Plot a histogram\n",
+    "sns.histplot(data=planes, x='Duration')\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "d0c2a7d7",
+   "metadata": {},
+   "source": [
+    "### Añadir estadísticas descriptivas\n",
+    "\n",
+    "Ahora `\"Duration\"` y `\"Price\"`contienen valores numéricos en el DataFrame `planes`, y te gustaría calcular para ellos estadísticas de resumen condicionadas a los valores de otras columnas.\n",
+    "\n",
+    "#### Instrucciones\n",
+    "\n",
+    "1.  Añade una columna a `planes` que contenga la desviación estándar de `\"Price\"` basada en `\"Airline\"`."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 56,
+   "id": "4ead36e2",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Airline            airline_price_st_dev\n",
+      "Jet Airways        4159.846432             3082\n",
+      "IndiGo             2245.529140             1632\n",
+      "Air India          3692.609285             1399\n",
+      "Multiple carriers  3558.323763              959\n",
+      "SpiceJet           1798.900648              653\n",
+      "Vistara            2888.915498              376\n",
+      "Air Asia           1979.826234              260\n",
+      "GoAir              2764.926625              147\n",
+      "Name: count, dtype: int64\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Price standard deviation by Airline\n",
+    "planes['airline_price_st_dev'] = planes.groupby('Airline')['Price'].transform(lambda x: x.std())\n",
+    "print(planes[['Airline', 'airline_price_st_dev']].value_counts())"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "3d40cb21",
+   "metadata": {},
+   "source": [
+    "2.  Calcula la mediana de `\"Duration\"` en `\"Airline\"`, almacenándola como una columna llamada `\"airline_median_duration\"`."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 57,
+   "id": "d1ac7d48",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Airline            airline_median_duration\n",
+      "Jet Airways        13.3                       3082\n",
+      "IndiGo             2.9                        1632\n",
+      "Air India          15.5                       1399\n",
+      "Multiple carriers  10.2                        959\n",
+      "SpiceJet           2.5                         653\n",
+      "Vistara            3.2                         376\n",
+      "Air Asia           2.8                         260\n",
+      "GoAir              2.9                         147\n",
+      "Name: count, dtype: int64\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Median Duration by Airline\n",
+    "planes['airline_median_duration'] = planes.groupby('Airline')['Duration'].transform(lambda x: x.median())\n",
+    "print(planes[['Airline', 'airline_median_duration']].value_counts())"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "2af68fda",
+   "metadata": {},
+   "source": [
+    "3.  Encuenta la media `\"Price\"` por `\"Destination\"`, guardándola como una columna llamada `\"price_destination_mean\"`."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 58,
+   "id": "bf6315be",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Destination  price_destination_mean\n",
+      "Cochin       10473.585927              3631\n",
+      "Banglore     9093.622872               2291\n",
+      "Delhi        5248.541082                998\n",
+      "New Delhi    11579.306944               720\n",
+      "Hyderabad    5190.274021                562\n",
+      "Kolkata      4907.156863                306\n",
+      "Name: count, dtype: int64\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Mean Price by Destination\n",
+    "planes['price_destination_mean'] = planes.groupby('Destination')['Price'].transform(lambda x: x.mean())\n",
+    "print(planes[['Destination', 'price_destination_mean']].value_counts())"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "8971fe03",
+   "metadata": {},
+   "source": [
+    "Parece que Jet Airways tiene la mayor desviación estándar en precio, Air India tiene la mayor duración median, y Nueva Delhi, en promedio, es el destiono más caro. Ahora veamos cómo manejar los datos atípicos.\n",
+    "\n",
+    "## Gestión de valores atípicos\n",
+    "\n",
+    "-   Qué es un outlier?\n",
+    "    -   Es una observación que está muy alejada de otros puntos de datos.\n",
+    "-   Usando estadística descriptiva"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 59,
+   "id": "dd183d1a",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#| echo: true\n",
+    "#| eval: false\n",
+    "print(salaries['Salary_USD'].describe())"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "bd30a0d2",
+   "metadata": {},
+   "source": [
+    "![](images/paste-46.png)\n",
+    "\n",
+    "-   Usando el rango intercuartil\n",
+    "\n",
+    "    -   Rango intercuartil (IQR)\n",
+    "\n",
+    "        -   IQR = 75th - 25th percentil\n",
+    "\n",
+    "        -   Upper outliers \\> 75th percentile + (1.5 \\* IQR)\n",
+    "\n",
+    "        -   Lower Outliers \\< 25th percentile - (1.5 \\* IQR)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 60,
+   "id": "05e53622",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#| echo: true\n",
+    "#| eval: false\n",
+    "sns.boxplot(data=salaries, y='Salaary_USD')\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "60774e7d",
+   "metadata": {},
+   "source": [
+    "![](images/paste-47.png)\n",
+    "\n",
+    "-   Identificando Umbrales"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 61,
+   "id": "bd164c5c",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#| echo: true\n",
+    "#| eval: false\n",
+    "# 75th percentil\n",
+    "seventy_fifth = salaries['Salary_USD'].quantile(0.75)\n",
+    "\n",
+    "# 25th percentil\n",
+    "twenty_fifth = salaries['Salary_USD'].quantile(0.25)\n",
+    "\n",
+    "# Interquartil range\n",
+    "salaries_iqr = seventy_fifth - twenty_fifth\n",
+    "\n",
+    "print(salaries_iqr)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "94ace0ba",
+   "metadata": {},
+   "source": [
+    "![](images/paste-48.png)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 62,
+   "id": "8ba0b7d4",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#| echo: true\n",
+    "#| eval: false\n",
+    "# Upper threshold\n",
+    "upper = seventy_fifth + (1.5 * salaries_iqr)\n",
+    "\n",
+    "# Lower threshold\n",
+    "lower = twenty_fifth - (1.5 * salaries_iqr)\n",
+    "\n",
+    "print(upper, lower)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "55f33cd1",
+   "metadata": {},
+   "source": [
+    "![](images/paste-49.png)\n",
+    "\n",
+    "-   Subdividiendo nuestros datos"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 63,
+   "id": "054617fe",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#| echo: true\n",
+    "#| eval: false\n",
+    "salaries[(salaries['Salary_USD'] < lower) | (salaries['Salary_USD'] > upper)] \\\n",
+    "        [['Experience', 'Employee_Location', 'Salary_USD']]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "50fa6b1c",
+   "metadata": {},
+   "source": [
+    "![](images/paste-50.png)\n",
+    "\n",
+    "-   ¿ Por qué buscar los Outliers?\n",
+    "\n",
+    "    -   Los Outliers son valores extremos\n",
+    "\n",
+    "        -   Pueden no representar con precisión los datos\n",
+    "\n",
+    "    -   Pueden sesgar la media y la desviación estándar\n",
+    "\n",
+    "    -   Pruebas de estadística y modelos de machine learning requieren datos que tengan una distribución normal y no esten sesgados.\n",
+    "\n",
+    "-   Qué hacer con los Outliers?\n",
+    "\n",
+    "    -   Preguntas que nos debemos hacer:\n",
+    "\n",
+    "        -   Por qué existen los outliers?\n",
+    "\n",
+    "        -   Los valores son precisos?\n",
+    "\n",
+    "-   Eliminación de Outliers"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 64,
+   "id": "1bf76d44",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#| echo: true\n",
+    "#| eval: false\n",
+    "no_outliers = salaries[(salaries['Salar_USD'] > lower) & (salaries['Salary_USD'] < upper)]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 65,
+   "id": "eeb7c1bd",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#| echo: true\n",
+    "#| eval: false\n",
+    "print(no_outliers['Salary_USD'].describe())"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "7ac6d98c",
+   "metadata": {},
+   "source": [
+    "![](images/paste-51.png)\n",
+    "\n",
+    "-   Distribución de Salarios\n",
+    "\n",
+    "![](images/paste-52.png)\n",
+    "\n",
+    "### Qué hacer con los valores atípicos?\n",
+    "\n",
+    "Identificar los valores atípicos es un paso integral en la realización de análisis exploratorios de datos.\n",
+    "\n",
+    "En este ejercicio, se te presentarán escenarios en los que hay valores atípicos, y tendrás que decidir qué acción debes tomar.\n",
+    "\n",
+    "#### Instrucciones\n",
+    "\n",
+    "-   Coloca cada escenario en el cubo adecuado en función del enfoque que deba adaptarse para tratar los valores atípicos.\n",
+    "\n",
+    "    | Elimina los valores atípicos | Dejar los valores atípicos en el conjunto de datos |\n",
+    "    |----|----|\n",
+    "    | Un sensor de temperatura tiene un registro de 100 grados Celsius, pero el sensor solo funciona correctamente a temperaturas de hasta 80 grados. | se registran las alturas de distintos animales y uno de ellos es más de 1.5 veces la IQR más el percentil 75. |\n",
+    "    | La velocidad de un coche se registra como 5000 km/h. | Los países tienen una superficie total media de 667.143 km2, pero un país tiene 1.637.687 km2. |\n",
+    "    | Un participante en un estudio tiene una edad de menos 35 años. | Un jugador de baloncesto hace una media de 35 puntos por partido cuando la media en toda la liga es de solo 10 puntos por partido. |\n",
+    "\n",
+    "Puede ser difícil decidir qué hacer con los valores atípicos, pero debes saber cómo gestionarlos, ¡ya que a menudo se dan en el mundo real!\n",
+    "\n",
+    "\n",
+    "### Identificar valores atípicos\n"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3",
+   "path": "/Users/macbookairedwin/Documents/Datacamp/Analista_de_datos_en_python/entorno_analista_datos/share/jupyter/kernels/python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.13.5"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
 }

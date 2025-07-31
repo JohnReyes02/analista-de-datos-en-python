@@ -849,3 +849,49 @@ print(no_outliers['Salary_USD'].describe())
 -   Distribución de Salarios
 
 ![](images/paste-52.png)
+
+### Qué hacer con los valores atípicos?
+
+Identificar los valores atípicos es un paso integral en la realización de análisis exploratorios de datos.
+
+En este ejercicio, se te presentarán escenarios en los que hay valores atípicos, y tendrás que decidir qué acción debes tomar.
+
+#### Instrucciones
+
+-   Coloca cada escenario en el cubo adecuado en función del enfoque que deba adaptarse para tratar los valores atípicos.
+
+    | Elimina los valores atípicos | Dejar los valores atípicos en el conjunto de datos |
+    |----|----|
+    | Un sensor de temperatura tiene un registro de 100 grados Celsius, pero el sensor solo funciona correctamente a temperaturas de hasta 80 grados. | se registran las alturas de distintos animales y uno de ellos es más de 1.5 veces la IQR más el percentil 75. |
+    | La velocidad de un coche se registra como 5000 km/h. | Los países tienen una superficie total media de 667.143 km2, pero un país tiene 1.637.687 km2. |
+    | Un participante en un estudio tiene una edad de menos 35 años. | Un jugador de baloncesto hace una media de 35 puntos por partido cuando la media en toda la liga es de solo 10 puntos por partido. |
+
+Puede ser difícil decidir qué hacer con los valores atípicos, pero debes saber cómo gestionarlos, ¡ya que a menudo se dan en el mundo real!
+
+
+### Identificar valores atípicos
+
+Has demostrado que reconoces qué hacer cuando se te presentan valores atípicos, pero ¿Puedes identificarlos utilizando visualizaciones?
+
+Intenta averiguar si hay valores atípicos en las columnas `"Price"` o `"Duration"` del dataframe `planes`.
+
+#### Intrucciones
+
+1. Traza la distribución de la columna `"Price"` de `planes`.
+
+
+```{python}
+# Plot a histogram of flight prices
+sns.histplot(data=planes, x='Price')
+plt.show()
+```
+
+2. Muestra las estadísticas descriptivas de la duración del vuelo.
+
+
+```{python}
+# Display descriptive statistics for flight duration
+print(planes['Duration'].describe())
+```
+
+3. 
