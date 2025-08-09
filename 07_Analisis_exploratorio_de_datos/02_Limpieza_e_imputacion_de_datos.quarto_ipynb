@@ -2,7 +2,7 @@
  "cells": [
   {
    "cell_type": "markdown",
-   "id": "0eeea39c",
+   "id": "1179ecfd",
    "metadata": {},
    "source": [
     "# Limpieza e imputación de datos\n",
@@ -36,7 +36,7 @@
   {
    "cell_type": "code",
    "execution_count": 1,
-   "id": "5f8ea364",
+   "id": "fa578c0c",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -47,7 +47,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "111290d2",
+   "id": "5e3ef3aa",
    "metadata": {},
    "source": [
     "![](images/paste-22.png)\n",
@@ -72,7 +72,7 @@
   {
    "cell_type": "code",
    "execution_count": 2,
-   "id": "b82c2a86",
+   "id": "0397fe41",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -84,7 +84,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "d64c6a9f",
+   "id": "f87e1270",
    "metadata": {},
    "source": [
     "![](images/paste-23.png)"
@@ -93,7 +93,7 @@
   {
    "cell_type": "code",
    "execution_count": 3,
-   "id": "9a46a0bf",
+   "id": "32302d71",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -105,7 +105,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "8c3268dd",
+   "id": "f1b09c5b",
    "metadata": {},
    "source": [
     "![](images/paste-24.png)"
@@ -114,7 +114,7 @@
   {
    "cell_type": "code",
    "execution_count": 4,
-   "id": "f5917e9f",
+   "id": "db0b98d2",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -125,7 +125,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "000a32d6",
+   "id": "20af66e1",
    "metadata": {},
    "source": [
     "-   Imputando una estadística de resumen"
@@ -134,7 +134,7 @@
   {
    "cell_type": "code",
    "execution_count": 5,
-   "id": "1a0716bf",
+   "id": "1cdc2303",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -146,7 +146,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "8a248f4d",
+   "id": "a26404be",
    "metadata": {},
    "source": [
     "![](images/paste-25.png)"
@@ -155,7 +155,7 @@
   {
    "cell_type": "code",
    "execution_count": 6,
-   "id": "f1867165",
+   "id": "2949d527",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -167,7 +167,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "cd49a8ef",
+   "id": "e7efcb09",
    "metadata": {},
    "source": [
     "-   Revisando los valores faltantes que faltan"
@@ -176,7 +176,7 @@
   {
    "cell_type": "code",
    "execution_count": 7,
-   "id": "11e94826",
+   "id": "66ecc7ed",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -187,7 +187,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "111085d2",
+   "id": "2c0d4340",
    "metadata": {},
    "source": [
     "![](images/paste-26.png)\n",
@@ -198,7 +198,7 @@
   {
    "cell_type": "code",
    "execution_count": 8,
-   "id": "f94ee92c",
+   "id": "78bdb3b0",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -210,7 +210,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "5dd15fe3",
+   "id": "4ff368f0",
    "metadata": {},
    "source": [
     "![](images/paste-27.png)"
@@ -219,7 +219,7 @@
   {
    "cell_type": "code",
    "execution_count": 9,
-   "id": "424fc82a",
+   "id": "e1695d4d",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -230,7 +230,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "2538c3d1",
+   "id": "113eb71a",
    "metadata": {},
    "source": [
     "![](images/paste-28.png)\n",
@@ -247,7 +247,7 @@
   {
    "cell_type": "code",
    "execution_count": 10,
-   "id": "df1fc478",
+   "id": "27b97a7a",
    "metadata": {},
    "outputs": [
     {
@@ -307,7 +307,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "85eedc83",
+   "id": "43dbf757",
    "metadata": {},
    "source": [
     "#### Instrucciones\n",
@@ -318,7 +318,7 @@
   {
    "cell_type": "code",
    "execution_count": 11,
-   "id": "aeed51d2",
+   "id": "20d101c5",
    "metadata": {},
    "outputs": [
     {
@@ -347,7 +347,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "10d1f1e3",
+   "id": "6d55f5ae",
    "metadata": {},
    "source": [
     "2.  Calcula a cuántas observaciones equivale el cinco porciento del DataFrame `planes`"
@@ -356,7 +356,7 @@
   {
    "cell_type": "code",
    "execution_count": 12,
-   "id": "a51c3447",
+   "id": "6721e8c3",
    "metadata": {},
    "outputs": [
     {
@@ -375,7 +375,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "0b986154",
+   "id": "fa5a0777",
    "metadata": {},
    "source": [
     "3.  \n",
@@ -388,7 +388,7 @@
   {
    "cell_type": "code",
    "execution_count": 13,
-   "id": "28bbf1ce",
+   "id": "3d554509",
    "metadata": {},
    "outputs": [
     {
@@ -426,7 +426,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "474f552c",
+   "id": "ca5f69ed",
    "metadata": {},
    "source": [
     "Al crear un umbral de valores faltantes y usarlo para filtrar columnas, haz logrado eliminar los valores faltantes de todas las columnas excepto `\"Additinal_Info\"` y `\"Price\"`.\n",
@@ -443,7 +443,7 @@
   {
    "cell_type": "code",
    "execution_count": 14,
-   "id": "4e987db1",
+   "id": "7ab1975f",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -453,7 +453,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "1c85d664",
+   "id": "cadd3e54",
    "metadata": {},
    "source": [
     "#### Instrucciones\n",
@@ -464,7 +464,7 @@
   {
    "cell_type": "code",
    "execution_count": 15,
-   "id": "15402488",
+   "id": "3960261d",
    "metadata": {},
    "outputs": [
     {
@@ -492,7 +492,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "e7d2615f",
+   "id": "88a79f5a",
    "metadata": {},
    "source": [
     "2.  Crea un boxplot de `\"Price\"` frente a `\"Airline\"`"
@@ -501,7 +501,7 @@
   {
    "cell_type": "code",
    "execution_count": 16,
-   "id": "150e73ce",
+   "id": "7903213d",
    "metadata": {},
    "outputs": [
     {
@@ -525,7 +525,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "c8261489",
+   "id": "8f3b25b2",
    "metadata": {},
    "source": [
     "3.  **Pregunta**\n",
@@ -553,7 +553,7 @@
   {
    "cell_type": "code",
    "execution_count": 17,
-   "id": "d5c55fbf",
+   "id": "37e50c27",
    "metadata": {},
    "outputs": [
     {
@@ -564,7 +564,7 @@
        "      dtype='object')"
       ]
      },
-     "execution_count": 8,
+     "execution_count": 39,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -577,7 +577,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "b0e7dd8b",
+   "id": "2c3be9a8",
    "metadata": {},
    "source": [
     "#### Instrucciones\n",
@@ -588,7 +588,7 @@
   {
    "cell_type": "code",
    "execution_count": 18,
-   "id": "da9a7250",
+   "id": "1a540db3",
    "metadata": {},
    "outputs": [
     {
@@ -617,7 +617,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "b64b592a",
+   "id": "3203e0dd",
    "metadata": {},
    "source": [
     "2.  Convierte los precios medios agrupados en un diccionario."
@@ -626,7 +626,7 @@
   {
    "cell_type": "code",
    "execution_count": 19,
-   "id": "2c984c12",
+   "id": "a6e8771f",
    "metadata": {},
    "outputs": [
     {
@@ -645,7 +645,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "6ead96fc",
+   "id": "4fea7010",
    "metadata": {},
    "source": [
     "3.  \n",
@@ -658,7 +658,7 @@
   {
    "cell_type": "code",
    "execution_count": 20,
-   "id": "0fe40a70",
+   "id": "f59c2115",
    "metadata": {},
    "outputs": [
     {
@@ -689,7 +689,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "002514d0",
+   "id": "14a42b0c",
    "metadata": {},
    "source": [
     "Convertiste un DataFrame agrupado a un diccionario y luego lo usaste para llenar condicionalmente los valores faltantes de `\"Price\"` basándote en `\"Airline\"`. Ahora vamos a explorar cómo realizar análisis exploratorio en datos categóricos.\n",
@@ -702,7 +702,7 @@
   {
    "cell_type": "code",
    "execution_count": 21,
-   "id": "8e45f993",
+   "id": "6c884699",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -713,7 +713,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "a8f8d79e",
+   "id": "2ead9300",
    "metadata": {},
    "source": [
     "![](images/paste-29.png)\n",
@@ -724,7 +724,7 @@
   {
    "cell_type": "code",
    "execution_count": 22,
-   "id": "deb2af87",
+   "id": "a570c180",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -735,7 +735,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "88efe1e6",
+   "id": "6748a707",
    "metadata": {},
    "source": [
     "![](images/paste-30.png)"
@@ -744,7 +744,7 @@
   {
    "cell_type": "code",
    "execution_count": 23,
-   "id": "3fcbcd8d",
+   "id": "ecd2b6d8",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -755,7 +755,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "8d2b17d6",
+   "id": "1b95ee08",
    "metadata": {},
    "source": [
     "![](images/paste-31.png)\n",
@@ -774,7 +774,7 @@
   {
    "cell_type": "code",
    "execution_count": 24,
-   "id": "97ca189d",
+   "id": "2d205b8a",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -785,7 +785,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "bfee01fc",
+   "id": "7c53aae0",
    "metadata": {},
    "source": [
     "![](images/paste-33.png)\n",
@@ -798,7 +798,7 @@
   {
    "cell_type": "code",
    "execution_count": 25,
-   "id": "9b277d59",
+   "id": "7aacc144",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -809,7 +809,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "a153baaa",
+   "id": "20696427",
    "metadata": {},
    "source": [
     "![](images/paste-34.png)\n",
@@ -822,7 +822,7 @@
   {
    "cell_type": "code",
    "execution_count": 26,
-   "id": "95bb5729",
+   "id": "22368fde",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -833,7 +833,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "43ad0932",
+   "id": "387f0da9",
    "metadata": {},
    "source": [
     "![](images/paste-35.png)\n",
@@ -844,7 +844,7 @@
   {
    "cell_type": "code",
    "execution_count": 27,
-   "id": "e8d184b4",
+   "id": "8a1805d1",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -857,7 +857,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "d23961b6",
+   "id": "d00ea0ab",
    "metadata": {},
    "source": [
     "Luego necesitamos crear variables que contengan nuestros filtros"
@@ -866,7 +866,7 @@
   {
    "cell_type": "code",
    "execution_count": 28,
-   "id": "9ee25f41",
+   "id": "7ea5ff88",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -882,7 +882,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "32928712",
+   "id": "cb1a7a76",
    "metadata": {},
    "source": [
     "El siguiente paso es crear una lista con nuestro rango de condiciones para el método `str.contains`"
@@ -891,7 +891,7 @@
   {
    "cell_type": "code",
    "execution_count": 29,
-   "id": "80715e10",
+   "id": "facc66e6",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -909,7 +909,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "052ae8d0",
+   "id": "31ab7faf",
    "metadata": {},
    "source": [
     "Finalmente, podemos crear nuestra nueva columna `Job_Category` usando la función de selección de Numpy"
@@ -918,7 +918,7 @@
   {
    "cell_type": "code",
    "execution_count": 30,
-   "id": "afbc45d1",
+   "id": "1683ecfd",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -931,7 +931,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "5e397a9c",
+   "id": "1dd61824",
    "metadata": {},
    "source": [
     "Al obtener una vista previa de la Designación y nuestra nueva columna Job_Category, podemos verificar los primeros cinco valores."
@@ -940,7 +940,7 @@
   {
    "cell_type": "code",
    "execution_count": 31,
-   "id": "87f63cf8",
+   "id": "c70b1291",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -951,7 +951,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "b0a84828",
+   "id": "f3ec1d39",
    "metadata": {},
    "source": [
     "![](images/paste-36.png)\n",
@@ -962,7 +962,7 @@
   {
    "cell_type": "code",
    "execution_count": 32,
-   "id": "cbd166b5",
+   "id": "079af81b",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -974,7 +974,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "1bd7a9e8",
+   "id": "03f9f052",
    "metadata": {},
    "source": [
     "![](images/paste-37.png)\n",
@@ -995,7 +995,7 @@
   {
    "cell_type": "code",
    "execution_count": 33,
-   "id": "0deb2756",
+   "id": "4925f2e4",
    "metadata": {},
    "outputs": [
     {
@@ -1026,7 +1026,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "8919194e",
+   "id": "ce558c81",
    "metadata": {},
    "source": [
     "Curiosamente, `\"Duration\"` es actualmente una columna de tipo objeto cuando debería ser una columna numérica, ¡y tiene 362 valores únicos! Vamos a averiguar más sobre esta columna.\n",
@@ -1039,7 +1039,7 @@
   {
    "cell_type": "code",
    "execution_count": 34,
-   "id": "99ae894e",
+   "id": "6d3a9302",
    "metadata": {},
    "outputs": [
     {
@@ -1053,7 +1053,7 @@
        "Name: Duration, dtype: object"
       ]
      },
-     "execution_count": 13,
+     "execution_count": 44,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -1065,7 +1065,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "9893ea75",
+   "id": "790c5e90",
    "metadata": {},
    "source": [
     "Parece que no será sencillo convertirlo a números. Sin embargo, ¡podrías clasificar los vuelos por duración y examinar la frecuencia de las distintas longitudes de vuelo!\n",
@@ -1080,7 +1080,7 @@
   {
    "cell_type": "code",
    "execution_count": 35,
-   "id": "15deec7d",
+   "id": "77c71c97",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -1090,7 +1090,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "b7e03999",
+   "id": "85bd9013",
    "metadata": {},
    "source": [
     "2.  \n",
@@ -1105,7 +1105,7 @@
   {
    "cell_type": "code",
    "execution_count": 36,
-   "id": "34dbe4ad",
+   "id": "6d89d24b",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -1124,7 +1124,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "13ddc3ae",
+   "id": "6662b7be",
    "metadata": {},
    "source": [
     "Ahora has creado tus categorías y valores, es hora de agregar condicionalmente las categorías en el DataFrame\n",
@@ -1139,7 +1139,7 @@
   {
    "cell_type": "code",
    "execution_count": 37,
-   "id": "c6be0085",
+   "id": "e3c80d7d",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -1148,7 +1148,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "3b80961c",
+   "id": "fa0da3cf",
    "metadata": {},
    "source": [
     "#### Instrucciones\n",
@@ -1163,7 +1163,7 @@
   {
    "cell_type": "code",
    "execution_count": 38,
-   "id": "5c05ec74",
+   "id": "878af5e9",
    "metadata": {},
    "outputs": [
     {
@@ -1197,7 +1197,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "a2c7cd57",
+   "id": "088ea325",
    "metadata": {},
    "source": [
     "¡Está claro que la mayoría de los vuelos son de corta distancia.\n",
@@ -1210,7 +1210,7 @@
   {
    "cell_type": "code",
    "execution_count": 39,
-   "id": "9db27c5b",
+   "id": "7b3a8f00",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -1221,7 +1221,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "f2d3835a",
+   "id": "f8557c26",
    "metadata": {},
    "source": [
     "![](images/paste-38.png)\n",
@@ -1232,7 +1232,7 @@
   {
    "cell_type": "code",
    "execution_count": 40,
-   "id": "10667672",
+   "id": "8f3ed495",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -1243,7 +1243,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "c6606bf0",
+   "id": "b3fe95de",
    "metadata": {},
    "source": [
     "![](images/paste-39.png)\n",
@@ -1260,7 +1260,7 @@
   {
    "cell_type": "code",
    "execution_count": 41,
-   "id": "24d48c70",
+   "id": "f7c40b01",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -1272,7 +1272,7 @@
   {
    "cell_type": "code",
    "execution_count": 42,
-   "id": "b7fba024",
+   "id": "a7f34a5c",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -1284,7 +1284,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "645cac1e",
+   "id": "44aea884",
    "metadata": {},
    "source": [
     "![](images/paste-40.png)"
@@ -1293,7 +1293,7 @@
   {
    "cell_type": "code",
    "execution_count": 43,
-   "id": "ce5d7c3d",
+   "id": "a51904f1",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -1304,7 +1304,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "7191cf33",
+   "id": "bd4b41fa",
    "metadata": {},
    "source": [
     "1 Indian Rupee = 0.012 US Dollars"
@@ -1313,7 +1313,7 @@
   {
    "cell_type": "code",
    "execution_count": 44,
-   "id": "bfdcd708",
+   "id": "49aec036",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -1324,7 +1324,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "ac2d0c3e",
+   "id": "67c82ebc",
    "metadata": {},
    "source": [
     "-   Previsualizando la nueva columna"
@@ -1333,7 +1333,7 @@
   {
    "cell_type": "code",
    "execution_count": 45,
-   "id": "496bce5c",
+   "id": "64be12f9",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -1344,7 +1344,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "3603dc13",
+   "id": "d37dcfe9",
    "metadata": {},
    "source": [
     "![](images/paste-41.png)\n",
@@ -1355,7 +1355,7 @@
   {
    "cell_type": "code",
    "execution_count": 46,
-   "id": "46709df7",
+   "id": "15bb8aa4",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -1366,7 +1366,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "2a28af6b",
+   "id": "c1cd0f87",
    "metadata": {},
    "source": [
     "![](images/paste-42.png)\n",
@@ -1379,7 +1379,7 @@
   {
    "cell_type": "code",
    "execution_count": 47,
-   "id": "619ca756",
+   "id": "83cae023",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -1392,7 +1392,7 @@
   {
    "cell_type": "code",
    "execution_count": 48,
-   "id": "2de2b512",
+   "id": "7eff31b8",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -1403,7 +1403,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "3478548e",
+   "id": "f183bc40",
    "metadata": {},
    "source": [
     "![](images/paste-44.png)\n",
@@ -1414,7 +1414,7 @@
   {
    "cell_type": "code",
    "execution_count": 49,
-   "id": "0d4e35a2",
+   "id": "d49eb20a",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -1427,7 +1427,7 @@
   {
    "cell_type": "code",
    "execution_count": 50,
-   "id": "de413228",
+   "id": "6bfca92a",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -1438,7 +1438,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "d3a5e8d5",
+   "id": "fd2308ec",
    "metadata": {},
    "source": [
     "![](images/paste-45.png)\n",
@@ -1453,7 +1453,7 @@
   {
    "cell_type": "code",
    "execution_count": 51,
-   "id": "cc3b7647",
+   "id": "d88806b9",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -1489,7 +1489,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "99cc1e9a",
+   "id": "53a0415b",
    "metadata": {},
    "source": [
     "#### Instrucciones\n",
@@ -1500,7 +1500,7 @@
   {
    "cell_type": "code",
    "execution_count": 52,
-   "id": "e309c8d8",
+   "id": "d8247074",
    "metadata": {},
    "outputs": [
     {
@@ -1523,7 +1523,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "479cd809",
+   "id": "2fe92b46",
    "metadata": {},
    "source": [
     "2.  Retira `\"h\"` de la columna"
@@ -1532,7 +1532,7 @@
   {
    "cell_type": "code",
    "execution_count": 53,
-   "id": "3c121888",
+   "id": "df459780",
    "metadata": {},
    "outputs": [
     {
@@ -1556,7 +1556,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "773c5932",
+   "id": "1834b14e",
    "metadata": {},
    "source": [
     "3.  Convierte la columna al tipo de datos `float`."
@@ -1565,7 +1565,7 @@
   {
    "cell_type": "code",
    "execution_count": 54,
-   "id": "05f1d758",
+   "id": "6fc860a2",
    "metadata": {},
    "outputs": [
     {
@@ -1589,7 +1589,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "6c4ec014",
+   "id": "701d2e50",
    "metadata": {},
    "source": [
     "4.  Traza un histograma de los valores de `\"Duration\"`"
@@ -1598,7 +1598,7 @@
   {
    "cell_type": "code",
    "execution_count": 55,
-   "id": "e778a61e",
+   "id": "9ee7d335",
    "metadata": {},
    "outputs": [
     {
@@ -1620,7 +1620,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "d0c2a7d7",
+   "id": "f28d06db",
    "metadata": {},
    "source": [
     "### Añadir estadísticas descriptivas\n",
@@ -1635,7 +1635,7 @@
   {
    "cell_type": "code",
    "execution_count": 56,
-   "id": "4ead36e2",
+   "id": "852315a7",
    "metadata": {},
    "outputs": [
     {
@@ -1663,7 +1663,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "3d40cb21",
+   "id": "75cdf59e",
    "metadata": {},
    "source": [
     "2.  Calcula la mediana de `\"Duration\"` en `\"Airline\"`, almacenándola como una columna llamada `\"airline_median_duration\"`."
@@ -1672,7 +1672,7 @@
   {
    "cell_type": "code",
    "execution_count": 57,
-   "id": "d1ac7d48",
+   "id": "9d9bba58",
    "metadata": {},
    "outputs": [
     {
@@ -1700,7 +1700,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "2af68fda",
+   "id": "e224ff8c",
    "metadata": {},
    "source": [
     "3.  Encuenta la media `\"Price\"` por `\"Destination\"`, guardándola como una columna llamada `\"price_destination_mean\"`."
@@ -1709,7 +1709,7 @@
   {
    "cell_type": "code",
    "execution_count": 58,
-   "id": "bf6315be",
+   "id": "e5d10963",
    "metadata": {},
    "outputs": [
     {
@@ -1735,7 +1735,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "8971fe03",
+   "id": "7fd128f4",
    "metadata": {},
    "source": [
     "Parece que Jet Airways tiene la mayor desviación estándar en precio, Air India tiene la mayor duración median, y Nueva Delhi, en promedio, es el destiono más caro. Ahora veamos cómo manejar los datos atípicos.\n",
@@ -1750,7 +1750,7 @@
   {
    "cell_type": "code",
    "execution_count": 59,
-   "id": "dd183d1a",
+   "id": "9d60a77f",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -1761,7 +1761,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "bd30a0d2",
+   "id": "ccfe67db",
    "metadata": {},
    "source": [
     "![](images/paste-46.png)\n",
@@ -1780,7 +1780,7 @@
   {
    "cell_type": "code",
    "execution_count": 60,
-   "id": "05e53622",
+   "id": "69e366a9",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -1792,7 +1792,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "60774e7d",
+   "id": "08d88994",
    "metadata": {},
    "source": [
     "![](images/paste-47.png)\n",
@@ -1803,7 +1803,7 @@
   {
    "cell_type": "code",
    "execution_count": 61,
-   "id": "bd164c5c",
+   "id": "c0fe54bb",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -1823,7 +1823,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "94ace0ba",
+   "id": "5e5f1606",
    "metadata": {},
    "source": [
     "![](images/paste-48.png)"
@@ -1832,7 +1832,7 @@
   {
    "cell_type": "code",
    "execution_count": 62,
-   "id": "8ba0b7d4",
+   "id": "b1be9861",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -1849,7 +1849,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "55f33cd1",
+   "id": "0e61b383",
    "metadata": {},
    "source": [
     "![](images/paste-49.png)\n",
@@ -1860,7 +1860,7 @@
   {
    "cell_type": "code",
    "execution_count": 63,
-   "id": "054617fe",
+   "id": "4e676901",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -1872,7 +1872,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "50fa6b1c",
+   "id": "292c1d83",
    "metadata": {},
    "source": [
     "![](images/paste-50.png)\n",
@@ -1901,7 +1901,7 @@
   {
    "cell_type": "code",
    "execution_count": 64,
-   "id": "1bf76d44",
+   "id": "bed3ec02",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -1913,7 +1913,7 @@
   {
    "cell_type": "code",
    "execution_count": 65,
-   "id": "eeb7c1bd",
+   "id": "352d9277",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -1924,7 +1924,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "7ac6d98c",
+   "id": "438e463c",
    "metadata": {},
    "source": [
     "![](images/paste-51.png)\n",
@@ -1952,7 +1952,208 @@
     "Puede ser difícil decidir qué hacer con los valores atípicos, pero debes saber cómo gestionarlos, ¡ya que a menudo se dan en el mundo real!\n",
     "\n",
     "\n",
-    "### Identificar valores atípicos\n"
+    "### Identificar valores atípicos\n",
+    "\n",
+    "Has demostrado que reconoces qué hacer cuando se te presentan valores atípicos, pero ¿Puedes identificarlos utilizando visualizaciones?\n",
+    "\n",
+    "Intenta averiguar si hay valores atípicos en las columnas `\"Price\"` o `\"Duration\"` del dataframe `planes`.\n",
+    "\n",
+    "#### Intrucciones\n",
+    "\n",
+    "1. Traza la distribución de la columna `\"Price\"` de `planes`.\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 66,
+   "id": "934a4b0c",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "image/png": "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p8uBAwektrZWampqpLy8XDIyMpx6bavv0X22p6mpSRoaGlptAAAAARWirrnmGtm5c6ccOXJEXn/9dQkLC5MJEyaY23EalGJjY1u1j4uLM1+1TjflrY27zptly5ZJZGSks8XHx3fJZwMAAKHBLyFq2LBhpgdKw9PAgQPN+KYPPvjABKro6Giprq5u1b6qqsp81TrdlLc27jpvFi1aJPX19c5WWVnZJZ8NAACEhm4xJkrDlG466y41NdXclmtubnbqS0pKJDk52YSkmJgYSUpKkuLiYqde27pvA7anV69eZvyU5wYAABBQ60T94Q9/kHHjxklCQoIcPnzYDBw/++yz5dJLLzX1CxcuNEsY3H333bJ//34zG+/222933p+dnW3KdB+DBw+W++67z4SkqVOn+uPjdDtv79wh46/6eMkIN9ZfAgAgwEPUunXrJCcnR/773/+asUy6ztPLL78sffv2NfW6dIHW67gl7X3KysqSefPmOe/XmXm6FIKOo9JxUCNHjpSioiKz3hREmlw9zHpLpzq0aYVfjgcAgGDklxD1/PPPf2L98OHDZevWre3W662/pUuXmg1dhxXFAQBoH499waeuKN6mnB4tAAC6x8ByAACAQEOIAgAAsECIAgAAsECIAgAAsECIAgAAsECIAgAAsECIAgAAsECIAgAAsECIAgAAsMCK5SGEBxMDAOA7hKgQwoOJAQDwHW7nAQAAWCBEAQAAWCBEAQAAWGBMFNodcL5rz15JnOyXQwIAoNsjRKHdAedlO2b75XgAAAgE3M4DAACwQIgCAACwQIgCAACwQIgCAACwQIgCAACwQIgCAACwQIgCAAA4EyEqOzvba/mtt95q8/MBAABCI0StW7fOa/nvfvc7XxwPAABAcK1YfuDAAfPV5XLJO++8Y7667d69W3r37t01R4iQ095jaFT/hBhZV7DmjB8TAADWIWrIkCESFhbmfO+mYapnz55y//33d3RXgNVjaNShTSvO+PEAAHBaIcrd+zRs2DDZsWOHU96jRw9JTEykJwoAAISUDoeoQYMGma/Hjh3ryuMBAAAIrhDl6bXXXpN//vOfUldX16p86dKlvjouAACA4ApRP/nJT+RnP/uZpKamSlRUlFPuHi8FAAAQCjodoh577DHZsmWLfOUrX+maIwIAAAjGdaKamprk4osv7pqjAQAACNYQlZmZKc8880zXHA0AAECw3s6rqKiQG2+8UX75y1/KgAEDWtX95je/8eWxIcAWw2QhTABAKOl0iNL1oK699tquORoE9GKYLIQJAAglnQ5Rjz/+uM8PYurUqfLcc8/JSy+9JBMmTDBlr776qtxxxx2ya9cuOfvss+XOO++U2bNnO+85ceKEqV+/fr35/rLLLpPVq1fLeeed5/PjAwAAOO0xUb6mtwDr6+tblb377rty5ZVXysyZM6W6ulrWrl0rCxculI0bNzptNEBt3bpV3nrrLfnggw+kX79+8s1vflNaWlr88CkAAECo6XRPlPb0tLcm1HvvvdepfR08eFDuvvtu+dvf/uasiK40NA0dOlRycnLMa+1luvnmm2XlypWm1+r48eOmR+ypp55y3vfQQw9J//795e9//7uMHj3a66zC5uZm53VDQ0OnjhUAAOC0QtR9993X6rX2AunaUbfcckun9qPP4dNgpCHq/PPPb1W3bds2ycjIaFWWnp4uTzzxhPl+9+7dJgR5tklISJALLrhASktLvYaoZcuWyb333tupY0Tgmz4rSw5V1LQpZxA8AOCMh6jvfe97bcomT54sixYtMrfcOkrHL2mQ+sEPftCmrra21vREeYqLizPl7noVGxvbbptT6fH96Ec/cl5rCIuPj+/w8SIwaYDyNgj+r3m3MMMQAHDmn513qosuusiMT+qo/fv3S25urvzjH//wWh8dHW3GQnmqqqoy5e56pW0iIiK8tjlVr169zAYoZhgCAM74wHIduO256UOIH3zwQTODrqM0cFVWVsqIESPMbTjd1NVXX216pvS5fMXFxa3eU1JSImlpaeb7Cy+80IQnzza6flV5ebnTBgAAoFv1RIWHh7cZWN63b19nvFJHfOc733GWMvAcsK4LeF5++eUmmP385z83t/x0ht6bb74phYWFZnOvVXXTTTeZhyFr4NLbeD/84Q/li1/8oowaNaqzHwkAAKDrQ9Qrr7zSJkDp+KU+ffp0eB+RkZFmO5X2SOlSBbpt2rRJ5s2bZ5Yy0F6u+++/X6ZNm+a01dl4Wqc9T+51ov70pz9Jjx5+X7UBAACEgE6HKA0rXUEHmXsaO3asmWnXns985jOyatUqswEAAJxpVt02zz//vJmRN2zYMPP1j3/8o++PDAAAIJhClK4wfv3115tbeFlZWearPpC4M2OiAAAAQu52Xl5ennnO3fjx450yfdzKbbfd5nUNKSAYsGgnAOC0Q5Q+2mXcuHFtxi919pEvQDAs2sm6UgAQujp9O0+XInjttdfarPt07rnn+vK4AAAAgqsnStdj+ta3viWzZs2SwYMHm9XHdf0mXXATAAAgVHQ6RM2YMcOsDaUPHS4qKjI9UwUFBWa1cQAAgFDR4RClazY988wzsmzZMhOYPEPTPffcI0OGDDHP0AM6Oih71569kjjZL4cEAMCZC1E6K+/rX/+61zpd5uCBBx6QdevWnf4RIWQGZZftmO2X4wEA4IwOLH/jjTdaPXbF01VXXSWvv/66Tw4IAAAgqEJURUWFREdHe63TMVJaDwAAECo6HKL0AcPtrQWl5d4eKAwAACChHqL0wcPLly/3WrdixQr52te+5svjAgAACI6B5XfddZdcfPHFcvToUbnhhhvM4poHDx6UJ598Up5++ml58803u/ZIAQAAAjFEpaSkyKZNm8xDh/UhxGFhYeJyuczMPC0fNmxY1x4pAABAoC62qc/I27Vrl+zbt0+OHDkin/3sZ836UAAAAKGm0yuWKw1OhCcAABDKrEIU4C9v79wh46/KbFPePyFG1hWs8csxAQBCEyEKAaXJ1cPr6ueHNq3wy/EAAEJXh5c4AAAAwMcIUQAAABYIUQAAABYIUQAAABYIUQAAABYIUQAAABYIUQAAABYIUQAAABYIUQAAABYIUQAAABYIUQAAABZ4dh6C+sHEu/bslcTJfjkkAECQI0QhqB9MXLZjtl+OBwAQ/LidBwAAYIEQBQAAYIEQBQAAYIEQBQAAYIEQBQAAECgh6t5775XBgwdLTEyMJCQkyMSJE2Xbtm2t2pSVlcmYMWMkKipKBgwYIEuWLBGXy+XU6/eLFy82ddpG227fvt0PnwYAAIQivyxxcO2118rcuXMlLi5OGhsb5dFHHzVB6sMPP5SePXtKXV2deT1jxgzZvHmz7Nu3TyZNmmRC17x588w+8vLypLCw0NQPGTJEli5dat6ze/du6dOnjwSi6bOy5FBFTcCudcRaTQCAUOKXEHXhhRe26lHS4HTkyBE5evSoJCYmyoYNG+TkyZOSm5sr4eHhkpKSIgsWLJAVK1Y4ISo/P1/mz59v6pS2LSgokI0bN8oNN9zQ5mc2NTVJc3Oz87qhoUG6Gw1QgbzWEWs1AQBCid/GRL344osSGxsrvXv3ljvuuMOEIw1QSm/tpaWlmQDllp6eLgcOHJDa2lqpqamR8vJyycjIcOq1rb6ntLTU689btmyZREZGOlt8fPwZ+JQAACBY+S1EXXnllVJdXS2VlZXy4IMPyiWXXOLUaVDSgOVJb/2563RT3tq46061aNEiqa+vdzb9uQAAAAH72Jd+/frJbbfdZgLQ0KFD5aKLLpLo6Gg5ePBgq3ZVVVXmq9a5B5hrCDu1zcCBA73+nF69epkNAAAgaJY4aGlpMWOW9u7da16npqaa23KeY5hKSkokOTnZhCgdYJ6UlCTFxcVOvbZ13wYEAAAIyhD1yCOPyOHDh833H330kWRnZ8tZZ50lo0aNMmXTpk0zg811CQMdAK5LF+hsvJycHGcf+h4t0zpto221p2nq1Kn++EgAACDE+OV23ksvvST333+/HDt2zPQs6aDxl19+Wfr372/q+/bta5Yu0NCkA8C1TVZWljMzT+nMPF0KYcKECWYc1MiRI6WoqChglzcAAACBxS8h6oUXXvjUNsOHD5etW7e2Wx8WFmbWhtINAAAgJMdEAQAABBpCFAAAgAVCFAAAgAVCFAAAgAVCFAAAgAVCFAAAgAVCFAAAgAVCFAAAgAVCFAAAQKCsWA50V2/v3CHjr8psU75rz15JnOyXQwIAdFOEKMBDk6uHJE6e26a8bMdsvxwPAKD74nYeAACABUIUAACABUIUAACABUIUAACABUIUAACABUIUAACABUIUAACABUIUAACABUIUAACABUIUAACABUIUAACABUIUAACABUIUAACABUIUAACABUIUAACABUIUAACABUIUAACABUIUAACABUIUAACABUIUAACABUIUAACABUIUAACABUIUAACABUIUAACABUIUAABAoISohQsXSkpKikRHR0v//v0lMzNT3n///VZt3nvvPfnGN74hffv2lYSEBLn11lulsbGxVZtVq1ZJUlKSREZGype//GXZsmXLGf4kAAAgVPklRIWFhcnatWuloqJC3n77bfN6ypQpTn1LS4sJUP369ZMPPvhA3nrrLROQFixY4LR5+umn5a677pInnnhCqqurZebMmTJ58uQ2YQwAACBoQtRPf/pTGTFihJx11lkSGxsrd955p/zrX/+SqqoqU79161YTrh566CHTWzVo0CDJzc2VgoICOX78uGmTn58vN998s1x22WVmPzk5OfK5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",
+      "text/plain": [
+       "<Figure size 672x480 with 1 Axes>"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    }
+   ],
+   "source": [
+    "# Plot a histogram of flight prices\n",
+    "sns.histplot(data=planes, x='Price')\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "783c056b",
+   "metadata": {},
+   "source": [
+    "2. Muestra las estadísticas descriptivas de la duración del vuelo.\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 67,
+   "id": "f969f5b9",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "count    8508.000000\n",
+      "mean       10.726704\n",
+      "std         8.472415\n",
+      "min         0.100000\n",
+      "25%         2.800000\n",
+      "50%         8.700000\n",
+      "75%        15.500000\n",
+      "max        47.700000\n",
+      "Name: Duration, dtype: float64\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Display descriptive statistics for flight duration\n",
+    "print(planes['Duration'].describe())"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "65abac67",
+   "metadata": {},
+   "source": [
+    "3. **Pregunta**\n",
+    "\n",
+    "¿Qué columna contiene potencialmente valores atípicos?\n",
+    "\n",
+    "**Respuestas Posibles**\n",
+    "\n",
+    "- [ ] `\"Price\"`\n",
+    "- [ ] `\"Duration\"`\n",
+    "- [x] `\"Price\"` y `\"Duration\"`\n",
+    "- [ ] Ninguna\n",
+    "\n",
+    "Los histogramas, diagramas de caja y estadísticas descriptivas también son métodos útiles para identificar valores extremos. ¡Ahora vamos a tratarlos!\n",
+    "\n",
+    "\n",
+    "### Eliminar valores atípicos\n",
+    "\n",
+    "Aunque eliminar los valores atípicos no siempre es el camino a seguir, para tu análisis has decidido que solo incluirás los vuelos en los que el `\"Price\"` no sea un valor atípico.\n",
+    "\n",
+    "Por lo tanto tienes que encontrar el umbral superior y utilizarlo para eliminar los valores que lo superen del Dataframe `planes`.\n",
+    "\n",
+    "#### Instrucciones\n",
+    "\n",
+    "1. Halla los percentiles 75 y 25, guardando como `price_seventy_fifth` y `price_twenty_fifth` respectivamente.\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 68,
+   "id": "ed4b1f2d",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Find the 75th and 25th percentiles\n",
+    "price_seventy_fifth = planes['Price'].quantile(0.75)\n",
+    "price_twenty_fifth = planes['Price'].quantile(0.25)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "0d09accc",
+   "metadata": {},
+   "source": [
+    "2. Calcula el IQR, almacenándolo como `prices_iqr`.\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 69,
+   "id": "4d784fc9",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "7014.0\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Calculate iqr\n",
+    "prices_iqr = price_seventy_fifth - price_twenty_fifth\n",
+    "print(prices_iqr)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "345bdbba",
+   "metadata": {},
+   "source": [
+    "3. Calcula los umbrales superior e inferior de los valores atípicos.\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 70,
+   "id": "9fb54790",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Calculate the thresholds\n",
+    "upper = price_seventy_fifth + (1.5 * prices_iqr)\n",
+    "lower = price_twenty_fifth - (1.5 * prices_iqr)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "700f2984",
+   "metadata": {},
+   "source": [
+    "4. Elimina los valores atípicos de `planes`.\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 71,
+   "id": "8c70c665",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "count     8438.000000\n",
+      "mean      8877.466046\n",
+      "std       4001.838236\n",
+      "min       1759.000000\n",
+      "25%       5224.000000\n",
+      "50%       8372.000000\n",
+      "75%      12121.000000\n",
+      "max      22270.000000\n",
+      "Name: Price, dtype: float64\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Subset the data\n",
+    "planes = planes[(planes['Price'] > lower) & (planes['Price'] < upper)]\n",
+    "\n",
+    "print(planes['Price'].describe())"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "e21df164",
+   "metadata": {},
+   "source": [
+    "¡Habilidades ridículas para eliminar valores atípicos! Lograste crear umbrales basados en el IQR y los usaste para filtrar el conjunto de datos `planes` para eliminar precios extremos. Originalmente, el conjunto de datos tenía un precio máximo de casi 55000, pero la salida de `planes['Price'].describe()` muestra que el máximo se ha reducido a alrededor de 23000, ¡reflejando una distribución menos sesgada para el análisis!"
    ]
   }
  ],

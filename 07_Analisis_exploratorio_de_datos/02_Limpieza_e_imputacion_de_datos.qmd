@@ -894,4 +894,64 @@ plt.show()
 print(planes['Duration'].describe())
 ```
 
-3. 
+3. **Pregunta**
+
+¿Qué columna contiene potencialmente valores atípicos?
+
+**Respuestas Posibles**
+
+- [ ] `"Price"`
+- [ ] `"Duration"`
+- [x] `"Price"` y `"Duration"`
+- [ ] Ninguna
+
+Los histogramas, diagramas de caja y estadísticas descriptivas también son métodos útiles para identificar valores extremos. ¡Ahora vamos a tratarlos!
+
+
+### Eliminar valores atípicos
+
+Aunque eliminar los valores atípicos no siempre es el camino a seguir, para tu análisis has decidido que solo incluirás los vuelos en los que el `"Price"` no sea un valor atípico.
+
+Por lo tanto tienes que encontrar el umbral superior y utilizarlo para eliminar los valores que lo superen del Dataframe `planes`.
+
+#### Instrucciones
+
+1. Halla los percentiles 75 y 25, guardando como `price_seventy_fifth` y `price_twenty_fifth` respectivamente.
+
+
+```{python}
+# Find the 75th and 25th percentiles
+price_seventy_fifth = planes['Price'].quantile(0.75)
+price_twenty_fifth = planes['Price'].quantile(0.25)
+```
+
+2. Calcula el IQR, almacenándolo como `prices_iqr`.
+
+
+```{python}
+# Calculate iqr
+prices_iqr = price_seventy_fifth - price_twenty_fifth
+print(prices_iqr)
+```
+
+3. Calcula los umbrales superior e inferior de los valores atípicos.
+
+
+```{python}
+# Calculate the thresholds
+upper = price_seventy_fifth + (1.5 * prices_iqr)
+lower = price_twenty_fifth - (1.5 * prices_iqr)
+```
+
+4. Elimina los valores atípicos de `planes`.
+
+
+```{python}
+# Subset the data
+planes = planes[(planes['Price'] > lower) & (planes['Price'] < upper)]
+
+print(planes['Price'].describe())
+```
+
+¡Habilidades ridículas para eliminar valores atípicos! Lograste crear umbrales basados en el IQR y los usaste para filtrar el conjunto de datos `planes` para eliminar precios extremos. Originalmente, el conjunto de datos tenía un precio máximo de casi 55000, pero la salida de `planes['Price'].describe()` muestra que el máximo se ha reducido a alrededor de 23000, ¡reflejando una distribución menos sesgada para el análisis!
+
