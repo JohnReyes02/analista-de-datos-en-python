@@ -1,3 +1,158 @@
 ---
 title: "Relaciones en los datos"
 ---
+
+Las variables de los conjuntos de datos tienen relaciones entre sí. En este capítulo, examinarás las relaciones entre datos numéricos, categóricos e incluso DateTime, explorando la dirección y la fuerza de estas relaciones, así como las formas de visualizarlas.
+
+## Patrones a lo largo del tiempo
+
+```{python}
+#| echo: true
+#| eval: false
+divorce = pd.read_csv("divorce.csv")
+divorce.head()
+```
+
+![](images/paste-53.png)
+
+-   Importando data DateTime
+
+    -   DataTime necesita ser explicitamente declarada en pandas
+
+```{python}
+#| echo: true
+#| eval: false
+divorce.dtypes
+```
+
+![](images/paste-54.png)
+
+```{python}
+#| echo: true
+#| eval: false
+divorce = pd.read_csv("divorce.csv", parse_dates=["marriage_date"])
+divorce.dtypes
+```
+
+![Este tipo de datos abre muchas posibilidades para el análisis, como observar patrones a lo largo de años, meses o incluso días de la semana.](images/paste-55.png)
+
+-   Conviritiendo los datos a DataTime
+
+    -   `pd.to_datetime()` convierte los argumentos de datos DateTime
+
+```{python}
+#| echo: true
+#| eval: false
+divorce['marriage_date'] = pd.to_datetime(divorce['marriage_date'])
+divorce_dtypes
+```
+
+![](images/paste-57.png)
+
+-   Creando datos DateTime
+
+```{python}
+#| echo: true
+#| eval: false
+divorce.head(2)
+```
+
+![](images/paste-58.png)
+
+```{python}
+#| echo: true
+#| eval: false
+divorce['marriage_date'] = pd.to_datetime(divorce[['month', 'day', 'year']])
+divorce.head(2)
+```
+
+![](images/paste-59.png)
+
+Es posible extraer sólo el mes, el día o el año de una columna que contenga una fecha completa, usando los atributos `dt.month`, `dt.day` y `dt.year.`
+
+```{python}
+#| echo: true
+#| eval: false
+divorce['marriage_month'] = divorce['marriage_date'].dt.month()
+divorce.head()
+```
+
+![](images/paste-60.png)
+
+-   Visualizando patrones a lo largo del tiempo
+
+```{python}
+#| echo: true
+#| eval: false
+sns.lineplot(data=divorce, x='marriage_month', y='marriage_duration')
+plt.show()
+```
+
+![](images/paste-61.png)
+
+Los amplios intervalos de confianza sugieren que se necesita más análisis.
+
+### Importar datos DateTime
+
+¡Ahora trabajarás con todo el conjunto de datos del divorcio! Los datos desciben los matrimonios mexicanos disueltos entre 2000 y 2015. Contiene las fechs de matrimonio y divorcio, el nivel educativo, la fecha de nacimiento, los ingresos de cada miembro de la pareja y la duración del matrimonio, así como el número de hijos que tenía la pareja en el momento del divorcio.
+
+Los nombres de ls columnas y los tipos de datos son los siguientes:
+
+![](images/paste-62.png)
+
+¡Parece que hay mucha información de fecha en estos datos que todavía no son de tipo DateTime! Tu tarea es arreglarlo para que puedas explorar patrones a lo largo del tiempo.
+
+
+```{python}
+import pandas as pd
+
+ruta = './data/divorce.csv'
+divorce = pd.read_csv(ruta)
+divorce.head()
+```
+
+#### Instrucciones
+
+- Importa `divorce.csv`, guardando como DataFrame, `divorce`: indica  en la función de importación que las columnas `divorce_date`, `dob_man`, `dob_woman`, y `marriage_date` deben importarse como valores DateTime.
+
+
+```{python}
+# Import divorce.csv, parseing the appropriate columns as dateds in the import
+divorce = pd.read_csv('./data/divorce.csv', parse_dates=['divorce_date', 'dob_man', 'dob_woman', 'marriage_date'])
+print(divorce.dtypes)
+```
+
+Buen trabajo parseando esas fechas al mismo tiempo que importabas los datos en pandas. ¡Ahora, intenta actualizar los tipos de datos DateTime en una DataFrame que ya ha sido importado!
+
+### Actualizar tipo de datos a DateTime
+
+Ahora se te ha cargado el DataFrame `divorce`, pero una columna se almacea como una cadena que debería ser un dato DateTime. ¿Cuál es?
+Una vez que hayas identificado la columna, la actualizarás para que puedas explorarla más de cerca en el siguiente ejercicio.
+
+```{python}
+ruta = './data/divorce.csv'
+divorce = pd.read_csv(ruta, parse_dates=['divorce_date', 'dob_man', 'dob_woman'])
+print(divorce.dtypes)
+```
+
+#### Instrucciones
+
+1. **Pregunta**
+
+¿Cuál de las columnas del DataFrame `divorce` no se ha actualizado a un tipo de datos DateTime, pero debería hacerse?
+
+**Respuestas posibles**
+
+- [ ] `divorce_date`
+- [X] `marriage_date`
+- [ ] `education_woman`
+- [ ] `num_kids`
+
+2. Covierte la columna `marriage_date` del DataFrame `divorce` en valores de `DateTime`.
+
+```{python}
+# Convert the marriage_date column to DateTime values
+divorce['marriage_date'] = pd.to_datetime(divorce['marriage_date'])
+print(divorce.dtypes)
+```
+Ahora, estás listo para ver cómo la fecha de matrimonio de una pareja se relaciona con otros datos.
