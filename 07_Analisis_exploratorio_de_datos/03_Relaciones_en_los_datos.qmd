@@ -102,7 +102,6 @@ Los nombres de ls columnas y los tipos de datos son los siguientes:
 
 ¡Parece que hay mucha información de fecha en estos datos que todavía no son de tipo DateTime! Tu tarea es arreglarlo para que puedas explorar patrones a lo largo del tiempo.
 
-
 ```{python}
 import pandas as pd
 
@@ -113,8 +112,7 @@ divorce.head()
 
 #### Instrucciones
 
-- Importa `divorce.csv`, guardando como DataFrame, `divorce`: indica  en la función de importación que las columnas `divorce_date`, `dob_man`, `dob_woman`, y `marriage_date` deben importarse como valores DateTime.
-
+-   Importa `divorce.csv`, guardando como DataFrame, `divorce`: indica en la función de importación que las columnas `divorce_date`, `dob_man`, `dob_woman`, y `marriage_date` deben importarse como valores DateTime.
 
 ```{python}
 # Import divorce.csv, parseing the appropriate columns as dateds in the import
@@ -126,8 +124,7 @@ Buen trabajo parseando esas fechas al mismo tiempo que importabas los datos en p
 
 ### Actualizar tipo de datos a DateTime
 
-Ahora se te ha cargado el DataFrame `divorce`, pero una columna se almacea como una cadena que debería ser un dato DateTime. ¿Cuál es?
-Una vez que hayas identificado la columna, la actualizarás para que puedas explorarla más de cerca en el siguiente ejercicio.
+Ahora se te ha cargado el DataFrame `divorce`, pero una columna se almacea como una cadena que debería ser un dato DateTime. ¿Cuál es? Una vez que hayas identificado la columna, la actualizarás para que puedas explorarla más de cerca en el siguiente ejercicio.
 
 ```{python}
 ruta = './data/divorce.csv'
@@ -137,22 +134,178 @@ print(divorce.dtypes)
 
 #### Instrucciones
 
-1. **Pregunta**
+1.  **Pregunta**
 
 ¿Cuál de las columnas del DataFrame `divorce` no se ha actualizado a un tipo de datos DateTime, pero debería hacerse?
 
 **Respuestas posibles**
 
-- [ ] `divorce_date`
-- [X] `marriage_date`
-- [ ] `education_woman`
-- [ ] `num_kids`
+-   [ ] `divorce_date`
+-   [x] `marriage_date`
+-   [ ] `education_woman`
+-   [ ] `num_kids`
 
-2. Covierte la columna `marriage_date` del DataFrame `divorce` en valores de `DateTime`.
+2.  Covierte la columna `marriage_date` del DataFrame `divorce` en valores de `DateTime`.
 
 ```{python}
 # Convert the marriage_date column to DateTime values
 divorce['marriage_date'] = pd.to_datetime(divorce['marriage_date'])
 print(divorce.dtypes)
 ```
+
 Ahora, estás listo para ver cómo la fecha de matrimonio de una pareja se relaciona con otros datos.
+
+### Visualizar las relaciones a lo largo del tiempo
+
+Ahora que tus datos de fechas se guardan como datos DateTime, ¡puedes explorar patrones a lo largo del tiempo! ¿Tiene relación el año en que se casó una pareja con el número de hijos que tiene en el momento del divorcio? ¡Tu tarea es averiguarlo!
+
+#### Instrucciones
+
+1.  Define una columna llamada `marriage_year`, que solo contiene la parte del año de la columna `marriage_date`.
+
+```{python}
+# Define the marriage_year column
+divorce['marriage_year'] = divorce['marriage_date'].dt.year
+```
+
+2.  Crea un gráfico de líneas que muestre el número medio de hijos que tuvo una pareja durante su matrimonio, ordenado por el año en que la pareja se casó.
+
+```{python}
+import seaborn as sns
+import matplotlib.pyplot as plt
+# Create a lineplot showing the average  number of kids by year
+sns.lineplot(data=divorce, x='marriage_year', y='num_kids')
+plt.show()
+```
+
+¡Bien hecho! Haz descubierto un patrón aquí, parece que las parejas que se casaron en años posteriores también tuvieron menos hijos durante su matrimonio.
+
+## Correlación
+
+-   Correlación
+    -   Describe la dirección de la relación de entre dos variables así como su fuerza.
+
+    -   Configurar `numeric_only=True` previene errores con columnas no numéricas.
+
+    -   El método `.cor()` calcula el coeficiente de correlación de Pearson.
+
+```{python}
+divorce.corr(numeric_only=True)
+```
+
+-   Mapas de calor de correlación
+
+```{python}
+sns.heatmap(divorce.corr(numeric_only=True), annot=True)
+plt.show()
+```
+
+-   Correlación en contexto
+
+```{python}
+divorce['divorce_date'].min()
+```
+
+```{python}
+divorce['divorce_date'].max()
+
+```
+
+-   Visualización de las relaciones
+    - Es importante complementar nuestros cálculos de correlación con gráficos de dispersión.
+
++-----------------------------------------------------------+------------------------------------------------------+
+| ![](images/paste-64.png)                                  | ![](images/paste-65.png)                             |
++-----------------------------------------------------------+------------------------------------------------------+
+| -   Fuerte relación, pero no lineal                       | -   Relación cuadrática; no lineal                   |
+|                                                           |                                                      |
+| -   El coeficiente de correlación de Pearson: `-6.48e-18` | -   Coeficiente de correlación de Pearson: `.971211` |
++-----------------------------------------------------------+------------------------------------------------------+
+
+
+- Scatter plots
+
+```{python}
+sns.scatterplot(data=divorce, x='income_man', y='income_woman')
+plt.show()
+```
+
+- Pairplots
+    - Es útil para obtener una descripción general rápida de las relaciones dentro del conjunto de datos.
+    - Tanta información en un elemento visual puede ser difícil de interpretar con grandes conjuntos de datos.
+
+
+```{python}
+sns.pairplot(data=divorce)
+plt.show()
+```
+
+Es posible limitar el número de relaciones graficadas estableciendo el argumento `vars` igual a las variables de interés.
+
+
+```{python}
+sns.pairplot(data=divorce, vars=['income_man', 'income_woman', 'marriage_duration'])
+plt.show()
+```
+
+
+### Interpretar un mapa de calor
+
+¿Cuál de las siguientes afirmaciones es correcta respecto a las relaciones entre variables en el DataFrame `divorce`?
+
+```{python}
+divorce['marriage_moth'] = divorce['marriage_date'].dt.month
+divorce.head()
+```
+
+#### Instrucciones 
+
+**Respuestas Posibles**
+
+- [ ] `marriage_duration` está fuertemente correlacionada de forma positiva con `marriage_month`.
+
+- [ ] La correlación entre `num_kids` y `income_man` es más fuerte que la correlación entre `num_kids` y `marriage_duration`.
+
+- [ ] Un `marriage_year` más tardío provoca un menor número de hijos, representado por `num_kids`.
+
+- [X] Un `marriage_year` más tardío está correlacionado con tener menos hijos.
+
+
+### Visualizar las relaciones entre variables
+
+En el último ejercicio, habrás observado que un `marriage_duration` más largo está correlacionado con tener más hijos , representado por la columna `num_kids`. El coeficiente de correlación entre las variables `marriage_duration` y `num_kids` es `0.45`.
+
+En este ejercicio, crearás un gráfico de dispersión para visualizar la relación entre estas variables.
+
+#### Instrucciones
+
+- Cree un diagrama de dispersión que muestre `marriage_duration` en el eje x y `num_kids` en el eje y.
+
+
+```{python}
+# Create the scatterplot
+sns.scatterplot(data=divorce, x='marriage_duration', y='num_kids')
+plt.show()
+```
+
+Hay una ligera relación positiva en el gráfico de dispersión. En el conjunto de datos, las parejas sin hijos no tienen valor en la columna `num_kids`. Si estás seguro que todos o la mayoría de los valores faltantes en `num_kids` están relacionados con parejas sin hijos, podrías considerar actualizar estos valores a 0, lo que podría aumentar la correlación.
+
+
+### Visualizar las relaciones entre múltiples variables
+
+Seaborn's `.pairplot()` es excelente para comprender las relaciones entre varias o todas las vatiables de un conjunto de datos, agregando gráficos de dispersión por pares en un solo visual.
+
+Tu tarea consiste en utilizar un `pairplot` par comparar la relación entre 'marriage_duration' y 'income_woman'.
+
+#### Instrucciones
+
+- Crea un diagrama de pares para visualizar las relaciones entre `income_woman` y `marriage_duration` en el DataFrame `divorce`.
+
+
+```{python}
+# Create a pairplot for income_woman and marriage_duration
+sns.pairplot(data=divorce, vars=['income_woman', 'marriage_duration'])
+plt.show()
+```
+
+Al igual que la matriz de correlación , puedes ver que la relación entre `income_woman` y `marriage_duration` no es fuerte. También puedes tener una idea de las distribuciones de ambas variables en los gráficos superior izquierdo e inferior derecho.
