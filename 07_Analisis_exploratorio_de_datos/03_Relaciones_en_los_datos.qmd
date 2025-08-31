@@ -309,3 +309,140 @@ plt.show()
 ```
 
 Al igual que la matriz de correlación , puedes ver que la relación entre `income_woman` y `marriage_duration` no es fuerte. También puedes tener una idea de las distribuciones de ambas variables en los gráficos superior izquierdo e inferior derecho.
+
+
+## Relaciones y distribuciones de los factores
+
+- Nivel de educación: male partner
+
+
+```{python}
+divorce['education_man'].value_counts()
+```
+
+- Explorando las relaciones categóricas
+
+
+```{python}
+sns.histplot(data=divorce, x='marriage_duration', binwidth=1)
+plt.show()
+```
+
+
+```{python}
+sns.histplot(data=divorce, x='marriage_duration', hue='education_man', binwidth=1)
+plt.show()
+```
+
+
+- Kernel Desnsity Estimate (KDE) plots
+
+
+```{python}
+sns.kdeplot(data=divorce, x='marriage_duration', hue='education_man')
+plt.show()
+```
+
+Los gráficos KDE nos permiten visualizar las distribuciones. Los KDE son más interpretables, especialmente cuando se muestran varias distribuciones.
+
+La distribución con KDE parece sugerir que algunas parejas tuvieron duraciones menores a cero.
+
+Para solucionar esto, podempos utilizar el argumento de la palabra clave `cut`.
+
+
+```{python}
+sns.kdeplot(data=divorce, x='marriage_duration', hue='education_man', cut=0)
+plt.show()
+```
+
+- Gráficos KDE acumulativos
+
+
+```{python}
+import seaborn as sns
+sns.kdeplot(data=divorce, x='marriage_duration', hue='education_man', cut=0, cumulative=True)
+plt.show()
+```
+
+Este gráfico describe la probabilidad de que la duración del matrimonio sea menor o igual al valor del eje x para cada nivel de educación de la pareja masculina.
+
+- Relación entre la edad del matrimonio y la educación
+    - Hay una relación entre la edad al momento del matrimonio y el nivel de educación?
+
+
+```{python}
+divorce['man_age_marriage'] = divorce['marriage_year'] - divorce['dob_man'].dt.year
+divorce['woman_age_marriage'] = divorce['marriage_year'] - divorce['dob_woman'].dt.year
+```
+
+- Scatter plot con las variables categóricas
+
+
+```{python}
+sns.catplot(data=divorce, x='woman_age_marriage', y='man_age_marriage')
+plt.show()
+```
+
+
+```{python}
+sns.catplot(data=divorce, x='woman_age_marriage', y='man_age_marriage', hue='education_man')
+plt.show()
+```
+
+
+### Datos categóricos en gráficos de dispersión
+
+En el video se exploro cómo se relacionan el nivel educativo de los hombres y la edad al casarse con otras variables de nuestro conjunto de datos, el DataFrame `divorce`. Ahora verás cómo se relacionan la formación de las mujeres y la edad al casarse con otras variables.
+
+Tu tarea consiste en crear un diagrama de dispersión de la edad y los ingresos de cada mujer, incorporando la variable categórica del nivel educativo para obtener un contexto adicional.
+
+
+#### Instrucciones
+
+- Crea un gráfico de dispersión que muestre `woman_age_marriage` en el eje de abcisas y `income_woman` en el eje de las ordenadas, cada punto de datos debe colorearse en función del nivel educativo de la mujer, representado por `education_woman`.
+
+```{python}
+# Create a scatter plot
+sns.scatterplot(data=divorce, x='woman_age_marriage', y='income_woman', hue='education_woman')
+plt.show()
+```
+
+Parece que hay una correlación positiva entre la educación profesional y los salarios más altos, como cabría esperar. La relación entre la edad de las mujeres al casarse y el nivel educativo es un poco menos clara.
+
+
+### Explorando con gráficos KDE
+
+Los gráficos de Estimación de Densidad del Núcleo (KDE) son una gran alternativa a los histogramas cuando quieres mostrar varias distribuciones en el mismo gráfico.
+
+Supongamos que te interesa la relación entre la duración del matrimonio y el número de hijos que tiene una pareja. Como los valores de la columna `num_kids` sólo van de uno a cinco, puedes graficar el KDE de cada valor en la misma gráfica.
+
+Recuerda que la columna `num_kids` de `divorce` solo muestra los valores `N/A` de las parejas sin hijos, por lo que solo verás las distribuciones de las parejas divorciadas con al menos un hijo.
+
+
+#### Instrucciones
+
+1.  Cree un gráfico KDE que muestre `marriage_duration` en el eje x y una línea de color diferente para cada posible número de hijos que pueda tener una pareja, representada por `num_kids`.
+
+```{python}
+# Create the KDE plot
+sns.kdeplot(data=divorce, x='marriage_duration', hue='num_kids')
+plt.show()
+```
+
+2. Observa que actualmente el gráfico muestra duraciones del matrimonio inferiores a cero; actualiza el grafico KDE para que la duración del matrimonio no pueda suavizarse más allá de los puntos de datos extremos.
+
+```{python}
+# Update the KDE plot so that marriage durantion can't be smoothed too far
+sns.kdeplot(data=divorce, x='marriage_duration', hue='num_kids', cut=0)
+plt.show()
+```
+
+3. Actualiza el código del gráfico KDE del paso anterior para que muestre una función de distribución acumulativo para cada número de hijos que tiene una pareja.
+
+```{python}
+# Update the KDE plot to show a cumulative distribution function
+sns.kdeplot(data=divorce, x='marriage_duration', hue='num_kids', cut=0, cumulative=True)
+plt.show()
+```
+
+Parece que hay una correlación positiva entre matrimonios más largos y más hijos, pero por supuesto, esto no indica causalidad. También puedes ver que hay muchos menos datos sobre parejas con más de dos hijos; esto nos ayuda a entender cuan confiables son nuestros hallazgos.

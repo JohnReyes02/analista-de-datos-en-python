@@ -397,6 +397,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#visualizar-las-relaciones-entre-variables" id="toc-visualizar-las-relaciones-entre-variables" class="nav-link" data-scroll-target="#visualizar-las-relaciones-entre-variables">Visualizar las relaciones entre variables</a></li>
   <li><a href="#visualizar-las-relaciones-entre-múltiples-variables" id="toc-visualizar-las-relaciones-entre-múltiples-variables" class="nav-link" data-scroll-target="#visualizar-las-relaciones-entre-múltiples-variables">Visualizar las relaciones entre múltiples variables</a></li>
   </ul></li>
+  <li><a href="#relaciones-y-distribuciones-de-los-factores" id="toc-relaciones-y-distribuciones-de-los-factores" class="nav-link" data-scroll-target="#relaciones-y-distribuciones-de-los-factores">Relaciones y distribuciones de los factores</a>
+  <ul class="collapse">
+  <li><a href="#datos-categóricos-en-gráficos-de-dispersión" id="toc-datos-categóricos-en-gráficos-de-dispersión" class="nav-link" data-scroll-target="#datos-categóricos-en-gráficos-de-dispersión">Datos categóricos en gráficos de dispersión</a></li>
+  <li><a href="#explorando-con-gráficos-kde" id="toc-explorando-con-gráficos-kde" class="nav-link" data-scroll-target="#explorando-con-gráficos-kde">Explorando con gráficos KDE</a></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/JohnReyes02/Datacamp/edit/main/Analista_de_datos_en_python/07_Analisis_exploratorio_de_datos/03_Relaciones_en_los_datos.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/JohnReyes02/Datacamp/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/JohnReyes02/Datacamp/blob/main/Analista_de_datos_en_python/07_Analisis_exploratorio_de_datos/03_Relaciones_en_los_datos.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
     </div>
@@ -426,7 +431,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Las variables de los conjuntos de datos tienen relaciones entre sí. En este capítulo, examinarás las relaciones entre datos numéricos, categóricos e incluso DateTime, explorando la dirección y la fuerza de estas relaciones, así como las formas de visualizarlas.</p>
 <section id="patrones-a-lo-largo-del-tiempo" class="level2">
 <h2 class="anchored" data-anchor-id="patrones-a-lo-largo-del-tiempo">Patrones a lo largo del tiempo</h2>
-<div id="dce1576b" class="cell" data-execution_count="1">
+<div id="2d081c3d" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>divorce <span class="op">=</span> pd.read_csv(<span class="st">"divorce.csv"</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>divorce.head()</span></code></pre></div>
 </div>
@@ -437,11 +442,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>DataTime necesita ser explicitamente declarada en pandas</li>
 </ul></li>
 </ul>
-<div id="8ce1b2d6" class="cell" data-execution_count="2">
+<div id="25cdb10b" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>divorce.dtypes</span></code></pre></div>
 </div>
 <p><img src="images/paste-54.png" class="img-fluid"></p>
-<div id="f8a23dea" class="cell" data-execution_count="3">
+<div id="0a38ea49" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>divorce <span class="op">=</span> pd.read_csv(<span class="st">"divorce.csv"</span>, parse_dates<span class="op">=</span>[<span class="st">"marriage_date"</span>])</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>divorce.dtypes</span></code></pre></div>
 </div>
@@ -457,7 +462,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><code>pd.to_datetime()</code> convierte los argumentos de datos DateTime</li>
 </ul></li>
 </ul>
-<div id="82ff81f9" class="cell" data-execution_count="4">
+<div id="08867a47" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>divorce[<span class="st">'marriage_date'</span>] <span class="op">=</span> pd.to_datetime(divorce[<span class="st">'marriage_date'</span>])</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>divorce_dtypes</span></code></pre></div>
 </div>
@@ -465,17 +470,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Creando datos DateTime</li>
 </ul>
-<div id="ebf010f1" class="cell" data-execution_count="5">
+<div id="8b485063" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>divorce.head(<span class="dv">2</span>)</span></code></pre></div>
 </div>
 <p><img src="images/paste-58.png" class="img-fluid"></p>
-<div id="0b3eaa5c" class="cell" data-execution_count="6">
+<div id="a2d1d625" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>divorce[<span class="st">'marriage_date'</span>] <span class="op">=</span> pd.to_datetime(divorce[[<span class="st">'month'</span>, <span class="st">'day'</span>, <span class="st">'year'</span>]])</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>divorce.head(<span class="dv">2</span>)</span></code></pre></div>
 </div>
 <p><img src="images/paste-59.png" class="img-fluid"></p>
 <p>Es posible extraer sólo el mes, el día o el año de una columna que contenga una fecha completa, usando los atributos <code>dt.month</code>, <code>dt.day</code> y <code>dt.year.</code></p>
-<div id="e6e36cc8" class="cell" data-execution_count="7">
+<div id="159f8bf2" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>divorce[<span class="st">'marriage_month'</span>] <span class="op">=</span> divorce[<span class="st">'marriage_date'</span>].dt.month()</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>divorce.head()</span></code></pre></div>
 </div>
@@ -483,7 +488,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Visualizando patrones a lo largo del tiempo</li>
 </ul>
-<div id="a8d620dd" class="cell" data-execution_count="8">
+<div id="6ed3aaca" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>sns.lineplot(data<span class="op">=</span>divorce, x<span class="op">=</span><span class="st">'marriage_month'</span>, y<span class="op">=</span><span class="st">'marriage_duration'</span>)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div>
 </div>
@@ -495,7 +500,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Los nombres de ls columnas y los tipos de datos son los siguientes:</p>
 <p><img src="images/paste-62.png" class="img-fluid"></p>
 <p>¡Parece que hay mucha información de fecha en estos datos que todavía no son de tipo DateTime! Tu tarea es arreglarlo para que puedas explorar patrones a lo largo del tiempo.</p>
-<div id="311d9a70" class="cell" data-execution_count="9">
+<div id="bea255dd" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>ruta <span class="op">=</span> <span class="st">'./data/divorce.csv'</span></span>
@@ -598,7 +603,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Importa <code>divorce.csv</code>, guardando como DataFrame, <code>divorce</code>: indica en la función de importación que las columnas <code>divorce_date</code>, <code>dob_man</code>, <code>dob_woman</code>, y <code>marriage_date</code> deben importarse como valores DateTime.</li>
 </ul>
-<div id="aff5309f" class="cell" data-execution_count="10">
+<div id="f9f0502c" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import divorce.csv, parseing the appropriate columns as dateds in the import</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>divorce <span class="op">=</span> pd.read_csv(<span class="st">'./data/divorce.csv'</span>, parse_dates<span class="op">=</span>[<span class="st">'divorce_date'</span>, <span class="st">'dob_man'</span>, <span class="st">'dob_woman'</span>, <span class="st">'marriage_date'</span>])</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(divorce.dtypes)</span></code></pre></div>
@@ -622,7 +627,7 @@ dtype: object</code></pre>
 <section id="actualizar-tipo-de-datos-a-datetime" class="level3">
 <h3 class="anchored" data-anchor-id="actualizar-tipo-de-datos-a-datetime">Actualizar tipo de datos a DateTime</h3>
 <p>Ahora se te ha cargado el DataFrame <code>divorce</code>, pero una columna se almacea como una cadena que debería ser un dato DateTime. ¿Cuál es? Una vez que hayas identificado la columna, la actualizarás para que puedas explorarla más de cerca en el siguiente ejercicio.</p>
-<div id="91814f6d" class="cell" data-execution_count="11">
+<div id="36a4b280" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>ruta <span class="op">=</span> <span class="st">'./data/divorce.csv'</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>divorce <span class="op">=</span> pd.read_csv(ruta, parse_dates<span class="op">=</span>[<span class="st">'divorce_date'</span>, <span class="st">'dob_man'</span>, <span class="st">'dob_woman'</span>])</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(divorce.dtypes)</span></code></pre></div>
@@ -656,7 +661,7 @@ dtype: object</code></pre>
 <ol start="2" type="1">
 <li>Covierte la columna <code>marriage_date</code> del DataFrame <code>divorce</code> en valores de <code>DateTime</code>.</li>
 </ol>
-<div id="6e9d724c" class="cell" data-execution_count="12">
+<div id="28e6dc96" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert the marriage_date column to DateTime values</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>divorce[<span class="st">'marriage_date'</span>] <span class="op">=</span> pd.to_datetime(divorce[<span class="st">'marriage_date'</span>])</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(divorce.dtypes)</span></code></pre></div>
@@ -685,14 +690,14 @@ dtype: object</code></pre>
 <ol type="1">
 <li>Define una columna llamada <code>marriage_year</code>, que solo contiene la parte del año de la columna <code>marriage_date</code>.</li>
 </ol>
-<div id="14f25df9" class="cell" data-execution_count="13">
+<div id="cfa2f5a1" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the marriage_year column</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>divorce[<span class="st">'marriage_year'</span>] <span class="op">=</span> divorce[<span class="st">'marriage_date'</span>].dt.year</span></code></pre></div>
 </div>
 <ol start="2" type="1">
 <li>Crea un gráfico de líneas que muestre el número medio de hijos que tuvo una pareja durante su matrimonio, ordenado por el año en que la pareja se casó.</li>
 </ol>
-<div id="85fc78d5" class="cell" data-execution_count="14">
+<div id="5963c337" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a lineplot showing the average  number of kids by year</span></span>
@@ -720,7 +725,7 @@ dtype: object</code></pre>
 <li><p>El método <code>.cor()</code> calcula el coeficiente de correlación de Pearson.</p></li>
 </ul></li>
 </ul>
-<div id="a0425411" class="cell" data-execution_count="15">
+<div id="fdf54a28" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>divorce.corr(numeric_only<span class="op">=</span><span class="va">True</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <div>
@@ -787,7 +792,7 @@ dtype: object</code></pre>
 <ul>
 <li>Mapas de calor de correlación</li>
 </ul>
-<div id="60892cc5" class="cell" data-execution_count="16">
+<div id="341f17cb" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>sns.heatmap(divorce.corr(numeric_only<span class="op">=</span><span class="va">True</span>), annot<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div>
 <div class="cell-output cell-output-display">
@@ -801,13 +806,13 @@ dtype: object</code></pre>
 <ul>
 <li>Correlación en contexto</li>
 </ul>
-<div id="ece8bc97" class="cell" data-execution_count="17">
+<div id="2e93dab0" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>divorce[<span class="st">'divorce_date'</span>].<span class="bu">min</span>()</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>Timestamp('2000-01-08 00:00:00')</code></pre>
 </div>
 </div>
-<div id="de22f5a6" class="cell" data-execution_count="18">
+<div id="2537ffe3" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>divorce[<span class="st">'divorce_date'</span>].<span class="bu">max</span>()</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
 <pre><code>Timestamp('2015-11-03 00:00:00')</code></pre>
@@ -844,7 +849,7 @@ dtype: object</code></pre>
 <ul>
 <li>Scatter plots</li>
 </ul>
-<div id="7c01eef2" class="cell" data-execution_count="19">
+<div id="bb068eed" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(data<span class="op">=</span>divorce, x<span class="op">=</span><span class="st">'income_man'</span>, y<span class="op">=</span><span class="st">'income_woman'</span>)</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div>
 <div class="cell-output cell-output-display">
@@ -862,7 +867,7 @@ dtype: object</code></pre>
 <li>Tanta información en un elemento visual puede ser difícil de interpretar con grandes conjuntos de datos.</li>
 </ul></li>
 </ul>
-<div id="14d836ab" class="cell" data-execution_count="20">
+<div id="a49222dd" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>sns.pairplot(data<span class="op">=</span>divorce)</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div>
 <div class="cell-output cell-output-display">
@@ -874,7 +879,7 @@ dtype: object</code></pre>
 </div>
 </div>
 <p>Es posible limitar el número de relaciones graficadas estableciendo el argumento <code>vars</code> igual a las variables de interés.</p>
-<div id="bb8f9f90" class="cell" data-execution_count="21">
+<div id="9bb10d52" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>sns.pairplot(data<span class="op">=</span>divorce, <span class="bu">vars</span><span class="op">=</span>[<span class="st">'income_man'</span>, <span class="st">'income_woman'</span>, <span class="st">'marriage_duration'</span>])</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div>
 <div class="cell-output cell-output-display">
@@ -888,7 +893,7 @@ dtype: object</code></pre>
 <section id="interpretar-un-mapa-de-calor" class="level3">
 <h3 class="anchored" data-anchor-id="interpretar-un-mapa-de-calor">Interpretar un mapa de calor</h3>
 <p>¿Cuál de las siguientes afirmaciones es correcta respecto a las relaciones entre variables en el DataFrame <code>divorce</code>?</p>
-<div id="6fe8ef76" class="cell" data-execution_count="22">
+<div id="9ff73956" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>divorce[<span class="st">'marriage_moth'</span>] <span class="op">=</span> divorce[<span class="st">'marriage_date'</span>].dt.month</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>divorce.head()</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="14">
@@ -1015,7 +1020,7 @@ dtype: object</code></pre>
 <ul>
 <li>Cree un diagrama de dispersión que muestre <code>marriage_duration</code> en el eje x y <code>num_kids</code> en el eje y.</li>
 </ul>
-<div id="f26a0c52" class="cell" data-execution_count="23">
+<div id="11da7e6c" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the scatterplot</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(data<span class="op">=</span>divorce, x<span class="op">=</span><span class="st">'marriage_duration'</span>, y<span class="op">=</span><span class="st">'num_kids'</span>)</span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div>
@@ -1039,7 +1044,7 @@ dtype: object</code></pre>
 <ul>
 <li>Crea un diagrama de pares para visualizar las relaciones entre <code>income_woman</code> y <code>marriage_duration</code> en el DataFrame <code>divorce</code>.</li>
 </ul>
-<div id="ca3b66ce" class="cell" data-execution_count="24">
+<div id="f7aa8b8c" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a pairplot for income_woman and marriage_duration</span></span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>sns.pairplot(data<span class="op">=</span>divorce, <span class="bu">vars</span><span class="op">=</span>[<span class="st">'income_woman'</span>, <span class="st">'marriage_duration'</span>])</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div>
@@ -1052,6 +1057,207 @@ dtype: object</code></pre>
 </div>
 </div>
 <p>Al igual que la matriz de correlación , puedes ver que la relación entre <code>income_woman</code> y <code>marriage_duration</code> no es fuerte. También puedes tener una idea de las distribuciones de ambas variables en los gráficos superior izquierdo e inferior derecho.</p>
+</section>
+</section>
+</section>
+<section id="relaciones-y-distribuciones-de-los-factores" class="level2">
+<h2 class="anchored" data-anchor-id="relaciones-y-distribuciones-de-los-factores">Relaciones y distribuciones de los factores</h2>
+<ul>
+<li>Nivel de educación: male partner</li>
+</ul>
+<div id="4bbd2b16" class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>divorce[<span class="st">'education_man'</span>].value_counts()</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="17">
+<pre><code>education_man
+Professional    1313
+Preparatory      501
+Secondary        288
+Primary          100
+Other              3
+Name: count, dtype: int64</code></pre>
+</div>
+</div>
+<ul>
+<li>Explorando las relaciones categóricas</li>
+</ul>
+<div id="8227ddb7" class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>sns.histplot(data<span class="op">=</span>divorce, x<span class="op">=</span><span class="st">'marriage_duration'</span>, binwidth<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="03_Relaciones_en_los_datos_files/figure-html/cell-27-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="e1507089" class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>sns.histplot(data<span class="op">=</span>divorce, x<span class="op">=</span><span class="st">'marriage_duration'</span>, hue<span class="op">=</span><span class="st">'education_man'</span>, binwidth<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="03_Relaciones_en_los_datos_files/figure-html/cell-28-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>Kernel Desnsity Estimate (KDE) plots</li>
+</ul>
+<div id="56dba431" class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>sns.kdeplot(data<span class="op">=</span>divorce, x<span class="op">=</span><span class="st">'marriage_duration'</span>, hue<span class="op">=</span><span class="st">'education_man'</span>)</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="03_Relaciones_en_los_datos_files/figure-html/cell-29-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Los gráficos KDE nos permiten visualizar las distribuciones. Los KDE son más interpretables, especialmente cuando se muestran varias distribuciones.</p>
+<p>La distribución con KDE parece sugerir que algunas parejas tuvieron duraciones menores a cero.</p>
+<p>Para solucionar esto, podempos utilizar el argumento de la palabra clave <code>cut</code>.</p>
+<div id="476f5783" class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>sns.kdeplot(data<span class="op">=</span>divorce, x<span class="op">=</span><span class="st">'marriage_duration'</span>, hue<span class="op">=</span><span class="st">'education_man'</span>, cut<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="03_Relaciones_en_los_datos_files/figure-html/cell-30-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>Gráficos KDE acumulativos</li>
+</ul>
+<div id="5137708e" class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>sns.kdeplot(data<span class="op">=</span>divorce, x<span class="op">=</span><span class="st">'marriage_duration'</span>, hue<span class="op">=</span><span class="st">'education_man'</span>, cut<span class="op">=</span><span class="dv">0</span>, cumulative<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="03_Relaciones_en_los_datos_files/figure-html/cell-31-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Este gráfico describe la probabilidad de que la duración del matrimonio sea menor o igual al valor del eje x para cada nivel de educación de la pareja masculina.</p>
+<ul>
+<li>Relación entre la edad del matrimonio y la educación
+<ul>
+<li>Hay una relación entre la edad al momento del matrimonio y el nivel de educación?</li>
+</ul></li>
+</ul>
+<div id="6260e8fd" class="cell" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>divorce[<span class="st">'man_age_marriage'</span>] <span class="op">=</span> divorce[<span class="st">'marriage_year'</span>] <span class="op">-</span> divorce[<span class="st">'dob_man'</span>].dt.year</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>divorce[<span class="st">'woman_age_marriage'</span>] <span class="op">=</span> divorce[<span class="st">'marriage_year'</span>] <span class="op">-</span> divorce[<span class="st">'dob_woman'</span>].dt.year</span></code></pre></div>
+</div>
+<ul>
+<li>Scatter plot con las variables categóricas</li>
+</ul>
+<div id="6fbea838" class="cell" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>sns.catplot(data<span class="op">=</span>divorce, x<span class="op">=</span><span class="st">'woman_age_marriage'</span>, y<span class="op">=</span><span class="st">'man_age_marriage'</span>)</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="03_Relaciones_en_los_datos_files/figure-html/cell-33-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="be83cca0" class="cell" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>sns.catplot(data<span class="op">=</span>divorce, x<span class="op">=</span><span class="st">'woman_age_marriage'</span>, y<span class="op">=</span><span class="st">'man_age_marriage'</span>, hue<span class="op">=</span><span class="st">'education_man'</span>)</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="03_Relaciones_en_los_datos_files/figure-html/cell-34-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="datos-categóricos-en-gráficos-de-dispersión" class="level3">
+<h3 class="anchored" data-anchor-id="datos-categóricos-en-gráficos-de-dispersión">Datos categóricos en gráficos de dispersión</h3>
+<p>En el video se exploro cómo se relacionan el nivel educativo de los hombres y la edad al casarse con otras variables de nuestro conjunto de datos, el DataFrame <code>divorce</code>. Ahora verás cómo se relacionan la formación de las mujeres y la edad al casarse con otras variables.</p>
+<p>Tu tarea consiste en crear un diagrama de dispersión de la edad y los ingresos de cada mujer, incorporando la variable categórica del nivel educativo para obtener un contexto adicional.</p>
+<section id="instrucciones-6" class="level4">
+<h4 class="anchored" data-anchor-id="instrucciones-6">Instrucciones</h4>
+<ul>
+<li>Crea un gráfico de dispersión que muestre <code>woman_age_marriage</code> en el eje de abcisas y <code>income_woman</code> en el eje de las ordenadas, cada punto de datos debe colorearse en función del nivel educativo de la mujer, representado por <code>education_woman</code>.</li>
+</ul>
+<div id="2fcf9d83" class="cell" data-execution_count="34">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a scatter plot</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(data<span class="op">=</span>divorce, x<span class="op">=</span><span class="st">'woman_age_marriage'</span>, y<span class="op">=</span><span class="st">'income_woman'</span>, hue<span class="op">=</span><span class="st">'education_woman'</span>)</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="03_Relaciones_en_los_datos_files/figure-html/cell-35-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Parece que hay una correlación positiva entre la educación profesional y los salarios más altos, como cabría esperar. La relación entre la edad de las mujeres al casarse y el nivel educativo es un poco menos clara.</p>
+</section>
+</section>
+<section id="explorando-con-gráficos-kde" class="level3">
+<h3 class="anchored" data-anchor-id="explorando-con-gráficos-kde">Explorando con gráficos KDE</h3>
+<p>Los gráficos de Estimación de Densidad del Núcleo (KDE) son una gran alternativa a los histogramas cuando quieres mostrar varias distribuciones en el mismo gráfico.</p>
+<p>Supongamos que te interesa la relación entre la duración del matrimonio y el número de hijos que tiene una pareja. Como los valores de la columna <code>num_kids</code> sólo van de uno a cinco, puedes graficar el KDE de cada valor en la misma gráfica.</p>
+<p>Recuerda que la columna <code>num_kids</code> de <code>divorce</code> solo muestra los valores <code>N/A</code> de las parejas sin hijos, por lo que solo verás las distribuciones de las parejas divorciadas con al menos un hijo.</p>
+<section id="instrucciones-7" class="level4">
+<h4 class="anchored" data-anchor-id="instrucciones-7">Instrucciones</h4>
+<ol type="1">
+<li>Cree un gráfico KDE que muestre <code>marriage_duration</code> en el eje x y una línea de color diferente para cada posible número de hijos que pueda tener una pareja, representada por <code>num_kids</code>.</li>
+</ol>
+<div id="9512cc09" class="cell" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the KDE plot</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>sns.kdeplot(data<span class="op">=</span>divorce, x<span class="op">=</span><span class="st">'marriage_duration'</span>, hue<span class="op">=</span><span class="st">'num_kids'</span>)</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="03_Relaciones_en_los_datos_files/figure-html/cell-36-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="2" type="1">
+<li>Observa que actualmente el gráfico muestra duraciones del matrimonio inferiores a cero; actualiza el grafico KDE para que la duración del matrimonio no pueda suavizarse más allá de los puntos de datos extremos.</li>
+</ol>
+<div id="7a0bbf35" class="cell" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Update the KDE plot so that marriage durantion can't be smoothed too far</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>sns.kdeplot(data<span class="op">=</span>divorce, x<span class="op">=</span><span class="st">'marriage_duration'</span>, hue<span class="op">=</span><span class="st">'num_kids'</span>, cut<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="03_Relaciones_en_los_datos_files/figure-html/cell-37-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="3" type="1">
+<li>Actualiza el código del gráfico KDE del paso anterior para que muestre una función de distribución acumulativo para cada número de hijos que tiene una pareja.</li>
+</ol>
+<div id="3b711fbb" class="cell" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Update the KDE plot to show a cumulative distribution function</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>sns.kdeplot(data<span class="op">=</span>divorce, x<span class="op">=</span><span class="st">'marriage_duration'</span>, hue<span class="op">=</span><span class="st">'num_kids'</span>, cut<span class="op">=</span><span class="dv">0</span>, cumulative<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="03_Relaciones_en_los_datos_files/figure-html/cell-38-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Parece que hay una correlación positiva entre matrimonios más largos y más hijos, pero por supuesto, esto no indica causalidad. También puedes ver que hay muchos menos datos sobre parejas con más de dos hijos; esto nos ayuda a entender cuan confiables son nuestros hallazgos.</p>
 
 
 </section>
