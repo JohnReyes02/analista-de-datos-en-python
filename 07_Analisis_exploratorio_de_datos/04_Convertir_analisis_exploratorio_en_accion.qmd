@@ -1,3 +1,144 @@
 ---
 title: "Convertir el análisis exploratorio en acción"
 ---
+
+El análisis exploratorio de datos es un paso crucial en el flujo de trabajo de la ciencia de datos, ¡por no esl el final! Ahora es el momento de aprender técnicas y consideraciones que puedes utilizar para avanzar con éxito en tus proyectos una vez que hayas terminado de explorar.
+
+## Consideraciones para datos categóricos
+
+-   Por qué ejecutar EDA?
+    -   Detectar patrones y relaciones.
+    -   Generar preguntas o hipótesis.
+    -   Preparar datos para modelos de machine learning.
+-   Representatividad de los datos
+    -   La muestra debe representar la población.
+    -   Por ejemplo:
+        -   Educación versus ingresos en USA
+            -   No se pueden usar datos de Francia
+-   Clases Categóricas
+    -   Clases = etiquetas
+    -   Ejemplo, actitudes de las personas hacia el matrimonio.
+        -   Estado civil
+            -   Soltero
+            -   Casado
+            -   Divorciado
+-   Desbalance de Clases
+
+![](images/paste-66.png)
+
+-   Frecuencia de Clases
+
+```{python}
+#| echo: true
+#| eval: false
+print(planes('Destination').value_counts())
+```
+
+![](images/paste-67.png)
+
+-   Frecuencia relativa de clases
+
+    -   40% de los vuelos internos de la India van hacia Delhi.
+
+```{python}
+#| echo: true
+#| eval: false
+planes['Destination'].value_counts(normalized=True)
+```
+
+![](images/paste-68.png)
+
+Es nuestra muestra representativa de la población? (Vuelos internos de India)
+
+-   Tabulación Cruzada
+
+    -   Es otro método para observar la frecuencia de clase, que permite examinar la frecuencia de combinaciones de clases
+
+    ![](images/paste-69.png)
+
+```{python}
+#| echo: true
+#| eval: false
+pd.crosstab(planes['Source'], planes['Destination'])
+```
+
+![](images/paste-70.png)
+
+-   Extendiendo la tabulación cruzada
+
+| Source   | Destination | Median Price (IDR) |
+|----------|-------------|--------------------|
+| Banglore | Delhi       | 4232.21            |
+| Banglore | New Delhi   | 12114.56           |
+| Chennai  | Kolkata     | 3859.76            |
+| Delhi    | Cochin      | 9987.63            |
+| Kolkata  | Banglore    | 9654.21            |
+| Mumbai   | Hyderabad   | 3431.97            |
+
+-   Agregación de valores con pd.crosstab()
+
+```{python}
+#| echo: true
+#| eval: false
+pd.crosstab(planes['Source'], planes['Destination'],
+           values=planes['Price'], aggfunc='median')
+```
+
+![](images/paste-71.png)
+
+Los resultados muestran valores de la mediana para todas las rutas posibles en el conjunto de datos.
+
+-   Comparando la muestra con la población
+
+| Source   | Desitnation | Median Price (IDR) | Median Price (dataset) |
+|----------|-------------|--------------------|------------------------|
+| Banglore | Delhi       | 4232.21            | 4823.0                 |
+| Banglore | New Delhi   | 12114.56           | 10976.50               |
+| Chennai  | Kolkata     | 3859.76            | 3850.0                 |
+| Delhi    | Cochin      | 9987.63            | 10260.0                |
+| Kolkata  | Banglore    | 9654.21            | 9345.0                 |
+| Mumbai   | Hyderabad   | 3431.97            | 3342.0                 |
+
+### Comprobación del desequilibrio de clases
+
+La [Encuesta Kaggle 2022](https://www.kaggle.com/kaggle-survey-2022) recoge la información sobre la formación de los científicos de datos, sus tecnologías y técnicas preferidas. Se considera una visión precisa de lo que está ocurriendo en la ciencia de datos, basada en el volumen y el perfil de los que responden.
+
+Una vez examinados los títulos de los puestos y categorizados para alinearlos con nuestro `salaries` DataFrame\`, puedes ver la siguiente proporción de categorías laborales en la encuesta Kaggle:
+
+| Categoría laboral   | Frecuencia relativa |
+|---------------------|---------------------|
+| Ciencia de datos    | 0,281236            |
+| Análisis de datos   | 0,224231            |
+| Otros               | 0,214609            |
+| Dirección           | 0,121300            |
+| Machine Learning    | 0,083248            |
+| Ingeniería de datos | 0,075375            |
+
+Pensando en los resultados de la encuesta Kaggle como población, tu tarea consiste en averiguar si el DataFrame `salaries` es representativo comparando la frecuencia relativa de las categorías laborales.
+
+```{python}
+import pandas as pd
+ruta = './data/ds_salaries_clean.csv'
+salaries = pd.read_csv(ruta)
+salaries.head()
+```
+
+#### Istrucciones
+
+- Imprime la frecuencia relativa de la columna `Job_Category` de `salaries` DataFrame
+
+### Tabulación cruzada
+
+## Generar nuevas funciones
+
+### Extraer características para la correlación
+
+### Cálculo de los percentiles salariales
+
+### Categorizar los salarios
+
+## Generar hipótesis
+
+### Comparar salarios
+
+### Elegir una hipótesis
