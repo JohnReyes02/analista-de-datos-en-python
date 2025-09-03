@@ -43,7 +43,7 @@ print(planes('Destination').value_counts())
 ```{python}
 #| echo: true
 #| eval: false
-planes['Destination'].value_counts(normalized=True)
+planes['Destination'].value_counts(normalize=True)
 ```
 
 ![](images/paste-68.png)
@@ -118,14 +118,29 @@ Pensando en los resultados de la encuesta Kaggle como población, tu tarea consi
 
 ```{python}
 import pandas as pd
-ruta = './data/ds_salaries_clean.csv'
+ruta = './data/salaries.csv'
 salaries = pd.read_csv(ruta)
 salaries.head()
 ```
 
-#### Istrucciones
+#### Instrucciones
 
 - Imprime la frecuencia relativa de la columna `Job_Category` de `salaries` DataFrame
+
+::: {.callout-note}
+Para exportar el dataset en formato CSV dentro de DataCamp y luego copiarlo:
+```python
+print(salaries.to_csv(index=False))
+```
+:::
+
+```{python}
+# Print the relative frequency of Job_Category
+print(salaries['Job_Category'].value_counts(normalize=True))
+```
+
+Parece que Data Science es la clase más popular y tiene una representación similar. Aún así, las otras categorías tienen frecuencias relativas bastante diferentes, lo cual pordría no ser sorprendente dado que el público objetivo son científico de datos. Dada la diferencia en las frecuencias relativas, ¿puedes confiar en que el DataFrame `salaries` representa con precisión los roles gerenciales?
+
 
 ### Tabulación cruzada
 
