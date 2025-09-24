@@ -286,6 +286,55 @@ print(planes['Price'].describe())
 
 -   Estadística descriptiva
 
+```{python}
+#| echo: true
+#| eval: false
+twenty_fifth = planes['Price'].quantile(0.25)
+median = planes['Price'].median()
+seventy_fifth = planes['Price'].quantile(0.75)
+maximum = planes['Price'].max()
+```
+
+-   Etiquetas y bins
+
+```{python}
+#| echo: true
+#| eval: false
+labels = ['Economy', 'Premium Economy', 'Business Class', 'First Class']
+bins = [0, twenty_fifth, median, seventy_fifth, maximum]
+```
+
+-   pd.cut()
+
+![](images/paste-80.png)
+
+```{python}
+#| echo: true
+#| eval: false
+planes['Price_Category'] = pd.cut(planes['Price'], labels=labels, bins=bins)
+```
+
+-   Categoría de precios
+
+```{python}
+#| echo: true
+#| eval: false
+print(planes[['Price', 'Price_Category']].head())
+```
+
+![](images/paste-81.png)
+
+-   Categoría de precio por aerolínea
+
+```{python}
+#| echo: true
+#| eval: false
+sns.countplot(data=planes, x='Airline', hue='Price_Category')
+plt.show()
+```
+
+![](images/paste-82.png)
+
 ### Extraer características para la correlación
 
 ### Cálculo de los percentiles salariales
