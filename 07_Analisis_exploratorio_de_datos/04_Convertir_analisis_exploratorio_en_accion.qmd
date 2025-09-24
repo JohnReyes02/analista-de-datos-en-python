@@ -125,11 +125,12 @@ salaries.head()
 
 #### Instrucciones
 
-- Imprime la frecuencia relativa de la columna `Job_Category` de `salaries` DataFrame
+-   Imprime la frecuencia relativa de la columna `Job_Category` de `salaries` DataFrame
 
-::: {.callout-note}
+::: callout-note
 Para exportar el dataset en formato CSV dentro de DataCamp y luego copiarlo:
-```python
+
+``` python
 print(salaries.to_csv(index=False))
 ```
 :::
@@ -141,10 +142,149 @@ print(salaries['Job_Category'].value_counts(normalize=True))
 
 Parece que Data Science es la clase más popular y tiene una representación similar. Aún así, las otras categorías tienen frecuencias relativas bastante diferentes, lo cual pordría no ser sorprendente dado que el público objetivo son científico de datos. Dada la diferencia en las frecuencias relativas, ¿puedes confiar en que el DataFrame `salaries` representa con precisión los roles gerenciales?
 
-
 ### Tabulación cruzada
 
-## Generar nuevas funciones
+La tabulación cruzada puede ayudar a identificar cómo se combinan las observaciones.
+
+Utilizando el conjunto de datos `salaries`, que se ha importado como un DataFrame `pandas`, realizarás una tabulación cruzada de múltiples variables, incluyendo el uso de la agregación, para ver la relación entre 'Company_Size' y otras variables.
+
+#### Instrucciones
+
+1.  Realiza una tabulación cruzada, estableciendo `Company_Size` como índice, y las columnas a las clases en `Experience`.
+
+```{python}
+# Cross-tabulate Company_Size and Experience
+print(pd.crosstab(salaries['Company_Size'], salaries['Experience']))
+```
+
+2.  Cruza 'Job_Category' y las clases de 'Company_Size' como nombres de columna.
+
+```{python}
+# Cross-tabulate Job_Category and Company_Size
+print(pd.crosstab(salaries['Job_Category'], salaries['Company_Size']))
+```
+
+3.  Actualiza `pd.crosstab()` para que devuelva los valores medios de `Salary_USD`.
+
+```{python}
+# Cross-tabulate Job_Category and Company_Size
+print(pd.crosstab(salaries['Job_Category'], salaries['Company_Size'], values= salaries['Salary_USD'], aggfunc='mean'))
+```
+
+Ésta es una función útil para examinar la combinación de frecuencias, así como para encontrar estadísticas agregadas. ¡Parece que el salario medio más alto es para roles de datos gerenciales en grandes empresas!
+
+## Generar nuevas Características
+
+-   Correlación
+
+```{python}
+#| echo: true
+#| eval: false
+sns.heatmap(planes.corr(numeric_only=True), annot=True)
+plt.show()
+```
+
+![](images/paste-72.png)
+
+-   Viendo el tipo de datos
+
+```{python}
+#| echo: true
+#| eval: false
+print(planes.dtypes)
+```
+
+![](images/paste-73.png)
+
+-   Total Stops
+
+```{python}
+#| echo: true
+#| eval: false
+print(planes['Total_Stops'].value_counts())
+```
+
+![](images/paste-74.png)
+
+Se observa que es necesario eliminar algunos caracteres.
+
+-   Limpiando Total Stops
+
+```{python}
+#| echo: true
+#| eval: false
+planes['Total_Stops'] = planes['Total_Stops'].str.replace(' stops', '')
+planes['Total_Stops'] = planes['Total_Stops'].str.replace(' stop', '')
+planes['Total_Stops'] = planes['Total_Stops'].str.replace('non-stop', '0')
+planes['Total_Stops'] = planes['Total_Stops'].astype(int)
+```
+
+-   Correlación
+
+```{python}
+#| echo: true
+#| eval: false
+sns.heatmap(planes.corr(numeric_only=True), annot=True)
+plt.show()
+```
+
+![](images/paste-75.png)
+
+-   Fechas
+
+```{python}
+#| echo: true
+#| eval: false
+print(planes.dtypes)
+```
+
+![](images/paste-76.png)
+
+-   Extrayendo el mes y el día de la semana
+
+```{python}
+#| echo: true
+#| eval: false
+planes['month'] = planes['Date_of_Journey'].dt.month
+planes['weekday'] = planes['Date_of_Journey'].dt.weekday
+print(planes[['month', 'weekday', 'Date_of_Journey']].head())
+```
+
+![](images/paste-77.png)
+
+-   Tiempos de salidas y llegadas
+
+```{python}
+#| echo: true
+#| eval: false
+planes['Dep_Hour'] = planes['Dep_Time'].dt.hour
+planes['Arrival_Hour'] = planes['Arrival_Time'].dt.hour
+```
+
+-   Correlación
+
+![](images/paste-78.png)
+
+No hay correlaciones, pero no lo sabríamos si no se hubieran generado nuevas características.
+
+-   Creando características
+
+```{python}
+#| echo: true
+#| eval: false
+print(planes['Price'].describe())
+```
+
+![](images/paste-79.png)
+
+| Rango             | Tipo de tiquete |
+|-------------------|-----------------|
+| \<= 5228          | Economy         |
+| \> 5528 \<= 8355  | Premium Economy |
+| \> 8355 \<= 12373 | Business Class  |
+| \> 12373          | First Class     |
+
+-   Estadística descriptiva
 
 ### Extraer características para la correlación
 
