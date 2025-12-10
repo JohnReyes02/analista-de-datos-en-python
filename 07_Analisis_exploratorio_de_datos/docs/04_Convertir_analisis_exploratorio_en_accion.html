@@ -466,7 +466,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Frecuencia de Clases</li>
 </ul>
-<div id="ff13619e" class="cell" data-execution_count="1">
+<div id="b01995a5" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(planes(<span class="st">'Destination'</span>).value_counts())</span></code></pre></div>
 </div>
 <p><img src="images/paste-67.png" class="img-fluid"></p>
@@ -476,7 +476,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>40% de los vuelos internos de la India van hacia Delhi.</li>
 </ul></li>
 </ul>
-<div id="fb8691dc" class="cell" data-execution_count="2">
+<div id="d421099c" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>planes[<span class="st">'Destination'</span>].value_counts(normalize<span class="op">=</span><span class="va">True</span>)</span></code></pre></div>
 </div>
 <p><img src="images/paste-68.png" class="img-fluid"></p>
@@ -488,7 +488,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p><img src="images/paste-69.png" class="img-fluid"></p></li>
 </ul>
-<div id="3d9cea41" class="cell" data-execution_count="3">
+<div id="fe546fe5" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pd.crosstab(planes[<span class="st">'Source'</span>], planes[<span class="st">'Destination'</span>])</span></code></pre></div>
 </div>
 <p><img src="images/paste-70.png" class="img-fluid"></p>
@@ -539,7 +539,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Agregación de valores con pd.crosstab()</li>
 </ul>
-<div id="c3bc4caa" class="cell" data-execution_count="4">
+<div id="7b7f85b4" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>pd.crosstab(planes[<span class="st">'Source'</span>], planes[<span class="st">'Destination'</span>],</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>           values<span class="op">=</span>planes[<span class="st">'Price'</span>], aggfunc<span class="op">=</span><span class="st">'median'</span>)</span></code></pre></div>
 </div>
@@ -635,7 +635,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 <p>Pensando en los resultados de la encuesta Kaggle como población, tu tarea consiste en averiguar si el DataFrame <code>salaries</code> es representativo comparando la frecuencia relativa de las categorías laborales.</p>
-<div id="14e27440" class="cell" data-execution_count="5">
+<div id="c714b08b" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>ruta <span class="op">=</span> <span class="st">'./data/salaries.csv'</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>salaries <span class="op">=</span> pd.read_csv(ruta)</span>
@@ -757,7 +757,7 @@ Note
 <div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(salaries.to_csv(index<span class="op">=</span><span class="va">False</span>))</span></code></pre></div>
 </div>
 </div>
-<div id="a9b30a2f" class="cell" data-execution_count="6">
+<div id="c4d86d29" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the relative frequency of Job_Category</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(salaries[<span class="st">'Job_Category'</span>].value_counts(normalize<span class="op">=</span><span class="va">True</span>))</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -783,7 +783,7 @@ Name: proportion, dtype: float64</code></pre>
 <ol type="1">
 <li>Realiza una tabulación cruzada, estableciendo <code>Company_Size</code> como índice, y las columnas a las clases en <code>Experience</code>.</li>
 </ol>
-<div id="8366e12a" class="cell" data-execution_count="7">
+<div id="2b9a305d" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cross-tabulate Company_Size and Experience</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pd.crosstab(salaries[<span class="st">'Company_Size'</span>], salaries[<span class="st">'Experience'</span>]))</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -797,7 +797,7 @@ S             18   1  21   15</code></pre>
 <ol start="2" type="1">
 <li>Cruza ‘Job_Category’ y las clases de ‘Company_Size’ como nombres de columna.</li>
 </ol>
-<div id="734cadd8" class="cell" data-execution_count="8">
+<div id="f1bf0d56" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cross-tabulate Job_Category and Company_Size</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pd.crosstab(salaries[<span class="st">'Job_Category'</span>], salaries[<span class="st">'Company_Size'</span>]))</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -814,7 +814,7 @@ Other             13   9   6</code></pre>
 <ol start="3" type="1">
 <li>Actualiza <code>pd.crosstab()</code> para que devuelva los valores medios de <code>Salary_USD</code>.</li>
 </ol>
-<div id="5f5aa241" class="cell" data-execution_count="9">
+<div id="b25aaa4f" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cross-tabulate Job_Category and Company_Size</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pd.crosstab(salaries[<span class="st">'Job_Category'</span>], salaries[<span class="st">'Company_Size'</span>], values<span class="op">=</span> salaries[<span class="st">'Salary_USD'</span>], aggfunc<span class="op">=</span><span class="st">'mean'</span>))</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -837,7 +837,7 @@ Other              92873.911385   89750.578667  69871.248000</code></pre>
 <ul>
 <li>Correlación</li>
 </ul>
-<div id="5c2e383d" class="cell" data-execution_count="10">
+<div id="7c686874" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>sns.heatmap(planes.corr(numeric_only<span class="op">=</span><span class="va">True</span>), annot<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div>
 </div>
@@ -845,14 +845,14 @@ Other              92873.911385   89750.578667  69871.248000</code></pre>
 <ul>
 <li>Viendo el tipo de datos</li>
 </ul>
-<div id="45879ec8" class="cell" data-execution_count="11">
+<div id="5ccacaf5" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(planes.dtypes)</span></code></pre></div>
 </div>
 <p><img src="images/paste-73.png" class="img-fluid"></p>
 <ul>
 <li>Total Stops</li>
 </ul>
-<div id="b7f8661f" class="cell" data-execution_count="12">
+<div id="7f6070be" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(planes[<span class="st">'Total_Stops'</span>].value_counts())</span></code></pre></div>
 </div>
 <p><img src="images/paste-74.png" class="img-fluid"></p>
@@ -860,7 +860,7 @@ Other              92873.911385   89750.578667  69871.248000</code></pre>
 <ul>
 <li>Limpiando Total Stops</li>
 </ul>
-<div id="b6239ac0" class="cell" data-execution_count="13">
+<div id="857a02d3" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>planes[<span class="st">'Total_Stops'</span>] <span class="op">=</span> planes[<span class="st">'Total_Stops'</span>].<span class="bu">str</span>.replace(<span class="st">' stops'</span>, <span class="st">''</span>)</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>planes[<span class="st">'Total_Stops'</span>] <span class="op">=</span> planes[<span class="st">'Total_Stops'</span>].<span class="bu">str</span>.replace(<span class="st">' stop'</span>, <span class="st">''</span>)</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>planes[<span class="st">'Total_Stops'</span>] <span class="op">=</span> planes[<span class="st">'Total_Stops'</span>].<span class="bu">str</span>.replace(<span class="st">'non-stop'</span>, <span class="st">'0'</span>)</span>
@@ -869,7 +869,7 @@ Other              92873.911385   89750.578667  69871.248000</code></pre>
 <ul>
 <li>Correlación</li>
 </ul>
-<div id="92ac77f9" class="cell" data-execution_count="14">
+<div id="013b5c41" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>sns.heatmap(planes.corr(numeric_only<span class="op">=</span><span class="va">True</span>), annot<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div>
 </div>
@@ -877,14 +877,14 @@ Other              92873.911385   89750.578667  69871.248000</code></pre>
 <ul>
 <li>Fechas</li>
 </ul>
-<div id="89445839" class="cell" data-execution_count="15">
+<div id="53ae60ec" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(planes.dtypes)</span></code></pre></div>
 </div>
 <p><img src="images/paste-76.png" class="img-fluid"></p>
 <ul>
 <li>Extrayendo el mes y el día de la semana</li>
 </ul>
-<div id="e3d38a8b" class="cell" data-execution_count="16">
+<div id="61564bb0" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>planes[<span class="st">'month'</span>] <span class="op">=</span> planes[<span class="st">'Date_of_Journey'</span>].dt.month</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>planes[<span class="st">'weekday'</span>] <span class="op">=</span> planes[<span class="st">'Date_of_Journey'</span>].dt.weekday</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(planes[[<span class="st">'month'</span>, <span class="st">'weekday'</span>, <span class="st">'Date_of_Journey'</span>]].head())</span></code></pre></div>
@@ -893,7 +893,7 @@ Other              92873.911385   89750.578667  69871.248000</code></pre>
 <ul>
 <li>Tiempos de salidas y llegadas</li>
 </ul>
-<div id="406e45ee" class="cell" data-execution_count="17">
+<div id="14278b19" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>planes[<span class="st">'Dep_Hour'</span>] <span class="op">=</span> planes[<span class="st">'Dep_Time'</span>].dt.hour</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>planes[<span class="st">'Arrival_Hour'</span>] <span class="op">=</span> planes[<span class="st">'Arrival_Time'</span>].dt.hour</span></code></pre></div>
 </div>
@@ -905,7 +905,7 @@ Other              92873.911385   89750.578667  69871.248000</code></pre>
 <ul>
 <li>Creando características</li>
 </ul>
-<div id="a0b4b034" class="cell" data-execution_count="18">
+<div id="e22515a7" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(planes[<span class="st">'Price'</span>].describe())</span></code></pre></div>
 </div>
 <p><img src="images/paste-79.png" class="img-fluid"></p>
