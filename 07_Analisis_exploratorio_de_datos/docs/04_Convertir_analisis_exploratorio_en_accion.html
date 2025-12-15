@@ -299,7 +299,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Frecuencia de Clases</li>
 </ul>
-<div id="423af1b3" class="cell" data-execution_count="1">
+<div id="f1a9ede8" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(planes(<span class="st">'Destination'</span>).value_counts())</span></code></pre></div>
 </div>
 <p><img src="images/paste-67.png" class="img-fluid"></p>
@@ -309,7 +309,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>40% de los vuelos internos de la India van hacia Delhi.</li>
 </ul></li>
 </ul>
-<div id="148805b5" class="cell" data-execution_count="2">
+<div id="6000e1c9" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>planes[<span class="st">'Destination'</span>].value_counts(normalize<span class="op">=</span><span class="va">True</span>)</span></code></pre></div>
 </div>
 <p><img src="images/paste-68.png" class="img-fluid"></p>
@@ -321,7 +321,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p><img src="images/paste-69.png" class="img-fluid"></p></li>
 </ul>
-<div id="94724ff3" class="cell" data-execution_count="3">
+<div id="3f5ddea7" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pd.crosstab(planes[<span class="st">'Source'</span>], planes[<span class="st">'Destination'</span>])</span></code></pre></div>
 </div>
 <p><img src="images/paste-70.png" class="img-fluid"></p>
@@ -372,7 +372,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Agregación de valores con pd.crosstab()</li>
 </ul>
-<div id="86cad172" class="cell" data-execution_count="4">
+<div id="89fd5da2" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>pd.crosstab(planes[<span class="st">'Source'</span>], planes[<span class="st">'Destination'</span>],</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>           values<span class="op">=</span>planes[<span class="st">'Price'</span>], aggfunc<span class="op">=</span><span class="st">'median'</span>)</span></code></pre></div>
 </div>
@@ -468,12 +468,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 <p>Pensando en los resultados de la encuesta Kaggle como población, tu tarea consiste en averiguar si el DataFrame <code>salaries</code> es representativo comparando la frecuencia relativa de las categorías laborales.</p>
-<div id="9b2faa2d" class="cell" data-execution_count="5">
+<div id="6855c5c8" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>ruta <span class="op">=</span> <span class="st">'./data/salaries.csv'</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>salaries <span class="op">=</span> pd.read_csv(ruta)</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>salaries.head()</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="1">
+<div class="cell-output cell-output-display" data-execution_count="8">
 <div>
 
 
@@ -590,7 +590,7 @@ Note
 <div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(salaries.to_csv(index<span class="op">=</span><span class="va">False</span>))</span></code></pre></div>
 </div>
 </div>
-<div id="97871a54" class="cell" data-execution_count="6">
+<div id="43332a61" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the relative frequency of Job_Category</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(salaries[<span class="st">'Job_Category'</span>].value_counts(normalize<span class="op">=</span><span class="va">True</span>))</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -616,7 +616,7 @@ Name: proportion, dtype: float64</code></pre>
 <ol type="1">
 <li>Realiza una tabulación cruzada, estableciendo <code>Company_Size</code> como índice, y las columnas a las clases en <code>Experience</code>.</li>
 </ol>
-<div id="2d6ae47d" class="cell" data-execution_count="7">
+<div id="da24a19a" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cross-tabulate Company_Size and Experience</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pd.crosstab(salaries[<span class="st">'Company_Size'</span>], salaries[<span class="st">'Experience'</span>]))</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -630,7 +630,7 @@ S             18   1  21   15</code></pre>
 <ol start="2" type="1">
 <li>Cruza ‘Job_Category’ y las clases de ‘Company_Size’ como nombres de columna.</li>
 </ol>
-<div id="53feb131" class="cell" data-execution_count="8">
+<div id="028e8255" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cross-tabulate Job_Category and Company_Size</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pd.crosstab(salaries[<span class="st">'Job_Category'</span>], salaries[<span class="st">'Company_Size'</span>]))</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -647,7 +647,7 @@ Other             13   9   6</code></pre>
 <ol start="3" type="1">
 <li>Actualiza <code>pd.crosstab()</code> para que devuelva los valores medios de <code>Salary_USD</code>.</li>
 </ol>
-<div id="7c01453b" class="cell" data-execution_count="9">
+<div id="935321c9" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cross-tabulate Job_Category and Company_Size</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pd.crosstab(salaries[<span class="st">'Job_Category'</span>], salaries[<span class="st">'Company_Size'</span>], values<span class="op">=</span> salaries[<span class="st">'Salary_USD'</span>], aggfunc<span class="op">=</span><span class="st">'mean'</span>))</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -670,7 +670,7 @@ Other              92873.911385   89750.578667  69871.248000</code></pre>
 <ul>
 <li>Correlación</li>
 </ul>
-<div id="f6fb9ed3" class="cell" data-execution_count="10">
+<div id="742f7830" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>sns.heatmap(planes.corr(numeric_only<span class="op">=</span><span class="va">True</span>), annot<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div>
 </div>
@@ -678,14 +678,14 @@ Other              92873.911385   89750.578667  69871.248000</code></pre>
 <ul>
 <li>Viendo el tipo de datos</li>
 </ul>
-<div id="3979e268" class="cell" data-execution_count="11">
+<div id="7ae50ed7" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(planes.dtypes)</span></code></pre></div>
 </div>
 <p><img src="images/paste-73.png" class="img-fluid"></p>
 <ul>
 <li>Total Stops</li>
 </ul>
-<div id="d9aad427" class="cell" data-execution_count="12">
+<div id="fd255838" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(planes[<span class="st">'Total_Stops'</span>].value_counts())</span></code></pre></div>
 </div>
 <p><img src="images/paste-74.png" class="img-fluid"></p>
@@ -693,7 +693,7 @@ Other              92873.911385   89750.578667  69871.248000</code></pre>
 <ul>
 <li>Limpiando Total Stops</li>
 </ul>
-<div id="d72b59e8" class="cell" data-execution_count="13">
+<div id="79e06315" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>planes[<span class="st">'Total_Stops'</span>] <span class="op">=</span> planes[<span class="st">'Total_Stops'</span>].<span class="bu">str</span>.replace(<span class="st">' stops'</span>, <span class="st">''</span>)</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>planes[<span class="st">'Total_Stops'</span>] <span class="op">=</span> planes[<span class="st">'Total_Stops'</span>].<span class="bu">str</span>.replace(<span class="st">' stop'</span>, <span class="st">''</span>)</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>planes[<span class="st">'Total_Stops'</span>] <span class="op">=</span> planes[<span class="st">'Total_Stops'</span>].<span class="bu">str</span>.replace(<span class="st">'non-stop'</span>, <span class="st">'0'</span>)</span>
@@ -702,7 +702,7 @@ Other              92873.911385   89750.578667  69871.248000</code></pre>
 <ul>
 <li>Correlación</li>
 </ul>
-<div id="8b7f3302" class="cell" data-execution_count="14">
+<div id="b551a276" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>sns.heatmap(planes.corr(numeric_only<span class="op">=</span><span class="va">True</span>), annot<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div>
 </div>
@@ -710,14 +710,14 @@ Other              92873.911385   89750.578667  69871.248000</code></pre>
 <ul>
 <li>Fechas</li>
 </ul>
-<div id="683902a5" class="cell" data-execution_count="15">
+<div id="b1924fb6" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(planes.dtypes)</span></code></pre></div>
 </div>
 <p><img src="images/paste-76.png" class="img-fluid"></p>
 <ul>
 <li>Extrayendo el mes y el día de la semana</li>
 </ul>
-<div id="8c8ce2d4" class="cell" data-execution_count="16">
+<div id="c57ea1f6" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>planes[<span class="st">'month'</span>] <span class="op">=</span> planes[<span class="st">'Date_of_Journey'</span>].dt.month</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>planes[<span class="st">'weekday'</span>] <span class="op">=</span> planes[<span class="st">'Date_of_Journey'</span>].dt.weekday</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(planes[[<span class="st">'month'</span>, <span class="st">'weekday'</span>, <span class="st">'Date_of_Journey'</span>]].head())</span></code></pre></div>
@@ -726,7 +726,7 @@ Other              92873.911385   89750.578667  69871.248000</code></pre>
 <ul>
 <li>Tiempos de salidas y llegadas</li>
 </ul>
-<div id="a0bc17a8" class="cell" data-execution_count="17">
+<div id="dfb4cf3d" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>planes[<span class="st">'Dep_Hour'</span>] <span class="op">=</span> planes[<span class="st">'Dep_Time'</span>].dt.hour</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>planes[<span class="st">'Arrival_Hour'</span>] <span class="op">=</span> planes[<span class="st">'Arrival_Time'</span>].dt.hour</span></code></pre></div>
 </div>
@@ -738,7 +738,7 @@ Other              92873.911385   89750.578667  69871.248000</code></pre>
 <ul>
 <li>Creando características</li>
 </ul>
-<div id="b82b77e0" class="cell" data-execution_count="18">
+<div id="2dfb87a8" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(planes[<span class="st">'Price'</span>].describe())</span></code></pre></div>
 </div>
 <p><img src="images/paste-79.png" class="img-fluid"></p>
@@ -771,7 +771,7 @@ Other              92873.911385   89750.578667  69871.248000</code></pre>
 <ul>
 <li>Estadística descriptiva</li>
 </ul>
-<div id="dc05a671" class="cell" data-execution_count="19">
+<div id="1f682bdc" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>twenty_fifth <span class="op">=</span> planes[<span class="st">'Price'</span>].quantile(<span class="fl">0.25</span>)</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>median <span class="op">=</span> planes[<span class="st">'Price'</span>].median()</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>seventy_fifth <span class="op">=</span> planes[<span class="st">'Price'</span>].quantile(<span class="fl">0.75</span>)</span>
@@ -780,7 +780,7 @@ Other              92873.911385   89750.578667  69871.248000</code></pre>
 <ul>
 <li>Etiquetas y bins</li>
 </ul>
-<div id="74c9e5d9" class="cell" data-execution_count="20">
+<div id="57256615" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>labels <span class="op">=</span> [<span class="st">'Economy'</span>, <span class="st">'Premium Economy'</span>, <span class="st">'Business Class'</span>, <span class="st">'First Class'</span>]</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>bins <span class="op">=</span> [<span class="dv">0</span>, twenty_fifth, median, seventy_fifth, maximum]</span></code></pre></div>
 </div>
@@ -788,26 +788,183 @@ Other              92873.911385   89750.578667  69871.248000</code></pre>
 <li>pd.cut()</li>
 </ul>
 <p><img src="images/paste-80.png" class="img-fluid"></p>
-<div id="03cbb320" class="cell" data-execution_count="21">
+<div id="bbf5b7ab" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>planes[<span class="st">'Price_Category'</span>] <span class="op">=</span> pd.cut(planes[<span class="st">'Price'</span>], labels<span class="op">=</span>labels, bins<span class="op">=</span>bins)</span></code></pre></div>
 </div>
 <ul>
 <li>Categoría de precios</li>
 </ul>
-<div id="2975525d" class="cell" data-execution_count="22">
+<div id="d52c8eb1" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(planes[[<span class="st">'Price'</span>, <span class="st">'Price_Category'</span>]].head())</span></code></pre></div>
 </div>
 <p><img src="images/paste-81.png" class="img-fluid"></p>
 <ul>
 <li>Categoría de precio por aerolínea</li>
 </ul>
-<div id="fb67905a" class="cell" data-execution_count="23">
+<div id="e3fa1bdd" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>sns.countplot(data<span class="op">=</span>planes, x<span class="op">=</span><span class="st">'Airline'</span>, hue<span class="op">=</span><span class="st">'Price_Category'</span>)</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div>
 </div>
 <p><img src="images/paste-82.png" class="img-fluid"></p>
 <section id="extraer-características-para-la-correlación" class="level3">
 <h3 class="anchored" data-anchor-id="extraer-características-para-la-correlación">Extraer características para la correlación</h3>
+<p>En este ejercicio trabajarás con una versión del conjunto de datos <code>salaries</code> que contiene una nueva columna llamada “`date_of_response”.</p>
+<p>El conjunto de datos se ha leído comjo un DataFrame de pandas, con “<code>date_of_response</code>” como tipo de datos <code>datetime</code>.</p>
+<p>Tu tarea consiste en extraer los atributos fecha-hora de esta columna y, a continuación, crear un mapa de calor para visualizar los coeficientes de correlación entre las variables.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Para realizar el ejercicio fue necesario bajar el DataFrame de Datacamp teniendo en cuenta la nueva columna, y cambiando el tipo de formato de la columna <code>date_of_response</code> usando los comandos:</p>
+<div id="89183386" class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(salaries.to_csv(index<span class="op">=</span>false))</span></code></pre></div>
+</div>
+</div>
+</div>
+</div>
+<div id="88bc444e" class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>ruta <span class="op">=</span> <span class="st">'./data/salaries_2.csv'</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>salaries <span class="op">=</span> pd.read_csv(ruta)</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Cambia el tipo de datos de date_of_response</span></span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>salaries[<span class="st">'date_of_response'</span>] <span class="op">=</span> pd.to_datetime(salaries[<span class="st">'date_of_response'</span>])</span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>salaries.head()</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="13">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Designation</th>
+<th data-quarto-table-cell-role="th">date_of_response</th>
+<th data-quarto-table-cell-role="th">Experience</th>
+<th data-quarto-table-cell-role="th">Employment_Status</th>
+<th data-quarto-table-cell-role="th">Salary_In_Rupees</th>
+<th data-quarto-table-cell-role="th">Employee_Location</th>
+<th data-quarto-table-cell-role="th">Company_Location</th>
+<th data-quarto-table-cell-role="th">Company_Size</th>
+<th data-quarto-table-cell-role="th">Remote_Working_Ratio</th>
+<th data-quarto-table-cell-role="th">Salary_USD</th>
+<th data-quarto-table-cell-role="th">Job_Category</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Machine Learning Scientist</td>
+<td>2020-01-07</td>
+<td>SE</td>
+<td>FT</td>
+<td>20688070.0</td>
+<td>JP</td>
+<td>JP</td>
+<td>S</td>
+<td>0.0</td>
+<td>248256.840</td>
+<td>Machine Learning</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>Big Data Engineer</td>
+<td>2020-09-19</td>
+<td>SE</td>
+<td>FT</td>
+<td>8674985.0</td>
+<td>GB</td>
+<td>GB</td>
+<td>M</td>
+<td>50.0</td>
+<td>104099.820</td>
+<td>Data Engineering</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>Product Data Analyst</td>
+<td>2020-11-21</td>
+<td>MI</td>
+<td>FT</td>
+<td>1591390.0</td>
+<td>HN</td>
+<td>HN</td>
+<td>S</td>
+<td>0.0</td>
+<td>19096.680</td>
+<td>Data Analytics</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>Machine Learning Engineer</td>
+<td>2020-11-29</td>
+<td>SE</td>
+<td>FT</td>
+<td>11935425.0</td>
+<td>US</td>
+<td>US</td>
+<td>L</td>
+<td>50.0</td>
+<td>143225.100</td>
+<td>Machine Learning</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>Data Analyst</td>
+<td>2020-09-07</td>
+<td>EN</td>
+<td>FT</td>
+<td>5729004.0</td>
+<td>US</td>
+<td>US</td>
+<td>L</td>
+<td>100.0</td>
+<td>68748.048</td>
+<td>Data Analytics</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<section id="instrucciones-2" class="level4">
+<h4 class="anchored" data-anchor-id="instrucciones-2">Instrucciones</h4>
+<ul>
+<li><p>Extrae el mes de “<code>date_of_response</code>”, almacenándolo como una columna llamada “<code>month</code>”.</p></li>
+<li><p>Crea la columna “<code>weekday</code>”, que contiene el día de la semana en que los participantes completaron la encuesta.</p></li>
+<li><p>Traza un mapa de calor, incluyendo las puntuaciones del coeficiente de correlación de Pearson.</p></li>
+</ul>
+<div id="eae4730d" class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the month of the response</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>salaries[<span class="st">'month'</span>] <span class="op">=</span> salaries[<span class="st">'date_of_response'</span>].dt.month</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract the weekday of the response</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>salaries[<span class="st">'weekday'</span>] <span class="op">=</span> salaries[<span class="st">'date_of_response'</span>].dt.weekday</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a heatmap</span></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>sns.heatmap(salaries.corr(numeric_only<span class="op">=</span><span class="va">True</span>), annot<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="04_Convertir_analisis_exploratorio_en_accion_files/figure-html/cell-27-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>¡Fantástica creación de características! Parece que no hay relaciones significativas entre nuestras variables numéricas, así que veamos si convertir los datos numéricos en clases ofrece información adicional.</p>
+</section>
 </section>
 <section id="cálculo-de-los-percentiles-salariales" class="level3">
 <h3 class="anchored" data-anchor-id="cálculo-de-los-percentiles-salariales">Cálculo de los percentiles salariales</h3>

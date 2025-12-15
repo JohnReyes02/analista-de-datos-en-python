@@ -337,6 +337,56 @@ plt.show()
 
 ### Extraer características para la correlación
 
+En este ejercicio trabajarás con una versión del conjunto de datos `salaries` que contiene una nueva columna llamada "`date_of_response".
+
+El conjunto de datos se ha leído comjo un DataFrame de pandas, con "`date_of_response`" como tipo de datos `datetime`.
+
+Tu tarea consiste en extraer los atributos fecha-hora de esta columna y, a continuación, crear un mapa de calor para visualizar los coeficientes de correlación entre las variables.
+
+::: {.callout-important collapse="true"}
+Para realizar el ejercicio fue necesario bajar el DataFrame de Datacamp teniendo en cuenta la nueva columna, y cambiando el tipo de formato de la columna `date_of_response` usando los comandos:
+
+```{python}
+#| echo: true
+#| eval: false
+print(salaries.to_csv(index=false))
+```
+:::
+
+```{python}
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+ruta = './data/salaries_2.csv'
+salaries = pd.read_csv(ruta)
+
+# Cambia el tipo de datos de date_of_response
+salaries['date_of_response'] = pd.to_datetime(salaries['date_of_response'])
+salaries.head()
+```
+
+#### Instrucciones 
+
+- Extrae el mes de "`date_of_response`", almacenándolo como una columna llamada "`month`".
+
+- Crea la columna "`weekday`", que contiene el día de la semana en que los participantes completaron la encuesta.
+
+- Traza un mapa de calor, incluyendo las puntuaciones del coeficiente de correlación de Pearson.
+
+```{python}
+# Get the month of the response
+salaries['month'] = salaries['date_of_response'].dt.month
+
+# Extract the weekday of the response
+salaries['weekday'] = salaries['date_of_response'].dt.weekday
+
+# Create a heatmap
+sns.heatmap(salaries.corr(numeric_only=True), annot=True)
+plt.show()
+```
+
+¡Fantástica creación de características! Parece que no hay relaciones significativas entre nuestras variables numéricas, así que veamos si convertir los datos numéricos en clases ofrece información adicional.
+
 ### Cálculo de los percentiles salariales
 
 ### Categorizar los salarios
