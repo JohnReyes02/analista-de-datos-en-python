@@ -389,6 +389,8 @@ plt.show()
 
 ### Cálculo de los percentiles salariales
 
+
+
 ### Categorizar los salarios
 
 ## Generar hipótesis
