@@ -389,9 +389,71 @@ plt.show()
 
 ### Cálculo de los percentiles salariales
 
+Tu tarea consiste en convertir la columna "`Salary_USD`" en categorías basadas en sus percentiles . Primero tienes que encontrar los percentiles y almacenarlos como variables.
+
+#### Instrucciones
+
+- Halla el percentil 25 de "`Salary_USD`"
+
+- Guarda la mediana de "`Salary_USD`" como `salaries_median`.
+
+- Obtén el percentil 75 de los salaries
+
+```{python}
+# Find the 25th percentile 
+twenty_fifth = salaries['Salary_USD'].quantile(0.25)
+
+# Save the median
+salaries_median = salaries['Salary_USD'].median()
+
+# Gather the 75th percentile
+seventy_fifth = salaries['Salary_USD'].quantile(0.75)
+
+print(twenty_fifth, salaries_median, seventy_fifth)
+```
+
+¡Parece que el rango intercuartil está entre 60881 y 143225 dólares! ¡Ahora usemos estas variables para agregar una columna categórica de salario en el DataFrame
+
 
 
 ### Categorizar los salarios
+
+¡Ahora es el momento de crear una nueva categoría! Utilizarás las variables `twenty_fifth`, `salaries_median` y `seventy_fifth`, que creaste en el ejercicio anterior, para dividir los salarios en diferentes etiquetas.
+
+El resultado será una nueva columna llamada "`salary_level`", que incorporarás a una visualización para analizar el salario de los encuestados y en empresas de distintos tamaños.
+
+#### Instrucciones
+
+1. Crea `salaries_labels`, una lista que contenga "`entry`", "`mid`", "`senior`" y "`exec`".
+
+```{python}
+# Create salary labels
+salary_labels = ['entry', 'mid', 'senior', 'exec']
+```
+
+2. Termina `salary_ranges`, añadiendo el percentil 25, la mediana, el percentil 75  y el valor más grande de "`Salary_USD`"
+
+```{python}
+# Create the salary ranges list
+salary_ranges = [0, twenty_fifth, salaries_median, seventy_fifth, salaries['Salary_USD'].max()]
+```
+
+3. Divide "`Salary_USD`" en función de las etiquetas y rangos que hayas creado.
+
+```{python}
+# Create salary_level
+salaries['salary_level'] = pd.cut(salaries['Salary_USD'], bins=salary_ranges, labels=salary_labels)
+```
+
+4. Utiliza `sns.countplot()` para visualizar el reconteo de "`Company_Size`", factrorizando las etiquetas de nivel salarial.
+
+```{python}
+# Plot the count of salary levels at companies of different sizes
+sns.countplot(data=salaries, x='Company_Size', hue='salary_level')
+plt.show()
+```
+
+Al usar `pd.cut()` para dividir los datos numéricos en categorías, se puede ver que una gran proporción de trabajadores en empresas pequeñas reciben salarios de nivel de "entrada", mientras que más personal en empresas medianas son recompensados con salarios de nivel "senior". ¡Ahora vamos a ver cómo generar hipótesis a medida que se llega al final de la fase de EDA!
 
 ## Generar hipótesis
 
