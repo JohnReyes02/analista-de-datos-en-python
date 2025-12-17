@@ -457,6 +457,37 @@ Al usar `pd.cut()` para dividir los datos numéricos en categorías, se puede ve
 
 ## Generar hipótesis
 
+Generar hipótesis es una tarea fundamental para los científicos de datos.
+
+Al realizar EDA, la pregunta que debemos hacernos es ¿Cómo sabemos que lo que estamos observando es verdadero?
+
+Por ejemplo:
+
+-  Si recopilamos nuevos datos sobre vuelos de un período de tiempo diferente ¿observaríamos los mismos resultados?
+
+- Detectar relaciones, diferencias y patrones:
+    - Usamos **Prueba de hipótesis**
+
+- La prueba de hipótesis requiere previo a la recolección de datos:
+    - Generar una hipótesis o pregunta.
+    - Una decisión en la se pueda usar una prueba estadística
+
+- Data snooping
+    - Los análisis de datos excesivos, la generación de múltiples hipótesis y la ejecución de múltiples pruebas estadísticas
+
+- Generación de Hipótesis
+    - Se realiza usando análisis exploratorio de datos
+
+- Próximos pasos
+    - Diseñar nuestro experimento.
+    - Envuelve pasos como:
+        - Elegir una muestra
+        - Calcular cuántos puntos de datos necesitamos
+        -  Decidir que prueba estadística ejecutar.
+
+
 ### Comparar salarios
+
+¡El anális
 
 ### Elegir una hipótesis
