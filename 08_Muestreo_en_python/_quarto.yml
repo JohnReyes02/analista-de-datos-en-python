@@ -24,9 +24,10 @@ book:
     - index.qmd
     - part: Capítulos
       chapters:
-        - intro.qmd
-        - references.qmd
-        - summary.qmd
+        - 01_Introduccion_al_muestreo.qmd
+        - 02_Metodos_de_muestreo.qmd
+        - 03_Distribuciones_muestrales.qmd
+        - 04_Distribuciones_bootstrap.qmd
 
 format:
   html:

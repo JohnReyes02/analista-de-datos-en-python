@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Edwin John Fredy Reyes Aguirre">
-<meta name="dcterms.date" content="2025-12-17">
 
-<title>Muestreo en Python</title>
+<title>Introducción al Muestreo – Muestreo en Python</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -32,7 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./01_Introduccion_al_muestreo.html" rel="next">
+<link href="./02_Metodos_de_muestreo.html" rel="next">
+<link href="./index.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -249,7 +248,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Bienvenida</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01_Introduccion_al_muestreo.html">Capítulos</a></li><li class="breadcrumb-item"><a href="./01_Introduccion_al_muestreo.html"><span class="chapter-title">Introducción al Muestreo</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -303,7 +302,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Bienvenida</span></a>
   </div>
 </li>
@@ -318,22 +317,22 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01_Introduccion_al_muestreo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">01_Introduccion_al_muestreo.html</span></a>
+  <a href="./01_Introduccion_al_muestreo.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Introducción al Muestreo</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02_Metodos_de_muestreo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">02_Metodos_de_muestreo.html</span></a>
+  <a href="./02_Metodos_de_muestreo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Métodos de Muestreo</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03_Distribuciones_muestrales.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">03_Distribuciones_muestrales.html</span></a>
+  <a href="./03_Distribuciones_muestrales.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Distribuciones Muestrales</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04_Distribuciones_bootstrap.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">04_Distribuciones_bootstrap.html</span></a>
+  <a href="./04_Distribuciones_bootstrap.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Distribuciones de bootstrap</span></a>
   </div>
 </li>
       </ul>
@@ -343,45 +342,23 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Contenido</h2>
-   
-  <ul>
-  <li><a href="#bienvenida" id="toc-bienvenida" class="nav-link active" data-scroll-target="#bienvenida">Bienvenida</a>
-  <ul class="collapse">
-  <li><a href="#descripción" id="toc-descripción" class="nav-link" data-scroll-target="#descripción">Descripción</a></li>
-  <li><a href="#módulos-del-curso" id="toc-módulos-del-curso" class="nav-link" data-scroll-target="#módulos-del-curso">Módulos del curso</a></li>
-  </ul></li>
-  </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/JohnReyes02/Datacamp/edit/main/Analista_de_datos_en_python/08_Muestreo_en_python/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/JohnReyes02/Datacamp/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/JohnReyes02/Datacamp/blob/main/Analista_de_datos_en_python/08_Muestreo_en_python/index.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01_Introduccion_al_muestreo.html">Capítulos</a></li><li class="breadcrumb-item"><a href="./01_Introduccion_al_muestreo.html"><span class="chapter-title">Introducción al Muestreo</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Muestreo en Python</h1>
+<h1 class="title"><span class="chapter-title">Introducción al Muestreo</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Edwin John Fredy Reyes Aguirre </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">December 17, 2025</p>
-    </div>
-  </div>
   
     
   </div>
@@ -391,28 +368,8 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="bienvenida" class="level1 unnumbered">
-<h1 class="unnumbered">Bienvenida</h1>
-<p>📊 Nivel: Intermedio<br>
-🕒 Duración estimada: 4 horas<br>
-🎥 Incluye código, visualizaciones y ejercicios</p>
-<hr>
-<section id="descripción" class="level2">
-<h2 class="anchored" data-anchor-id="descripción">Descripción</h2>
-<p>El muestreo en Python es la piedra angular de la estadística de inferencia y las pruebas de hipótesis. Es una poderosa habilidad utilizada en el análisis de encuestas y el diseño experimental para sacar conclusiones sin encuestar a toda una población. En este curso de Muestreo en Python, descubrirás cuándo utilizar el muestreo y cómo realizar tipos comunes de muestreo, desde el muestreo aleatorio simple hasta métodos más complejos como el muestreo estratificado y por clústeres. Utilizando conjuntos de datos del mundo real, como valoraciones de café, canciones de Spotify y bajas de empleados, aprenderás a estimar estadísticas de población y a cuantificar la incertidumbre en tus estimaciones generando distribuciones de muestreo y distribuciones bootstrap.</p>
-</section>
-<section id="módulos-del-curso" class="level2">
-<h2 class="anchored" data-anchor-id="módulos-del-curso">Módulos del curso</h2>
-<ol type="1">
-<li>Introducción al muestreo</li>
-<li>Métodos de muestreo</li>
-<li>Distribuciones muestrales</li>
-<li>Distribuciones Bootstrap</li>
-</ol>
 
 
-</section>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -829,10 +786,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./index.html" class="pagination-link" aria-label="Bienvenida">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Bienvenida</span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./01_Introduccion_al_muestreo.html" class="pagination-link" aria-label="01_Introduccion_al_muestreo.html">
-        <span class="nav-page-text"><span class="chapter-title">01_Introduccion_al_muestreo.html</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./02_Metodos_de_muestreo.html" class="pagination-link" aria-label="Métodos de Muestreo">
+        <span class="nav-page-text"><span class="chapter-title">Métodos de Muestreo</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -841,4 +801,4 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/JohnReyes02/Datacamp/edit/main/Analista_de_datos_en_python/08_Muestreo_en_python/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/JohnReyes02/Datacamp/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/JohnReyes02/Datacamp/blob/main/Analista_de_datos_en_python/08_Muestreo_en_python/index.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://github.com/JohnReyes02/Datacamp/edit/main/Analista_de_datos_en_python/08_Muestreo_en_python/01_Introduccion_al_muestreo.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/JohnReyes02/Datacamp/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/JohnReyes02/Datacamp/blob/main/Analista_de_datos_en_python/08_Muestreo_en_python/01_Introduccion_al_muestreo.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div></div></footer></body></html>

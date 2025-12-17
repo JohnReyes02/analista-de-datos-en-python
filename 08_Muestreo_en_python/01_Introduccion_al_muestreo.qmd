@@ -1,0 +1,28 @@
+---
+title: "Introducción al Muestreo"
+---
+
+Aprende qué es el muestreo y por qué es tan poderoso. También aprenderás sobre los problemas causados por el muestreo de conveniencia y las diferencias entre la verdadera aleatoriedad y la pseudoaleatoriedad.
+
+## Muestreo y estimaciones puntuales
+
+### Motivos del muestreo
+
+### Muestreo simple con pandas
+
+### Muestreos y cálculos sencillos con pandas
+
+
+## Muestreo de conveniencia
+
+### ¿Son generalizables las conclusiones de la muestra?
+
+### ¿Son generalizables estos resultados?
+
+
+## Generación de números pseudoaleatorios
+
+### Generar números aleatorios
+
+### Comprender los valores de iniciaclización aleatorios
+

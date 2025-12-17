@@ -8,12 +8,11 @@
         "title: \"Relaciones en los datos\"\n",
         "---\n",
         "\n",
-        "\n",
         "Las variables de los conjuntos de datos tienen relaciones entre sí. En este capítulo, examinarás las relaciones entre datos numéricos, categóricos e incluso DateTime, explorando la dirección y la fuerza de estas relaciones, así como las formas de visualizarlas.\n",
         "\n",
-        "## Patrones a lo largo del tiempo\n"
+        "## Patrones a lo largo del tiempo"
       ],
-      "id": "4b388c8f"
+      "id": "75e76137"
     },
     {
       "cell_type": "code",
@@ -24,7 +23,7 @@
         "divorce = pd.read_csv(\"divorce.csv\")\n",
         "divorce.head()"
       ],
-      "id": "bb032163",
+      "id": "5dfcc1cf",
       "execution_count": null,
       "outputs": []
     },
@@ -36,9 +35,9 @@
         "\n",
         "-   Importando data DateTime\n",
         "\n",
-        "    -   DataTime necesita ser explicitamente declarada en pandas\n"
+        "    -   DataTime necesita ser explicitamente declarada en pandas"
       ],
-      "id": "c6a913dc"
+      "id": "1c13986e"
     },
     {
       "cell_type": "code",
@@ -48,7 +47,7 @@
         "#| eval: false\n",
         "divorce.dtypes"
       ],
-      "id": "a6c1e7c2",
+      "id": "047ec4e1",
       "execution_count": null,
       "outputs": []
     },
@@ -56,9 +55,9 @@
       "cell_type": "markdown",
       "metadata": {},
       "source": [
-        "![](images/paste-54.png)\n"
+        "![](images/paste-54.png)"
       ],
-      "id": "e89f85bd"
+      "id": "40bde796"
     },
     {
       "cell_type": "code",
@@ -69,7 +68,7 @@
         "divorce = pd.read_csv(\"divorce.csv\", parse_dates=[\"marriage_date\"])\n",
         "divorce.dtypes"
       ],
-      "id": "e16c0448",
+      "id": "8be4a24d",
       "execution_count": null,
       "outputs": []
     },
@@ -81,9 +80,9 @@
         "\n",
         "-   Conviritiendo los datos a DataTime\n",
         "\n",
-        "    -   `pd.to_datetime()` convierte los argumentos de datos DateTime\n"
+        "    -   `pd.to_datetime()` convierte los argumentos de datos DateTime"
       ],
-      "id": "a3258e26"
+      "id": "8becf173"
     },
     {
       "cell_type": "code",
@@ -94,7 +93,7 @@
         "divorce['marriage_date'] = pd.to_datetime(divorce['marriage_date'])\n",
         "divorce_dtypes"
       ],
-      "id": "fadd192b",
+      "id": "f2ee78fc",
       "execution_count": null,
       "outputs": []
     },
@@ -104,9 +103,9 @@
       "source": [
         "![](images/paste-57.png)\n",
         "\n",
-        "-   Creando datos DateTime\n"
+        "-   Creando datos DateTime"
       ],
-      "id": "056673a8"
+      "id": "6b935e04"
     },
     {
       "cell_type": "code",
@@ -116,7 +115,7 @@
         "#| eval: false\n",
         "divorce.head(2)"
       ],
-      "id": "e1861ec9",
+      "id": "3895cd15",
       "execution_count": null,
       "outputs": []
     },
@@ -124,9 +123,9 @@
       "cell_type": "markdown",
       "metadata": {},
       "source": [
-        "![](images/paste-58.png)\n"
+        "![](images/paste-58.png)"
       ],
-      "id": "ee2baad8"
+      "id": "9d5c1362"
     },
     {
       "cell_type": "code",
@@ -137,7 +136,7 @@
         "divorce['marriage_date'] = pd.to_datetime(divorce[['month', 'day', 'year']])\n",
         "divorce.head(2)"
       ],
-      "id": "acaf0189",
+      "id": "045e8f8e",
       "execution_count": null,
       "outputs": []
     },
@@ -147,9 +146,9 @@
       "source": [
         "![](images/paste-59.png)\n",
         "\n",
-        "Es posible extraer sólo el mes, el día o el año de una columna que contenga una fecha completa, usando los atributos `dt.month`, `dt.day` y `dt.year.`\n"
+        "Es posible extraer sólo el mes, el día o el año de una columna que contenga una fecha completa, usando los atributos `dt.month`, `dt.day` y `dt.year.`"
       ],
-      "id": "9b2a7d4f"
+      "id": "38e3c0aa"
     },
     {
       "cell_type": "code",
@@ -160,7 +159,7 @@
         "divorce['marriage_month'] = divorce['marriage_date'].dt.month()\n",
         "divorce.head()"
       ],
-      "id": "ce0768bc",
+      "id": "d39f8801",
       "execution_count": null,
       "outputs": []
     },
@@ -170,9 +169,9 @@
       "source": [
         "![](images/paste-60.png)\n",
         "\n",
-        "-   Visualizando patrones a lo largo del tiempo\n"
+        "-   Visualizando patrones a lo largo del tiempo"
       ],
-      "id": "e7ec76c5"
+      "id": "c0bd9b89"
     },
     {
       "cell_type": "code",
@@ -183,7 +182,7 @@
         "sns.lineplot(data=divorce, x='marriage_month', y='marriage_duration')\n",
         "plt.show()"
       ],
-      "id": "ae47588a",
+      "id": "72e8a03c",
       "execution_count": null,
       "outputs": []
     },
@@ -203,9 +202,9 @@
         "\n",
         "![](images/paste-62.png)\n",
         "\n",
-        "¡Parece que hay mucha información de fecha en estos datos que todavía no son de tipo DateTime! Tu tarea es arreglarlo para que puedas explorar patrones a lo largo del tiempo.\n"
+        "¡Parece que hay mucha información de fecha en estos datos que todavía no son de tipo DateTime! Tu tarea es arreglarlo para que puedas explorar patrones a lo largo del tiempo."
       ],
-      "id": "d0cb6776"
+      "id": "67f685bd"
     },
     {
       "cell_type": "code",
@@ -217,7 +216,7 @@
         "divorce = pd.read_csv(ruta)\n",
         "divorce.head()"
       ],
-      "id": "11dde469",
+      "id": "9a29e5d3",
       "execution_count": null,
       "outputs": []
     },
@@ -227,9 +226,9 @@
       "source": [
         "#### Instrucciones\n",
         "\n",
-        "-   Importa `divorce.csv`, guardando como DataFrame, `divorce`: indica en la función de importación que las columnas `divorce_date`, `dob_man`, `dob_woman`, y `marriage_date` deben importarse como valores DateTime.\n"
+        "-   Importa `divorce.csv`, guardando como DataFrame, `divorce`: indica en la función de importación que las columnas `divorce_date`, `dob_man`, `dob_woman`, y `marriage_date` deben importarse como valores DateTime."
       ],
-      "id": "8a93c65f"
+      "id": "71ed18f6"
     },
     {
       "cell_type": "code",
@@ -239,7 +238,7 @@
         "divorce = pd.read_csv('./data/divorce.csv', parse_dates=['divorce_date', 'dob_man', 'dob_woman', 'marriage_date'])\n",
         "print(divorce.dtypes)"
       ],
-      "id": "4d3f5d56",
+      "id": "ccb0fcba",
       "execution_count": null,
       "outputs": []
     },
@@ -251,9 +250,9 @@
         "\n",
         "### Actualizar tipo de datos a DateTime\n",
         "\n",
-        "Ahora se te ha cargado el DataFrame `divorce`, pero una columna se almacea como una cadena que debería ser un dato DateTime. ¿Cuál es? Una vez que hayas identificado la columna, la actualizarás para que puedas explorarla más de cerca en el siguiente ejercicio.\n"
+        "Ahora se te ha cargado el DataFrame `divorce`, pero una columna se almacea como una cadena que debería ser un dato DateTime. ¿Cuál es? Una vez que hayas identificado la columna, la actualizarás para que puedas explorarla más de cerca en el siguiente ejercicio."
       ],
-      "id": "3d71b1b7"
+      "id": "0e87a6d9"
     },
     {
       "cell_type": "code",
@@ -263,7 +262,7 @@
         "divorce = pd.read_csv(ruta, parse_dates=['divorce_date', 'dob_man', 'dob_woman'])\n",
         "print(divorce.dtypes)"
       ],
-      "id": "45208c71",
+      "id": "d76cca34",
       "execution_count": null,
       "outputs": []
     },
@@ -284,9 +283,9 @@
         "-   [ ] `education_woman`\n",
         "-   [ ] `num_kids`\n",
         "\n",
-        "2.  Covierte la columna `marriage_date` del DataFrame `divorce` en valores de `DateTime`.\n"
+        "2.  Covierte la columna `marriage_date` del DataFrame `divorce` en valores de `DateTime`."
       ],
-      "id": "43986b3c"
+      "id": "e9131b18"
     },
     {
       "cell_type": "code",
@@ -296,7 +295,7 @@
         "divorce['marriage_date'] = pd.to_datetime(divorce['marriage_date'])\n",
         "print(divorce.dtypes)"
       ],
-      "id": "b2e3b42b",
+      "id": "fd83fe94",
       "execution_count": null,
       "outputs": []
     },
@@ -312,9 +311,9 @@
         "\n",
         "#### Instrucciones\n",
         "\n",
-        "1.  Define una columna llamada `marriage_year`, que solo contiene la parte del año de la columna `marriage_date`.\n"
+        "1.  Define una columna llamada `marriage_year`, que solo contiene la parte del año de la columna `marriage_date`."
       ],
-      "id": "9d8169b2"
+      "id": "9b852174"
     },
     {
       "cell_type": "code",
@@ -323,7 +322,7 @@
         "# Define the marriage_year column\n",
         "divorce['marriage_year'] = divorce['marriage_date'].dt.year"
       ],
-      "id": "ea779e96",
+      "id": "c9724ca5",
       "execution_count": null,
       "outputs": []
     },
@@ -331,9 +330,9 @@
       "cell_type": "markdown",
       "metadata": {},
       "source": [
-        "2.  Crea un gráfico de líneas que muestre el número medio de hijos que tuvo una pareja durante su matrimonio, ordenado por el año en que la pareja se casó.\n"
+        "2.  Crea un gráfico de líneas que muestre el número medio de hijos que tuvo una pareja durante su matrimonio, ordenado por el año en que la pareja se casó."
       ],
-      "id": "1e6d7f39"
+      "id": "57b6e43c"
     },
     {
       "cell_type": "code",
@@ -345,7 +344,7 @@
         "sns.lineplot(data=divorce, x='marriage_year', y='num_kids')\n",
         "plt.show()"
       ],
-      "id": "c9751f41",
+      "id": "d6d8a280",
       "execution_count": null,
       "outputs": []
     },
@@ -362,9 +361,9 @@
         "\n",
         "    -   Configurar `numeric_only=True` previene errores con columnas no numéricas.\n",
         "\n",
-        "    -   El método `.cor()` calcula el coeficiente de correlación de Pearson.\n"
+        "    -   El método `.cor()` calcula el coeficiente de correlación de Pearson."
       ],
-      "id": "c918007a"
+      "id": "01915fa2"
     },
     {
       "cell_type": "code",
@@ -372,7 +371,7 @@
       "source": [
         "divorce.corr(numeric_only=True)"
       ],
-      "id": "fac83257",
+      "id": "ef2e45c6",
       "execution_count": null,
       "outputs": []
     },
@@ -380,9 +379,9 @@
       "cell_type": "markdown",
       "metadata": {},
       "source": [
-        "-   Mapas de calor de correlación\n"
+        "-   Mapas de calor de correlación"
       ],
-      "id": "431976ba"
+      "id": "80d4eb95"
     },
     {
       "cell_type": "code",
@@ -391,7 +390,7 @@
         "sns.heatmap(divorce.corr(numeric_only=True), annot=True)\n",
         "plt.show()"
       ],
-      "id": "05eb28c6",
+      "id": "05c9aee6",
       "execution_count": null,
       "outputs": []
     },
@@ -399,9 +398,9 @@
       "cell_type": "markdown",
       "metadata": {},
       "source": [
-        "-   Correlación en contexto\n"
+        "-   Correlación en contexto"
       ],
-      "id": "583932e4"
+      "id": "36f39852"
     },
     {
       "cell_type": "code",
@@ -409,7 +408,7 @@
       "source": [
         "divorce['divorce_date'].min()"
       ],
-      "id": "479f169f",
+      "id": "5ba9b44c",
       "execution_count": null,
       "outputs": []
     },
@@ -419,7 +418,7 @@
       "source": [
         "divorce['divorce_date'].max()"
       ],
-      "id": "32550c01",
+      "id": "25b3c202",
       "execution_count": null,
       "outputs": []
     },
@@ -439,9 +438,9 @@
         "+-----------------------------------------------------------+------------------------------------------------------+\n",
         "\n",
         "\n",
-        "- Scatter plots\n"
+        "- Scatter plots"
       ],
-      "id": "3b62376d"
+      "id": "f90e8385"
     },
     {
       "cell_type": "code",
@@ -450,7 +449,7 @@
         "sns.scatterplot(data=divorce, x='income_man', y='income_woman')\n",
         "plt.show()"
       ],
-      "id": "bbaabc44",
+      "id": "84273846",
       "execution_count": null,
       "outputs": []
     },
@@ -462,7 +461,7 @@
         "    - Es útil para obtener una descripción general rápida de las relaciones dentro del conjunto de datos.\n",
         "    - Tanta información en un elemento visual puede ser difícil de interpretar con grandes conjuntos de datos.\n"
       ],
-      "id": "ac063391"
+      "id": "02353407"
     },
     {
       "cell_type": "code",
@@ -471,7 +470,7 @@
         "sns.pairplot(data=divorce)\n",
         "plt.show()"
       ],
-      "id": "753281e1",
+      "id": "651bcdb2",
       "execution_count": null,
       "outputs": []
     },
@@ -481,7 +480,7 @@
       "source": [
         "Es posible limitar el número de relaciones graficadas estableciendo el argumento `vars` igual a las variables de interés.\n"
       ],
-      "id": "f03064ab"
+      "id": "f3e01b35"
     },
     {
       "cell_type": "code",
@@ -490,7 +489,7 @@
         "sns.pairplot(data=divorce, vars=['income_man', 'income_woman', 'marriage_duration'])\n",
         "plt.show()"
       ],
-      "id": "cbd591d5",
+      "id": "f7aa7e21",
       "execution_count": null,
       "outputs": []
     },
@@ -500,9 +499,9 @@
       "source": [
         "### Interpretar un mapa de calor\n",
         "\n",
-        "¿Cuál de las siguientes afirmaciones es correcta respecto a las relaciones entre variables en el DataFrame `divorce`?\n"
+        "¿Cuál de las siguientes afirmaciones es correcta respecto a las relaciones entre variables en el DataFrame `divorce`?"
       ],
-      "id": "ae4dae12"
+      "id": "f474cad4"
     },
     {
       "cell_type": "code",
@@ -511,7 +510,7 @@
         "divorce['marriage_moth'] = divorce['marriage_date'].dt.month\n",
         "divorce.head()"
       ],
-      "id": "fb4012c0",
+      "id": "47b9eec8",
       "execution_count": null,
       "outputs": []
     },
@@ -542,7 +541,7 @@
         "\n",
         "- Cree un diagrama de dispersión que muestre `marriage_duration` en el eje x y `num_kids` en el eje y.\n"
       ],
-      "id": "144095d1"
+      "id": "e1fd1574"
     },
     {
       "cell_type": "code",
@@ -552,7 +551,7 @@
         "sns.scatterplot(data=divorce, x='marriage_duration', y='num_kids')\n",
         "plt.show()"
       ],
-      "id": "247793e3",
+      "id": "ac5e9940",
       "execution_count": null,
       "outputs": []
     },
@@ -573,7 +572,7 @@
         "\n",
         "- Crea un diagrama de pares para visualizar las relaciones entre `income_woman` y `marriage_duration` en el DataFrame `divorce`.\n"
       ],
-      "id": "95253a95"
+      "id": "8a3ca7dd"
     },
     {
       "cell_type": "code",
@@ -583,7 +582,7 @@
         "sns.pairplot(data=divorce, vars=['income_woman', 'marriage_duration'])\n",
         "plt.show()"
       ],
-      "id": "1ba0d5e2",
+      "id": "e8eea9fe",
       "execution_count": null,
       "outputs": []
     },
@@ -598,7 +597,7 @@
         "\n",
         "- Nivel de educación: male partner\n"
       ],
-      "id": "9a6d63b4"
+      "id": "4d56981e"
     },
     {
       "cell_type": "code",
@@ -606,7 +605,7 @@
       "source": [
         "divorce['education_man'].value_counts()"
       ],
-      "id": "3fa3d8e5",
+      "id": "5be10526",
       "execution_count": null,
       "outputs": []
     },
@@ -616,7 +615,7 @@
       "source": [
         "- Explorando las relaciones categóricas\n"
       ],
-      "id": "fe1fc6e5"
+      "id": "6ebff459"
     },
     {
       "cell_type": "code",
@@ -625,7 +624,7 @@
         "sns.histplot(data=divorce, x='marriage_duration', binwidth=1)\n",
         "plt.show()"
       ],
-      "id": "5e57fe3c",
+      "id": "35a2c66e",
       "execution_count": null,
       "outputs": []
     },
@@ -636,7 +635,7 @@
         "sns.histplot(data=divorce, x='marriage_duration', hue='education_man', binwidth=1)\n",
         "plt.show()"
       ],
-      "id": "09eda0b6",
+      "id": "414e11be",
       "execution_count": null,
       "outputs": []
     },
@@ -646,7 +645,7 @@
       "source": [
         "- Kernel Desnsity Estimate (KDE) plots\n"
       ],
-      "id": "0b1f6523"
+      "id": "5431a95d"
     },
     {
       "cell_type": "code",
@@ -655,7 +654,7 @@
         "sns.kdeplot(data=divorce, x='marriage_duration', hue='education_man')\n",
         "plt.show()"
       ],
-      "id": "a843e31c",
+      "id": "40c44c1d",
       "execution_count": null,
       "outputs": []
     },
@@ -669,7 +668,7 @@
         "\n",
         "Para solucionar esto, podempos utilizar el argumento de la palabra clave `cut`.\n"
       ],
-      "id": "67f01d57"
+      "id": "95566afe"
     },
     {
       "cell_type": "code",
@@ -678,7 +677,7 @@
         "sns.kdeplot(data=divorce, x='marriage_duration', hue='education_man', cut=0)\n",
         "plt.show()"
       ],
-      "id": "28d8a708",
+      "id": "a36ee7f1",
       "execution_count": null,
       "outputs": []
     },
@@ -688,7 +687,7 @@
       "source": [
         "- Gráficos KDE acumulativos\n"
       ],
-      "id": "6b6fc79f"
+      "id": "0526026a"
     },
     {
       "cell_type": "code",
@@ -698,7 +697,7 @@
         "sns.kdeplot(data=divorce, x='marriage_duration', hue='education_man', cut=0, cumulative=True)\n",
         "plt.show()"
       ],
-      "id": "27f2af6e",
+      "id": "8ec59d22",
       "execution_count": null,
       "outputs": []
     },
@@ -711,7 +710,7 @@
         "- Relación entre la edad del matrimonio y la educación\n",
         "    - Hay una relación entre la edad al momento del matrimonio y el nivel de educación?\n"
       ],
-      "id": "3ef4fe14"
+      "id": "0b51a165"
     },
     {
       "cell_type": "code",
@@ -720,7 +719,7 @@
         "divorce['man_age_marriage'] = divorce['marriage_year'] - divorce['dob_man'].dt.year\n",
         "divorce['woman_age_marriage'] = divorce['marriage_year'] - divorce['dob_woman'].dt.year"
       ],
-      "id": "1323668a",
+      "id": "0dbe8207",
       "execution_count": null,
       "outputs": []
     },
@@ -730,7 +729,7 @@
       "source": [
         "- Scatter plot con las variables categóricas\n"
       ],
-      "id": "5243a7e2"
+      "id": "4a2de789"
     },
     {
       "cell_type": "code",
@@ -739,7 +738,7 @@
         "sns.catplot(data=divorce, x='woman_age_marriage', y='man_age_marriage')\n",
         "plt.show()"
       ],
-      "id": "a4543fc0",
+      "id": "2504467a",
       "execution_count": null,
       "outputs": []
     },
@@ -750,7 +749,7 @@
         "sns.catplot(data=divorce, x='woman_age_marriage', y='man_age_marriage', hue='education_man')\n",
         "plt.show()"
       ],
-      "id": "0e1e9f04",
+      "id": "133eb7bb",
       "execution_count": null,
       "outputs": []
     },
@@ -767,9 +766,9 @@
         "\n",
         "#### Instrucciones\n",
         "\n",
-        "- Crea un gráfico de dispersión que muestre `woman_age_marriage` en el eje de abcisas y `income_woman` en el eje de las ordenadas, cada punto de datos debe colorearse en función del nivel educativo de la mujer, representado por `education_woman`.\n"
+        "- Crea un gráfico de dispersión que muestre `woman_age_marriage` en el eje de abcisas y `income_woman` en el eje de las ordenadas, cada punto de datos debe colorearse en función del nivel educativo de la mujer, representado por `education_woman`."
       ],
-      "id": "40817ad7"
+      "id": "b86ef18c"
     },
     {
       "cell_type": "code",
@@ -779,7 +778,7 @@
         "sns.scatterplot(data=divorce, x='woman_age_marriage', y='income_woman', hue='education_woman')\n",
         "plt.show()"
       ],
-      "id": "9972f7a8",
+      "id": "e3696c69",
       "execution_count": null,
       "outputs": []
     },
@@ -801,9 +800,9 @@
         "\n",
         "#### Instrucciones\n",
         "\n",
-        "1.  Cree un gráfico KDE que muestre `marriage_duration` en el eje x y una línea de color diferente para cada posible número de hijos que pueda tener una pareja, representada por `num_kids`.\n"
+        "1.  Cree un gráfico KDE que muestre `marriage_duration` en el eje x y una línea de color diferente para cada posible número de hijos que pueda tener una pareja, representada por `num_kids`."
       ],
-      "id": "4b1630a5"
+      "id": "6508bf04"
     },
     {
       "cell_type": "code",
@@ -813,7 +812,7 @@
         "sns.kdeplot(data=divorce, x='marriage_duration', hue='num_kids')\n",
         "plt.show()"
       ],
-      "id": "c6398371",
+      "id": "200c970e",
       "execution_count": null,
       "outputs": []
     },
@@ -821,9 +820,9 @@
       "cell_type": "markdown",
       "metadata": {},
       "source": [
-        "2. Observa que actualmente el gráfico muestra duraciones del matrimonio inferiores a cero; actualiza el grafico KDE para que la duración del matrimonio no pueda suavizarse más allá de los puntos de datos extremos.\n"
+        "2. Observa que actualmente el gráfico muestra duraciones del matrimonio inferiores a cero; actualiza el grafico KDE para que la duración del matrimonio no pueda suavizarse más allá de los puntos de datos extremos."
       ],
-      "id": "34749fd0"
+      "id": "8e442e64"
     },
     {
       "cell_type": "code",
@@ -833,7 +832,7 @@
         "sns.kdeplot(data=divorce, x='marriage_duration', hue='num_kids', cut=0)\n",
         "plt.show()"
       ],
-      "id": "0125a26b",
+      "id": "45b3ee71",
       "execution_count": null,
       "outputs": []
     },
@@ -841,9 +840,9 @@
       "cell_type": "markdown",
       "metadata": {},
       "source": [
-        "3. Actualiza el código del gráfico KDE del paso anterior para que muestre una función de distribución acumulativo para cada número de hijos que tiene una pareja.\n"
+        "3. Actualiza el código del gráfico KDE del paso anterior para que muestre una función de distribución acumulativo para cada número de hijos que tiene una pareja."
       ],
-      "id": "eb46dd3b"
+      "id": "374a5d29"
     },
     {
       "cell_type": "code",
@@ -853,7 +852,7 @@
         "sns.kdeplot(data=divorce, x='marriage_duration', hue='num_kids', cut=0, cumulative=True)\n",
         "plt.show()"
       ],
-      "id": "3e2c36e4",
+      "id": "96c32edd",
       "execution_count": null,
       "outputs": []
     },
@@ -863,15 +862,15 @@
       "source": [
         "Parece que hay una correlación positiva entre matrimonios más largos y más hijos, pero por supuesto, esto no indica causalidad. También puedes ver que hay muchos menos datos sobre parejas con más de dos hijos; esto nos ayuda a entender cuan confiables son nuestros hallazgos."
       ],
-      "id": "49616056"
+      "id": "0c9a072f"
     }
   ],
   "metadata": {
     "kernelspec": {
-      "name": "venv",
+      "name": "python3",
       "language": "python",
-      "display_name": "Python (venv)",
-      "path": "/Users/edwinmacmini/Library/Jupyter/kernels/venv"
+      "display_name": "Python 3 (ipykernel)",
+      "path": "/Users/macbookairedwin/Documents/Datacamp/Analista_de_datos_en_python/entorno_analista_datos/share/jupyter/kernels/python3"
     }
   },
   "nbformat": 4,
