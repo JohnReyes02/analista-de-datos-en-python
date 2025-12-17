@@ -337,7 +337,7 @@ plt.show()
 
 ### Extraer características para la correlación
 
-En este ejercicio trabajarás con una versión del conjunto de datos `salaries` que contiene una nueva columna llamada "`date_of_response".
+En este ejercicio trabajarás con una versión del conjunto de datos `salaries` que contiene una nueva columna llamada "\`date_of_response".
 
 El conjunto de datos se ha leído comjo un DataFrame de pandas, con "`date_of_response`" como tipo de datos `datetime`.
 
@@ -365,13 +365,13 @@ salaries['date_of_response'] = pd.to_datetime(salaries['date_of_response'])
 salaries.head()
 ```
 
-#### Instrucciones 
+#### Instrucciones
 
-- Extrae el mes de "`date_of_response`", almacenándolo como una columna llamada "`month`".
+-   Extrae el mes de "`date_of_response`", almacenándolo como una columna llamada "`month`".
 
-- Crea la columna "`weekday`", que contiene el día de la semana en que los participantes completaron la encuesta.
+-   Crea la columna "`weekday`", que contiene el día de la semana en que los participantes completaron la encuesta.
 
-- Traza un mapa de calor, incluyendo las puntuaciones del coeficiente de correlación de Pearson.
+-   Traza un mapa de calor, incluyendo las puntuaciones del coeficiente de correlación de Pearson.
 
 ```{python}
 # Get the month of the response
@@ -393,11 +393,11 @@ Tu tarea consiste en convertir la columna "`Salary_USD`" en categorías basadas 
 
 #### Instrucciones
 
-- Halla el percentil 25 de "`Salary_USD`"
+-   Halla el percentil 25 de "`Salary_USD`"
 
-- Guarda la mediana de "`Salary_USD`" como `salaries_median`.
+-   Guarda la mediana de "`Salary_USD`" como `salaries_median`.
 
-- Obtén el percentil 75 de los salaries
+-   Obtén el percentil 75 de los salaries
 
 ```{python}
 # Find the 25th percentile 
@@ -414,8 +414,6 @@ print(twenty_fifth, salaries_median, seventy_fifth)
 
 ¡Parece que el rango intercuartil está entre 60881 y 143225 dólares! ¡Ahora usemos estas variables para agregar una columna categórica de salario en el DataFrame
 
-
-
 ### Categorizar los salarios
 
 ¡Ahora es el momento de crear una nueva categoría! Utilizarás las variables `twenty_fifth`, `salaries_median` y `seventy_fifth`, que creaste en el ejercicio anterior, para dividir los salarios en diferentes etiquetas.
@@ -424,28 +422,28 @@ El resultado será una nueva columna llamada "`salary_level`", que incorporarás
 
 #### Instrucciones
 
-1. Crea `salaries_labels`, una lista que contenga "`entry`", "`mid`", "`senior`" y "`exec`".
+1.  Crea `salaries_labels`, una lista que contenga "`entry`", "`mid`", "`senior`" y "`exec`".
 
 ```{python}
 # Create salary labels
 salary_labels = ['entry', 'mid', 'senior', 'exec']
 ```
 
-2. Termina `salary_ranges`, añadiendo el percentil 25, la mediana, el percentil 75  y el valor más grande de "`Salary_USD`"
+2.  Termina `salary_ranges`, añadiendo el percentil 25, la mediana, el percentil 75 y el valor más grande de "`Salary_USD`"
 
 ```{python}
 # Create the salary ranges list
 salary_ranges = [0, twenty_fifth, salaries_median, seventy_fifth, salaries['Salary_USD'].max()]
 ```
 
-3. Divide "`Salary_USD`" en función de las etiquetas y rangos que hayas creado.
+3.  Divide "`Salary_USD`" en función de las etiquetas y rangos que hayas creado.
 
 ```{python}
 # Create salary_level
 salaries['salary_level'] = pd.cut(salaries['Salary_USD'], bins=salary_ranges, labels=salary_labels)
 ```
 
-4. Utiliza `sns.countplot()` para visualizar el reconteo de "`Company_Size`", factrorizando las etiquetas de nivel salarial.
+4.  Utiliza `sns.countplot()` para visualizar el reconteo de "`Company_Size`", factrorizando las etiquetas de nivel salarial.
 
 ```{python}
 # Plot the count of salary levels at companies of different sizes
@@ -463,31 +461,92 @@ Al realizar EDA, la pregunta que debemos hacernos es ¿Cómo sabemos que lo que 
 
 Por ejemplo:
 
--  Si recopilamos nuevos datos sobre vuelos de un período de tiempo diferente ¿observaríamos los mismos resultados?
+-   Si recopilamos nuevos datos sobre vuelos de un período de tiempo diferente ¿observaríamos los mismos resultados?
 
-- Detectar relaciones, diferencias y patrones:
-    - Usamos **Prueba de hipótesis**
+-   Detectar relaciones, diferencias y patrones:
 
-- La prueba de hipótesis requiere previo a la recolección de datos:
-    - Generar una hipótesis o pregunta.
-    - Una decisión en la se pueda usar una prueba estadística
+    -   Usamos **Prueba de hipótesis**
 
-- Data snooping
-    - Los análisis de datos excesivos, la generación de múltiples hipótesis y la ejecución de múltiples pruebas estadísticas
+-   La prueba de hipótesis requiere previo a la recolección de datos:
 
-- Generación de Hipótesis
-    - Se realiza usando análisis exploratorio de datos
+    -   Generar una hipótesis o pregunta.
+    -   Una decisión en la se pueda usar una prueba estadística
 
-- Próximos pasos
-    - Diseñar nuestro experimento.
-    - Envuelve pasos como:
-        - Elegir una muestra
-        - Calcular cuántos puntos de datos necesitamos
-        -  Decidir que prueba estadística ejecutar.
+-   Data snooping
 
+    -   Los análisis de datos excesivos, la generación de múltiples hipótesis y la ejecución de múltiples pruebas estadísticas
+
+-   Generación de Hipótesis
+
+    -   Se realiza usando análisis exploratorio de datos
+
+-   Próximos pasos
+
+    -   Diseñar nuestro experimento.
+    -   Envuelve pasos como:
+        -   Elegir una muestra
+        -   Calcular cuántos puntos de datos necesitamos
+        -   Decidir que prueba estadística ejecutar.
 
 ### Comparar salarios
 
-¡El anális
+¡El análisis exploratorio de datos es un paso crucial en la generación de hipótesis!
+
+Se te ha ocurrido una idea que te gustaría investigar: ¿los profesionales de los datos cobran más en Estados Unidos que en Gran Bretaña?
+
+Tendrás que subconjuntar los datos en "`Employee_Location`" y elaborar un gráfico que muestre el salario medio entre los dos grupos.
+
+#### Instrucciones
+
+-   Filtra `salaries` donde "`Employee_Location`" es "`US`" o "`GB`", guardando como `usa_and_gb`.
+
+-   Utiliza `usa_and_gb` para crear un gráfico de barras que visualice "`Salary_USD`" frete a "`Employee_Location`".
+
+```{python}
+# Filter for employees in the US or GB
+usa_and_gb = salaries[salaries['Employee_Location'].isin(['US', 'GB'])]
+
+# Create a barplot of salaries by location
+sns.barplot(data=usa_and_gb, x='Employee_Location', y='Salary_USD')
+plt.show()
+```
+
+Al subconfigurar los datos, pudiste comparar directamente los salarios entre EE.UU. y Gran Bretaña. La visualización sugiere que has generado una hipótesis que vale la pena investigar formalmente para determinar si existe una diferencia real o no.
 
 ### Elegir una hipótesis
+
+Has visto cómo las visualizaciones pueden utilizarse para generar hipótesis, ¡lo que las convierte en una parte crucial del análisis exploratorio de datos!
+
+En este ejercicio, generarás un diagrama de barras para inspeccionar cómo difieren los salarios según el tamaño de la empresa y la situación laboral.
+
+Como referencia, hay cuatro valores:
+
+| Valor | Significado       |
+|-------|-------------------|
+| `CT`  | Contratista       |
+| `FL`  | Autónomo          |
+| `PT`  | A tiempo parcial  |
+| `FT`  | A tiempo completo |
+
+#### Instrucciones
+
+1. Elabora un diagrama de barras comparando "`Salary_USD`" por "`Company_Size`", factorizando "`Employment_Status`".
+
+
+```{python}
+# Create a bar plot  of salary versus company size, factoring in employment status
+sns.barplot(data=salaries, x='Company_Size', y='Salary_USD', hue='Employment_Status')
+plt.show()
+```
+
+2. **Pregunta**
+¿ Cuál es una hipótesis razonable que se puede generar a partir de esta trama?
+
+**Respuestas Posibles**
+
+- [ ] Por término medio, las pequeñas empresas pagan menos a los empleados a tiempo parcial que las grandes empresas.
+- [ ] Los autónomos ganan más en las empresas medianas que en las pequeñas o grandes.
+- [X] Por término medio, las grandes empresas pagan más a los contratistas que las medianas.
+- [ ] No se puede generar ninguna hipótesis a partir de este gráfico.
+
+Los contratistas parecen se mejor pagados por las grandes empresas en promedio según los datos, ¡así que esta es una hipótesis razonable!
