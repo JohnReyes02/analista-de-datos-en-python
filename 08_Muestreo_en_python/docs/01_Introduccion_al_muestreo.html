@@ -20,10 +20,45 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -73,6 +108,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 </head>
@@ -342,8 +380,30 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contenido</h2>
+   
+  <ul>
+  <li><a href="#muestreo-y-estimaciones-puntuales" id="toc-muestreo-y-estimaciones-puntuales" class="nav-link active" data-scroll-target="#muestreo-y-estimaciones-puntuales">Muestreo y estimaciones puntuales</a>
+  <ul class="collapse">
+  <li><a href="#motivos-del-muestreo" id="toc-motivos-del-muestreo" class="nav-link" data-scroll-target="#motivos-del-muestreo">Motivos del muestreo</a></li>
+  <li><a href="#muestreo-simple-con-pandas" id="toc-muestreo-simple-con-pandas" class="nav-link" data-scroll-target="#muestreo-simple-con-pandas">Muestreo simple con pandas</a></li>
+  <li><a href="#muestreos-y-cálculos-sencillos-con-numpy" id="toc-muestreos-y-cálculos-sencillos-con-numpy" class="nav-link" data-scroll-target="#muestreos-y-cálculos-sencillos-con-numpy">Muestreos y cálculos sencillos con Numpy</a></li>
+  <li><a href="#instrucciones-1" id="toc-instrucciones-1" class="nav-link" data-scroll-target="#instrucciones-1">Instrucciones</a></li>
+  </ul></li>
+  <li><a href="#muestreo-de-conveniencia" id="toc-muestreo-de-conveniencia" class="nav-link" data-scroll-target="#muestreo-de-conveniencia">Muestreo de conveniencia</a>
+  <ul class="collapse">
+  <li><a href="#son-generalizables-las-conclusiones-de-la-muestra" id="toc-son-generalizables-las-conclusiones-de-la-muestra" class="nav-link" data-scroll-target="#son-generalizables-las-conclusiones-de-la-muestra">¿Son generalizables las conclusiones de la muestra?</a></li>
+  <li><a href="#son-generalizables-estos-resultados" id="toc-son-generalizables-estos-resultados" class="nav-link" data-scroll-target="#son-generalizables-estos-resultados">¿Son generalizables estos resultados?</a></li>
+  </ul></li>
+  <li><a href="#generación-de-números-pseudoaleatorios" id="toc-generación-de-números-pseudoaleatorios" class="nav-link" data-scroll-target="#generación-de-números-pseudoaleatorios">Generación de números pseudoaleatorios</a>
+  <ul class="collapse">
+  <li><a href="#generar-números-aleatorios" id="toc-generar-números-aleatorios" class="nav-link" data-scroll-target="#generar-números-aleatorios">Generar números aleatorios</a></li>
+  <li><a href="#comprender-los-valores-de-iniciaclización-aleatorios" id="toc-comprender-los-valores-de-iniciaclización-aleatorios" class="nav-link" data-scroll-target="#comprender-los-valores-de-iniciaclización-aleatorios">Comprender los valores de iniciaclización aleatorios</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/JohnReyes02/Datacamp/edit/main/Analista_de_datos_en_python/08_Muestreo_en_python/01_Introduccion_al_muestreo.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/JohnReyes02/Datacamp/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/JohnReyes02/Datacamp/blob/main/Analista_de_datos_en_python/08_Muestreo_en_python/01_Introduccion_al_muestreo.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -368,8 +428,441 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p>Aprende qué es el muestreo y por qué es tan poderoso. También aprenderás sobre los problemas causados por el muestreo de conveniencia y las diferencias entre la verdadera aleatoriedad y la pseudoaleatoriedad.</p>
+<section id="muestreo-y-estimaciones-puntuales" class="level2">
+<h2 class="anchored" data-anchor-id="muestreo-y-estimaciones-puntuales">Muestreo y estimaciones puntuales</h2>
+<p>La técnica de trabajar con un subconjunto de toda la población se le llama muestreo.</p>
+<ul>
+<li>Población vs Muestreo La población es el conjunto completo de datos que nos interesan.
+<ul>
+<li>No se refiere a personas.</li>
+<li>Típicamente, no sabremos cómo es toda la población.</li>
+</ul></li>
+</ul>
+<p>La muestra es el subconjunto de datos con el que estamos trabajando.</p>
+<ul>
+<li><p>Coffee rating dataset</p>
+<p><img src="images/paste-1.png" class="img-fluid"></p>
+<ul>
+<li>Cada fila representa 1 café.</li>
+<li>Hay 1338 filas</li>
+<li>Al café se le asigna una puntuación de cero a cien, que se almacena en la columna <code>total_cup_points</code>.</li>
+<li>Otras columnas contienen información contextual como la variedad y el país de origen.</li>
+<li>Puntuaciones entre 0 y 10 para atributos del café como el aroma y el cuerpo.</li>
+<li>No contiene todos los cafés del mundo, por lo que no sabemos exactamente cuál es la población de cafés.</li>
+<li>Hay suficientes para considerarla como la población de interés.</li>
+</ul></li>
+<li><p>Points vs.&nbsp;Flavor: Población</p></li>
+</ul>
+<div id="6989ad00" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pts_vs_flavor_pop <span class="op">=</span> coffee_ratings[[<span class="st">"total_points"</span>, <span class="st">"flavor"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><img src="images/paste-2.png" class="img-fluid"></p>
+<ul>
+<li>Points vs.&nbsp;Flavor: 10 filas de muestra</li>
+</ul>
+<div id="1350b569" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>pts_vs_flavor_samp <span class="op">=</span> pts_vs_flavor_pop.sample(n<span class="op">=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><img src="images/paste-3.png" class="img-fluid"></p>
+<p>El método <code>.sample()</code> de pandas devuelve un subconjunto aleatorio de filas. Establecer n en 10 significa que devuelve 10 filas aleatorias. En la muestra aparecen 10 muestras únicas.</p>
+<ul>
+<li><p>Muestreo en Python para Series</p>
+<ul>
+<li>Use <code>.sample()</code> en <code>pandas</code> para DataFrames y Series.</li>
+</ul></li>
+</ul>
+<div id="6bc305cc" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>cup_points_samp <span class="op">=</span> coffe_ratings[<span class="st">'total_cup_points'</span>].sample(n<span class="op">=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><img src="images/paste-4.png" class="img-fluid"></p>
+<ul>
+<li><p>Parámetros de Población &amp; Puntos Estimados</p>
+<p>Un parámetro de población es un cálculo realizado sobre el conjunto de datos de población.</p></li>
+</ul>
+<div id="33f1db33" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>np.mean(pts_vs_flavor_pop[<span class="st">'total_cup_points'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><img src="images/paste-5.png" class="img-fluid"></p>
+<p>Una estimación puntual o estadística de muestra, es un cálculo basado en el conjunto de datos de muestra.</p>
+<div id="89e8467d" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>np.mean(cup_points_samp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><img src="images/paste-6.png" class="img-fluid"></p>
+<ul>
+<li><p>Puntos estimados con pandas</p>
+<p>Trabajar con pandas puede ser más fácil que trabajar con Numpy. Estos cálculos de media se pueden realizar utilizando el método de pandas <code>.mean()</code></p></li>
+</ul>
+<div id="3afb0a90" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>pts_vs_flavor_pop[<span class="st">'flavor'</span>].mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><img src="images/paste-7.png" class="img-fluid"></p>
+<div id="cb67a513" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>pts_vs_flavor_samp[<span class="st">'flavor'</span>].mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><img src="images/paste-8.png" class="img-fluid"></p>
+<section id="motivos-del-muestreo" class="level3">
+<h3 class="anchored" data-anchor-id="motivos-del-muestreo">Motivos del muestreo</h3>
+<p>El muestreo es una técnica importante en tu arsenal estadísico. Sin embargo, no siempre es adecuado: hay que saber cuándo utilizarlo y cuándo trabajar con todo el conjunto de datos.</p>
+<p>¿Cuál de los siguientes no es un buen escenario para utilizar el muestreo?</p>
+<p><strong>Respuestas posibles</strong></p>
+<ul class="task-list">
+<li><label><input type="checkbox">Te han agregado un terabyte de datos sobre registros de errores del dispositivo de tu empresa.</label></li>
+<li><label><input type="checkbox">Deseas conocer los hábitos de viaje de todos los ciudadanos adultos paquistaníes.</label></li>
+<li><label><input type="checkbox" checked="">Has terminado de recoger los datos de un pequeño estudio sobre las medidas de las alas de 10 mariposas.</label></li>
+<li><label><input type="checkbox">Has estado trabajando para predecir la rotación de clientes en un proyecto de big data para tu empresa de marketing.</label></li>
+</ul>
+<p>Diez mariposas es un conjunto de datos pequeño, por lo que el muestreo no es útil aquí.</p>
+</section>
+<section id="muestreo-simple-con-pandas" class="level3">
+<h3 class="anchored" data-anchor-id="muestreo-simple-con-pandas">Muestreo simple con pandas</h3>
+<p>A lo largo de este capítulo , explorarás los datos de canciones de Spotify. Cada fila de este conjunto de datos de población representa una canción, y hay más de 40000 filas. Las columnas incluyen el nombre de la canción, los artistas que la interpretaron, al año de lanzamiento y atributos de la canción como su duración, tempo y bailabilidad. Empezarás por fijarte en las duraciones.</p>
+<p>Tu primera tarea es tomar una muestra del conjunto de datos de Spotify y comparar la duración media de la población con la de la muestra.</p>
+<div id="315d27e7" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>ruta <span class="op">=</span> <span class="st">'./data/spotify_2000_2020.feather'</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>spotify_population <span class="op">=</span> pd.read_feather(ruta)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>spotify_population.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<div>
 
 
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">acousticness</th>
+<th data-quarto-table-cell-role="th">artists</th>
+<th data-quarto-table-cell-role="th">danceability</th>
+<th data-quarto-table-cell-role="th">duration_ms</th>
+<th data-quarto-table-cell-role="th">duration_minutes</th>
+<th data-quarto-table-cell-role="th">energy</th>
+<th data-quarto-table-cell-role="th">explicit</th>
+<th data-quarto-table-cell-role="th">id</th>
+<th data-quarto-table-cell-role="th">instrumentalness</th>
+<th data-quarto-table-cell-role="th">key</th>
+<th data-quarto-table-cell-role="th">liveness</th>
+<th data-quarto-table-cell-role="th">loudness</th>
+<th data-quarto-table-cell-role="th">mode</th>
+<th data-quarto-table-cell-role="th">name</th>
+<th data-quarto-table-cell-role="th">popularity</th>
+<th data-quarto-table-cell-role="th">release_date</th>
+<th data-quarto-table-cell-role="th">speechiness</th>
+<th data-quarto-table-cell-role="th">tempo</th>
+<th data-quarto-table-cell-role="th">valence</th>
+<th data-quarto-table-cell-role="th">year</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>0.97200</td>
+<td>['David Bauer']</td>
+<td>0.567</td>
+<td>313293.0</td>
+<td>5.221550</td>
+<td>0.227</td>
+<td>0.0</td>
+<td>0w0D8H1ubRerCXHWYJkinO</td>
+<td>0.601000</td>
+<td>10.0</td>
+<td>0.110</td>
+<td>-13.441</td>
+<td>1.0</td>
+<td>Shout to the Lord</td>
+<td>47.0</td>
+<td>2000</td>
+<td>0.0290</td>
+<td>136.123</td>
+<td>0.0396</td>
+<td>2000.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>0.32100</td>
+<td>['Etta James']</td>
+<td>0.821</td>
+<td>360240.0</td>
+<td>6.004000</td>
+<td>0.418</td>
+<td>0.0</td>
+<td>4JVeqfE2tpi7Pv63LJZtPh</td>
+<td>0.000372</td>
+<td>9.0</td>
+<td>0.222</td>
+<td>-9.841</td>
+<td>0.0</td>
+<td>Miss You</td>
+<td>51.0</td>
+<td>2000-12-12</td>
+<td>0.0407</td>
+<td>117.382</td>
+<td>0.8030</td>
+<td>2000.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>0.00659</td>
+<td>['Quasimoto']</td>
+<td>0.706</td>
+<td>202507.0</td>
+<td>3.375117</td>
+<td>0.602</td>
+<td>1.0</td>
+<td>5pxtdhLAi0RTh1gNqhGMNA</td>
+<td>0.000138</td>
+<td>11.0</td>
+<td>0.400</td>
+<td>-8.306</td>
+<td>0.0</td>
+<td>Real Eyes</td>
+<td>44.0</td>
+<td>2000-06-13</td>
+<td>0.3420</td>
+<td>89.692</td>
+<td>0.4790</td>
+<td>2000.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>0.00390</td>
+<td>['Millencolin']</td>
+<td>0.368</td>
+<td>173360.0</td>
+<td>2.889333</td>
+<td>0.977</td>
+<td>0.0</td>
+<td>3jRsoe4Vkxa4BMYqGHX8L0</td>
+<td>0.000000</td>
+<td>11.0</td>
+<td>0.350</td>
+<td>-2.757</td>
+<td>0.0</td>
+<td>Penguins &amp; Polarbears</td>
+<td>52.0</td>
+<td>2000-02-22</td>
+<td>0.1270</td>
+<td>165.889</td>
+<td>0.5480</td>
+<td>2000.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>0.12200</td>
+<td>['Steve Chou']</td>
+<td>0.501</td>
+<td>344200.0</td>
+<td>5.736667</td>
+<td>0.511</td>
+<td>0.0</td>
+<td>4mronxcllhfyhBRqyZi8kU</td>
+<td>0.000000</td>
+<td>7.0</td>
+<td>0.279</td>
+<td>-9.836</td>
+<td>0.0</td>
+<td>黃昏</td>
+<td>53.0</td>
+<td>2000-12-25</td>
+<td>0.0291</td>
+<td>78.045</td>
+<td>0.1130</td>
+<td>2000.0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<section id="instrucciones" class="level4">
+<h4 class="anchored" data-anchor-id="instrucciones">Instrucciones</h4>
+<ol type="1">
+<li>Muestra 1000 filas de <code>spotify_population</code>, asignándolas a <code>spotify_sample</code>.</li>
+</ol>
+<div id="b22a40a1" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sample 1000 rows from spotify_population</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>spotify_sample <span class="op">=</span> spotify_population.sample(n<span class="op">=</span><span class="dv">1000</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># print sample</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(spotify_sample)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       acousticness                               artists  danceability  \
+12279       0.00388                      ['All Time Low']         0.560   
+1107        0.62700                       ['Dean Martin']         0.680   
+26001       0.62700               ['El Potro De Sinaloa']         0.912   
+15820       0.12700                     ['Kirk Franklin']         0.693   
+16901       0.76000                      ['Shania Twain']         0.395   
+...             ...                                   ...           ...   
+39318       0.07030                           ['RaeLynn']         0.658   
+35838       0.01120  ['Hikaru Utada', 'Russell McNamara']         0.665   
+38689       0.73400                      ['Kara Lindsay']         0.650   
+18617       0.33300            ['SiR', 'Sabrina Claudio']         0.634   
+26550       0.02100                          ['Sam Hunt']         0.615   
+
+       duration_ms  duration_minutes  energy  explicit  \
+12279     224947.0          3.749117   0.887       0.0   
+1107      147293.0          2.454883   0.258       0.0   
+26001     168853.0          2.814217   0.416       0.0   
+15820     308413.0          5.140217   0.961       0.0   
+16901     248213.0          4.136883   0.539       0.0   
+...            ...               ...     ...       ...   
+39318     185587.0          3.093117   0.695       0.0   
+35838     343493.0          5.724883   0.888       0.0   
+38689     186960.0          3.116000   0.226       0.0   
+18617     241747.0          4.029117   0.496       1.0   
+26550     197813.0          3.296883   0.824       0.0   
+
+                           id  instrumentalness   key  liveness  loudness  \
+12279  3aAoy02NwrmZcqXYYjqNh2          0.000000   7.0    0.3410    -6.314   
+1107   4qQ8sToR3GNossXlwSlyKz          0.000000   9.0    0.2930   -11.995   
+26001  1RUqCnGu0IkGkaKsA43Gcx          0.000791   2.0    0.0499    -4.785   
+15820  6YsV3vxvPt0KrTw9whgynd          0.000002   0.0    0.7110    -5.845   
+16901  7b8mI7YNGUfckTtyzoe1Zm          0.000000   9.0    0.1020    -6.397   
+...                       ...               ...   ...       ...       ...   
+39318  0ExiKxfY5rHBW06TcV1xXU          0.000000   0.0    0.1300    -5.499   
+35838  0NGgGj5L3VztJb3zKIwpRp          0.002190   8.0    0.1400    -7.995   
+38689  5hxDy35TUVRXRhI6rSp592          0.000000   9.0    0.0877   -11.310   
+18617  3Ku9kSWtDQPC8bSWpHR7z0          0.000000   3.0    0.1300    -6.077   
+26550  0YQcktqICwSWzlS4P4jzOz          0.000000  10.0    0.3420    -4.903   
+
+       mode                                           name  popularity  \
+12279   1.0                                     Good Times        59.0   
+1107    1.0     Ain't That A Kick In The Head - Remastered        53.0   
+26001   1.0                                Chuy Y Mauricio        55.0   
+15820   1.0                                        Hosanna        42.0   
+16901   1.0                 When You Kiss Me - Red Version        44.0   
+...     ...                                            ...         ...   
+39318   1.0                                   Queens Don't        63.0   
+35838   1.0               Simple And Clean - PLANITb Remix        47.0   
+38689   1.0                             Watch What Happens        52.0   
+18617   0.0  That's Why I Love You (feat. Sabrina Claudio)        62.0   
+26550   0.0                                      Ex To See        60.0   
+
+      release_date  speechiness    tempo  valence    year  
+12279   2017-06-02       0.0594  130.026    0.198  2017.0  
+1107    2011-01-01       0.0554  132.056    0.781  2011.0  
+26001   2009-01-01       0.0630   96.259    0.963  2009.0  
+15820   2011-12-27       0.1490  122.011    0.300  2011.0  
+16901   2002-01-01       0.0336  135.029    0.147  2002.0  
+...            ...          ...      ...      ...     ...  
+39318   2018-03-16       0.0279  133.949    0.571  2018.0  
+35838   2003-01-29       0.0609  130.055    0.449  2003.0  
+38689   2012-05-15       0.1360  171.775    0.741  2012.0  
+18617   2019-08-30       0.2920  119.627    0.546  2019.0  
+26550   2014-10-27       0.1070  149.986    0.637  2014.0  
+
+[1000 rows x 20 columns]</code></pre>
+</div>
+</div>
+<ol start="2" type="1">
+<li></li>
+</ol>
+<ul>
+<li>Calcula la duración media en minutos de <code>spotify_population</code> utilizando <code>pandas</code>.</li>
+<li>Calcula la duración media en minutos de <code>spotify_sample</code> utilizando <code>pandas</code>.</li>
+</ul>
+<div id="1d06c5a5" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the mean duration in mins from spotify_population</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>mean_dur_pop <span class="op">=</span> spotify_population[<span class="st">'duration_minutes'</span>].mean()</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the mean duration in mins from spotify_sample</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>mean_dur_sample <span class="op">=</span> spotify_sample[<span class="st">'duration_minutes'</span>].mean()</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co"># print the means</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(mean_dur_pop)</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(mean_dur_sample)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>3.8521519140900073
+3.8508819499999998</code></pre>
+</div>
+</div>
+<p>Se observa que la duración media de las canciones en la muestra es similar, pero no idéntica a la duración media de las canciones en toda la poblacición.</p>
+</section>
+</section>
+<section id="muestreos-y-cálculos-sencillos-con-numpy" class="level3">
+<h3 class="anchored" data-anchor-id="muestreos-y-cálculos-sencillos-con-numpy">Muestreos y cálculos sencillos con Numpy</h3>
+<p>También puedes utilizar <code>numpy</code> para calcular parámetros o estadísticas partir de una lista o de la serie <code>pandas</code>.</p>
+</section>
+<section id="instrucciones-1" class="level3">
+<h3 class="anchored" data-anchor-id="instrucciones-1">Instrucciones</h3>
+<ol type="1">
+<li></li>
+</ol>
+<ul>
+<li>Crea una serie <code>pandas</code>, <code>loudness_pop</code>, subdividiendo la columna <code>loudness</code> de <code>spotify_population</code>.</li>
+<li>Muestra <code>loudness_pop</code> para obtener 100 valores aleatorios, asignándolos a <code>loudness_samp</code>.</li>
+</ul>
+<div id="087bc48a" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a pandas Series from de loudness column of spotify_population</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>loudness_pop <span class="op">=</span> spotify_population[<span class="st">'loudness'</span>]</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Sample 100 values of loudness_pop</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>loudness_samp <span class="op">=</span> loudness_pop.sample(n<span class="op">=</span><span class="dv">100</span>)</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(loudness_samp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>18660    -5.669
+33162    -5.721
+5409     -7.226
+2437     -5.067
+14040    -8.170
+          ...  
+20743    -5.018
+27695    -3.234
+33938    -3.315
+2445     -5.552
+33658   -10.004
+Name: loudness, Length: 100, dtype: float64</code></pre>
+</div>
+</div>
+<ol start="2" type="1">
+<li></li>
+</ol>
+<ul>
+<li>Calcula la media de <code>loudness_pop</code> utilizando <code>numpy</code>.</li>
+<li>Calcula la media de <code>loudness_samp</code> utilizando <code>numpy</code>.</li>
+</ul>
+<div id="7c6f29a0" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the mean of loudness_pop</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>mean_loudness_pop <span class="op">=</span> np.mean(loudness_pop)</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the mean of loudness_samp</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>mean_loudness_samp <span class="op">=</span> np.mean(loudness_samp)</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(mean_loudness_pop)</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(mean_loudness_samp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>-7.366856851353947
+-7.159670000000002</code></pre>
+</div>
+</div>
+<p>Nuevamente, observe que el valor calculado (la media) es cercano pero no idéntico en cada caso.</p>
+</section>
+</section>
+<section id="muestreo-de-conveniencia" class="level2">
+<h2 class="anchored" data-anchor-id="muestreo-de-conveniencia">Muestreo de conveniencia</h2>
+<section id="son-generalizables-las-conclusiones-de-la-muestra" class="level3">
+<h3 class="anchored" data-anchor-id="son-generalizables-las-conclusiones-de-la-muestra">¿Son generalizables las conclusiones de la muestra?</h3>
+</section>
+<section id="son-generalizables-estos-resultados" class="level3">
+<h3 class="anchored" data-anchor-id="son-generalizables-estos-resultados">¿Son generalizables estos resultados?</h3>
+</section>
+</section>
+<section id="generación-de-números-pseudoaleatorios" class="level2">
+<h2 class="anchored" data-anchor-id="generación-de-números-pseudoaleatorios">Generación de números pseudoaleatorios</h2>
+<section id="generar-números-aleatorios" class="level3">
+<h3 class="anchored" data-anchor-id="generar-números-aleatorios">Generar números aleatorios</h3>
+</section>
+<section id="comprender-los-valores-de-iniciaclización-aleatorios" class="level3">
+<h3 class="anchored" data-anchor-id="comprender-los-valores-de-iniciaclización-aleatorios">Comprender los valores de iniciaclización aleatorios</h3>
+
+
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -801,4 +1294,4 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://github.com/JohnReyes02/Datacamp/edit/main/Analista_de_datos_en_python/08_Muestreo_en_python/01_Introduccion_al_muestreo.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/JohnReyes02/Datacamp/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/JohnReyes02/Datacamp/blob/main/Analista_de_datos_en_python/08_Muestreo_en_python/01_Introduccion_al_muestreo.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/JohnReyes02/Datacamp/edit/main/Analista_de_datos_en_python/08_Muestreo_en_python/01_Introduccion_al_muestreo.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/JohnReyes02/Datacamp/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/JohnReyes02/Datacamp/blob/main/Analista_de_datos_en_python/08_Muestreo_en_python/01_Introduccion_al_muestreo.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div></div></footer></body></html>

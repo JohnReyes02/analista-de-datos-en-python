@@ -6,12 +6,200 @@ Aprende qué es el muestreo y por qué es tan poderoso. También aprenderás sob
 
 ## Muestreo y estimaciones puntuales
 
+La técnica de trabajar con un subconjunto de toda la población se le llama muestreo.
+
+-   Población vs Muestreo La población es el conjunto completo de datos que nos interesan.
+    -   No se refiere a personas.
+    -   Típicamente, no sabremos cómo es toda la población.
+
+La muestra es el subconjunto de datos con el que estamos trabajando.
+
+-   Coffee rating dataset
+
+    ![](images/paste-1.png)
+
+    -   Cada fila representa 1 café.
+    -   Hay 1338 filas
+    -   Al café se le asigna una puntuación de cero a cien, que se almacena en la columna `total_cup_points`.
+    -   Otras columnas contienen información contextual como la variedad y el país de origen.
+    -   Puntuaciones entre 0 y 10 para atributos del café como el aroma y el cuerpo.
+    -   No contiene todos los cafés del mundo, por lo que no sabemos exactamente cuál es la población de cafés.
+    -   Hay suficientes para considerarla como la población de interés.
+
+-   Points vs. Flavor: Población
+
+```{python}
+#| echo: true
+#| eval: false
+pts_vs_flavor_pop = coffee_ratings[["total_points", "flavor"]]
+```
+
+![](images/paste-2.png)
+
+-   Points vs. Flavor: 10 filas de muestra
+
+```{python}
+#| echo: true
+#| eval: false
+pts_vs_flavor_samp = pts_vs_flavor_pop.sample(n=10)
+```
+
+![](images/paste-3.png)
+
+El método `.sample()` de pandas devuelve un subconjunto aleatorio de filas. Establecer n en 10 significa que devuelve 10 filas aleatorias. En la muestra aparecen 10 muestras únicas.
+
+-   Muestreo en Python para Series
+
+    -   Use `.sample()` en `pandas` para DataFrames y Series.
+
+```{python}
+#| echo: true
+#| eval: false
+cup_points_samp = coffe_ratings['total_cup_points'].sample(n=10)
+```
+
+![](images/paste-4.png)
+
+-   Parámetros de Población & Puntos Estimados
+
+    Un parámetro de población es un cálculo realizado sobre el conjunto de datos de población.
+
+```{python}
+#| echo: true
+#| eval: false
+import numpy as np
+np.mean(pts_vs_flavor_pop['total_cup_points'])
+```
+
+![](images/paste-5.png)
+
+Una estimación puntual o estadística de muestra, es un cálculo basado en el conjunto de datos de muestra.
+
+```{python}
+#| echo: true
+#| eval: false
+np.mean(cup_points_samp)
+```
+
+![](images/paste-6.png)
+
+-   Puntos estimados con pandas
+
+    Trabajar con pandas puede ser más fácil que trabajar con Numpy. Estos cálculos de media se pueden realizar utilizando el método de pandas `.mean()`
+
+```{python}
+#| echo: true
+#| eval: false
+pts_vs_flavor_pop['flavor'].mean()
+```
+
+![](images/paste-7.png)
+
+```{python}
+#| echo: true
+#| eval: false
+pts_vs_flavor_samp['flavor'].mean()
+```
+
+![](images/paste-8.png)
+
 ### Motivos del muestreo
+
+El muestreo es una técnica importante en tu arsenal estadísico. Sin embargo, no siempre es adecuado: hay que saber cuándo utilizarlo y cuándo trabajar con todo el conjunto de datos.
+
+¿Cuál de los siguientes no es un buen escenario para utilizar el muestreo?
+
+**Respuestas posibles**
+
+- [ ] Te han agregado un terabyte de datos sobre registros de errores del dispositivo de tu empresa.
+- [ ] Deseas conocer los hábitos de viaje de todos los ciudadanos adultos paquistaníes.
+- [X] Has terminado de recoger los datos de un pequeño estudio sobre las medidas de las alas de 10 mariposas.
+- [ ] Has estado trabajando para predecir la rotación de clientes en un proyecto de big data para tu empresa de marketing.
+
+Diez mariposas es un conjunto de datos pequeño, por lo que el muestreo no es útil aquí.
+
 
 ### Muestreo simple con pandas
 
-### Muestreos y cálculos sencillos con pandas
+A lo largo de este capítulo , explorarás los datos de canciones de Spotify. Cada fila de este conjunto de datos de población representa una canción, y hay más de 40000 filas. Las columnas incluyen el nombre de la canción, los artistas que la interpretaron, al año de lanzamiento y atributos de la canción como su duración, tempo y bailabilidad. Empezarás por fijarte en las duraciones.
 
+Tu primera tarea es tomar una muestra del conjunto de datos de Spotify y comparar la duración media de la población con la de la muestra.
+
+```{python}
+import pandas as pd
+ruta = './data/spotify_2000_2020.feather'
+spotify_population = pd.read_feather(ruta)
+spotify_population.head()
+```
+#### Instrucciones
+
+1. Muestra 1000 filas de `spotify_population`, asignándolas a `spotify_sample`.
+
+```{python}
+# Sample 1000 rows from spotify_population
+spotify_sample = spotify_population.sample(n=1000)
+
+# print sample
+print(spotify_sample)
+```
+
+2. 
+- Calcula la duración media en minutos de `spotify_population` utilizando `pandas`.
+- Calcula la duración media en minutos de `spotify_sample` utilizando `pandas`.
+
+```{python}
+# Calculate the mean duration in mins from spotify_population
+mean_dur_pop = spotify_population['duration_minutes'].mean()
+
+# Calculate the mean duration in mins from spotify_sample
+mean_dur_sample = spotify_sample['duration_minutes'].mean()
+
+# print the means
+print(mean_dur_pop)
+print(mean_dur_sample)
+```
+
+Se observa que la duración media de las canciones en la muestra es similar, pero no idéntica a la duración media de las canciones en toda la poblacición.
+
+
+### Muestreos y cálculos sencillos con Numpy
+
+También puedes utilizar `numpy` para calcular parámetros o estadísticas partir de una lista o de la serie `pandas`.
+
+### Instrucciones
+
+1. 
+- Crea una serie `pandas`, `loudness_pop`, subdividiendo la columna `loudness` de `spotify_population`.
+- Muestra `loudness_pop` para obtener 100 valores aleatorios, asignándolos a `loudness_samp`.
+
+```{python}
+# Create a pandas Series from de loudness column of spotify_population
+loudness_pop = spotify_population['loudness']
+
+# Sample 100 values of loudness_pop
+loudness_samp = loudness_pop.sample(n=100)
+
+print(loudness_samp)
+```
+
+2. 
+- Calcula la media de `loudness_pop` utilizando `numpy`.
+- Calcula la media de `loudness_samp` utilizando `numpy`.
+
+```{python}
+import numpy as np
+
+# Calculate the mean of loudness_pop
+mean_loudness_pop = np.mean(loudness_pop)
+
+# Calculate the mean of loudness_samp
+mean_loudness_samp = np.mean(loudness_samp)
+
+print(mean_loudness_pop)
+print(mean_loudness_samp)
+```
+
+Nuevamente, observe que el valor calculado (la media) es cercano pero no idéntico en cada caso.
 
 ## Muestreo de conveniencia
 
@@ -19,10 +207,8 @@ Aprende qué es el muestreo y por qué es tan poderoso. También aprenderás sob
 
 ### ¿Son generalizables estos resultados?
 
-
 ## Generación de números pseudoaleatorios
 
 ### Generar números aleatorios
 
 ### Comprender los valores de iniciaclización aleatorios
-
