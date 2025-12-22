@@ -8,7 +8,7 @@ Aprende a fusionar datos dispares mediante uniones internas. Combinando informac
 
 ### Qué columna elegiremos para fusionar?
 
-Chicago proporciona una lista de propietarios de taxis y vehículos con licencia para operar en la ciudad, por seguridad pública. Tu objetivo es unir dos tablas. Una tabla se llama `taxi_owners` y contiene información sobre los propietarios de las empresas de taxis, mientras que la otra se llama `taxi_veh`e incluye información sobre cada vehículo de taxi.
+Chicago proporciona una lista de propietarios de taxis y vehículos con licencia para operar en la ciudad, por seguridad pública. Tu objetivo es unir dos tablas. Una tabla se llama `taxi_owners` y contiene información sobre los propietarios de las empresas de taxis, mientras que la otra se llama `taxi_veh`e incluye información sobre cada vehículo de taxi.
 
 ```{python}
 

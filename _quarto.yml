@@ -1,0 +1,90 @@
+project:
+  type: book
+  output-dir: docs
+
+book:
+  title: "Analísta de Datos en Python"
+  reader-mode: false
+
+  author: "Edwin John Fredy Reyes Aguirre"
+  date: last-modified
+
+  sidebar:
+    style: docked
+    search: true
+  
+  # En esta seccion se enlaza el repositorio de GitHub
+  repo-url: https://github.com/JohnReyes02/Datacamp
+  repo-subdir: Analista_de_datos_en_python/
+  repo-branch: main
+  repo-actions: [edit, issue, source]
+  sharing: [twitter, facebook, linkedin]
+
+  chapters:
+    - index.qmd
+
+    - part: "Manipulación de Datos con Pandas"
+      chapters:
+        - 03_Manipulacion_de_datos_con_pandas/index.qmd
+        - 03_Manipulacion_de_datos_con_pandas/01_Transformacion_de_dataframes.qmd
+        - 03_Manipulacion_de_datos_con_pandas/02_Agregar_dataframes.qmd
+        - 03_Manipulacion_de_datos_con_pandas/03_Segmentar_e_indexar_dataframes.qmd
+        - 03_Manipulacion_de_datos_con_pandas/04_Crear_y_visualizar_dataframes.qmd
+   
+    - part: "Unir Datos con Pandas"
+      chapters:
+        - 04_Unir_datos_con_pandas/index.qmd
+        - 04_Unir_datos_con_pandas/01_Conceptos_basicos_de_la_fusion_de_datos.qmd
+        - 04_Unir_datos_con_pandas/02_Fusionar_tablas_distintos_tipos.qmd
+        - 04_Unir_datos_con_pandas/03_Fusion_y_concatenacion_avanzadas.qmd
+        - 04_Unir_datos_con_pandas/04_Fusionar_datos_ordenados_y_series_temporales.qmd
+    
+    - part: "Introducción a la Estadística en Python"
+      chapters:
+        - 05_Introduccion_a_la_estadistica_en_python/index.qmd
+        - 05_Introduccion_a_la_estadistica_en_python/01_Sintesis_estadistica.qmd
+        - 05_Introduccion_a_la_estadistica_en_python/02_Numeros_aleatorios_y_probabilidad.qmd
+        - 05_Introduccion_a_la_estadistica_en_python/03_Mas_distribuciones_y_teorema_limite_central.qmd
+        - 05_Introduccion_a_la_estadistica_en_python/04_Correlacion_y_diseno_de_experimentos.qmd
+
+    - part: "Introducción a la Visualización de Datos con Seaborn"
+      chapters:
+        - 06_Introduccion_a_la_visualizacion_de_datos_con_seaborn/index.qmd
+        - 06_Introduccion_a_la_visualizacion_de_datos_con_seaborn/01_Introduccion_a_seaborn.qmd
+        - 06_Introduccion_a_la_visualizacion_de_datos_con_seaborn/02_Visualizar_dos_variables_cuantitativas.qmd
+        - 06_Introduccion_a_la_visualizacion_de_datos_con_seaborn/03_Visualizar_variable_categorica_cuantitativa.qmd
+        - 06_Introduccion_a_la_visualizacion_de_datos_con_seaborn/04_Personalizar_graficos_seaborn.qmd
+
+    - part: "Análisis Exploratorio de Datos"
+      chapters:
+        - 07_Analisis_exploratorio_de_datos/index.qmd
+        - 07_Analisis_exploratorio_de_datos/01_Conocer_un_conjunto_de_datos.qmd
+        - 07_Analisis_exploratorio_de_datos/02_Limpieza_e_imputacion_de_datos.qmd
+        - 07_Analisis_exploratorio_de_datos/03_Relaciones_en_los_datos.qmd
+        - 07_Analisis_exploratorio_de_datos/04_Convertir_analisis_exploratorio_en_accion.qmd
+
+    - part: "Muestreo en Python"
+      chapters:
+        - 08_Muestreo_en_python/index.qmd
+        - 08_Muestreo_en_python/01_Introduccion_al_muestreo.qmd
+        - 08_Muestreo_en_python/02_Metodos_de_muestreo.qmd
+        - 08_Muestreo_en_python/03_Distribuciones_muestrales.qmd
+        - 08_Muestreo_en_python/04_Distribuciones_bootstrap.qmd
+
+    - part: "Pruebas de Hipótesis en Python"
+      chapters:
+        - 09_Pruebas_de_hipotesis_en_python/index.qmd
+
+
+format:
+  html:
+    theme: 
+      light: flatly
+      dark: darkly
+    code-link: false
+    toc: true
+    toc-title: 'Contenido'
+    number-sections: false
+    code-copy: true
+    code-overflow: wrap
+    fig-align: center

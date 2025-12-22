@@ -1,0 +1,1907 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Relaciones en los datos – Analísta de Datos en Python</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../07_Analisis_exploratorio_de_datos/04_Convertir_analisis_exploratorio_en_accion.html" rel="next">
+<link href="../07_Analisis_exploratorio_de_datos/02_Limpieza_e_imputacion_de_datos.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-ede4997d1aa2d49dd7dff0ee71c8d46e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-4909038f391676d0e746676f7305d10d.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../07_Analisis_exploratorio_de_datos/index.html">Análisis Exploratorio de Datos</a></li><li class="breadcrumb-item"><a href="../07_Analisis_exploratorio_de_datos/03_Relaciones_en_los_datos.html"><span class="chapter-title">Relaciones en los datos</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Analísta de Datos en Python</a> 
+        <div class="sidebar-tools-main tools-wide">
+    <a href="https://github.com/JohnReyes02/Datacamp/tree/main/Analista_de_datos_en_python/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <div class="dropdown">
+      <a href="" title="Share" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Share"><i class="bi bi-share"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
+              <i class="bi bi-twitter pe-1"></i>
+            Twitter
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://www.facebook.com/sharer/sharer.php?u=|url|">
+              <i class="bi bi-facebook pe-1"></i>
+            Facebook
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://www.linkedin.com/sharing/share-offsite/?url=|url|">
+              <i class="bi bi-linkedin pe-1"></i>
+            LinkedIn
+            </a>
+          </li>
+      </ul>
+    </div>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bienvenida</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Manipulación de Datos con Pandas</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../03_Manipulacion_de_datos_con_pandas/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bienvenida</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../03_Manipulacion_de_datos_con_pandas/01_Transformacion_de_dataframes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Transformación de DataFrames</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../03_Manipulacion_de_datos_con_pandas/02_Agregar_dataframes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Agregar DataFrames</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../03_Manipulacion_de_datos_con_pandas/03_Segmentar_e_indexar_dataframes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Segmentar e indexar DataFrames</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../03_Manipulacion_de_datos_con_pandas/04_Crear_y_visualizar_dataframes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Crear y visualizar DataFrames</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Unir Datos con Pandas</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../04_Unir_datos_con_pandas/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bienvenida</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../04_Unir_datos_con_pandas/01_Conceptos_basicos_de_la_fusion_de_datos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Conceptos Básicos de la fusión de datos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../04_Unir_datos_con_pandas/02_Fusionar_tablas_distintos_tipos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Fusionar tablas con distintos tipos de unión</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../04_Unir_datos_con_pandas/03_Fusion_y_concatenacion_avanzadas.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Fusión y concatenación avanzadas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../04_Unir_datos_con_pandas/04_Fusionar_datos_ordenados_y_series_temporales.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Fusionar datos ordenados y series temporales</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Introducción a la Estadística en Python</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../05_Introduccion_a_la_estadistica_en_python/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bienvenida</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../05_Introduccion_a_la_estadistica_en_python/01_Sintesis_estadistica.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Síntesis estadística</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../05_Introduccion_a_la_estadistica_en_python/02_Numeros_aleatorios_y_probabilidad.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Números aleatorios y probabilidad</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../05_Introduccion_a_la_estadistica_en_python/03_Mas_distribuciones_y_teorema_limite_central.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Mas distribuciones y el teorema del límite central</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../05_Introduccion_a_la_estadistica_en_python/04_Correlacion_y_diseno_de_experimentos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Correlación y diseño de experimentos</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Introducción a la Visualización de Datos con Seaborn</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../06_Introduccion_a_la_visualizacion_de_datos_con_seaborn/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bienvenida</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../06_Introduccion_a_la_visualizacion_de_datos_con_seaborn/01_Introduccion_a_seaborn.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Introducción a Seaborn</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../06_Introduccion_a_la_visualizacion_de_datos_con_seaborn/02_Visualizar_dos_variables_cuantitativas.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Visualizar dos variables cuantitativas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../06_Introduccion_a_la_visualizacion_de_datos_con_seaborn/03_Visualizar_variable_categorica_cuantitativa.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Visualizar una variable categórica y una cuantitativa</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../06_Introduccion_a_la_visualizacion_de_datos_con_seaborn/04_Personalizar_graficos_seaborn.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Personalizar los gráficos de Seaborn</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Análisis Exploratorio de Datos</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../07_Analisis_exploratorio_de_datos/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bienvenida</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../07_Analisis_exploratorio_de_datos/01_Conocer_un_conjunto_de_datos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Conocer un conjunto de datos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../07_Analisis_exploratorio_de_datos/02_Limpieza_e_imputacion_de_datos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Limpieza e imputación de datos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../07_Analisis_exploratorio_de_datos/03_Relaciones_en_los_datos.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Relaciones en los datos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../07_Analisis_exploratorio_de_datos/04_Convertir_analisis_exploratorio_en_accion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Convertir el análisis exploratorio en acción</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">Muestreo en Python</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../08_Muestreo_en_python/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bienvenida</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../08_Muestreo_en_python/01_Introduccion_al_muestreo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Introducción al Muestreo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../08_Muestreo_en_python/02_Metodos_de_muestreo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Métodos de Muestreo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../08_Muestreo_en_python/03_Distribuciones_muestrales.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Distribuciones Muestrales</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../08_Muestreo_en_python/04_Distribuciones_bootstrap.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Distribuciones de bootstrap</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
+ <span class="menu-text">Pruebas de Hipótesis en Python</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../06_Introduccion_a_la_visualizacion_de_datos_con_seaborn/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bienvenida</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../06_Introduccion_a_la_visualizacion_de_datos_con_seaborn/01_Introduccion_a_seaborn.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Introducción a Seaborn</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../06_Introduccion_a_la_visualizacion_de_datos_con_seaborn/02_Visualizar_dos_variables_cuantitativas.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Visualizar dos variables cuantitativas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../06_Introduccion_a_la_visualizacion_de_datos_con_seaborn/03_Visualizar_variable_categorica_cuantitativa.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Visualizar una variable categórica y una cuantitativa</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../06_Introduccion_a_la_visualizacion_de_datos_con_seaborn/04_Personalizar_graficos_seaborn.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Personalizar los gráficos de Seaborn</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contenido</h2>
+   
+  <ul>
+  <li><a href="#patrones-a-lo-largo-del-tiempo" id="toc-patrones-a-lo-largo-del-tiempo" class="nav-link active" data-scroll-target="#patrones-a-lo-largo-del-tiempo">Patrones a lo largo del tiempo</a>
+  <ul class="collapse">
+  <li><a href="#importar-datos-datetime" id="toc-importar-datos-datetime" class="nav-link" data-scroll-target="#importar-datos-datetime">Importar datos DateTime</a></li>
+  <li><a href="#actualizar-tipo-de-datos-a-datetime" id="toc-actualizar-tipo-de-datos-a-datetime" class="nav-link" data-scroll-target="#actualizar-tipo-de-datos-a-datetime">Actualizar tipo de datos a DateTime</a></li>
+  <li><a href="#visualizar-las-relaciones-a-lo-largo-del-tiempo" id="toc-visualizar-las-relaciones-a-lo-largo-del-tiempo" class="nav-link" data-scroll-target="#visualizar-las-relaciones-a-lo-largo-del-tiempo">Visualizar las relaciones a lo largo del tiempo</a></li>
+  </ul></li>
+  <li><a href="#correlación" id="toc-correlación" class="nav-link" data-scroll-target="#correlación">Correlación</a>
+  <ul class="collapse">
+  <li><a href="#interpretar-un-mapa-de-calor" id="toc-interpretar-un-mapa-de-calor" class="nav-link" data-scroll-target="#interpretar-un-mapa-de-calor">Interpretar un mapa de calor</a></li>
+  <li><a href="#visualizar-las-relaciones-entre-variables" id="toc-visualizar-las-relaciones-entre-variables" class="nav-link" data-scroll-target="#visualizar-las-relaciones-entre-variables">Visualizar las relaciones entre variables</a></li>
+  <li><a href="#visualizar-las-relaciones-entre-múltiples-variables" id="toc-visualizar-las-relaciones-entre-múltiples-variables" class="nav-link" data-scroll-target="#visualizar-las-relaciones-entre-múltiples-variables">Visualizar las relaciones entre múltiples variables</a></li>
+  </ul></li>
+  <li><a href="#relaciones-y-distribuciones-de-los-factores" id="toc-relaciones-y-distribuciones-de-los-factores" class="nav-link" data-scroll-target="#relaciones-y-distribuciones-de-los-factores">Relaciones y distribuciones de los factores</a>
+  <ul class="collapse">
+  <li><a href="#datos-categóricos-en-gráficos-de-dispersión" id="toc-datos-categóricos-en-gráficos-de-dispersión" class="nav-link" data-scroll-target="#datos-categóricos-en-gráficos-de-dispersión">Datos categóricos en gráficos de dispersión</a></li>
+  <li><a href="#explorando-con-gráficos-kde" id="toc-explorando-con-gráficos-kde" class="nav-link" data-scroll-target="#explorando-con-gráficos-kde">Explorando con gráficos KDE</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/JohnReyes02/Datacamp/edit/main/Analista_de_datos_en_python/07_Analisis_exploratorio_de_datos/03_Relaciones_en_los_datos.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/JohnReyes02/Datacamp/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/JohnReyes02/Datacamp/blob/main/Analista_de_datos_en_python/07_Analisis_exploratorio_de_datos/03_Relaciones_en_los_datos.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../07_Analisis_exploratorio_de_datos/index.html">Análisis Exploratorio de Datos</a></li><li class="breadcrumb-item"><a href="../07_Analisis_exploratorio_de_datos/03_Relaciones_en_los_datos.html"><span class="chapter-title">Relaciones en los datos</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-title">Relaciones en los datos</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Las variables de los conjuntos de datos tienen relaciones entre sí. En este capítulo, examinarás las relaciones entre datos numéricos, categóricos e incluso DateTime, explorando la dirección y la fuerza de estas relaciones, así como las formas de visualizarlas.</p>
+<section id="patrones-a-lo-largo-del-tiempo" class="level2">
+<h2 class="anchored" data-anchor-id="patrones-a-lo-largo-del-tiempo">Patrones a lo largo del tiempo</h2>
+<div id="650c0878" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>divorce <span class="op">=</span> pd.read_csv(<span class="st">"divorce.csv"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>divorce.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><img src="images/paste-53.png" class="img-fluid"></p>
+<ul>
+<li><p>Importando data DateTime</p>
+<ul>
+<li>DataTime necesita ser explicitamente declarada en pandas</li>
+</ul></li>
+</ul>
+<div id="6850affa" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>divorce.dtypes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><img src="images/paste-54.png" class="img-fluid"></p>
+<div id="9da6e927" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>divorce <span class="op">=</span> pd.read_csv(<span class="st">"divorce.csv"</span>, parse_dates<span class="op">=</span>[<span class="st">"marriage_date"</span>])</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>divorce.dtypes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/paste-55.png" class="img-fluid figure-img"></p>
+<figcaption>Este tipo de datos abre muchas posibilidades para el análisis, como observar patrones a lo largo de años, meses o incluso días de la semana.</figcaption>
+</figure>
+</div>
+<ul>
+<li><p>Conviritiendo los datos a DataTime</p>
+<ul>
+<li><code>pd.to_datetime()</code> convierte los argumentos de datos DateTime</li>
+</ul></li>
+</ul>
+<div id="4151e0ff" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>divorce[<span class="st">'marriage_date'</span>] <span class="op">=</span> pd.to_datetime(divorce[<span class="st">'marriage_date'</span>])</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>divorce_dtypes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><img src="images/paste-57.png" class="img-fluid"></p>
+<ul>
+<li>Creando datos DateTime</li>
+</ul>
+<div id="c48137a8" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>divorce.head(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><img src="images/paste-58.png" class="img-fluid"></p>
+<div id="eb114ffe" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>divorce[<span class="st">'marriage_date'</span>] <span class="op">=</span> pd.to_datetime(divorce[[<span class="st">'month'</span>, <span class="st">'day'</span>, <span class="st">'year'</span>]])</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>divorce.head(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><img src="images/paste-59.png" class="img-fluid"></p>
+<p>Es posible extraer sólo el mes, el día o el año de una columna que contenga una fecha completa, usando los atributos <code>dt.month</code>, <code>dt.day</code> y <code>dt.year.</code></p>
+<div id="d39dfd94" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>divorce[<span class="st">'marriage_month'</span>] <span class="op">=</span> divorce[<span class="st">'marriage_date'</span>].dt.month()</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>divorce.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><img src="images/paste-60.png" class="img-fluid"></p>
+<ul>
+<li>Visualizando patrones a lo largo del tiempo</li>
+</ul>
+<div id="a6accadc" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>sns.lineplot(data<span class="op">=</span>divorce, x<span class="op">=</span><span class="st">'marriage_month'</span>, y<span class="op">=</span><span class="st">'marriage_duration'</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><img src="images/paste-61.png" class="img-fluid"></p>
+<p>Los amplios intervalos de confianza sugieren que se necesita más análisis.</p>
+<section id="importar-datos-datetime" class="level3">
+<h3 class="anchored" data-anchor-id="importar-datos-datetime">Importar datos DateTime</h3>
+<p>¡Ahora trabajarás con todo el conjunto de datos del divorcio! Los datos desciben los matrimonios mexicanos disueltos entre 2000 y 2015. Contiene las fechs de matrimonio y divorcio, el nivel educativo, la fecha de nacimiento, los ingresos de cada miembro de la pareja y la duración del matrimonio, así como el número de hijos que tenía la pareja en el momento del divorcio.</p>
+<p>Los nombres de ls columnas y los tipos de datos son los siguientes:</p>
+<p><img src="images/paste-62.png" class="img-fluid"></p>
+<p>¡Parece que hay mucha información de fecha en estos datos que todavía no son de tipo DateTime! Tu tarea es arreglarlo para que puedas explorar patrones a lo largo del tiempo.</p>
+<div id="199abb12" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>ruta <span class="op">=</span> <span class="st">'./data/divorce.csv'</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>divorce <span class="op">=</span> pd.read_csv(ruta)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>divorce.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">divorce_date</th>
+<th data-quarto-table-cell-role="th">dob_man</th>
+<th data-quarto-table-cell-role="th">education_man</th>
+<th data-quarto-table-cell-role="th">income_man</th>
+<th data-quarto-table-cell-role="th">dob_woman</th>
+<th data-quarto-table-cell-role="th">education_woman</th>
+<th data-quarto-table-cell-role="th">income_woman</th>
+<th data-quarto-table-cell-role="th">marriage_date</th>
+<th data-quarto-table-cell-role="th">marriage_duration</th>
+<th data-quarto-table-cell-role="th">num_kids</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>2006-09-06</td>
+<td>1975-12-18</td>
+<td>Secondary</td>
+<td>2000.0</td>
+<td>1983-08-01</td>
+<td>Secondary</td>
+<td>1800.0</td>
+<td>2000-06-26</td>
+<td>5.0</td>
+<td>1.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2008-01-02</td>
+<td>1976-11-17</td>
+<td>Professional</td>
+<td>6000.0</td>
+<td>1977-03-13</td>
+<td>Professional</td>
+<td>6000.0</td>
+<td>2001-09-02</td>
+<td>7.0</td>
+<td>NaN</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>2011-01-02</td>
+<td>1969-04-06</td>
+<td>Preparatory</td>
+<td>5000.0</td>
+<td>1970-02-16</td>
+<td>Professional</td>
+<td>5000.0</td>
+<td>2000-02-02</td>
+<td>2.0</td>
+<td>2.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>2011-01-02</td>
+<td>1979-11-13</td>
+<td>Secondary</td>
+<td>12000.0</td>
+<td>1981-05-13</td>
+<td>Secondary</td>
+<td>12000.0</td>
+<td>2006-05-13</td>
+<td>2.0</td>
+<td>NaN</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>2011-01-02</td>
+<td>1982-09-20</td>
+<td>Professional</td>
+<td>6000.0</td>
+<td>1988-01-30</td>
+<td>Professional</td>
+<td>10000.0</td>
+<td>2007-08-06</td>
+<td>3.0</td>
+<td>NaN</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<section id="instrucciones" class="level4">
+<h4 class="anchored" data-anchor-id="instrucciones">Instrucciones</h4>
+<ul>
+<li>Importa <code>divorce.csv</code>, guardando como DataFrame, <code>divorce</code>: indica en la función de importación que las columnas <code>divorce_date</code>, <code>dob_man</code>, <code>dob_woman</code>, y <code>marriage_date</code> deben importarse como valores DateTime.</li>
+</ul>
+<div id="03e743c6" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import divorce.csv, parseing the appropriate columns as dateds in the import</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>divorce <span class="op">=</span> pd.read_csv(<span class="st">'./data/divorce.csv'</span>, parse_dates<span class="op">=</span>[<span class="st">'divorce_date'</span>, <span class="st">'dob_man'</span>, <span class="st">'dob_woman'</span>, <span class="st">'marriage_date'</span>])</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(divorce.dtypes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>divorce_date         datetime64[ns]
+dob_man              datetime64[ns]
+education_man                object
+income_man                  float64
+dob_woman            datetime64[ns]
+education_woman              object
+income_woman                float64
+marriage_date        datetime64[ns]
+marriage_duration           float64
+num_kids                    float64
+dtype: object</code></pre>
+</div>
+</div>
+<p>Buen trabajo parseando esas fechas al mismo tiempo que importabas los datos en pandas. ¡Ahora, intenta actualizar los tipos de datos DateTime en una DataFrame que ya ha sido importado!</p>
+</section>
+</section>
+<section id="actualizar-tipo-de-datos-a-datetime" class="level3">
+<h3 class="anchored" data-anchor-id="actualizar-tipo-de-datos-a-datetime">Actualizar tipo de datos a DateTime</h3>
+<p>Ahora se te ha cargado el DataFrame <code>divorce</code>, pero una columna se almacea como una cadena que debería ser un dato DateTime. ¿Cuál es? Una vez que hayas identificado la columna, la actualizarás para que puedas explorarla más de cerca en el siguiente ejercicio.</p>
+<div id="c531d983" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>ruta <span class="op">=</span> <span class="st">'./data/divorce.csv'</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>divorce <span class="op">=</span> pd.read_csv(ruta, parse_dates<span class="op">=</span>[<span class="st">'divorce_date'</span>, <span class="st">'dob_man'</span>, <span class="st">'dob_woman'</span>])</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(divorce.dtypes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>divorce_date         datetime64[ns]
+dob_man              datetime64[ns]
+education_man                object
+income_man                  float64
+dob_woman            datetime64[ns]
+education_woman              object
+income_woman                float64
+marriage_date                object
+marriage_duration           float64
+num_kids                    float64
+dtype: object</code></pre>
+</div>
+</div>
+<section id="instrucciones-1" class="level4">
+<h4 class="anchored" data-anchor-id="instrucciones-1">Instrucciones</h4>
+<ol type="1">
+<li><strong>Pregunta</strong></li>
+</ol>
+<p>¿Cuál de las columnas del DataFrame <code>divorce</code> no se ha actualizado a un tipo de datos DateTime, pero debería hacerse?</p>
+<p><strong>Respuestas posibles</strong></p>
+<ul class="task-list">
+<li><label><input type="checkbox"><code>divorce_date</code></label></li>
+<li><label><input type="checkbox" checked=""><code>marriage_date</code></label></li>
+<li><label><input type="checkbox"><code>education_woman</code></label></li>
+<li><label><input type="checkbox"><code>num_kids</code></label></li>
+</ul>
+<ol start="2" type="1">
+<li>Covierte la columna <code>marriage_date</code> del DataFrame <code>divorce</code> en valores de <code>DateTime</code>.</li>
+</ol>
+<div id="33d14561" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert the marriage_date column to DateTime values</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>divorce[<span class="st">'marriage_date'</span>] <span class="op">=</span> pd.to_datetime(divorce[<span class="st">'marriage_date'</span>])</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(divorce.dtypes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>divorce_date         datetime64[ns]
+dob_man              datetime64[ns]
+education_man                object
+income_man                  float64
+dob_woman            datetime64[ns]
+education_woman              object
+income_woman                float64
+marriage_date        datetime64[ns]
+marriage_duration           float64
+num_kids                    float64
+dtype: object</code></pre>
+</div>
+</div>
+<p>Ahora, estás listo para ver cómo la fecha de matrimonio de una pareja se relaciona con otros datos.</p>
+</section>
+</section>
+<section id="visualizar-las-relaciones-a-lo-largo-del-tiempo" class="level3">
+<h3 class="anchored" data-anchor-id="visualizar-las-relaciones-a-lo-largo-del-tiempo">Visualizar las relaciones a lo largo del tiempo</h3>
+<p>Ahora que tus datos de fechas se guardan como datos DateTime, ¡puedes explorar patrones a lo largo del tiempo! ¿Tiene relación el año en que se casó una pareja con el número de hijos que tiene en el momento del divorcio? ¡Tu tarea es averiguarlo!</p>
+<section id="instrucciones-2" class="level4">
+<h4 class="anchored" data-anchor-id="instrucciones-2">Instrucciones</h4>
+<ol type="1">
+<li>Define una columna llamada <code>marriage_year</code>, que solo contiene la parte del año de la columna <code>marriage_date</code>.</li>
+</ol>
+<div id="7c573183" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the marriage_year column</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>divorce[<span class="st">'marriage_year'</span>] <span class="op">=</span> divorce[<span class="st">'marriage_date'</span>].dt.year</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="2" type="1">
+<li>Crea un gráfico de líneas que muestre el número medio de hijos que tuvo una pareja durante su matrimonio, ordenado por el año en que la pareja se casó.</li>
+</ol>
+<div id="42c3e345" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a lineplot showing the average  number of kids by year</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>sns.lineplot(data<span class="op">=</span>divorce, x<span class="op">=</span><span class="st">'marriage_year'</span>, y<span class="op">=</span><span class="st">'num_kids'</span>)</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="03_Relaciones_en_los_datos_files/figure-html/cell-15-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>¡Bien hecho! Haz descubierto un patrón aquí, parece que las parejas que se casaron en años posteriores también tuvieron menos hijos durante su matrimonio.</p>
+</section>
+</section>
+</section>
+<section id="correlación" class="level2">
+<h2 class="anchored" data-anchor-id="correlación">Correlación</h2>
+<ul>
+<li>Correlación
+<ul>
+<li><p>Describe la dirección de la relación de entre dos variables así como su fuerza.</p></li>
+<li><p>Configurar <code>numeric_only=True</code> previene errores con columnas no numéricas.</p></li>
+<li><p>El método <code>.cor()</code> calcula el coeficiente de correlación de Pearson.</p></li>
+</ul></li>
+</ul>
+<div id="545f5df6" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>divorce.corr(numeric_only<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">income_man</th>
+<th data-quarto-table-cell-role="th">income_woman</th>
+<th data-quarto-table-cell-role="th">marriage_duration</th>
+<th data-quarto-table-cell-role="th">num_kids</th>
+<th data-quarto-table-cell-role="th">marriage_year</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">income_man</td>
+<td>1.000000</td>
+<td>0.318047</td>
+<td>0.085321</td>
+<td>0.040848</td>
+<td>0.019170</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">income_woman</td>
+<td>0.318047</td>
+<td>1.000000</td>
+<td>0.078677</td>
+<td>-0.018015</td>
+<td>0.026433</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">marriage_duration</td>
+<td>0.085321</td>
+<td>0.078677</td>
+<td>1.000000</td>
+<td>0.447358</td>
+<td>-0.812469</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">num_kids</td>
+<td>0.040848</td>
+<td>-0.018015</td>
+<td>0.447358</td>
+<td>1.000000</td>
+<td>-0.461495</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">marriage_year</td>
+<td>0.019170</td>
+<td>0.026433</td>
+<td>-0.812469</td>
+<td>-0.461495</td>
+<td>1.000000</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<ul>
+<li>Mapas de calor de correlación</li>
+</ul>
+<div id="a631d338" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>sns.heatmap(divorce.corr(numeric_only<span class="op">=</span><span class="va">True</span>), annot<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="03_Relaciones_en_los_datos_files/figure-html/cell-17-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>Correlación en contexto</li>
+</ul>
+<div id="98382d43" class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>divorce[<span class="st">'divorce_date'</span>].<span class="bu">min</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<pre><code>Timestamp('2000-01-08 00:00:00')</code></pre>
+</div>
+</div>
+<div id="587aa8cc" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>divorce[<span class="st">'divorce_date'</span>].<span class="bu">max</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<pre><code>Timestamp('2015-11-03 00:00:00')</code></pre>
+</div>
+</div>
+<ul>
+<li>Visualización de las relaciones
+<ul>
+<li>Es importante complementar nuestros cálculos de correlación con gráficos de dispersión.</li>
+</ul></li>
+</ul>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 52%">
+<col style="width: 47%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><img src="images/paste-64.png" class="img-fluid"></td>
+<td><img src="images/paste-65.png" class="img-fluid"></td>
+</tr>
+<tr class="even">
+<td><ul>
+<li><p>Fuerte relación, pero no lineal</p></li>
+<li><p>El coeficiente de correlación de Pearson: <code>-6.48e-18</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Relación cuadrática; no lineal</p></li>
+<li><p>Coeficiente de correlación de Pearson: <code>.971211</code></p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Scatter plots</li>
+</ul>
+<div id="85f53c9d" class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(data<span class="op">=</span>divorce, x<span class="op">=</span><span class="st">'income_man'</span>, y<span class="op">=</span><span class="st">'income_woman'</span>)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="03_Relaciones_en_los_datos_files/figure-html/cell-20-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>Pairplots
+<ul>
+<li>Es útil para obtener una descripción general rápida de las relaciones dentro del conjunto de datos.</li>
+<li>Tanta información en un elemento visual puede ser difícil de interpretar con grandes conjuntos de datos.</li>
+</ul></li>
+</ul>
+<div id="75c4b1e5" class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>sns.pairplot(data<span class="op">=</span>divorce)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="03_Relaciones_en_los_datos_files/figure-html/cell-21-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Es posible limitar el número de relaciones graficadas estableciendo el argumento <code>vars</code> igual a las variables de interés.</p>
+<div id="13020d51" class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>sns.pairplot(data<span class="op">=</span>divorce, <span class="bu">vars</span><span class="op">=</span>[<span class="st">'income_man'</span>, <span class="st">'income_woman'</span>, <span class="st">'marriage_duration'</span>])</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="03_Relaciones_en_los_datos_files/figure-html/cell-22-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="interpretar-un-mapa-de-calor" class="level3">
+<h3 class="anchored" data-anchor-id="interpretar-un-mapa-de-calor">Interpretar un mapa de calor</h3>
+<p>¿Cuál de las siguientes afirmaciones es correcta respecto a las relaciones entre variables en el DataFrame <code>divorce</code>?</p>
+<div id="a0cc11e0" class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>divorce[<span class="st">'marriage_moth'</span>] <span class="op">=</span> divorce[<span class="st">'marriage_date'</span>].dt.month</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>divorce.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="14">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">divorce_date</th>
+<th data-quarto-table-cell-role="th">dob_man</th>
+<th data-quarto-table-cell-role="th">education_man</th>
+<th data-quarto-table-cell-role="th">income_man</th>
+<th data-quarto-table-cell-role="th">dob_woman</th>
+<th data-quarto-table-cell-role="th">education_woman</th>
+<th data-quarto-table-cell-role="th">income_woman</th>
+<th data-quarto-table-cell-role="th">marriage_date</th>
+<th data-quarto-table-cell-role="th">marriage_duration</th>
+<th data-quarto-table-cell-role="th">num_kids</th>
+<th data-quarto-table-cell-role="th">marriage_year</th>
+<th data-quarto-table-cell-role="th">marriage_moth</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>2006-09-06</td>
+<td>1975-12-18</td>
+<td>Secondary</td>
+<td>2000.0</td>
+<td>1983-08-01</td>
+<td>Secondary</td>
+<td>1800.0</td>
+<td>2000-06-26</td>
+<td>5.0</td>
+<td>1.0</td>
+<td>2000</td>
+<td>6</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2008-01-02</td>
+<td>1976-11-17</td>
+<td>Professional</td>
+<td>6000.0</td>
+<td>1977-03-13</td>
+<td>Professional</td>
+<td>6000.0</td>
+<td>2001-09-02</td>
+<td>7.0</td>
+<td>NaN</td>
+<td>2001</td>
+<td>9</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>2011-01-02</td>
+<td>1969-04-06</td>
+<td>Preparatory</td>
+<td>5000.0</td>
+<td>1970-02-16</td>
+<td>Professional</td>
+<td>5000.0</td>
+<td>2000-02-02</td>
+<td>2.0</td>
+<td>2.0</td>
+<td>2000</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>2011-01-02</td>
+<td>1979-11-13</td>
+<td>Secondary</td>
+<td>12000.0</td>
+<td>1981-05-13</td>
+<td>Secondary</td>
+<td>12000.0</td>
+<td>2006-05-13</td>
+<td>2.0</td>
+<td>NaN</td>
+<td>2006</td>
+<td>5</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>2011-01-02</td>
+<td>1982-09-20</td>
+<td>Professional</td>
+<td>6000.0</td>
+<td>1988-01-30</td>
+<td>Professional</td>
+<td>10000.0</td>
+<td>2007-08-06</td>
+<td>3.0</td>
+<td>NaN</td>
+<td>2007</td>
+<td>8</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<section id="instrucciones-3" class="level4">
+<h4 class="anchored" data-anchor-id="instrucciones-3">Instrucciones</h4>
+<p><strong>Respuestas Posibles</strong></p>
+<ul class="task-list">
+<li><p><label><input type="checkbox"><code>marriage_duration</code> está fuertemente correlacionada de forma positiva con <code>marriage_month</code>.</label></p></li>
+<li><p><label><input type="checkbox">La correlación entre <code>num_kids</code> y <code>income_man</code> es más fuerte que la correlación entre <code>num_kids</code> y <code>marriage_duration</code>.</label></p></li>
+<li><p><label><input type="checkbox">Un <code>marriage_year</code> más tardío provoca un menor número de hijos, representado por <code>num_kids</code>.</label></p></li>
+<li><p><label><input type="checkbox" checked="">Un <code>marriage_year</code> más tardío está correlacionado con tener menos hijos.</label></p></li>
+</ul>
+</section>
+</section>
+<section id="visualizar-las-relaciones-entre-variables" class="level3">
+<h3 class="anchored" data-anchor-id="visualizar-las-relaciones-entre-variables">Visualizar las relaciones entre variables</h3>
+<p>En el último ejercicio, habrás observado que un <code>marriage_duration</code> más largo está correlacionado con tener más hijos , representado por la columna <code>num_kids</code>. El coeficiente de correlación entre las variables <code>marriage_duration</code> y <code>num_kids</code> es <code>0.45</code>.</p>
+<p>En este ejercicio, crearás un gráfico de dispersión para visualizar la relación entre estas variables.</p>
+<section id="instrucciones-4" class="level4">
+<h4 class="anchored" data-anchor-id="instrucciones-4">Instrucciones</h4>
+<ul>
+<li>Cree un diagrama de dispersión que muestre <code>marriage_duration</code> en el eje x y <code>num_kids</code> en el eje y.</li>
+</ul>
+<div id="b31d42a5" class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the scatterplot</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(data<span class="op">=</span>divorce, x<span class="op">=</span><span class="st">'marriage_duration'</span>, y<span class="op">=</span><span class="st">'num_kids'</span>)</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="03_Relaciones_en_los_datos_files/figure-html/cell-24-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Hay una ligera relación positiva en el gráfico de dispersión. En el conjunto de datos, las parejas sin hijos no tienen valor en la columna <code>num_kids</code>. Si estás seguro que todos o la mayoría de los valores faltantes en <code>num_kids</code> están relacionados con parejas sin hijos, podrías considerar actualizar estos valores a 0, lo que podría aumentar la correlación.</p>
+</section>
+</section>
+<section id="visualizar-las-relaciones-entre-múltiples-variables" class="level3">
+<h3 class="anchored" data-anchor-id="visualizar-las-relaciones-entre-múltiples-variables">Visualizar las relaciones entre múltiples variables</h3>
+<p>Seaborn’s <code>.pairplot()</code> es excelente para comprender las relaciones entre varias o todas las vatiables de un conjunto de datos, agregando gráficos de dispersión por pares en un solo visual.</p>
+<p>Tu tarea consiste en utilizar un <code>pairplot</code> par comparar la relación entre ‘marriage_duration’ y ‘income_woman’.</p>
+<section id="instrucciones-5" class="level4">
+<h4 class="anchored" data-anchor-id="instrucciones-5">Instrucciones</h4>
+<ul>
+<li>Crea un diagrama de pares para visualizar las relaciones entre <code>income_woman</code> y <code>marriage_duration</code> en el DataFrame <code>divorce</code>.</li>
+</ul>
+<div id="3520ee95" class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a pairplot for income_woman and marriage_duration</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>sns.pairplot(data<span class="op">=</span>divorce, <span class="bu">vars</span><span class="op">=</span>[<span class="st">'income_woman'</span>, <span class="st">'marriage_duration'</span>])</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="03_Relaciones_en_los_datos_files/figure-html/cell-25-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Al igual que la matriz de correlación , puedes ver que la relación entre <code>income_woman</code> y <code>marriage_duration</code> no es fuerte. También puedes tener una idea de las distribuciones de ambas variables en los gráficos superior izquierdo e inferior derecho.</p>
+</section>
+</section>
+</section>
+<section id="relaciones-y-distribuciones-de-los-factores" class="level2">
+<h2 class="anchored" data-anchor-id="relaciones-y-distribuciones-de-los-factores">Relaciones y distribuciones de los factores</h2>
+<ul>
+<li>Nivel de educación: male partner</li>
+</ul>
+<div id="398e386f" class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>divorce[<span class="st">'education_man'</span>].value_counts()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="17">
+<pre><code>education_man
+Professional    1313
+Preparatory      501
+Secondary        288
+Primary          100
+Other              3
+Name: count, dtype: int64</code></pre>
+</div>
+</div>
+<ul>
+<li>Explorando las relaciones categóricas</li>
+</ul>
+<div id="9a0fbbae" class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>sns.histplot(data<span class="op">=</span>divorce, x<span class="op">=</span><span class="st">'marriage_duration'</span>, binwidth<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="03_Relaciones_en_los_datos_files/figure-html/cell-27-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="3143c11d" class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>sns.histplot(data<span class="op">=</span>divorce, x<span class="op">=</span><span class="st">'marriage_duration'</span>, hue<span class="op">=</span><span class="st">'education_man'</span>, binwidth<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="03_Relaciones_en_los_datos_files/figure-html/cell-28-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>Kernel Desnsity Estimate (KDE) plots</li>
+</ul>
+<div id="56987226" class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>sns.kdeplot(data<span class="op">=</span>divorce, x<span class="op">=</span><span class="st">'marriage_duration'</span>, hue<span class="op">=</span><span class="st">'education_man'</span>)</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="03_Relaciones_en_los_datos_files/figure-html/cell-29-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Los gráficos KDE nos permiten visualizar las distribuciones. Los KDE son más interpretables, especialmente cuando se muestran varias distribuciones.</p>
+<p>La distribución con KDE parece sugerir que algunas parejas tuvieron duraciones menores a cero.</p>
+<p>Para solucionar esto, podempos utilizar el argumento de la palabra clave <code>cut</code>.</p>
+<div id="63c18f6c" class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>sns.kdeplot(data<span class="op">=</span>divorce, x<span class="op">=</span><span class="st">'marriage_duration'</span>, hue<span class="op">=</span><span class="st">'education_man'</span>, cut<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="03_Relaciones_en_los_datos_files/figure-html/cell-30-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>Gráficos KDE acumulativos</li>
+</ul>
+<div id="8912d0e5" class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>sns.kdeplot(data<span class="op">=</span>divorce, x<span class="op">=</span><span class="st">'marriage_duration'</span>, hue<span class="op">=</span><span class="st">'education_man'</span>, cut<span class="op">=</span><span class="dv">0</span>, cumulative<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="03_Relaciones_en_los_datos_files/figure-html/cell-31-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Este gráfico describe la probabilidad de que la duración del matrimonio sea menor o igual al valor del eje x para cada nivel de educación de la pareja masculina.</p>
+<ul>
+<li>Relación entre la edad del matrimonio y la educación
+<ul>
+<li>Hay una relación entre la edad al momento del matrimonio y el nivel de educación?</li>
+</ul></li>
+</ul>
+<div id="333af4a9" class="cell" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>divorce[<span class="st">'man_age_marriage'</span>] <span class="op">=</span> divorce[<span class="st">'marriage_year'</span>] <span class="op">-</span> divorce[<span class="st">'dob_man'</span>].dt.year</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>divorce[<span class="st">'woman_age_marriage'</span>] <span class="op">=</span> divorce[<span class="st">'marriage_year'</span>] <span class="op">-</span> divorce[<span class="st">'dob_woman'</span>].dt.year</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Scatter plot con las variables categóricas</li>
+</ul>
+<div id="38a9f6a1" class="cell" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>sns.catplot(data<span class="op">=</span>divorce, x<span class="op">=</span><span class="st">'woman_age_marriage'</span>, y<span class="op">=</span><span class="st">'man_age_marriage'</span>)</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="03_Relaciones_en_los_datos_files/figure-html/cell-33-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="41b57147" class="cell" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>sns.catplot(data<span class="op">=</span>divorce, x<span class="op">=</span><span class="st">'woman_age_marriage'</span>, y<span class="op">=</span><span class="st">'man_age_marriage'</span>, hue<span class="op">=</span><span class="st">'education_man'</span>)</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="03_Relaciones_en_los_datos_files/figure-html/cell-34-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="datos-categóricos-en-gráficos-de-dispersión" class="level3">
+<h3 class="anchored" data-anchor-id="datos-categóricos-en-gráficos-de-dispersión">Datos categóricos en gráficos de dispersión</h3>
+<p>En el video se exploro cómo se relacionan el nivel educativo de los hombres y la edad al casarse con otras variables de nuestro conjunto de datos, el DataFrame <code>divorce</code>. Ahora verás cómo se relacionan la formación de las mujeres y la edad al casarse con otras variables.</p>
+<p>Tu tarea consiste en crear un diagrama de dispersión de la edad y los ingresos de cada mujer, incorporando la variable categórica del nivel educativo para obtener un contexto adicional.</p>
+<section id="instrucciones-6" class="level4">
+<h4 class="anchored" data-anchor-id="instrucciones-6">Instrucciones</h4>
+<ul>
+<li>Crea un gráfico de dispersión que muestre <code>woman_age_marriage</code> en el eje de abcisas y <code>income_woman</code> en el eje de las ordenadas, cada punto de datos debe colorearse en función del nivel educativo de la mujer, representado por <code>education_woman</code>.</li>
+</ul>
+<div id="eaf0966f" class="cell" data-execution_count="34">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a scatter plot</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(data<span class="op">=</span>divorce, x<span class="op">=</span><span class="st">'woman_age_marriage'</span>, y<span class="op">=</span><span class="st">'income_woman'</span>, hue<span class="op">=</span><span class="st">'education_woman'</span>)</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="03_Relaciones_en_los_datos_files/figure-html/cell-35-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Parece que hay una correlación positiva entre la educación profesional y los salarios más altos, como cabría esperar. La relación entre la edad de las mujeres al casarse y el nivel educativo es un poco menos clara.</p>
+</section>
+</section>
+<section id="explorando-con-gráficos-kde" class="level3">
+<h3 class="anchored" data-anchor-id="explorando-con-gráficos-kde">Explorando con gráficos KDE</h3>
+<p>Los gráficos de Estimación de Densidad del Núcleo (KDE) son una gran alternativa a los histogramas cuando quieres mostrar varias distribuciones en el mismo gráfico.</p>
+<p>Supongamos que te interesa la relación entre la duración del matrimonio y el número de hijos que tiene una pareja. Como los valores de la columna <code>num_kids</code> sólo van de uno a cinco, puedes graficar el KDE de cada valor en la misma gráfica.</p>
+<p>Recuerda que la columna <code>num_kids</code> de <code>divorce</code> solo muestra los valores <code>N/A</code> de las parejas sin hijos, por lo que solo verás las distribuciones de las parejas divorciadas con al menos un hijo.</p>
+<section id="instrucciones-7" class="level4">
+<h4 class="anchored" data-anchor-id="instrucciones-7">Instrucciones</h4>
+<ol type="1">
+<li>Cree un gráfico KDE que muestre <code>marriage_duration</code> en el eje x y una línea de color diferente para cada posible número de hijos que pueda tener una pareja, representada por <code>num_kids</code>.</li>
+</ol>
+<div id="279a7a2d" class="cell" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the KDE plot</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>sns.kdeplot(data<span class="op">=</span>divorce, x<span class="op">=</span><span class="st">'marriage_duration'</span>, hue<span class="op">=</span><span class="st">'num_kids'</span>)</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="03_Relaciones_en_los_datos_files/figure-html/cell-36-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="2" type="1">
+<li>Observa que actualmente el gráfico muestra duraciones del matrimonio inferiores a cero; actualiza el grafico KDE para que la duración del matrimonio no pueda suavizarse más allá de los puntos de datos extremos.</li>
+</ol>
+<div id="fe0bbc42" class="cell" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Update the KDE plot so that marriage durantion can't be smoothed too far</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>sns.kdeplot(data<span class="op">=</span>divorce, x<span class="op">=</span><span class="st">'marriage_duration'</span>, hue<span class="op">=</span><span class="st">'num_kids'</span>, cut<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="03_Relaciones_en_los_datos_files/figure-html/cell-37-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="3" type="1">
+<li>Actualiza el código del gráfico KDE del paso anterior para que muestre una función de distribución acumulativo para cada número de hijos que tiene una pareja.</li>
+</ol>
+<div id="911c73d1" class="cell" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Update the KDE plot to show a cumulative distribution function</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>sns.kdeplot(data<span class="op">=</span>divorce, x<span class="op">=</span><span class="st">'marriage_duration'</span>, hue<span class="op">=</span><span class="st">'num_kids'</span>, cut<span class="op">=</span><span class="dv">0</span>, cumulative<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="03_Relaciones_en_los_datos_files/figure-html/cell-38-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Parece que hay una correlación positiva entre matrimonios más largos y más hijos, pero por supuesto, esto no indica causalidad. También puedes ver que hay muchos menos datos sobre parejas con más de dos hijos; esto nos ayuda a entender cuan confiables son nuestros hallazgos.</p>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../07_Analisis_exploratorio_de_datos/02_Limpieza_e_imputacion_de_datos.html" class="pagination-link" aria-label="Limpieza e imputación de datos">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Limpieza e imputación de datos</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../07_Analisis_exploratorio_de_datos/04_Convertir_analisis_exploratorio_en_accion.html" class="pagination-link" aria-label="Convertir el análisis exploratorio en acción">
+        <span class="nav-page-text"><span class="chapter-title">Convertir el análisis exploratorio en acción</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/JohnReyes02/Datacamp/edit/main/Analista_de_datos_en_python/07_Analisis_exploratorio_de_datos/03_Relaciones_en_los_datos.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/JohnReyes02/Datacamp/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/JohnReyes02/Datacamp/blob/main/Analista_de_datos_en_python/07_Analisis_exploratorio_de_datos/03_Relaciones_en_los_datos.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div></div></footer></body></html>
