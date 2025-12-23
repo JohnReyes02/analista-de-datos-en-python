@@ -91,6 +91,10 @@ book:
     - part: "Pruebas de Hipótesis en Python"
       chapters:
         - 09_Pruebas_de_hipotesis_en_python/index.qmd
+        - 09_Pruebas_de_hipotesis_en_python/01_Fundamentos_de_las_pruebas_de_hipotesis.qmd
+        - 09_Pruebas_de_hipotesis_en_python/02_Pruebas_de_dos_muestras_y_ANOVA.qmd
+        - 09_Pruebas_de_hipotesis_en_python/03_Pruebas_de_proporcion.qmd
+        - 09_Pruebas_de_hipotesis_en_python/04_Pruebas_no_parametricas.qmd
 
 
 format:

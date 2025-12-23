@@ -24,7 +24,7 @@
         "-   Estilo de figura por defecto (\"white\")\n",
         "    -   Si solo nos interesa la tendencia general:"
       ],
-      "id": "cb849f85"
+      "id": "268ee0dd"
     },
     {
       "cell_type": "code",
@@ -38,7 +38,7 @@
         "            kind='point')\n",
         "plt.show()"
       ],
-      "id": "3f4bd1c7",
+      "id": "aa9953bd",
       "execution_count": null,
       "outputs": []
     },
@@ -51,7 +51,7 @@
         "-   Estilo de figura: \"whitegrid\"\n",
         "    -   Para determinar valores específicos:"
       ],
-      "id": "30c7dbd6"
+      "id": "173833c8"
     },
     {
       "cell_type": "code",
@@ -67,7 +67,7 @@
         "            kind='point')\n",
         "plt.show()"
       ],
-      "id": "63d73b39",
+      "id": "85436ade",
       "execution_count": null,
       "outputs": []
     },
@@ -87,7 +87,7 @@
         "\n",
         "-   Ejemplo (Paleta divergente)"
       ],
-      "id": "b3805509"
+      "id": "88e9354e"
     },
     {
       "cell_type": "code",
@@ -109,7 +109,7 @@
         "            order=category_order)\n",
         "plt.show()"
       ],
-      "id": "366ae964",
+      "id": "da332865",
       "execution_count": null,
       "outputs": []
     },
@@ -129,7 +129,7 @@
         "\n",
         "-   Paletas personalizadas"
       ],
-      "id": "b4a55bf4"
+      "id": "6d4e87d6"
     },
     {
       "cell_type": "code",
@@ -142,7 +142,7 @@
         "\n",
         "sns.set_palette(custom_palette)"
       ],
-      "id": "bfbb65c0",
+      "id": "aacb15ae",
       "execution_count": null,
       "outputs": []
     },
@@ -152,7 +152,7 @@
       "source": [
         "![](images/paste-34.png){width=\"370\"}"
       ],
-      "id": "2648809d"
+      "id": "b63b7f82"
     },
     {
       "cell_type": "code",
@@ -166,7 +166,7 @@
         "\n",
         "sns.set_palette(custom_palette)"
       ],
-      "id": "62f15fc6",
+      "id": "d33c427c",
       "execution_count": null,
       "outputs": []
     },
@@ -186,7 +186,7 @@
         "\n",
         "-   Contexto por defecto: \"paper\""
       ],
-      "id": "9aed2b9a"
+      "id": "78e8e29d"
     },
     {
       "cell_type": "code",
@@ -202,7 +202,7 @@
         "\n",
         "plt.show()"
       ],
-      "id": "e158b546",
+      "id": "09aff49d",
       "execution_count": null,
       "outputs": []
     },
@@ -215,7 +215,7 @@
         "-   Contexto grande: \"talk\"\n",
         "    -   Presentaciones donde el público este mas alejado del gráfico"
       ],
-      "id": "8f716e65"
+      "id": "9e747892"
     },
     {
       "cell_type": "code",
@@ -233,7 +233,7 @@
         "\n",
         "plt.show()"
       ],
-      "id": "18002634",
+      "id": "6045c52f",
       "execution_count": null,
       "outputs": []
     },
@@ -247,7 +247,7 @@
         "\n",
         "Vamos a nuestro conjunto de datos que contiene los resultados de una encuestra realizada a jóvenes sobre sus hábitos y preferencias. Hemos proportcionado el código para crear un gráfico de recuento de sus respuestas a la pregunta \"¿Con qué frecuencia escuchas los consejos de tus padres?\". Ahora vamos a cambiar el estilo y la paleta para que esta trama sea más fácil de interpretar."
       ],
-      "id": "8d68dff0"
+      "id": "0fd58493"
     },
     {
       "cell_type": "code",
@@ -261,7 +261,7 @@
         "survey_data = pd.read_csv(ruta, index_col=0)\n",
         "survey_data.head()"
       ],
-      "id": "537d8900",
+      "id": "04a95740",
       "execution_count": null,
       "outputs": []
     },
@@ -271,7 +271,7 @@
       "source": [
         "Transformación de los datos de la columna `\"Parents' advice\"`"
       ],
-      "id": "795d3a74"
+      "id": "0a1f6c68"
     },
     {
       "cell_type": "code",
@@ -283,7 +283,7 @@
         "                                                                     4: 'Often',\n",
         "                                                                     5: 'Always'})"
       ],
-      "id": "e5355c51",
+      "id": "dd2066ec",
       "execution_count": null,
       "outputs": []
     },
@@ -295,7 +295,7 @@
         "\n",
         "1.  Configura el estilo en `\"whitegrid\"` para ayudar al público a determinar el número de respuestas de cada categoría."
       ],
-      "id": "77050102"
+      "id": "44c536f3"
     },
     {
       "cell_type": "code",
@@ -316,7 +316,7 @@
         "# Show plot\n",
         "plt.show()"
       ],
-      "id": "f919612a",
+      "id": "c5e00aca",
       "execution_count": null,
       "outputs": []
     },
@@ -326,7 +326,7 @@
       "source": [
         "2.  Establece la paleta de colores en la paleta secuencial denominada `\"Purples`."
       ],
-      "id": "f7ca9bc6"
+      "id": "be95b7a6"
     },
     {
       "cell_type": "code",
@@ -349,7 +349,7 @@
         "# Show plot\n",
         "plt.show()"
       ],
-      "id": "d508f504",
+      "id": "3c168060",
       "execution_count": null,
       "outputs": []
     },
@@ -359,7 +359,7 @@
       "source": [
         "3.  Cambia la paleta de colores a la paleta divergente `\"RdBu\"`"
       ],
-      "id": "d6edf118"
+      "id": "974b58cb"
     },
     {
       "cell_type": "code",
@@ -382,7 +382,7 @@
         "# Show plot\n",
         "plt.show()"
       ],
-      "id": "32024a6b",
+      "id": "22d10ba8",
       "execution_count": null,
       "outputs": []
     },
@@ -400,7 +400,7 @@
         "\n",
         "1.  Establece la escala (\"contexto\") en `\"paper\"`, que es la más pequieña de las opciones de escala."
       ],
-      "id": "cf8144a3"
+      "id": "d3346262"
     },
     {
       "cell_type": "code",
@@ -418,7 +418,7 @@
         "# Show plot\n",
         "plt.show()"
       ],
-      "id": "94871ad1",
+      "id": "89252a3a",
       "execution_count": null,
       "outputs": []
     },
@@ -428,7 +428,7 @@
       "source": [
         "2.  Cambia el contexto a `\"notebook\"` para aumentar la escala."
       ],
-      "id": "1a07f483"
+      "id": "62a514e5"
     },
     {
       "cell_type": "code",
@@ -446,7 +446,7 @@
         "# Show plot\n",
         "plt.show()"
       ],
-      "id": "857bd619",
+      "id": "17dff5c7",
       "execution_count": null,
       "outputs": []
     },
@@ -456,7 +456,7 @@
       "source": [
         "3.  Cambia el contexto a `\"talk\"` para aumentar la escala."
       ],
-      "id": "5bd7b830"
+      "id": "66ab8e4c"
     },
     {
       "cell_type": "code",
@@ -474,7 +474,7 @@
         "# Show plot\n",
         "plt.show()"
       ],
-      "id": "fc32d8e9",
+      "id": "d932dc89",
       "execution_count": null,
       "outputs": []
     },
@@ -484,7 +484,7 @@
       "source": [
         "4.  Cambia el contexto a `\"poster\"`, que es la mayor escala disponbible."
       ],
-      "id": "72b81373"
+      "id": "73835655"
     },
     {
       "cell_type": "code",
@@ -502,7 +502,7 @@
         "# Show plot\n",
         "plt.show()"
       ],
-      "id": "f332005c",
+      "id": "e3441568",
       "execution_count": null,
       "outputs": []
     },
@@ -524,7 +524,7 @@
         "\n",
         "-   Establece una paleta de colores personalizada con los códigos hexadecimales de color `\"#39A7D0\"` y `\"#36ADA4\"`."
       ],
-      "id": "13db5307"
+      "id": "ea4953ed"
     },
     {
       "cell_type": "code",
@@ -546,7 +546,7 @@
         "# Show plot\n",
         "plt.show()"
       ],
-      "id": "191093a2",
+      "id": "10472c84",
       "execution_count": null,
       "outputs": []
     },
@@ -569,7 +569,7 @@
         "\n",
         "    -   Los gráficos de Seaborn creean dos diferentes tipos de objetos: `FacetGrid` y `AxesSubplot`."
       ],
-      "id": "93920d37"
+      "id": "b1e950a7"
     },
     {
       "cell_type": "code",
@@ -580,7 +580,7 @@
         "g = sns.scatterplot(x='height', y='weight', data=df)\n",
         "type(g)"
       ],
-      "id": "16117d7e",
+      "id": "b43b9eac",
       "execution_count": null,
       "outputs": []
     },
@@ -605,7 +605,7 @@
         "\n",
         "-   Añadiendo un título al FacetGrid"
       ],
-      "id": "5b560ef8"
+      "id": "08d84e9d"
     },
     {
       "cell_type": "code",
@@ -621,7 +621,7 @@
         "\n",
         "plt.show()"
       ],
-      "id": "a9a831ce",
+      "id": "fda066b1",
       "execution_count": null,
       "outputs": []
     },
@@ -637,7 +637,7 @@
         "\n",
         "En el código proporcionadom hemos utilizado `relplot()` con el conjunto de datos de millas por galón para crear un gráfico de dispersión que muestra la realación entre el peso de un coche y su potencia. Este gráfico de dispersión se asigna a la variable `g`. Identifiquemos de qué tipo de objeto se trata."
       ],
-      "id": "8852e67c"
+      "id": "5ca5c95a"
     },
     {
       "cell_type": "code",
@@ -651,7 +651,7 @@
         "mpg = pd.read_csv(ruta)\n",
         "mpg.head()"
       ],
-      "id": "92437a4c",
+      "id": "dd449659",
       "execution_count": null,
       "outputs": []
     },
@@ -663,7 +663,7 @@
         "\n",
         "1.  Identifica qué tipo de objeto es el gráfico `g` y asígnalo a la variable `type_of_g`"
       ],
-      "id": "9c086d20"
+      "id": "86f38cc2"
     },
     {
       "cell_type": "code",
@@ -681,7 +681,7 @@
         "# Print type\n",
         "print(type_of_g)"
       ],
-      "id": "6fe3de9f",
+      "id": "19a0d327",
       "execution_count": null,
       "outputs": []
     },
@@ -710,7 +710,7 @@
         "\n",
         "-   Añade un título a esta trama: `\"Car Wight vs. Horsepower\"`."
       ],
-      "id": "e7939ff6"
+      "id": "eaeace4d"
     },
     {
       "cell_type": "code",
@@ -726,7 +726,7 @@
         "# Show plot\n",
         "plt.show()"
       ],
-      "id": "4ab93f11",
+      "id": "7794069e",
       "execution_count": null,
       "outputs": []
     },
@@ -742,7 +742,7 @@
         "\n",
         "    -   FacetGrid"
       ],
-      "id": "27c7aac7"
+      "id": "b2f978bd"
     },
     {
       "cell_type": "code",
@@ -759,7 +759,7 @@
         "g.fig.suptitle('New Title',\n",
         "               y=1.03)"
       ],
-      "id": "d2537db8",
+      "id": "feaf1222",
       "execution_count": null,
       "outputs": []
     },
@@ -769,7 +769,7 @@
       "source": [
         "AxesSubplot"
       ],
-      "id": "e3f5f601"
+      "id": "d9baefc8"
     },
     {
       "cell_type": "code",
@@ -783,7 +783,7 @@
         "g.set_title('New Title',\n",
         "            y=1.03)"
       ],
-      "id": "4f24add0",
+      "id": "cdd7007f",
       "execution_count": null,
       "outputs": []
     },
@@ -793,7 +793,7 @@
       "source": [
         "-   Títulos para subgráficos"
       ],
-      "id": "30be1dfa"
+      "id": "e8c96398"
     },
     {
       "cell_type": "code",
@@ -812,7 +812,7 @@
         "# Título de cada gráfico\n",
         "g.set_title('This is {col_name}')"
       ],
-      "id": "011592dd",
+      "id": "8366dc4e",
       "execution_count": null,
       "outputs": []
     },
@@ -824,7 +824,7 @@
         "\n",
         "-   Añadir etiquetas a los ejes"
       ],
-      "id": "0d4a8ad8"
+      "id": "56d64338"
     },
     {
       "cell_type": "code",
@@ -841,7 +841,7 @@
         "\n",
         "plt.show()"
       ],
-      "id": "cbfb2ab1",
+      "id": "4ee4a7fb",
       "execution_count": null,
       "outputs": []
     },
@@ -853,7 +853,7 @@
         "\n",
         "-   Rotando las etiquetas del eje x"
       ],
-      "id": "677993dc"
+      "id": "014c508f"
     },
     {
       "cell_type": "code",
@@ -868,7 +868,7 @@
         "plt.xticks(rotation=90)\n",
         "plt.show()"
       ],
-      "id": "410031c9",
+      "id": "77fa9631",
       "execution_count": null,
       "outputs": []
     },
@@ -884,7 +884,7 @@
         "\n",
         "En el código proporcionado, creamos el gráfico de líneas utilizando la función `lineplot()`. Ten encuenta que `lineplot()` no admite la creación de subtramas, por lo que devuelve un obejeto `AxesSubplot` en lugar d eun objeto `FacetGrid`."
       ],
-      "id": "59dd19e9"
+      "id": "d8c62a5a"
     },
     {
       "cell_type": "code",
@@ -898,7 +898,7 @@
         "mpg_mean = pd.read_csv(ruta, index_col=0)\n",
         "mpg_mean.head()"
       ],
-      "id": "9c7bb552",
+      "id": "a0d7a69b",
       "execution_count": null,
       "outputs": []
     },
@@ -910,7 +910,7 @@
         "\n",
         "1.  Añade el siguiente título a la trama: `\"Average MPG Over Time\"`."
       ],
-      "id": "b587e500"
+      "id": "5c8e0a24"
     },
     {
       "cell_type": "code",
@@ -926,7 +926,7 @@
         "# Show plot\n",
         "plt.show()"
       ],
-      "id": "ba6be222",
+      "id": "1d7e79df",
       "execution_count": null,
       "outputs": []
     },
@@ -936,7 +936,7 @@
       "source": [
         "2.  Etiqueta el eje x como `\"Car Model Year\"` y el eje y como `\"Average MPG\"`."
       ],
-      "id": "d22d0e56"
+      "id": "55fd44a6"
     },
     {
       "cell_type": "code",
@@ -956,7 +956,7 @@
         "# Show plot\n",
         "plt.show()"
       ],
-      "id": "ee380bd0",
+      "id": "3bec990b",
       "execution_count": null,
       "outputs": []
     },
@@ -976,7 +976,7 @@
         "\n",
         "-   Gira 90 grados las etiquetas x-tick."
       ],
-      "id": "d6eb1e44"
+      "id": "5ceecce9"
     },
     {
       "cell_type": "code",
@@ -993,7 +993,7 @@
         "# Show plot\n",
         "plt.show()"
       ],
-      "id": "3841d279",
+      "id": "2aee4792",
       "execution_count": null,
       "outputs": []
     },
@@ -1007,7 +1007,7 @@
         "\n",
         "-   Inicio Para importar Seaborn:"
       ],
-      "id": "45d812fd"
+      "id": "790f8977"
     },
     {
       "cell_type": "code",
@@ -1017,7 +1017,7 @@
         "#| eval: false\n",
         "import seaborn as sns"
       ],
-      "id": "46377ade",
+      "id": "e7c187d0",
       "execution_count": null,
       "outputs": []
     },
@@ -1027,7 +1027,7 @@
       "source": [
         "Para importar Matplotlib:"
       ],
-      "id": "6c0a4ba2"
+      "id": "fc1f4c66"
     },
     {
       "cell_type": "code",
@@ -1037,7 +1037,7 @@
         "#| eval: false\n",
         "import matplotlib.pyplot as plt"
       ],
-      "id": "a770d70e",
+      "id": "db2133b8",
       "execution_count": null,
       "outputs": []
     },
@@ -1047,7 +1047,7 @@
       "source": [
         "Para mostrar un gráfico:"
       ],
-      "id": "b5787f2a"
+      "id": "ea65097a"
     },
     {
       "cell_type": "code",
@@ -1057,7 +1057,7 @@
         "#| eval: false\n",
         "plt.show()"
       ],
-      "id": "104b82e7",
+      "id": "f0317930",
       "execution_count": null,
       "outputs": []
     },
@@ -1069,7 +1069,7 @@
         "    -   Muestran la relación entre dos variables cuantitativas.\n",
         "    -   Ejemplos: scatter plots, line plots"
       ],
-      "id": "99a6370f"
+      "id": "14c15898"
     },
     {
       "cell_type": "code",
@@ -1082,7 +1082,7 @@
         "            data=pandas_df,\n",
         "            kind='scatter')"
       ],
-      "id": "fc223c25",
+      "id": "890dbc31",
       "execution_count": null,
       "outputs": []
     },
@@ -1094,7 +1094,7 @@
         "    -   Describen la distribución de una variable cuantitativa dentro de categorías definida por una variable categórica\n",
         "    -   Ejemplos: bar plots, count plots, box plots, pint plots"
       ],
-      "id": "e5df87a7"
+      "id": "0051b182"
     },
     {
       "cell_type": "code",
@@ -1107,7 +1107,7 @@
         "            data=pandas_df,\n",
         "            kind='bar')"
       ],
-      "id": "8d17a33f",
+      "id": "d83a31c1",
       "execution_count": null,
       "outputs": []
     },
@@ -1146,7 +1146,7 @@
         "\n",
         "    -   Añadir etiquetas al eje x y eje y"
       ],
-      "id": "3f7875f4"
+      "id": "2cce11f0"
     },
     {
       "cell_type": "code",
@@ -1157,7 +1157,7 @@
         "g.set(xlabel='new x-axis label',\n",
         "      ylabel='new y-axis label')"
       ],
-      "id": "4fb52662",
+      "id": "6a623e18",
       "execution_count": null,
       "outputs": []
     },
@@ -1167,7 +1167,7 @@
       "source": [
         "Rotar etiquetas el eje x"
       ],
-      "id": "032231ff"
+      "id": "bff4f56e"
     },
     {
       "cell_type": "code",
@@ -1177,7 +1177,7 @@
         "#| eval: false\n",
         "plt.xticks(rotation=90)"
       ],
-      "id": "ea9a3fab",
+      "id": "32e6ba8a",
       "execution_count": null,
       "outputs": []
     },
@@ -1189,7 +1189,7 @@
         "\n",
         "En este ejercicio, examinaremos el conjunto de datos que contiene las respuestas de una encuesta realizada a jóvenes. Una de las preguntas que se hicieron a los jóvenes fue: \"¿Te interesa tener mascotas?\" Exploraremos si la distribución de edades de los que responden \"si\" tiende a ser mayor o menor que la de los que responden \"no\", distinguiendo según el género."
       ],
-      "id": "4c0e3f8e"
+      "id": "e67b7362"
     },
     {
       "cell_type": "code",
@@ -1198,7 +1198,7 @@
         "survey_data['Interested in Pets'] = survey_data['Pets'].apply(\n",
         "    lambda x: 'Yes' if x >= 4.0 else 'No')"
       ],
-      "id": "1d5bdba6",
+      "id": "bd457ef3",
       "execution_count": null,
       "outputs": []
     },
@@ -1213,7 +1213,7 @@
         "-   Establece el título del objeto `FacetGrid` `g` en \\`\"Age of Those Interested in Pets vs. Not\".\n",
         "-   Realiza la visualización del gráfico utlizando una función Matplotlib."
       ],
-      "id": "f7d2ca99"
+      "id": "3225c885"
     },
     {
       "cell_type": "code",
@@ -1233,7 +1233,7 @@
         "# Show plot\n",
         "plt.show()"
       ],
-      "id": "09a31d3d",
+      "id": "e056e9e9",
       "execution_count": null,
       "outputs": []
     },
@@ -1249,7 +1249,7 @@
         "\n",
         "Antes hay que transformar la columna 'Techno' por 'Likes Techno'"
       ],
-      "id": "92f48bf7"
+      "id": "173282e9"
     },
     {
       "cell_type": "code",
@@ -1257,7 +1257,7 @@
       "source": [
         "survey_data['Likes Techno'] = survey_data['Techno'].apply(lambda x: True if x >= 4.0 else False)"
       ],
-      "id": "d886c398",
+      "id": "138e9ac6",
       "execution_count": null,
       "outputs": []
     },
@@ -1272,7 +1272,7 @@
         "-   Añade el título `\"Percentage of Young People Who Like Techno\"` a esta trama `FacetGrid`.\n",
         "-   Etiqueta el eje x `\"Location of Residence\"` y el eje y `\"% Who Like Techno\"`"
       ],
-      "id": "d4175ef3"
+      "id": "22afe86f"
     },
     {
       "cell_type": "code",
@@ -1297,7 +1297,7 @@
         "# Show plot\n",
         "plt.show()"
       ],
-      "id": "9ebf819f",
+      "id": "cdc7da69",
       "execution_count": null,
       "outputs": []
     },
@@ -1317,7 +1317,7 @@
         "\n",
         "    -   Matplotlib avanzado personalizado"
       ],
-      "id": "c0c303c1"
+      "id": "073e8ecc"
     }
   ],
   "metadata": {

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Distribuciones Muestrales – Analísta de Datos en Python</title>
+<title>Pruebas de proporción – Analísta de Datos en Python</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../08_Muestreo_en_python/04_Distribuciones_bootstrap.html" rel="next">
-<link href="../08_Muestreo_en_python/02_Metodos_de_muestreo.html" rel="prev">
+<link href="../09_Pruebas_de_hipotesis_en_python/04_Pruebas_no_parametricas.html" rel="next">
+<link href="../09_Pruebas_de_hipotesis_en_python/02_Pruebas_de_dos_muestras_y_ANOVA.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -248,7 +248,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../08_Muestreo_en_python/index.html">Muestreo en Python</a></li><li class="breadcrumb-item"><a href="../08_Muestreo_en_python/03_Distribuciones_muestrales.html"><span class="chapter-title">Distribuciones Muestrales</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../09_Pruebas_de_hipotesis_en_python/index.html">Pruebas de Hipótesis en Python</a></li><li class="breadcrumb-item"><a href="../09_Pruebas_de_hipotesis_en_python/03_Pruebas_de_proporcion.html"><span class="chapter-title">Pruebas de proporción</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -597,7 +597,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../08_Muestreo_en_python/03_Distribuciones_muestrales.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Distribuciones Muestrales</span></a>
+  <a href="../08_Muestreo_en_python/03_Distribuciones_muestrales.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Distribuciones Muestrales</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -634,7 +634,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../09_Pruebas_de_hipotesis_en_python/03_Pruebas_de_proporcion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Pruebas de proporción</span></a>
+  <a href="../09_Pruebas_de_hipotesis_en_python/03_Pruebas_de_proporcion.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Pruebas de proporción</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -656,9 +656,9 @@ ul.task-list li input[type="checkbox"] {
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../08_Muestreo_en_python/index.html">Muestreo en Python</a></li><li class="breadcrumb-item"><a href="../08_Muestreo_en_python/03_Distribuciones_muestrales.html"><span class="chapter-title">Distribuciones Muestrales</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../09_Pruebas_de_hipotesis_en_python/index.html">Pruebas de Hipótesis en Python</a></li><li class="breadcrumb-item"><a href="../09_Pruebas_de_hipotesis_en_python/03_Pruebas_de_proporcion.html"><span class="chapter-title">Pruebas de proporción</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">Distribuciones Muestrales</span></h1>
+<h1 class="title"><span class="chapter-title">Pruebas de proporción</span></h1>
 </div>
 
 
@@ -1093,13 +1093,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../08_Muestreo_en_python/02_Metodos_de_muestreo.html" class="pagination-link" aria-label="Métodos de Muestreo">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Métodos de Muestreo</span></span>
+      <a href="../09_Pruebas_de_hipotesis_en_python/02_Pruebas_de_dos_muestras_y_ANOVA.html" class="pagination-link" aria-label="Pruebas de dos muestras y ANOVA">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Pruebas de dos muestras y ANOVA</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../08_Muestreo_en_python/04_Distribuciones_bootstrap.html" class="pagination-link" aria-label="Distribuciones de bootstrap">
-        <span class="nav-page-text"><span class="chapter-title">Distribuciones de bootstrap</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../09_Pruebas_de_hipotesis_en_python/04_Pruebas_no_parametricas.html" class="pagination-link" aria-label="Pruebas no paramétricas">
+        <span class="nav-page-text"><span class="chapter-title">Pruebas no paramétricas</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1108,4 +1108,4 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://github.com/JohnReyes02/Datacamp/edit/main/Analista_de_datos_en_python/08_Muestreo_en_python/03_Distribuciones_muestrales.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/JohnReyes02/Datacamp/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/JohnReyes02/Datacamp/blob/main/Analista_de_datos_en_python/08_Muestreo_en_python/03_Distribuciones_muestrales.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://github.com/JohnReyes02/Datacamp/edit/main/Analista_de_datos_en_python/09_Pruebas_de_hipotesis_en_python/03_Pruebas_de_proporcion.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/JohnReyes02/Datacamp/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/JohnReyes02/Datacamp/blob/main/Analista_de_datos_en_python/09_Pruebas_de_hipotesis_en_python/03_Pruebas_de_proporcion.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div></div></footer></body></html>

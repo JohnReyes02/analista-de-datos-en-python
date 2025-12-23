@@ -34,7 +34,7 @@
         "\n",
         "-   Points vs. Flavor: Población"
       ],
-      "id": "36036e48"
+      "id": "5928c1bf"
     },
     {
       "cell_type": "code",
@@ -44,7 +44,7 @@
         "#| eval: false\n",
         "pts_vs_flavor_pop = coffee_ratings[[\"total_points\", \"flavor\"]]"
       ],
-      "id": "ce6e28a5",
+      "id": "23df5f10",
       "execution_count": null,
       "outputs": []
     },
@@ -56,7 +56,7 @@
         "\n",
         "-   Points vs. Flavor: 10 filas de muestra"
       ],
-      "id": "d100f8d4"
+      "id": "b6d8a473"
     },
     {
       "cell_type": "code",
@@ -66,7 +66,7 @@
         "#| eval: false\n",
         "pts_vs_flavor_samp = pts_vs_flavor_pop.sample(n=10)"
       ],
-      "id": "a61720ce",
+      "id": "4c6dc113",
       "execution_count": null,
       "outputs": []
     },
@@ -82,7 +82,7 @@
         "\n",
         "    -   Use `.sample()` en `pandas` para DataFrames y Series."
       ],
-      "id": "0fcd7f65"
+      "id": "23a57348"
     },
     {
       "cell_type": "code",
@@ -92,7 +92,7 @@
         "#| eval: false\n",
         "cup_points_samp = coffe_ratings['total_cup_points'].sample(n=10)"
       ],
-      "id": "5d152b58",
+      "id": "354ecf9a",
       "execution_count": null,
       "outputs": []
     },
@@ -106,7 +106,7 @@
         "\n",
         "    Un parámetro de población es un cálculo realizado sobre el conjunto de datos de población."
       ],
-      "id": "9b096bb4"
+      "id": "979dee7d"
     },
     {
       "cell_type": "code",
@@ -117,7 +117,7 @@
         "import numpy as np\n",
         "np.mean(pts_vs_flavor_pop['total_cup_points'])"
       ],
-      "id": "4f9f5e57",
+      "id": "9f7238aa",
       "execution_count": null,
       "outputs": []
     },
@@ -129,7 +129,7 @@
         "\n",
         "Una estimación puntual o estadística de muestra, es un cálculo basado en el conjunto de datos de muestra."
       ],
-      "id": "dbdf604c"
+      "id": "6b1add9b"
     },
     {
       "cell_type": "code",
@@ -139,7 +139,7 @@
         "#| eval: false\n",
         "np.mean(cup_points_samp)"
       ],
-      "id": "000caddc",
+      "id": "e3161791",
       "execution_count": null,
       "outputs": []
     },
@@ -153,7 +153,7 @@
         "\n",
         "    Trabajar con pandas puede ser más fácil que trabajar con Numpy. Estos cálculos de media se pueden realizar utilizando el método de pandas `.mean()`"
       ],
-      "id": "009ea5bf"
+      "id": "5e763e9b"
     },
     {
       "cell_type": "code",
@@ -163,7 +163,7 @@
         "#| eval: false\n",
         "pts_vs_flavor_pop['flavor'].mean()"
       ],
-      "id": "c1dee63b",
+      "id": "0681c45e",
       "execution_count": null,
       "outputs": []
     },
@@ -173,7 +173,7 @@
       "source": [
         "![](images/paste-7.png)"
       ],
-      "id": "7f583928"
+      "id": "468396dd"
     },
     {
       "cell_type": "code",
@@ -183,7 +183,7 @@
         "#| eval: false\n",
         "pts_vs_flavor_samp['flavor'].mean()"
       ],
-      "id": "f1fb58be",
+      "id": "6ff9b4d1",
       "execution_count": null,
       "outputs": []
     },
@@ -215,7 +215,7 @@
         "\n",
         "Tu primera tarea es tomar una muestra del conjunto de datos de Spotify y comparar la duración media de la población con la de la muestra."
       ],
-      "id": "97e0830e"
+      "id": "6ed8ac10"
     },
     {
       "cell_type": "code",
@@ -226,7 +226,7 @@
         "spotify_population = pd.read_feather(ruta)\n",
         "spotify_population.head()"
       ],
-      "id": "0ff68eae",
+      "id": "b53f6ac2",
       "execution_count": null,
       "outputs": []
     },
@@ -238,7 +238,7 @@
         "\n",
         "1. Muestra 1000 filas de `spotify_population`, asignándolas a `spotify_sample`."
       ],
-      "id": "8e937cb2"
+      "id": "2e93dd9a"
     },
     {
       "cell_type": "code",
@@ -250,7 +250,7 @@
         "# print sample\n",
         "print(spotify_sample)"
       ],
-      "id": "8bce1878",
+      "id": "b302eff3",
       "execution_count": null,
       "outputs": []
     },
@@ -262,7 +262,7 @@
         "- Calcula la duración media en minutos de `spotify_population` utilizando `pandas`.\n",
         "- Calcula la duración media en minutos de `spotify_sample` utilizando `pandas`."
       ],
-      "id": "4015e133"
+      "id": "7e10b49e"
     },
     {
       "cell_type": "code",
@@ -278,7 +278,7 @@
         "print(mean_dur_pop)\n",
         "print(mean_dur_sample)"
       ],
-      "id": "38b03574",
+      "id": "311d8896",
       "execution_count": null,
       "outputs": []
     },
@@ -299,7 +299,7 @@
         "- Crea una serie `pandas`, `loudness_pop`, subdividiendo la columna `loudness` de `spotify_population`.\n",
         "- Muestra `loudness_pop` para obtener 100 valores aleatorios, asignándolos a `loudness_samp`."
       ],
-      "id": "fbd8d7e4"
+      "id": "c2962356"
     },
     {
       "cell_type": "code",
@@ -313,7 +313,7 @@
         "\n",
         "print(loudness_samp)"
       ],
-      "id": "ac80d74f",
+      "id": "c2438527",
       "execution_count": null,
       "outputs": []
     },
@@ -325,7 +325,7 @@
         "- Calcula la media de `loudness_pop` utilizando `numpy`.\n",
         "- Calcula la media de `loudness_samp` utilizando `numpy`."
       ],
-      "id": "a0e27e17"
+      "id": "563fc2b4"
     },
     {
       "cell_type": "code",
@@ -342,7 +342,7 @@
         "print(mean_loudness_pop)\n",
         "print(mean_loudness_samp)"
       ],
-      "id": "d45ef104",
+      "id": "d8454731",
       "execution_count": null,
       "outputs": []
     },
@@ -364,7 +364,7 @@
         "\n",
         "### Comprender los valores de iniciaclización aleatorios"
       ],
-      "id": "81066e3f"
+      "id": "fed51f6b"
     }
   ],
   "metadata": {
