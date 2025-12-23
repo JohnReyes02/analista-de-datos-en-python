@@ -16,10 +16,10 @@ Al final de este curso, serás capaz de utilizar Seaborn en diversas situaciones
 
 ## Módulos del curso
 
-1. Conocer un conjunto de datos  
-2. Limpieza e imputación de datos
-3. Relaciones en los datos
-4. Convertir el análisis exploratorio en acción
+1. [Instroducción a Seaborn](01_Introduccion_a_seaborn.qmd)
+2. [Visualizar dos variables cuantitativas](02_Visualizar_dos_variables_cuantitativas.qmd)
+3. [Visualizar variables categóricas y cuantativas](03_Visualizar_variable_categorica_cuantitativa.qmd)
+4. [Personalizar gráficos con seaborn](04_Personalizar_graficos_seaborn.qmd)
 
 ## Datasets
 

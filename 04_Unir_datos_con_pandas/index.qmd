@@ -12,10 +12,10 @@ Ser capaz de combinar y trabajar con múltiples conjuntos de datos es una habili
 
 ## Módulos del curso
 
-1. Conceptos básicos de la fusión de datos
-2. Fusionar tablas con distintos tipos de unión
-3. Fusión y concatenación avanzadas
-4. Fusionar datos ordenados y series temporales
+1. [Conceptos básicos de la fusión de datos](01_Conceptos_basicos_de_la_fusion_de_datos.qmd)
+2. [Fusionar tablas con distintos tipos de unión](02_Fusionar_tablas_distintos_tipos.qmd)
+3. [Fusión y concatenación avanzadas](03_Fusion_y_concatenacion_avanzadas.qmd)
+4. [Fusionar datos ordenados y series temporales](04_Fusionar_datos_ordenados_y_series_temporales.qmd)
 
 ## Datasets
 

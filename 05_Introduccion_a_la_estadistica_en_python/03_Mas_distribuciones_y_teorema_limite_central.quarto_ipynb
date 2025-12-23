@@ -1,0 +1,336 @@
+{
+  "cells": [
+    {
+      "cell_type": "raw",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "title: \"Mas distribuciones y el teorema del límite central\"\n",
+        "---"
+      ],
+      "id": "94df90ad"
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## La distribución normal\n",
+        "\n",
+        "### Distribución de las ventas de Amir\n",
+        "\n",
+        "### Probabilidades de la distribución normal\n",
+        "\n",
+        "### Simulación de ventas en nuevas condiciones de mercado\n",
+        "\n",
+        "### Qué mercado es el mejor?\n",
+        "\n",
+        "\n",
+        "\n",
+        "## Teorema del límite central\n",
+        "\n",
+        "### Visualizar distribuciones muestrales\n",
+        "\n",
+        "### CTL en acción\n",
+        "\n",
+        "### La media de las medias\n",
+        "\n",
+        "\n",
+        "\n",
+        "## La distribución de Poisson\n",
+        "\n",
+        "-   Proceso de Poisson\n",
+        "\n",
+        "    -   Procesos que parecen ocurrir a un ritmo determinado, pero completamente aleatorio.\n",
+        "\n",
+        "    -   Ejemplos:\n",
+        "\n",
+        "        -   El número de animales adoptados de un refugio por semana.\n",
+        "\n",
+        "        -   El número de personas que llegan a un restaurante cada hora.\n",
+        "\n",
+        "        -   El número de terremotos al año en California.\n",
+        "\n",
+        "    -   La unidad de tiempo, como, horas, semanas o años es irrelevante siempre que sean coherentes.\n",
+        "\n",
+        "-   Distrubición de Poisson\n",
+        "\n",
+        "    -   La probabilidad de que ocurra un número determinado de sucesos en un periodo de tiempo.\n",
+        "\n",
+        "    -   Ejemplos\n",
+        "\n",
+        "        -   Probabilidad de \\>= 5 animales adoptados en una semana.\n",
+        "\n",
+        "        -   Probabilidad de que 12 personas lleguen a un restaurante en una hora.\n",
+        "\n",
+        "        -   Probabilidad \\< 20 terremotos en California en un año.\n",
+        "\n",
+        "-   Lambda ($\\lambda$)\n",
+        "\n",
+        "    -   $\\lambda$: Número de eventos promedio por intervalo de tiempo.\n",
+        "\n",
+        "        -   Número promedio de adopciones por semana = 8.\n",
+        "\n",
+        "            ![](images/paste-1.png){width=\"384\"}\n",
+        "\n",
+        "-   Lambda es el pico de la distribución\n",
+        "\n",
+        "    ![](images/paste-2.png){width=\"433\"}\n",
+        "\n",
+        "-   CTL continúa aplicando\n",
+        "\n",
+        "    ![](images/paste-3.png){width=\"435\"}\n",
+        "\n",
+        "### Identificar lambda\n",
+        "\n",
+        "Ahora que has aprendido sobre la distribución de Poisson, sabes que su forma se describe mediante un valor llamado lambda. En este ejercicio emparejarás histogramas con valores lambda.\n",
+        "\n",
+        "|       lambda = 1        |       lambda = 4        |       lambda = 8        |\n",
+        "|:----------------------:|:----------------------:|:----------------------:|\n",
+        "| ![](images/paste-4.png) | ![](images/paste-5.png) | ![](images/paste-6.png) |\n",
+        "\n",
+        "La distribución de Poisson es una familia de distribuciones, igual que las distribuciones uniforme, binomial o normal.\n",
+        "\n",
+        "### Seguimiento de las respuestas de los clientes potenciales\n",
+        "\n",
+        "Tu empresa utiliza un software de ventas para hacer un seguimiento de los nuevos clientes potenciales. Los organiza en una cola para que cualquiera pueda hacer el seguimiento de uno cuando tenga un poco de tiempo libre. Dado que el número de respuestas de clientes potenciales es un resultado contable a lo largo de un periodo de tiempo, esta situación corresponde a una distribución de Poisson. De media, Amir responde a 4 clientes potenciales cada día. En este ejercicio, calcularás las probabilidades de que Amir responda a distintos números de clientes potenciales.\n",
+        "\n",
+        "#### Instrucciones:\n",
+        "\n",
+        "1.  Importa `poisson` de `scipy.stats` y calcula la problabilidad de que Amir responda a 5 clientes potenciales en un día, dado que responde a una media de 4."
+      ],
+      "id": "3c5ac17f"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Import poisson from scipy.stats\n",
+        "from scipy.stats import poisson\n",
+        "\n",
+        "# Probability of 5 responses\n",
+        "prob_5 = poisson.pmf(5, 4) # (deseado, media)\n",
+        "print(prob_5)"
+      ],
+      "id": "917a4ebd",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "2.  El compañero de trabajo de Amir responde a una media de 5.5 clientes potenciales al día. Cuál es la probabilidad a que responda a 5 clientes potenciales en un día?"
+      ],
+      "id": "e3689afa"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Probability of 5 responses\n",
+        "prob_coworker = poisson.pmf(5, 5.5)  # (deseado, media)\n",
+        "print(prob_coworker)"
+      ],
+      "id": "583624f1",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "3.  Cuál es la probabilidad de que Amir responda a 2 o menos clientes potenciales en en un día?"
+      ],
+      "id": "73cc0f7e"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Probability of 2 or fewer responses\n",
+        "prob_2_or_less = poisson.cdf(2, 4) # <= cdf(deseado, media)\n",
+        "print(prob_2_or_less)"
+      ],
+      "id": "56cb0fad",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "4.  Cuál es la probabilidad de que Amir responda a más de 10 clientes potenciales en 1 día?"
+      ],
+      "id": "f50c08f5"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Probability of > 10 responses\n",
+        "prob_over_10 = 1 - poisson.cdf(10, 4)\n",
+        "print(prob_over_10)"
+      ],
+      "id": "e87cbb53",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Tener en cuenta que si se proporciona `poisson.pmf` o `poisson.cdf` con un número no entero , arroja un error ya que la distribución de Poisson solo se aplica a enteros.\n",
+        "\n",
+        "## Más distribuciones de probabilidad\n",
+        "\n",
+        "-   Distribución exponencial\n",
+        "\n",
+        "    -   Probabilidad en que transcurra cierto tiempo entre eventos de Poisson.\n",
+        "\n",
+        "    -   Ejemplos\n",
+        "\n",
+        "        -   Probabilidad \\> 1 día entre adopciones.\n",
+        "\n",
+        "        -   Probabilidad \\< 10 minutos entre llegadas a restaurantes.\n",
+        "\n",
+        "        -   Probabilidad de 6 a 8 meses entre terremotos.\n",
+        "\n",
+        "    -   También usa lambda $\\lambda$\n",
+        "\n",
+        "    -   Continua (tiempo)\n",
+        "\n",
+        "    -   Valor esperado de la distribución exponencial\n",
+        "\n",
+        "        -   Mide la frecuencia en terminos de tiempo entre sucesos.\n",
+        "\n",
+        "-   Distribución T (estudiante)\n",
+        "\n",
+        "    -   Forma similar a la distribución normal.\n",
+        "\n",
+        "    ![](images/paste-1.png){width=\"454\"}\n",
+        "\n",
+        "-   Grados de libertad (DoF)\n",
+        "\n",
+        "    -   Tiene un parámetro de grados de libertad (df) que afecta el grosor de las colas de la distribución.\n",
+        "\n",
+        "        ![](images/paste-2.png){width=\"454\"}\n",
+        "\n",
+        "        -   Bajo df = Colas más gruesas y mayor desviación estandar.\n",
+        "\n",
+        "        -   Alto df = Similar a la distribución normal.\n",
+        "\n",
+        "-   Distribución Log-normal\n",
+        "\n",
+        "    -   Las variables que siguen una distribución log-normal tiene un logaritmo que se distribuye normalmente. Da lugar a distribuciones sesgadas.\n",
+        "\n",
+        "    -   Ejemplos\n",
+        "\n",
+        "        -   Duración de las partidas de ajedrez.\n",
+        "\n",
+        "        -   La presión arterial en adultos.\n",
+        "\n",
+        "        -   Número de hospitalizaciones en el brote de SARS en el 2003.\n",
+        "\n",
+        "### Arrastrar y colocar distribuciones\n",
+        "\n",
+        "Llegados a este punto, has aprendido sobre tantas distribuciones de probabilidad diferentes que puede ser difícil recordar cuál es cuál. En este ejercicio, practicarás la distinción entre distribuciones y la identificación de la distribución que mejor se ajusta a distintas situaciones.\n",
+        "\n",
+        "| Poisson | Exponencial | Binomial |\n",
+        "|:--:|:--:|:--:|\n",
+        "| Número de clientes que entran a una tienda cada hora. | Tiempo que transcurre hasta que alguien paga su préstamo. | Número de personas de un grupo de 30 que aprueban  el examen de conducir. |\n",
+        "| Número de productos vendidos cada semana. | Tiempo que transcurre hasta que el siguiente cliente realiza su compra. |  |\n",
+        "\n",
+        "### Tiempo de modelado entre clientes potenciales\n",
+        "\n",
+        "Para evaluar mejor el rendimiento de Amir, quieres saber cuánto tarda en responder a un cliente potencial después de abrirlo. De media, responde a 1 solicitud cada 2,5 horas. En este ejercicio, calcularás las probabilidades de que pasen diferentes cantidades de tiempo entre que Amir recibe un cliente potencial y envía una respuesta.\n",
+        "\n",
+        "#### Instrucciones:\n",
+        "\n",
+        "1. Importa `expon` desde `scipy.stats`. Cuál es la probabilidad de que Amir tarde menos de una hora en responder a un cliente potencial.\n"
+      ],
+      "id": "03702332"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Import expon from scipy.stats\n",
+        "from scipy.stats import expon\n",
+        "\n",
+        "# Print probability response takes < 1 hour\n",
+        "print(expon.cdf(1, scale=2.5))"
+      ],
+      "id": "0b020032",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "2. Cuál es la probabilidad de que Amir tarde más de 4 horas en responder a un cliente potencial?\n"
+      ],
+      "id": "2089c49f"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Print probability response takes > 4\n",
+        "print(1 - expon.cdf(4, scale=2.5))"
+      ],
+      "id": "b1b26533",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "3. Cuál es la probabilidad de que Amir tarde 3-4 horas en responder a un cliente potencial?\n"
+      ],
+      "id": "8975ddf6"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Print probability response takes 3-4 hours\n",
+        "print(expon.cdf(4, scale=2.5) - expon.cdf(3, scale=2.5))"
+      ],
+      "id": "5c7fee4a",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Hay solo alrededor de un 20% de probabilidad de que Amir tarde más de 4 horas en responder, así que es bastante rápido en sus respuestas.\n",
+        "\n",
+        "### La disttibución t\n",
+        "\n",
+        "Qué afirmación no es cierta respecto a la distrubución t?\n",
+        "\n",
+        "- [ ] La distribución t tiene colas más gruesas que la distribución normal.\n",
+        "\n",
+        "- [ ] Una distribución t con altos grados de libertad se parece a la distribución normal.\n",
+        "\n",
+        "- [ ] El número de grados de libertad afecta a la varianza de la distribución.\n",
+        "\n",
+        "- [x] La distribución t está sesgada."
+      ],
+      "id": "734298d9"
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "name": "python3",
+      "language": "python",
+      "display_name": "Python 3 (ipykernel)",
+      "path": "/Users/macbookairedwin/Documents/Datacamp/Analista_de_datos_en_python/entorno_analista_datos/share/jupyter/kernels/python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}

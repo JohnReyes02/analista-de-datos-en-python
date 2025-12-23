@@ -1,0 +1,25 @@
+# Bienvenida {.unnumbered}
+
+📊 Nivel: Principiante  
+🕒 Duración estimada: 4 horas  
+🎥 Incluye código, visualizaciones y ejercicios
+
+---
+
+## Descripcion
+Python es un lenguaje de programación de uso general cada vez más popular para la ciencia de datos. Empresas de todo el mundo utilizan Python para extraer información de sus datos y obtener una ventaja competitiva. A diferencia de otros tutoriales de Python, este curso se centra en Python específicamente para la ciencia de datos. En nuestro curso de Introducción a Python aprenderás potentes formas de almacenar y manipular datos y conocerás útiles herramientas de ciencias de datos para empezar a realizar tus propios análisis. 
+
+## Lo que aprenderás
+- Identificar los tipos de datos de Python (int, float, str, bool) y utilizarlos en cálculos y variables.
+- Reconocer cómo crear, subconjuntar y modificar listas, incluídas las listas anidadas.
+- Diferenciar entre funciones , métodos y paquetes, y aplicarlos para resolver tareas.
+- Identificar los arreglos Numpy, distinguirlas de las listas y evaluar su función en el análisis de datos.
+- Evalúa las herramientas estadísticas de Numpy (media, mediana, desviación estándar, correlación) para obtener información sobre los datos.
+
+
+## Módulos del curso
+
+1. [Conceptos Básicos de Python](01_Conceptos_basicos_de_python.qmd)
+2. [Listas Python](02_Listas_python.qmd)
+3. [Funciones y Paquetes](03_Funciones_y_paquetes.qmd)
+4. [Numpy](04_Numpy.qmd)

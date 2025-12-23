@@ -12,10 +12,10 @@ La estadística es el estudio de cómo recopilar, analizar y extraer conclusione
 
 ## Módulos del curso
 
-1. Síntesis estadística 
-2. Números aleatorios y probabilidad
-3. Más distribuciones y el teorema del límite central
-4. Correlación y diseño de experimentos
+1. [Síntesis estadística](01_Sintesis_estadistica.qmd) 
+2. [Números aleatorios y probabilidad](02_Numeros_aleatorios_y_probabilidad.qmd)
+3. [Más distribuciones y el teorema del límite central](03_Mas_distribuciones_y_teorema_limite_central.qmd)
+4. [Correlación y diseño de experimentos](04_Correlacion_y_diseno_de_experimentos.qmd)
 
 ## Datasets
 

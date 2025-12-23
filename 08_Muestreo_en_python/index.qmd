@@ -12,7 +12,7 @@ El muestreo en Python es la piedra angular de la estadística de inferencia y la
 
 ## Módulos del curso
 
-1. Introducción al muestreo
-2. Métodos de muestreo
-3. Distribuciones muestrales
-4. Distribuciones Bootstrap
+1. [Introducción al muestreo](01_Introduccion_al_muestreo.qmd)
+2. [Métodos de muestreo](02_Metodos_de_muestreo.qmd)
+3. [Distribuciones muestrales](03_Distribuciones_muestrales.qmd)
+4. [Distribuciones Bootstrap](04_Distribuciones_bootstrap.qmd)

@@ -23,10 +23,10 @@ Al final de este curso, tendrás la confianza necesaria para realizar tu propio 
 
 ## Módulos del curso
 
-1. Conocer un conjunto de datos  
-2. Limpieza e imputación de datos
-3. Relaciones en los datos
-4. Convertir el análisis exploratorio en acción
+1. [Conocer un conjunto de datos](01_Conocer_un_conjunto_de_datos.qmd) 
+2. [Limpieza e imputación de datos](02_Limpieza_e_imputacion_de_datos.qmd)
+3. [Relaciones en los datos](03_Relaciones_en_los_datos.qmd)
+4. [Convertir el análisis exploratorio en acción](04_Convertir_analisis_exploratorio_en_accion.qmd)
 
 ## Datasets
 

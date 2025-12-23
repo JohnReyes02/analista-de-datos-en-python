@@ -1,0 +1,32 @@
+# Bienvenida {.unnumbered}
+
+📊 Nivel: Principiante  
+🕒 Duración estimada: 4 horas  
+🎥 Incluye código, visualizaciones y ejercicios
+
+---
+
+## Descripcion
+Aprender Python es crucial para cualquier aspirante a profesional de ciencia de datos. Aprende a visualizar datos reales con las funciones de Matplotlib y familizarizarte con estructuras de datos como el diccionario y el DataFrame de pandas. Este curso intermedio de 4 horas te ayudará a mejorar tus conocimientos de Python y a explorar nuevas aplicaciones y funciones de Python que amplien tu repertorio y te ayuden a trabajar con más eficacia.
+
+Descubrirás cómo los diccionarios ofrecen una alternativa a las listas de Python, y por qué el marco de datos de pandas es la forma más popular de trabajar con datos tabulares. En el segundo capítulo de este curso, descubrirás cómo puedes crear y manipular conjuntos de datos, y cómo acceder a ellos utilizando estas estructuras. La práctica a lo largo del curso aumentará tu confianza en cada área.
+
+A medida que avances, estudiarás la lógica, el flujo de control, el filtrado y los bucles. Estas funciones sirven para controlar la toma de decisiones en los programas Python y te ayudan a realizar más operaciones con tus datos, incluidas las declaraciones repetidas. Terminarás el curso aplicando todas tus nuevas habilidades con estadísticas de hacker para calcular tus posibilidades de ganar una apuesta.
+
+Una vez que hayas completado todos los capítulos, estarás listo para aplicar tus nuevas habilidades en tu trabajo, nueva carrera o proyecto personal, y estarás preparado para pasar a un aprendizaje más avanzado de Python.
+
+## Lo que aprenderás
+- Identificar y aplicar funciones de Matplotlib para crear gráficos de líneas, dispersión e histogramas.
+- Aprende a crear, actualizar y manipular diccionarios y DataFrames de pandas.
+- Distinguir entre operadores de comparación, booleanos y lógicos, y evaluar su uso en el filtrado de datos.
+- Identifica el uso de blucles (for, while) y aplícalos para iterar sobre listas, diccionarios, arreglos Numpy y DataFrame de pandas.
+- Evalúa la generación de números aleatorios y las simulaciones (paseos aleatorios, distribuciones) para analizar probabilidades y resultados.
+
+
+## Módulos del curso
+
+1. [Matplotlib](01_Matplotlib.qmd)
+2. [Diccionarios y Pandas](02_Diccionarios_y_pandas.qmd)
+3. [Lógica, Flujo de Control y Filtrado](03_Logica_flujo_de_control_y_filtrado.qmd)
+4. [Bucles](04_Bucles.qmd)
+5. [Caso Práctico: Estadística de hacker](05_Caso_practico.qmd)

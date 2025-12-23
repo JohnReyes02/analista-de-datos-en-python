@@ -12,7 +12,7 @@ Pandas es la biblioteca de Python más popular del mundo, utilizada para todo, d
 
 ## Módulos del curso
 
-1. Transformación de DataFrames 
-2. Agregar DataFrames
-3. Segmentar e indexar DataFrames
-4. Crear y visualizar DataFrames
+1. [Transformación de DataFrames](01_Transformacion_de_dataframes.qmd)
+2. [Agregar DataFrames](02_Agregar_dataframes.qmd)
+3. [Segmentar e indexar DataFrames](03_Segmentar_e_indexar_dataframes.qmd)
+4. [Crear y visualizar DataFrames](04_Crear_y_visualizar_dataframes.qmd)

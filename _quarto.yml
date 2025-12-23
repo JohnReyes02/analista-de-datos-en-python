@@ -23,6 +23,23 @@ book:
   chapters:
     - index.qmd
 
+    - part: "Introducción a Python"
+      chapters:
+        - 01_Introduccion_a_python/index.qmd
+        - 01_Introduccion_a_python/01_Conceptos_basicos_de_python.qmd
+        - 01_Introduccion_a_python/02_Listas_python.qmd
+        - 01_Introduccion_a_python/03_Funciones_y_paquetes.qmd
+        - 01_Introduccion_a_python/04_Numpy.qmd
+
+    - part: "Python Intermedio"
+      chapters:
+        - 02_Python_intermedio/index.qmd
+        - 02_Python_intermedio/01_Matplotlib.qmd
+        - 02_Python_intermedio/02_Diccionarios_y_pandas.qmd
+        - 02_Python_intermedio/03_Logica_flujo_de_control_y_filtrado.qmd
+        - 02_Python_intermedio/04_Bucles.qmd
+        - 02_Python_intermedio/05_Caso_practico.qmd
+
     - part: "Manipulación de Datos con Pandas"
       chapters:
         - 03_Manipulacion_de_datos_con_pandas/index.qmd

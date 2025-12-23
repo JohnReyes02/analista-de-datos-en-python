@@ -12,7 +12,7 @@ Las pruebas de hipótesis te permiten responder a preguntas sobre tus conjuntos 
 
 ## Módulos del curso
 
-1. Fundamentos de las pruebas de hipótesis 
-2. Pruebas de dos muestras y ANOVA
-3. Pruebas de proporción
-4. Pruebas no paramétricas
+1. [Fundamentos de las pruebas de hipótesis](01_Fundamentos_de_las_pruebas_de_hipotesis.qmd) 
+2. [Pruebas de dos muestras y ANOVA](02_Pruebas_de_dos_muestras_y_ANOVA.qmd)
+3. [Pruebas de proporción](03_Pruebas_de_proporcion.qmd)
+4. [Pruebas no paramétricas](04_Pruebas_no_parametricas.qmd)

@@ -1,0 +1,380 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "title: \"Introducción al Muestreo\"\n",
+        "---\n",
+        "\n",
+        "Aprende qué es el muestreo y por qué es tan poderoso. También aprenderás sobre los problemas causados por el muestreo de conveniencia y las diferencias entre la verdadera aleatoriedad y la pseudoaleatoriedad.\n",
+        "\n",
+        "## Muestreo y estimaciones puntuales\n",
+        "\n",
+        "La técnica de trabajar con un subconjunto de toda la población se le llama muestreo.\n",
+        "\n",
+        "-   Población vs Muestreo La población es el conjunto completo de datos que nos interesan.\n",
+        "    -   No se refiere a personas.\n",
+        "    -   Típicamente, no sabremos cómo es toda la población.\n",
+        "\n",
+        "La muestra es el subconjunto de datos con el que estamos trabajando.\n",
+        "\n",
+        "-   Coffee rating dataset\n",
+        "\n",
+        "    ![](images/paste-1.png)\n",
+        "\n",
+        "    -   Cada fila representa 1 café.\n",
+        "    -   Hay 1338 filas\n",
+        "    -   Al café se le asigna una puntuación de cero a cien, que se almacena en la columna `total_cup_points`.\n",
+        "    -   Otras columnas contienen información contextual como la variedad y el país de origen.\n",
+        "    -   Puntuaciones entre 0 y 10 para atributos del café como el aroma y el cuerpo.\n",
+        "    -   No contiene todos los cafés del mundo, por lo que no sabemos exactamente cuál es la población de cafés.\n",
+        "    -   Hay suficientes para considerarla como la población de interés.\n",
+        "\n",
+        "-   Points vs. Flavor: Población"
+      ],
+      "id": "36036e48"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| eval: false\n",
+        "pts_vs_flavor_pop = coffee_ratings[[\"total_points\", \"flavor\"]]"
+      ],
+      "id": "ce6e28a5",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "![](images/paste-2.png)\n",
+        "\n",
+        "-   Points vs. Flavor: 10 filas de muestra"
+      ],
+      "id": "d100f8d4"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| eval: false\n",
+        "pts_vs_flavor_samp = pts_vs_flavor_pop.sample(n=10)"
+      ],
+      "id": "a61720ce",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "![](images/paste-3.png)\n",
+        "\n",
+        "El método `.sample()` de pandas devuelve un subconjunto aleatorio de filas. Establecer n en 10 significa que devuelve 10 filas aleatorias. En la muestra aparecen 10 muestras únicas.\n",
+        "\n",
+        "-   Muestreo en Python para Series\n",
+        "\n",
+        "    -   Use `.sample()` en `pandas` para DataFrames y Series."
+      ],
+      "id": "0fcd7f65"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| eval: false\n",
+        "cup_points_samp = coffe_ratings['total_cup_points'].sample(n=10)"
+      ],
+      "id": "5d152b58",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "![](images/paste-4.png)\n",
+        "\n",
+        "-   Parámetros de Población & Puntos Estimados\n",
+        "\n",
+        "    Un parámetro de población es un cálculo realizado sobre el conjunto de datos de población."
+      ],
+      "id": "9b096bb4"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| eval: false\n",
+        "import numpy as np\n",
+        "np.mean(pts_vs_flavor_pop['total_cup_points'])"
+      ],
+      "id": "4f9f5e57",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "![](images/paste-5.png)\n",
+        "\n",
+        "Una estimación puntual o estadística de muestra, es un cálculo basado en el conjunto de datos de muestra."
+      ],
+      "id": "dbdf604c"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| eval: false\n",
+        "np.mean(cup_points_samp)"
+      ],
+      "id": "000caddc",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "![](images/paste-6.png)\n",
+        "\n",
+        "-   Puntos estimados con pandas\n",
+        "\n",
+        "    Trabajar con pandas puede ser más fácil que trabajar con Numpy. Estos cálculos de media se pueden realizar utilizando el método de pandas `.mean()`"
+      ],
+      "id": "009ea5bf"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| eval: false\n",
+        "pts_vs_flavor_pop['flavor'].mean()"
+      ],
+      "id": "c1dee63b",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "![](images/paste-7.png)"
+      ],
+      "id": "7f583928"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| eval: false\n",
+        "pts_vs_flavor_samp['flavor'].mean()"
+      ],
+      "id": "f1fb58be",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "![](images/paste-8.png)\n",
+        "\n",
+        "### Motivos del muestreo\n",
+        "\n",
+        "El muestreo es una técnica importante en tu arsenal estadísico. Sin embargo, no siempre es adecuado: hay que saber cuándo utilizarlo y cuándo trabajar con todo el conjunto de datos.\n",
+        "\n",
+        "¿Cuál de los siguientes no es un buen escenario para utilizar el muestreo?\n",
+        "\n",
+        "**Respuestas posibles**\n",
+        "\n",
+        "- [ ] Te han agregado un terabyte de datos sobre registros de errores del dispositivo de tu empresa.\n",
+        "- [ ] Deseas conocer los hábitos de viaje de todos los ciudadanos adultos paquistaníes.\n",
+        "- [X] Has terminado de recoger los datos de un pequeño estudio sobre las medidas de las alas de 10 mariposas.\n",
+        "- [ ] Has estado trabajando para predecir la rotación de clientes en un proyecto de big data para tu empresa de marketing.\n",
+        "\n",
+        "Diez mariposas es un conjunto de datos pequeño, por lo que el muestreo no es útil aquí.\n",
+        "\n",
+        "\n",
+        "### Muestreo simple con pandas\n",
+        "\n",
+        "A lo largo de este capítulo , explorarás los datos de canciones de Spotify. Cada fila de este conjunto de datos de población representa una canción, y hay más de 40000 filas. Las columnas incluyen el nombre de la canción, los artistas que la interpretaron, al año de lanzamiento y atributos de la canción como su duración, tempo y bailabilidad. Empezarás por fijarte en las duraciones.\n",
+        "\n",
+        "Tu primera tarea es tomar una muestra del conjunto de datos de Spotify y comparar la duración media de la población con la de la muestra."
+      ],
+      "id": "97e0830e"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import pandas as pd\n",
+        "ruta = './data/spotify_2000_2020.feather'\n",
+        "spotify_population = pd.read_feather(ruta)\n",
+        "spotify_population.head()"
+      ],
+      "id": "0ff68eae",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "#### Instrucciones\n",
+        "\n",
+        "1. Muestra 1000 filas de `spotify_population`, asignándolas a `spotify_sample`."
+      ],
+      "id": "8e937cb2"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Sample 1000 rows from spotify_population\n",
+        "spotify_sample = spotify_population.sample(n=1000)\n",
+        "\n",
+        "# print sample\n",
+        "print(spotify_sample)"
+      ],
+      "id": "8bce1878",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "2. \n",
+        "- Calcula la duración media en minutos de `spotify_population` utilizando `pandas`.\n",
+        "- Calcula la duración media en minutos de `spotify_sample` utilizando `pandas`."
+      ],
+      "id": "4015e133"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Calculate the mean duration in mins from spotify_population\n",
+        "mean_dur_pop = spotify_population['duration_minutes'].mean()\n",
+        "\n",
+        "# Calculate the mean duration in mins from spotify_sample\n",
+        "mean_dur_sample = spotify_sample['duration_minutes'].mean()\n",
+        "\n",
+        "# print the means\n",
+        "print(mean_dur_pop)\n",
+        "print(mean_dur_sample)"
+      ],
+      "id": "38b03574",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Se observa que la duración media de las canciones en la muestra es similar, pero no idéntica a la duración media de las canciones en toda la poblacición.\n",
+        "\n",
+        "\n",
+        "### Muestreos y cálculos sencillos con Numpy\n",
+        "\n",
+        "También puedes utilizar `numpy` para calcular parámetros o estadísticas partir de una lista o de la serie `pandas`.\n",
+        "\n",
+        "### Instrucciones\n",
+        "\n",
+        "1. \n",
+        "- Crea una serie `pandas`, `loudness_pop`, subdividiendo la columna `loudness` de `spotify_population`.\n",
+        "- Muestra `loudness_pop` para obtener 100 valores aleatorios, asignándolos a `loudness_samp`."
+      ],
+      "id": "fbd8d7e4"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Create a pandas Series from de loudness column of spotify_population\n",
+        "loudness_pop = spotify_population['loudness']\n",
+        "\n",
+        "# Sample 100 values of loudness_pop\n",
+        "loudness_samp = loudness_pop.sample(n=100)\n",
+        "\n",
+        "print(loudness_samp)"
+      ],
+      "id": "ac80d74f",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "2. \n",
+        "- Calcula la media de `loudness_pop` utilizando `numpy`.\n",
+        "- Calcula la media de `loudness_samp` utilizando `numpy`."
+      ],
+      "id": "a0e27e17"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import numpy as np\n",
+        "\n",
+        "# Calculate the mean of loudness_pop\n",
+        "mean_loudness_pop = np.mean(loudness_pop)\n",
+        "\n",
+        "# Calculate the mean of loudness_samp\n",
+        "mean_loudness_samp = np.mean(loudness_samp)\n",
+        "\n",
+        "print(mean_loudness_pop)\n",
+        "print(mean_loudness_samp)"
+      ],
+      "id": "d45ef104",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Nuevamente, observe que el valor calculado (la media) es cercano pero no idéntico en cada caso.\n",
+        "\n",
+        "## Muestreo de conveniencia\n",
+        "\n",
+        "### ¿Son generalizables las conclusiones de la muestra?\n",
+        "\n",
+        "### ¿Son generalizables estos resultados?\n",
+        "\n",
+        "## Generación de números pseudoaleatorios\n",
+        "\n",
+        "### Generar números aleatorios\n",
+        "\n",
+        "### Comprender los valores de iniciaclización aleatorios"
+      ],
+      "id": "81066e3f"
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "name": "python3",
+      "language": "python",
+      "display_name": "Python 3 (ipykernel)",
+      "path": "/Users/macbookairedwin/Documents/Datacamp/Analista_de_datos_en_python/entorno_analista_datos/share/jupyter/kernels/python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}
