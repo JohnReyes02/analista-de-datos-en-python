@@ -34,7 +34,7 @@
         "\n",
         "-   Frecuencia de Clases"
       ],
-      "id": "47321b39"
+      "id": "2818636c"
     },
     {
       "cell_type": "code",
@@ -44,7 +44,7 @@
         "#| eval: false\n",
         "print(planes('Destination').value_counts())"
       ],
-      "id": "c0a38203",
+      "id": "fbcd6b66",
       "execution_count": null,
       "outputs": []
     },
@@ -58,7 +58,7 @@
         "\n",
         "    -   40% de los vuelos internos de la India van hacia Delhi."
       ],
-      "id": "9c8b12d4"
+      "id": "ab4fc158"
     },
     {
       "cell_type": "code",
@@ -68,7 +68,7 @@
         "#| eval: false\n",
         "planes['Destination'].value_counts(normalize=True)"
       ],
-      "id": "9f6b12e8",
+      "id": "17711a58",
       "execution_count": null,
       "outputs": []
     },
@@ -86,7 +86,7 @@
         "\n",
         "    ![](images/paste-69.png)"
       ],
-      "id": "44ea49e7"
+      "id": "c86f1a76"
     },
     {
       "cell_type": "code",
@@ -96,7 +96,7 @@
         "#| eval: false\n",
         "pd.crosstab(planes['Source'], planes['Destination'])"
       ],
-      "id": "ea533c49",
+      "id": "7e4cba78",
       "execution_count": null,
       "outputs": []
     },
@@ -119,7 +119,7 @@
         "\n",
         "-   Agregación de valores con pd.crosstab()"
       ],
-      "id": "4ff193bd"
+      "id": "684be8b0"
     },
     {
       "cell_type": "code",
@@ -130,7 +130,7 @@
         "pd.crosstab(planes['Source'], planes['Destination'],\n",
         "           values=planes['Price'], aggfunc='median')"
       ],
-      "id": "36c2c466",
+      "id": "0652642a",
       "execution_count": null,
       "outputs": []
     },
@@ -170,7 +170,7 @@
         "\n",
         "Pensando en los resultados de la encuesta Kaggle como población, tu tarea consiste en averiguar si el DataFrame `salaries` es representativo comparando la frecuencia relativa de las categorías laborales."
       ],
-      "id": "6f6836df"
+      "id": "1605a9d5"
     },
     {
       "cell_type": "code",
@@ -181,7 +181,7 @@
         "salaries = pd.read_csv(ruta)\n",
         "salaries.head()"
       ],
-      "id": "31f18281",
+      "id": "e64fa046",
       "execution_count": null,
       "outputs": []
     },
@@ -201,7 +201,7 @@
         "```\n",
         ":::"
       ],
-      "id": "689e2755"
+      "id": "ed6e423b"
     },
     {
       "cell_type": "code",
@@ -210,7 +210,7 @@
         "# Print the relative frequency of Job_Category\n",
         "print(salaries['Job_Category'].value_counts(normalize=True))"
       ],
-      "id": "799c0773",
+      "id": "79e27338",
       "execution_count": null,
       "outputs": []
     },
@@ -230,7 +230,7 @@
         "\n",
         "1.  Realiza una tabulación cruzada, estableciendo `Company_Size` como índice, y las columnas a las clases en `Experience`."
       ],
-      "id": "9dedbc54"
+      "id": "761308d6"
     },
     {
       "cell_type": "code",
@@ -239,7 +239,7 @@
         "# Cross-tabulate Company_Size and Experience\n",
         "print(pd.crosstab(salaries['Company_Size'], salaries['Experience']))"
       ],
-      "id": "e731e10d",
+      "id": "b99a0c2b",
       "execution_count": null,
       "outputs": []
     },
@@ -249,7 +249,7 @@
       "source": [
         "2.  Cruza 'Job_Category' y las clases de 'Company_Size' como nombres de columna."
       ],
-      "id": "5790b242"
+      "id": "5f7cb048"
     },
     {
       "cell_type": "code",
@@ -258,7 +258,7 @@
         "# Cross-tabulate Job_Category and Company_Size\n",
         "print(pd.crosstab(salaries['Job_Category'], salaries['Company_Size']))"
       ],
-      "id": "1f12a3e5",
+      "id": "e7f129f4",
       "execution_count": null,
       "outputs": []
     },
@@ -268,7 +268,7 @@
       "source": [
         "3.  Actualiza `pd.crosstab()` para que devuelva los valores medios de `Salary_USD`."
       ],
-      "id": "15da1ad6"
+      "id": "612b8b1a"
     },
     {
       "cell_type": "code",
@@ -277,7 +277,7 @@
         "# Cross-tabulate Job_Category and Company_Size\n",
         "print(pd.crosstab(salaries['Job_Category'], salaries['Company_Size'], values= salaries['Salary_USD'], aggfunc='mean'))"
       ],
-      "id": "1b9a8da5",
+      "id": "866e1b5b",
       "execution_count": null,
       "outputs": []
     },
@@ -291,7 +291,7 @@
         "\n",
         "-   Correlación"
       ],
-      "id": "15d44fda"
+      "id": "d0c4824e"
     },
     {
       "cell_type": "code",
@@ -302,7 +302,7 @@
         "sns.heatmap(planes.corr(numeric_only=True), annot=True)\n",
         "plt.show()"
       ],
-      "id": "eb7ea910",
+      "id": "fd08f0ae",
       "execution_count": null,
       "outputs": []
     },
@@ -314,7 +314,7 @@
         "\n",
         "-   Viendo el tipo de datos"
       ],
-      "id": "90faf025"
+      "id": "a356d2df"
     },
     {
       "cell_type": "code",
@@ -324,7 +324,7 @@
         "#| eval: false\n",
         "print(planes.dtypes)"
       ],
-      "id": "91212b5a",
+      "id": "a495273a",
       "execution_count": null,
       "outputs": []
     },
@@ -336,7 +336,7 @@
         "\n",
         "-   Total Stops"
       ],
-      "id": "fe4391bd"
+      "id": "ed29f052"
     },
     {
       "cell_type": "code",
@@ -346,7 +346,7 @@
         "#| eval: false\n",
         "print(planes['Total_Stops'].value_counts())"
       ],
-      "id": "5063af2b",
+      "id": "eb23bfac",
       "execution_count": null,
       "outputs": []
     },
@@ -360,7 +360,7 @@
         "\n",
         "-   Limpiando Total Stops"
       ],
-      "id": "8b594819"
+      "id": "e15eed12"
     },
     {
       "cell_type": "code",
@@ -373,7 +373,7 @@
         "planes['Total_Stops'] = planes['Total_Stops'].str.replace('non-stop', '0')\n",
         "planes['Total_Stops'] = planes['Total_Stops'].astype(int)"
       ],
-      "id": "d4335315",
+      "id": "f2dffed1",
       "execution_count": null,
       "outputs": []
     },
@@ -383,7 +383,7 @@
       "source": [
         "-   Correlación"
       ],
-      "id": "001dbd9d"
+      "id": "db540858"
     },
     {
       "cell_type": "code",
@@ -394,7 +394,7 @@
         "sns.heatmap(planes.corr(numeric_only=True), annot=True)\n",
         "plt.show()"
       ],
-      "id": "9e243a52",
+      "id": "253c5b8b",
       "execution_count": null,
       "outputs": []
     },
@@ -406,7 +406,7 @@
         "\n",
         "-   Fechas"
       ],
-      "id": "cc81c9ff"
+      "id": "4d7e8c2f"
     },
     {
       "cell_type": "code",
@@ -416,7 +416,7 @@
         "#| eval: false\n",
         "print(planes.dtypes)"
       ],
-      "id": "79b82dd0",
+      "id": "46b0068b",
       "execution_count": null,
       "outputs": []
     },
@@ -428,7 +428,7 @@
         "\n",
         "-   Extrayendo el mes y el día de la semana"
       ],
-      "id": "ad717501"
+      "id": "181937b2"
     },
     {
       "cell_type": "code",
@@ -440,7 +440,7 @@
         "planes['weekday'] = planes['Date_of_Journey'].dt.weekday\n",
         "print(planes[['month', 'weekday', 'Date_of_Journey']].head())"
       ],
-      "id": "ba1f8123",
+      "id": "0c676a99",
       "execution_count": null,
       "outputs": []
     },
@@ -452,7 +452,7 @@
         "\n",
         "-   Tiempos de salidas y llegadas"
       ],
-      "id": "6fd92b76"
+      "id": "885c23a3"
     },
     {
       "cell_type": "code",
@@ -463,7 +463,7 @@
         "planes['Dep_Hour'] = planes['Dep_Time'].dt.hour\n",
         "planes['Arrival_Hour'] = planes['Arrival_Time'].dt.hour"
       ],
-      "id": "bc751643",
+      "id": "764c8579",
       "execution_count": null,
       "outputs": []
     },
@@ -479,7 +479,7 @@
         "\n",
         "-   Creando características"
       ],
-      "id": "f05f0250"
+      "id": "536495fc"
     },
     {
       "cell_type": "code",
@@ -489,7 +489,7 @@
         "#| eval: false\n",
         "print(planes['Price'].describe())"
       ],
-      "id": "cf3b2d75",
+      "id": "8f200cd5",
       "execution_count": null,
       "outputs": []
     },
@@ -508,7 +508,7 @@
         "\n",
         "-   Estadística descriptiva"
       ],
-      "id": "cae77f7b"
+      "id": "53addf6a"
     },
     {
       "cell_type": "code",
@@ -521,7 +521,7 @@
         "seventy_fifth = planes['Price'].quantile(0.75)\n",
         "maximum = planes['Price'].max()"
       ],
-      "id": "18e56070",
+      "id": "fc6de27e",
       "execution_count": null,
       "outputs": []
     },
@@ -531,7 +531,7 @@
       "source": [
         "-   Etiquetas y bins"
       ],
-      "id": "c3961b25"
+      "id": "2672aead"
     },
     {
       "cell_type": "code",
@@ -542,7 +542,7 @@
         "labels = ['Economy', 'Premium Economy', 'Business Class', 'First Class']\n",
         "bins = [0, twenty_fifth, median, seventy_fifth, maximum]"
       ],
-      "id": "c9e75cb7",
+      "id": "919152a2",
       "execution_count": null,
       "outputs": []
     },
@@ -554,7 +554,7 @@
         "\n",
         "![](images/paste-80.png)"
       ],
-      "id": "f2d88bcf"
+      "id": "37ea5498"
     },
     {
       "cell_type": "code",
@@ -564,7 +564,7 @@
         "#| eval: false\n",
         "planes['Price_Category'] = pd.cut(planes['Price'], labels=labels, bins=bins)"
       ],
-      "id": "102763f4",
+      "id": "864afdff",
       "execution_count": null,
       "outputs": []
     },
@@ -574,7 +574,7 @@
       "source": [
         "-   Categoría de precios"
       ],
-      "id": "1252945e"
+      "id": "d7931d15"
     },
     {
       "cell_type": "code",
@@ -584,7 +584,7 @@
         "#| eval: false\n",
         "print(planes[['Price', 'Price_Category']].head())"
       ],
-      "id": "561d5031",
+      "id": "672581c9",
       "execution_count": null,
       "outputs": []
     },
@@ -596,7 +596,7 @@
         "\n",
         "-   Categoría de precio por aerolínea"
       ],
-      "id": "fe9b4b4c"
+      "id": "896f9a1f"
     },
     {
       "cell_type": "code",
@@ -607,7 +607,7 @@
         "sns.countplot(data=planes, x='Airline', hue='Price_Category')\n",
         "plt.show()"
       ],
-      "id": "dec68b86",
+      "id": "0ffda29f",
       "execution_count": null,
       "outputs": []
     },
@@ -628,7 +628,7 @@
         "::: {.callout-important collapse=\"true\"}\n",
         "Para realizar el ejercicio fue necesario bajar el DataFrame de Datacamp teniendo en cuenta la nueva columna, y cambiando el tipo de formato de la columna `date_of_response` usando los comandos:"
       ],
-      "id": "093a109c"
+      "id": "6461ade2"
     },
     {
       "cell_type": "code",
@@ -638,7 +638,7 @@
         "#| eval: false\n",
         "print(salaries.to_csv(index=false))"
       ],
-      "id": "3f3f569b",
+      "id": "564163ab",
       "execution_count": null,
       "outputs": []
     },
@@ -648,7 +648,7 @@
       "source": [
         ":::"
       ],
-      "id": "d9347317"
+      "id": "61049a22"
     },
     {
       "cell_type": "code",
@@ -664,7 +664,7 @@
         "salaries['date_of_response'] = pd.to_datetime(salaries['date_of_response'])\n",
         "salaries.head()"
       ],
-      "id": "49dbb7ea",
+      "id": "5f53cdff",
       "execution_count": null,
       "outputs": []
     },
@@ -680,7 +680,7 @@
         "\n",
         "-   Traza un mapa de calor, incluyendo las puntuaciones del coeficiente de correlación de Pearson."
       ],
-      "id": "977655c6"
+      "id": "43e5f8ad"
     },
     {
       "cell_type": "code",
@@ -696,7 +696,7 @@
         "sns.heatmap(salaries.corr(numeric_only=True), annot=True)\n",
         "plt.show()"
       ],
-      "id": "935698d7",
+      "id": "7ce7df67",
       "execution_count": null,
       "outputs": []
     },
@@ -718,7 +718,7 @@
         "\n",
         "-   Obtén el percentil 75 de los salaries"
       ],
-      "id": "accd8d89"
+      "id": "9f4dc03e"
     },
     {
       "cell_type": "code",
@@ -735,7 +735,7 @@
         "\n",
         "print(twenty_fifth, salaries_median, seventy_fifth)"
       ],
-      "id": "9301ee15",
+      "id": "33ce9bc4",
       "execution_count": null,
       "outputs": []
     },
@@ -755,7 +755,7 @@
         "\n",
         "1.  Crea `salaries_labels`, una lista que contenga \"`entry`\", \"`mid`\", \"`senior`\" y \"`exec`\"."
       ],
-      "id": "589b764a"
+      "id": "47b0e962"
     },
     {
       "cell_type": "code",
@@ -764,7 +764,7 @@
         "# Create salary labels\n",
         "salary_labels = ['entry', 'mid', 'senior', 'exec']"
       ],
-      "id": "8dbeeca1",
+      "id": "6a7a6aaa",
       "execution_count": null,
       "outputs": []
     },
@@ -774,7 +774,7 @@
       "source": [
         "2.  Termina `salary_ranges`, añadiendo el percentil 25, la mediana, el percentil 75 y el valor más grande de \"`Salary_USD`\""
       ],
-      "id": "7e04f9e8"
+      "id": "9e88be95"
     },
     {
       "cell_type": "code",
@@ -783,7 +783,7 @@
         "# Create the salary ranges list\n",
         "salary_ranges = [0, twenty_fifth, salaries_median, seventy_fifth, salaries['Salary_USD'].max()]"
       ],
-      "id": "83d1575c",
+      "id": "d66ceebf",
       "execution_count": null,
       "outputs": []
     },
@@ -793,7 +793,7 @@
       "source": [
         "3.  Divide \"`Salary_USD`\" en función de las etiquetas y rangos que hayas creado."
       ],
-      "id": "dbe9b791"
+      "id": "99d0b08a"
     },
     {
       "cell_type": "code",
@@ -802,7 +802,7 @@
         "# Create salary_level\n",
         "salaries['salary_level'] = pd.cut(salaries['Salary_USD'], bins=salary_ranges, labels=salary_labels)"
       ],
-      "id": "8e4a314c",
+      "id": "b274dffa",
       "execution_count": null,
       "outputs": []
     },
@@ -812,7 +812,7 @@
       "source": [
         "4.  Utiliza `sns.countplot()` para visualizar el reconteo de \"`Company_Size`\", factrorizando las etiquetas de nivel salarial."
       ],
-      "id": "3241f090"
+      "id": "a5aabb64"
     },
     {
       "cell_type": "code",
@@ -822,7 +822,7 @@
         "sns.countplot(data=salaries, x='Company_Size', hue='salary_level')\n",
         "plt.show()"
       ],
-      "id": "5f1c46ee",
+      "id": "58fe0d05",
       "execution_count": null,
       "outputs": []
     },
@@ -881,7 +881,7 @@
         "\n",
         "-   Utiliza `usa_and_gb` para crear un gráfico de barras que visualice \"`Salary_USD`\" frete a \"`Employee_Location`\"."
       ],
-      "id": "dbe195cf"
+      "id": "7eafe106"
     },
     {
       "cell_type": "code",
@@ -894,7 +894,7 @@
         "sns.barplot(data=usa_and_gb, x='Employee_Location', y='Salary_USD')\n",
         "plt.show()"
       ],
-      "id": "e8c87b9e",
+      "id": "15fa2ecc",
       "execution_count": null,
       "outputs": []
     },
@@ -923,7 +923,7 @@
         "\n",
         "1. Elabora un diagrama de barras comparando \"`Salary_USD`\" por \"`Company_Size`\", factorizando \"`Employment_Status`\".\n"
       ],
-      "id": "8b6adc99"
+      "id": "613709a8"
     },
     {
       "cell_type": "code",
@@ -933,7 +933,7 @@
         "sns.barplot(data=salaries, x='Company_Size', y='Salary_USD', hue='Employment_Status')\n",
         "plt.show()"
       ],
-      "id": "d76c6344",
+      "id": "dfd6729f",
       "execution_count": null,
       "outputs": []
     },
@@ -953,7 +953,7 @@
         "\n",
         "Los contratistas parecen se mejor pagados por las grandes empresas en promedio según los datos, ¡así que esta es una hipótesis razonable!"
       ],
-      "id": "6d190995"
+      "id": "76ddb96b"
     }
   ],
   "metadata": {

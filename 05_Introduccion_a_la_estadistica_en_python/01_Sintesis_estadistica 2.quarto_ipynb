@@ -86,7 +86,7 @@
         "\n",
         "En este ejercicio, calcularás medidas de tendencia central para comparar el consumo de alimentos en US y Bélgica utilizando tus competencias en pandas y numpy."
       ],
-      "id": "1ed46763"
+      "id": "dd4e6cb0"
     },
     {
       "cell_type": "code",
@@ -94,7 +94,7 @@
       "source": [
         "import pandas as pd"
       ],
-      "id": "d3a64010",
+      "id": "f000567f",
       "execution_count": null,
       "outputs": []
     },
@@ -105,7 +105,7 @@
         "food_consumption = pd.read_csv('../datasets/food_consumption.csv')\n",
         "print(food_consumption.head())"
       ],
-      "id": "c8bacfb6",
+      "id": "95273e5f",
       "execution_count": null,
       "outputs": []
     },
@@ -123,7 +123,7 @@
         "\n",
         "- Calcula la mediana del consumption de alimentos en el DataFrame usa_consumption."
       ],
-      "id": "2b3cbac9"
+      "id": "5ef0cea5"
     },
     {
       "cell_type": "code",
@@ -141,7 +141,7 @@
         "# Calculate median consumption in USA\n",
         "print(np.median(usa_consumption['consumption']))"
       ],
-      "id": "529b08b6",
+      "id": "43edb502",
       "execution_count": null,
       "outputs": []
     },
@@ -167,7 +167,7 @@
         "- Crea un histograma de `co2_emissions` en el DataFrame `rice_consumption` y\n",
         "muestra el gráfico."
       ],
-      "id": "52cf1cda"
+      "id": "d071372c"
     },
     {
       "cell_type": "code",
@@ -176,7 +176,7 @@
         "# Import matplotlib.pyplot with alias plt\n",
         "import matplotlib.pyplot as plt"
       ],
-      "id": "8a942f82",
+      "id": "c55b16cb",
       "execution_count": null,
       "outputs": []
     },
@@ -188,7 +188,7 @@
         "rice_consumption = food_consumption[food_consumption['food_category'] == 'rice']\n",
         "print(rice_consumption.head())"
       ],
-      "id": "567bf8ad",
+      "id": "142a2532",
       "execution_count": null,
       "outputs": []
     },
@@ -200,7 +200,7 @@
         "plt.hist(rice_consumption['co2_emission'])\n",
         "plt.show()"
       ],
-      "id": "625f86f2",
+      "id": "f8fa495e",
       "execution_count": null,
       "outputs": []
     },
@@ -225,7 +225,7 @@
         "- Utiliza `.agg()` para calcular la media y la mediana de `co2_emissions`\n",
         "para el arroz."
       ],
-      "id": "2aa23e76"
+      "id": "8c822218"
     },
     {
       "cell_type": "code",
@@ -235,7 +235,7 @@
         "rice_consumption = food_consumption[food_consumption['food_category'] == 'rice']\n",
         "print(rice_consumption)"
       ],
-      "id": "cbd13f29",
+      "id": "1af182de",
       "execution_count": null,
       "outputs": []
     },
@@ -246,7 +246,7 @@
         "# Calculate mean and median of co2_emission with .agg()\n",
         "print(rice_consumption['co2_emission'].agg(['mean', 'median']))"
       ],
-      "id": "63915c01",
+      "id": "0b7f296c",
       "execution_count": null,
       "outputs": []
     },
@@ -294,7 +294,7 @@
         "\n",
         "### Encontrar valores atípicos mediante IQR"
       ],
-      "id": "b1b30289"
+      "id": "5f608ce0"
     }
   ],
   "metadata": {

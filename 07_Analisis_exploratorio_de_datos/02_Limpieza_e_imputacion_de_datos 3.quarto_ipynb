@@ -31,7 +31,7 @@
         "\n",
         "-   Revisando los datos faltantes"
       ],
-      "id": "0ee6475a"
+      "id": "dc7441bf"
     },
     {
       "cell_type": "code",
@@ -41,7 +41,7 @@
         "#| eval: false\n",
         "print(salaries.isna().sum())"
       ],
-      "id": "b721c92f",
+      "id": "cba39f5b",
       "execution_count": null,
       "outputs": []
     },
@@ -67,7 +67,7 @@
         "\n",
         "-   Eliminando valores faltantes"
       ],
-      "id": "39bb88f9"
+      "id": "474cec99"
     },
     {
       "cell_type": "code",
@@ -78,7 +78,7 @@
         "threshold = len(salaries) * 0.05\n",
         "print(threhold)"
       ],
-      "id": "c3ea7727",
+      "id": "e1d7bea6",
       "execution_count": null,
       "outputs": []
     },
@@ -88,7 +88,7 @@
       "source": [
         "![](images/paste-23.png)"
       ],
-      "id": "e9685fa6"
+      "id": "430889c0"
     },
     {
       "cell_type": "code",
@@ -99,7 +99,7 @@
         "cols_to_drop = salaries.columns[salaries.isna().sum() <= threshold]\n",
         "print(cols_to_drop)"
       ],
-      "id": "af131d0b",
+      "id": "68b90a0f",
       "execution_count": null,
       "outputs": []
     },
@@ -109,7 +109,7 @@
       "source": [
         "![](images/paste-24.png)"
       ],
-      "id": "09620e56"
+      "id": "55dd1b86"
     },
     {
       "cell_type": "code",
@@ -119,7 +119,7 @@
         "#| eval: false\n",
         "salaries.dropna(subset=cols_to_drop, inplace=True) # Para actualizar el DataFrame"
       ],
-      "id": "8f158461",
+      "id": "41ede100",
       "execution_count": null,
       "outputs": []
     },
@@ -129,7 +129,7 @@
       "source": [
         "-   Imputando una estadística de resumen"
       ],
-      "id": "f3755247"
+      "id": "1ecaa6dd"
     },
     {
       "cell_type": "code",
@@ -140,7 +140,7 @@
         "cols_with_missing_values = salaries.columns[salaries.isna().sum() > 0]\n",
         "print(cols_with_missing_values)"
       ],
-      "id": "cf6aea5b",
+      "id": "006a3fea",
       "execution_count": null,
       "outputs": []
     },
@@ -150,7 +150,7 @@
       "source": [
         "![](images/paste-25.png)"
       ],
-      "id": "5d76364d"
+      "id": "d0215933"
     },
     {
       "cell_type": "code",
@@ -161,7 +161,7 @@
         "    for col in cols_with_missing_values[:-1]:\n",
         "        salaries[col].fillna(salaries[col].mode()[0])"
       ],
-      "id": "8382ed21",
+      "id": "65e1595f",
       "execution_count": null,
       "outputs": []
     },
@@ -171,7 +171,7 @@
       "source": [
         "-   Revisando los valores faltantes que faltan"
       ],
-      "id": "dc610a69"
+      "id": "5ce24b17"
     },
     {
       "cell_type": "code",
@@ -181,7 +181,7 @@
         "#| eval: false\n",
         "print(salaries.isna().sum())"
       ],
-      "id": "d45dc86a",
+      "id": "05b3baf0",
       "execution_count": null,
       "outputs": []
     },
@@ -193,7 +193,7 @@
         "\n",
         "-   Imputando por subgrupo"
       ],
-      "id": "a6d87826"
+      "id": "025bf1fc"
     },
     {
       "cell_type": "code",
@@ -204,7 +204,7 @@
         "salaries_dict = salaries.groupby('Experience')['Salary_USD'].median().to_dict()\n",
         "print(salaries_dict)"
       ],
-      "id": "735a58c7",
+      "id": "e0820fe0",
       "execution_count": null,
       "outputs": []
     },
@@ -214,7 +214,7 @@
       "source": [
         "![](images/paste-27.png)"
       ],
-      "id": "872a75e6"
+      "id": "4623fc3f"
     },
     {
       "cell_type": "code",
@@ -224,7 +224,7 @@
         "#| eval: false\n",
         "salaries['Salary_USD'] = salaries['Salary_USD'].fillna(salaries['Experience'].map(salaries_dict))"
       ],
-      "id": "a7aaf9c4",
+      "id": "42d7fd06",
       "execution_count": null,
       "outputs": []
     },
@@ -242,7 +242,7 @@
         "\n",
         "Trabajando con un conjunto de datos sobre precios de tiquetes de avión, almacenado como un DataFrame de pandas llamado `planes`, tendrás que contar el número de valores perdidos en todas las columnas, calcular el cinco porciento de todos los valores, utilizar este umbral para eliminar observaciones y comprobar cuántos valores perdidos quedan en el conjunto de datos."
       ],
-      "id": "82e71d9e"
+      "id": "78e81bf6"
     },
     {
       "cell_type": "code",
@@ -254,7 +254,7 @@
         "planes = pd.read_csv(ruta)\n",
         "print(planes.head)"
       ],
-      "id": "1a294cb2",
+      "id": "1f917965",
       "execution_count": null,
       "outputs": []
     },
@@ -266,7 +266,7 @@
         "\n",
         "1.  Imprime el número de valores perdidos en cada columna del DataFrame"
       ],
-      "id": "7babf176"
+      "id": "70553321"
     },
     {
       "cell_type": "code",
@@ -275,7 +275,7 @@
         "# Count the number of missing values in each column\n",
         "print(planes.isna().sum())"
       ],
-      "id": "d7146ed6",
+      "id": "233e6550",
       "execution_count": null,
       "outputs": []
     },
@@ -285,7 +285,7 @@
       "source": [
         "2.  Calcula a cuántas observaciones equivale el cinco porciento del DataFrame `planes`"
       ],
-      "id": "c30ace14"
+      "id": "ea5d027d"
     },
     {
       "cell_type": "code",
@@ -295,7 +295,7 @@
         "threshold = len(planes) * 0.05\n",
         "print(threshold)"
       ],
-      "id": "0894675b",
+      "id": "f00afd3c",
       "execution_count": null,
       "outputs": []
     },
@@ -309,7 +309,7 @@
         "\n",
         "-   Utiliza este filtro para eliminar los valores que faltan y guardar el DataFrame actualizado."
       ],
-      "id": "69cbe5d8"
+      "id": "fb867fee"
     },
     {
       "cell_type": "code",
@@ -324,7 +324,7 @@
         "\n",
         "print(planes.isna().sum())"
       ],
-      "id": "fbc5fb5e",
+      "id": "1f658f62",
       "execution_count": null,
       "outputs": []
     },
@@ -342,7 +342,7 @@
         "\n",
         "Primero echarás un vistazo a lo que contiene `\"Additional_Info\"`, y después visualizarás el precio de los billetes de avión de distintas compañías aéreas."
       ],
-      "id": "08616d3e"
+      "id": "a115fba2"
     },
     {
       "cell_type": "code",
@@ -351,7 +351,7 @@
         "import matplotlib.pyplot as plt\n",
         "import seaborn as sns"
       ],
-      "id": "5b80764e",
+      "id": "50f20710",
       "execution_count": null,
       "outputs": []
     },
@@ -363,7 +363,7 @@
         "\n",
         "1.  Imprime los valores y frecuencias de `\"Additional_Info\"`."
       ],
-      "id": "bbbe97ee"
+      "id": "c69697d6"
     },
     {
       "cell_type": "code",
@@ -372,7 +372,7 @@
         "# Check the values of the Additional_Info column\n",
         "print(planes['Additional_Info'].value_counts())"
       ],
-      "id": "97ae71b2",
+      "id": "dfa1b590",
       "execution_count": null,
       "outputs": []
     },
@@ -382,7 +382,7 @@
       "source": [
         "2.  Crea un boxplot de `\"Price\"` frente a `\"Airline\"`"
       ],
-      "id": "ad6441bb"
+      "id": "182aea28"
     },
     {
       "cell_type": "code",
@@ -394,7 +394,7 @@
         "\n",
         "plt.show()"
       ],
-      "id": "9992bf77",
+      "id": "ef8cb29c",
       "execution_count": null,
       "outputs": []
     },
@@ -423,7 +423,7 @@
         "\n",
         "Como recordatorio, tú generaste este diagrama de caja, que sugería que imputar el precio medio basándose en el `\"Airline\"` ¡es un enfoque sólido!"
       ],
-      "id": "10dedcdd"
+      "id": "872a114e"
     },
     {
       "cell_type": "code",
@@ -433,7 +433,7 @@
         "planes = planes.drop('Additional_Info', axis=1)\n",
         "planes.columns"
       ],
-      "id": "554995af",
+      "id": "b08acd01",
       "execution_count": null,
       "outputs": []
     },
@@ -445,7 +445,7 @@
         "\n",
         "1.  Agrupa `planes` por aerolínea y calcula el precio medio."
       ],
-      "id": "d407d31b"
+      "id": "64f0249d"
     },
     {
       "cell_type": "code",
@@ -456,7 +456,7 @@
         "\n",
         "print(airline_prices)"
       ],
-      "id": "5de48362",
+      "id": "8690b744",
       "execution_count": null,
       "outputs": []
     },
@@ -466,7 +466,7 @@
       "source": [
         "2.  Convierte los precios medios agrupados en un diccionario."
       ],
-      "id": "e53c734e"
+      "id": "4780c676"
     },
     {
       "cell_type": "code",
@@ -476,7 +476,7 @@
         "prices_dict = airline_prices.to_dict()\n",
         "print(prices_dict)"
       ],
-      "id": "63d2e2a4",
+      "id": "8d009d13",
       "execution_count": null,
       "outputs": []
     },
@@ -490,7 +490,7 @@
         "\n",
         "-   Comprueba si faltan valores"
       ],
-      "id": "31dfc27b"
+      "id": "f68fea2f"
     },
     {
       "cell_type": "code",
@@ -502,7 +502,7 @@
         "# Check for missing values\n",
         "print(planes.isna().sum())"
       ],
-      "id": "3abfad5e",
+      "id": "642d837d",
       "execution_count": null,
       "outputs": []
     },
@@ -516,7 +516,7 @@
         "\n",
         "-   Previsualizar los datos"
       ],
-      "id": "bc4de631"
+      "id": "187933b8"
     },
     {
       "cell_type": "code",
@@ -526,7 +526,7 @@
         "#| eval: false\n",
         "print(salaries.select_dtypes('object').head())"
       ],
-      "id": "27b30bb7",
+      "id": "c2000601",
       "execution_count": null,
       "outputs": []
     },
@@ -538,7 +538,7 @@
         "\n",
         "-   Títulos de los trabajos"
       ],
-      "id": "7d16ebf8"
+      "id": "3fe44129"
     },
     {
       "cell_type": "code",
@@ -548,7 +548,7 @@
         "#| eval: false\n",
         "print(salaries['Designation'].value_counts())"
       ],
-      "id": "f252942f",
+      "id": "a374355b",
       "execution_count": null,
       "outputs": []
     },
@@ -558,7 +558,7 @@
       "source": [
         "![](images/paste-30.png)"
       ],
-      "id": "e00016c2"
+      "id": "29c65515"
     },
     {
       "cell_type": "code",
@@ -568,7 +568,7 @@
         "# | eval: false\n",
         "print(salaries['Designation'].nunique())"
       ],
-      "id": "5906c696",
+      "id": "9d2f4aae",
       "execution_count": null,
       "outputs": []
     },
@@ -588,7 +588,7 @@
         "\n",
         "        -   Busca en una columna una cadena especifica o múltiples cadenas."
       ],
-      "id": "a7cb0474"
+      "id": "91baf07c"
     },
     {
       "cell_type": "code",
@@ -598,7 +598,7 @@
         "#| eval: false\n",
         "salaries['Designation'].str.contains('Scientist')"
       ],
-      "id": "059c389f",
+      "id": "dfde1a2c",
       "execution_count": null,
       "outputs": []
     },
@@ -612,7 +612,7 @@
         "\n",
         "    -   Palabras de interes: Machine Learning o AI"
       ],
-      "id": "bac490fc"
+      "id": "b2a54e51"
     },
     {
       "cell_type": "code",
@@ -622,7 +622,7 @@
         "#| eval: false\n",
         "salaries['Designation'].str.contains('Machine Learning|AI')"
       ],
-      "id": "e4e5e03e",
+      "id": "54dc4927",
       "execution_count": null,
       "outputs": []
     },
@@ -636,7 +636,7 @@
         "\n",
         "    -   Palabras de interes: Cualquiera que inicie con Data"
       ],
-      "id": "dbc783bc"
+      "id": "512abd5e"
     },
     {
       "cell_type": "code",
@@ -646,7 +646,7 @@
         "# | eval: false\n",
         "salaries['Designation'].str.contains('ˆData')"
       ],
-      "id": "f8c0ca1b",
+      "id": "be0585b7",
       "execution_count": null,
       "outputs": []
     },
@@ -658,7 +658,7 @@
         "\n",
         "Ahora que se tiene una idea de cómo funciona este método, definamos una lista de títulos de trabajo que queremos encontrar:"
       ],
-      "id": "13bb2e33"
+      "id": "75f47aab"
     },
     {
       "cell_type": "code",
@@ -670,7 +670,7 @@
         "                   'Data Engineering', 'Machine Learning',\n",
         "                   'Managerial', 'Consultant']"
       ],
-      "id": "1529fa7c",
+      "id": "af1d65ba",
       "execution_count": null,
       "outputs": []
     },
@@ -680,7 +680,7 @@
       "source": [
         "Luego necesitamos crear variables que contengan nuestros filtros"
       ],
-      "id": "6506e1b2"
+      "id": "d036f25f"
     },
     {
       "cell_type": "code",
@@ -695,7 +695,7 @@
         "manager = 'Manager|Head|Director|Lead|Principal|Staff'\n",
         "consultant = 'Consultant|Freelance'"
       ],
-      "id": "a547f59b",
+      "id": "adbfaf94",
       "execution_count": null,
       "outputs": []
     },
@@ -705,7 +705,7 @@
       "source": [
         "El siguiente paso es crear una lista con nuestro rango de condiciones para el método `str.contains`"
       ],
-      "id": "34e3414b"
+      "id": "645fbe1f"
     },
     {
       "cell_type": "code",
@@ -722,7 +722,7 @@
         "    (salaries['Designation'].str.contains(consultant))\n",
         "]"
       ],
-      "id": "661bfdd6",
+      "id": "23e5cbb0",
       "execution_count": null,
       "outputs": []
     },
@@ -732,7 +732,7 @@
       "source": [
         "Finalmente, podemos crear nuestra nueva columna `Job_Category` usando la función de selección de Numpy"
       ],
-      "id": "bbbe0ad4"
+      "id": "f54ac97f"
     },
     {
       "cell_type": "code",
@@ -744,7 +744,7 @@
         "                                     job_categories,\n",
         "                                     default='Other')"
       ],
-      "id": "7cea2959",
+      "id": "97514a36",
       "execution_count": null,
       "outputs": []
     },
@@ -754,7 +754,7 @@
       "source": [
         "Al obtener una vista previa de la Designación y nuestra nueva columna Job_Category, podemos verificar los primeros cinco valores."
       ],
-      "id": "e0d70992"
+      "id": "ddb81f43"
     },
     {
       "cell_type": "code",
@@ -764,7 +764,7 @@
         "#| eval: false\n",
         "print(salaries[['Designation', 'Job_Category']].head())"
       ],
-      "id": "2f992dfc",
+      "id": "c75184b1",
       "execution_count": null,
       "outputs": []
     },
@@ -776,7 +776,7 @@
         "\n",
         "-   Visualización de la frecuencia de la categoría job"
       ],
-      "id": "c4b186d6"
+      "id": "8797c964"
     },
     {
       "cell_type": "code",
@@ -787,7 +787,7 @@
         "sns.countplot(data=salaries, x='Job_Category')\n",
         "plt.show()"
       ],
-      "id": "fbc0e0a2",
+      "id": "00960c03",
       "execution_count": null,
       "outputs": []
     },
@@ -809,7 +809,7 @@
         "\n",
         "-   Añade el iterador de columna a la sentencia print y, a continucación, llama a la función para que devuelva el número de valores únicos de la columna."
       ],
-      "id": "563bae33"
+      "id": "ef7f003c"
     },
     {
       "cell_type": "code",
@@ -823,7 +823,7 @@
         "    # Print the number of unique values\n",
         "    print(f\"Number of unique values in {column} column: {non_numeric[column].nunique()}\")"
       ],
-      "id": "1a3d6054",
+      "id": "2a272845",
       "execution_count": null,
       "outputs": []
     },
@@ -837,7 +837,7 @@
         "\n",
         "Como has visto, hay 362 valores únicos en la columna `\"Duration\"` de `planes`. Llamando a `planes['Duration'].head()`, vemos los siguientes valores."
       ],
-      "id": "7a7f2e5a"
+      "id": "b3c2e533"
     },
     {
       "cell_type": "code",
@@ -846,7 +846,7 @@
         "#| echo: false\n",
         "planes['Duration'].head()"
       ],
-      "id": "617f860d",
+      "id": "3a7f5a62",
       "execution_count": null,
       "outputs": []
     },
@@ -862,7 +862,7 @@
         "\n",
         "1.  Crea una lista de categorías que contengan `\"Short-haul\"`, `\"Medium\"` y `\"Long-haul\"`."
       ],
-      "id": "752e4e0e"
+      "id": "a78d43f3"
     },
     {
       "cell_type": "code",
@@ -871,7 +871,7 @@
         "# Create a list of categories\n",
         "flight_categories = ['Short-haul', 'Medium', 'Long-haul']"
       ],
-      "id": "4dfa3054",
+      "id": "beba984a",
       "execution_count": null,
       "outputs": []
     },
@@ -887,7 +887,7 @@
         "\n",
         "-   Crea `long_flights` para capturar cualquier valor comprendido entre 10 y 16 horas, ambos inclusive."
       ],
-      "id": "571d9e43"
+      "id": "5178e41c"
     },
     {
       "cell_type": "code",
@@ -905,7 +905,7 @@
         "# Create long-haul values\n",
         "long_flights = '^10h|^11h|^12h|^13h|^14h|^15h|^16h'"
       ],
-      "id": "6ba4305c",
+      "id": "86578be9",
       "execution_count": null,
       "outputs": []
     },
@@ -921,7 +921,7 @@
         "\n",
         "Las variables`flight_categories`, `short_flights`, `medium_flights` y `long_flights` que creaste anteriormente están a tu disposición."
       ],
-      "id": "2ced7955"
+      "id": "071809d6"
     },
     {
       "cell_type": "code",
@@ -929,7 +929,7 @@
       "source": [
         "import numpy as np"
       ],
-      "id": "d4cb9ab8",
+      "id": "22d89df3",
       "execution_count": null,
       "outputs": []
     },
@@ -945,7 +945,7 @@
         "\n",
         "-   Crea un gráfico fque muestre el recuento de cada categoría."
       ],
-      "id": "e3bbc40a"
+      "id": "c8f081bf"
     },
     {
       "cell_type": "code",
@@ -967,7 +967,7 @@
         "              hue='Duration_Category', legend=False)\n",
         "plt.show()"
       ],
-      "id": "7841e001",
+      "id": "adbf2ae9",
       "execution_count": null,
       "outputs": []
     },
@@ -981,7 +981,7 @@
         "\n",
         "-   El dataset origina de los salarios"
       ],
-      "id": "9aeb2824"
+      "id": "617b1ffd"
     },
     {
       "cell_type": "code",
@@ -991,7 +991,7 @@
         "#| eval: false\n",
         "print(salaries.info())"
       ],
-      "id": "295e4c12",
+      "id": "a51ea7c5",
       "execution_count": null,
       "outputs": []
     },
@@ -1003,7 +1003,7 @@
         "\n",
         "-   Salario en Rupias"
       ],
-      "id": "58310fd4"
+      "id": "d57bb52c"
     },
     {
       "cell_type": "code",
@@ -1013,7 +1013,7 @@
         "#| eval: false\n",
         "print(salaries['Salary_In_Rupees'].head())"
       ],
-      "id": "59ac5767",
+      "id": "7978b4d5",
       "execution_count": null,
       "outputs": []
     },
@@ -1031,7 +1031,7 @@
         "\n",
         "    -   Crear una nueva columna convirtiendo la moneda a dólares"
       ],
-      "id": "bba0407c"
+      "id": "4d6eb0ee"
     },
     {
       "cell_type": "code",
@@ -1041,7 +1041,7 @@
         "#| eval: false\n",
         "pd.Series.str.replace('Caracter a remover', 'Caracter a reemplazar')"
       ],
-      "id": "308de657",
+      "id": "0c916e53",
       "execution_count": null,
       "outputs": []
     },
@@ -1054,7 +1054,7 @@
         "salaries['Salary_In_Rupees'] = salaries['Salary_In_Rupees'].str.replace(',', '')\n",
         "print(salaries['Salary_In_Rupees'].head())"
       ],
-      "id": "43013a74",
+      "id": "c776b43f",
       "execution_count": null,
       "outputs": []
     },
@@ -1064,7 +1064,7 @@
       "source": [
         "![](images/paste-40.png)"
       ],
-      "id": "38967818"
+      "id": "87177507"
     },
     {
       "cell_type": "code",
@@ -1074,7 +1074,7 @@
         "#| eval: false\n",
         "salaries['Salary_In_Rupees'] = salaries['Salary_In_Rupees'].astype(float) "
       ],
-      "id": "226ad124",
+      "id": "5db55262",
       "execution_count": null,
       "outputs": []
     },
@@ -1084,7 +1084,7 @@
       "source": [
         "1 Indian Rupee = 0.012 US Dollars"
       ],
-      "id": "ff50c647"
+      "id": "8eafc617"
     },
     {
       "cell_type": "code",
@@ -1094,7 +1094,7 @@
         "#| eval: false\n",
         "salaries['Salary_USD'] = salaries['Salary_In_Rupees'] * 0.012"
       ],
-      "id": "b4e89e81",
+      "id": "84cab22e",
       "execution_count": null,
       "outputs": []
     },
@@ -1104,7 +1104,7 @@
       "source": [
         "-   Previsualizando la nueva columna"
       ],
-      "id": "0c98693a"
+      "id": "051aaea8"
     },
     {
       "cell_type": "code",
@@ -1114,7 +1114,7 @@
         "#| eval: false\n",
         "print(salaries[['Salary_In_Rupees', 'Salary_USD']].head())"
       ],
-      "id": "6441ad02",
+      "id": "6248a97c",
       "execution_count": null,
       "outputs": []
     },
@@ -1126,7 +1126,7 @@
         "\n",
         "-   Añadiendo un resumen esrtadístico al DataFrame"
       ],
-      "id": "153504e4"
+      "id": "ee5005cb"
     },
     {
       "cell_type": "code",
@@ -1136,7 +1136,7 @@
         "#| eval: false\n",
         "salaries.groupby('Company_Size')['Salary_USD'].mean()"
       ],
-      "id": "48018c34",
+      "id": "3bc37ac1",
       "execution_count": null,
       "outputs": []
     },
@@ -1150,7 +1150,7 @@
         "\n",
         "![](images/paste-43.png)"
       ],
-      "id": "70a92e6e"
+      "id": "9ed648db"
     },
     {
       "cell_type": "code",
@@ -1161,7 +1161,7 @@
         "salaries['std_dev'] = salaries.groupby('Experience') \\ \n",
         "                      ['Salary_USD'].transform(lambda x: x.std())"
       ],
-      "id": "c40fc410",
+      "id": "c7d10e77",
       "execution_count": null,
       "outputs": []
     },
@@ -1173,7 +1173,7 @@
         "#| eval: false\n",
         "print(salaries[['Experience', 'std_dev']].value_counts())"
       ],
-      "id": "bf915ca3",
+      "id": "7e6b15ae",
       "execution_count": null,
       "outputs": []
     },
@@ -1185,7 +1185,7 @@
         "\n",
         "Repitamos el proceso para otros datos estadísticos:"
       ],
-      "id": "bd8852b1"
+      "id": "c48f660b"
     },
     {
       "cell_type": "code",
@@ -1196,7 +1196,7 @@
         "salaries['median_by_comp_size'] = salaries.groupby('Company_Size') \\\n",
         "                                  ['Salary_USD'].transform(lambda x: x.median())"
       ],
-      "id": "81e60132",
+      "id": "c54adc75",
       "execution_count": null,
       "outputs": []
     },
@@ -1208,7 +1208,7 @@
         "#| eval: false\n",
         "print(salaries[['Company_Size', 'median_by_comp_size']].head())"
       ],
-      "id": "0233d8d0",
+      "id": "e57dbc2b",
       "execution_count": null,
       "outputs": []
     },
@@ -1224,7 +1224,7 @@
         "\n",
         "Tendrás que limpiar la columna y convertirla al tipo de datos correcto para el análisis."
       ],
-      "id": "246d17f3"
+      "id": "48dec193"
     },
     {
       "cell_type": "code",
@@ -1259,7 +1259,7 @@
         "\n",
         "planes['Duration'] = planes['Duration'].apply(duration_to_decimal_str)"
       ],
-      "id": "e27cce8d",
+      "id": "382edc3e",
       "execution_count": null,
       "outputs": []
     },
@@ -1271,7 +1271,7 @@
         "\n",
         "1.  Imprime los cinco primeros valores de la columna `\"Duration\"`."
       ],
-      "id": "3f7c3af0"
+      "id": "360b171c"
     },
     {
       "cell_type": "code",
@@ -1280,7 +1280,7 @@
         "# Preview the column\n",
         "print(planes['Duration'].head())"
       ],
-      "id": "696a2e13",
+      "id": "7bf90088",
       "execution_count": null,
       "outputs": []
     },
@@ -1290,7 +1290,7 @@
       "source": [
         "2.  Retira `\"h\"` de la columna"
       ],
-      "id": "0fc8dc9f"
+      "id": "16a8d7ba"
     },
     {
       "cell_type": "code",
@@ -1300,7 +1300,7 @@
         "planes['Duration'] = planes['Duration'].str.replace('h', '')\n",
         "print(planes['Duration'].head())"
       ],
-      "id": "736aeffc",
+      "id": "15791119",
       "execution_count": null,
       "outputs": []
     },
@@ -1310,7 +1310,7 @@
       "source": [
         "3.  Convierte la columna al tipo de datos `float`."
       ],
-      "id": "a9bfaf52"
+      "id": "874dedb2"
     },
     {
       "cell_type": "code",
@@ -1320,7 +1320,7 @@
         "planes['Duration'] = planes['Duration'].astype(float)\n",
         "print(planes['Duration'].head())"
       ],
-      "id": "0180dddc",
+      "id": "0bc18d95",
       "execution_count": null,
       "outputs": []
     },
@@ -1330,7 +1330,7 @@
       "source": [
         "4.  Traza un histograma de los valores de `\"Duration\"`"
       ],
-      "id": "01a1be6a"
+      "id": "0903a1ec"
     },
     {
       "cell_type": "code",
@@ -1340,7 +1340,7 @@
         "sns.histplot(data=planes, x='Duration')\n",
         "plt.show()"
       ],
-      "id": "1d993e7c",
+      "id": "0a1dd073",
       "execution_count": null,
       "outputs": []
     },
@@ -1356,7 +1356,7 @@
         "\n",
         "1.  Añade una columna a `planes` que contenga la desviación estándar de `\"Price\"` basada en `\"Airline\"`."
       ],
-      "id": "d2bbfc7d"
+      "id": "0f82a87d"
     },
     {
       "cell_type": "code",
@@ -1366,7 +1366,7 @@
         "planes['airline_price_st_dev'] = planes.groupby('Airline')['Price'].transform(lambda x: x.std())\n",
         "print(planes[['Airline', 'airline_price_st_dev']].value_counts())"
       ],
-      "id": "25151803",
+      "id": "2e21073f",
       "execution_count": null,
       "outputs": []
     },
@@ -1376,7 +1376,7 @@
       "source": [
         "2.  Calcula la mediana de `\"Duration\"` en `\"Airline\"`, almacenándola como una columna llamada `\"airline_median_duration\"`."
       ],
-      "id": "284bf136"
+      "id": "f6e19933"
     },
     {
       "cell_type": "code",
@@ -1386,7 +1386,7 @@
         "planes['airline_median_duration'] = planes.groupby('Airline')['Duration'].transform(lambda x: x.median())\n",
         "print(planes[['Airline', 'airline_median_duration']].value_counts())"
       ],
-      "id": "45e6141b",
+      "id": "745c536c",
       "execution_count": null,
       "outputs": []
     },
@@ -1396,7 +1396,7 @@
       "source": [
         "3.  Encuenta la media `\"Price\"` por `\"Destination\"`, guardándola como una columna llamada `\"price_destination_mean\"`."
       ],
-      "id": "bc7046cc"
+      "id": "841dd6e8"
     },
     {
       "cell_type": "code",
@@ -1406,7 +1406,7 @@
         "planes['price_destination_mean'] = planes.groupby('Destination')['Price'].transform(lambda x: x.mean())\n",
         "print(planes[['Destination', 'price_destination_mean']].value_counts())"
       ],
-      "id": "d9ce037c",
+      "id": "eee42207",
       "execution_count": null,
       "outputs": []
     },
@@ -1422,7 +1422,7 @@
         "    -   Es una observación que está muy alejada de otros puntos de datos.\n",
         "-   Usando estadística descriptiva"
       ],
-      "id": "fdfac6e2"
+      "id": "1c81b181"
     },
     {
       "cell_type": "code",
@@ -1432,7 +1432,7 @@
         "#| eval: false\n",
         "print(salaries['Salary_USD'].describe())"
       ],
-      "id": "c3948ae1",
+      "id": "51048e05",
       "execution_count": null,
       "outputs": []
     },
@@ -1452,7 +1452,7 @@
         "\n",
         "        -   Lower Outliers \\< 25th percentile - (1.5 \\* IQR)"
       ],
-      "id": "c4e4924c"
+      "id": "de78e39f"
     },
     {
       "cell_type": "code",
@@ -1463,7 +1463,7 @@
         "sns.boxplot(data=salaries, y='Salaary_USD')\n",
         "plt.show()"
       ],
-      "id": "eca716b6",
+      "id": "a93aa245",
       "execution_count": null,
       "outputs": []
     },
@@ -1475,7 +1475,7 @@
         "\n",
         "-   Identificando Umbrales"
       ],
-      "id": "58f16328"
+      "id": "3db64804"
     },
     {
       "cell_type": "code",
@@ -1494,7 +1494,7 @@
         "\n",
         "print(salaries_iqr)"
       ],
-      "id": "482b312b",
+      "id": "75c3d9f2",
       "execution_count": null,
       "outputs": []
     },
@@ -1504,7 +1504,7 @@
       "source": [
         "![](images/paste-48.png)"
       ],
-      "id": "c6612f64"
+      "id": "81722f07"
     },
     {
       "cell_type": "code",
@@ -1520,7 +1520,7 @@
         "\n",
         "print(upper, lower)"
       ],
-      "id": "3e0f65f6",
+      "id": "8b4d4746",
       "execution_count": null,
       "outputs": []
     },
@@ -1532,7 +1532,7 @@
         "\n",
         "-   Subdividiendo nuestros datos"
       ],
-      "id": "c5981664"
+      "id": "3a56d73b"
     },
     {
       "cell_type": "code",
@@ -1543,7 +1543,7 @@
         "salaries[(salaries['Salary_USD'] < lower) | (salaries['Salary_USD'] > upper)] \\\n",
         "        [['Experience', 'Employee_Location', 'Salary_USD']]"
       ],
-      "id": "c554c162",
+      "id": "8d4957d2",
       "execution_count": null,
       "outputs": []
     },
@@ -1573,7 +1573,7 @@
         "\n",
         "-   Eliminación de Outliers"
       ],
-      "id": "9e2a3162"
+      "id": "78116ce6"
     },
     {
       "cell_type": "code",
@@ -1583,7 +1583,7 @@
         "#| eval: false\n",
         "no_outliers = salaries[(salaries['Salar_USD'] > lower) & (salaries['Salary_USD'] < upper)]"
       ],
-      "id": "4a80c5e5",
+      "id": "aba1e1d8",
       "execution_count": null,
       "outputs": []
     },
@@ -1595,7 +1595,7 @@
         "#| eval: false\n",
         "print(no_outliers['Salary_USD'].describe())"
       ],
-      "id": "1ccc198e",
+      "id": "8fce2411",
       "execution_count": null,
       "outputs": []
     },
@@ -1638,7 +1638,7 @@
         "\n",
         "1. Traza la distribución de la columna `\"Price\"` de `planes`.\n"
       ],
-      "id": "b376b646"
+      "id": "01c7321a"
     },
     {
       "cell_type": "code",
@@ -1648,7 +1648,7 @@
         "sns.histplot(data=planes, x='Price')\n",
         "plt.show()"
       ],
-      "id": "cc9d4b49",
+      "id": "3b6411ee",
       "execution_count": null,
       "outputs": []
     },
@@ -1658,7 +1658,7 @@
       "source": [
         "2. Muestra las estadísticas descriptivas de la duración del vuelo.\n"
       ],
-      "id": "fa305309"
+      "id": "a741dad5"
     },
     {
       "cell_type": "code",
@@ -1667,7 +1667,7 @@
         "# Display descriptive statistics for flight duration\n",
         "print(planes['Duration'].describe())"
       ],
-      "id": "e0320255",
+      "id": "4549a3d7",
       "execution_count": null,
       "outputs": []
     },
@@ -1699,7 +1699,7 @@
         "\n",
         "1. Halla los percentiles 75 y 25, guardando como `price_seventy_fifth` y `price_twenty_fifth` respectivamente.\n"
       ],
-      "id": "f5005e4f"
+      "id": "58709b7c"
     },
     {
       "cell_type": "code",
@@ -1709,7 +1709,7 @@
         "price_seventy_fifth = planes['Price'].quantile(0.75)\n",
         "price_twenty_fifth = planes['Price'].quantile(0.25)"
       ],
-      "id": "8550d7a5",
+      "id": "cca269be",
       "execution_count": null,
       "outputs": []
     },
@@ -1719,7 +1719,7 @@
       "source": [
         "2. Calcula el IQR, almacenándolo como `prices_iqr`.\n"
       ],
-      "id": "15acf0a3"
+      "id": "7b3f36ad"
     },
     {
       "cell_type": "code",
@@ -1729,7 +1729,7 @@
         "prices_iqr = price_seventy_fifth - price_twenty_fifth\n",
         "print(prices_iqr)"
       ],
-      "id": "7d13a900",
+      "id": "6ad906da",
       "execution_count": null,
       "outputs": []
     },
@@ -1739,7 +1739,7 @@
       "source": [
         "3. Calcula los umbrales superior e inferior de los valores atípicos.\n"
       ],
-      "id": "d0943a5b"
+      "id": "a3bc0f25"
     },
     {
       "cell_type": "code",
@@ -1749,7 +1749,7 @@
         "upper = price_seventy_fifth + (1.5 * prices_iqr)\n",
         "lower = price_twenty_fifth - (1.5 * prices_iqr)"
       ],
-      "id": "6a808e47",
+      "id": "6ac6fede",
       "execution_count": null,
       "outputs": []
     },
@@ -1759,7 +1759,7 @@
       "source": [
         "4. Elimina los valores atípicos de `planes`.\n"
       ],
-      "id": "88ca8d1e"
+      "id": "1d1adcf7"
     },
     {
       "cell_type": "code",
@@ -1770,7 +1770,7 @@
         "\n",
         "print(planes['Price'].describe())"
       ],
-      "id": "2cba969e",
+      "id": "0d60b8fe",
       "execution_count": null,
       "outputs": []
     },
@@ -1780,7 +1780,7 @@
       "source": [
         "¡Habilidades ridículas para eliminar valores atípicos! Lograste crear umbrales basados en el IQR y los usaste para filtrar el conjunto de datos `planes` para eliminar precios extremos. Originalmente, el conjunto de datos tenía un precio máximo de casi 55000, pero la salida de `planes['Price'].describe()` muestra que el máximo se ha reducido a alrededor de 23000, ¡reflejando una distribución menos sesgada para el análisis!\n"
       ],
-      "id": "d4145d35"
+      "id": "8d7cc5f2"
     }
   ],
   "metadata": {

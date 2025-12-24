@@ -761,14 +761,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul></li>
 <li><p>Points vs.&nbsp;Flavor: Población</p></li>
 </ul>
-<div id="553ea0c4" class="cell" data-execution_count="1">
+<div id="bf925afc" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pts_vs_flavor_pop <span class="op">=</span> coffee_ratings[[<span class="st">"total_points"</span>, <span class="st">"flavor"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img src="images/paste-2.png" class="img-fluid"></p>
 <ul>
 <li>Points vs.&nbsp;Flavor: 10 filas de muestra</li>
 </ul>
-<div id="875bd861" class="cell" data-execution_count="2">
+<div id="1dbdf0ce" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>pts_vs_flavor_samp <span class="op">=</span> pts_vs_flavor_pop.sample(n<span class="op">=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img src="images/paste-3.png" class="img-fluid"></p>
@@ -779,7 +779,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Use <code>.sample()</code> en <code>pandas</code> para DataFrames y Series.</li>
 </ul></li>
 </ul>
-<div id="3f48930c" class="cell" data-execution_count="3">
+<div id="63b3d7ec" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>cup_points_samp <span class="op">=</span> coffe_ratings[<span class="st">'total_cup_points'</span>].sample(n<span class="op">=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img src="images/paste-4.png" class="img-fluid"></p>
@@ -787,13 +787,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Parámetros de Población &amp; Puntos Estimados</p>
 <p>Un parámetro de población es un cálculo realizado sobre el conjunto de datos de población.</p></li>
 </ul>
-<div id="5f123581" class="cell" data-execution_count="4">
+<div id="21655a5a" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>np.mean(pts_vs_flavor_pop[<span class="st">'total_cup_points'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img src="images/paste-5.png" class="img-fluid"></p>
 <p>Una estimación puntual o estadística de muestra, es un cálculo basado en el conjunto de datos de muestra.</p>
-<div id="04d8fbde" class="cell" data-execution_count="5">
+<div id="372631f8" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>np.mean(cup_points_samp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img src="images/paste-6.png" class="img-fluid"></p>
@@ -801,11 +801,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Puntos estimados con pandas</p>
 <p>Trabajar con pandas puede ser más fácil que trabajar con Numpy. Estos cálculos de media se pueden realizar utilizando el método de pandas <code>.mean()</code></p></li>
 </ul>
-<div id="4abbaa90" class="cell" data-execution_count="6">
+<div id="1a5c73b9" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>pts_vs_flavor_pop[<span class="st">'flavor'</span>].mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img src="images/paste-7.png" class="img-fluid"></p>
-<div id="f115165a" class="cell" data-execution_count="7">
+<div id="18a410fc" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>pts_vs_flavor_samp[<span class="st">'flavor'</span>].mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img src="images/paste-8.png" class="img-fluid"></p>
@@ -826,7 +826,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="muestreo-simple-con-pandas">Muestreo simple con pandas</h3>
 <p>A lo largo de este capítulo , explorarás los datos de canciones de Spotify. Cada fila de este conjunto de datos de población representa una canción, y hay más de 40000 filas. Las columnas incluyen el nombre de la canción, los artistas que la interpretaron, al año de lanzamiento y atributos de la canción como su duración, tempo y bailabilidad. Empezarás por fijarte en las duraciones.</p>
 <p>Tu primera tarea es tomar una muestra del conjunto de datos de Spotify y comparar la duración media de la población con la de la muestra.</p>
-<div id="e75b9a29" class="cell" data-execution_count="8">
+<div id="44b38855" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>ruta <span class="op">=</span> <span class="st">'./data/spotify_2000_2020.feather'</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>spotify_population <span class="op">=</span> pd.read_feather(ruta)</span>
@@ -988,77 +988,77 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol type="1">
 <li>Muestra 1000 filas de <code>spotify_population</code>, asignándolas a <code>spotify_sample</code>.</li>
 </ol>
-<div id="2df63e41" class="cell" data-execution_count="9">
+<div id="4f4e92b2" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sample 1000 rows from spotify_population</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>spotify_sample <span class="op">=</span> spotify_population.sample(n<span class="op">=</span><span class="dv">1000</span>)</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># print sample</span></span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(spotify_sample)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>       acousticness                     artists  danceability  duration_ms  \
-16884      0.001610  ['Thirty Seconds To Mars']         0.409     209200.0   
-25765      0.090200          ['Britney Spears']         0.769     212107.0   
-22012      0.278000         ['Miranda Lambert']         0.768     177773.0   
-9761       0.025600                ['Paramore']         0.450     212560.0   
-26274      0.923000        ['Sleeping At Last']         0.307     255893.0   
-...             ...                         ...           ...          ...   
-3636       0.080800                     ['BTS']         0.704     244156.0   
-21772      0.000165       ['Breaking Benjamin']         0.533     216733.0   
-33683      0.235000     ['Jesús Adrián Romero']         0.620     289267.0   
-29599      0.005350               ['Rammstein']         0.470     272413.0   
-10970      0.147000           ['George Strait']         0.657     125747.0   
+<pre><code>       acousticness                                            artists  \
+24420       0.00205                                      ['Bleachers']   
+8211        0.00223                                    ['Tame Impala']   
+27654       0.03400                                            ['Sia']   
+41072       0.00254                                          ['Ghost']   
+2053        0.46600  ['YoungBoy Never Broke Again', 'Sherhonda Gaul...   
+...             ...                                                ...   
+23516       0.22500                                    ['KT Tunstall']   
+16026       0.11900                               ['Childish Gambino']   
+18643       0.97300                                         ['O.A.S.']   
+13041       0.99100             ['Scott Joplin', 'Alexander Peskanov']   
+15041       0.70500                                ['Black Eyed Peas']   
 
-       duration_minutes  energy  explicit                      id  \
-16884          3.486667   0.680       0.0  70xJ1zSbe2q5ZXy65xvafi   
-25765          3.535117   0.638       0.0  2EvwLVrnYbCZEG6Kx5DCRy   
-22012          2.962883   0.809       0.0  2mXsZsJBThTaJXbNcg5QD4   
-9761           3.542667   0.787       0.0  6JmV5cyTQ934NxLY4Z0tg1   
-26274          4.264883   0.371       0.0  2kfGoV9a5dbSKCNmUWH2ZF   
-...                 ...     ...       ...                     ...   
-3636           4.069267   0.959       0.0  1pePqg6hTMeaTZNNECqT03   
-21772          3.612217   0.955       0.0  2yXyz4NLTZx9CLdXfLTp5E   
-33683          4.821117   0.452       0.0  0gXU1CElwOF59DWIVTCM07   
-29599          4.540217   0.959       0.0  2OQRceDfxBfmwTEmNOSpFq   
-10970          2.095783   0.741       0.0  4os3f5S5e1HJbjAOPleMhi   
+       danceability  duration_ms  duration_minutes  energy  explicit  \
+24420         0.421     188867.0          3.147783  0.7900       0.0   
+8211          0.546     292267.0          4.871117  0.8590       0.0   
+27654         0.544     274933.0          4.582217  0.6300       0.0   
+41072         0.555     362093.0          6.034883  0.7980       0.0   
+2053          0.579     187141.0          3.119017  0.5650       1.0   
+...             ...          ...               ...     ...       ...   
+23516         0.587     201707.0          3.361783  0.7670       0.0   
+16026         0.676     234215.0          3.903583  0.4460       0.0   
+18643         0.111     206997.0          3.449950  0.0597       0.0   
+13041         0.406     189907.0          3.165117  0.2260       0.0   
+15041         0.853     174907.0          2.915117  0.3920       0.0   
 
-       instrumentalness   key  liveness  loudness  mode  \
-16884          0.001240   5.0    0.1020    -7.090   0.0   
-25765          0.000000  11.0    0.0857    -5.054   1.0   
-22012          0.000000   4.0    0.1390    -4.204   0.0   
-9761           0.000001   6.0    0.1090    -3.913   1.0   
-26274          0.025300   3.0    0.1100    -8.498   1.0   
-...                 ...   ...       ...       ...   ...   
-3636           0.000000   1.0    0.3830    -2.607   0.0   
-21772          0.000014   8.0    0.3800    -3.708   1.0   
-33683          0.000003   7.0    0.1410    -9.533   1.0   
-29599          0.010100  10.0    0.1410    -4.338   1.0   
-10970          0.000000   6.0    0.2410    -7.038   1.0   
+                           id  instrumentalness   key  liveness  loudness  \
+24420  5L95vS64rG1YMIFm1hLjyZ          0.000309  10.0    0.1480    -6.227   
+8211   2drEUEg0TYQR6dDEHkpuPE          0.000947   1.0    0.0529    -5.966   
+27654  6hrgeEo1WQOHVeF8QMv68S          0.573000   0.0    0.0961    -7.523   
+41072  3ZXZ9RMsznqgyHnyq0K5FL          0.000015   3.0    0.1710    -5.658   
+2053   6vXJljkoTUWjPXFRfuBbgZ          0.000000  11.0    0.2260    -6.901   
+...                       ...               ...   ...       ...       ...   
+23516  5p9XWUdvbUzmPCukOmwoU3          0.000000   0.0    0.1120    -5.713   
+16026  1rfJQpYr0clcyXssjQjk4T          0.000000   6.0    0.1120    -7.153   
+18643  1I217X8W4dL6niEzXOf2nQ          0.964000   0.0    0.1050   -28.951   
+13041  4AE032Y0x1WPOi5CsmggnU          0.882000   8.0    0.2450   -22.866   
+15041  48FtJnNrSYrxZOh6Ktf9Zf          0.002830   4.0    0.5960    -5.819   
 
-                             name  popularity release_date  speechiness  \
-16884                    Oblivion        44.0   2002-01-01       0.0774   
-25765                 Piece of Me        64.0   2007-10-25       0.2160   
-22012         Mama's Broken Heart        67.0   2011-11-01       0.0616   
-9761   (One of Those) Crazy Girls        53.0   2013-04-05       0.0403   
-26274                Turning Page        68.0   2012-06-18       0.0288   
-...                           ...         ...          ...          ...   
-3636                Boyz with Fun        62.0   2015-04-29       0.1920   
-21772              I Will Not Bow        71.0   2009-01-01       0.0653   
-33683             Que Sería De Mi        56.0   2003-05-07       0.0265   
-29599                   MEIN TEIL        54.0   2004-09-27       0.0750   
-10970                 The Big One        39.0   2004-01-01       0.0287   
+       mode                                        name  popularity  \
+24420   1.0                               Rollercoaster        66.0   
+8211    1.0                                    Patience        66.0   
+27654   1.0                                  Breathe Me        52.0   
+41072   1.0                                      Cirice        56.0   
+2053    1.0  Bout My Business (feat. Sherhonda Gaulden)        63.0   
+...     ...                                         ...         ...   
+23516   1.0                              Suddenly I See        68.0   
+16026   0.0                                     V. 3005        48.0   
+18643   1.0                                Jupiter Song        60.0   
+13041   1.0                              Maple Leaf Rag        44.0   
+15041   0.0                                The Apl Song        41.0   
 
-         tempo  valence    year  
-16884   94.910    0.300  2002.0  
-25765  115.007    0.782  2007.0  
-22012  111.989    0.748  2011.0  
-9761   122.994    0.486  2013.0  
-26274  115.241    0.189  2012.0  
-...        ...      ...     ...  
-3636   116.024    0.751  2015.0  
-21772  107.984    0.550  2009.0  
-33683  108.975    0.109  2003.0  
-29599   88.000    0.199  2004.0  
-10970  128.766    0.885  2004.0  
+      release_date  speechiness    tempo  valence    year  
+24420   2014-07-14       0.0538  162.024    0.279  2014.0  
+8211    2019-03-22       0.0306   99.965    0.645  2019.0  
+27654   2005-01-01       0.0335  120.064    0.202  2005.0  
+41072   2015-01-01       0.0279   89.987    0.284  2015.0  
+2053    2020-04-24       0.4180   83.973    0.631  2020.0  
+...            ...          ...      ...      ...     ...  
+23516   2005-01-01       0.0449  100.380    0.664  2005.0  
+16026   2013-12-10       0.3290   82.912    0.655  2013.0  
+18643   2019-11-08       0.0414   73.632    0.036  2019.0  
+13041   2004-07-28       0.0477  116.267    0.937  2004.0  
+15041         2003       0.1750   89.028    0.719  2003.0  
 
 [1000 rows x 20 columns]</code></pre>
 </div>
@@ -1070,7 +1070,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Calcula la duración media en minutos de <code>spotify_population</code> utilizando <code>pandas</code>.</li>
 <li>Calcula la duración media en minutos de <code>spotify_sample</code> utilizando <code>pandas</code>.</li>
 </ul>
-<div id="5123275d" class="cell" data-execution_count="10">
+<div id="8cd36b54" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the mean duration in mins from spotify_population</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>mean_dur_pop <span class="op">=</span> spotify_population[<span class="st">'duration_minutes'</span>].mean()</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1082,7 +1082,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(mean_dur_sample)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>3.8521519140900073
-3.8510138166666668</code></pre>
+3.8374306</code></pre>
 </div>
 </div>
 <p>Se observa que la duración media de las canciones en la muestra es similar, pero no idéntica a la duración media de las canciones en toda la poblacición.</p>
@@ -1101,7 +1101,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Crea una serie <code>pandas</code>, <code>loudness_pop</code>, subdividiendo la columna <code>loudness</code> de <code>spotify_population</code>.</li>
 <li>Muestra <code>loudness_pop</code> para obtener 100 valores aleatorios, asignándolos a <code>loudness_samp</code>.</li>
 </ul>
-<div id="4ab32f98" class="cell" data-execution_count="11">
+<div id="37bcc58b" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a pandas Series from de loudness column of spotify_population</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>loudness_pop <span class="op">=</span> spotify_population[<span class="st">'loudness'</span>]</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1110,17 +1110,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(loudness_samp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>11372    -6.465
-33686    -7.914
-6213     -5.221
-38060   -30.925
-15208    -5.345
-          ...  
-7329     -3.045
-32445    -5.942
-23562   -10.405
-16942    -6.370
-32660    -5.540
+<pre><code>12196   -5.811
+12266   -6.305
+18808   -9.401
+26149   -8.207
+23917   -8.401
+         ...  
+9844    -6.698
+31465   -4.029
+11254   -3.772
+36897   -8.229
+31000   -4.378
 Name: loudness, Length: 100, dtype: float64</code></pre>
 </div>
 </div>
@@ -1131,7 +1131,7 @@ Name: loudness, Length: 100, dtype: float64</code></pre>
 <li>Calcula la media de <code>loudness_pop</code> utilizando <code>numpy</code>.</li>
 <li>Calcula la media de <code>loudness_samp</code> utilizando <code>numpy</code>.</li>
 </ul>
-<div id="daa6d935" class="cell" data-execution_count="12">
+<div id="2cb70a63" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the mean of loudness_pop</span></span>
@@ -1144,7 +1144,7 @@ Name: loudness, Length: 100, dtype: float64</code></pre>
 <span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(mean_loudness_samp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>-7.366856851353947
--7.234350000000001</code></pre>
+-7.606940000000002</code></pre>
 </div>
 </div>
 <p>Nuevamente, observe que el valor calculado (la media) es cercano pero no idéntico en cada caso.</p>

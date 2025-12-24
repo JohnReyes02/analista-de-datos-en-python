@@ -27,7 +27,7 @@
         "\n",
         "- Cómo iniciar?"
       ],
-      "id": "18996461"
+      "id": "79af8c7c"
     },
     {
       "cell_type": "code",
@@ -38,7 +38,7 @@
         "import seaborn as sns  # Samuel Norman Seaborn (sns)\n",
         "import matplotlib.pyplot as plt"
       ],
-      "id": "0853f2b2",
+      "id": "daa82d60",
       "execution_count": null,
       "outputs": []
     },
@@ -48,7 +48,7 @@
       "source": [
         "- Ejemplo 1: Scatter plot"
       ],
-      "id": "0706ed1b"
+      "id": "4c1455af"
     },
     {
       "cell_type": "code",
@@ -63,7 +63,7 @@
         "sns.scatterplot(x=height, y=weight)\n",
         "plt.show()"
       ],
-      "id": "8dddcb1e",
+      "id": "dc63b65e",
       "execution_count": null,
       "outputs": []
     },
@@ -73,7 +73,7 @@
       "source": [
         "- Ejemplo 2: Crear un count plot"
       ],
-      "id": "e51de44e"
+      "id": "4e480399"
     },
     {
       "cell_type": "code",
@@ -87,7 +87,7 @@
         "          'Male', 'Male', 'Male']\n",
         "sns.countplot(x=gender)"
       ],
-      "id": "2e59c109",
+      "id": "a3206fef",
       "execution_count": null,
       "outputs": []
     },
@@ -101,7 +101,7 @@
         "\n",
         "Hemos creado tres listas de datos a partir de este conjunto de datos para que puedas empezar. `gdp` es una lista que contiene el valor de GDP por país, expresado en dólares por persona. `phones` es una lista con el número de teléfonos móviles por cada 1000 personas en este país. Por último `percent_literate` es una lista que contiene el porcentaje de la población de cada país que sabe leer y escribir."
       ],
-      "id": "34d48935"
+      "id": "e6583752"
     },
     {
       "cell_type": "code",
@@ -113,7 +113,7 @@
         "df = pd.read_csv(ruta)\n",
         "df.head()"
       ],
-      "id": "afb2da29",
+      "id": "a3b46722",
       "execution_count": null,
       "outputs": []
     },
@@ -130,7 +130,7 @@
         "phones = df['Phones (per 1000)'].tolist()\n",
         "percent_literate = df['Literacy (%)'].tolist()"
       ],
-      "id": "1b74b8ac",
+      "id": "8694c77c",
       "execution_count": null,
       "outputs": []
     },
@@ -142,7 +142,7 @@
         "\n",
         "1. Importa Matplotlib y Seaborn utilizando la convención de nomenclatura estándar."
       ],
-      "id": "2f665da0"
+      "id": "f7f37d0e"
     },
     {
       "cell_type": "code",
@@ -152,7 +152,7 @@
         "import matplotlib.pyplot as plt\n",
         "import seaborn as sns"
       ],
-      "id": "9129ef90",
+      "id": "076d66d9",
       "execution_count": null,
       "outputs": []
     },
@@ -162,7 +162,7 @@
       "source": [
         "2. Crea un gráfico de dispersión de GDP (`gdp`) frente al número de teléfonos por cada 1000 personas (`phones`)."
       ],
-      "id": "ad89562d"
+      "id": "49da5d60"
     },
     {
       "cell_type": "code",
@@ -172,7 +172,7 @@
         "sns.scatterplot(x=gdp, y=phones)\n",
         "plt.show()"
       ],
-      "id": "ca00c812",
+      "id": "5516abac",
       "execution_count": null,
       "outputs": []
     },
@@ -182,7 +182,7 @@
       "source": [
         "3. Combina el diagrama de dispersión para que muestre el porcentaje de la población que sabe leer y escribir (`percent_literate`) en el eje y."
       ],
-      "id": "6a7c8403"
+      "id": "342d391e"
     },
     {
       "cell_type": "code",
@@ -191,7 +191,7 @@
         "sns.scatterplot(x=gdp, y=percent_literate)\n",
         "plt.show()"
       ],
-      "id": "5e7b6d1a",
+      "id": "afa637f7",
       "execution_count": null,
       "outputs": []
     },
@@ -208,7 +208,7 @@
         "\n",
         "Para ello, tendremos que utilizar un gráfico de recuento. Los gráficos de recuento toman una lista categórica y devuelven barras que representan el número de entradas de la lista por categoría. Puedes crear una aquí utilizando una lista de regiones para cada país, que es uva variable llamada `region`.\n"
       ],
-      "id": "b171e147"
+      "id": "53e83ac2"
     },
     {
       "cell_type": "code",
@@ -218,7 +218,7 @@
         "region = df['Region'].tolist()\n",
         "region = [item.strip() for item in region]"
       ],
-      "id": "e6d33852",
+      "id": "f29f0d16",
       "execution_count": null,
       "outputs": []
     },
@@ -232,7 +232,7 @@
         "- Utiliza Seaborn para crear un gráfico de recuento con `region` en el eje y.\n",
         "- Visualiza el gráfico"
       ],
-      "id": "dc99fa1f"
+      "id": "20b38223"
     },
     {
       "cell_type": "code",
@@ -248,7 +248,7 @@
         "# Show plot\n",
         "plt.show()"
       ],
-      "id": "228b69cd",
+      "id": "d6804253",
       "execution_count": null,
       "outputs": []
     },
@@ -268,7 +268,7 @@
         "\n",
         "- Trabajando con DataFrames"
       ],
-      "id": "1e6a9e3f"
+      "id": "26efa39d"
     },
     {
       "cell_type": "code",
@@ -280,7 +280,7 @@
         "df = pd.read_csv('masculinity.csv')\n",
         "df.head()"
       ],
-      "id": "93d87f5f",
+      "id": "331e25e6",
       "execution_count": null,
       "outputs": []
     },
@@ -290,7 +290,7 @@
       "source": [
         "- Usando DataFrames con countplot()"
       ],
-      "id": "5a9965df"
+      "id": "7bdc9175"
     },
     {
       "cell_type": "code",
@@ -306,7 +306,7 @@
         "sns.countplot(x='how_masucline', data=df)\n",
         "plt.show()"
       ],
-      "id": "297b2481",
+      "id": "7cb1b6a3",
       "execution_count": null,
       "outputs": []
     },
@@ -326,7 +326,7 @@
         "- Lee el archivo csv situado en `csv_filepath` en un DataFrame llamado `df`.\n",
         "- Imprime la cabecera de `df` para mostrar las cinco primeras filas.\n"
       ],
-      "id": "4a458c76"
+      "id": "10eeff73"
     },
     {
       "cell_type": "code",
@@ -334,7 +334,7 @@
       "source": [
         "csv_filepath = './data/1.2.1_example_csv.csv'"
       ],
-      "id": "32bdcb8b",
+      "id": "6a05b02f",
       "execution_count": null,
       "outputs": []
     },
@@ -351,7 +351,7 @@
         "# Print the head of df\n",
         "print(df.head())"
       ],
-      "id": "ffb6b1ac",
+      "id": "41067884",
       "execution_count": null,
       "outputs": []
     },
@@ -383,7 +383,7 @@
         "- Utilizando la función `countplot()` con los argumentos `x=` y `data=` para crear un gráfico de recuento con los valores de la columna `\"Spiders\"` en el eje x.\n",
         "- Visualiza el gráfico."
       ],
-      "id": "d45c4aaf"
+      "id": "fc9fc02f"
     },
     {
       "cell_type": "code",
@@ -391,7 +391,7 @@
       "source": [
         "csv_filepath = './data/young-people-survey-responses.csv'"
       ],
-      "id": "3e708544",
+      "id": "b7371876",
       "execution_count": null,
       "outputs": []
     },
@@ -413,7 +413,7 @@
         "# Display the plot\n",
         "plt.show()"
       ],
-      "id": "3c33b768",
+      "id": "db7afb69",
       "execution_count": null,
       "outputs": []
     },
@@ -430,7 +430,7 @@
         "\n",
         "- Dataset Tips\n"
       ],
-      "id": "3499564e"
+      "id": "51bee798"
     },
     {
       "cell_type": "code",
@@ -441,7 +441,7 @@
         "tips = pd.read_csv('./data/tips.csv')\n",
         "tips.head()"
       ],
-      "id": "ed147f80",
+      "id": "0a77d3b9",
       "execution_count": null,
       "outputs": []
     },
@@ -451,7 +451,7 @@
       "source": [
         "- Un Scatter plot básico"
       ],
-      "id": "4cd98b99"
+      "id": "61b3dc92"
     },
     {
       "cell_type": "code",
@@ -465,7 +465,7 @@
         "\n",
         "plt.show()"
       ],
-      "id": "815efb7c",
+      "id": "82b924e3",
       "execution_count": null,
       "outputs": []
     },
@@ -475,7 +475,7 @@
       "source": [
         "- Un Scatter plot con hue"
       ],
-      "id": "09a87659"
+      "id": "0f8e9bfa"
     },
     {
       "cell_type": "code",
@@ -490,7 +490,7 @@
         "\n",
         "plt.show()"
       ],
-      "id": "a0dd05c5",
+      "id": "7413fc2c",
       "execution_count": null,
       "outputs": []
     },
@@ -500,7 +500,7 @@
       "source": [
         "- Configurando el orden del hue"
       ],
-      "id": "5418338b"
+      "id": "8ebfd928"
     },
     {
       "cell_type": "code",
@@ -517,7 +517,7 @@
         "\n",
         "plt.show()"
       ],
-      "id": "8a236821",
+      "id": "feb6d81f",
       "execution_count": null,
       "outputs": []
     },
@@ -527,7 +527,7 @@
       "source": [
         "- Especificando los colores de hue"
       ],
-      "id": "54c26724"
+      "id": "79d82d9d"
     },
     {
       "cell_type": "code",
@@ -545,7 +545,7 @@
         "\n",
         "plt.show()"
       ],
-      "id": "7a1e08b1",
+      "id": "a6580c6a",
       "execution_count": null,
       "outputs": []
     },
@@ -555,7 +555,7 @@
       "source": [
         "- Usando hue con count plots"
       ],
-      "id": "207ea75c"
+      "id": "22da85f7"
     },
     {
       "cell_type": "code",
@@ -570,7 +570,7 @@
         "\n",
         "plt.show()"
       ],
-      "id": "0e9c4c63",
+      "id": "07dce536",
       "execution_count": null,
       "outputs": []
     },
@@ -584,7 +584,7 @@
         "\n",
         "Por ahora, nos fijaremos en la relación entgre el número de faltas que tienen en la escuela y su calificación final en el curso, segmentada por el lugar donde vive el alumno (zona rural frente a zona urbana)."
       ],
-      "id": "f0597440"
+      "id": "11154a1b"
     },
     {
       "cell_type": "code",
@@ -593,7 +593,7 @@
         "student_data = pd.read_csv('./data/student-alcohol-consumption.csv', index_col=0)\n",
         "student_data.head()"
       ],
-      "id": "36227645",
+      "id": "df7b72c5",
       "execution_count": null,
       "outputs": []
     },
@@ -605,7 +605,7 @@
         "\n",
         "1. Crea un gráfico de dispersión con `absensces` en el eje x y la calificación final (`\"G3\"`) en el eje y utilizando el DataFrame `student_data`. Colorea los puntos del gráfico en función de `\"location\"` (urbano vs. rural)"
       ],
-      "id": "ceac7bd0"
+      "id": "cd1b59f2"
     },
     {
       "cell_type": "code",
@@ -624,7 +624,7 @@
         "# Show plot\n",
         "plt.show()"
       ],
-      "id": "6345daf1",
+      "id": "ca0315ad",
       "execution_count": null,
       "outputs": []
     },
@@ -634,7 +634,7 @@
       "source": [
         "2. Haz que `rural` aparezca antes que `urban` en la leyenda del gráfico."
       ],
-      "id": "ed21ef50"
+      "id": "a4c534db"
     },
     {
       "cell_type": "code",
@@ -653,7 +653,7 @@
         "# Show plot\n",
         "plt.show()"
       ],
-      "id": "e74da082",
+      "id": "dbe3cee6",
       "execution_count": null,
       "outputs": []
     },
@@ -679,7 +679,7 @@
         "\n",
         "    - Añade subgrupos al gráfico, utilizando la variable `\"location\"`` y utliliza el diccionario `palette_colors` para que los subgrupos de ubicación sean verdes o azules."
       ],
-      "id": "9b03680a"
+      "id": "ec0a9998"
     },
     {
       "cell_type": "code",
@@ -702,7 +702,7 @@
         "# Display plot\n",
         "plt.show()"
       ],
-      "id": "b3daa530",
+      "id": "a855c615",
       "execution_count": null,
       "outputs": []
     },
@@ -712,7 +712,7 @@
       "source": [
         "Los estudiantes en GP tienden a venir de una ubicación urbana, pero los estudiantes en MS están más equitativamente divididos."
       ],
-      "id": "c08b0a77"
+      "id": "496f326c"
     }
   ],
   "metadata": {

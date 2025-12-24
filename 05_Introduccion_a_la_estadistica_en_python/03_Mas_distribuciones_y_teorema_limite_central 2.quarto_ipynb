@@ -8,7 +8,7 @@
         "title: \"Mas distribuciones y el teorema del límite central\"\n",
         "---"
       ],
-      "id": "1585929d"
+      "id": "3a14f952"
     },
     {
       "cell_type": "markdown",
@@ -98,7 +98,7 @@
         "\n",
         "1.  Importa `poisson` de `scipy.stats` y calcula la problabilidad de que Amir responda a 5 clientes potenciales en un día, dado que responde a una media de 4."
       ],
-      "id": "850616ce"
+      "id": "2c39b85f"
     },
     {
       "cell_type": "code",
@@ -111,7 +111,7 @@
         "prob_5 = poisson.pmf(5, 4) # (deseado, media)\n",
         "print(prob_5)"
       ],
-      "id": "1c153852",
+      "id": "89b0da5d",
       "execution_count": null,
       "outputs": []
     },
@@ -121,7 +121,7 @@
       "source": [
         "2.  El compañero de trabajo de Amir responde a una media de 5.5 clientes potenciales al día. Cuál es la probabilidad a que responda a 5 clientes potenciales en un día?"
       ],
-      "id": "f5fa1719"
+      "id": "0218cc31"
     },
     {
       "cell_type": "code",
@@ -131,7 +131,7 @@
         "prob_coworker = poisson.pmf(5, 5.5)  # (deseado, media)\n",
         "print(prob_coworker)"
       ],
-      "id": "1abcff54",
+      "id": "c78749fb",
       "execution_count": null,
       "outputs": []
     },
@@ -141,7 +141,7 @@
       "source": [
         "3.  Cuál es la probabilidad de que Amir responda a 2 o menos clientes potenciales en en un día?"
       ],
-      "id": "88caa91e"
+      "id": "496f9c2f"
     },
     {
       "cell_type": "code",
@@ -151,7 +151,7 @@
         "prob_2_or_less = poisson.cdf(2, 4) # <= cdf(deseado, media)\n",
         "print(prob_2_or_less)"
       ],
-      "id": "fabb739a",
+      "id": "cd0cf4df",
       "execution_count": null,
       "outputs": []
     },
@@ -161,7 +161,7 @@
       "source": [
         "4.  Cuál es la probabilidad de que Amir responda a más de 10 clientes potenciales en 1 día?"
       ],
-      "id": "23dde779"
+      "id": "3ed03cef"
     },
     {
       "cell_type": "code",
@@ -171,7 +171,7 @@
         "prob_over_10 = 1 - poisson.cdf(10, 4)\n",
         "print(prob_over_10)"
       ],
-      "id": "8cdcc752",
+      "id": "b66a30aa",
       "execution_count": null,
       "outputs": []
     },
@@ -248,7 +248,7 @@
         "\n",
         "1. Importa `expon` desde `scipy.stats`. Cuál es la probabilidad de que Amir tarde menos de una hora en responder a un cliente potencial.\n"
       ],
-      "id": "64472a42"
+      "id": "6b0f28e1"
     },
     {
       "cell_type": "code",
@@ -260,7 +260,7 @@
         "# Print probability response takes < 1 hour\n",
         "print(expon.cdf(1, scale=2.5))"
       ],
-      "id": "2351d2aa",
+      "id": "87031859",
       "execution_count": null,
       "outputs": []
     },
@@ -270,7 +270,7 @@
       "source": [
         "2. Cuál es la probabilidad de que Amir tarde más de 4 horas en responder a un cliente potencial?\n"
       ],
-      "id": "b40fe74c"
+      "id": "ade5bc50"
     },
     {
       "cell_type": "code",
@@ -279,7 +279,7 @@
         "# Print probability response takes > 4\n",
         "print(1 - expon.cdf(4, scale=2.5))"
       ],
-      "id": "1808c453",
+      "id": "2fcd05cd",
       "execution_count": null,
       "outputs": []
     },
@@ -289,7 +289,7 @@
       "source": [
         "3. Cuál es la probabilidad de que Amir tarde 3-4 horas en responder a un cliente potencial?\n"
       ],
-      "id": "f70c2143"
+      "id": "c0448da7"
     },
     {
       "cell_type": "code",
@@ -298,7 +298,7 @@
         "# Print probability response takes 3-4 hours\n",
         "print(expon.cdf(4, scale=2.5) - expon.cdf(3, scale=2.5))"
       ],
-      "id": "f21a0556",
+      "id": "c2fc2d9c",
       "execution_count": null,
       "outputs": []
     },
@@ -320,7 +320,7 @@
         "\n",
         "- [x] La distribución t está sesgada."
       ],
-      "id": "fcf7f09f"
+      "id": "5099a3fb"
     }
   ],
   "metadata": {
