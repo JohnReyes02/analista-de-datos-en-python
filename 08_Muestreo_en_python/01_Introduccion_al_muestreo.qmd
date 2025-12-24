@@ -203,6 +203,8 @@ Nuevamente, observe que el valor calculado (la media) es cercano pero no idénti
 
 ## Muestreo de conveniencia
 
+
+
 ### ¿Son generalizables las conclusiones de la muestra?
 
 ### ¿Son generalizables estos resultados?
