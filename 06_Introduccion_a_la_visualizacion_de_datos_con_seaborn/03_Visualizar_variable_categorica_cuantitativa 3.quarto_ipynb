@@ -1,0 +1,1123 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "title: \"Visualizar una variable categórica y una cuantitativa\"\n",
+        "---\n",
+        "\n",
+        "Las variables categóricas están presentes en casi todos los conjuntos de datos, pero destacan especialmente en los datos de encuestas. En este capítulo aprenderás a crear y personalizar gráficos categóricos, como gráficos de caja, gráficos de barras, gráficos de recuentro y gráficos de puntos. Por el camino, explorarás datos de encuestas a jóvenes sobre sus intereses, a estudiantes sobre sus hábitos de estudio y a hombres adultos sobre sus sentimientos acerca de la masculinidad.\n",
+        "\n",
+        "## Gráficos de recuento y de barras.\n",
+        "\n",
+        "-   Gráficos categóricos\n",
+        "\n",
+        "    -   Ejemplos: Gráficos de recuento y de barras\n",
+        "    -   Incluyen variables categóricas.\n",
+        "    -   Comparaciones entre grupos\n",
+        "\n",
+        "    ![](images/paste-10.png){width=\"370\"}\n",
+        "\n",
+        "-   catplot()\n",
+        "\n",
+        "    -   Usado para crear gráficos categóricos\n",
+        "    -   Tiene las mismas ventajas de `relplot()`\n",
+        "    -   Se pueden crear facilmente subgráficos con `col=` y `row=`\n",
+        "\n",
+        "-   countplot() vs. catplot()"
+      ],
+      "id": "39c8eb46"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| eval: false\n",
+        "import matplotlib.pyplot as plt\n",
+        "import seaborn as from django.conf import settings\n",
+        "sns.countplot(x='how_masculine',\n",
+        "              data=maculinity_data)\n",
+        "\n",
+        "plt.show()"
+      ],
+      "id": "2a47823f",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| eval: false\n",
+        "import matplotlib.pyplot as plt\n",
+        "import seaborn as sns\n",
+        "\n",
+        "sns.catplot(x='how_masculine',\n",
+        "            data=masculinity_data,\n",
+        "            kind='count')\n",
+        "\n",
+        "plt.show()"
+      ],
+      "id": "be336182",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "-   Cambiando el orden"
+      ],
+      "id": "5b1971c5"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| eval: false\n",
+        "import matplotlib.pyplot as plt\n",
+        "import seaborn as sns\n",
+        "category_order=['No answer',\n",
+        "                'Not at all',\n",
+        "                'Not very',\n",
+        "                'Somewhat',\n",
+        "                'Very']\n",
+        "sns.catplot(x='how_masculine',\n",
+        "            data=masculinity_data,\n",
+        "            kind='count',\n",
+        "            order=category_order)\n",
+        "plt.show()"
+      ],
+      "id": "658600ed",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "![](images/paste-12.png){width=\"370\"}\n",
+        "\n",
+        "-   Gráfico de barras\n",
+        "\n",
+        "    -   Muestran la media de una variable cuantitativa por categoría"
+      ],
+      "id": "ed8b406b"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| eval: false\n",
+        "import matplotlib.pyplot as plt\n",
+        "import seaborn as sns\n",
+        "\n",
+        "sns.catplot(x='day', y='total_bill',\n",
+        "            data=tips,\n",
+        "            kind='bar')\n",
+        "plt.show()"
+      ],
+      "id": "af1fbfe5",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "![](images/paste-13.png){width=\"370\"}\n",
+        "\n",
+        "-   Intervalos de confianza\n",
+        "\n",
+        "    -   Las líneas muestran los intervalos de confianza del 95% para la media.\n",
+        "    -   Muestran el nivel de incertidumbre sobre las estimaciones.\n",
+        "    -   Asumiendo que nuestros datos sean una muestra aleatoria.\n",
+        "\n",
+        "-   Desactivando los intervalos de confianza"
+      ],
+      "id": "74f72abe"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| eval: false\n",
+        "import matplotlib.plyplot as plt\n",
+        "import seaborn as sns\n",
+        "\n",
+        "sns.catplot(x='day', y='total_bill',\n",
+        "            data=tips,\n",
+        "            kind='bar',\n",
+        "            ci=None)\n",
+        "plt.show()"
+      ],
+      "id": "e127bcc5",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "![](images/paste-14.png){width=\"370\"}\n",
+        "\n",
+        "-   Cambiando la orientación de las barras"
+      ],
+      "id": "5ee9ab33"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| eval: false\n",
+        "import matplotlib.pyplot as plt\n",
+        "import seaborn as sns\n",
+        "\n",
+        "sns.catplot(x='total_bill', y='day',\n",
+        "            data=tips,\n",
+        "            kind='bar')"
+      ],
+      "id": "80676285",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "![](images/paste-15.png){width=\"370\"}\n",
+        "\n",
+        "Es común poner la variable categórica en el eje x\n",
+        "\n",
+        "### Gráficos de recuento\n",
+        "\n",
+        "En este ejercicio, volveremos a explorar nuestro conjunto de datos que contiene las respuestas a una encuesta enviada a los jóvenes. Podríamos sospechar que los jóvenes pasan mucho tiempo en internet, pero ¿Cuánto declaran utilizar internet al día? Utilicemos un gráfico de recunto para desglosar el número de respuestas de la encuesta en cada categoría y luego exploremos si cambia en función de la edad.\n",
+        "\n",
+        "Como recordatorio, para crear un gráfico de recuento, utilizaremos la función `catplot()` y especificaremos el nombre de la variable categórica a contar (`x=____`), el DataFrame de pandas a utilizar (`data=____`), y el tipo de gráfico (`kind=\"count\"`)."
+      ],
+      "id": "9262b6cc"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import pandas as pd\n",
+        "import matplotlib.pyplot as plt\n",
+        "import seaborn as sns\n",
+        "plt.rcParams['figure.figsize'] = (10, 5)\n",
+        "\n",
+        "ruta = './data/young-people-survey-responses.csv'\n",
+        "survey_data = pd.read_csv(ruta, index_col=0)\n",
+        "survey_data.head()"
+      ],
+      "id": "beaaf8d6",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "#### Instrucciones\n",
+        "\n",
+        "1.  Utiliza `sns.catplot()` para crear un gráfico de recuento utilizando el DataFrame `survery_data` con `\"Internet usage\"` en el eje x."
+      ],
+      "id": "85e6dbfb"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Create count plot of internet usage\n",
+        "sns.catplot(x='Internet usage',\n",
+        "            data=survey_data,\n",
+        "            kind='count')\n",
+        "\n",
+        "# Show plot\n",
+        "plt.show()"
+      ],
+      "id": "e81e6321",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "2.  Haz que las barras sean horizontales en lugar de verticales"
+      ],
+      "id": "6751a84c"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Change the orientation of the plot\n",
+        "sns.catplot(y='Internet usage',\n",
+        "            data=survey_data,\n",
+        "            kind='count')\n",
+        "\n",
+        "# Show plot\n",
+        "plt.show()"
+      ],
+      "id": "18be2483",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "3.  Separa este gráfico en dos subtramas de columnas contiguas en función de `\"Age Category\"`, que separa a los encuestados en menores de 21 años y mayores de 21 años. A partir de 21 años."
+      ],
+      "id": "bcb0d14c"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Separate ubti cikynb subplots based on age category\n",
+        "sns.catplot(y='Internet usage',\n",
+        "            data=survey_data,\n",
+        "            kind='count',\n",
+        "            col='Age Category')\n",
+        "\n",
+        "# Show plot\n",
+        "plt.show()"
+      ],
+      "id": "05f31271",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Parece que la mayoría de los jóvenes usan internet durante pocas horas todos los días, independientemente de su edad.\n",
+        "\n",
+        "### Diagramas de barras con porcentajes\n",
+        "\n",
+        "Sigamos explorando las respuestas a una encuesta enviada a los jóvenes. La variable `\"Interested in Math\"` es `True` si la persona declaró estar interesada o muy interesada en las matemáticas, y `False` en caso contrario. ¿Qué porcentaje de jóvenes afirma estar interesado en las matemáticas, y varía esto en función del género? Utilicemos un diagrama de barras para averiguarlo.\n",
+        "\n",
+        "Como recordatorio, crearemos un gráfico de barras utilizando la función `catplot()`, proporcionando el nombre de la varible categórica a poner en el eje x (`x=____`), el nombre de la variable cuantitativa a resumir en el eje y (`y=____`), el DataFrame de pandas a utilizar (`data=____`), y el tipo de gráfico categórico (`kind=\"bar\"`).\n",
+        "\n",
+        "#### Instrucciones\n",
+        "\n",
+        "-   Utiliza el DataFrame `survey_data` y `sns.catplot()` para crear un gráfico de barras con `\"Gender\"` en el eje x y `\"Interested in Math\"` en el eje y."
+      ],
+      "id": "77387549"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import matplotlib.pyplot as plt\n",
+        "import seaborn as sns\n",
+        "\n",
+        "# Create a bar plot of interest in math, separated by gender \n",
+        "sns.catplot(x='Gender', y='Interested in Math',\n",
+        "            data=survey_data,\n",
+        "            kind='bar')\n",
+        "\n",
+        "# Show plot\n",
+        "plt.show()"
+      ],
+      "id": "fd1c70db",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Cuando la variable y es Verdadero/Falso, los gráficos de barras mostrarán el porcentaje de respuestas que informan Verdadero. Este gráfico nos muestra que los hombres informan un interés mucho mayor en las matemáticas en comparación con las mujeres.\n",
+        "\n",
+        "### Personalizar gráficos de barras\n",
+        "\n",
+        "En este ejercicio, exploraremos datos de alumnos de secundaria. La variable `\"study_time\"` registra el tiempo de estudio semanal declarado por cada estudiante como una de las siguientes categorías: `\"<2 hours\"`, `\"2 to 5 hours\"`, `\"5 to 10 hours\"`, o `\">10 hours\"`. ¿Los alumnos que declaran estudiar más tienden a obtener mejores notas finales Comparemos la nota media final entre los alumnos de cada categoría mediante un diagrama de barras."
+      ],
+      "id": "29803343"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import pandas as pd\n",
+        "import matplotlib.pyplot as plt\n",
+        "import seaborn as sns\n",
+        "\n",
+        "ruta = './data/student-alcohol-consumption.csv'\n",
+        "student_data = pd.read_csv(ruta, index_col=0)\n",
+        "student_data.head()"
+      ],
+      "id": "e6d18023",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "#### Instrucciones\n",
+        "\n",
+        "1.  Utiliza `sns.catplot()` para crear un gráfico de barras con `\"study_time\"` en el eje x y la calificación final (`\"G3\"`) en el eje y, utilizando el DataFrame `student_data`."
+      ],
+      "id": "edcb3faa"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Create bar plot of average final grade in each study category\n",
+        "sns.catplot(x='study_time', y='G3',\n",
+        "            data=student_data,\n",
+        "            kind='bar')\n",
+        "\n",
+        "# Show plot\n",
+        "plt.show()"
+      ],
+      "id": "cf7ae601",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "2.  Utilizando el parámetro `order` y la lista `category_order` que se proporciona, reorganiza las barras para que estén en orden de menor tiempo de estudio a mayor."
+      ],
+      "id": "9a09ff33"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# List of categories from lowest to highest\n",
+        "category_order = ['<2 hours',\n",
+        "                  '2 to 5 hours',\n",
+        "                  '5 to 10 hours',\n",
+        "                  '>10 hours']\n",
+        "\n",
+        "# Rearrange the categories\n",
+        "sns.catplot(x='study_time', y='G3',\n",
+        "            data=student_data,\n",
+        "            kind='bar',\n",
+        "            order=category_order)\n",
+        "\n",
+        "# Show plot\n",
+        "plt.show()"
+      ],
+      "id": "c5d0a062",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "3.  Actualiza el gráfico para que ya no muestre los intervalos de confianza."
+      ],
+      "id": "6f6fe6b1"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# List of categories from lowest to highest\n",
+        "category_order = ['<2 hours',\n",
+        "                  '2 to 5 hours',\n",
+        "                  '5 to 10 hours',\n",
+        "                  '>10 hours']\n",
+        "\n",
+        "# Rearrange the categories\n",
+        "sns.catplot(x='study_time', y='G3',\n",
+        "            data=student_data,\n",
+        "            kind='bar',\n",
+        "            order=category_order,\n",
+        "            errorbar=None) # ci=None deprecated\n",
+        "\n",
+        "# Show plot\n",
+        "plt.show()"
+      ],
+      "id": "bfe56339",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Los estudiantes en nuestra muestra que estudiaron más tienen un promedio de calificaciones ligeramente más alto, pero no es una relación fuerte.\n",
+        "\n",
+        "## Diagramas de caja\n",
+        "\n",
+        "-   ¿Qué es un diagrama de caja?\n",
+        "    -   Muestra la distribución de datos cuantitativos.\n",
+        "    -   Se puede ver la mediana, la dispersión, la asimetría y los datos atípicos.\n",
+        "    -   Facilita la comparación entre grupos.\n",
+        "\n",
+        "![](images/paste-16.png){width=\"370\"}\n",
+        "\n",
+        "-   Cómo crear un diagrama de caja en Seaborn"
+      ],
+      "id": "2d4ff8df"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| eval: false\n",
+        "import matplotlib.pyplot as plt\n",
+        "import seaborn as sns\n",
+        "\n",
+        "g = sns.catplot(x='time', y='total_bill',\n",
+        "                data=tips,\n",
+        "                kind='box')\n",
+        "plt.show()"
+      ],
+      "id": "52454e79",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "![](images/paste-17.png){width=\"370\"}\n",
+        "\n",
+        "-   Cambiar el orden de las categorías"
+      ],
+      "id": "cf285611"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| eval: false\n",
+        "import matplotlib.pyplot as plt\n",
+        "import seaborn as sns\n",
+        "\n",
+        "g = sns.catplot(x='time', y='total_bill',\n",
+        "                data=tips,\n",
+        "                kind='box',\n",
+        "                order=['Dinner',\n",
+        "                        'Lunch'])\n",
+        "plt.show()"
+      ],
+      "id": "c47e0791",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "![](images/paste-18.png){width=\"370\"}\n",
+        "\n",
+        "-   Omitir los valores atípicos usando `sym`"
+      ],
+      "id": "a0a92418"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| eval: false\n",
+        "import matplotlib.pyplot as plt\n",
+        "import seaborn as sns\n",
+        "\n",
+        "g = sns.catplot(x='time', y='total_bill',\n",
+        "                data=tips,\n",
+        "                kind='box',\n",
+        "                sym='')\n",
+        "plt.show()"
+      ],
+      "id": "4f00f788",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "![](images/paste-19.png){width=\"370\"}\n",
+        "\n",
+        "-   Cambiando los bigotes usando `whis`\n",
+        "    -   Por defecto, los bigotes se extienden a 1.5 \\* el rango intercuartil.\n",
+        "    -   Puede ser extendido a 2.0 \\* IQR: `whis=2.0`\n",
+        "    -   Muestra los percentiles 5 y 95: `whis=[5, 95]`\n",
+        "    -   Muestra los valores mínimo y máximo: `whis=[0, 100]`"
+      ],
+      "id": "8bdcca49"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| eval: false\n",
+        "import matplotlib.pyplot as plt\n",
+        "import seaborn as sns\n",
+        "\n",
+        "g = sns.catplot(x='time', y='total_bill',\n",
+        "                data=tips,\n",
+        "                kind='box',\n",
+        "                whis=[0, 100])\n",
+        "plt.show()"
+      ],
+      "id": "9d771d18",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "![](images/paste-20.png){width=\"370\"}\n",
+        "\n",
+        "### Crea e interpreta un diagrama de cajas\n",
+        "\n",
+        "Sigamos utilizando el conjunto de datos `student_data`. En un ejercicio anterior, exploramos la realción entre el estudio y la nota final utlizando un digrama de barras para comparar la nota final media (`\"G3\"`) entre los estudiantes de diferentes categorías de `\"study_time\"`.\n",
+        "\n",
+        "En este ejercicio, intentaremos utilizar un diagrama de cajas para ver esta relación. Como recordatorio, para crear un gráfico de caja tendrás que utilizar la función `catplot()` y especificar el nombre de la variable categórica a poner en el eje x (`x=____`), el nombre de la variable cuantitativa a resumir en el eje y (`y=____`), el DataFrme de pandas a utilizar (`data=____`), y el timpo de gráfico (`kind=\"box\"`).\n",
+        "\n",
+        "#### Instrucciones\n",
+        "\n",
+        "1.  Utiliza `sns.catplot()`, y el DataFrame `student_data` para crear un gráfico de caja con `\"study_time\"` en el eje x y `\"G3\"` en el eje y. Establece el orden de las categorías en `study_time_order`."
+      ],
+      "id": "294a3674"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Specify the category ordering\n",
+        "study_time_order = ['<2 hours', '2 to 5 hours',\n",
+        "                    '5 to 10 hours', '>10 hours']\n",
+        "\n",
+        "# Create a box plot and set the order of the categories\n",
+        "sns.catplot(x='study_time', y='G3',\n",
+        "            data=student_data,\n",
+        "            kind='box',\n",
+        "            order=study_time_order)\n",
+        "\n",
+        "# Show plot\n",
+        "plt.show()"
+      ],
+      "id": "9e7f0729",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "2.  **Pregunta** ¿ Cuál de las siguientes es una interpretación correcta de este diagrama de caja?\n",
+        "\n",
+        "**Respuestas Posibles**\n",
+        "\n",
+        "-   [ ] El percentil 75 de las notas es más alto entre los alumnos que estudian más de 10 horas a la semana.\n",
+        "-   [ ] No hay valores atípicos en estos gráficos de caja.\n",
+        "-   [ ] El percentil 5 de las notas entre los alumnos que estudian memnos de 2 horas es de 5,0.\n",
+        "-   [x] La nota media entre los alumnos que estudian menos de 2 horas es de 10,0.\n",
+        "\n",
+        "La línea del medio de cada caja representa la mediana.\n",
+        "\n",
+        "### Omitir valores atípicos\n",
+        "\n",
+        "Ahora vamos a utilizar el conjunto de datos `student_data` para ocmparar la distribución de las calificaciones finales (`\"G3\"`) entre los estudiantes que tienen acceso a internet en casa y los que no. Para ello, utilizaremos la variable \\`\"internet\", que es un indicador binario (si/no) de si un alumno tiene acceso a internet en casa.\n",
+        "\n",
+        "Dado que internet puede ser menos accesible en las zonas rurales, añadiremos subgrupos en función de dónde viva el alumno. Pra ello, podemos utilizar la varible `\"location\"`, que es un indicador de su un estudiante vive en una localidad urbana (\"Urban\") o rural (\"Rural\").\n",
+        "\n",
+        "Como recordatorio, puedes omitir los valores atípicos en los gráficos de caja estableciendo el parámetro `sym` iguan a una cadena vacía (`\"\"`).\n",
+        "\n",
+        "#### Instrucciones\n",
+        "\n",
+        "-   Utiliza `sns.catplot()` para crear un gráfico de caja con el DataFrame `student_data`, poniendo `internet` en el eje x y `\"G3\"` en el eje y."
+      ],
+      "id": "7ee38ef0"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Create a box plot with subgroups and omit the outliers\n",
+        "sns.catplot(x='internet', y='G3',\n",
+        "            data=student_data,\n",
+        "            kind='box',\n",
+        "            col='location',\n",
+        "            hue='location',\n",
+        "            showfliers=False)\n",
+        "\n",
+        "# Show plot\n",
+        "plt.show()"
+      ],
+      "id": "2519c46f",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Las calificaciones medianas son bastante similares entre cada grupo, pero la dispersión de la distribución parece mayor entre los estudiantes que tienen acceso a internet.\n",
+        "\n",
+        "### Ajustar los bigotes\n",
+        "\n",
+        "En la lección vimos que múltiples formas de definir los bigotes en un diagrama de caja. En esta serie de ejercicios, seguiermos utilizando el conjunto de datos `student_data` para comparar la distribución de las calificaciones finales (`\"G3\"`) entre los estudiantes que mantienen un relación romántica y los que no. Utilizaremos la variable `\"romantic\"`, que es un indicador si/no de si el alumno tiene una relación romántica.\n",
+        "\n",
+        "Vamos a crear un diagrama de cajas para ver esta relación y probar distintas formas de definir los bigotes.\n",
+        "\n",
+        "#### Instrucciones\n",
+        "\n",
+        "1.  Ajusta el código para que los bigotes del diagrama de caja se extiendan hata 0,5 \\* IQR. Recuerda: el IQR es el rango intercuartílico."
+      ],
+      "id": "72810c53"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Set the whiskers to 0.5 * IQR\n",
+        "sns.catplot(x='romantic', y='G3',\n",
+        "            data=student_data,\n",
+        "            kind='box',\n",
+        "            whis=0.5)\n",
+        "\n",
+        "# Show plot\n",
+        "plt.show()"
+      ],
+      "id": "c8bdc314",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "2.  Cambia el código para que los bigotes se extiendan hasta los percentiles 5 y 95"
+      ],
+      "id": "eec962de"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Extend the whiskers to the 5th and 95th percentile\n",
+        "sns.catplot(x='romantic', y='G3',\n",
+        "            data=student_data,\n",
+        "            kind='box',\n",
+        "            whis=[5, 95])\n",
+        "\n",
+        "# Show plot\n",
+        "plt.show()"
+      ],
+      "id": "85c38e81",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "3.  Cambia el código para que los bigotes se extiendan hsta los valores mínimo y máximo."
+      ],
+      "id": "b4dc8a92"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Set the wiskers at the min and max values\n",
+        "sns.catplot(x='romantic', y='G3',\n",
+        "            data=student_data,\n",
+        "            kind='box',\n",
+        "            whis=[0, 100])\n",
+        "\n",
+        "# Show plot\n",
+        "plt.show()"
+      ],
+      "id": "f1196708",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "La nota media es la misma entre estos dos grupos, pero la nota máxima es más alta entre los estudiantes que no están en una relación romántica.\n",
+        "\n",
+        "## Gráfico de puntos\n",
+        "\n",
+        "-   ¿Qué son los gráficos de puntos?\n",
+        "    -   Los puntos muestran la media de una variable cuantitativa.\n",
+        "    -   Las líneas verticales muestran los intervalos de confianza del 95%.\n",
+        "-   Gráficos de puntos vs Gráficos de líneas\n",
+        "    -   Ambos muestran:\n",
+        "        -   La media de una variable cuantitativa.\n",
+        "        -   Los intervalos de confianza del 95% para la media\n",
+        "    -   Diferencias:\n",
+        "        -   Los gráficos de línea tienen variables cuantitativas (usualmente tiempo) en el eje x.\n",
+        "        -   Los gráficos de puntos son variables categóricas en el eje x.\n",
+        "-   Gráficos de puntos vs Gráficos de barras\n",
+        "    -   Ambos muestran:\n",
+        "        -   La media de una variable cuantitativa.\n",
+        "        -   Los intervalos de confianza del 95% para la media\n",
+        "\n",
+        "![](images/paste-21.png){width=\"540\"}\n",
+        "\n",
+        "-   Crear un Gráfico de puntos"
+      ],
+      "id": "cce8c7f8"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| eval: false\n",
+        "import matplotlib.pyplot as plt\n",
+        "import seaborn as sns\n",
+        "\n",
+        "sns.catplot(x='age', y='masculinity_important',\n",
+        "            data=masculinity_data,\n",
+        "            kind='point',\n",
+        "            hue='feel_masculine')\n",
+        "            \n",
+        "plt.show()"
+      ],
+      "id": "0cf817fb",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "![](images/paste-22.png){width=\"370\"}\n",
+        "\n",
+        "-   Desconectando los puntos"
+      ],
+      "id": "13b26652"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| eval: false\n",
+        "import matplotlib.pyplot as plt\n",
+        "import seaborn as sns\n",
+        "\n",
+        "sns.catplot(x='age', y='masculinity_important',\n",
+        "            data=masculinity_data,\n",
+        "            kind='point',\n",
+        "            hue='feel_masculine',\n",
+        "            join=False)\n",
+        "            \n",
+        "plt.show()"
+      ],
+      "id": "97249724",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "![](images/paste-23.png){width=\"370\"}\n",
+        "\n",
+        "-   Desplegando la mediana"
+      ],
+      "id": "4611094c"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| eval: false\n",
+        "import matplotlib.pyplot as plt\n",
+        "import seaborn as sns\n",
+        "from numpy import median\n",
+        "\n",
+        "sns.catplot(x='smoker', y='total_bill',\n",
+        "            data=tips,\n",
+        "            kind='point',\n",
+        "            estimator=median)\n",
+        "            \n",
+        "plt.show()"
+      ],
+      "id": "37b60372",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "![](images/paste-24.png){width=\"370\"}\n",
+        "\n",
+        "-   Personalizar los intervalos de confianza"
+      ],
+      "id": "28d04448"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| eval: false\n",
+        "import matplotlib.pyplot as plt\n",
+        "import seaborn as sns\n",
+        "\n",
+        "sns.catplot(x='smoker', y='total_bill',\n",
+        "            data=tips,\n",
+        "            kind='point',\n",
+        "            capsize=0.2)\n",
+        "            \n",
+        "plt.show()"
+      ],
+      "id": "64f9b988",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "![](images/paste-25.png){width=\"370\"}\n",
+        "\n",
+        "-   Desactivar los intervalos de confianza"
+      ],
+      "id": "cd7c883b"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| eval: false\n",
+        "import matplotlib.pyplot as plt\n",
+        "import seaborn as sns\n",
+        "\n",
+        "sns.catplot(x='smoker', y='total_bill',\n",
+        "            data=tips,\n",
+        "            kind='point',\n",
+        "            ci=None)\n",
+        "            \n",
+        "plt.show()"
+      ],
+      "id": "8d99c50e",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "![](images/paste-26.png){width=\"370\"}\n",
+        "\n",
+        "\n",
+        "### Personalizar los gráficos de puntos\n",
+        "\n",
+        "Sigamos examinando datos de alumnos de secundaria, esta vez utilizando un gráfico de puntos para responder a la pregunta: ¿Influye la calidad de la realción familiar del alumno en el número de faltas que tiene en la escuela?\n",
+        "Aquí utilizaremos la variable `\"famrel\"`, que describe la calidad de la relación familiar de un alumno de 1 (muy mala) a 5 (muy buena).\n",
+        "\n",
+        "Como recordatorio, para crear un gráfico de puntos, utiliza la función `catplot()` y especifica el nombre de la variable categórica a poner en el eje x (`x=____`), el nombre de la variable cuantitativa a resumir en el eje y (`y=____`), el DataFrame de pandas a utilizar (`data=____`), y el tipo de gráfico categórico (`kind=\"point\"`).\n",
+        "\n",
+        "#### Instrucciones\n",
+        "\n",
+        "1. Utiliza `sns.catplot()` y el DataFrame `student_data` para crear un gráfico de puntos con `\"famrel\"` en el eje x y el número de ausencias (`\"absences\"`) en el eje y.\n"
+      ],
+      "id": "cbce16b8"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Create a point plot of family relationship vs. absences\n",
+        "sns.catplot(x='famrel', y='absences',\n",
+        "            data=student_data,\n",
+        "            kind='point')\n",
+        "\n",
+        "# Show plot\n",
+        "plt.show()"
+      ],
+      "id": "28bb1c07",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "2. Añade \"mayúsculas\" al final de los intervalos de confianza con el tamaño `0.2`.\n"
+      ],
+      "id": "ec327b60"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Add caps to the cofidence interval\n",
+        "sns.catplot(x='famrel', y='absences',\n",
+        "            data=student_data,\n",
+        "            kind='point',\n",
+        "            capsize=0.2)\n",
+        "\n",
+        "# Show plot\n",
+        "plt.show()"
+      ],
+      "id": "c00d423c",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "3. Elimina las líneas que unen los puntos de cada categoría.\n"
+      ],
+      "id": "b71af29a"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Remove the lines joining the points\n",
+        "sns.catplot(x='famrel', y='absences',\n",
+        "            data=student_data,\n",
+        "            kind='point',\n",
+        "            capsize=0.2,\n",
+        "            linestyle='none') # deprecated join=False\n",
+        "\n",
+        "# Show plot\n",
+        "plt.show()"
+      ],
+      "id": "129c3885",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Aunque el número promedio de ausencias es ligeramente menor entre los estudiantes con relaciones familiares de mayor calidad, los grandes intervalos de confianza nos dicen que no podemos estar seguros de que haya una asociación real aquí.\n",
+        "\n",
+        "\n",
+        "### Gráficos de punto con subgrupos\n",
+        "\n",
+        "Sigamos explorando el conjunto de datos de los alumnos de secundaria. Esta vez, formularemos la pregunta: ¿estar en una relación romántica está asociado a una mayor o menor asistencia a la escuela? ¿Y difiere esta asociación en función de la escuela a la que asisten los alumnos?\n",
+        "Averigüémoslo mediante un gráfico de puntos.\n",
+        "\n",
+        "#### Instrucciones\n",
+        "\n",
+        "1. Utiliza `sns.catplot()` y el DataFrame `student_data` para crear un gráfico de puntos con el estado de la relación (`\"romantic\"`) en el eje x y el número de ausencias (`\"absences\"`) en el eje y. Colorea los puntos según la escuela a la que asistan (`\"school\"`).\n"
+      ],
+      "id": "b5a65f9f"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Create a point plot that uses color to create subgroups\n",
+        "sns.catplot(x='romantic', y='absences',\n",
+        "            data=student_data,\n",
+        "            kind='point',\n",
+        "            hue='school')\n",
+        "\n",
+        "# Show plot\n",
+        "plt.show()"
+      ],
+      "id": "6eb66e52",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "2. Desactiva los intervalos de confianza del gráfico.\n"
+      ],
+      "id": "655a9a9c"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Turn off the confidence intervals for this plot\n",
+        "sns.catplot(x='romantic', y='absences',\n",
+        "            data=student_data,\n",
+        "            kind='point',\n",
+        "            hue='school',\n",
+        "            errorbar=None) # deprecated ci=None)\n",
+        "\n",
+        "# Show plot\n",
+        "plt.show()"
+      ],
+      "id": "78bf6e54",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "3. Como puede haber valores atípicos de alumnos con muchas ausencias, utiliza la función `median` que hemos importado de `numpy` para mostar la mediana de número de ausencias en lugar de la media.\n"
+      ],
+      "id": "42d01008"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Import median function from numpy\n",
+        "from numpy import median\n",
+        "\n",
+        "# Plot the median number of absences instead of the mean\n",
+        "sns.catplot(x='romantic', y='absences',\n",
+        "            data=student_data,\n",
+        "            kind='point',\n",
+        "            hue='school',\n",
+        "            errorbar=None,\n",
+        "            estimator=median)\n",
+        "\n",
+        "# Show plot\n",
+        "plt.show()"
+      ],
+      "id": "e0621d92",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Parece que los estudiantes en relaciones románticas tienen un promedio y una mediana más altos de ausencias en la escuela GP, pero esta asociación no se mantiene en la escuela MS."
+      ],
+      "id": "11132cbb"
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "name": "python3",
+      "language": "python",
+      "display_name": "Python 3 (ipykernel)",
+      "path": "/Users/macbookairedwin/Documents/Datacamp/analista-de-datos-en-python/.venv/share/jupyter/kernels/python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}

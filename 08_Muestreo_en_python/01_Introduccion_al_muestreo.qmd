@@ -111,13 +111,12 @@ El muestreo es una técnica importante en tu arsenal estadísico. Sin embargo, n
 
 **Respuestas posibles**
 
-- [ ] Te han agregado un terabyte de datos sobre registros de errores del dispositivo de tu empresa.
-- [ ] Deseas conocer los hábitos de viaje de todos los ciudadanos adultos paquistaníes.
-- [X] Has terminado de recoger los datos de un pequeño estudio sobre las medidas de las alas de 10 mariposas.
-- [ ] Has estado trabajando para predecir la rotación de clientes en un proyecto de big data para tu empresa de marketing.
+-   [ ] Te han agregado un terabyte de datos sobre registros de errores del dispositivo de tu empresa.
+-   [ ] Deseas conocer los hábitos de viaje de todos los ciudadanos adultos paquistaníes.
+-   [x] Has terminado de recoger los datos de un pequeño estudio sobre las medidas de las alas de 10 mariposas.
+-   [ ] Has estado trabajando para predecir la rotación de clientes en un proyecto de big data para tu empresa de marketing.
 
 Diez mariposas es un conjunto de datos pequeño, por lo que el muestreo no es útil aquí.
-
 
 ### Muestreo simple con pandas
 
@@ -131,9 +130,10 @@ ruta = './data/spotify_2000_2020.feather'
 spotify_population = pd.read_feather(ruta)
 spotify_population.head()
 ```
+
 #### Instrucciones
 
-1. Muestra 1000 filas de `spotify_population`, asignándolas a `spotify_sample`.
+1.  Muestra 1000 filas de `spotify_population`, asignándolas a `spotify_sample`.
 
 ```{python}
 # Sample 1000 rows from spotify_population
@@ -143,9 +143,10 @@ spotify_sample = spotify_population.sample(n=1000)
 print(spotify_sample)
 ```
 
-2. 
-- Calcula la duración media en minutos de `spotify_population` utilizando `pandas`.
-- Calcula la duración media en minutos de `spotify_sample` utilizando `pandas`.
+2.  
+
+-   Calcula la duración media en minutos de `spotify_population` utilizando `pandas`.
+-   Calcula la duración media en minutos de `spotify_sample` utilizando `pandas`.
 
 ```{python}
 # Calculate the mean duration in mins from spotify_population
@@ -161,16 +162,16 @@ print(mean_dur_sample)
 
 Se observa que la duración media de las canciones en la muestra es similar, pero no idéntica a la duración media de las canciones en toda la poblacición.
 
-
 ### Muestreos y cálculos sencillos con Numpy
 
 También puedes utilizar `numpy` para calcular parámetros o estadísticas partir de una lista o de la serie `pandas`.
 
 ### Instrucciones
 
-1. 
-- Crea una serie `pandas`, `loudness_pop`, subdividiendo la columna `loudness` de `spotify_population`.
-- Muestra `loudness_pop` para obtener 100 valores aleatorios, asignándolos a `loudness_samp`.
+1.  
+
+-   Crea una serie `pandas`, `loudness_pop`, subdividiendo la columna `loudness` de `spotify_population`.
+-   Muestra `loudness_pop` para obtener 100 valores aleatorios, asignándolos a `loudness_samp`.
 
 ```{python}
 # Create a pandas Series from de loudness column of spotify_population
@@ -182,9 +183,10 @@ loudness_samp = loudness_pop.sample(n=100)
 print(loudness_samp)
 ```
 
-2. 
-- Calcula la media de `loudness_pop` utilizando `numpy`.
-- Calcula la media de `loudness_samp` utilizando `numpy`.
+2.  
+
+-   Calcula la media de `loudness_pop` utilizando `numpy`.
+-   Calcula la media de `loudness_samp` utilizando `numpy`.
 
 ```{python}
 import numpy as np
@@ -203,9 +205,136 @@ Nuevamente, observe que el valor calculado (la media) es cercano pero no idénti
 
 ## Muestreo de conveniencia
 
+Antes del realizar el muestreo, debemos pensar en nuestro proceso de recopilación de datos para evitar resultados sesgados.
 
+-   Muestra por conveniencia en coffee ratings
+
+Observemos el parámetro de población de puntos de taza promedio
+
+```{python}
+#| echo: true
+#| eval: false
+coffee_ratings['total_cup_points'].mean()
+```
+
+![](images/paste-9.png)
+
+Una forma de muestreo por conveniencia sería tomar las primeras 10 filas en lugar de muestras aleatorias. Las primeras 10 filas se pueden traer con el método `.head()`
+
+```{python}
+#| echo: true
+#| eval: false
+coffee_ratings_first10 = coffee_ratings.head(10)
+```
+
+```{python}
+#| echo: true
+#| eval: false
+coffee_ratings['total_cup_points'].mean()
+```
+
+![](images/paste-10.png)
+
+La media de puntos de taza de muestra, es superior.
+
+En este caso, la muestra por conveniencia no es representativa de toda la población.
+
+-   Visualización del sesgo de selección
+
+Los histogramas son una excelente manera de visualizar el sesgo de selección.
+
+```{python}
+#| echo: true
+#| eval: false
+import matplotlib.pyplot as plt
+import numpy as np
+coffee_ratings['total_cup_points'].hist(bins=np.arange(59, 93, 2))
+plt.show()
+```
+
+A continuación se muestra el código para generar un histograma de la muestra de conveniencia:
+
+```{python}
+#| echo: true
+#| eval: false
+coffee_ratings_first10['total_cup_points'].hist(bins=np.arange(59, 93, 2))
+plt.show()
+```
+
+-   Distribución de una población y de una muestra por conveniencia
+
+![](images/paste-11.png)
+
+Queda claro que la distribuicón de la muestra no es similar a la de la población. Todos los valores de la muestra están al lado derecho del gráfico.
+
+-   Visualizando el sesgo de selección para una muestra aleatoria
+
+```{python}
+#| echo: true
+#| eval: false
+coffee_sample = coffee_ratings.sample(n=10)
+coffee_sample['total_cup_points'].hist(bins=np.arange(59, 93, 2))
+plt.show()
+```
+
+-   Distribución de una población y de una simple muestra aleatoria
+
+![](images/paste-12.png)
+
+Se observa que la forma de las distribuciones está más alineada cuando se utiliza un muestreo aleatorio.
 
 ### ¿Son generalizables las conclusiones de la muestra?
+
+Acabas de ver cómo el muestreo por conveniencia (recoger muestras utilizando el método más fácil) puede dar lugar a muestras que no son representativas de la población. Equivalentemente, esto significa que las conclusiones de la muestra no son generalizables a la población. Visualizar las distribuciones de la población y la muestra puede ayudar a determinar si la muestra es o no representativa de la población.
+
+El conjunto de datos de Spotify tiene una columna `acousticness`, que es una medida de confianza de cero a uno de si la canción se hizo con instrumentos que no están enchufados. Compararás la distribución `acousticness` de la población total de canciones con una muestra de esas canciones.
+
+
+#### Intrucciones
+
+1. Traza un histograma de `acousticness` de `spotify_population` con contenedores con anchura `0.01` de `0` a `1` utilizando pandas `.hist()`.
+
+```{python}
+import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Visualize the distribution of acoustiness with a histogram
+spotify_population['acousticness'].hist(bins=np.arange(0, 1.01, 0.01))
+plt.show()
+```
+2. Actualliza el código del histograma para utilizar el conjunto de datos `spotify_mysterious_sample`.
+
+::: {.callout-note collapse="true"}
+Para poder obtener el conjunto de datos `spotify_mysterious_sample` copie los datos desde Datacmap usando el comando:
+
+```{python}
+#| echo: true
+#| eval: false
+print(spotify_population.to_csv(index=False))
+```
+:::
+
+```{python}
+ruta = './data/spotify_mysterious_sample.csv'
+spotify_mysterious_sample = pd.read_csv(ruta)
+
+# Update the histogram to use spotify_mysterious_sample
+spotify_mysterious_sample['acousticness'].hist(bins=np.arange(0, 1.01, 0.01))
+plt.show()
+```
+
+3. **Preguntas**
+
+Compara los dos histogramas que has dibujado ¿Los valores de `acousticness` de la muestra son generalizables a la población en general?
+
+**Respuestas Posibles**
+
+- [ ] Sí. Cualquier muestra debe conducir a un resultado generalizable sobre la población.
+- [ ] Sí. Es probable que la muestra seleccionada sea una muestra aleatoria de todas las canciones de la pblación.
+- [ ] No. Las muestras nunca pueden conducir a resultados generalizables sobre la población.
+- [X] No. Las muestras de `acousticness` son sistemáticamenre superiores a las de la población general.
+- [ ] No. Las muestras de `acousticness` son sistemáticamente inferiores a las de la pobleción general.
 
 ### ¿Son generalizables estos resultados?
 

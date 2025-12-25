@@ -1,0 +1,878 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "title: \"Relaciones en los datos\"\n",
+        "---\n",
+        "\n",
+        "Las variables de los conjuntos de datos tienen relaciones entre sí. En este capítulo, examinarás las relaciones entre datos numéricos, categóricos e incluso DateTime, explorando la dirección y la fuerza de estas relaciones, así como las formas de visualizarlas.\n",
+        "\n",
+        "## Patrones a lo largo del tiempo"
+      ],
+      "id": "ab1e59f8"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| eval: false\n",
+        "divorce = pd.read_csv(\"divorce.csv\")\n",
+        "divorce.head()"
+      ],
+      "id": "bab52cdc",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "![](images/paste-53.png)\n",
+        "\n",
+        "-   Importando data DateTime\n",
+        "\n",
+        "    -   DataTime necesita ser explicitamente declarada en pandas"
+      ],
+      "id": "b29a110e"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| eval: false\n",
+        "divorce.dtypes"
+      ],
+      "id": "ffabac74",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "![](images/paste-54.png)"
+      ],
+      "id": "76c1f7c7"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| eval: false\n",
+        "divorce = pd.read_csv(\"divorce.csv\", parse_dates=[\"marriage_date\"])\n",
+        "divorce.dtypes"
+      ],
+      "id": "f369c48a",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "![Este tipo de datos abre muchas posibilidades para el análisis, como observar patrones a lo largo de años, meses o incluso días de la semana.](images/paste-55.png)\n",
+        "\n",
+        "-   Conviritiendo los datos a DataTime\n",
+        "\n",
+        "    -   `pd.to_datetime()` convierte los argumentos de datos DateTime"
+      ],
+      "id": "40773c43"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| eval: false\n",
+        "divorce['marriage_date'] = pd.to_datetime(divorce['marriage_date'])\n",
+        "divorce_dtypes"
+      ],
+      "id": "0a488aa3",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "![](images/paste-57.png)\n",
+        "\n",
+        "-   Creando datos DateTime"
+      ],
+      "id": "53e0f87a"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| eval: false\n",
+        "divorce.head(2)"
+      ],
+      "id": "076df6d9",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "![](images/paste-58.png)"
+      ],
+      "id": "e27a2c64"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| eval: false\n",
+        "divorce['marriage_date'] = pd.to_datetime(divorce[['month', 'day', 'year']])\n",
+        "divorce.head(2)"
+      ],
+      "id": "d8005556",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "![](images/paste-59.png)\n",
+        "\n",
+        "Es posible extraer sólo el mes, el día o el año de una columna que contenga una fecha completa, usando los atributos `dt.month`, `dt.day` y `dt.year.`"
+      ],
+      "id": "cf91a373"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| eval: false\n",
+        "divorce['marriage_month'] = divorce['marriage_date'].dt.month()\n",
+        "divorce.head()"
+      ],
+      "id": "8bc9ccd7",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "![](images/paste-60.png)\n",
+        "\n",
+        "-   Visualizando patrones a lo largo del tiempo"
+      ],
+      "id": "181ea0f5"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| eval: false\n",
+        "sns.lineplot(data=divorce, x='marriage_month', y='marriage_duration')\n",
+        "plt.show()"
+      ],
+      "id": "50b4d46d",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "![](images/paste-61.png)\n",
+        "\n",
+        "Los amplios intervalos de confianza sugieren que se necesita más análisis.\n",
+        "\n",
+        "### Importar datos DateTime\n",
+        "\n",
+        "¡Ahora trabajarás con todo el conjunto de datos del divorcio! Los datos desciben los matrimonios mexicanos disueltos entre 2000 y 2015. Contiene las fechs de matrimonio y divorcio, el nivel educativo, la fecha de nacimiento, los ingresos de cada miembro de la pareja y la duración del matrimonio, así como el número de hijos que tenía la pareja en el momento del divorcio.\n",
+        "\n",
+        "Los nombres de ls columnas y los tipos de datos son los siguientes:\n",
+        "\n",
+        "![](images/paste-62.png)\n",
+        "\n",
+        "¡Parece que hay mucha información de fecha en estos datos que todavía no son de tipo DateTime! Tu tarea es arreglarlo para que puedas explorar patrones a lo largo del tiempo."
+      ],
+      "id": "23f39b5d"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import pandas as pd\n",
+        "\n",
+        "ruta = './data/divorce.csv'\n",
+        "divorce = pd.read_csv(ruta)\n",
+        "divorce.head()"
+      ],
+      "id": "597bb68b",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "#### Instrucciones\n",
+        "\n",
+        "-   Importa `divorce.csv`, guardando como DataFrame, `divorce`: indica en la función de importación que las columnas `divorce_date`, `dob_man`, `dob_woman`, y `marriage_date` deben importarse como valores DateTime."
+      ],
+      "id": "5a566a7c"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Import divorce.csv, parseing the appropriate columns as dateds in the import\n",
+        "divorce = pd.read_csv('./data/divorce.csv', parse_dates=['divorce_date', 'dob_man', 'dob_woman', 'marriage_date'])\n",
+        "print(divorce.dtypes)"
+      ],
+      "id": "7103a8c4",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Buen trabajo parseando esas fechas al mismo tiempo que importabas los datos en pandas. ¡Ahora, intenta actualizar los tipos de datos DateTime en una DataFrame que ya ha sido importado!\n",
+        "\n",
+        "### Actualizar tipo de datos a DateTime\n",
+        "\n",
+        "Ahora se te ha cargado el DataFrame `divorce`, pero una columna se almacea como una cadena que debería ser un dato DateTime. ¿Cuál es? Una vez que hayas identificado la columna, la actualizarás para que puedas explorarla más de cerca en el siguiente ejercicio."
+      ],
+      "id": "603596ee"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "ruta = './data/divorce.csv'\n",
+        "divorce = pd.read_csv(ruta, parse_dates=['divorce_date', 'dob_man', 'dob_woman'])\n",
+        "print(divorce.dtypes)"
+      ],
+      "id": "32ddba03",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "#### Instrucciones\n",
+        "\n",
+        "1.  **Pregunta**\n",
+        "\n",
+        "¿Cuál de las columnas del DataFrame `divorce` no se ha actualizado a un tipo de datos DateTime, pero debería hacerse?\n",
+        "\n",
+        "**Respuestas posibles**\n",
+        "\n",
+        "-   [ ] `divorce_date`\n",
+        "-   [x] `marriage_date`\n",
+        "-   [ ] `education_woman`\n",
+        "-   [ ] `num_kids`\n",
+        "\n",
+        "2.  Covierte la columna `marriage_date` del DataFrame `divorce` en valores de `DateTime`."
+      ],
+      "id": "eeee88dd"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Convert the marriage_date column to DateTime values\n",
+        "divorce['marriage_date'] = pd.to_datetime(divorce['marriage_date'])\n",
+        "print(divorce.dtypes)"
+      ],
+      "id": "8381a404",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Ahora, estás listo para ver cómo la fecha de matrimonio de una pareja se relaciona con otros datos.\n",
+        "\n",
+        "### Visualizar las relaciones a lo largo del tiempo\n",
+        "\n",
+        "Ahora que tus datos de fechas se guardan como datos DateTime, ¡puedes explorar patrones a lo largo del tiempo! ¿Tiene relación el año en que se casó una pareja con el número de hijos que tiene en el momento del divorcio? ¡Tu tarea es averiguarlo!\n",
+        "\n",
+        "#### Instrucciones\n",
+        "\n",
+        "1.  Define una columna llamada `marriage_year`, que solo contiene la parte del año de la columna `marriage_date`."
+      ],
+      "id": "41643350"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Define the marriage_year column\n",
+        "divorce['marriage_year'] = divorce['marriage_date'].dt.year"
+      ],
+      "id": "f397ee56",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "2.  Crea un gráfico de líneas que muestre el número medio de hijos que tuvo una pareja durante su matrimonio, ordenado por el año en que la pareja se casó."
+      ],
+      "id": "6f6765b2"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import seaborn as sns\n",
+        "import matplotlib.pyplot as plt\n",
+        "# Create a lineplot showing the average  number of kids by year\n",
+        "sns.lineplot(data=divorce, x='marriage_year', y='num_kids')\n",
+        "plt.show()"
+      ],
+      "id": "3475b7d9",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "¡Bien hecho! Haz descubierto un patrón aquí, parece que las parejas que se casaron en años posteriores también tuvieron menos hijos durante su matrimonio.\n",
+        "\n",
+        "## Correlación\n",
+        "\n",
+        "-   Correlación\n",
+        "    -   Describe la dirección de la relación de entre dos variables así como su fuerza.\n",
+        "\n",
+        "    -   Configurar `numeric_only=True` previene errores con columnas no numéricas.\n",
+        "\n",
+        "    -   El método `.cor()` calcula el coeficiente de correlación de Pearson."
+      ],
+      "id": "e459a811"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "divorce.corr(numeric_only=True)"
+      ],
+      "id": "2a2eaebe",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "-   Mapas de calor de correlación"
+      ],
+      "id": "45c64f91"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "sns.heatmap(divorce.corr(numeric_only=True), annot=True)\n",
+        "plt.show()"
+      ],
+      "id": "a8c375db",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "-   Correlación en contexto"
+      ],
+      "id": "10edecab"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "divorce['divorce_date'].min()"
+      ],
+      "id": "a9e48a8a",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "divorce['divorce_date'].max()"
+      ],
+      "id": "c77a5065",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "-   Visualización de las relaciones\n",
+        "    - Es importante complementar nuestros cálculos de correlación con gráficos de dispersión.\n",
+        "\n",
+        "+-----------------------------------------------------------+------------------------------------------------------+\n",
+        "| ![](images/paste-64.png)                                  | ![](images/paste-65.png)                             |\n",
+        "+-----------------------------------------------------------+------------------------------------------------------+\n",
+        "| -   Fuerte relación, pero no lineal                       | -   Relación cuadrática; no lineal                   |\n",
+        "|                                                           |                                                      |\n",
+        "| -   El coeficiente de correlación de Pearson: `-6.48e-18` | -   Coeficiente de correlación de Pearson: `.971211` |\n",
+        "+-----------------------------------------------------------+------------------------------------------------------+\n",
+        "\n",
+        "\n",
+        "- Scatter plots"
+      ],
+      "id": "85c8b244"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "sns.scatterplot(data=divorce, x='income_man', y='income_woman')\n",
+        "plt.show()"
+      ],
+      "id": "41399ec6",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "- Pairplots\n",
+        "    - Es útil para obtener una descripción general rápida de las relaciones dentro del conjunto de datos.\n",
+        "    - Tanta información en un elemento visual puede ser difícil de interpretar con grandes conjuntos de datos.\n"
+      ],
+      "id": "b673e020"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "sns.pairplot(data=divorce)\n",
+        "plt.show()"
+      ],
+      "id": "3e65c4e6",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Es posible limitar el número de relaciones graficadas estableciendo el argumento `vars` igual a las variables de interés.\n"
+      ],
+      "id": "6484ccee"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "sns.pairplot(data=divorce, vars=['income_man', 'income_woman', 'marriage_duration'])\n",
+        "plt.show()"
+      ],
+      "id": "4bc5c875",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### Interpretar un mapa de calor\n",
+        "\n",
+        "¿Cuál de las siguientes afirmaciones es correcta respecto a las relaciones entre variables en el DataFrame `divorce`?"
+      ],
+      "id": "5abe0e41"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "divorce['marriage_moth'] = divorce['marriage_date'].dt.month\n",
+        "divorce.head()"
+      ],
+      "id": "cb94da99",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "#### Instrucciones \n",
+        "\n",
+        "**Respuestas Posibles**\n",
+        "\n",
+        "- [ ] `marriage_duration` está fuertemente correlacionada de forma positiva con `marriage_month`.\n",
+        "\n",
+        "- [ ] La correlación entre `num_kids` y `income_man` es más fuerte que la correlación entre `num_kids` y `marriage_duration`.\n",
+        "\n",
+        "- [ ] Un `marriage_year` más tardío provoca un menor número de hijos, representado por `num_kids`.\n",
+        "\n",
+        "- [X] Un `marriage_year` más tardío está correlacionado con tener menos hijos.\n",
+        "\n",
+        "\n",
+        "### Visualizar las relaciones entre variables\n",
+        "\n",
+        "En el último ejercicio, habrás observado que un `marriage_duration` más largo está correlacionado con tener más hijos , representado por la columna `num_kids`. El coeficiente de correlación entre las variables `marriage_duration` y `num_kids` es `0.45`.\n",
+        "\n",
+        "En este ejercicio, crearás un gráfico de dispersión para visualizar la relación entre estas variables.\n",
+        "\n",
+        "#### Instrucciones\n",
+        "\n",
+        "- Cree un diagrama de dispersión que muestre `marriage_duration` en el eje x y `num_kids` en el eje y.\n"
+      ],
+      "id": "faf788d2"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Create the scatterplot\n",
+        "sns.scatterplot(data=divorce, x='marriage_duration', y='num_kids')\n",
+        "plt.show()"
+      ],
+      "id": "cd50501a",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Hay una ligera relación positiva en el gráfico de dispersión. En el conjunto de datos, las parejas sin hijos no tienen valor en la columna `num_kids`. Si estás seguro que todos o la mayoría de los valores faltantes en `num_kids` están relacionados con parejas sin hijos, podrías considerar actualizar estos valores a 0, lo que podría aumentar la correlación.\n",
+        "\n",
+        "\n",
+        "### Visualizar las relaciones entre múltiples variables\n",
+        "\n",
+        "Seaborn's `.pairplot()` es excelente para comprender las relaciones entre varias o todas las vatiables de un conjunto de datos, agregando gráficos de dispersión por pares en un solo visual.\n",
+        "\n",
+        "Tu tarea consiste en utilizar un `pairplot` par comparar la relación entre 'marriage_duration' y 'income_woman'.\n",
+        "\n",
+        "#### Instrucciones\n",
+        "\n",
+        "- Crea un diagrama de pares para visualizar las relaciones entre `income_woman` y `marriage_duration` en el DataFrame `divorce`.\n"
+      ],
+      "id": "3d113292"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Create a pairplot for income_woman and marriage_duration\n",
+        "sns.pairplot(data=divorce, vars=['income_woman', 'marriage_duration'])\n",
+        "plt.show()"
+      ],
+      "id": "ed432c4b",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Al igual que la matriz de correlación , puedes ver que la relación entre `income_woman` y `marriage_duration` no es fuerte. También puedes tener una idea de las distribuciones de ambas variables en los gráficos superior izquierdo e inferior derecho.\n",
+        "\n",
+        "\n",
+        "## Relaciones y distribuciones de los factores\n",
+        "\n",
+        "- Nivel de educación: male partner\n"
+      ],
+      "id": "6f44ca88"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "divorce['education_man'].value_counts()"
+      ],
+      "id": "007cd080",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "- Explorando las relaciones categóricas\n"
+      ],
+      "id": "c4929a54"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "sns.histplot(data=divorce, x='marriage_duration', binwidth=1)\n",
+        "plt.show()"
+      ],
+      "id": "79d8d836",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "sns.histplot(data=divorce, x='marriage_duration', hue='education_man', binwidth=1)\n",
+        "plt.show()"
+      ],
+      "id": "91de7a10",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "- Kernel Desnsity Estimate (KDE) plots\n"
+      ],
+      "id": "cabcfb42"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "sns.kdeplot(data=divorce, x='marriage_duration', hue='education_man')\n",
+        "plt.show()"
+      ],
+      "id": "71c4fa4b",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Los gráficos KDE nos permiten visualizar las distribuciones. Los KDE son más interpretables, especialmente cuando se muestran varias distribuciones.\n",
+        "\n",
+        "La distribución con KDE parece sugerir que algunas parejas tuvieron duraciones menores a cero.\n",
+        "\n",
+        "Para solucionar esto, podempos utilizar el argumento de la palabra clave `cut`.\n"
+      ],
+      "id": "3c6e5182"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "sns.kdeplot(data=divorce, x='marriage_duration', hue='education_man', cut=0)\n",
+        "plt.show()"
+      ],
+      "id": "db9769fe",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "- Gráficos KDE acumulativos\n"
+      ],
+      "id": "5966bb28"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import seaborn as sns\n",
+        "sns.kdeplot(data=divorce, x='marriage_duration', hue='education_man', cut=0, cumulative=True)\n",
+        "plt.show()"
+      ],
+      "id": "ad20d434",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Este gráfico describe la probabilidad de que la duración del matrimonio sea menor o igual al valor del eje x para cada nivel de educación de la pareja masculina.\n",
+        "\n",
+        "- Relación entre la edad del matrimonio y la educación\n",
+        "    - Hay una relación entre la edad al momento del matrimonio y el nivel de educación?\n"
+      ],
+      "id": "45ab2ac6"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "divorce['man_age_marriage'] = divorce['marriage_year'] - divorce['dob_man'].dt.year\n",
+        "divorce['woman_age_marriage'] = divorce['marriage_year'] - divorce['dob_woman'].dt.year"
+      ],
+      "id": "9b3e7d75",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "- Scatter plot con las variables categóricas\n"
+      ],
+      "id": "923683d3"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "sns.catplot(data=divorce, x='woman_age_marriage', y='man_age_marriage')\n",
+        "plt.show()"
+      ],
+      "id": "efcb0048",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "sns.catplot(data=divorce, x='woman_age_marriage', y='man_age_marriage', hue='education_man')\n",
+        "plt.show()"
+      ],
+      "id": "5df0e27e",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### Datos categóricos en gráficos de dispersión\n",
+        "\n",
+        "En el video se exploro cómo se relacionan el nivel educativo de los hombres y la edad al casarse con otras variables de nuestro conjunto de datos, el DataFrame `divorce`. Ahora verás cómo se relacionan la formación de las mujeres y la edad al casarse con otras variables.\n",
+        "\n",
+        "Tu tarea consiste en crear un diagrama de dispersión de la edad y los ingresos de cada mujer, incorporando la variable categórica del nivel educativo para obtener un contexto adicional.\n",
+        "\n",
+        "\n",
+        "#### Instrucciones\n",
+        "\n",
+        "- Crea un gráfico de dispersión que muestre `woman_age_marriage` en el eje de abcisas y `income_woman` en el eje de las ordenadas, cada punto de datos debe colorearse en función del nivel educativo de la mujer, representado por `education_woman`."
+      ],
+      "id": "a190713d"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Create a scatter plot\n",
+        "sns.scatterplot(data=divorce, x='woman_age_marriage', y='income_woman', hue='education_woman')\n",
+        "plt.show()"
+      ],
+      "id": "4fb06966",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Parece que hay una correlación positiva entre la educación profesional y los salarios más altos, como cabría esperar. La relación entre la edad de las mujeres al casarse y el nivel educativo es un poco menos clara.\n",
+        "\n",
+        "\n",
+        "### Explorando con gráficos KDE\n",
+        "\n",
+        "Los gráficos de Estimación de Densidad del Núcleo (KDE) son una gran alternativa a los histogramas cuando quieres mostrar varias distribuciones en el mismo gráfico.\n",
+        "\n",
+        "Supongamos que te interesa la relación entre la duración del matrimonio y el número de hijos que tiene una pareja. Como los valores de la columna `num_kids` sólo van de uno a cinco, puedes graficar el KDE de cada valor en la misma gráfica.\n",
+        "\n",
+        "Recuerda que la columna `num_kids` de `divorce` solo muestra los valores `N/A` de las parejas sin hijos, por lo que solo verás las distribuciones de las parejas divorciadas con al menos un hijo.\n",
+        "\n",
+        "\n",
+        "#### Instrucciones\n",
+        "\n",
+        "1.  Cree un gráfico KDE que muestre `marriage_duration` en el eje x y una línea de color diferente para cada posible número de hijos que pueda tener una pareja, representada por `num_kids`."
+      ],
+      "id": "61b717a8"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Create the KDE plot\n",
+        "sns.kdeplot(data=divorce, x='marriage_duration', hue='num_kids')\n",
+        "plt.show()"
+      ],
+      "id": "4b3ef297",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "2. Observa que actualmente el gráfico muestra duraciones del matrimonio inferiores a cero; actualiza el grafico KDE para que la duración del matrimonio no pueda suavizarse más allá de los puntos de datos extremos."
+      ],
+      "id": "b8fb0466"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Update the KDE plot so that marriage durantion can't be smoothed too far\n",
+        "sns.kdeplot(data=divorce, x='marriage_duration', hue='num_kids', cut=0)\n",
+        "plt.show()"
+      ],
+      "id": "e2792f08",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "3. Actualiza el código del gráfico KDE del paso anterior para que muestre una función de distribución acumulativo para cada número de hijos que tiene una pareja."
+      ],
+      "id": "8a2d742e"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Update the KDE plot to show a cumulative distribution function\n",
+        "sns.kdeplot(data=divorce, x='marriage_duration', hue='num_kids', cut=0, cumulative=True)\n",
+        "plt.show()"
+      ],
+      "id": "9448e3ad",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Parece que hay una correlación positiva entre matrimonios más largos y más hijos, pero por supuesto, esto no indica causalidad. También puedes ver que hay muchos menos datos sobre parejas con más de dos hijos; esto nos ayuda a entender cuan confiables son nuestros hallazgos."
+      ],
+      "id": "caa572ba"
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "name": "python3",
+      "language": "python",
+      "display_name": "Python 3 (ipykernel)",
+      "path": "/Users/macbookairedwin/Documents/Datacamp/analista-de-datos-en-python/.venv/share/jupyter/kernels/python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}

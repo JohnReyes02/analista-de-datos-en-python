@@ -761,14 +761,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul></li>
 <li><p>Points vs.&nbsp;Flavor: Población</p></li>
 </ul>
-<div id="684d02f4" class="cell" data-execution_count="1">
+<div id="e4565cb7" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pts_vs_flavor_pop <span class="op">=</span> coffee_ratings[[<span class="st">"total_points"</span>, <span class="st">"flavor"</span>]]</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img src="images/paste-2.png" class="img-fluid"></p>
 <ul>
 <li>Points vs.&nbsp;Flavor: 10 filas de muestra</li>
 </ul>
-<div id="59e2f2a5" class="cell" data-execution_count="2">
+<div id="ba653abf" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>pts_vs_flavor_samp <span class="op">=</span> pts_vs_flavor_pop.sample(n<span class="op">=</span><span class="dv">10</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img src="images/paste-3.png" class="img-fluid"></p>
@@ -779,7 +779,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Use <code>.sample()</code> en <code>pandas</code> para DataFrames y Series.</li>
 </ul></li>
 </ul>
-<div id="fb996d7f" class="cell" data-execution_count="3">
+<div id="166f9424" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>cup_points_samp <span class="op">=</span> coffe_ratings[<span class="st">'total_cup_points'</span>].sample(n<span class="op">=</span><span class="dv">10</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img src="images/paste-4.png" class="img-fluid"></p>
@@ -787,13 +787,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Parámetros de Población &amp; Puntos Estimados</p>
 <p>Un parámetro de población es un cálculo realizado sobre el conjunto de datos de población.</p></li>
 </ul>
-<div id="cf2caad8" class="cell" data-execution_count="4">
+<div id="585e57e6" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>np.mean(pts_vs_flavor_pop[<span class="st">'total_cup_points'</span>])</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img src="images/paste-5.png" class="img-fluid"></p>
 <p>Una estimación puntual o estadística de muestra, es un cálculo basado en el conjunto de datos de muestra.</p>
-<div id="b3b9276b" class="cell" data-execution_count="5">
+<div id="32c6ab84" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>np.mean(cup_points_samp)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img src="images/paste-6.png" class="img-fluid"></p>
@@ -801,11 +801,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Puntos estimados con pandas</p>
 <p>Trabajar con pandas puede ser más fácil que trabajar con Numpy. Estos cálculos de media se pueden realizar utilizando el método de pandas <code>.mean()</code></p></li>
 </ul>
-<div id="8d0624b4" class="cell" data-execution_count="6">
+<div id="df39b1df" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>pts_vs_flavor_pop[<span class="st">'flavor'</span>].mean()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img src="images/paste-7.png" class="img-fluid"></p>
-<div id="cbbce6e3" class="cell" data-execution_count="7">
+<div id="d747697d" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>pts_vs_flavor_samp[<span class="st">'flavor'</span>].mean()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img src="images/paste-8.png" class="img-fluid"></p>
@@ -826,12 +826,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="muestreo-simple-con-pandas">Muestreo simple con pandas</h3>
 <p>A lo largo de este capítulo , explorarás los datos de canciones de Spotify. Cada fila de este conjunto de datos de población representa una canción, y hay más de 40000 filas. Las columnas incluyen el nombre de la canción, los artistas que la interpretaron, al año de lanzamiento y atributos de la canción como su duración, tempo y bailabilidad. Empezarás por fijarte en las duraciones.</p>
 <p>Tu primera tarea es tomar una muestra del conjunto de datos de Spotify y comparar la duración media de la población con la de la muestra.</p>
-<div id="e3fa7730" class="cell" data-execution_count="8">
+<div id="b3bfed60" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>ruta <span class="op">=</span> <span class="st">'./data/spotify_2000_2020.feather'</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>spotify_population <span class="op">=</span> pd.read_feather(ruta)</span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>spotify_population.head()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="1">
+<div class="cell-output cell-output-display" data-execution_count="8">
 <div>
 
 
@@ -988,77 +988,77 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol type="1">
 <li>Muestra 1000 filas de <code>spotify_population</code>, asignándolas a <code>spotify_sample</code>.</li>
 </ol>
-<div id="588834b6" class="cell" data-execution_count="9">
+<div id="8e6b240a" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sample 1000 rows from spotify_population</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>spotify_sample <span class="op">=</span> spotify_population.sample(n<span class="op">=</span><span class="dv">1000</span>)</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># print sample</span></span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(spotify_sample)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>       acousticness                                            artists  \
-29874       0.11500                            ['Yarbrough &amp; Peoples']   
-13146       0.08420                                ['Black Eyed Peas']   
-4598        0.24300                                  ['Kings of Leon']   
-35709       0.60600                                    ['Johnny Cash']   
-33010       0.54800                                   ['Andy Grammer']   
-...             ...                                                ...   
-9663        0.90600                           ['Emilie-Claire Barlow']   
-27045       0.02790                                        ['Dayglow']   
-7768        0.83900  ['Jessica Keenan Wynn', 'Daniel Cooney', 'Dan ...   
-2715        0.00255                                  ['Rascal Flatts']   
-29541       0.17500                             ['The Postal Service']   
+<pre><code>       acousticness                     artists  danceability  duration_ms  \
+14790      0.129000          ['Living Legends']         0.804     269360.0   
+30612      0.003080                 ['Beyoncé']         0.512     257653.0   
+12637      0.036800                  ['Juanes']         0.711     294267.0   
+6945       0.008780          ['Camera Obscura']         0.329     231160.0   
+3306       0.344000  ['Thalía', 'Prince Royce']         0.800     220067.0   
+...             ...                         ...           ...          ...   
+34620      0.000637                ['Maroon 5']         0.674     185280.0   
+2342       0.361000      ['Conjunto Primavera']         0.642     221627.0   
+12414      0.992000          ['Clifford Solum']         0.196     191250.0   
+10630      0.619000    ['Los Reyes Del Camino']         0.666     229067.0   
+35407      0.121000                 ['Kehlani']         0.426     185884.0   
 
-       danceability  duration_ms  duration_minutes  energy  explicit  \
-29874         0.829     249000.0          4.150000   0.710       0.0   
-13146         0.848     274733.0          4.578883   0.692       0.0   
-4598          0.642     227440.0          3.790667   0.522       0.0   
-35709         0.700     241160.0          4.019333   0.664       0.0   
-33010         0.828     198001.0          3.300017   0.560       0.0   
-...             ...          ...               ...     ...       ...   
-9663          0.653     196780.0          3.279667   0.200       0.0   
-27045         0.707     204014.0          3.400233   0.767       0.0   
-7768          0.529     315947.0          5.265783   0.330       0.0   
-2715          0.561     275587.0          4.593117   0.932       0.0   
-29541         0.704     226613.0          3.776883   0.674       0.0   
+       duration_minutes  energy  explicit                      id  \
+14790          4.489333   0.665       1.0  5d5xq72M3mw3hfYibjmVCI   
+30612          4.294217   0.625       0.0  7lUA4P03AhwAw40JHkdyGr   
+12637          4.904450   0.879       0.0  3wE4fvPhhScUAhY37TDc1D   
+6945           3.852667   0.857       0.0  52PuLmsxTDOI2WAqpzYjoT   
+3306           3.667783   0.723       0.0  1Q8NiatGDc6YgefNwT7Jgu   
+...                 ...     ...       ...                     ...   
+34620          3.088000   0.740       0.0  6tVrmsbI5HVDgOlFSTrQjB   
+2342           3.693783   0.760       0.0  69tDiG9LD67Dv3601LTO3j   
+12414          3.187500   0.027       0.0  45nNKzH7nKMfyFhUUqdyGY   
+10630          3.817783   0.483       0.0  6Jn8zqh19yyRgZlAsz0rNL   
+35407          3.098067   0.408       1.0  1Fraz3CzCuOULnToogIwWW   
 
-                           id  instrumentalness   key  liveness  loudness  \
-29874  0DVevhcLPiHoLaVyl6dSGr          0.145000  11.0    0.0541    -8.736   
-13146  6BSALqhEO72i9glHoke5Hc          0.000000   2.0    0.3190    -6.211   
-4598   7GWViYkd4fTS3ApKuaTLEB          0.000000  11.0    0.0915    -5.654   
-35709  3QHOeZLrjWV3R1ps587v7c          0.000002   5.0    0.2800    -8.786   
-33010  5NDUXbMwcnTQp66tI2zcdR          0.000037   0.0    0.1500    -6.685   
-...                       ...               ...   ...       ...       ...   
-9663   5PcCSUGriuhWuyyWxuBnnM          0.002760   8.0    0.1920   -10.744   
-27045  0zePbRMJ9sd7wsZRlbPQua          0.000295   7.0    0.1690    -7.072   
-7768   4KgQ3D90ZBCUkzH1F0CNsX          0.000000  10.0    0.0916    -9.333   
-2715   5Qe0ZZzG24zLx7vfWQilVu          0.000000   5.0    0.1440    -5.563   
-29541  0hZS5wwoAata1MzZj8M9uI          0.051800   2.0    0.0978    -7.389   
+       instrumentalness   key  liveness  loudness  mode  \
+14790          0.000000   0.0    0.2860    -8.370   1.0   
+30612          0.000164  11.0    0.3460    -6.764   1.0   
+12637          0.000000  11.0    0.1150    -4.764   0.0   
+6945           0.072500  11.0    0.1560    -3.681   1.0   
+3306           0.000000   0.0    0.0956    -6.404   0.0   
+...                 ...   ...       ...       ...   ...   
+34620          0.000000  11.0    0.1110    -4.517   0.0   
+2342           0.000000   9.0    0.0613    -3.344   1.0   
+12414          0.799000   7.0    0.1020   -29.634   1.0   
+10630          0.000005   3.0    0.2990    -9.496   1.0   
+35407          0.000000  10.0    0.1590    -4.751   1.0   
 
-       mode                                               name  popularity  \
-29874   1.0                               Don't Stop The Music        50.0   
-13146   1.0                                          Like That        40.0   
-4598    0.0                                       Talihina Sky        48.0   
-35709   1.0                                One Piece at a Time        46.0   
-33010   1.0                                         Fresh Eyes        68.0   
-...     ...                                                ...         ...   
-9663    1.0                                C'est si bon - 2012        55.0   
-27045   1.0                                            Hot Rod        74.0   
-7768    0.0                                The Me Inside of Me        53.0   
-2715    1.0  Life is a Highway - From "Cars"/Soundtrack Ver...        43.0   
-29541   1.0                                     Nothing Better        49.0   
+                                           name  popularity release_date  \
+14790                 Nothing Less (feat. Slug)        38.0   2001-10-10   
+30612                              Pretty Hurts        65.0   2014-11-24   
+12637                               Fijate Bien        46.0   2000-01-01   
+6945         Lloyd, I'm Ready To Be Heartbroken        50.0   2006-05-29   
+3306   Te Perdiste Mi Amor (feat. Prince Royce)        60.0   2012-11-19   
+...                                         ...         ...          ...   
+34620                              Lucky Strike        54.0   2012-01-01   
+2342                          Perdóname Mi Amor        39.0   2002-01-01   
+12414                                 Decumbent        63.0   2019-12-13   
+10630        Amantes Inocentes - Version Balada        45.0   2001-01-01   
+35407                                  Bad News        69.0   2020-05-08   
 
-      release_date  speechiness    tempo  valence    year  
-29874   2007-01-01       0.0415   98.293    0.949  2007.0  
-13146   2005-01-01       0.3130  112.024    0.379  2005.0  
-4598    2003-08-19       0.0261  114.431    0.391  2003.0  
-35709   2002-02-12       0.3230  102.658    0.965  2002.0  
-33010   2017-12-01       0.0327  122.054    0.872  2017.0  
-...            ...          ...      ...      ...     ...  
-9663    2012-10-16       0.0440  127.609    0.319  2012.0  
-27045   2019-11-14       0.0323  139.985    0.832  2019.0  
-7768    2014-06-10       0.0588  111.131    0.489  2014.0  
-2715    2006-01-01       0.0614  103.040    0.586  2006.0  
-29541   2003-02-19       0.0308  134.981    0.698  2003.0  
+       speechiness    tempo  valence    year  
+14790       0.3070   97.040   0.5390  2001.0  
+30612       0.0508  129.935   0.2010  2014.0  
+12637       0.1150   94.978   0.8290  2000.0  
+6945        0.0496  143.482   0.4760  2006.0  
+3306        0.0353  128.017   0.9160  2012.0  
+...            ...      ...      ...     ...  
+34620       0.0419  143.998   0.4310  2012.0  
+2342        0.0287   92.940   0.4250  2002.0  
+12414       0.0491  133.866   0.0359  2019.0  
+10630       0.0394   75.004   0.3970  2001.0  
+35407       0.0441  132.203   0.0493  2020.0  
 
 [1000 rows x 20 columns]</code></pre>
 </div>
@@ -1070,7 +1070,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Calcula la duración media en minutos de <code>spotify_population</code> utilizando <code>pandas</code>.</li>
 <li>Calcula la duración media en minutos de <code>spotify_sample</code> utilizando <code>pandas</code>.</li>
 </ul>
-<div id="456573ca" class="cell" data-execution_count="10">
+<div id="4dd39b55" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the mean duration in mins from spotify_population</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>mean_dur_pop <span class="op">=</span> spotify_population[<span class="st">'duration_minutes'</span>].mean()</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1082,7 +1082,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(mean_dur_sample)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>3.8521519140900073
-3.889205233333333</code></pre>
+3.919023916666667</code></pre>
 </div>
 </div>
 <p>Se observa que la duración media de las canciones en la muestra es similar, pero no idéntica a la duración media de las canciones en toda la poblacición.</p>
@@ -1101,7 +1101,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Crea una serie <code>pandas</code>, <code>loudness_pop</code>, subdividiendo la columna <code>loudness</code> de <code>spotify_population</code>.</li>
 <li>Muestra <code>loudness_pop</code> para obtener 100 valores aleatorios, asignándolos a <code>loudness_samp</code>.</li>
 </ul>
-<div id="28254c25" class="cell" data-execution_count="11">
+<div id="19b9b507" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a pandas Series from de loudness column of spotify_population</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>loudness_pop <span class="op">=</span> spotify_population[<span class="st">'loudness'</span>]</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1110,17 +1110,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(loudness_samp)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>2163     -4.543
-14799    -6.739
-38903    -5.131
-24       -8.266
-10005   -23.912
+<pre><code>14494   -15.592
+21742    -5.908
+7544     -3.933
+6903     -9.011
+6737    -22.912
           ...  
-10883   -14.988
-31305    -8.320
-12773    -3.367
-35398    -5.315
-7954     -4.540
+29413    -3.546
+31459    -3.048
+6680     -7.488
+32       -8.924
+2110     -6.909
 Name: loudness, Length: 100, dtype: float64</code></pre>
 </div>
 </div>
@@ -1131,7 +1131,7 @@ Name: loudness, Length: 100, dtype: float64</code></pre>
 <li>Calcula la media de <code>loudness_pop</code> utilizando <code>numpy</code>.</li>
 <li>Calcula la media de <code>loudness_samp</code> utilizando <code>numpy</code>.</li>
 </ul>
-<div id="594bc04f" class="cell" data-execution_count="12">
+<div id="a7b847b5" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the mean of loudness_pop</span></span>
@@ -1144,7 +1144,7 @@ Name: loudness, Length: 100, dtype: float64</code></pre>
 <span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(mean_loudness_samp)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>-7.366856851353947
--7.57909</code></pre>
+-7.88211</code></pre>
 </div>
 </div>
 <p>Nuevamente, observe que el valor calculado (la media) es cercano pero no idéntico en cada caso.</p>
@@ -1152,8 +1152,133 @@ Name: loudness, Length: 100, dtype: float64</code></pre>
 </section>
 <section id="muestreo-de-conveniencia" class="level2">
 <h2 class="anchored" data-anchor-id="muestreo-de-conveniencia">Muestreo de conveniencia</h2>
+<p>Antes del realizar el muestreo, debemos pensar en nuestro proceso de recopilación de datos para evitar resultados sesgados.</p>
+<ul>
+<li>Muestra por conveniencia en coffee ratings</li>
+</ul>
+<p>Observemos el parámetro de población de puntos de taza promedio</p>
+<div id="6c503549" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>coffee_ratings[<span class="st">'total_cup_points'</span>].mean()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><img src="images/paste-9.png" class="img-fluid"></p>
+<p>Una forma de muestreo por conveniencia sería tomar las primeras 10 filas en lugar de muestras aleatorias. Las primeras 10 filas se pueden traer con el método <code>.head()</code></p>
+<div id="c8376df7" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>coffee_ratings_first10 <span class="op">=</span> coffee_ratings.head(<span class="dv">10</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="4a050782" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>coffee_ratings[<span class="st">'total_cup_points'</span>].mean()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><img src="images/paste-10.png" class="img-fluid"></p>
+<p>La media de puntos de taza de muestra, es superior.</p>
+<p>En este caso, la muestra por conveniencia no es representativa de toda la población.</p>
+<ul>
+<li>Visualización del sesgo de selección</li>
+</ul>
+<p>Los histogramas son una excelente manera de visualizar el sesgo de selección.</p>
+<div id="f0033058" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>coffee_ratings[<span class="st">'total_cup_points'</span>].hist(bins<span class="op">=</span>np.arange(<span class="dv">59</span>, <span class="dv">93</span>, <span class="dv">2</span>))</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>A continuación se muestra el código para generar un histograma de la muestra de conveniencia:</p>
+<div id="4860dcfb" class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>coffee_ratings_first10[<span class="st">'total_cup_points'</span>].hist(bins<span class="op">=</span>np.arange(<span class="dv">59</span>, <span class="dv">93</span>, <span class="dv">2</span>))</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Distribución de una población y de una muestra por conveniencia</li>
+</ul>
+<p><img src="images/paste-11.png" class="img-fluid"></p>
+<p>Queda claro que la distribuicón de la muestra no es similar a la de la población. Todos los valores de la muestra están al lado derecho del gráfico.</p>
+<ul>
+<li>Visualizando el sesgo de selección para una muestra aleatoria</li>
+</ul>
+<div id="3e9702c9" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>coffee_sample <span class="op">=</span> coffee_ratings.sample(n<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>coffee_sample[<span class="st">'total_cup_points'</span>].hist(bins<span class="op">=</span>np.arange(<span class="dv">59</span>, <span class="dv">93</span>, <span class="dv">2</span>))</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Distribución de una población y de una simple muestra aleatoria</li>
+</ul>
+<p><img src="images/paste-12.png" class="img-fluid"></p>
+<p>Se observa que la forma de las distribuciones está más alineada cuando se utiliza un muestreo aleatorio.</p>
 <section id="son-generalizables-las-conclusiones-de-la-muestra" class="level3">
 <h3 class="anchored" data-anchor-id="son-generalizables-las-conclusiones-de-la-muestra">¿Son generalizables las conclusiones de la muestra?</h3>
+<p>Acabas de ver cómo el muestreo por conveniencia (recoger muestras utilizando el método más fácil) puede dar lugar a muestras que no son representativas de la población. Equivalentemente, esto significa que las conclusiones de la muestra no son generalizables a la población. Visualizar las distribuciones de la población y la muestra puede ayudar a determinar si la muestra es o no representativa de la población.</p>
+<p>El conjunto de datos de Spotify tiene una columna <code>acousticness</code>, que es una medida de confianza de cero a uno de si la canción se hizo con instrumentos que no están enchufados. Compararás la distribución <code>acousticness</code> de la población total de canciones con una muestra de esas canciones.</p>
+<section id="intrucciones" class="level4">
+<h4 class="anchored" data-anchor-id="intrucciones">Intrucciones</h4>
+<ol type="1">
+<li>Traza un histograma de <code>acousticness</code> de <code>spotify_population</code> con contenedores con anchura <code>0.01</code> de <code>0</code> a <code>1</code> utilizando pandas <code>.hist()</code>.</li>
+</ol>
+<div id="1e66a093" class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize the distribution of acoustiness with a histogram</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>spotify_population[<span class="st">'acousticness'</span>].hist(bins<span class="op">=</span>np.arange(<span class="dv">0</span>, <span class="fl">1.01</span>, <span class="fl">0.01</span>))</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="01_Introduccion_al_muestreo_files/figure-html/cell-20-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="2" type="1">
+<li>Actualliza el código del histograma para utilizar el conjunto de datos <code>spotify_mysterious_sample</code>.</li>
+</ol>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Nota
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Para poder obtener el conjunto de datos <code>spotify_mysterious_sample</code> copie los datos desde Datacmap usando el comando:</p>
+<div id="5588feb3" class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(spotify_population.to_csv(index<span class="op">=</span><span class="va">False</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+<div id="5bce1171" class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>ruta <span class="op">=</span> <span class="st">'./data/spotify_mysterious_sample.csv'</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>spotify_mysterious_sample <span class="op">=</span> pd.read_csv(ruta)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Update the histogram to use spotify_mysterious_sample</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>spotify_mysterious_sample[<span class="st">'acousticness'</span>].hist(bins<span class="op">=</span>np.arange(<span class="dv">0</span>, <span class="fl">1.01</span>, <span class="fl">0.01</span>))</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="01_Introduccion_al_muestreo_files/figure-html/cell-22-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="3" type="1">
+<li><strong>Preguntas</strong></li>
+</ol>
+<p>Compara los dos histogramas que has dibujado ¿Los valores de <code>acousticness</code> de la muestra son generalizables a la población en general?</p>
+<p><strong>Respuestas Posibles</strong></p>
+<ul class="task-list">
+<li><label><input type="checkbox">Sí. Cualquier muestra debe conducir a un resultado generalizable sobre la población.</label></li>
+<li><label><input type="checkbox">Sí. Es probable que la muestra seleccionada sea una muestra aleatoria de todas las canciones de la pblación.</label></li>
+<li><label><input type="checkbox">No.&nbsp;Las muestras nunca pueden conducir a resultados generalizables sobre la población.</label></li>
+<li><label><input type="checkbox" checked="">No.&nbsp;Las muestras de <code>acousticness</code> son sistemáticamenre superiores a las de la población general.</label></li>
+<li><label><input type="checkbox">No.&nbsp;Las muestras de <code>acousticness</code> son sistemáticamente inferiores a las de la pobleción general.</label></li>
+</ul>
+</section>
 </section>
 <section id="son-generalizables-estos-resultados" class="level3">
 <h3 class="anchored" data-anchor-id="son-generalizables-estos-resultados">¿Son generalizables estos resultados?</h3>

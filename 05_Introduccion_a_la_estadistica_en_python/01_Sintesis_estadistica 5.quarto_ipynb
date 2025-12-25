@@ -1,0 +1,310 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "title: \"Síntesis estadística\"\n",
+        "---\n",
+        "\n",
+        "La síntesis estadística te proporciona las herramientas que necesitas para condensar conjuntos de datos masivos y revelar lo más destacado. En este capítulo explorarás la síntesis estadística, lo que incluye la media, la mediana y la desviación típica, y aprenderás a realizar una interpretación exacta. También desarrollarás tus competencias de pensamiento crítico, lo que te permitirá elegir la mejor síntesis estadística para tus datos.\n",
+        "\n",
+        "## Qué es la estadística?\n",
+        "\n",
+        "-   Campo de la estadística: Es la práctica y studio de la recogida y análisis de datos.\n",
+        "\n",
+        "-   Un resúmen estadístico: Un dato o resumen de algunos datos.\n",
+        "\n",
+        "**Tipos de estadística:**\n",
+        "\n",
+        "+--------------------------------------------+-----------------------------------------------------------------------------------+\n",
+        "| Estadística Descriptiva                    | Estadística Inferencial                                                           |\n",
+        "+============================================+===================================================================================+\n",
+        "| -   Describe y resume los datos.           | -   Usa una muestra de datos para hacer inferencias acerca de una gran población. |\n",
+        "+--------------------------------------------+-----------------------------------------------------------------------------------+\n",
+        "| Ejemplos:                                  | Ejemplo:                                                                          |\n",
+        "|                                            |                                                                                   |\n",
+        "| -   50% de los amigos conducen al trabajo. | -   Qué porcentaje de personas manejan al trabajo?                                |\n",
+        "|                                            |                                                                                   |\n",
+        "| -   25% toman el bus.                      |                                                                                   |\n",
+        "|                                            |                                                                                   |\n",
+        "| -   25% bicicleta                          |                                                                                   |\n",
+        "+--------------------------------------------+-----------------------------------------------------------------------------------+\n",
+        "\n",
+        "**Tipos de datos:**\n",
+        "\n",
+        "+--------------------------------------+-------------------------------+\n",
+        "| Numérico (Cuantitativo)              | Categórico (Cualitativo)      |\n",
+        "+======================================+===============================+\n",
+        "| -   Continuos (se pueden medir)      | -   Nominal (Sin orden)       |\n",
+        "|                                      |                               |\n",
+        "|     -   Velocidad de un avión.       |     -   Casado / Divorciado.  |\n",
+        "|                                      |                               |\n",
+        "|     -   Tiempo de espera en una fila |     -   País de residencia.   |\n",
+        "+--------------------------------------+-------------------------------+\n",
+        "| -   Discretos (de recuento)          | -   Ordinal (Ordenado)        |\n",
+        "|                                      |                               |\n",
+        "|     -   Número de mascotas.          |     -   Preguntas de encuesta |\n",
+        "|                                      |                               |\n",
+        "|     -   Número de paquetes enviados. |                               |\n",
+        "+--------------------------------------+-------------------------------+\n",
+        "\n",
+        "### Estadística descriptiva e inferencial\n",
+        "\n",
+        "La estadística puede utilizarse para responder a muchos tipos de preguntas, pero saber identificar qué tipo de estadística se necesita es esencial para sacar conclusiones exactas. En este ejercicio, afinarás tus competencias identificando qué tipo se necesita para responder a cada pregunta.\n",
+        "\n",
+        "+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------+\n",
+        "| Descriptiva                                                                                                                 | Inferencial                                                                                                             |\n",
+        "+=============================================================================================================================+=========================================================================================================================+\n",
+        "| -   Dados los datos de cada solicitud de atención al cliente realizada, ¿cuál es el tiempo medio que se tardó en responder? | -   Después de entrevistar a 100 clientes, ¿qué porcentaje de **todos** tus clientes están satisfechos con tu producto? |\n",
+        "+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------+\n",
+        "| -   Dados los datos de las 100 000 personas que vieron un anuncio, ¿qué porcentaje de personas hicieron clic en él?         | -   Dados los datos de 20 peces capturados en un lago, ¿cuál es el peso medio de todos los peces del lago?              |\n",
+        "+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------+\n",
+        "\n",
+        "### Clasificación de los tipos de datos\n",
+        "\n",
+        "En el vídeo, aprendiste sobre dos tipos principales de datos: numéricos y categóricos. Las variables numéricas pueden clasificarse como discretas o continuas, y las variables categóricas, como nominales u ordinales. Estas características de una variable determinan qué formas de resumir tus datos funcionarán mejor.\n",
+        "\n",
+        "| Numérica continua | Numérica discreta | Categórica |\n",
+        "|----|----|----|\n",
+        "| Temperatura del aire | Número de artículos en stock | Código postal |\n",
+        "| Kilovatios de electricidad consumidos | Número de cursos de Datacamp realizados | Marca de un producto |\n",
+        "\n",
+        "\n",
+        "## Medidas de tendencia central\n",
+        "\n",
+        "- Media: Funciona mejor para datos simétricos.\n",
+        "\n",
+        "- Mediana: Funciona mejor para datos sesgados a izquierda y derecha.\n",
+        "\n",
+        "- Moda: Principalmente para datos categóricos.\n",
+        "\n",
+        "### Media y mediana\n",
+        "\n",
+        "En este capítulo, trabajarás con el conjunto de datos `food_consumption` del 2018 Food Carbon Footprint Index, de nu3. El conjunto de datos `food_consumption` contiene el número de kilogramos de alimentos consumidos por persona y año en cada `country` y categoría de alimentos (`consumption`), y su huella de carbono (`co2_emissions`) medida en kilogramos de dióxido de carbono, o CO2.\n",
+        "\n",
+        "En este ejercicio, calcularás medidas de tendencia central para comparar el consumo de alimentos en US y Bélgica utilizando tus competencias en pandas y numpy."
+      ],
+      "id": "22b30c0c"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import pandas as pd"
+      ],
+      "id": "8d62d49b",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "food_consumption = pd.read_csv('../datasets/food_consumption.csv')\n",
+        "print(food_consumption.head())"
+      ],
+      "id": "a00d0994",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "#### Instrucciones:\n",
+        "\n",
+        "- Importa las librerías pandas y numpy.\n",
+        "\n",
+        "- Subdivide food_consumption para obtener las filas en las que el country es'USA'\n",
+        "\n",
+        "- Calcula la media del consumption de alimentos en el DataFrame usa_consumption.\n",
+        "\n",
+        "- Calcula la mediana del consumption de alimentos en el DataFrame usa_consumption."
+      ],
+      "id": "6857a869"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Import numpy with alias np\n",
+        "import numpy as np\n",
+        "\n",
+        "# Subset country for USA: usa_consumption\n",
+        "usa_consumption = food_consumption[food_consumption['country'] == 'USA']\n",
+        "\n",
+        "# Calculate mean consumption in USA\n",
+        "print(np.mean(usa_consumption['consumption']))\n",
+        "\n",
+        "# Calculate median consumption in USA\n",
+        "print(np.median(usa_consumption['consumption']))"
+      ],
+      "id": "e7380658",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Los cálculos muestran que la media y la mediana del consumo en los Estados Unidos son bastante diferentes.\n",
+        "\n",
+        "\n",
+        "### Media frente a mediana\n",
+        "\n",
+        "En el vídeo has aprendido que la media es la suma de todos los puntos de datos dividida entre el número total de puntos de datos, y que la mediana es el valor central del conjunto de datos, donde el 50 % de los datos son menores que la mediana y el 50 % de los datos son mayores que la mediana. En este ejercicio, compararás estas dos medidas de tendencia central.\n",
+        "\n",
+        "#### Instrucciones:\n",
+        "\n",
+        " 1. \n",
+        "\n",
+        "- Importa la librería `matplotlib.pyplot` con el alias `plt`.\n",
+        "\n",
+        "- Subdivide food_consumption para obtener las filas en las que el `food_category` es `rice`.\n",
+        "\n",
+        "- Crea un histograma de `co2_emissions` en el DataFrame `rice_consumption` y\n",
+        "muestra el gráfico."
+      ],
+      "id": "e90ef4f7"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Import matplotlib.pyplot with alias plt\n",
+        "import matplotlib.pyplot as plt"
+      ],
+      "id": "1276e48e",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Subset for food_category equals rice\n",
+        "rice_consumption = food_consumption[food_consumption['food_category'] == 'rice']\n",
+        "print(rice_consumption.head())"
+      ],
+      "id": "6eeac429",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Histogram of co2_emissions for rice and show plot\n",
+        "plt.hist(rice_consumption['co2_emission'])\n",
+        "plt.show()"
+      ],
+      "id": "720890f3",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "2. **Pregunta**\n",
+        "\n",
+        "Echa un vistazo al histograma que acabas de crear de las emisiones de CO2 de los distintos países para el arroz. Cuál de los siguientes términos describe mejor la forma de los datos?\n",
+        "\n",
+        "**Respuestas posibles**\n",
+        "\n",
+        "- [ ] Sin sesgo\n",
+        "\n",
+        "- [ ] Sesgado a la izquierda\n",
+        "\n",
+        "- [x] Sesgado a la derecha\n",
+        "\n",
+        "3. \n",
+        "\n",
+        "- Utiliza `.agg()` para calcular la media y la mediana de `co2_emissions`\n",
+        "para el arroz."
+      ],
+      "id": "02e1c11b"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Subset for food_category equals rice\n",
+        "rice_consumption = food_consumption[food_consumption['food_category'] == 'rice']\n",
+        "print(rice_consumption)"
+      ],
+      "id": "5094eeb4",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Calculate mean and median of co2_emission with .agg()\n",
+        "print(rice_consumption['co2_emission'].agg(['mean', 'median']))"
+      ],
+      "id": "e7da80e6",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "4. **Pregunta**\n",
+        "\n",
+        "Dado el sesgo de estos datos, qué medida de tendencia central resume mejor los kilogramos de emisiones de CO2 por persona y año para el arroz?\n",
+        "\n",
+        "**Respuestas posibles**\n",
+        "\n",
+        "- [ ] Media\n",
+        "\n",
+        "- [x] Mediana\n",
+        "\n",
+        "- [ ] Media y mediana\n",
+        "\n",
+        "\n",
+        "## Medidas de dispersión\n",
+        "\n",
+        "Describe lo separado o juntos que se encuentran los grupos de datos. \n",
+        "\n",
+        "#### Varianza:\n",
+        "\n",
+        "Mide la distancia media de cada punto de datos a la media de los datos. Se puede calcular usando `np.var()`.\n",
+        "\n",
+        "#### Desviación estándar\n",
+        "\n",
+        "Se calcula tomando la raíz cuadrada de la varianza. Se puede calcular usando `np.sd()`.\n",
+        "\n",
+        "#### Desviación estándar absoluto\n",
+        "\n",
+        "Toma el valor absoluto de las distancias a la media y luego toma la media de las diferencias.\n",
+        "\n",
+        "#### Desviación estandar vs desviación media absoluta\n",
+        "\n",
+        "- En la desviación estandar los cuadrados de las distancias penaliza las largas distancias más que las cortas.\n",
+        "- En la desviación media absoluta todas las distancias se penalizar de forma equitativa.\n",
+        "\n",
+        "### Varianza y desviación típica\n",
+        "\n",
+        "### Cuartiles, cuantiles y quintiles\n",
+        "\n",
+        "### Encontrar valores atípicos mediante IQR"
+      ],
+      "id": "75f831c7"
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "name": "python3",
+      "language": "python",
+      "display_name": "Python 3 (ipykernel)",
+      "path": "/Users/macbookairedwin/Documents/Datacamp/analista-de-datos-en-python/.venv/share/jupyter/kernels/python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}

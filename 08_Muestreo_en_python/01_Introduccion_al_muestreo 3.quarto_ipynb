@@ -1,0 +1,700 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "id": "7d715331",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "title: \"Introducción al Muestreo\"\n",
+    "---\n",
+    "\n",
+    "Aprende qué es el muestreo y por qué es tan poderoso. También aprenderás sobre los problemas causados por el muestreo de conveniencia y las diferencias entre la verdadera aleatoriedad y la pseudoaleatoriedad.\n",
+    "\n",
+    "## Muestreo y estimaciones puntuales\n",
+    "\n",
+    "La técnica de trabajar con un subconjunto de toda la población se le llama muestreo.\n",
+    "\n",
+    "-   Población vs Muestreo La población es el conjunto completo de datos que nos interesan.\n",
+    "    -   No se refiere a personas.\n",
+    "    -   Típicamente, no sabremos cómo es toda la población.\n",
+    "\n",
+    "La muestra es el subconjunto de datos con el que estamos trabajando.\n",
+    "\n",
+    "-   Coffee rating dataset\n",
+    "\n",
+    "    ![](images/paste-1.png)\n",
+    "\n",
+    "    -   Cada fila representa 1 café.\n",
+    "    -   Hay 1338 filas\n",
+    "    -   Al café se le asigna una puntuación de cero a cien, que se almacena en la columna `total_cup_points`.\n",
+    "    -   Otras columnas contienen información contextual como la variedad y el país de origen.\n",
+    "    -   Puntuaciones entre 0 y 10 para atributos del café como el aroma y el cuerpo.\n",
+    "    -   No contiene todos los cafés del mundo, por lo que no sabemos exactamente cuál es la población de cafés.\n",
+    "    -   Hay suficientes para considerarla como la población de interés.\n",
+    "\n",
+    "-   Points vs. Flavor: Población"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "cfb1bf2c",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#| echo: true\n",
+    "#| eval: false\n",
+    "pts_vs_flavor_pop = coffee_ratings[[\"total_points\", \"flavor\"]]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "0e9b3132",
+   "metadata": {},
+   "source": [
+    "![](images/paste-2.png)\n",
+    "\n",
+    "-   Points vs. Flavor: 10 filas de muestra"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "08c9f293",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#| echo: true\n",
+    "#| eval: false\n",
+    "pts_vs_flavor_samp = pts_vs_flavor_pop.sample(n=10)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "e88429eb",
+   "metadata": {},
+   "source": [
+    "![](images/paste-3.png)\n",
+    "\n",
+    "El método `.sample()` de pandas devuelve un subconjunto aleatorio de filas. Establecer n en 10 significa que devuelve 10 filas aleatorias. En la muestra aparecen 10 muestras únicas.\n",
+    "\n",
+    "-   Muestreo en Python para Series\n",
+    "\n",
+    "    -   Use `.sample()` en `pandas` para DataFrames y Series."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "id": "2abd87dc",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#| echo: true\n",
+    "#| eval: false\n",
+    "cup_points_samp = coffe_ratings['total_cup_points'].sample(n=10)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "76585b79",
+   "metadata": {},
+   "source": [
+    "![](images/paste-4.png)\n",
+    "\n",
+    "-   Parámetros de Población & Puntos Estimados\n",
+    "\n",
+    "    Un parámetro de población es un cálculo realizado sobre el conjunto de datos de población."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "id": "42ebabe1",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#| echo: true\n",
+    "#| eval: false\n",
+    "import numpy as np\n",
+    "np.mean(pts_vs_flavor_pop['total_cup_points'])"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "0be309a9",
+   "metadata": {},
+   "source": [
+    "![](images/paste-5.png)\n",
+    "\n",
+    "Una estimación puntual o estadística de muestra, es un cálculo basado en el conjunto de datos de muestra."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "id": "6551817a",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#| echo: true\n",
+    "#| eval: false\n",
+    "np.mean(cup_points_samp)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "956837b1",
+   "metadata": {},
+   "source": [
+    "![](images/paste-6.png)\n",
+    "\n",
+    "-   Puntos estimados con pandas\n",
+    "\n",
+    "    Trabajar con pandas puede ser más fácil que trabajar con Numpy. Estos cálculos de media se pueden realizar utilizando el método de pandas `.mean()`"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "id": "4954d36d",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#| echo: true\n",
+    "#| eval: false\n",
+    "pts_vs_flavor_pop['flavor'].mean()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "addf642a",
+   "metadata": {},
+   "source": [
+    "![](images/paste-7.png)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "id": "0c6a7e14",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#| echo: true\n",
+    "#| eval: false\n",
+    "pts_vs_flavor_samp['flavor'].mean()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "f69eeaea",
+   "metadata": {},
+   "source": [
+    "![](images/paste-8.png)\n",
+    "\n",
+    "### Motivos del muestreo\n",
+    "\n",
+    "El muestreo es una técnica importante en tu arsenal estadísico. Sin embargo, no siempre es adecuado: hay que saber cuándo utilizarlo y cuándo trabajar con todo el conjunto de datos.\n",
+    "\n",
+    "¿Cuál de los siguientes no es un buen escenario para utilizar el muestreo?\n",
+    "\n",
+    "**Respuestas posibles**\n",
+    "\n",
+    "- [ ] Te han agregado un terabyte de datos sobre registros de errores del dispositivo de tu empresa.\n",
+    "- [ ] Deseas conocer los hábitos de viaje de todos los ciudadanos adultos paquistaníes.\n",
+    "- [X] Has terminado de recoger los datos de un pequeño estudio sobre las medidas de las alas de 10 mariposas.\n",
+    "- [ ] Has estado trabajando para predecir la rotación de clientes en un proyecto de big data para tu empresa de marketing.\n",
+    "\n",
+    "Diez mariposas es un conjunto de datos pequeño, por lo que el muestreo no es útil aquí.\n",
+    "\n",
+    "\n",
+    "### Muestreo simple con pandas\n",
+    "\n",
+    "A lo largo de este capítulo , explorarás los datos de canciones de Spotify. Cada fila de este conjunto de datos de población representa una canción, y hay más de 40000 filas. Las columnas incluyen el nombre de la canción, los artistas que la interpretaron, al año de lanzamiento y atributos de la canción como su duración, tempo y bailabilidad. Empezarás por fijarte en las duraciones.\n",
+    "\n",
+    "Tu primera tarea es tomar una muestra del conjunto de datos de Spotify y comparar la duración media de la población con la de la muestra."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "id": "52d7f88f",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>acousticness</th>\n",
+       "      <th>artists</th>\n",
+       "      <th>danceability</th>\n",
+       "      <th>duration_ms</th>\n",
+       "      <th>duration_minutes</th>\n",
+       "      <th>energy</th>\n",
+       "      <th>explicit</th>\n",
+       "      <th>id</th>\n",
+       "      <th>instrumentalness</th>\n",
+       "      <th>key</th>\n",
+       "      <th>liveness</th>\n",
+       "      <th>loudness</th>\n",
+       "      <th>mode</th>\n",
+       "      <th>name</th>\n",
+       "      <th>popularity</th>\n",
+       "      <th>release_date</th>\n",
+       "      <th>speechiness</th>\n",
+       "      <th>tempo</th>\n",
+       "      <th>valence</th>\n",
+       "      <th>year</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>0</th>\n",
+       "      <td>0.97200</td>\n",
+       "      <td>['David Bauer']</td>\n",
+       "      <td>0.567</td>\n",
+       "      <td>313293.0</td>\n",
+       "      <td>5.221550</td>\n",
+       "      <td>0.227</td>\n",
+       "      <td>0.0</td>\n",
+       "      <td>0w0D8H1ubRerCXHWYJkinO</td>\n",
+       "      <td>0.601000</td>\n",
+       "      <td>10.0</td>\n",
+       "      <td>0.110</td>\n",
+       "      <td>-13.441</td>\n",
+       "      <td>1.0</td>\n",
+       "      <td>Shout to the Lord</td>\n",
+       "      <td>47.0</td>\n",
+       "      <td>2000</td>\n",
+       "      <td>0.0290</td>\n",
+       "      <td>136.123</td>\n",
+       "      <td>0.0396</td>\n",
+       "      <td>2000.0</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>1</th>\n",
+       "      <td>0.32100</td>\n",
+       "      <td>['Etta James']</td>\n",
+       "      <td>0.821</td>\n",
+       "      <td>360240.0</td>\n",
+       "      <td>6.004000</td>\n",
+       "      <td>0.418</td>\n",
+       "      <td>0.0</td>\n",
+       "      <td>4JVeqfE2tpi7Pv63LJZtPh</td>\n",
+       "      <td>0.000372</td>\n",
+       "      <td>9.0</td>\n",
+       "      <td>0.222</td>\n",
+       "      <td>-9.841</td>\n",
+       "      <td>0.0</td>\n",
+       "      <td>Miss You</td>\n",
+       "      <td>51.0</td>\n",
+       "      <td>2000-12-12</td>\n",
+       "      <td>0.0407</td>\n",
+       "      <td>117.382</td>\n",
+       "      <td>0.8030</td>\n",
+       "      <td>2000.0</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2</th>\n",
+       "      <td>0.00659</td>\n",
+       "      <td>['Quasimoto']</td>\n",
+       "      <td>0.706</td>\n",
+       "      <td>202507.0</td>\n",
+       "      <td>3.375117</td>\n",
+       "      <td>0.602</td>\n",
+       "      <td>1.0</td>\n",
+       "      <td>5pxtdhLAi0RTh1gNqhGMNA</td>\n",
+       "      <td>0.000138</td>\n",
+       "      <td>11.0</td>\n",
+       "      <td>0.400</td>\n",
+       "      <td>-8.306</td>\n",
+       "      <td>0.0</td>\n",
+       "      <td>Real Eyes</td>\n",
+       "      <td>44.0</td>\n",
+       "      <td>2000-06-13</td>\n",
+       "      <td>0.3420</td>\n",
+       "      <td>89.692</td>\n",
+       "      <td>0.4790</td>\n",
+       "      <td>2000.0</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>3</th>\n",
+       "      <td>0.00390</td>\n",
+       "      <td>['Millencolin']</td>\n",
+       "      <td>0.368</td>\n",
+       "      <td>173360.0</td>\n",
+       "      <td>2.889333</td>\n",
+       "      <td>0.977</td>\n",
+       "      <td>0.0</td>\n",
+       "      <td>3jRsoe4Vkxa4BMYqGHX8L0</td>\n",
+       "      <td>0.000000</td>\n",
+       "      <td>11.0</td>\n",
+       "      <td>0.350</td>\n",
+       "      <td>-2.757</td>\n",
+       "      <td>0.0</td>\n",
+       "      <td>Penguins &amp; Polarbears</td>\n",
+       "      <td>52.0</td>\n",
+       "      <td>2000-02-22</td>\n",
+       "      <td>0.1270</td>\n",
+       "      <td>165.889</td>\n",
+       "      <td>0.5480</td>\n",
+       "      <td>2000.0</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>4</th>\n",
+       "      <td>0.12200</td>\n",
+       "      <td>['Steve Chou']</td>\n",
+       "      <td>0.501</td>\n",
+       "      <td>344200.0</td>\n",
+       "      <td>5.736667</td>\n",
+       "      <td>0.511</td>\n",
+       "      <td>0.0</td>\n",
+       "      <td>4mronxcllhfyhBRqyZi8kU</td>\n",
+       "      <td>0.000000</td>\n",
+       "      <td>7.0</td>\n",
+       "      <td>0.279</td>\n",
+       "      <td>-9.836</td>\n",
+       "      <td>0.0</td>\n",
+       "      <td>黃昏</td>\n",
+       "      <td>53.0</td>\n",
+       "      <td>2000-12-25</td>\n",
+       "      <td>0.0291</td>\n",
+       "      <td>78.045</td>\n",
+       "      <td>0.1130</td>\n",
+       "      <td>2000.0</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "   acousticness          artists  danceability  duration_ms  duration_minutes  \\\n",
+       "0       0.97200  ['David Bauer']         0.567     313293.0          5.221550   \n",
+       "1       0.32100   ['Etta James']         0.821     360240.0          6.004000   \n",
+       "2       0.00659    ['Quasimoto']         0.706     202507.0          3.375117   \n",
+       "3       0.00390  ['Millencolin']         0.368     173360.0          2.889333   \n",
+       "4       0.12200   ['Steve Chou']         0.501     344200.0          5.736667   \n",
+       "\n",
+       "   energy  explicit                      id  instrumentalness   key  liveness  \\\n",
+       "0   0.227       0.0  0w0D8H1ubRerCXHWYJkinO          0.601000  10.0     0.110   \n",
+       "1   0.418       0.0  4JVeqfE2tpi7Pv63LJZtPh          0.000372   9.0     0.222   \n",
+       "2   0.602       1.0  5pxtdhLAi0RTh1gNqhGMNA          0.000138  11.0     0.400   \n",
+       "3   0.977       0.0  3jRsoe4Vkxa4BMYqGHX8L0          0.000000  11.0     0.350   \n",
+       "4   0.511       0.0  4mronxcllhfyhBRqyZi8kU          0.000000   7.0     0.279   \n",
+       "\n",
+       "   loudness  mode                   name  popularity release_date  \\\n",
+       "0   -13.441   1.0      Shout to the Lord        47.0         2000   \n",
+       "1    -9.841   0.0               Miss You        51.0   2000-12-12   \n",
+       "2    -8.306   0.0              Real Eyes        44.0   2000-06-13   \n",
+       "3    -2.757   0.0  Penguins & Polarbears        52.0   2000-02-22   \n",
+       "4    -9.836   0.0                     黃昏        53.0   2000-12-25   \n",
+       "\n",
+       "   speechiness    tempo  valence    year  \n",
+       "0       0.0290  136.123   0.0396  2000.0  \n",
+       "1       0.0407  117.382   0.8030  2000.0  \n",
+       "2       0.3420   89.692   0.4790  2000.0  \n",
+       "3       0.1270  165.889   0.5480  2000.0  \n",
+       "4       0.0291   78.045   0.1130  2000.0  "
+      ]
+     },
+     "execution_count": 1,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "import pandas as pd\n",
+    "ruta = './data/spotify_2000_2020.feather'\n",
+    "spotify_population = pd.read_feather(ruta)\n",
+    "spotify_population.head()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "074c7170",
+   "metadata": {},
+   "source": [
+    "#### Instrucciones\n",
+    "\n",
+    "1. Muestra 1000 filas de `spotify_population`, asignándolas a `spotify_sample`."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "id": "999d0815",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "       acousticness                                            artists  \\\n",
+      "4486         0.9030                             ['The Mountain Goats']   \n",
+      "30014        0.0292                                 ['The Black Keys']   \n",
+      "18997        0.3330                                  ['Los Tigrillos']   \n",
+      "16462        0.4150  ['Bad Bunny', 'Ñejo', 'Pj Sin Suela', 'DJ Nels...   \n",
+      "2940         0.0944                                            ['Ott']   \n",
+      "...             ...                                                ...   \n",
+      "14945        0.5300                                 ['Walter Hawkins']   \n",
+      "39185        0.1230                                      ['Lluvia PQ']   \n",
+      "12205        0.3910                                            ['SZA']   \n",
+      "8237         0.0160                ['Calvin Harris', \"Rag'n'Bone Man\"]   \n",
+      "3260         0.7660                                  ['Chris Cornell']   \n",
+      "\n",
+      "       danceability  duration_ms  duration_minutes  energy  explicit  \\\n",
+      "4486          0.747     160200.0          2.670000   0.399       0.0   \n",
+      "30014         0.252     239147.0          3.985783   0.827       0.0   \n",
+      "18997         0.867     162373.0          2.706217   0.801       0.0   \n",
+      "16462         0.822     243700.0          4.061667   0.601       1.0   \n",
+      "2940          0.544     472400.0          7.873333   0.524       0.0   \n",
+      "...             ...          ...               ...     ...       ...   \n",
+      "14945         0.352     369973.0          6.166217   0.630       0.0   \n",
+      "39185         0.103     207707.0          3.461783   0.999       0.0   \n",
+      "12205         0.665     149320.0          2.488667   0.488       1.0   \n",
+      "8237          0.807     229184.0          3.819733   0.887       0.0   \n",
+      "3260          0.402     288187.0          4.803117   0.317       0.0   \n",
+      "\n",
+      "                           id  instrumentalness   key  liveness  loudness  \\\n",
+      "4486   5NfLknyes6L0h5dDB6ZPck          0.002160   4.0    0.3720   -10.924   \n",
+      "30014  319zpJMCzpz50Uz0PsjlJN          0.508000   9.0    0.1730    -6.336   \n",
+      "18997  4DudMfSwPrxyEtFzsBi1pH          0.000031  10.0    0.0647    -5.776   \n",
+      "16462  45jM2fuCq0NHD9p7xn0ptd          0.000000   5.0    0.0797    -5.418   \n",
+      "2940   6HJH2v5BIqpKW34nsLV1O7          0.674000  11.0    0.1150   -10.960   \n",
+      "...                       ...               ...   ...       ...       ...   \n",
+      "14945  5WOGZNonYmkPkYGegxaJUb          0.000000   6.0    0.6530   -13.098   \n",
+      "39185  1SyVxxXzBEXtyP2duLCgT9          0.998000  10.0    0.4070   -15.465   \n",
+      "12205  0336UwEBwBBao8uWCuugYr          0.000647   0.0    0.0952    -4.711   \n",
+      "8237   5itOtNx0WxtJmi1TQ3RuRd          0.000503   1.0    0.0811    -4.311   \n",
+      "3260   36QwvXHlo8kqob3AmH1Z3I          0.000000   7.0    0.7150    -5.826   \n",
+      "\n",
+      "       mode                                               name  popularity  \\\n",
+      "4486    1.0                               Color in Your Cheeks        40.0   \n",
+      "30014   1.0                                         I Got Mine        51.0   \n",
+      "18997   1.0                                        La sirenita        39.0   \n",
+      "16462   0.0                                  ¿Cual Es Tu Plan?        69.0   \n",
+      "2940    0.0                        The Queen of All Everything        49.0   \n",
+      "...     ...                                                ...         ...   \n",
+      "14945   1.0                                      What Is This?        36.0   \n",
+      "39185   0.0                                     Rain All Night        65.0   \n",
+      "12205   0.0                                           Anything        58.0   \n",
+      "8237    0.0                        Giant (with Rag'n'Bone Man)        80.0   \n",
+      "3260    1.0  Thank You - Recorded Live At Esplanade Arts & ...        52.0   \n",
+      "\n",
+      "      release_date  speechiness    tempo  valence    year  \n",
+      "4486          2002       0.0840  101.136  0.63200  2002.0  \n",
+      "30014   2008-04-01       0.0406  157.725  0.47500  2008.0  \n",
+      "18997   2002-07-31       0.0635   93.821  0.94000  2002.0  \n",
+      "16462   2018-08-17       0.2970   96.123  0.87200  2018.0  \n",
+      "2940    2008-01-25       0.0285  134.042  0.09910  2008.0  \n",
+      "...            ...          ...      ...      ...     ...  \n",
+      "14945   2002-02-15       0.1300  106.267  0.40000  2002.0  \n",
+      "39185   2017-04-12       0.0590   90.897  0.00126  2017.0  \n",
+      "12205   2017-06-09       0.3270  151.582  0.54900  2017.0  \n",
+      "8237    2019-01-11       0.0361  122.015  0.60600  2019.0  \n",
+      "3260    2011-01-01       0.0268   77.654  0.10300  2011.0  \n",
+      "\n",
+      "[1000 rows x 20 columns]\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Sample 1000 rows from spotify_population\n",
+    "spotify_sample = spotify_population.sample(n=1000)\n",
+    "\n",
+    "# print sample\n",
+    "print(spotify_sample)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "e9ec29e4",
+   "metadata": {},
+   "source": [
+    "2. \n",
+    "- Calcula la duración media en minutos de `spotify_population` utilizando `pandas`.\n",
+    "- Calcula la duración media en minutos de `spotify_sample` utilizando `pandas`."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "id": "30637d2c",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "3.8521519140900073\n",
+      "3.818470416666667\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Calculate the mean duration in mins from spotify_population\n",
+    "mean_dur_pop = spotify_population['duration_minutes'].mean()\n",
+    "\n",
+    "# Calculate the mean duration in mins from spotify_sample\n",
+    "mean_dur_sample = spotify_sample['duration_minutes'].mean()\n",
+    "\n",
+    "# print the means\n",
+    "print(mean_dur_pop)\n",
+    "print(mean_dur_sample)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "efa77961",
+   "metadata": {},
+   "source": [
+    "Se observa que la duración media de las canciones en la muestra es similar, pero no idéntica a la duración media de las canciones en toda la poblacición.\n",
+    "\n",
+    "\n",
+    "### Muestreos y cálculos sencillos con Numpy\n",
+    "\n",
+    "También puedes utilizar `numpy` para calcular parámetros o estadísticas partir de una lista o de la serie `pandas`.\n",
+    "\n",
+    "### Instrucciones\n",
+    "\n",
+    "1. \n",
+    "- Crea una serie `pandas`, `loudness_pop`, subdividiendo la columna `loudness` de `spotify_population`.\n",
+    "- Muestra `loudness_pop` para obtener 100 valores aleatorios, asignándolos a `loudness_samp`."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "id": "19bac51c",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "38732    -3.575\n",
+      "7227    -11.094\n",
+      "39663    -8.801\n",
+      "38802    -4.847\n",
+      "37135   -13.031\n",
+      "          ...  \n",
+      "16145    -4.802\n",
+      "9877    -27.180\n",
+      "7002     -6.284\n",
+      "26219   -11.507\n",
+      "38288    -4.662\n",
+      "Name: loudness, Length: 100, dtype: float64\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Create a pandas Series from de loudness column of spotify_population\n",
+    "loudness_pop = spotify_population['loudness']\n",
+    "\n",
+    "# Sample 100 values of loudness_pop\n",
+    "loudness_samp = loudness_pop.sample(n=100)\n",
+    "\n",
+    "print(loudness_samp)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "dd810ef1",
+   "metadata": {},
+   "source": [
+    "2. \n",
+    "- Calcula la media de `loudness_pop` utilizando `numpy`.\n",
+    "- Calcula la media de `loudness_samp` utilizando `numpy`."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "id": "2b9cb830",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "-7.366856851353947\n",
+      "-7.876799999999999\n"
+     ]
+    }
+   ],
+   "source": [
+    "import numpy as np\n",
+    "\n",
+    "# Calculate the mean of loudness_pop\n",
+    "mean_loudness_pop = np.mean(loudness_pop)\n",
+    "\n",
+    "# Calculate the mean of loudness_samp\n",
+    "mean_loudness_samp = np.mean(loudness_samp)\n",
+    "\n",
+    "print(mean_loudness_pop)\n",
+    "print(mean_loudness_samp)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "ed1fb3f6",
+   "metadata": {},
+   "source": [
+    "Nuevamente, observe que el valor calculado (la media) es cercano pero no idéntico en cada caso.\n",
+    "\n",
+    "## Muestreo de conveniencia\n",
+    "\n",
+    "### ¿Son generalizables las conclusiones de la muestra?\n",
+    "\n",
+    "### ¿Son generalizables estos resultados?\n",
+    "\n",
+    "## Generación de números pseudoaleatorios\n",
+    "\n",
+    "### Generar números aleatorios\n",
+    "\n",
+    "### Comprender los valores de iniciaclización aleatorios"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3",
+   "path": "/Users/macbookairedwin/Documents/Datacamp/analista-de-datos-en-python/.venv/share/jupyter/kernels/python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.13.5"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}

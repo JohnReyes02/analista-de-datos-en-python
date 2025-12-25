@@ -1,0 +1,1333 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "title: \"Personalizar los gráficos de Seaborn\"\n",
+        "---\n",
+        "\n",
+        "En este último capítulo, aprenderás a añadir títulos informativos a los gráficos y etiquetas a los ejes, ¡que son una de las partes más importantes de cualquier visualización de datos! También aprenderás a personalizar el estilo de tus visualizaciones para orientar más rápidamente a tu audiencia hacia los puntos clave. Después, pondrás en común todo lo que has aprendido en los ejercicios finales del curso.\n",
+        "\n",
+        "## Cambiar el estilo y el color de la trama\n",
+        "\n",
+        "-   Por qué personalizar?\n",
+        "    -   Razones para cambiar de estilo:\n",
+        "        -   Preferencias personales\n",
+        "        -   Mejorar la legibilidad\n",
+        "        -   Guiar la interpretación\n",
+        "-   Cambiando los estilos de las figuras\n",
+        "    -   Los estilos de las figuras incluyen el fondo y los ejes\n",
+        "    -   Opciones: \"white\", \"dark\", \"whitegrid\", \"darkgrid\", \"ticks\"\n",
+        "    -   Para establecer uno de ellos como estilo global para todos los gráficos se utiliza `sns.set_style()`\n",
+        "-   Estilo de figura por defecto (\"white\")\n",
+        "    -   Si solo nos interesa la tendencia general:"
+      ],
+      "id": "2e90a61d"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| eval: false\n",
+        "sns.catplot(x='age', y='masculinity_important',\n",
+        "            data=masculinity_data,\n",
+        "            hue='feel_masculine',\n",
+        "            kind='point')\n",
+        "plt.show()"
+      ],
+      "id": "063c0244",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "![](images/paste-27.png){width=\"370\"}\n",
+        "\n",
+        "-   Estilo de figura: \"whitegrid\"\n",
+        "    -   Para determinar valores específicos:"
+      ],
+      "id": "15db1488"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| eval: false\n",
+        "sns.set_style('whitegrid')\n",
+        "\n",
+        "sns.catplot(x='age', y='masculinity_important',\n",
+        "            data=masculinity_data,\n",
+        "            hue='feel_masculine',\n",
+        "            kind='point')\n",
+        "plt.show()"
+      ],
+      "id": "82f4157c",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "![](images/paste-28.png){width=\"370\"}\n",
+        "\n",
+        "-   Cambiando la paleta\n",
+        "    -   Los cambios en la paleta de la figura, cambia el color de los elementos principales del gráfico\n",
+        "    -   `sns.set_palette()`\n",
+        "    -   Use las paletas preestablecidas o personalizadas\n",
+        "-   Paletas divergentes\n",
+        "\n",
+        "![](images/paste-29.png){width=\"370\"}\n",
+        "\n",
+        "-   Ejemplo (Paleta divergente)"
+      ],
+      "id": "00f6e2f3"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| eval: false\n",
+        "sns.set_palette('RdBu')\n",
+        "\n",
+        "category_order = [\"No answer\",\n",
+        "                  \"Not al all\",\n",
+        "                  \"Not very\",\n",
+        "                  \"Somewhat\",\n",
+        "                  \"Very\"]\n",
+        "\n",
+        "sns.catplot(x='how_masculine',\n",
+        "            data=masculinity_data,\n",
+        "            kind='count',\n",
+        "            order=category_order)\n",
+        "plt.show()"
+      ],
+      "id": "893e9b83",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "![](images/paste-30.png){width=\"370\"}\n",
+        "\n",
+        "-   Paletas secuenciales\n",
+        "\n",
+        "![](images/paste-31.png){width=\"370\"}\n",
+        "\n",
+        "-   Ejemplo de paleta secuencial\n",
+        "\n",
+        "![](images/paste-32.png){width=\"370\"}\n",
+        "\n",
+        "-   Paletas personalizadas"
+      ],
+      "id": "d188eeab"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| eval: false\n",
+        "custom_palette = [\"red\", \"green\", \"orange\", \"blue\",\n",
+        "                  \"yellow\", \"purple\"]\n",
+        "\n",
+        "sns.set_palette(custom_palette)"
+      ],
+      "id": "9809d583",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "![](images/paste-34.png){width=\"370\"}"
+      ],
+      "id": "2ea47364"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| eval: false\n",
+        "custom_palette = [\"#FBB4AE\", \"#B3CDE3\", \"#CCEBC5\",\n",
+        "                  \"#DECBE4\", \"#FED9A6\", \"#FFFFCC\",\n",
+        "                  \"#E5B8BD\", \"#FDDAEC\", \"#F2F2F2\"]\n",
+        "\n",
+        "sns.set_palette(custom_palette)"
+      ],
+      "id": "8b35e410",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "![](images/paste-33.png){width=\"370\"}\n",
+        "\n",
+        "-   Cambiar la escala del gráfico\n",
+        "\n",
+        "    -   En las figuras \"context\" cambia la escala de los elementos y etiquetas del gráfico\n",
+        "\n",
+        "    -   \\`sns.set_context()\\`\n",
+        "\n",
+        "    -   Del mas pequeño al más grande: \"paper\", \"notebook\", \"talk\", \"poster\".\n",
+        "\n",
+        "-   Contexto por defecto: \"paper\""
+      ],
+      "id": "e2b85c2d"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| eval: false\n",
+        "sns.catplot(x='age',\n",
+        "            y='masculinity_important',\n",
+        "            data=masculinity_data,\n",
+        "            hue='feel_masculine',\n",
+        "            kind='point')\n",
+        "\n",
+        "plt.show()"
+      ],
+      "id": "7d762a56",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "![](images/paste-35.png){width=\"370\"}\n",
+        "\n",
+        "-   Contexto grande: \"talk\"\n",
+        "    -   Presentaciones donde el público este mas alejado del gráfico"
+      ],
+      "id": "092f564b"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| eval: false\n",
+        "sns.set_context('talk')\n",
+        "\n",
+        "sns.catplot(x='age',\n",
+        "            y='masculinity_important',\n",
+        "            data=masculinity_data,\n",
+        "            hue='feel_masculine',\n",
+        "            kind='point')\n",
+        "\n",
+        "plt.show()"
+      ],
+      "id": "336ae85a",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "![](images/paste-36.png){width=\"370\"}\n",
+        "\n",
+        "### Cambiar de estilo y de paleta\n",
+        "\n",
+        "Vamos a nuestro conjunto de datos que contiene los resultados de una encuestra realizada a jóvenes sobre sus hábitos y preferencias. Hemos proportcionado el código para crear un gráfico de recuento de sus respuestas a la pregunta \"¿Con qué frecuencia escuchas los consejos de tus padres?\". Ahora vamos a cambiar el estilo y la paleta para que esta trama sea más fácil de interpretar."
+      ],
+      "id": "a634d4be"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import pandas as pd\n",
+        "import matplotlib.pyplot as plt\n",
+        "import seaborn as sns\n",
+        "\n",
+        "ruta = './data/young-people-survey-responses.csv'\n",
+        "survey_data = pd.read_csv(ruta, index_col=0)\n",
+        "survey_data.head()"
+      ],
+      "id": "65e0d951",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Transformación de los datos de la columna `\"Parents' advice\"`"
+      ],
+      "id": "f5783887"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "survey_data[\"Parents' advice\"] = survey_data[\"Parents' advice\"].map({1: 'Never',\n",
+        "                                                                     2: 'Rarely',\n",
+        "                                                                     3: 'Sometimes',\n",
+        "                                                                     4: 'Often',\n",
+        "                                                                     5: 'Always'})"
+      ],
+      "id": "e14d8aba",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "#### Instrucciones\n",
+        "\n",
+        "1.  Configura el estilo en `\"whitegrid\"` para ayudar al público a determinar el número de respuestas de cada categoría."
+      ],
+      "id": "a68ec1ef"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Set the style to \"whitegrid\"\n",
+        "sns.set_style('whitegrid')\n",
+        "\n",
+        "# Create a count plot or survey responses\n",
+        "category_order = ['Never', 'Rarely', 'Sometimes',\n",
+        "                  'Often', 'Always']\n",
+        "\n",
+        "sns.catplot(x=\"Parents' advice\",\n",
+        "            data=survey_data,\n",
+        "            kind='count',\n",
+        "            order=category_order)\n",
+        "\n",
+        "# Show plot\n",
+        "plt.show()"
+      ],
+      "id": "175bdf4a",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "2.  Establece la paleta de colores en la paleta secuencial denominada `\"Purples`."
+      ],
+      "id": "58ba7cea"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Set the color palette to \"Purples\"\n",
+        "sns.set_style('whitegrid')\n",
+        "sns.set_palette('Purples')\n",
+        "\n",
+        "# Create a count plot or survey responses\n",
+        "category_order = ['Never', 'Rarely', 'Sometimes',\n",
+        "                  'Often', 'Always']\n",
+        "\n",
+        "sns.catplot(x=\"Parents' advice\",\n",
+        "            data=survey_data,\n",
+        "            kind='count',\n",
+        "            order=category_order,\n",
+        "            hue=\"Parents' advice\", legend=False)\n",
+        "\n",
+        "# Show plot\n",
+        "plt.show()"
+      ],
+      "id": "7f89d891",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "3.  Cambia la paleta de colores a la paleta divergente `\"RdBu\"`"
+      ],
+      "id": "404ed9b6"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Change the color palette to \"RdBu\"\n",
+        "sns.set_style('whitegrid')\n",
+        "sns.set_palette('RdBu')\n",
+        "\n",
+        "# Create a count plot or survey responses\n",
+        "category_order = ['Never', 'Rarely', 'Sometimes',\n",
+        "                  'Often', 'Always']\n",
+        "\n",
+        "sns.catplot(x=\"Parents' advice\",\n",
+        "            data=survey_data,\n",
+        "            kind='count', \n",
+        "            hue=\"Parents' advice\", legend=False,\n",
+        "            order=category_order)\n",
+        "\n",
+        "# Show plot\n",
+        "plt.show()"
+      ],
+      "id": "9bcdbdd8",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Este estilo y la paleta de colores divergente resaltan mejor la diferencia entre el número de jóvenes que suelen escuchar los consejos de sus padres frente a los que no lo hacen.\n",
+        "\n",
+        "### Cambiar la escala\n",
+        "\n",
+        "En este ejercicio, seguiremos examinando el conjunto de datos que contienen las respuestas de una encuesta a jóvenes. ¿Varía el porcentaje de personas que declaran sentirse solas en función del número de hermanos que tienen? Averigüémoslo utlizando un diagrama de barras, al tiempo que exploramos las cuatro escalas de diagrama diferentes de Seaborn. (\"contextos\").\n",
+        "\n",
+        "#### Instrucciones\n",
+        "\n",
+        "1.  Establece la escala (\"contexto\") en `\"paper\"`, que es la más pequieña de las opciones de escala."
+      ],
+      "id": "802f5246"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Set the context to \"paper\"\n",
+        "sns.set_context('paper')\n",
+        "\n",
+        "# Create bar plot\n",
+        "sns.catplot(x='Siblings', y='Loneliness',\n",
+        "            data=survey_data, \n",
+        "            kind='bar', \n",
+        "            hue='Siblings', legend=False)\n",
+        "\n",
+        "# Show plot\n",
+        "plt.show()"
+      ],
+      "id": "642e1542",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "2.  Cambia el contexto a `\"notebook\"` para aumentar la escala."
+      ],
+      "id": "fdbc4ee8"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Change the context to \"notebook\"\n",
+        "sns.set_context(\"notebook\")\n",
+        "\n",
+        "# Create a bar plot\n",
+        "sns.catplot(x='Siblings', y='Loneliness',\n",
+        "            data=survey_data, \n",
+        "            kind='bar', \n",
+        "            hue='Siblings', legend=False)\n",
+        "\n",
+        "# Show plot\n",
+        "plt.show()"
+      ],
+      "id": "c7f7925f",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "3.  Cambia el contexto a `\"talk\"` para aumentar la escala."
+      ],
+      "id": "191e2e5e"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Change the context to \"notebook\"\n",
+        "sns.set_context(\"talk\")\n",
+        "\n",
+        "# Create a bar plot\n",
+        "sns.catplot(x='Siblings', y='Loneliness',\n",
+        "            data=survey_data, \n",
+        "            kind='bar', \n",
+        "            hue='Siblings', legend=False)\n",
+        "\n",
+        "# Show plot\n",
+        "plt.show()"
+      ],
+      "id": "cd1c1c4a",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "4.  Cambia el contexto a `\"poster\"`, que es la mayor escala disponbible."
+      ],
+      "id": "bec31209"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Change the context to \"poster\"\n",
+        "sns.set_context(\"poster\")\n",
+        "\n",
+        "# Create a bar plot\n",
+        "sns.catplot(x='Siblings', y='Loneliness',\n",
+        "            data=survey_data, \n",
+        "            kind='bar', \n",
+        "            hue='Siblings', legend=False)\n",
+        "\n",
+        "# Show plot\n",
+        "plt.show()"
+      ],
+      "id": "b30b2f92",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Cada nombre de contexto da la sugerencia de Seaborn sobre cuándo usar una escala de gráfico dada (es un artículo, en un cuadrno de iPythonm en una charla/presentación o en una sesión de póster).\n",
+        "\n",
+        "### Utilizar una paleta personalizada\n",
+        "\n",
+        "Hasta ahora, hemos analizado varias cosas en el conjunto de datos de las respuestas a las encuestas de los jóvenes, como el uso que hacen de internet, la frecuencia con que escuchan a sus padres y cuántos de ellos dicen sentirse solos. Sin embargo, algo que no hemos hecho es un resumen básico del tipo de personas que responden a esta encuesta, incluyendo su edad y género. Proporcionar estos resúmenes básicos es siempre una buena práctica cuando se trata de un conjunto de datos desconocido.\n",
+        "\n",
+        "El código proporcionado creará un diagrama de cajas que mostrará la distribución de edades de los encuestados masculinos frente a los femeninos. Vamos a ajustar el código para personalizar la apariencia , esta vez utilizando una paleta de colores personalizada.\n",
+        "\n",
+        "#### Instrucciones\n",
+        "\n",
+        "-   Establece el estilo en `\"darkgrid\"`.\n",
+        "\n",
+        "-   Establece una paleta de colores personalizada con los códigos hexadecimales de color `\"#39A7D0\"` y `\"#36ADA4\"`."
+      ],
+      "id": "f35d2e19"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "sns.set_context('notebook')\n",
+        "\n",
+        "# Set the style to \"darkgrid\"\n",
+        "sns.set_style('darkgrid')\n",
+        "\n",
+        "# Set a custom color palette\n",
+        "sns.set_palette(['#39A7D0', '#36ADA4'])\n",
+        "\n",
+        "# Create the box plot of age distribution by gender\n",
+        "sns.catplot(x='Gender', y='Age',\n",
+        "            data=survey_data, kind='box',\n",
+        "            hue='Gender', legend=False)  # se agregan pues palette sera deprecated\n",
+        "\n",
+        "# Show plot\n",
+        "plt.show()"
+      ],
+      "id": "43065015",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Parece que la edad media es la misma para hombres y mujeres, pero la distribución de las mujeres se inclina hacia edades más jóvenes que la de los hombres.\n",
+        "\n",
+        "## Añadir títulos y etiquetas: Parte 1\n",
+        "\n",
+        "-   Creando visualizaciones informativas\n",
+        "    -   Se añade un título.\n",
+        "    -   Las etiquetas de los ejes son informativas.\n",
+        "    -   Las etiquetas del eje x estan giradas para mayor claridad.\n",
+        "\n",
+        "![](images/paste-37.png){width=\"570\"}\n",
+        "\n",
+        "-   Objetos FacetGrid vs. AxesSubplot\n",
+        "\n",
+        "    -   Los gráficos de Seaborn creean dos diferentes tipos de objetos: `FacetGrid` y `AxesSubplot`."
+      ],
+      "id": "c7b039fc"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| eval: false\n",
+        "g = sns.scatterplot(x='height', y='weight', data=df)\n",
+        "type(g)"
+      ],
+      "id": "0aec5a55",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "> matplotlib.axes.\\_subplots.AxesSubplot\n",
+        "\n",
+        "-   FacetGrid vacío\n",
+        "\n",
+        "    -   Esta formado por uno o varios AxesSuubplots\n",
+        "\n",
+        "        ![](images/paste-38.png){width=\"370\"}\n",
+        "\n",
+        "-   Objetos FacetGrid vs. AxesSubplot\n",
+        "\n",
+        "    | Tipo de Objeto | Tipo de gráfico                  | Características      |\n",
+        "    |----------------|----------------------------------|----------------------|\n",
+        "    | `FacetGrid`    | `relplot()`, `catplot()`         | Puede crear subplots |\n",
+        "    | `AxesSubplot`  | `scatterplot`, `countplot`, etc. | Crea un solo gráfico |\n",
+        "\n",
+        "-   Añadiendo un título al FacetGrid"
+      ],
+      "id": "4c470751"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| eval: false\n",
+        "g = sns.catplot(x='Region', y='Birthrate',\n",
+        "                data=gdp_data, kind='box')\n",
+        "\n",
+        "g.fig.suptitle('New Title',\n",
+        "                y=1.03)\n",
+        "\n",
+        "plt.show()"
+      ],
+      "id": "dfa19c49",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "![](images/paste-39.png){width=\"370\"}\n",
+        "\n",
+        "### FacetGrids vs. AxesSubplots\n",
+        "\n",
+        "En la lección reciente, aprendimos que las funciones de trazado de Seaborn crean dos tipos diferentes de objetos: objetos `FacetGrid` y objetos `AxesSubplot`. El método para añadir un título a tu gráfico variará en función del tipo de objeto que sea.\n",
+        "\n",
+        "En el código proporcionadom hemos utilizado `relplot()` con el conjunto de datos de millas por galón para crear un gráfico de dispersión que muestra la realación entre el peso de un coche y su potencia. Este gráfico de dispersión se asigna a la variable `g`. Identifiquemos de qué tipo de objeto se trata."
+      ],
+      "id": "71409b76"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import pandas as pd\n",
+        "import matplotlib.pyplot as plt\n",
+        "import seaborn as sns\n",
+        "\n",
+        "ruta = './data/mpg.csv'\n",
+        "mpg = pd.read_csv(ruta)\n",
+        "mpg.head()"
+      ],
+      "id": "36ecbcd6",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "#### Instrucciones\n",
+        "\n",
+        "1.  Identifica qué tipo de objeto es el gráfico `g` y asígnalo a la variable `type_of_g`"
+      ],
+      "id": "1182e1ea"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "sns.set_style('white')\n",
+        "\n",
+        "# Create a scatter plot\n",
+        "g = sns.relplot(x='weight', y='horsepower',\n",
+        "                    data=mpg, kind='scatter')\n",
+        "\n",
+        "# Identify plot type\n",
+        "type_of_g = type(g)\n",
+        "\n",
+        "# Print type\n",
+        "print(type_of_g)"
+      ],
+      "id": "4c152c4d",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "2.  **Pregunta**\n",
+        "\n",
+        "Acabamos de ver que `sns.relplot()` crea objetos FacetGrid. ¿Qué otra función Seaborn crea un objeto FacetGrid en lugar de un objeto AxesSubplot?\n",
+        "\n",
+        "**Respuestas posibles**\n",
+        "\n",
+        "-   [x] `sns.catplot()`\n",
+        "-   [ ] `sns.scatterplot()`\n",
+        "-   [ ] `sns.boxplot()`\n",
+        "-   [ ] `sns.countplot()`\n",
+        "\n",
+        "`catplot()` admite la creación de subgráficos, por lo que crea un objeto `FacetGrid`.\n",
+        "\n",
+        "### Añadir un título a un objeto FacetGrid\n",
+        "\n",
+        "En el ejercicio anterior, utilizamos `relplot()` con el conjunto de datos de millas por galón para crear un gráfico de dispersión que mostrara la relación entre el peso de un coche y su potencia. Esto creó el objeto `FacetGrid`. Ahora que sabemos qué tipo de objeto es, vamos a añadir un título a esta trama.\n",
+        "\n",
+        "#### Instrucciones\n",
+        "\n",
+        "-   Añade un título a esta trama: `\"Car Wight vs. Horsepower\"`."
+      ],
+      "id": "23b4e195"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Create a scatter plot\n",
+        "g = sns.relplot(x='weight', y='horsepower',\n",
+        "            data=mpg, kind='scatter')\n",
+        "\n",
+        "# Add a title \"Car Weight vs. Horsepower\"\n",
+        "g.fig.suptitle('Car Weight vs. Horsepower')\n",
+        "\n",
+        "# Show plot\n",
+        "plt.show()"
+      ],
+      "id": "fcf28564",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Parece que el peso de un coche está correlacionado positivamente con su potencia.\n",
+        "\n",
+        "## Añadir títulos y etiquetas: Parte 2\n",
+        "\n",
+        "-   Añadiendo un título a AxesSubplot\n",
+        "\n",
+        "    -   FacetGrid"
+      ],
+      "id": "9a60f991"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "md-indent": "    "
+      },
+      "source": [
+        "#| echo: true\n",
+        "#| eval: false\n",
+        "g = sns.catplot(x='Region', y='Birthrate',\n",
+        "                data=gdp_data,\n",
+        "                kind='box')\n",
+        "\n",
+        "g.fig.suptitle('New Title',\n",
+        "               y=1.03)"
+      ],
+      "id": "ce48a0db",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "AxesSubplot"
+      ],
+      "id": "41b72701"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| eval: false\n",
+        "g = sns.boxplot(x='Region', y='Birtrate',\n",
+        "                data=gdp_data)\n",
+        "\n",
+        "g.set_title('New Title',\n",
+        "            y=1.03)"
+      ],
+      "id": "e09b4d3b",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "-   Títulos para subgráficos"
+      ],
+      "id": "291a975c"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| eval: false\n",
+        "g = sns.catplot(x='Region', y='Birthrate',\n",
+        "                data=gdp_data, kind='box',\n",
+        "                col='Group')\n",
+        "\n",
+        "# Título general\n",
+        "g.fig.suptitle('New Title',\n",
+        "                y=1.03)\n",
+        "\n",
+        "# Título de cada gráfico\n",
+        "g.set_title('This is {col_name}')"
+      ],
+      "id": "00a9b693",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "![](images/paste-40.png){width=\"570\"}\n",
+        "\n",
+        "-   Añadir etiquetas a los ejes"
+      ],
+      "id": "d9f53d2e"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| eval: false\n",
+        "g = sns.catplot(x='Region', y='Birthrate',\n",
+        "                data=gdp_data, kind='box',\n",
+        "                col='Group')\n",
+        "\n",
+        "g.set(xlabel='New X Label',\n",
+        "      ylabel='New Y Label')\n",
+        "\n",
+        "plt.show()"
+      ],
+      "id": "02d05e1e",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "![](images/paste-41.png){width=\"370\"}\n",
+        "\n",
+        "-   Rotando las etiquetas del eje x"
+      ],
+      "id": "e9c6b7c7"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| eval: false\n",
+        "g = sns.catplot(x='Region', y='Birthrate',\n",
+        "                data=gdp_data, kind='box',\n",
+        "                col='Group')\n",
+        "\n",
+        "plt.xticks(rotation=90)\n",
+        "plt.show()"
+      ],
+      "id": "9a28fddd",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "![](images/paste-42.png){width=\"370\"}\n",
+        "\n",
+        "### Añadir un título y etiquetas de eje\n",
+        "\n",
+        "Sigamos examinando el conjunto de datos de millas por galón. Esta vez crearemos un gráfico lineal para responder a la pregunta: ¿Cómo cambia a lo largo del tiempo la media de millas por galón que alcanzan los coches en cada uno de los tres lugares de origen? Para mejorar la legibilidad de este gráfico, añadiremos un título y etiquetas de eje más informativas.\n",
+        "\n",
+        "En el código proporcionado, creamos el gráfico de líneas utilizando la función `lineplot()`. Ten encuenta que `lineplot()` no admite la creación de subtramas, por lo que devuelve un obejeto `AxesSubplot` en lugar d eun objeto `FacetGrid`."
+      ],
+      "id": "6660e2ad"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import pandas as pd\n",
+        "import matplotlib.pyplot as plt\n",
+        "import seaborn as sns\n",
+        "\n",
+        "ruta = './data/mpg_mean.csv'\n",
+        "mpg_mean = pd.read_csv(ruta, index_col=0)\n",
+        "mpg_mean.head()"
+      ],
+      "id": "3598abd3",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "#### Instrucciones\n",
+        "\n",
+        "1.  Añade el siguiente título a la trama: `\"Average MPG Over Time\"`."
+      ],
+      "id": "ef05650e"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Create a line plot\n",
+        "g = sns.lineplot(x='model_year', y='mpg_mean',\n",
+        "                 data=mpg_mean, hue='origin')\n",
+        "\n",
+        "# Add title \"Average MPG Over Time\"\n",
+        "g.set_title('Average MPG Over Time')\n",
+        "\n",
+        "# Show plot\n",
+        "plt.show()"
+      ],
+      "id": "347cb29a",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "2.  Etiqueta el eje x como `\"Car Model Year\"` y el eje y como `\"Average MPG\"`."
+      ],
+      "id": "e13aa33d"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Create a line plot\n",
+        "g = sns.lineplot(x='model_year', y='mpg_mean',\n",
+        "                 data=mpg_mean, hue='origin')\n",
+        "\n",
+        "# Add title \"Average MPG Over Time\"\n",
+        "g.set_title('Average MPG Over Time')\n",
+        "\n",
+        "# Add x-axis and y-axis labels\n",
+        "g.set(xlabel='Car Model Year',\n",
+        "      ylabel='Average MPG')\n",
+        "\n",
+        "# Show plot\n",
+        "plt.show()"
+      ],
+      "id": "37202c24",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "El promedio de millas por galón logrado está aumentando con el tiempo para los tres lugares de origen, pero EE.UU.j siempre es más bajo que Europa y Japón.\n",
+        "\n",
+        "### Rotar etiquetas x-tick\n",
+        "\n",
+        "En este ejercicio, seguiremos ecaminando el conjunto de datos de millas por galón. En el código proporcionado, creamos un gráfico de puntos que muestra la aceleración media de los coches en cada uno de los tres lugares de origen. Observa que la variable `\"acceleration\"` es el tiempo de aceleración de 0 a 60 millas por hora, en segundos. Los valores más altos indican una aceleración más lenta.\n",
+        "\n",
+        "Utilicemos este gráfico para practicar la rotación de las etiquetas x-tick. Recuerda que la función para rotar las etiquetas x-tick es una función independiente de Matplotlib y no una función aplicada al propio objeto gráfico.\n",
+        "\n",
+        "#### Instrucciones\n",
+        "\n",
+        "-   Gira 90 grados las etiquetas x-tick."
+      ],
+      "id": "a98b02e3"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Create point plot\n",
+        "sns.catplot(x='origin', y='acceleration',\n",
+        "            data=mpg, kind='point',\n",
+        "            linestyle='none', capsize=0.1)  # join=False deprecated\n",
+        "\n",
+        "# Rotate x-tick labels\n",
+        "plt.xticks(rotation=90)\n",
+        "\n",
+        "# Show plot\n",
+        "plt.show()"
+      ],
+      "id": "362caeed",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Dado que los valores más altos indican una aceleración más lenta, parece que los coches de Japón y Europa tienen una aceleración significativamente más lenta en comparación con los de EE.UU.\n",
+        "\n",
+        "## Unirlo Todo\n",
+        "\n",
+        "-   Inicio Para importar Seaborn:"
+      ],
+      "id": "acc8bbed"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| eval: false\n",
+        "import seaborn as sns"
+      ],
+      "id": "eda17e85",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Para importar Matplotlib:"
+      ],
+      "id": "929f0da5"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| eval: false\n",
+        "import matplotlib.pyplot as plt"
+      ],
+      "id": "02e965b0",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Para mostrar un gráfico:"
+      ],
+      "id": "b79721d7"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| eval: false\n",
+        "plt.show()"
+      ],
+      "id": "0215def1",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "-   Gráficos Relacionales\n",
+        "    -   Muestran la relación entre dos variables cuantitativas.\n",
+        "    -   Ejemplos: scatter plots, line plots"
+      ],
+      "id": "ceeb310e"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| eval: false\n",
+        "sns.relplot(x='x_variable_name',\n",
+        "            y='y_variable_name',\n",
+        "            data=pandas_df,\n",
+        "            kind='scatter')"
+      ],
+      "id": "b26b5f75",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "-   Gráficos Categóricos\n",
+        "    -   Describen la distribución de una variable cuantitativa dentro de categorías definida por una variable categórica\n",
+        "    -   Ejemplos: bar plots, count plots, box plots, pint plots"
+      ],
+      "id": "d85511c2"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| eval: false\n",
+        "sns.catplot(x='x_variable_name',\n",
+        "            y='y_variable_name',\n",
+        "            data=pandas_df,\n",
+        "            kind='bar')"
+      ],
+      "id": "93d4f011",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "-   Añadiendo una tercer variable (hue)\n",
+        "\n",
+        "    -   Configurar `hue` creatra subgrupos que son desplegados como diferentes colores en un solo gráfico\n",
+        "\n",
+        "    ![](images/paste-43.png){width=\"370\"}\n",
+        "\n",
+        "-   Añadiendo una tercer variable (row/col)\n",
+        "\n",
+        "    -   Configurar `row` y/o `col` en `relplot()` o `catplot()` creará subgrupos que son desplegados en subgráficos separados.\n",
+        "\n",
+        "    ![](images/paste-44.png){width=\"370\"}\n",
+        "\n",
+        "-   Personalización\n",
+        "\n",
+        "    -   Cambiar el fondo: `sns.set_style()`\n",
+        "\n",
+        "    -   Cambiar los colores de los elementos principales: `sns.set_palette()`\n",
+        "\n",
+        "    -   Cambiar la escala: `sns.set_context()`\n",
+        "\n",
+        "    -   Añadir un título\n",
+        "\n",
+        "        | Tipo de Objeto | Tipo de gráfico                      | Cómo añadir un título |\n",
+        "        |------------------|---------------------------------|---------------------|\n",
+        "        | `FacetGrid`    | `relplot()`, `catplot()`             | `g.fig.suptitle()`    |\n",
+        "        | `AxesSubplot`  | `scatterplot()`, `countplot()`, etc. | `g.set_title()`       |\n",
+        "\n",
+        "-   Toques finales\n",
+        "\n",
+        "    -   Añadir etiquetas al eje x y eje y"
+      ],
+      "id": "10a09988"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| eval: false\n",
+        "g.set(xlabel='new x-axis label',\n",
+        "      ylabel='new y-axis label')"
+      ],
+      "id": "7062fc68",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Rotar etiquetas el eje x"
+      ],
+      "id": "ee2df866"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| eval: false\n",
+        "plt.xticks(rotation=90)"
+      ],
+      "id": "608d365a",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### Diagrama de cajas con subgrupos\n",
+        "\n",
+        "En este ejercicio, examinaremos el conjunto de datos que contiene las respuestas de una encuesta realizada a jóvenes. Una de las preguntas que se hicieron a los jóvenes fue: \"¿Te interesa tener mascotas?\" Exploraremos si la distribución de edades de los que responden \"si\" tiende a ser mayor o menor que la de los que responden \"no\", distinguiendo según el género."
+      ],
+      "id": "30052272"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "survey_data['Interested in Pets'] = survey_data['Pets'].apply(\n",
+        "    lambda x: 'Yes' if x >= 4.0 else 'No')"
+      ],
+      "id": "499ce1e5",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "#### Instrucciones\n",
+        "\n",
+        "-   Configura la paleta de colores en `\"Blues\"`.\n",
+        "-   Añade subgrupos para colorear los gráficos de caja en función de `\"Interested in Pets\"`.\n",
+        "-   Establece el título del objeto `FacetGrid` `g` en \\`\"Age of Those Interested in Pets vs. Not\".\n",
+        "-   Realiza la visualización del gráfico utlizando una función Matplotlib."
+      ],
+      "id": "953f316b"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Set palette to \"Blues\"\n",
+        "sns.set_palette('Blues')\n",
+        "\n",
+        "# Adjust to add subgroups based on \"Interested in Pets\"\n",
+        "g = sns.catplot(x='Gender', y='Age',\n",
+        "                data=survey_data,\n",
+        "                kind='box', hue='Interested in Pets')\n",
+        "\n",
+        "# Set title to \"Age of Those Interested in Pets vs. Not\"\n",
+        "g.fig.suptitle('Age of Those Interested in Pets vs. Not')\n",
+        "\n",
+        "# Show plot\n",
+        "plt.show()"
+      ],
+      "id": "ed77ebeb",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Después de controlar por género, parece que las distribuciones de edad de las personas están interesadsas en las mascotas son similares a las de las que no lo están\n",
+        "\n",
+        "### Diagrama de barras con subgrupos y subtramas\n",
+        "\n",
+        "En este ejercicio, volveremos a nuestro conjunto de datos de la encuesta a jóvenes e investigaremos si la proporción de personas a las que les gusta la música tecno (`\"Likes Techno\"`) varía según su género. (`\"Gender\"`) o su lugar de residencia (`\"Village - town\"`). ¡Este ejercicio nos dará la oportunidad de practicar las muchas cosas que hemos aprendido a lo largo de este curso!\n",
+        "\n",
+        "Antes hay que transformar la columna 'Techno' por 'Likes Techno'"
+      ],
+      "id": "3c580de7"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "survey_data['Likes Techno'] = survey_data['Techno'].apply(lambda x: True if x >= 4.0 else False)"
+      ],
+      "id": "5d143bd6",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "#### Instrucciones\n",
+        "\n",
+        "-   Establece el estilo de la figura en `\"dark\"`.\n",
+        "-   Ajusta el código del diagrama de barras para añadir subtramas basadas en `\"Gender\"`, dispuestas en columnas.\n",
+        "-   Añade el título `\"Percentage of Young People Who Like Techno\"` a esta trama `FacetGrid`.\n",
+        "-   Etiqueta el eje x `\"Location of Residence\"` y el eje y `\"% Who Like Techno\"`"
+      ],
+      "id": "f69cc2c0"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "plt.style.use('seaborn-v0_8')\n",
+        "\n",
+        "# Set the figure style to \"dark\"\n",
+        "sns.set_style('dark')\n",
+        "\n",
+        "# Adjust to add subplots per gender\n",
+        "g = sns.catplot(x='Village - town', y='Likes Techno',\n",
+        "                data=survey_data, kind='bar',\n",
+        "                col='Gender')\n",
+        "\n",
+        "# Add title and axix labels\n",
+        "g.fig.suptitle('Percentage of Young People Who Like Techno',\n",
+        "                y=1.02)\n",
+        "g.set(xlabel='Location of Residence',\n",
+        "      ylabel='% Who Like Techno')\n",
+        "\n",
+        "# Show plot\n",
+        "plt.show()"
+      ],
+      "id": "03c030db",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## ¡Bien hecho! ¿Y ahora qué?\n",
+        "\n",
+        "-   Explorar y comunicar los resultados\n",
+        "\n",
+        "![](images/paste-45.png)\n",
+        "\n",
+        "-   Seguientes pasos:\n",
+        "\n",
+        "    -   Visualizaciones avanzadas con Seaborn\n",
+        "\n",
+        "    -   Matplotlib avanzado personalizado"
+      ],
+      "id": "36cbf452"
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "name": "python3",
+      "language": "python",
+      "display_name": "Python 3 (ipykernel)",
+      "path": "/Users/macbookairedwin/Documents/Datacamp/analista-de-datos-en-python/.venv/share/jupyter/kernels/python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}

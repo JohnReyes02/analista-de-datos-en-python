@@ -1,0 +1,399 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "id": "64370cf8",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "title: \"Síntesis estadística\"\n",
+    "---\n",
+    "\n",
+    "La síntesis estadística te proporciona las herramientas que necesitas para condensar conjuntos de datos masivos y revelar lo más destacado. En este capítulo explorarás la síntesis estadística, lo que incluye la media, la mediana y la desviación típica, y aprenderás a realizar una interpretación exacta. También desarrollarás tus competencias de pensamiento crítico, lo que te permitirá elegir la mejor síntesis estadística para tus datos.\n",
+    "\n",
+    "## Qué es la estadística?\n",
+    "\n",
+    "-   Campo de la estadística: Es la práctica y studio de la recogida y análisis de datos.\n",
+    "\n",
+    "-   Un resúmen estadístico: Un dato o resumen de algunos datos.\n",
+    "\n",
+    "**Tipos de estadística:**\n",
+    "\n",
+    "+--------------------------------------------+-----------------------------------------------------------------------------------+\n",
+    "| Estadística Descriptiva                    | Estadística Inferencial                                                           |\n",
+    "+============================================+===================================================================================+\n",
+    "| -   Describe y resume los datos.           | -   Usa una muestra de datos para hacer inferencias acerca de una gran población. |\n",
+    "+--------------------------------------------+-----------------------------------------------------------------------------------+\n",
+    "| Ejemplos:                                  | Ejemplo:                                                                          |\n",
+    "|                                            |                                                                                   |\n",
+    "| -   50% de los amigos conducen al trabajo. | -   Qué porcentaje de personas manejan al trabajo?                                |\n",
+    "|                                            |                                                                                   |\n",
+    "| -   25% toman el bus.                      |                                                                                   |\n",
+    "|                                            |                                                                                   |\n",
+    "| -   25% bicicleta                          |                                                                                   |\n",
+    "+--------------------------------------------+-----------------------------------------------------------------------------------+\n",
+    "\n",
+    "**Tipos de datos:**\n",
+    "\n",
+    "+--------------------------------------+-------------------------------+\n",
+    "| Numérico (Cuantitativo)              | Categórico (Cualitativo)      |\n",
+    "+======================================+===============================+\n",
+    "| -   Continuos (se pueden medir)      | -   Nominal (Sin orden)       |\n",
+    "|                                      |                               |\n",
+    "|     -   Velocidad de un avión.       |     -   Casado / Divorciado.  |\n",
+    "|                                      |                               |\n",
+    "|     -   Tiempo de espera en una fila |     -   País de residencia.   |\n",
+    "+--------------------------------------+-------------------------------+\n",
+    "| -   Discretos (de recuento)          | -   Ordinal (Ordenado)        |\n",
+    "|                                      |                               |\n",
+    "|     -   Número de mascotas.          |     -   Preguntas de encuesta |\n",
+    "|                                      |                               |\n",
+    "|     -   Número de paquetes enviados. |                               |\n",
+    "+--------------------------------------+-------------------------------+\n",
+    "\n",
+    "### Estadística descriptiva e inferencial\n",
+    "\n",
+    "La estadística puede utilizarse para responder a muchos tipos de preguntas, pero saber identificar qué tipo de estadística se necesita es esencial para sacar conclusiones exactas. En este ejercicio, afinarás tus competencias identificando qué tipo se necesita para responder a cada pregunta.\n",
+    "\n",
+    "+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------+\n",
+    "| Descriptiva                                                                                                                 | Inferencial                                                                                                             |\n",
+    "+=============================================================================================================================+=========================================================================================================================+\n",
+    "| -   Dados los datos de cada solicitud de atención al cliente realizada, ¿cuál es el tiempo medio que se tardó en responder? | -   Después de entrevistar a 100 clientes, ¿qué porcentaje de **todos** tus clientes están satisfechos con tu producto? |\n",
+    "+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------+\n",
+    "| -   Dados los datos de las 100 000 personas que vieron un anuncio, ¿qué porcentaje de personas hicieron clic en él?         | -   Dados los datos de 20 peces capturados en un lago, ¿cuál es el peso medio de todos los peces del lago?              |\n",
+    "+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------+\n",
+    "\n",
+    "### Clasificación de los tipos de datos\n",
+    "\n",
+    "En el vídeo, aprendiste sobre dos tipos principales de datos: numéricos y categóricos. Las variables numéricas pueden clasificarse como discretas o continuas, y las variables categóricas, como nominales u ordinales. Estas características de una variable determinan qué formas de resumir tus datos funcionarán mejor.\n",
+    "\n",
+    "| Numérica continua | Numérica discreta | Categórica |\n",
+    "|----|----|----|\n",
+    "| Temperatura del aire | Número de artículos en stock | Código postal |\n",
+    "| Kilovatios de electricidad consumidos | Número de cursos de Datacamp realizados | Marca de un producto |\n",
+    "\n",
+    "\n",
+    "## Medidas de tendencia central\n",
+    "\n",
+    "- Media: Funciona mejor para datos simétricos.\n",
+    "\n",
+    "- Mediana: Funciona mejor para datos sesgados a izquierda y derecha.\n",
+    "\n",
+    "- Moda: Principalmente para datos categóricos.\n",
+    "\n",
+    "### Media y mediana\n",
+    "\n",
+    "En este capítulo, trabajarás con el conjunto de datos `food_consumption` del 2018 Food Carbon Footprint Index, de nu3. El conjunto de datos `food_consumption` contiene el número de kilogramos de alimentos consumidos por persona y año en cada `country` y categoría de alimentos (`consumption`), y su huella de carbono (`co2_emissions`) medida en kilogramos de dióxido de carbono, o CO2.\n",
+    "\n",
+    "En este ejercicio, calcularás medidas de tendencia central para comparar el consumo de alimentos en US y Bélgica utilizando tus competencias en pandas y numpy."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "606504e3",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import pandas as pd"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "a6bf6a9b",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "   Unnamed: 0    country food_category  consumption  co2_emission\n",
+      "0           1  Argentina          pork        10.51         37.20\n",
+      "1           2  Argentina       poultry        38.66         41.53\n",
+      "2           3  Argentina          beef        55.48       1712.00\n",
+      "3           4  Argentina     lamb_goat         1.56         54.63\n",
+      "4           5  Argentina          fish         4.36          6.96\n"
+     ]
+    }
+   ],
+   "source": [
+    "food_consumption = pd.read_csv('../datasets/food_consumption.csv')\n",
+    "print(food_consumption.head())"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "327ec2ae",
+   "metadata": {},
+   "source": [
+    "#### Instrucciones:\n",
+    "\n",
+    "- Importa las librerías pandas y numpy.\n",
+    "\n",
+    "- Subdivide food_consumption para obtener las filas en las que el country es'USA'\n",
+    "\n",
+    "- Calcula la media del consumption de alimentos en el DataFrame usa_consumption.\n",
+    "\n",
+    "- Calcula la mediana del consumption de alimentos en el DataFrame usa_consumption."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "id": "523a0be0",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "44.650000000000006\n",
+      "14.58\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Import numpy with alias np\n",
+    "import numpy as np\n",
+    "\n",
+    "# Subset country for USA: usa_consumption\n",
+    "usa_consumption = food_consumption[food_consumption['country'] == 'USA']\n",
+    "\n",
+    "# Calculate mean consumption in USA\n",
+    "print(np.mean(usa_consumption['consumption']))\n",
+    "\n",
+    "# Calculate median consumption in USA\n",
+    "print(np.median(usa_consumption['consumption']))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "14dd0b00",
+   "metadata": {},
+   "source": [
+    "Los cálculos muestran que la media y la mediana del consumo en los Estados Unidos son bastante diferentes.\n",
+    "\n",
+    "\n",
+    "### Media frente a mediana\n",
+    "\n",
+    "En el vídeo has aprendido que la media es la suma de todos los puntos de datos dividida entre el número total de puntos de datos, y que la mediana es el valor central del conjunto de datos, donde el 50 % de los datos son menores que la mediana y el 50 % de los datos son mayores que la mediana. En este ejercicio, compararás estas dos medidas de tendencia central.\n",
+    "\n",
+    "#### Instrucciones:\n",
+    "\n",
+    " 1. \n",
+    "\n",
+    "- Importa la librería `matplotlib.pyplot` con el alias `plt`.\n",
+    "\n",
+    "- Subdivide food_consumption para obtener las filas en las que el `food_category` es `rice`.\n",
+    "\n",
+    "- Crea un histograma de `co2_emissions` en el DataFrame `rice_consumption` y\n",
+    "muestra el gráfico."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "id": "797ca14c",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Import matplotlib.pyplot with alias plt\n",
+    "import matplotlib.pyplot as plt"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "id": "8c802d57",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "    Unnamed: 0      country food_category  consumption  co2_emission\n",
+      "8            9    Argentina          rice         8.77         11.22\n",
+      "19          20    Australia          rice        11.03         14.12\n",
+      "30          31      Albania          rice         7.78          9.96\n",
+      "41          42      Iceland          rice         3.89          4.98\n",
+      "52          53  New Zealand          rice         9.16         11.72\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Subset for food_category equals rice\n",
+    "rice_consumption = food_consumption[food_consumption['food_category'] == 'rice']\n",
+    "print(rice_consumption.head())"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "id": "36ef645c",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "image/png": "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",
+      "text/plain": [
+       "<Figure size 672x480 with 1 Axes>"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    }
+   ],
+   "source": [
+    "# Histogram of co2_emissions for rice and show plot\n",
+    "plt.hist(rice_consumption['co2_emission'])\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "03dda91b",
+   "metadata": {},
+   "source": [
+    "2. **Pregunta**\n",
+    "\n",
+    "Echa un vistazo al histograma que acabas de crear de las emisiones de CO2 de los distintos países para el arroz. Cuál de los siguientes términos describe mejor la forma de los datos?\n",
+    "\n",
+    "**Respuestas posibles**\n",
+    "\n",
+    "- [ ] Sin sesgo\n",
+    "\n",
+    "- [ ] Sesgado a la izquierda\n",
+    "\n",
+    "- [x] Sesgado a la derecha\n",
+    "\n",
+    "3. \n",
+    "\n",
+    "- Utiliza `.agg()` para calcular la media y la mediana de `co2_emissions`\n",
+    "para el arroz."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "id": "3b1f4b28",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "      Unnamed: 0       country food_category  consumption  co2_emission\n",
+      "8              9     Argentina          rice         8.77         11.22\n",
+      "19            20     Australia          rice        11.03         14.12\n",
+      "30            31       Albania          rice         7.78          9.96\n",
+      "41            42       Iceland          rice         3.89          4.98\n",
+      "52            53   New Zealand          rice         9.16         11.72\n",
+      "...          ...           ...           ...          ...           ...\n",
+      "1383        1384  Sierra Leone          rice       103.30        132.19\n",
+      "1394        1395     Sri Lanka          rice       109.72        140.41\n",
+      "1405        1406     Indonesia          rice       134.62        172.27\n",
+      "1416        1417       Liberia          rice        94.75        121.25\n",
+      "1427        1428    Bangladesh          rice       171.73        219.76\n",
+      "\n",
+      "[130 rows x 5 columns]\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Subset for food_category equals rice\n",
+    "rice_consumption = food_consumption[food_consumption['food_category'] == 'rice']\n",
+    "print(rice_consumption)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "id": "9fbc4698",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "mean      37.591615\n",
+      "median    15.200000\n",
+      "Name: co2_emission, dtype: float64\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Calculate mean and median of co2_emission with .agg()\n",
+    "print(rice_consumption['co2_emission'].agg(['mean', 'median']))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "005c7634",
+   "metadata": {},
+   "source": [
+    "4. **Pregunta**\n",
+    "\n",
+    "Dado el sesgo de estos datos, qué medida de tendencia central resume mejor los kilogramos de emisiones de CO2 por persona y año para el arroz?\n",
+    "\n",
+    "**Respuestas posibles**\n",
+    "\n",
+    "- [ ] Media\n",
+    "\n",
+    "- [x] Mediana\n",
+    "\n",
+    "- [ ] Media y mediana\n",
+    "\n",
+    "\n",
+    "## Medidas de dispersión\n",
+    "\n",
+    "Describe lo separado o juntos que se encuentran los grupos de datos. \n",
+    "\n",
+    "#### Varianza:\n",
+    "\n",
+    "Mide la distancia media de cada punto de datos a la media de los datos. Se puede calcular usando `np.var()`.\n",
+    "\n",
+    "#### Desviación estándar\n",
+    "\n",
+    "Se calcula tomando la raíz cuadrada de la varianza. Se puede calcular usando `np.sd()`.\n",
+    "\n",
+    "#### Desviación estándar absoluto\n",
+    "\n",
+    "Toma el valor absoluto de las distancias a la media y luego toma la media de las diferencias.\n",
+    "\n",
+    "#### Desviación estandar vs desviación media absoluta\n",
+    "\n",
+    "- En la desviación estandar los cuadrados de las distancias penaliza las largas distancias más que las cortas.\n",
+    "- En la desviación media absoluta todas las distancias se penalizar de forma equitativa.\n",
+    "\n",
+    "### Varianza y desviación típica\n",
+    "\n",
+    "### Cuartiles, cuantiles y quintiles\n",
+    "\n",
+    "### Encontrar valores atípicos mediante IQR"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3",
+   "path": "/Users/macbookairedwin/Documents/Datacamp/analista-de-datos-en-python/.venv/share/jupyter/kernels/python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.13.5"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}

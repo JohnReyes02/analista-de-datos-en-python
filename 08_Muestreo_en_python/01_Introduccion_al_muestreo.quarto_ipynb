@@ -2,7 +2,7 @@
  "cells": [
   {
    "cell_type": "markdown",
-   "id": "5cc39f60",
+   "id": "2f591c25",
    "metadata": {},
    "source": [
     "---\n",
@@ -39,7 +39,7 @@
   {
    "cell_type": "code",
    "execution_count": 1,
-   "id": "684d02f4",
+   "id": "e4565cb7",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -50,7 +50,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "52b76c23",
+   "id": "5a909830",
    "metadata": {},
    "source": [
     "![](images/paste-2.png)\n",
@@ -61,7 +61,7 @@
   {
    "cell_type": "code",
    "execution_count": 2,
-   "id": "59e2f2a5",
+   "id": "ba653abf",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -72,7 +72,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "03e7e951",
+   "id": "f1585511",
    "metadata": {},
    "source": [
     "![](images/paste-3.png)\n",
@@ -87,7 +87,7 @@
   {
    "cell_type": "code",
    "execution_count": 3,
-   "id": "fb996d7f",
+   "id": "166f9424",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -98,7 +98,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "28246041",
+   "id": "871a3b07",
    "metadata": {},
    "source": [
     "![](images/paste-4.png)\n",
@@ -111,7 +111,7 @@
   {
    "cell_type": "code",
    "execution_count": 4,
-   "id": "cf2caad8",
+   "id": "585e57e6",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -123,7 +123,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "1c304049",
+   "id": "cd6a924f",
    "metadata": {},
    "source": [
     "![](images/paste-5.png)\n",
@@ -134,7 +134,7 @@
   {
    "cell_type": "code",
    "execution_count": 5,
-   "id": "b3b9276b",
+   "id": "32c6ab84",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -145,7 +145,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "9d31e508",
+   "id": "21c9c20c",
    "metadata": {},
    "source": [
     "![](images/paste-6.png)\n",
@@ -158,7 +158,7 @@
   {
    "cell_type": "code",
    "execution_count": 6,
-   "id": "8d0624b4",
+   "id": "df39b1df",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -169,7 +169,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "82c8fef7",
+   "id": "3f56280a",
    "metadata": {},
    "source": [
     "![](images/paste-7.png)"
@@ -178,7 +178,7 @@
   {
    "cell_type": "code",
    "execution_count": 7,
-   "id": "cbbce6e3",
+   "id": "d747697d",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -189,7 +189,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "951220a4",
+   "id": "6b4ec06a",
    "metadata": {},
    "source": [
     "![](images/paste-8.png)\n",
@@ -202,13 +202,12 @@
     "\n",
     "**Respuestas posibles**\n",
     "\n",
-    "- [ ] Te han agregado un terabyte de datos sobre registros de errores del dispositivo de tu empresa.\n",
-    "- [ ] Deseas conocer los hábitos de viaje de todos los ciudadanos adultos paquistaníes.\n",
-    "- [X] Has terminado de recoger los datos de un pequeño estudio sobre las medidas de las alas de 10 mariposas.\n",
-    "- [ ] Has estado trabajando para predecir la rotación de clientes en un proyecto de big data para tu empresa de marketing.\n",
+    "-   [ ] Te han agregado un terabyte de datos sobre registros de errores del dispositivo de tu empresa.\n",
+    "-   [ ] Deseas conocer los hábitos de viaje de todos los ciudadanos adultos paquistaníes.\n",
+    "-   [x] Has terminado de recoger los datos de un pequeño estudio sobre las medidas de las alas de 10 mariposas.\n",
+    "-   [ ] Has estado trabajando para predecir la rotación de clientes en un proyecto de big data para tu empresa de marketing.\n",
     "\n",
     "Diez mariposas es un conjunto de datos pequeño, por lo que el muestreo no es útil aquí.\n",
-    "\n",
     "\n",
     "### Muestreo simple con pandas\n",
     "\n",
@@ -220,7 +219,7 @@
   {
    "cell_type": "code",
    "execution_count": 8,
-   "id": "e3fa7730",
+   "id": "b3bfed60",
    "metadata": {},
    "outputs": [
     {
@@ -416,7 +415,7 @@
        "4       0.0291   78.045   0.1130  2000.0  "
       ]
      },
-     "execution_count": 1,
+     "execution_count": 8,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -430,88 +429,88 @@
   },
   {
    "cell_type": "markdown",
-   "id": "ba5c1902",
+   "id": "dbbe6b38",
    "metadata": {},
    "source": [
     "#### Instrucciones\n",
     "\n",
-    "1. Muestra 1000 filas de `spotify_population`, asignándolas a `spotify_sample`."
+    "1.  Muestra 1000 filas de `spotify_population`, asignándolas a `spotify_sample`."
    ]
   },
   {
    "cell_type": "code",
    "execution_count": 9,
-   "id": "588834b6",
+   "id": "8e6b240a",
    "metadata": {},
    "outputs": [
     {
      "name": "stdout",
      "output_type": "stream",
      "text": [
-      "       acousticness                                            artists  \\\n",
-      "29874       0.11500                            ['Yarbrough & Peoples']   \n",
-      "13146       0.08420                                ['Black Eyed Peas']   \n",
-      "4598        0.24300                                  ['Kings of Leon']   \n",
-      "35709       0.60600                                    ['Johnny Cash']   \n",
-      "33010       0.54800                                   ['Andy Grammer']   \n",
-      "...             ...                                                ...   \n",
-      "9663        0.90600                           ['Emilie-Claire Barlow']   \n",
-      "27045       0.02790                                        ['Dayglow']   \n",
-      "7768        0.83900  ['Jessica Keenan Wynn', 'Daniel Cooney', 'Dan ...   \n",
-      "2715        0.00255                                  ['Rascal Flatts']   \n",
-      "29541       0.17500                             ['The Postal Service']   \n",
+      "       acousticness                     artists  danceability  duration_ms  \\\n",
+      "14790      0.129000          ['Living Legends']         0.804     269360.0   \n",
+      "30612      0.003080                 ['Beyoncé']         0.512     257653.0   \n",
+      "12637      0.036800                  ['Juanes']         0.711     294267.0   \n",
+      "6945       0.008780          ['Camera Obscura']         0.329     231160.0   \n",
+      "3306       0.344000  ['Thalía', 'Prince Royce']         0.800     220067.0   \n",
+      "...             ...                         ...           ...          ...   \n",
+      "34620      0.000637                ['Maroon 5']         0.674     185280.0   \n",
+      "2342       0.361000      ['Conjunto Primavera']         0.642     221627.0   \n",
+      "12414      0.992000          ['Clifford Solum']         0.196     191250.0   \n",
+      "10630      0.619000    ['Los Reyes Del Camino']         0.666     229067.0   \n",
+      "35407      0.121000                 ['Kehlani']         0.426     185884.0   \n",
       "\n",
-      "       danceability  duration_ms  duration_minutes  energy  explicit  \\\n",
-      "29874         0.829     249000.0          4.150000   0.710       0.0   \n",
-      "13146         0.848     274733.0          4.578883   0.692       0.0   \n",
-      "4598          0.642     227440.0          3.790667   0.522       0.0   \n",
-      "35709         0.700     241160.0          4.019333   0.664       0.0   \n",
-      "33010         0.828     198001.0          3.300017   0.560       0.0   \n",
-      "...             ...          ...               ...     ...       ...   \n",
-      "9663          0.653     196780.0          3.279667   0.200       0.0   \n",
-      "27045         0.707     204014.0          3.400233   0.767       0.0   \n",
-      "7768          0.529     315947.0          5.265783   0.330       0.0   \n",
-      "2715          0.561     275587.0          4.593117   0.932       0.0   \n",
-      "29541         0.704     226613.0          3.776883   0.674       0.0   \n",
+      "       duration_minutes  energy  explicit                      id  \\\n",
+      "14790          4.489333   0.665       1.0  5d5xq72M3mw3hfYibjmVCI   \n",
+      "30612          4.294217   0.625       0.0  7lUA4P03AhwAw40JHkdyGr   \n",
+      "12637          4.904450   0.879       0.0  3wE4fvPhhScUAhY37TDc1D   \n",
+      "6945           3.852667   0.857       0.0  52PuLmsxTDOI2WAqpzYjoT   \n",
+      "3306           3.667783   0.723       0.0  1Q8NiatGDc6YgefNwT7Jgu   \n",
+      "...                 ...     ...       ...                     ...   \n",
+      "34620          3.088000   0.740       0.0  6tVrmsbI5HVDgOlFSTrQjB   \n",
+      "2342           3.693783   0.760       0.0  69tDiG9LD67Dv3601LTO3j   \n",
+      "12414          3.187500   0.027       0.0  45nNKzH7nKMfyFhUUqdyGY   \n",
+      "10630          3.817783   0.483       0.0  6Jn8zqh19yyRgZlAsz0rNL   \n",
+      "35407          3.098067   0.408       1.0  1Fraz3CzCuOULnToogIwWW   \n",
       "\n",
-      "                           id  instrumentalness   key  liveness  loudness  \\\n",
-      "29874  0DVevhcLPiHoLaVyl6dSGr          0.145000  11.0    0.0541    -8.736   \n",
-      "13146  6BSALqhEO72i9glHoke5Hc          0.000000   2.0    0.3190    -6.211   \n",
-      "4598   7GWViYkd4fTS3ApKuaTLEB          0.000000  11.0    0.0915    -5.654   \n",
-      "35709  3QHOeZLrjWV3R1ps587v7c          0.000002   5.0    0.2800    -8.786   \n",
-      "33010  5NDUXbMwcnTQp66tI2zcdR          0.000037   0.0    0.1500    -6.685   \n",
-      "...                       ...               ...   ...       ...       ...   \n",
-      "9663   5PcCSUGriuhWuyyWxuBnnM          0.002760   8.0    0.1920   -10.744   \n",
-      "27045  0zePbRMJ9sd7wsZRlbPQua          0.000295   7.0    0.1690    -7.072   \n",
-      "7768   4KgQ3D90ZBCUkzH1F0CNsX          0.000000  10.0    0.0916    -9.333   \n",
-      "2715   5Qe0ZZzG24zLx7vfWQilVu          0.000000   5.0    0.1440    -5.563   \n",
-      "29541  0hZS5wwoAata1MzZj8M9uI          0.051800   2.0    0.0978    -7.389   \n",
+      "       instrumentalness   key  liveness  loudness  mode  \\\n",
+      "14790          0.000000   0.0    0.2860    -8.370   1.0   \n",
+      "30612          0.000164  11.0    0.3460    -6.764   1.0   \n",
+      "12637          0.000000  11.0    0.1150    -4.764   0.0   \n",
+      "6945           0.072500  11.0    0.1560    -3.681   1.0   \n",
+      "3306           0.000000   0.0    0.0956    -6.404   0.0   \n",
+      "...                 ...   ...       ...       ...   ...   \n",
+      "34620          0.000000  11.0    0.1110    -4.517   0.0   \n",
+      "2342           0.000000   9.0    0.0613    -3.344   1.0   \n",
+      "12414          0.799000   7.0    0.1020   -29.634   1.0   \n",
+      "10630          0.000005   3.0    0.2990    -9.496   1.0   \n",
+      "35407          0.000000  10.0    0.1590    -4.751   1.0   \n",
       "\n",
-      "       mode                                               name  popularity  \\\n",
-      "29874   1.0                               Don't Stop The Music        50.0   \n",
-      "13146   1.0                                          Like That        40.0   \n",
-      "4598    0.0                                       Talihina Sky        48.0   \n",
-      "35709   1.0                                One Piece at a Time        46.0   \n",
-      "33010   1.0                                         Fresh Eyes        68.0   \n",
-      "...     ...                                                ...         ...   \n",
-      "9663    1.0                                C'est si bon - 2012        55.0   \n",
-      "27045   1.0                                            Hot Rod        74.0   \n",
-      "7768    0.0                                The Me Inside of Me        53.0   \n",
-      "2715    1.0  Life is a Highway - From \"Cars\"/Soundtrack Ver...        43.0   \n",
-      "29541   1.0                                     Nothing Better        49.0   \n",
+      "                                           name  popularity release_date  \\\n",
+      "14790                 Nothing Less (feat. Slug)        38.0   2001-10-10   \n",
+      "30612                              Pretty Hurts        65.0   2014-11-24   \n",
+      "12637                               Fijate Bien        46.0   2000-01-01   \n",
+      "6945         Lloyd, I'm Ready To Be Heartbroken        50.0   2006-05-29   \n",
+      "3306   Te Perdiste Mi Amor (feat. Prince Royce)        60.0   2012-11-19   \n",
+      "...                                         ...         ...          ...   \n",
+      "34620                              Lucky Strike        54.0   2012-01-01   \n",
+      "2342                          Perdóname Mi Amor        39.0   2002-01-01   \n",
+      "12414                                 Decumbent        63.0   2019-12-13   \n",
+      "10630        Amantes Inocentes - Version Balada        45.0   2001-01-01   \n",
+      "35407                                  Bad News        69.0   2020-05-08   \n",
       "\n",
-      "      release_date  speechiness    tempo  valence    year  \n",
-      "29874   2007-01-01       0.0415   98.293    0.949  2007.0  \n",
-      "13146   2005-01-01       0.3130  112.024    0.379  2005.0  \n",
-      "4598    2003-08-19       0.0261  114.431    0.391  2003.0  \n",
-      "35709   2002-02-12       0.3230  102.658    0.965  2002.0  \n",
-      "33010   2017-12-01       0.0327  122.054    0.872  2017.0  \n",
-      "...            ...          ...      ...      ...     ...  \n",
-      "9663    2012-10-16       0.0440  127.609    0.319  2012.0  \n",
-      "27045   2019-11-14       0.0323  139.985    0.832  2019.0  \n",
-      "7768    2014-06-10       0.0588  111.131    0.489  2014.0  \n",
-      "2715    2006-01-01       0.0614  103.040    0.586  2006.0  \n",
-      "29541   2003-02-19       0.0308  134.981    0.698  2003.0  \n",
+      "       speechiness    tempo  valence    year  \n",
+      "14790       0.3070   97.040   0.5390  2001.0  \n",
+      "30612       0.0508  129.935   0.2010  2014.0  \n",
+      "12637       0.1150   94.978   0.8290  2000.0  \n",
+      "6945        0.0496  143.482   0.4760  2006.0  \n",
+      "3306        0.0353  128.017   0.9160  2012.0  \n",
+      "...            ...      ...      ...     ...  \n",
+      "34620       0.0419  143.998   0.4310  2012.0  \n",
+      "2342        0.0287   92.940   0.4250  2002.0  \n",
+      "12414       0.0491  133.866   0.0359  2019.0  \n",
+      "10630       0.0394   75.004   0.3970  2001.0  \n",
+      "35407       0.0441  132.203   0.0493  2020.0  \n",
       "\n",
       "[1000 rows x 20 columns]\n"
      ]
@@ -527,18 +526,19 @@
   },
   {
    "cell_type": "markdown",
-   "id": "c699ac97",
+   "id": "4fae29f0",
    "metadata": {},
    "source": [
-    "2. \n",
-    "- Calcula la duración media en minutos de `spotify_population` utilizando `pandas`.\n",
-    "- Calcula la duración media en minutos de `spotify_sample` utilizando `pandas`."
+    "2.  \n",
+    "\n",
+    "-   Calcula la duración media en minutos de `spotify_population` utilizando `pandas`.\n",
+    "-   Calcula la duración media en minutos de `spotify_sample` utilizando `pandas`."
    ]
   },
   {
    "cell_type": "code",
    "execution_count": 10,
-   "id": "456573ca",
+   "id": "4dd39b55",
    "metadata": {},
    "outputs": [
     {
@@ -546,7 +546,7 @@
      "output_type": "stream",
      "text": [
       "3.8521519140900073\n",
-      "3.889205233333333\n"
+      "3.919023916666667\n"
      ]
     }
    ],
@@ -564,11 +564,10 @@
   },
   {
    "cell_type": "markdown",
-   "id": "7d08824f",
+   "id": "237778d7",
    "metadata": {},
    "source": [
     "Se observa que la duración media de las canciones en la muestra es similar, pero no idéntica a la duración media de las canciones en toda la poblacición.\n",
-    "\n",
     "\n",
     "### Muestreos y cálculos sencillos con Numpy\n",
     "\n",
@@ -576,32 +575,33 @@
     "\n",
     "### Instrucciones\n",
     "\n",
-    "1. \n",
-    "- Crea una serie `pandas`, `loudness_pop`, subdividiendo la columna `loudness` de `spotify_population`.\n",
-    "- Muestra `loudness_pop` para obtener 100 valores aleatorios, asignándolos a `loudness_samp`."
+    "1.  \n",
+    "\n",
+    "-   Crea una serie `pandas`, `loudness_pop`, subdividiendo la columna `loudness` de `spotify_population`.\n",
+    "-   Muestra `loudness_pop` para obtener 100 valores aleatorios, asignándolos a `loudness_samp`."
    ]
   },
   {
    "cell_type": "code",
    "execution_count": 11,
-   "id": "28254c25",
+   "id": "19b9b507",
    "metadata": {},
    "outputs": [
     {
      "name": "stdout",
      "output_type": "stream",
      "text": [
-      "2163     -4.543\n",
-      "14799    -6.739\n",
-      "38903    -5.131\n",
-      "24       -8.266\n",
-      "10005   -23.912\n",
+      "14494   -15.592\n",
+      "21742    -5.908\n",
+      "7544     -3.933\n",
+      "6903     -9.011\n",
+      "6737    -22.912\n",
       "          ...  \n",
-      "10883   -14.988\n",
-      "31305    -8.320\n",
-      "12773    -3.367\n",
-      "35398    -5.315\n",
-      "7954     -4.540\n",
+      "29413    -3.546\n",
+      "31459    -3.048\n",
+      "6680     -7.488\n",
+      "32       -8.924\n",
+      "2110     -6.909\n",
       "Name: loudness, Length: 100, dtype: float64\n"
      ]
     }
@@ -618,18 +618,19 @@
   },
   {
    "cell_type": "markdown",
-   "id": "edc6f0f9",
+   "id": "0ad282eb",
    "metadata": {},
    "source": [
-    "2. \n",
-    "- Calcula la media de `loudness_pop` utilizando `numpy`.\n",
-    "- Calcula la media de `loudness_samp` utilizando `numpy`."
+    "2.  \n",
+    "\n",
+    "-   Calcula la media de `loudness_pop` utilizando `numpy`.\n",
+    "-   Calcula la media de `loudness_samp` utilizando `numpy`."
    ]
   },
   {
    "cell_type": "code",
    "execution_count": 12,
-   "id": "594bc04f",
+   "id": "a7b847b5",
    "metadata": {},
    "outputs": [
     {
@@ -637,7 +638,7 @@
      "output_type": "stream",
      "text": [
       "-7.366856851353947\n",
-      "-7.57909\n"
+      "-7.88211\n"
      ]
     }
    ],
@@ -656,16 +657,269 @@
   },
   {
    "cell_type": "markdown",
-   "id": "dea3440b",
+   "id": "9b2068d1",
    "metadata": {},
    "source": [
     "Nuevamente, observe que el valor calculado (la media) es cercano pero no idéntico en cada caso.\n",
     "\n",
     "## Muestreo de conveniencia\n",
     "\n",
+    "Antes del realizar el muestreo, debemos pensar en nuestro proceso de recopilación de datos para evitar resultados sesgados.\n",
     "\n",
+    "-   Muestra por conveniencia en coffee ratings\n",
+    "\n",
+    "Observemos el parámetro de población de puntos de taza promedio"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "id": "6c503549",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#| echo: true\n",
+    "#| eval: false\n",
+    "coffee_ratings['total_cup_points'].mean()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "f494efec",
+   "metadata": {},
+   "source": [
+    "![](images/paste-9.png)\n",
+    "\n",
+    "Una forma de muestreo por conveniencia sería tomar las primeras 10 filas en lugar de muestras aleatorias. Las primeras 10 filas se pueden traer con el método `.head()`"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "id": "c8376df7",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#| echo: true\n",
+    "#| eval: false\n",
+    "coffee_ratings_first10 = coffee_ratings.head(10)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 15,
+   "id": "4a050782",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#| echo: true\n",
+    "#| eval: false\n",
+    "coffee_ratings['total_cup_points'].mean()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "3c1eff67",
+   "metadata": {},
+   "source": [
+    "![](images/paste-10.png)\n",
+    "\n",
+    "La media de puntos de taza de muestra, es superior.\n",
+    "\n",
+    "En este caso, la muestra por conveniencia no es representativa de toda la población.\n",
+    "\n",
+    "-   Visualización del sesgo de selección\n",
+    "\n",
+    "Los histogramas son una excelente manera de visualizar el sesgo de selección."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 16,
+   "id": "f0033058",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#| echo: true\n",
+    "#| eval: false\n",
+    "import matplotlib.pyplot as plt\n",
+    "import numpy as np\n",
+    "coffee_ratings['total_cup_points'].hist(bins=np.arange(59, 93, 2))\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "8944ad21",
+   "metadata": {},
+   "source": [
+    "A continuación se muestra el código para generar un histograma de la muestra de conveniencia:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 17,
+   "id": "4860dcfb",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#| echo: true\n",
+    "#| eval: false\n",
+    "coffee_ratings_first10['total_cup_points'].hist(bins=np.arange(59, 93, 2))\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "2577afd3",
+   "metadata": {},
+   "source": [
+    "-   Distribución de una población y de una muestra por conveniencia\n",
+    "\n",
+    "![](images/paste-11.png)\n",
+    "\n",
+    "Queda claro que la distribuicón de la muestra no es similar a la de la población. Todos los valores de la muestra están al lado derecho del gráfico.\n",
+    "\n",
+    "-   Visualizando el sesgo de selección para una muestra aleatoria"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 18,
+   "id": "3e9702c9",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#| echo: true\n",
+    "#| eval: false\n",
+    "coffee_sample = coffee_ratings.sample(n=10)\n",
+    "coffee_sample['total_cup_points'].hist(bins=np.arange(59, 93, 2))\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "a82ddc26",
+   "metadata": {},
+   "source": [
+    "-   Distribución de una población y de una simple muestra aleatoria\n",
+    "\n",
+    "![](images/paste-12.png)\n",
+    "\n",
+    "Se observa que la forma de las distribuciones está más alineada cuando se utiliza un muestreo aleatorio.\n",
     "\n",
     "### ¿Son generalizables las conclusiones de la muestra?\n",
+    "\n",
+    "Acabas de ver cómo el muestreo por conveniencia (recoger muestras utilizando el método más fácil) puede dar lugar a muestras que no son representativas de la población. Equivalentemente, esto significa que las conclusiones de la muestra no son generalizables a la población. Visualizar las distribuciones de la población y la muestra puede ayudar a determinar si la muestra es o no representativa de la población.\n",
+    "\n",
+    "El conjunto de datos de Spotify tiene una columna `acousticness`, que es una medida de confianza de cero a uno de si la canción se hizo con instrumentos que no están enchufados. Compararás la distribución `acousticness` de la población total de canciones con una muestra de esas canciones.\n",
+    "\n",
+    "\n",
+    "#### Intrucciones\n",
+    "\n",
+    "1. Traza un histograma de `acousticness` de `spotify_population` con contenedores con anchura `0.01` de `0` a `1` utilizando pandas `.hist()`."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 19,
+   "id": "1e66a093",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "image/png": "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",
+      "text/plain": [
+       "<Figure size 672x480 with 1 Axes>"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    }
+   ],
+   "source": [
+    "import pandas as pd\n",
+    "import matplotlib.pyplot as plt\n",
+    "import numpy as np\n",
+    "\n",
+    "# Visualize the distribution of acoustiness with a histogram\n",
+    "spotify_population['acousticness'].hist(bins=np.arange(0, 1.01, 0.01))\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "dd81567a",
+   "metadata": {},
+   "source": [
+    "2. Actualliza el código del histograma para utilizar el conjunto de datos `spotify_mysterious_sample`.\n",
+    "\n",
+    "::: {.callout-note collapse=\"true\"}\n",
+    "Para poder obtener el conjunto de datos `spotify_mysterious_sample` copie los datos desde Datacmap usando el comando:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 20,
+   "id": "5588feb3",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#| echo: true\n",
+    "#| eval: false\n",
+    "print(spotify_population.to_csv(index=False))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "5835b1f0",
+   "metadata": {},
+   "source": [
+    ":::"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 21,
+   "id": "5bce1171",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "image/png": "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",
+      "text/plain": [
+       "<Figure size 672x480 with 1 Axes>"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    }
+   ],
+   "source": [
+    "ruta = './data/spotify_mysterious_sample.csv'\n",
+    "spotify_mysterious_sample = pd.read_csv(ruta)\n",
+    "\n",
+    "# Update the histogram to use spotify_mysterious_sample\n",
+    "spotify_mysterious_sample['acousticness'].hist(bins=np.arange(0, 1.01, 0.01))\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "aa4a3526",
+   "metadata": {},
+   "source": [
+    "3. **Preguntas**\n",
+    "\n",
+    "Compara los dos histogramas que has dibujado ¿Los valores de `acousticness` de la muestra son generalizables a la población en general?\n",
+    "\n",
+    "**Respuestas Posibles**\n",
+    "\n",
+    "- [ ] Sí. Cualquier muestra debe conducir a un resultado generalizable sobre la población.\n",
+    "- [ ] Sí. Es probable que la muestra seleccionada sea una muestra aleatoria de todas las canciones de la pblación.\n",
+    "- [ ] No. Las muestras nunca pueden conducir a resultados generalizables sobre la población.\n",
+    "- [X] No. Las muestras de `acousticness` son sistemáticamenre superiores a las de la población general.\n",
+    "- [ ] No. Las muestras de `acousticness` son sistemáticamente inferiores a las de la pobleción general.\n",
     "\n",
     "### ¿Son generalizables estos resultados?\n",
     "\n",
@@ -683,18 +937,6 @@
    "language": "python",
    "name": "python3",
    "path": "/Users/macbookairedwin/Documents/Datacamp/analista-de-datos-en-python/.venv/share/jupyter/kernels/python3"
-  },
-  "language_info": {
-   "codemirror_mode": {
-    "name": "ipython",
-    "version": 3
-   },
-   "file_extension": ".py",
-   "mimetype": "text/x-python",
-   "name": "python",
-   "nbconvert_exporter": "python",
-   "pygments_lexer": "ipython3",
-   "version": "3.13.5"
   }
  },
  "nbformat": 4,
