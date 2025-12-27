@@ -289,10 +289,9 @@ Acabas de ver cómo el muestreo por conveniencia (recoger muestras utilizando el
 
 El conjunto de datos de Spotify tiene una columna `acousticness`, que es una medida de confianza de cero a uno de si la canción se hizo con instrumentos que no están enchufados. Compararás la distribución `acousticness` de la población total de canciones con una muestra de esas canciones.
 
-
 #### Intrucciones
 
-1. Traza un histograma de `acousticness` de `spotify_population` con contenedores con anchura `0.01` de `0` a `1` utilizando pandas `.hist()`.
+1.  Traza un histograma de `acousticness` de `spotify_population` con contenedores con anchura `0.01` de `0` a `1` utilizando pandas `.hist()`.
 
 ```{python}
 import pandas as pd
@@ -303,7 +302,8 @@ import numpy as np
 spotify_population['acousticness'].hist(bins=np.arange(0, 1.01, 0.01))
 plt.show()
 ```
-2. Actualliza el código del histograma para utilizar el conjunto de datos `spotify_mysterious_sample`.
+
+2.  Actualliza el código del histograma para utilizar el conjunto de datos `spotify_mysterious_sample`.
 
 ::: {.callout-note collapse="true"}
 Para poder obtener el conjunto de datos `spotify_mysterious_sample` copie los datos desde Datacmap usando el comando:
@@ -324,22 +324,111 @@ spotify_mysterious_sample['acousticness'].hist(bins=np.arange(0, 1.01, 0.01))
 plt.show()
 ```
 
-3. **Preguntas**
+3.  **Preguntas**
 
 Compara los dos histogramas que has dibujado ¿Los valores de `acousticness` de la muestra son generalizables a la población en general?
 
 **Respuestas Posibles**
 
-- [ ] Sí. Cualquier muestra debe conducir a un resultado generalizable sobre la población.
-- [ ] Sí. Es probable que la muestra seleccionada sea una muestra aleatoria de todas las canciones de la pblación.
-- [ ] No. Las muestras nunca pueden conducir a resultados generalizables sobre la población.
-- [X] No. Las muestras de `acousticness` son sistemáticamenre superiores a las de la población general.
-- [ ] No. Las muestras de `acousticness` son sistemáticamente inferiores a las de la pobleción general.
+-   [ ] Sí. Cualquier muestra debe conducir a un resultado generalizable sobre la población.
+-   [ ] Sí. Es probable que la muestra seleccionada sea una muestra aleatoria de todas las canciones de la pblación.
+-   [ ] No. Las muestras nunca pueden conducir a resultados generalizables sobre la población.
+-   [x] No. Las muestras de `acousticness` son sistemáticamenre superiores a las de la población general.
+-   [ ] No. Las muestras de `acousticness` son sistemáticamente inferiores a las de la pobleción general.
 
 ### ¿Son generalizables estos resultados?
 
+Veamos otra muestra para ver si es representativa de la población. Esta vez, examinarás la columna `duration_minutes` del conjunto de datos de Spotify, que contiene la duración de la canción en minutos.
+
+::: {.callout-note collapse="true"}
+Para obtener el DataFrame `spotify_mysterious_sample2` copio de DataCamp el csv con el siguiente comando:
+
+```{python}
+#| echo: true
+#| eval: false
+print(spotify_mysterious_sample2.to_csv(index=False))
+```
+:::
+
+```{python}
+ruta = './data/sporify_mysterious_sample2.csv'
+spotify_mysterious_sample2 = pd.read_csv(ruta)
+spotify_mysterious_sample2.head()
+```
+
+#### Instrucciones
+
+1.  Traza un histograma de `duration_minutes` desde `spotify_population` con contenedores con anchura `0.5` de `0` a `15` utilizando pandas `.hist()`
+
+```{python}
+# Visualize the distribution of duration_minutes
+spotify_population['duration_minutes'].hist(bins=np.arange(0, 15.5, 0.5))
+plt.show()
+```
+
+2.  Actualiza el código del histograma para utilizar el conjunto de datos `spotify_mysterious_sample2`
+
+```{python}
+# Update the histogram to use spotify_mysterious_sample2
+spotify_mysterious_sample2['duration_minutes'].hist(bins=np.arange(0, 15.5, 0.5))
+plt.show()
+```
+
+3.  **Pregunta**
+
+Compara los dos histogramas que has dibujado ¿Los valores de duración de la muestra son generalizables a la población general?
+
+**Respuestas Posibles**
+
+-   [ ] Sí. Cualquier muestra debe conducir a un resultado generalizable sobre la población.
+-   [x] Sí. Es probable que la muestra seleccionada sea una muestra aleatoria de todas las canciones de la población.
+-   [ ] No. Las muestras nunca pueden conducir a resultados generalizables sobre la población.
+-   [ ] No. Las muestras de duración son sistemáticamente superiores a las de la población general.
+-   [ ] No. Las muestras de duración son sistemáticamente inferiores a las de la población general.
+
+Los valores de duración en la muestra, muestran una distribución similar a los de toda la pobleción, por lo que los resultados son generalizables.
+
 ## Generación de números pseudoaleatorios
+
+-   ¿Qué significa aleatorio?
+    -   hecho, realizado, sucedido o escogido sin un método o decisión concisa.
+-   Números verdaderamente aleatorios
+    -   Generado de un proceso físico, como lanzar una mondeda o dados.
+    -   El servicio Hotbits genera números a partir de la desintegración radiactiva.
+    -   RANDOM.ORG genera números a partir del ruido atmosférico.
+    -   Los anteriores procesos son lentos y costosos para generar números aleatorios.
+-   Generación de números pseudoaleatorios
+    -   La generación de los números pseudo aleatorios es barata y rápida.
+    -   El siguiente número "aleatorio" es calculado a partir del número "aleatorio" previo.
+    -   El primer número "aleatorio" se calcula a partir de un valor semilla.
+    -   Si partimos de un valor semilla concreto, todos los números futuros serán los mismos.
+-   Ejemplo de generación de número pseudo aleatorio
+
+```{python}
+#| echo: true
+#| eval: false
+seed = 1
+calc_next_random(seed)
+```
+
+![](images/paste-13.png)
+
+```{python}
+#| echo: true
+#| eval: false
+calc_next_random(3)
+```
+
+![](images/paste-14.png)
+
+```{python}
+#| echo: true
+#| eval: false
+calc_next_random(2)
+```
+
+![](images/paste-15.png)
 
 ### Generar números aleatorios
 
-### Comprender los valores de iniciaclización aleatorios
+### Comprender los valores de inicialización aleatorios

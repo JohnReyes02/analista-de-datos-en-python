@@ -2,7 +2,7 @@
  "cells": [
   {
    "cell_type": "markdown",
-   "id": "2f591c25",
+   "id": "9a676b45",
    "metadata": {},
    "source": [
     "---\n",
@@ -39,7 +39,7 @@
   {
    "cell_type": "code",
    "execution_count": 1,
-   "id": "e4565cb7",
+   "id": "b3476b51",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -50,7 +50,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "5a909830",
+   "id": "fbe34027",
    "metadata": {},
    "source": [
     "![](images/paste-2.png)\n",
@@ -61,7 +61,7 @@
   {
    "cell_type": "code",
    "execution_count": 2,
-   "id": "ba653abf",
+   "id": "b625363a",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -72,7 +72,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "f1585511",
+   "id": "896e7669",
    "metadata": {},
    "source": [
     "![](images/paste-3.png)\n",
@@ -87,7 +87,7 @@
   {
    "cell_type": "code",
    "execution_count": 3,
-   "id": "166f9424",
+   "id": "0fd7b56f",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -98,7 +98,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "871a3b07",
+   "id": "3a9b5bdf",
    "metadata": {},
    "source": [
     "![](images/paste-4.png)\n",
@@ -111,7 +111,7 @@
   {
    "cell_type": "code",
    "execution_count": 4,
-   "id": "585e57e6",
+   "id": "caa65df0",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -123,7 +123,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "cd6a924f",
+   "id": "72de8469",
    "metadata": {},
    "source": [
     "![](images/paste-5.png)\n",
@@ -134,7 +134,7 @@
   {
    "cell_type": "code",
    "execution_count": 5,
-   "id": "32c6ab84",
+   "id": "a0ca849c",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -145,7 +145,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "21c9c20c",
+   "id": "839b3cc7",
    "metadata": {},
    "source": [
     "![](images/paste-6.png)\n",
@@ -158,7 +158,7 @@
   {
    "cell_type": "code",
    "execution_count": 6,
-   "id": "df39b1df",
+   "id": "3a883fe1",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -169,7 +169,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "3f56280a",
+   "id": "a930e5b4",
    "metadata": {},
    "source": [
     "![](images/paste-7.png)"
@@ -178,7 +178,7 @@
   {
    "cell_type": "code",
    "execution_count": 7,
-   "id": "d747697d",
+   "id": "7b869c6b",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -189,7 +189,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "6b4ec06a",
+   "id": "571a680d",
    "metadata": {},
    "source": [
     "![](images/paste-8.png)\n",
@@ -219,7 +219,7 @@
   {
    "cell_type": "code",
    "execution_count": 8,
-   "id": "b3bfed60",
+   "id": "8d52114b",
    "metadata": {},
    "outputs": [
     {
@@ -415,7 +415,7 @@
        "4       0.0291   78.045   0.1130  2000.0  "
       ]
      },
-     "execution_count": 8,
+     "execution_count": 11,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -429,7 +429,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "dbbe6b38",
+   "id": "09975c45",
    "metadata": {},
    "source": [
     "#### Instrucciones\n",
@@ -440,77 +440,77 @@
   {
    "cell_type": "code",
    "execution_count": 9,
-   "id": "8e6b240a",
+   "id": "91864088",
    "metadata": {},
    "outputs": [
     {
      "name": "stdout",
      "output_type": "stream",
      "text": [
-      "       acousticness                     artists  danceability  duration_ms  \\\n",
-      "14790      0.129000          ['Living Legends']         0.804     269360.0   \n",
-      "30612      0.003080                 ['Beyoncé']         0.512     257653.0   \n",
-      "12637      0.036800                  ['Juanes']         0.711     294267.0   \n",
-      "6945       0.008780          ['Camera Obscura']         0.329     231160.0   \n",
-      "3306       0.344000  ['Thalía', 'Prince Royce']         0.800     220067.0   \n",
-      "...             ...                         ...           ...          ...   \n",
-      "34620      0.000637                ['Maroon 5']         0.674     185280.0   \n",
-      "2342       0.361000      ['Conjunto Primavera']         0.642     221627.0   \n",
-      "12414      0.992000          ['Clifford Solum']         0.196     191250.0   \n",
-      "10630      0.619000    ['Los Reyes Del Camino']         0.666     229067.0   \n",
-      "35407      0.121000                 ['Kehlani']         0.426     185884.0   \n",
+      "       acousticness                             artists  danceability  \\\n",
+      "2839       0.980000                          ['Deuter']         0.136   \n",
+      "36505      0.323000  ['JAY-Z', 'Rihanna', 'Kanye West']         0.591   \n",
+      "37798      0.000009                        ['Deftones']         0.374   \n",
+      "29429      0.110000                            ['RJD2']         0.587   \n",
+      "31214      0.127000                       ['Young M.A']         0.874   \n",
+      "...             ...                                 ...           ...   \n",
+      "28834      0.016200      ['Sam Tinnesz', 'Yacht Money']         0.573   \n",
+      "14285      0.016000                            ['COIN']         0.572   \n",
+      "21461      0.003240                   ['Rascal Flatts']         0.582   \n",
+      "33220      0.388000                    ['Snoh Aalegra']         0.705   \n",
+      "34344      0.233000                    ['Uncle Lucius']         0.625   \n",
       "\n",
-      "       duration_minutes  energy  explicit                      id  \\\n",
-      "14790          4.489333   0.665       1.0  5d5xq72M3mw3hfYibjmVCI   \n",
-      "30612          4.294217   0.625       0.0  7lUA4P03AhwAw40JHkdyGr   \n",
-      "12637          4.904450   0.879       0.0  3wE4fvPhhScUAhY37TDc1D   \n",
-      "6945           3.852667   0.857       0.0  52PuLmsxTDOI2WAqpzYjoT   \n",
-      "3306           3.667783   0.723       0.0  1Q8NiatGDc6YgefNwT7Jgu   \n",
-      "...                 ...     ...       ...                     ...   \n",
-      "34620          3.088000   0.740       0.0  6tVrmsbI5HVDgOlFSTrQjB   \n",
-      "2342           3.693783   0.760       0.0  69tDiG9LD67Dv3601LTO3j   \n",
-      "12414          3.187500   0.027       0.0  45nNKzH7nKMfyFhUUqdyGY   \n",
-      "10630          3.817783   0.483       0.0  6Jn8zqh19yyRgZlAsz0rNL   \n",
-      "35407          3.098067   0.408       1.0  1Fraz3CzCuOULnToogIwWW   \n",
+      "       duration_ms  duration_minutes  energy  explicit  \\\n",
+      "2839      498213.0          8.303550  0.0955       0.0   \n",
+      "36505     268013.0          4.466883  0.9210       1.0   \n",
+      "37798     203067.0          3.384450  0.9160       1.0   \n",
+      "29429     266200.0          4.436667  0.5230       0.0   \n",
+      "31214     201824.0          3.363733  0.6320       1.0   \n",
+      "...            ...               ...     ...       ...   \n",
+      "28834     180691.0          3.011517  0.5390       0.0   \n",
+      "14285     179013.0          2.983550  0.9160       0.0   \n",
+      "21461     276320.0          4.605333  0.9520       0.0   \n",
+      "33220     212787.0          3.546450  0.4330       1.0   \n",
+      "34344     143333.0          2.388883  0.6860       0.0   \n",
       "\n",
-      "       instrumentalness   key  liveness  loudness  mode  \\\n",
-      "14790          0.000000   0.0    0.2860    -8.370   1.0   \n",
-      "30612          0.000164  11.0    0.3460    -6.764   1.0   \n",
-      "12637          0.000000  11.0    0.1150    -4.764   0.0   \n",
-      "6945           0.072500  11.0    0.1560    -3.681   1.0   \n",
-      "3306           0.000000   0.0    0.0956    -6.404   0.0   \n",
-      "...                 ...   ...       ...       ...   ...   \n",
-      "34620          0.000000  11.0    0.1110    -4.517   0.0   \n",
-      "2342           0.000000   9.0    0.0613    -3.344   1.0   \n",
-      "12414          0.799000   7.0    0.1020   -29.634   1.0   \n",
-      "10630          0.000005   3.0    0.2990    -9.496   1.0   \n",
-      "35407          0.000000  10.0    0.1590    -4.751   1.0   \n",
+      "                           id  instrumentalness  key  liveness  loudness  \\\n",
+      "2839   04M6R4Fbah2AvgBPbCCbkl          0.917000  4.0    0.0850   -21.049   \n",
+      "36505  2a8CtZyPdd8w2csZh7oxpc          0.000000  1.0    0.3020    -1.787   \n",
+      "37798  1oTKnx7AgEhA5wUs3Z8rrr          0.216000  6.0    0.3940    -5.153   \n",
+      "29429  2C1nOw1nRxJaBWb9I1x05A          0.765000  9.0    0.1070    -9.947   \n",
+      "31214  04WcxfTz7qwm2DZ1F3bTTt          0.000000  0.0    0.0907    -5.297   \n",
+      "...                       ...               ...  ...       ...       ...   \n",
+      "28834  7vguMCv8uVuZLiQJ156u3Z          0.000012  2.0    0.1050    -6.091   \n",
+      "14285  15jIpgBlSbxsPVsKPNYkNp          0.000010  0.0    0.2080    -4.830   \n",
+      "21461  2Fs18NaCDuluPG1DHGw1XG          0.000000  5.0    0.2230    -3.848   \n",
+      "33220  2VqKx3HH8gaZPabNWYvksy          0.134000  4.0    0.0841    -9.706   \n",
+      "34344  2V5ZTy99M1T7KxgxLS8Lyi          0.000115  4.0    0.0752    -5.002   \n",
       "\n",
-      "                                           name  popularity release_date  \\\n",
-      "14790                 Nothing Less (feat. Slug)        38.0   2001-10-10   \n",
-      "30612                              Pretty Hurts        65.0   2014-11-24   \n",
-      "12637                               Fijate Bien        46.0   2000-01-01   \n",
-      "6945         Lloyd, I'm Ready To Be Heartbroken        50.0   2006-05-29   \n",
-      "3306   Te Perdiste Mi Amor (feat. Prince Royce)        60.0   2012-11-19   \n",
-      "...                                         ...         ...          ...   \n",
-      "34620                              Lucky Strike        54.0   2012-01-01   \n",
-      "2342                          Perdóname Mi Amor        39.0   2002-01-01   \n",
-      "12414                                 Decumbent        63.0   2019-12-13   \n",
-      "10630        Amantes Inocentes - Version Balada        45.0   2001-01-01   \n",
-      "35407                                  Bad News        69.0   2020-05-08   \n",
+      "       mode                                name  popularity release_date  \\\n",
+      "2839    0.0                      Kindred Spirit        51.0   2007-02-13   \n",
+      "36505   1.0                       Run This Town        52.0   2010-11-22   \n",
+      "37798   1.0                    Needles and Pins        47.0   2003-05-19   \n",
+      "29429   1.0                     Smoke & Mirrors        53.0         2002   \n",
+      "31214   1.0                         Trap or Cap        71.0   2020-05-22   \n",
+      "...     ...                                 ...         ...          ...   \n",
+      "28834   0.0  Play with Fire (feat. Yacht Money)        72.0   2017-07-07   \n",
+      "14285   1.0                           Boyfriend        58.0   2017-04-21   \n",
+      "21461   1.0                   Life is a Highway        73.0   2006-01-01   \n",
+      "33220   1.0                   I Want You Around        71.0   2019-08-16   \n",
+      "34344   1.0                   Ain't It The Same        48.0   2009-04-10   \n",
       "\n",
       "       speechiness    tempo  valence    year  \n",
-      "14790       0.3070   97.040   0.5390  2001.0  \n",
-      "30612       0.0508  129.935   0.2010  2014.0  \n",
-      "12637       0.1150   94.978   0.8290  2000.0  \n",
-      "6945        0.0496  143.482   0.4760  2006.0  \n",
-      "3306        0.0353  128.017   0.9160  2012.0  \n",
+      "2839        0.0456   73.976   0.0392  2007.0  \n",
+      "36505       0.3130   86.808   0.4280  2010.0  \n",
+      "37798       0.0512  140.471   0.6240  2003.0  \n",
+      "29429       0.0288   95.004   0.0457  2002.0  \n",
+      "31214       0.2960  142.963   0.1190  2020.0  \n",
       "...            ...      ...      ...     ...  \n",
-      "34620       0.0419  143.998   0.4310  2012.0  \n",
-      "2342        0.0287   92.940   0.4250  2002.0  \n",
-      "12414       0.0491  133.866   0.0359  2019.0  \n",
-      "10630       0.0394   75.004   0.3970  2001.0  \n",
-      "35407       0.0441  132.203   0.0493  2020.0  \n",
+      "28834       0.0322   75.012   0.3900  2017.0  \n",
+      "14285       0.0576  150.088   0.4640  2017.0  \n",
+      "21461       0.0731  103.027   0.6550  2006.0  \n",
+      "33220       0.2040  168.006   0.6020  2019.0  \n",
+      "34344       0.0295  115.158   0.5280  2009.0  \n",
       "\n",
       "[1000 rows x 20 columns]\n"
      ]
@@ -526,7 +526,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "4fae29f0",
+   "id": "b1591678",
    "metadata": {},
    "source": [
     "2.  \n",
@@ -538,7 +538,7 @@
   {
    "cell_type": "code",
    "execution_count": 10,
-   "id": "4dd39b55",
+   "id": "bcedce5f",
    "metadata": {},
    "outputs": [
     {
@@ -546,7 +546,7 @@
      "output_type": "stream",
      "text": [
       "3.8521519140900073\n",
-      "3.919023916666667\n"
+      "3.8687257\n"
      ]
     }
    ],
@@ -564,7 +564,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "237778d7",
+   "id": "ef9c5fdf",
    "metadata": {},
    "source": [
     "Se observa que la duración media de las canciones en la muestra es similar, pero no idéntica a la duración media de las canciones en toda la poblacición.\n",
@@ -584,24 +584,24 @@
   {
    "cell_type": "code",
    "execution_count": 11,
-   "id": "19b9b507",
+   "id": "2741e5e9",
    "metadata": {},
    "outputs": [
     {
      "name": "stdout",
      "output_type": "stream",
      "text": [
-      "14494   -15.592\n",
-      "21742    -5.908\n",
-      "7544     -3.933\n",
-      "6903     -9.011\n",
-      "6737    -22.912\n",
-      "          ...  \n",
-      "29413    -3.546\n",
-      "31459    -3.048\n",
-      "6680     -7.488\n",
-      "32       -8.924\n",
-      "2110     -6.909\n",
+      "32005   -3.335\n",
+      "6623    -4.405\n",
+      "11739   -2.553\n",
+      "19909   -7.368\n",
+      "14922   -5.724\n",
+      "         ...  \n",
+      "6985    -7.822\n",
+      "6025    -6.162\n",
+      "32632   -4.859\n",
+      "19827   -3.155\n",
+      "18706   -8.377\n",
       "Name: loudness, Length: 100, dtype: float64\n"
      ]
     }
@@ -618,7 +618,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "0ad282eb",
+   "id": "42b227c5",
    "metadata": {},
    "source": [
     "2.  \n",
@@ -630,7 +630,7 @@
   {
    "cell_type": "code",
    "execution_count": 12,
-   "id": "a7b847b5",
+   "id": "8d8b9a19",
    "metadata": {},
    "outputs": [
     {
@@ -638,7 +638,7 @@
      "output_type": "stream",
      "text": [
       "-7.366856851353947\n",
-      "-7.88211\n"
+      "-7.488380000000001\n"
      ]
     }
    ],
@@ -657,7 +657,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "9b2068d1",
+   "id": "e3b1c136",
    "metadata": {},
    "source": [
     "Nuevamente, observe que el valor calculado (la media) es cercano pero no idéntico en cada caso.\n",
@@ -674,7 +674,7 @@
   {
    "cell_type": "code",
    "execution_count": 13,
-   "id": "6c503549",
+   "id": "850ced96",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -685,7 +685,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "f494efec",
+   "id": "8a54322d",
    "metadata": {},
    "source": [
     "![](images/paste-9.png)\n",
@@ -696,7 +696,7 @@
   {
    "cell_type": "code",
    "execution_count": 14,
-   "id": "c8376df7",
+   "id": "075cf119",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -708,7 +708,7 @@
   {
    "cell_type": "code",
    "execution_count": 15,
-   "id": "4a050782",
+   "id": "81689d36",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -719,7 +719,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "3c1eff67",
+   "id": "a6a2ef0a",
    "metadata": {},
    "source": [
     "![](images/paste-10.png)\n",
@@ -736,7 +736,7 @@
   {
    "cell_type": "code",
    "execution_count": 16,
-   "id": "f0033058",
+   "id": "d2d14532",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -750,7 +750,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "8944ad21",
+   "id": "1f4324cf",
    "metadata": {},
    "source": [
     "A continuación se muestra el código para generar un histograma de la muestra de conveniencia:"
@@ -759,7 +759,7 @@
   {
    "cell_type": "code",
    "execution_count": 17,
-   "id": "4860dcfb",
+   "id": "f9b59953",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -771,7 +771,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "2577afd3",
+   "id": "79ad5ec2",
    "metadata": {},
    "source": [
     "-   Distribución de una población y de una muestra por conveniencia\n",
@@ -786,7 +786,7 @@
   {
    "cell_type": "code",
    "execution_count": 18,
-   "id": "3e9702c9",
+   "id": "6605ba62",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -799,7 +799,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "a82ddc26",
+   "id": "e32a9aee",
    "metadata": {},
    "source": [
     "-   Distribución de una población y de una simple muestra aleatoria\n",
@@ -814,16 +814,15 @@
     "\n",
     "El conjunto de datos de Spotify tiene una columna `acousticness`, que es una medida de confianza de cero a uno de si la canción se hizo con instrumentos que no están enchufados. Compararás la distribución `acousticness` de la población total de canciones con una muestra de esas canciones.\n",
     "\n",
-    "\n",
     "#### Intrucciones\n",
     "\n",
-    "1. Traza un histograma de `acousticness` de `spotify_population` con contenedores con anchura `0.01` de `0` a `1` utilizando pandas `.hist()`."
+    "1.  Traza un histograma de `acousticness` de `spotify_population` con contenedores con anchura `0.01` de `0` a `1` utilizando pandas `.hist()`."
    ]
   },
   {
    "cell_type": "code",
    "execution_count": 19,
-   "id": "1e66a093",
+   "id": "c4c24efc",
    "metadata": {},
    "outputs": [
     {
@@ -849,10 +848,10 @@
   },
   {
    "cell_type": "markdown",
-   "id": "dd81567a",
+   "id": "9a5327ec",
    "metadata": {},
    "source": [
-    "2. Actualliza el código del histograma para utilizar el conjunto de datos `spotify_mysterious_sample`.\n",
+    "2.  Actualliza el código del histograma para utilizar el conjunto de datos `spotify_mysterious_sample`.\n",
     "\n",
     "::: {.callout-note collapse=\"true\"}\n",
     "Para poder obtener el conjunto de datos `spotify_mysterious_sample` copie los datos desde Datacmap usando el comando:"
@@ -861,7 +860,7 @@
   {
    "cell_type": "code",
    "execution_count": 20,
-   "id": "5588feb3",
+   "id": "c4bdff87",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -872,7 +871,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "5835b1f0",
+   "id": "f8d9ab5d",
    "metadata": {},
    "source": [
     ":::"
@@ -881,7 +880,7 @@
   {
    "cell_type": "code",
    "execution_count": 21,
-   "id": "5bce1171",
+   "id": "b387e6ef",
    "metadata": {},
    "outputs": [
     {
@@ -906,28 +905,429 @@
   },
   {
    "cell_type": "markdown",
-   "id": "aa4a3526",
+   "id": "6fe69aee",
    "metadata": {},
    "source": [
-    "3. **Preguntas**\n",
+    "3.  **Preguntas**\n",
     "\n",
     "Compara los dos histogramas que has dibujado ¿Los valores de `acousticness` de la muestra son generalizables a la población en general?\n",
     "\n",
     "**Respuestas Posibles**\n",
     "\n",
-    "- [ ] Sí. Cualquier muestra debe conducir a un resultado generalizable sobre la población.\n",
-    "- [ ] Sí. Es probable que la muestra seleccionada sea una muestra aleatoria de todas las canciones de la pblación.\n",
-    "- [ ] No. Las muestras nunca pueden conducir a resultados generalizables sobre la población.\n",
-    "- [X] No. Las muestras de `acousticness` son sistemáticamenre superiores a las de la población general.\n",
-    "- [ ] No. Las muestras de `acousticness` son sistemáticamente inferiores a las de la pobleción general.\n",
+    "-   [ ] Sí. Cualquier muestra debe conducir a un resultado generalizable sobre la población.\n",
+    "-   [ ] Sí. Es probable que la muestra seleccionada sea una muestra aleatoria de todas las canciones de la pblación.\n",
+    "-   [ ] No. Las muestras nunca pueden conducir a resultados generalizables sobre la población.\n",
+    "-   [x] No. Las muestras de `acousticness` son sistemáticamenre superiores a las de la población general.\n",
+    "-   [ ] No. Las muestras de `acousticness` son sistemáticamente inferiores a las de la pobleción general.\n",
     "\n",
     "### ¿Son generalizables estos resultados?\n",
     "\n",
+    "Veamos otra muestra para ver si es representativa de la población. Esta vez, examinarás la columna `duration_minutes` del conjunto de datos de Spotify, que contiene la duración de la canción en minutos.\n",
+    "\n",
+    "::: {.callout-note collapse=\"true\"}\n",
+    "Para obtener el DataFrame `spotify_mysterious_sample2` copio de DataCamp el csv con el siguiente comando:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 22,
+   "id": "3cfdd144",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#| echo: true\n",
+    "#| eval: false\n",
+    "print(spotify_mysterious_sample2.to_csv(index=False))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "5013e873",
+   "metadata": {},
+   "source": [
+    ":::"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 23,
+   "id": "77b32eb7",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>acousticness</th>\n",
+       "      <th>artists</th>\n",
+       "      <th>danceability</th>\n",
+       "      <th>duration_ms</th>\n",
+       "      <th>duration_minutes</th>\n",
+       "      <th>energy</th>\n",
+       "      <th>explicit</th>\n",
+       "      <th>id</th>\n",
+       "      <th>instrumentalness</th>\n",
+       "      <th>key</th>\n",
+       "      <th>liveness</th>\n",
+       "      <th>loudness</th>\n",
+       "      <th>mode</th>\n",
+       "      <th>name</th>\n",
+       "      <th>popularity</th>\n",
+       "      <th>release_date</th>\n",
+       "      <th>speechiness</th>\n",
+       "      <th>tempo</th>\n",
+       "      <th>valence</th>\n",
+       "      <th>year</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>0</th>\n",
+       "      <td>0.000402</td>\n",
+       "      <td>['Lil Wayne', 'Drake']</td>\n",
+       "      <td>0.364</td>\n",
+       "      <td>305840.0</td>\n",
+       "      <td>5.097333</td>\n",
+       "      <td>0.841</td>\n",
+       "      <td>1.0</td>\n",
+       "      <td>5eEj1vkMIqtmvaTk7cS4UC</td>\n",
+       "      <td>0.000000</td>\n",
+       "      <td>8.0</td>\n",
+       "      <td>0.2420</td>\n",
+       "      <td>-4.831</td>\n",
+       "      <td>1.0</td>\n",
+       "      <td>She Will</td>\n",
+       "      <td>51.0</td>\n",
+       "      <td>2011-01-01</td>\n",
+       "      <td>0.1190</td>\n",
+       "      <td>100.140</td>\n",
+       "      <td>0.0837</td>\n",
+       "      <td>2011.0</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>1</th>\n",
+       "      <td>0.310000</td>\n",
+       "      <td>['blackbear']</td>\n",
+       "      <td>0.758</td>\n",
+       "      <td>180000.0</td>\n",
+       "      <td>3.000000</td>\n",
+       "      <td>0.427</td>\n",
+       "      <td>1.0</td>\n",
+       "      <td>0Cyui3k9S61bue3uMkBD9S</td>\n",
+       "      <td>0.000000</td>\n",
+       "      <td>10.0</td>\n",
+       "      <td>0.1150</td>\n",
+       "      <td>-9.835</td>\n",
+       "      <td>0.0</td>\n",
+       "      <td>Girls Like U</td>\n",
+       "      <td>56.0</td>\n",
+       "      <td>2016-06-17</td>\n",
+       "      <td>0.1130</td>\n",
+       "      <td>139.911</td>\n",
+       "      <td>0.4890</td>\n",
+       "      <td>2016.0</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2</th>\n",
+       "      <td>0.000984</td>\n",
+       "      <td>['Lacuna Coil']</td>\n",
+       "      <td>0.503</td>\n",
+       "      <td>245573.0</td>\n",
+       "      <td>4.092883</td>\n",
+       "      <td>0.667</td>\n",
+       "      <td>0.0</td>\n",
+       "      <td>71KtwiEpzcn9WxwlaS7ZJY</td>\n",
+       "      <td>0.027000</td>\n",
+       "      <td>11.0</td>\n",
+       "      <td>0.2290</td>\n",
+       "      <td>-6.831</td>\n",
+       "      <td>0.0</td>\n",
+       "      <td>Enjoy the Silence - cover version</td>\n",
+       "      <td>55.0</td>\n",
+       "      <td>2006</td>\n",
+       "      <td>0.0285</td>\n",
+       "      <td>113.018</td>\n",
+       "      <td>0.1010</td>\n",
+       "      <td>2006.0</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>3</th>\n",
+       "      <td>0.334000</td>\n",
+       "      <td>['The Beach Boys']</td>\n",
+       "      <td>0.414</td>\n",
+       "      <td>215827.0</td>\n",
+       "      <td>3.597117</td>\n",
+       "      <td>0.424</td>\n",
+       "      <td>0.0</td>\n",
+       "      <td>7tf64lNC31lWlTsih0nfZf</td>\n",
+       "      <td>0.000005</td>\n",
+       "      <td>10.0</td>\n",
+       "      <td>0.1310</td>\n",
+       "      <td>-9.497</td>\n",
+       "      <td>1.0</td>\n",
+       "      <td>Good Vibrations</td>\n",
+       "      <td>46.0</td>\n",
+       "      <td>2012-01-01</td>\n",
+       "      <td>0.0399</td>\n",
+       "      <td>132.430</td>\n",
+       "      <td>0.3250</td>\n",
+       "      <td>2012.0</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>4</th>\n",
+       "      <td>0.001700</td>\n",
+       "      <td>['In This Moment']</td>\n",
+       "      <td>0.426</td>\n",
+       "      <td>197627.0</td>\n",
+       "      <td>3.293783</td>\n",
+       "      <td>0.975</td>\n",
+       "      <td>0.0</td>\n",
+       "      <td>4Mpm64J9yqluKaOssgVQ9P</td>\n",
+       "      <td>0.000000</td>\n",
+       "      <td>0.0</td>\n",
+       "      <td>0.0891</td>\n",
+       "      <td>-1.892</td>\n",
+       "      <td>1.0</td>\n",
+       "      <td>Call Me</td>\n",
+       "      <td>50.0</td>\n",
+       "      <td>2009-04-10</td>\n",
+       "      <td>0.0950</td>\n",
+       "      <td>142.998</td>\n",
+       "      <td>0.2730</td>\n",
+       "      <td>2009.0</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "   acousticness                 artists  danceability  duration_ms  \\\n",
+       "0      0.000402  ['Lil Wayne', 'Drake']         0.364     305840.0   \n",
+       "1      0.310000           ['blackbear']         0.758     180000.0   \n",
+       "2      0.000984         ['Lacuna Coil']         0.503     245573.0   \n",
+       "3      0.334000      ['The Beach Boys']         0.414     215827.0   \n",
+       "4      0.001700      ['In This Moment']         0.426     197627.0   \n",
+       "\n",
+       "   duration_minutes  energy  explicit                      id  \\\n",
+       "0          5.097333   0.841       1.0  5eEj1vkMIqtmvaTk7cS4UC   \n",
+       "1          3.000000   0.427       1.0  0Cyui3k9S61bue3uMkBD9S   \n",
+       "2          4.092883   0.667       0.0  71KtwiEpzcn9WxwlaS7ZJY   \n",
+       "3          3.597117   0.424       0.0  7tf64lNC31lWlTsih0nfZf   \n",
+       "4          3.293783   0.975       0.0  4Mpm64J9yqluKaOssgVQ9P   \n",
+       "\n",
+       "   instrumentalness   key  liveness  loudness  mode  \\\n",
+       "0          0.000000   8.0    0.2420    -4.831   1.0   \n",
+       "1          0.000000  10.0    0.1150    -9.835   0.0   \n",
+       "2          0.027000  11.0    0.2290    -6.831   0.0   \n",
+       "3          0.000005  10.0    0.1310    -9.497   1.0   \n",
+       "4          0.000000   0.0    0.0891    -1.892   1.0   \n",
+       "\n",
+       "                                name  popularity release_date  speechiness  \\\n",
+       "0                           She Will        51.0   2011-01-01       0.1190   \n",
+       "1                       Girls Like U        56.0   2016-06-17       0.1130   \n",
+       "2  Enjoy the Silence - cover version        55.0         2006       0.0285   \n",
+       "3                    Good Vibrations        46.0   2012-01-01       0.0399   \n",
+       "4                            Call Me        50.0   2009-04-10       0.0950   \n",
+       "\n",
+       "     tempo  valence    year  \n",
+       "0  100.140   0.0837  2011.0  \n",
+       "1  139.911   0.4890  2016.0  \n",
+       "2  113.018   0.1010  2006.0  \n",
+       "3  132.430   0.3250  2012.0  \n",
+       "4  142.998   0.2730  2009.0  "
+      ]
+     },
+     "execution_count": 18,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "ruta = './data/sporify_mysterious_sample2.csv'\n",
+    "spotify_mysterious_sample2 = pd.read_csv(ruta)\n",
+    "spotify_mysterious_sample2.head()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "9a3ba767",
+   "metadata": {},
+   "source": [
+    "#### Instrucciones\n",
+    "\n",
+    "1.  Traza un histograma de `duration_minutes` desde `spotify_population` con contenedores con anchura `0.5` de `0` a `15` utilizando pandas `.hist()`"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 24,
+   "id": "e60c32c0",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "image/png": "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eeedGDBgQFx77bXR1NRUbG9LHwAAXSY8/e53vysC00c+8pGor6+Pv/qrv4pdu3bFf/3XfxVB55xzzilGlk466aS49NJL4+abb44FCxYUz927d288+eSTMXfu3DjzzDOjT58+8fDDDxdB7Oc//3nR5lh9AAC0p4Zqdzhz5sx44okn4oYbbiim3h599NE466yzYvjw4fHQQw/F6NGjW7UfNWpULFmypPj+9ddfjz179rRqk/pIU3Pr1q2LsWPHxvr164/ax+EaGxvjwIEDLfdT/8nBgweLW7U199kefXd2naH27t0qHfJzG+r++HO97+VT5vrVrvZa09aaqh6exowZE08//XQMHjy4GHlK025pSq1nz56xY8eOYtToUP379y8eT5q/prVSR2tztD4ON2/evJgzZ877Hl+xYkX06NEj2svKlSujrDqy9vkXR4fyvpdXmetXezmtrMHa07rrDz08pXVJl19+eYwbN65Y75Sm3Z5//vmYOHFisWg83U/rlA61bdu24vGk+Wtqk8LWkdocrY/DzZ49uxgNO3TkaeDAgcVrOvRnVDO1ph1qwoQJRXgsk85Q+7n3rOywkaeHRjd530tWe9nrV7va62us9ubZqQ81PKUQs3HjxviXf/mXYsQpue6664ppu1WrVsWIESPiueeea/WctWvXxsiRI4vvP/3pTxeBZs2aNcUi8WTLli2xadOmljbH6uNw3bt3L26HS294e77p7d1/Z9aRtTc21XXo6kHvezlrL3v9ald7rWhrPVVdMJ5GdM4777xinVOaRksjUcuXL4///M//jAsvvDCmTp0ar732WnFqgf379xdH1S1atKhY/J2cfPLJcdNNN8W9994bb731VuzcuTPuuOOOOP/884vpwORYfQAAdKmj7dKoUBot+tSnPlWsXUpTZt/+9rfjiiuuKI6gS2uNvvvd70bfvn1jypQp8eCDD8bkyZNbnp+OrktBKY0knX766UVfy5Yti27d/vhS29IHAEB7qfqC8bPPPjueffbZI26/7LLLiiPnjiQt4k4jV+l2vH0AALQXl2cBAMggPAEAZBCeAAAyCE8AABmEJwCADMITAEAG4QkAIIPwBACQQXgCAMggPAEAZBCeAAAyCE8AABmEJwCADMITAEAG4QkAIIPwBACQQXgCAMggPAEAZBCeAAAyCE8AABmEJwCADMITAEAG4QkAIIPwBACQQXgCAMggPAEAZBCeAAAyCE8AABmEJwCADMITAEAG4QkAIIPwBACQoSGnMXB0596zMhqb6o7ruZseuqrqrweA6jPyBACQQXgCAMggPAEAZBCeAAAyCE8AABmEJwCADMITAEAG4QkAIIPwBACQQXgCAMggPAEAZBCeAAAyCE8AABmEJwCADMITAEAG4QkAIIPwBACQQXgCAMggPAEAZBCeAAAyCE8AABmEJwCADMITAEAG4QkAIIPwBADQ0eHpl7/8ZVx++eXRu3fv6NevX3zmM5+JpqamYturr74a48aNi1NOOSUGDx4c999/f1QqlZbnpu/vu+++Yltqk9pu2LChVf/H6gMAoMuEpxScJkyYEFOnTo133303tmzZEt/61reirq4udu7cGePHj48xY8YUj69atSoWLlwYjzzySMvz58+fH4sWLSq2pTapbXrOrl27iu1t6QMAoMuEp69//esxbdq0+Mu//Mvo1atXNDQ0xMUXX1yEpx/96Edx8ODBmDt3bvTs2TOGDRsWd911VyxYsKDl+Y899ljceeedxbbUJrXdv39/LF26tNjelj4AANpLQzU72717d/ziF7+ISy65JEaPHh1vvPFGDBkyJO6+++64/vrrY/369TFy5MgiUDUbNWpUbNy4MXbs2FFMvW3atKl4bssLbGgonrNu3bqYMmXKMfvo06dPq9fU2NgYBw4caLm/Z8+e4msKYOlWbc19tkffnV1nqL17t46Zvm2oq/zp63H+SdJV95nO8L53pDLXr3a115q21lTV8PTee+8Va5uWLFkSy5cvL0LOj3/84/jiF78YL730UhFu0hqoQ/Xv37/42hyekg9qk7Y3tztaH4eHp3nz5sWcOXPe91pXrFgRPXr0iPaycuXKKKuOrH3+xdGhHhr9x7V9xyP9znRlZd7ny16/2stpZQ3Wvm/fvg8/PKUF4kla75RGg5LJkyfH5z73uXj22WeLYPP222+3es62bduKr2lbc3javn37+9qcccYZLe2O1sfhZs+eHTNnzmw18jRw4MCYOHFiMe3XHqk17VBp3Vd9fX2USWeo/dx7OuaXOY04peA069+7xYFK3XH18drcCdEVdYb3vSOVuX61q72+xmpvnp36UMNT375946yzzirWN32QESNGxDPPPFNMozVPu61duzaGDh3aEnzSNN+aNWuKqb8ktU1TdWnKrq19HKp79+7F7XDpDW/PN729++/MOrL2xqbjCy4n7P+n6lJwOt7X0NX3lzLv82WvX+1qrxVtrafqC8a/+tWvxuLFi4vAk6bw0rRdmrJLI1Dpll5YOhVBSnfpFATp6LoZM2a0PH/69OnFY2lbapPapvAzadKkYntb+gAAaC9VHXlKbr311mLh+DXXXFNMv5199tnxgx/8oDjiLkmnFkhBJ02dpZGir3zlK3Hbbbe1PD8daZdOR3DFFVcUa5guuuiieOGFF+LUU09tmRo8Vh8AAF0mPCV/8zd/U9w+yPDhw2P16tVHfG6a8nvggQeK25Ecqw8AgPbi8iwAABmEJwCADMITAEAG4QkAIIPwBACQQXgCAMggPAEAZBCeAAAyCE8AABmEJwCADMITAEAG4QkAIIPwBACQQXgCAMggPAEAZBCeAAAyCE8AABmEJwCADMITAEAG4QkAIIPwBACQQXgCAMggPAEAZBCeAAAyCE8AABmEJwCADMITAEAG4QkAIIPwBACQQXgCAMggPAEAZBCeAAAyCE8AABmEJwCADMITAEAG4QkAIIPwBACQQXgCAMggPAEAZBCeAAAyCE8AABmEJwCADMITAEAG4QkAIENDTmNob0NmPd/RLwEAjsrIEwBABuEJACCD8AQAkEF4AgDIIDwBAGQQngAAMghPAAAZhCcAgAzCEwBABuEJACCD8AQAkEF4AgDIIDwBAHSW8DRp0qSoq6uLF198seWxn/3sZ3HBBRdEr1694pOf/GQ8/vjjrZ6zb9++mDFjRgwaNCh69+4dV199dWzevLlVm2P1AQDQ5cLTU089Fbt372712JtvvhlXXXVVTJs2LbZv3x6LFy+OWbNmxdKlS1va3H777bF69ep45ZVX4p133okBAwbEtddeG01NTW3uAwCgS4Wnt99+O77xjW/EE0880erxFHTOOeecYmTppJNOiksvvTRuvvnmWLBgQbF979698eSTT8bcuXPjzDPPjD59+sTDDz8cGzZsiJ///Odt6gMAoD01VLvDSqVShJkUnj7xiU+02rZ+/foYPXp0q8dGjRoVS5YsKb5//fXXY8+ePa3apOm7NDW3bt26GDt27DH7OFxjY2McOHCg5X7qPzl48GBxq7bmPtuj786uGrV371aJrqihrvKnr8f5J0lX3WfKvM+XvX61q73WtLWmqoentP4oBahb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UYQnAIAMwhMAQAbhCQAgg/BURWntfToCYfDgwcWJOMeNG1eci6rWzZo1q7hIczr7++mnnx433nhjbN68OcoonWssHQ364osvRln88pe/jMsvv7w4a386K+9nPvOZ4kz+te7dd9+NL33pS3HaaacVdaeT9r700ktRi77//e/H2LFji9/xtH8fer3Q5NVXXy0+79LnXvr8u//++495bbBaqP3f/u3f4pprromPfvSjxfb0Ofjkk09GWd73Zq+88kpxrsXPfvazURbCUxWlE3cuWrQoVq1aFVu2bIkxY8bE+PHji8vB1LL0S7V48eKi5t/85jfF/fSBUjZPPfVUy4WnyxScJkyYEFOnTi3CRNoHvvWtb7XLpY8648l60x8J6Q+kdJmKz3/+83H11VfHe++9F7UmXTs01fvII4+8b1s65176nEufd+n9T59/Cxcu/MC2tVZ7et+vv/76Ijymi9b/wz/8Q9x6663x7LPPRq3X3ixdyiT9/l966aVRKulUBVTHkCFDKo888kjL/cbGxsqgQYMqTz31VKVM1q1bl/7krLz33nuVsti8eXPl4x//eOXNN98sav/Xf/3XShl89rOfrdx+++2VMho+fHir3/edO3cW7/2vfvWrSq366U9/WtSYPtuaLV68uPKRj3yk1WPp/8vQoUMrtV77B7nuuusqX/va1yplqf3222+v3HrrrZX77ruvMmbMmEpZGHmqkvRXx6ZNm2L06NEtj6UTiI0cOTLWrVsXZfKTn/wkzjzzzOKvljJI0xM333xzfOMb34hPfOITURZplO0Xv/hF1NfXF/t9ulDohRdeGD/84Q+jDNIFx9MIw+9///tobGyMRx99NM4666wYPnx4lEm6rmj6nDv0hImjRo2KjRs3FleAKJNUb5rKS/8/yuDll1+O5cuXx4MPPhhlU97Tg1ZZ84fE4VdiTgGiTB8gaa3PnDlzSvMPaPL4448XAeqWW26JMknTU2lt05IlS4oP0PQPxo9//OP44he/WKz9ab5wd61K01RPP/10scYnBcgBAwbE0qVLa/JCqUeTPt8+6HOveVtaL1MG+/fvjy984Qtx7rnnxpe//OWodbt27Sr+aExLVdpyId1aY+SpSpo/ILZv397q8W3btpXmwyP9A5rWfXzve9+LK6+8MsrgjTfeiLlz5xZrPMomLRBP0nqHNNKQRh4mT54cn/vc52pmzceRpNCYFsmnhcJp3Uta9/HEE0/ExIkTi5GYMkmfbx/0ude8rSyjsNdee23s27cvli1bVorLltx5553F/p4OFCgj4alK+vbtG0OGDIk1a9a0PJaOTGge0q51zzzzTPzFX/xF/OAHPyiOOCuL1atXF/94pumqQYMGFbckLSKt9ZGotM+naaoyLA4/XAoHaVrqa1/7WjHilP6xvO6664r/H2nBdJmMGDGiWJpw6JFYa9eujaFDh5YiPKV9IV2kPu0DK1asKM0F6l944YXiIJnmz71vfvObxZRl+v53v/td1LyOXnRVS775zW8Wi4b/4z/+o7J79+7K3XffXRk8eHCxkLSWffvb367069ev8vLLL1fK5n//93+LxeKH3tKv1T/+4z9Wtm7dWql1aWHwaaedVhwkcPDgwcpzzz1X6dGjR00vmm523nnnVaZNm1b5wx/+UNS+bNmyykknnVSTBwscOHCgsmfPnsqqVauK/XvXrl3F/VT3jh07Kh/96EeLz7v0uZc+/9Ln4N///d9Xar323//+95Vhw4ZVbrjhhsr+/fsrteZYtW8+5HPvtttuq4waNar4/liL6muB8FRFTU1NlXvuuaf4x6Rnz56VsWPHVl599dVKrUu/VA0NDZVTTjml1a2MYSop09F2yYMPPlj52Mc+Vjn11FMrI0eOrDz77LOVMvjtb39bHFmVjjTr3bt35fzzz6985zvfqdSiJ598stivD7+lo7CSX//618WRl+lzL33+pSOv0udhrdd+//33F9/36tWr1WfflVdeWSnD+36osh1tV5f+09GjXwAAXYU1TwAAGYQnAIAMwhMAQAbhCQAgg/AEAJBBeAIAyCA8AQBkEJ4AADIITwAAGYQnAIAMwhMAQLTd/wGsejqSaxO+cwAAAABJRU5ErkJggg==",
+      "text/plain": [
+       "<Figure size 672x480 with 1 Axes>"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    }
+   ],
+   "source": [
+    "# Visualize the distribution of duration_minutes\n",
+    "spotify_population['duration_minutes'].hist(bins=np.arange(0, 15.5, 0.5))\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "c5bad98a",
+   "metadata": {},
+   "source": [
+    "2.  Actualiza el código del histograma para utilizar el conjunto de datos `spotify_mysterious_sample2`"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 25,
+   "id": "9b3091eb",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "image/png": "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Mu2zzz6pTPIWqhdeeCHV19cX+35+UbzDDjssPfjgg6kM8ovr5v+df/TRR6m3tzfdcsstaf/990+HHHJIKov8Gn35cW71L2o7/PDD03vvvVd8K3yZ5PXm3VP5+1EWzz33XHrsscfSNddck8om/FcTDv4Br3010PyDvWx/3Pn4krlz55bmw+03v/lNEW6+//3vp7LJu1zysTS///3vi4NbfkB/5JFH0hlnnFGMNRm8SG1UeffLvffeW4wrycPdmDFj0oIFC0JeFPDL5Me39R33Bp/Lx2aUwcqVK9OMGTPSgQcemM4555xUBsuXLy/+qcuHYGzKRSOjCd9iM/jH+9lnn63x+NKlS0vzh53LP9zycQb33XdfOuGEE1J0ixYtSvPmzSvGFJRRPlg4l/ev5/+l5/+1n3LKKem4444LNc5gffJAlw+YzgeO5mMt8nEGt99+e5o2bVrRilEW+fFtfce9wefK0nL5rW99K/X09KRHH320NJcZuPjii4v9PR84Xkbhg81OO+2Uxo0bl1555ZVVj+Wjxwebacvg/vvvT2effXaaP39+aa6y/vzzzxcfann3yy677FJMuXxAYRlacPL9Pu96KcNA4bXlH955d8v5559ftNTkH2bTp08v3o98AG1ZHHrooUV3++pny7z66qtpv/32K0WwyfeD/GLM+fZ//PHHS3Uh5ieeeKI4aWLw2HfdddcVXXH5z++++24KLyuB6667rhhA+tZbb2VdXV3Z5Zdfnu21117FgMLobrrppmz06NHZc889l5XJf//732Lg8OpTvrv/8Y9/zJYsWZKVQT5QdPfddy8GjPf392cPP/xw1tTUFHYA7eoOOuigbNasWdnnn39e1P7oo49m2223XbjB4319fVl3d3e2cOHCYv9evnx5cT+vedmyZdkee+xRHO/y415+/MuPg7/85S+z6LV/9NFH2fjx47PTTz89W7lyZRbRxupfvNqx78ILL8wOP/zw4ueNDbKOoBTBZmBgILvqqquKg3xzc3M2efLk7M0338zKIN/hGxoash133HGNqWxBJ1e2s6Jy11xzTbb33ntnI0eOzCZMmJA99NBDWRn861//Ks6Cyc8KamlpyQ4++ODstttuy6K56667iv167Sk/Uyb397//vTg7Lj/u5ce//OyY/HgYvfb29vbi5x122GGN494JJ5yQlWXbr65sZ0W5ujcAEEb4MTYAQHkINgBAGIINABCGYAMAhCHYAABhCDYAQBiCDQAQhmADAIQh2AAAYQg2AEAYgg0AkKL4P0MCfHQwqXr9AAAAAElFTkSuQmCC",
+      "text/plain": [
+       "<Figure size 672x480 with 1 Axes>"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    }
+   ],
+   "source": [
+    "# Update the histogram to use spotify_mysterious_sample2\n",
+    "spotify_mysterious_sample2['duration_minutes'].hist(bins=np.arange(0, 15.5, 0.5))\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "3fb45266",
+   "metadata": {},
+   "source": [
+    "3.  **Pregunta**\n",
+    "\n",
+    "Compara los dos histogramas que has dibujado ¿Los valores de duración de la muestra son generalizables a la población general?\n",
+    "\n",
+    "**Respuestas Posibles**\n",
+    "\n",
+    "-   [ ] Sí. Cualquier muestra debe conducir a un resultado generalizable sobre la población.\n",
+    "-   [x] Sí. Es probable que la muestra seleccionada sea una muestra aleatoria de todas las canciones de la población.\n",
+    "-   [ ] No. Las muestras nunca pueden conducir a resultados generalizables sobre la población.\n",
+    "-   [ ] No. Las muestras de duración son sistemáticamente superiores a las de la población general.\n",
+    "-   [ ] No. Las muestras de duración son sistemáticamente inferiores a las de la población general.\n",
+    "\n",
+    "Los valores de duración en la muestra, muestran una distribución similar a los de toda la pobleción, por lo que los resultados son generalizables.\n",
+    "\n",
     "## Generación de números pseudoaleatorios\n",
+    "\n",
+    "-   ¿Qué significa aleatorio?\n",
+    "    -   hecho, realizado, sucedido o escogido sin un método o decisión concisa.\n",
+    "-   Números verdaderamente aleatorios\n",
+    "    -   Generado de un proceso físico, como lanzar una mondeda o dados.\n",
+    "    -   El servicio Hotbits genera números a partir de la desintegración radiactiva.\n",
+    "    -   RANDOM.ORG genera números a partir del ruido atmosférico.\n",
+    "    -   Los anteriores procesos son lentos y costosos para generar números aleatorios.\n",
+    "-   Generación de números pseudoaleatorios\n",
+    "    -   La generación de los números pseudo aleatorios es barata y rápida.\n",
+    "    -   El siguiente número \"aleatorio\" es calculado a partir del número \"aleatorio\" previo.\n",
+    "    -   El primer número \"aleatorio\" se calcula a partir de un valor semilla.\n",
+    "    -   Si partimos de un valor semilla concreto, todos los números futuros serán los mismos.\n",
+    "-   Ejemplo de generación de número pseudo aleatorio"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 26,
+   "id": "0bb05dbe",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#| echo: true\n",
+    "#| eval: false\n",
+    "seed = 1\n",
+    "calc_next_random(seed)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "0ff4fbc8",
+   "metadata": {},
+   "source": [
+    "![](images/paste-13.png)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 27,
+   "id": "7a2cac3c",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#| echo: true\n",
+    "#| eval: false\n",
+    "calc_next_random(3)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "aedffe42",
+   "metadata": {},
+   "source": [
+    "![](images/paste-14.png)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 28,
+   "id": "363d4be2",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#| echo: true\n",
+    "#| eval: false\n",
+    "calc_next_random(2)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "9deb212f",
+   "metadata": {},
+   "source": [
+    "![](images/paste-15.png)\n",
     "\n",
     "### Generar números aleatorios\n",
     "\n",
-    "### Comprender los valores de iniciaclización aleatorios"
+    "### Comprender los valores de inicialización aleatorios"
    ]
   }
  ],

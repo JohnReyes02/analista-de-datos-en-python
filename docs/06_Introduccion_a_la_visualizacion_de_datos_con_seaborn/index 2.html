@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Edwin John Fredy Reyes Aguirre">
 
-<title>Analísta de Datos en Python</title>
+<title>Bienvenida – Analísta de Datos en Python</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,28 +23,29 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./01_Introduccion_a_python/index.html" rel="next">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-5e8cc9216a41cce6523c7b1d157767ec.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-7fdf8adc87078268c1c941beff8fc26f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-5e8cc9216a41cce6523c7b1d157767ec.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../06_Introduccion_a_la_visualizacion_de_datos_con_seaborn/01_Introduccion_a_seaborn.html" rel="next">
+<link href="../05_Introduccion_a_la_estadistica_en_python/04_Correlacion_y_diseno_de_experimentos.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-5e8cc9216a41cce6523c7b1d157767ec.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-7fdf8adc87078268c1c941beff8fc26f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-5e8cc9216a41cce6523c7b1d157767ec.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -248,7 +248,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Bienvenida</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../06_Introduccion_a_la_visualizacion_de_datos_con_seaborn/index.html">Introducción a la Visualización de Datos con Seaborn</a></li><li class="breadcrumb-item"><a href="../06_Introduccion_a_la_visualizacion_de_datos_con_seaborn/index.html">Bienvenida</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
@@ -263,7 +263,7 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Analísta de Datos en Python</a> 
+      <a href="../">Analísta de Datos en Python</a> 
         <div class="sidebar-tools-main tools-wide">
     <a href="https://github.com/JohnReyes02/analista-de-datos-en-python" title="Ejecutar el código" class="quarto-navigation-tool px-1" aria-label="Ejecutar el código"><i class="bi bi-github"></i></a>
     <div class="dropdown">
@@ -302,7 +302,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Bienvenida</span></a>
   </div>
 </li>
@@ -317,28 +317,28 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01_Introduccion_a_python/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../01_Introduccion_a_python/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Bienvenida</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01_Introduccion_a_python/01_Conceptos_basicos_de_python.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Conceptos Básicos de Python</span></a>
+  <a href="../01_Introduccion_a_python/01_Conceptos_basicos_de_python.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Conceptos Básicos de Python</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01_Introduccion_a_python/02_Listas_python.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Listas Python</span></a>
+  <a href="../01_Introduccion_a_python/02_Listas_python.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Listas Python</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01_Introduccion_a_python/03_Funciones_y_paquetes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Funciones y Paquetes</span></a>
+  <a href="../01_Introduccion_a_python/03_Funciones_y_paquetes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Funciones y Paquetes</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01_Introduccion_a_python/04_Numpy.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Numpy</span></a>
+  <a href="../01_Introduccion_a_python/04_Numpy.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Numpy</span></a>
   </div>
 </li>
       </ul>
@@ -354,33 +354,33 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02_Python_intermedio/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../02_Python_intermedio/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Bienvenida</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02_Python_intermedio/01_Matplotlib.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Matplotlib</span></a>
+  <a href="../02_Python_intermedio/01_Matplotlib.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Matplotlib</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02_Python_intermedio/02_Diccionarios_y_pandas.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Diccionarios y Pandas</span></a>
+  <a href="../02_Python_intermedio/02_Diccionarios_y_pandas.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Diccionarios y Pandas</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02_Python_intermedio/03_Logica_flujo_de_control_y_filtrado.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Lógica, flujo de Control y Filtrado</span></a>
+  <a href="../02_Python_intermedio/03_Logica_flujo_de_control_y_filtrado.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Lógica, flujo de Control y Filtrado</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02_Python_intermedio/04_Bucles.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Bucles</span></a>
+  <a href="../02_Python_intermedio/04_Bucles.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Bucles</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02_Python_intermedio/05_Caso_practico.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Caso práctico: Estadísticas de Hacker</span></a>
+  <a href="../02_Python_intermedio/05_Caso_practico.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Caso práctico: Estadísticas de Hacker</span></a>
   </div>
 </li>
       </ul>
@@ -396,28 +396,28 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03_Manipulacion_de_datos_con_pandas/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../03_Manipulacion_de_datos_con_pandas/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Bienvenida</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03_Manipulacion_de_datos_con_pandas/01_Transformacion_de_dataframes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Transformación de DataFrames</span></a>
+  <a href="../03_Manipulacion_de_datos_con_pandas/01_Transformacion_de_dataframes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Transformación de DataFrames</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03_Manipulacion_de_datos_con_pandas/02_Agregar_dataframes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Agregar DataFrames</span></a>
+  <a href="../03_Manipulacion_de_datos_con_pandas/02_Agregar_dataframes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Agregar DataFrames</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03_Manipulacion_de_datos_con_pandas/03_Segmentar_e_indexar_dataframes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Segmentar e indexar DataFrames</span></a>
+  <a href="../03_Manipulacion_de_datos_con_pandas/03_Segmentar_e_indexar_dataframes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Segmentar e indexar DataFrames</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03_Manipulacion_de_datos_con_pandas/04_Crear_y_visualizar_dataframes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Crear y visualizar DataFrames</span></a>
+  <a href="../03_Manipulacion_de_datos_con_pandas/04_Crear_y_visualizar_dataframes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Crear y visualizar DataFrames</span></a>
   </div>
 </li>
       </ul>
@@ -433,28 +433,28 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04_Unir_datos_con_pandas/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../04_Unir_datos_con_pandas/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Bienvenida</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04_Unir_datos_con_pandas/01_Conceptos_basicos_de_la_fusion_de_datos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Conceptos Básicos de la fusión de datos</span></a>
+  <a href="../04_Unir_datos_con_pandas/01_Conceptos_basicos_de_la_fusion_de_datos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Conceptos Básicos de la fusión de datos</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04_Unir_datos_con_pandas/02_Fusionar_tablas_distintos_tipos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Fusionar tablas con distintos tipos de unión</span></a>
+  <a href="../04_Unir_datos_con_pandas/02_Fusionar_tablas_distintos_tipos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Fusionar tablas con distintos tipos de unión</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04_Unir_datos_con_pandas/03_Fusion_y_concatenacion_avanzadas.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Fusión y concatenación avanzadas</span></a>
+  <a href="../04_Unir_datos_con_pandas/03_Fusion_y_concatenacion_avanzadas.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Fusión y concatenación avanzadas</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04_Unir_datos_con_pandas/04_Fusionar_datos_ordenados_y_series_temporales.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Fusionar datos ordenados y series temporales</span></a>
+  <a href="../04_Unir_datos_con_pandas/04_Fusionar_datos_ordenados_y_series_temporales.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Fusionar datos ordenados y series temporales</span></a>
   </div>
 </li>
       </ul>
@@ -470,65 +470,65 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./05_Introduccion_a_la_estadistica_en_python/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../05_Introduccion_a_la_estadistica_en_python/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Bienvenida</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./05_Introduccion_a_la_estadistica_en_python/01_Sintesis_estadistica.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Síntesis estadística</span></a>
+  <a href="../05_Introduccion_a_la_estadistica_en_python/01_Sintesis_estadistica.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Síntesis estadística</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./05_Introduccion_a_la_estadistica_en_python/02_Numeros_aleatorios_y_probabilidad.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Números aleatorios y probabilidad</span></a>
+  <a href="../05_Introduccion_a_la_estadistica_en_python/02_Numeros_aleatorios_y_probabilidad.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Números aleatorios y probabilidad</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./05_Introduccion_a_la_estadistica_en_python/03_Mas_distribuciones_y_teorema_limite_central.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Mas distribuciones y el teorema del límite central</span></a>
+  <a href="../05_Introduccion_a_la_estadistica_en_python/03_Mas_distribuciones_y_teorema_limite_central.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Mas distribuciones y el teorema del límite central</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./05_Introduccion_a_la_estadistica_en_python/04_Correlacion_y_diseno_de_experimentos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Correlación y diseño de experimentos</span></a>
+  <a href="../05_Introduccion_a_la_estadistica_en_python/04_Correlacion_y_diseno_de_experimentos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Correlación y diseño de experimentos</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
  <span class="menu-text">Introducción a la Visualización de Datos con Seaborn</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Alternar sección">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./06_Introduccion_a_la_visualizacion_de_datos_con_seaborn/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../06_Introduccion_a_la_visualizacion_de_datos_con_seaborn/index.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Bienvenida</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./06_Introduccion_a_la_visualizacion_de_datos_con_seaborn/01_Introduccion_a_seaborn.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Introducción a Seaborn</span></a>
+  <a href="../06_Introduccion_a_la_visualizacion_de_datos_con_seaborn/01_Introduccion_a_seaborn.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Introducción a Seaborn</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./06_Introduccion_a_la_visualizacion_de_datos_con_seaborn/02_Visualizar_dos_variables_cuantitativas.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Visualizar dos variables cuantitativas</span></a>
+  <a href="../06_Introduccion_a_la_visualizacion_de_datos_con_seaborn/02_Visualizar_dos_variables_cuantitativas.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Visualizar dos variables cuantitativas</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./06_Introduccion_a_la_visualizacion_de_datos_con_seaborn/03_Visualizar_variable_categorica_cuantitativa.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Visualizar una variable categórica y una cuantitativa</span></a>
+  <a href="../06_Introduccion_a_la_visualizacion_de_datos_con_seaborn/03_Visualizar_variable_categorica_cuantitativa.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Visualizar una variable categórica y una cuantitativa</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./06_Introduccion_a_la_visualizacion_de_datos_con_seaborn/04_Personalizar_graficos_seaborn.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Personalizar los gráficos de Seaborn</span></a>
+  <a href="../06_Introduccion_a_la_visualizacion_de_datos_con_seaborn/04_Personalizar_graficos_seaborn.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Personalizar los gráficos de Seaborn</span></a>
   </div>
 </li>
       </ul>
@@ -544,28 +544,28 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./07_Analisis_exploratorio_de_datos/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../07_Analisis_exploratorio_de_datos/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Bienvenida</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./07_Analisis_exploratorio_de_datos/01_Conocer_un_conjunto_de_datos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Conocer un conjunto de datos</span></a>
+  <a href="../07_Analisis_exploratorio_de_datos/01_Conocer_un_conjunto_de_datos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Conocer un conjunto de datos</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./07_Analisis_exploratorio_de_datos/02_Limpieza_e_imputacion_de_datos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Limpieza e imputación de datos</span></a>
+  <a href="../07_Analisis_exploratorio_de_datos/02_Limpieza_e_imputacion_de_datos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Limpieza e imputación de datos</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./07_Analisis_exploratorio_de_datos/03_Relaciones_en_los_datos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Relaciones en los datos</span></a>
+  <a href="../07_Analisis_exploratorio_de_datos/03_Relaciones_en_los_datos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Relaciones en los datos</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./07_Analisis_exploratorio_de_datos/04_Convertir_analisis_exploratorio_en_accion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Convertir el análisis exploratorio en acción</span></a>
+  <a href="../07_Analisis_exploratorio_de_datos/04_Convertir_analisis_exploratorio_en_accion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Convertir el análisis exploratorio en acción</span></a>
   </div>
 </li>
       </ul>
@@ -581,28 +581,28 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./08_Muestreo_en_python/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../08_Muestreo_en_python/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Bienvenida</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./08_Muestreo_en_python/01_Introduccion_al_muestreo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Introducción al Muestreo</span></a>
+  <a href="../08_Muestreo_en_python/01_Introduccion_al_muestreo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Introducción al Muestreo</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./08_Muestreo_en_python/02_Metodos_de_muestreo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Métodos de Muestreo</span></a>
+  <a href="../08_Muestreo_en_python/02_Metodos_de_muestreo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Métodos de Muestreo</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./08_Muestreo_en_python/03_Distribuciones_muestrales.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Distribuciones Muestrales</span></a>
+  <a href="../08_Muestreo_en_python/03_Distribuciones_muestrales.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Distribuciones Muestrales</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./08_Muestreo_en_python/04_Distribuciones_bootstrap.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Distribuciones de bootstrap</span></a>
+  <a href="../08_Muestreo_en_python/04_Distribuciones_bootstrap.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Distribuciones de bootstrap</span></a>
   </div>
 </li>
       </ul>
@@ -618,28 +618,28 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./09_Pruebas_de_hipotesis_en_python/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../09_Pruebas_de_hipotesis_en_python/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Bienvenida</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./09_Pruebas_de_hipotesis_en_python/01_Fundamentos_de_las_pruebas_de_hipotesis.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Fundamentos de las Pruebas de Hipótesis</span></a>
+  <a href="../09_Pruebas_de_hipotesis_en_python/01_Fundamentos_de_las_pruebas_de_hipotesis.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Fundamentos de las Pruebas de Hipótesis</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./09_Pruebas_de_hipotesis_en_python/02_Pruebas_de_dos_muestras_y_ANOVA.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Pruebas de dos muestras y ANOVA</span></a>
+  <a href="../09_Pruebas_de_hipotesis_en_python/02_Pruebas_de_dos_muestras_y_ANOVA.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Pruebas de dos muestras y ANOVA</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./09_Pruebas_de_hipotesis_en_python/03_Pruebas_de_proporcion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Pruebas de proporción</span></a>
+  <a href="../09_Pruebas_de_hipotesis_en_python/03_Pruebas_de_proporcion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Pruebas de proporción</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./09_Pruebas_de_hipotesis_en_python/04_Pruebas_no_parametricas.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Pruebas no paramétricas</span></a>
+  <a href="../09_Pruebas_de_hipotesis_en_python/04_Pruebas_no_parametricas.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Pruebas no paramétricas</span></a>
   </div>
 </li>
       </ul>
@@ -654,39 +654,26 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Contenido</h2>
    
   <ul>
-  <li><a href="#bienvenida" id="toc-bienvenida" class="nav-link active" data-scroll-target="#bienvenida">Bienvenida</a>
-  <ul class="collapse">
-  <li><a href="#descripción-del-programa" id="toc-descripción-del-programa" class="nav-link" data-scroll-target="#descripción-del-programa">Descripción del programa</a></li>
-  </ul></li>
+  <li><a href="#descripción" id="toc-descripción" class="nav-link active" data-scroll-target="#descripción">Descripción</a></li>
+  <li><a href="#módulos-del-curso" id="toc-módulos-del-curso" class="nav-link" data-scroll-target="#módulos-del-curso">Módulos del curso</a></li>
+  <li><a href="#datasets" id="toc-datasets" class="nav-link" data-scroll-target="#datasets">Datasets</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/JohnReyes02/analista-de-datos-en-python/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/JohnReyes02/analista-de-datos-en-python/issues/new" class="toc-action"><i class="bi empty"></i>Informar de un problema</a></li><li><a href="https://github.com/JohnReyes02/analista-de-datos-en-python/blob/main/index.qmd" class="toc-action"><i class="bi empty"></i>Ver el código</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/JohnReyes02/analista-de-datos-en-python/edit/main/06_Introduccion_a_la_visualizacion_de_datos_con_seaborn/index.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/JohnReyes02/analista-de-datos-en-python/issues/new" class="toc-action"><i class="bi empty"></i>Informar de un problema</a></li><li><a href="https://github.com/JohnReyes02/analista-de-datos-en-python/blob/main/06_Introduccion_a_la_visualizacion_de_datos_con_seaborn/index.qmd" class="toc-action"><i class="bi empty"></i>Ver el código</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../06_Introduccion_a_la_visualizacion_de_datos_con_seaborn/index.html">Introducción a la Visualización de Datos con Seaborn</a></li><li class="breadcrumb-item"><a href="../06_Introduccion_a_la_visualizacion_de_datos_con_seaborn/index.html">Bienvenida</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Analísta de Datos en Python</h1>
+<h1 class="title">Bienvenida</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Autor/a</div>
-    <div class="quarto-title-meta-contents">
-             <p>Edwin John Fredy Reyes Aguirre </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Fecha de publicación</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">27 de diciembre de 2025</p>
-    </div>
-  </div>
   
     
   </div>
@@ -696,14 +683,37 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="bienvenida" class="level1 unnumbered">
-<h1 class="unnumbered">Bienvenida</h1>
-<section id="descripción-del-programa" class="level2">
-<h2 class="anchored" data-anchor-id="descripción-del-programa">Descripción del programa</h2>
-<p>Desarrolla tus habilidades de anánlisis de datos en Python. Adquiere las habilidades de analista de datos para manipular, analizar y visualizar datos. No necesitas experiencia en programacón.</p>
-
-
+<p>📊 Nivel: Principiante<br>
+🕒 Duración estimada: 4 horas<br>
+🎥 Incluye código, visualizaciones y ejercicios</p>
+<hr>
+<section id="descripción" class="level2">
+<h2 class="anchored" data-anchor-id="descripción">Descripción</h2>
+<p>Seaborn es una potente biblioteca de Python que facilita la creación de visualizaciones de datos informativas y atractivas. Este curso de 4 horas proporciona una introducción a cómo puedes utilizar Seaborn para crear diversos gráficos, incluidos gráficos de dispersión, de recuento, de barras y de cajas, y cómo puedes personalizar tus visualizaciones.</p>
+<p>Explorarás esta biblioteca y crearás gráficos Seaborn basados en diversos conjuntos de datos del mundo real, como la exploración de cómo cambia la contaminación atmosférica en una ciudad a lo largo del día y el estudio de lo que les gusta hacer a los jóvenes en su tiempo libre. Estos datos te darán la oportunidad de conocer de primera mano las ventajas de Seaborn, incluyendo cómo puedes crear fácilmente subtramas en una sola figura y cómo calcular automáticamente los intervalos de confianza.</p>
+<p>Al final de este curso, serás capaz de utilizar Seaborn en diversas situaciones para explorar tus datos y comunicar eficazmente a otros los resultados de tus análisis de datos. Estas habilidades son muy solicitadas para analistas de datos, científicos de datos y cualquier otro trabajo que pueda implicar la creación de visualizaciones de datos. Si quieres continuar tu aprendizaje, este curso forma parte de varios programas, incluido el programa de visualización de datos, donde podrás añadir más bibliotecas y técnicas a tu conjunto de habilidades.</p>
 </section>
+<section id="módulos-del-curso" class="level2">
+<h2 class="anchored" data-anchor-id="módulos-del-curso">Módulos del curso</h2>
+<ol type="1">
+<li><a href="../06_Introduccion_a_la_visualizacion_de_datos_con_seaborn/01_Introduccion_a_seaborn.html">Instroducción a Seaborn</a></li>
+<li><a href="../06_Introduccion_a_la_visualizacion_de_datos_con_seaborn/02_Visualizar_dos_variables_cuantitativas.html">Visualizar dos variables cuantitativas</a></li>
+<li><a href="../06_Introduccion_a_la_visualizacion_de_datos_con_seaborn/03_Visualizar_variable_categorica_cuantitativa.html">Visualizar variables categóricas y cuantativas</a></li>
+<li><a href="../06_Introduccion_a_la_visualizacion_de_datos_con_seaborn/04_Personalizar_graficos_seaborn.html">Personalizar gráficos con seaborn</a></li>
+</ol>
+</section>
+<section id="datasets" class="level2">
+<h2 class="anchored" data-anchor-id="datasets">Datasets</h2>
+<p>Este curso utiliza los siguientes archivos:</p>
+<ul>
+<li><code>unemployment.csv</code></li>
+<li><code>data_science_salaries.csv</code></li>
+<li><code>books.csv</code></li>
+<li><code>divorce.csv</code></li>
+<li><code>planes.csv</code></li>
+</ul>
+
+
 </section>
 
 </main> <!-- /main -->
@@ -1121,10 +1131,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="../05_Introduccion_a_la_estadistica_en_python/04_Correlacion_y_diseno_de_experimentos.html" class="pagination-link" aria-label="Correlación y diseño de experimentos">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Correlación y diseño de experimentos</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./01_Introduccion_a_python/index.html" class="pagination-link" aria-label="Bienvenida">
-        <span class="nav-page-text">Bienvenida</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../06_Introduccion_a_la_visualizacion_de_datos_con_seaborn/01_Introduccion_a_seaborn.html" class="pagination-link" aria-label="Introducción a Seaborn">
+        <span class="nav-page-text"><span class="chapter-title">Introducción a Seaborn</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1133,4 +1146,4 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/JohnReyes02/analista-de-datos-en-python/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/JohnReyes02/analista-de-datos-en-python/issues/new" class="toc-action"><i class="bi empty"></i>Informar de un problema</a></li><li><a href="https://github.com/JohnReyes02/analista-de-datos-en-python/blob/main/index.qmd" class="toc-action"><i class="bi empty"></i>Ver el código</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/JohnReyes02/analista-de-datos-en-python/edit/main/06_Introduccion_a_la_visualizacion_de_datos_con_seaborn/index.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/JohnReyes02/analista-de-datos-en-python/issues/new" class="toc-action"><i class="bi empty"></i>Informar de un problema</a></li><li><a href="https://github.com/JohnReyes02/analista-de-datos-en-python/blob/main/06_Introduccion_a_la_visualizacion_de_datos_con_seaborn/index.qmd" class="toc-action"><i class="bi empty"></i>Ver el código</a></li></ul></div></div></div></footer></body></html>
