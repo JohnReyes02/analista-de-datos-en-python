@@ -429,6 +429,228 @@ calc_next_random(2)
 
 ![](images/paste-15.png)
 
+-   Funciones de generación de números aleatorios
+
+    -   Para utilizar cada uno de ellos anteponga `numpy.random` o `np.random`.
+
+        |              |                   |                    |                   |
+        |--------------|-------------------|--------------------|-------------------|
+        | **function** | **distribution**  | **function**       | **distribution**  |
+        | .beta        | Beta              | .hypergeometric    | Hypergeometric    |
+        | .binomial    | Binomial          | .lognormal         | Lognormal         |
+        | .chisquare   | Chi-squared       | .negative_binomial | Negative binomial |
+        | .exponential | Exponential       | .normal            | Normal            |
+        | .f           | F                 | .poisson           | Poisson           |
+        | .gamma       | Gamma             | .standard_t        | t                 |
+        | .geometric   | Geometric         | .uniform           | Uniform           |
+
+-   Visualizando números aleatorios
+
+    ```{python}
+    #| echo: true
+    #| eval: false
+    randoms = np.random.beta(a=2, b=2, size=5000)
+    randoms
+    ```
+
+![](images/paste-16.png)
+
+```{python}
+#| echo: true
+#| eval: false
+plt.hist(randoms, bins=np.arange(0, 1, 0.05))
+plt.show()
+```
+
+![](images/paste-17.png)
+
+-   Semillas de números aleatorios
+
+    -   Para establecer una semilla aleatoria con Numpy, utilizamos el método `np.random.seed`
+
+        ```{python}
+        #| echo: true
+        #| eval: false
+        np.random.seed(20000229)
+        ```
+
+Se toma un número entero para el número de semilla, que puede ser cualquier número que desees.
+
+```{python}
+#| echo: true
+#| eval: false
+np.random.normal(loc=2, scale=1.5, size=2)
+```
+
+![](images/paste-18.png)
+
+`.normal()` genera números pseudoaleatorios a partir de la distribución normal. `loc` y `scale` establecen la media y la desviación estándar de la distribución, y el argumento `size` determina cuántos números aleatorios se devolverán de la distribución.
+
+Si llamamos a `.normal()` una segunda vez, obtenemos dos números aleatorios diferentes.
+
+```{python}
+#| echo: true
+#| eval: false
+np.random.normal(loc=2, scale=1.5, size=2)
+```
+
+![](images/paste-19.png)
+
+Si reiniciamos la semilla llamando a `random.seed()` con el mismo número de semilla y luego llamamos a `.normal()` nuevamente, obtenemos los mismos resultados que antes.
+
+```{python}
+#| echo: true
+#| eval: false
+np.random.normal(loc=2, scale=1.5, size=2)
+```
+
+![](images/paste-20.png)
+
+```{python}
+#| echo: true
+#| eval: false
+np.random.normal(loc=2, scale=1.5, size=2)
+```
+
+![](images/paste-21.png)
+
+Lo anterior hace que nuestro código es reproducible.
+
+-   Usando una semilla diferente
+
+    Cuando se prueba una semilla diferente, al llamar a `.normal()` genera números diferentes.
+
+```{python}
+#| echo: true
+#| eval: false
+np.random.seed(20041004)
+```
+
+```{python}
+#| echo: true
+#| eval: false
+np.random.normal(loc=2, scale=1.5, size=2)
+```
+
+![](images/paste-22.png)
+
+```{python}
+#| echo: true
+#| eval: false
+np.random.normal(loc=2, scale=1.5, size=2)
+```
+
+![](images/paste-23.png)
+
 ### Generar números aleatorios
 
+Haz utilizado `.sample()` para generar números pseudoaleatorios a partir de un conjunto de valores de un DataFrame. Una tarea relacionada es generar números aleatorios que sigan una distribución estadística, como la distribución uniforme o la distribución normal.
+
+Cada función de generación de números aleatorios tiene argumentos especiíficos de la distribución y un argumento para especificar el número de números aleatorios a generar.
+
+#### Instrucciones
+
+1. Genera 5000 números a partir de una distribución uniforme, ajustando los parámetros `low` a `-3` y `high` a `3`.
+
+```{python}
+# Generate random numbers from a Uniform(-3, 3)
+uniforms = np.random.uniform(low=-3, high=3, size=5000)
+
+# Print uniforms
+print(uniforms)
+```
+
+2. Genera 5000 números aleatorios a partir de una distribución normal, ajustando los parámetros `loc` a `5` y  `scale` a `2`.
+
+```{python}
+# Generate random numbers from a Normal(5, 2)
+normals = np.random.normal(loc=5, scale=2, size=5000)
+
+# Print normals
+print(normals)
+```
+
+3. Traza un histograma de `uniforms` con contenedores de anchura de `0.25` de `-3` a `3` utilizando `plt.hist()`
+
+```{python}
+# Plot a histogram of uniforms values, binwidth 0.25
+plt.hist(x=uniforms, bins=np.arange(-3, 3.25, 0.25))
+plt.show()
+```
+
+4. Traza un histograma de `normals` con contenedores de anchura de `0.5` de `-2` a `13` utilizando `plt.hist()`
+
+```{python}
+# Plot a histogram of normal values, binwidth 0.5
+plt.hist(x=normals, bins=np.arange(-2, 13.5, 0.5))
+plt.show()
+```
+
+Observa cómo los histogramas casi toman las formas plana y de campana de las distribuciones uniforme y normal, pero hay un poco de ruido aleatorio.
+
+
 ### Comprender los valores de inicialización aleatorios
+
+Aunque los números aleatorios son importantes para muchos análisis, existe un inconveniente: los resultados que obtienes pueden variar ligeramente. Esto puede provocar conversaciones incómodas con tu jefe cuando tu guión para calcular la previsión de ventas da respuestas diferentes cada vez.
+
+Ajustar el valor de inicialización para el generador de números aleatorios de `numpy` ayuda a evitar estos problemas haciendo que la generación de números aleatorios sea reproducible.
+
+#### Instrucciones
+
+1. **Pregunta**
+¿Qué afirmación sobre `x` y `y` es cierta?
+
+
+```{python}
+#| echo: true
+#| eval: false
+import numpy as np
+np.random.seed(123)
+x = np.random.normal(size=5)
+y = np.random.normal(size=5)
+```
+**Respuestas posibles**
+
+- [ ] `x` y `y` tienen valores idénticos.
+- [ ] El primer valor de `x` es idéntico al primer valor de `y`, pero los demás valores son diferentes.
+- [X] Los valores de `x` son diferentes a los valores de `y`.
+
+2. **Pregunta**
+¿Qué afirmación sobre `x` y `y` es cierta?
+
+
+```{python}
+#| echo: true
+#| eval: false
+import numpy as np
+np.random.seed(123)
+x = np.random.normal(size=5)
+np.random.seed(123)
+y = np.random.normal(size=5)
+```
+
+**Respuestas posibles**
+
+- [X] `x` y `y` tienen valores idénticos.
+- [ ] El primer valor de `x` es idéntico al primer valor de `y`, pero los demás valores son diferentes.
+- [ ] Los valores de `x` son diferentes a los valores de `y`.
+
+3. **Pregunta**
+¿Qué afirmación sobre `x` y `y` es cierta?
+
+
+```{python}
+#| echo: true
+#| eval: false
+import numpy as np
+np.random.seed(123)
+x = np.random.normal(size=5)
+np.random.seed(456)
+y = np.random.normal(size=5)
+```
+
+**Respuestas posibles**
+
+- [ ] `x` y `y` tienen valores idénticos.
+- [ ] El primer valor de `x` es idéntico al primer valor de `y`, pero los demás valores son diferentes.
+- [X] Los valores de `x` son diferentes a los valores de `y`.

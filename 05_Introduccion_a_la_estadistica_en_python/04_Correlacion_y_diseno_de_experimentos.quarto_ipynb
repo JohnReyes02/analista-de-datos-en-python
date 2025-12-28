@@ -1,0 +1,633 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "title: \"Correlación y diseño de experimentos\"\n",
+        "---\n",
+        "\n",
+        "En este capítulo, aprenderás a cuantificar la fuerza de una relación lineal entre dos variables, y explorarás cómo las variables de confusión pueden afectar a la relación entre otras dos variables. También verás cómo el diseño de un estudio puede influir en sus resultados, cambiar la forma en que deben analizarse los datos y afectar potencialmente a la fiabilidad de tus conclusiones.\n",
+        "\n",
+        "## Correlación\n",
+        "\n",
+        "-   Realción entre dos variables\n",
+        "\n",
+        "    ![](images/paste-3.png){width=\"500\"}\n",
+        "\n",
+        "    -   x = variable explicativa o independiente.\n",
+        "    -   y = variable de respuesta o dependiente.\n",
+        "\n",
+        "-   Coeficiente de correlación\n",
+        "\n",
+        "    -   Cuantifica la relación lineal entre dos variables.\n",
+        "\n",
+        "    -   Es un múmero entre -1 y 1.\n",
+        "\n",
+        "    -   La magnitud corresponde a la fuerza de la relación.\n",
+        "\n",
+        "    -   Signo (+ o -) corresponde a la dirección de la relación.\n",
+        "\n",
+        "-   Magnitud = Fuerza de la relación\n",
+        "\n",
+        "    +:------------------------------------:+:------------------------------------:+:-----------------------------------------------------------:+\n",
+        "    | 0.99 (Muy fuerte relación)           | 0.75 (Fuerte relación )               | 0.56 (moderada relación)                                    |\n",
+        "    |                                      |                                      |                                                             |\n",
+        "    | ![](images/paste-6.png){width=\"230\"} | ![](images/paste-5.png){width=\"230\"} | ![](images/paste-10.png){width=\"230\"}                       |\n",
+        "    +--------------------------------------+--------------------------------------+-------------------------------------------------------------+\n",
+        "    | 0.21 (débil relación)                | 0.04 (sin relación)                  | -   Conocer el valor de `x` no nos dice nada acerca de `y`. |\n",
+        "    |                                      |                                      |                                                             |\n",
+        "    | ![](images/paste-7.png){width=\"230\"} | ![](images/paste-9.png){width=\"230\"} |                                                             |\n",
+        "    +--------------------------------------+--------------------------------------+-------------------------------------------------------------+\n",
+        "\n",
+        "-   Signo = Dirección\n",
+        "\n",
+        "    +------------------------------------------+----------------------------------------+\n",
+        "    | 0.75: Como `x` incrementa `y` incrementa | -0.75: Como `x` incrementa `y` decrece |\n",
+        "    +:========================================:+:======================================:+\n",
+        "    | ![](images/paste-11.png){width=\"300\"}    | ![](images/paste-12.png){width=\"300\"}  |\n",
+        "    +------------------------------------------+----------------------------------------+\n",
+        "\n",
+        "-   Visualización de relaciones"
+      ],
+      "id": "7c7b2af4"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# | echo: True\n",
+        "# | eval: false\n",
+        "import seaborn as sns\n",
+        "sns.scatterplot(x='sleep_total', y='sleep_rem', data=msleep)\n",
+        "plt.show()"
+      ],
+      "id": "498a0240",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "![](images/paste-13.png){width=\"500\"}\n",
+        "\n",
+        "-   Añadir una linea de tendencia"
+      ],
+      "id": "ef6bbd07"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# | echo: true\n",
+        "# | eval: false\n",
+        "import seaborn as sns\n",
+        "sns.lmplot(x='sleep_total', y='sleep_rem', data=msleep, ci=None)\n",
+        "plt.show()"
+      ],
+      "id": "f53c3757",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "![](images/paste-14.png){width=\"500\"}\n",
+        "\n",
+        "-   Calcular el coeficiente de correlación entre dos series"
+      ],
+      "id": "5b945f4f"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# | echo: true\n",
+        "# | eval: false\n",
+        "msleep['sleep_total'].corr(msleep['sleep_rem'])"
+      ],
+      "id": "8baabe72",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# | echo: true\n",
+        "# | eval: false\n",
+        "msleep['sleep_rem'].corr(msleep['sleep_total'])"
+      ],
+      "id": "361e8d48",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "-   Muchas formas de calcular la correlación\n",
+        "\n",
+        "    -   La usada en el curso: Correlación producto momento de Pearson ($r$)\n",
+        "\n",
+        "        -   Es la más común\n",
+        "\n",
+        "        -   $\\bar{x} = \\text{media de } x \\\\$\n",
+        "\n",
+        "        -   $\\sigma_x = \\text{desviación estandar de } x$\n",
+        "\n",
+        "            \\begin{align*}\n",
+        "                r &= \\sum_{i=1}^{n} \\frac{(x_i - \\bar{x})(y_i - \\bar{y})}{\\sigma_x \\times \\sigma_y}\n",
+        "            \\end{align*}\n",
+        "\n",
+        "    -   Variaciones en esta fórmula:\n",
+        "\n",
+        "        -   Kendall's tau\n",
+        "\n",
+        "        -   Spearman's rho\n",
+        "\n",
+        "### Adivina la correlación\n",
+        "\n",
+        "¿Cuál de las siguientes afirmaciones NOT es verdadera sobre la correlación?\n",
+        "\n",
+        "-   [ ] Si la correlación entre `x` y `y` tiene una magnitud elevada, los puntos de datos se agruparán estrechamente alrededor de una línea.\n",
+        "\n",
+        "-   [ ] La correlación puede escribirse como r.\n",
+        "\n",
+        "-   [ ] Si `x` e `y` están correlacionados negativamente, los valores de `y` disminuyen a medida que aumentan los de `x`.\n",
+        "\n",
+        "-   [x] La correlación no puede ser 0.\n",
+        "\n",
+        "### Relaciones entre variables\n",
+        "\n",
+        "En este capítulo, trabajarás con un conjunto de datos `world_happiness` que contiene los resultados de [2019 World Happiness Report](https://worldhappiness.report/ed/2019/). El informe puntúa a diferentes países en función de lo felices que son sus habitantes. También clasifica a cada país en función de diversos aspectos sociales, como el apoyo social, la libertad, la corrupción y otros. El conjunto de datos también incluye el GDP per cápita y la esperanza de vida de cada país.\n",
+        "\n",
+        "En este ejercicio, examinarás la relación entre la esperanza de vida de un país (`life_exp`) y la puntuación de felicidad (`happiness_score`) tanto visual como cuantitativamente. `seaborn` como `sns`, `matplotlib.pyplot` como `plt` y `pandas` como `pd` están cargados y `world_happiness` está disponible."
+      ],
+      "id": "d0caae16"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import pandas as pd\n",
+        "import numpy as np\n",
+        "import matplotlib.pyplot as plt\n",
+        "import seaborn as sns"
+      ],
+      "id": "5270204b",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "world_happiness = pd.read_csv('./data/world_happiness.csv')\n",
+        "print(world_happiness.head())"
+      ],
+      "id": "e35c14de",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "#### Instrucciones:\n",
+        "\n",
+        "1.  \n",
+        "\n",
+        "-   Crea un diagrama de dispersión de `happiness_score` frente a `life_exp` (sin línea de tendencia) utilizando `seaborn`.\n",
+        "\n",
+        "-   Muestra el gráfico."
+      ],
+      "id": "ab333795"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Create a scatterplot of happiness_score vs. life_exp ando show\n",
+        "sns.scatterplot(x='life_exp', y='happiness_score', data=world_happiness)\n",
+        "\n",
+        "# Show plot\n",
+        "plt.show()"
+      ],
+      "id": "3820c6db",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "2.  \n",
+        "\n",
+        "-   Crea un diagrama de dispersión de `happiness_score` frente a `life_exp` con una línea de tendencia lineal utilizando `seaborn`, estableciendo `ci` en `None`.\n",
+        "\n",
+        "-   Muestra el gráfico."
+      ],
+      "id": "0771ca6f"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Create scatterplot of happiness_score vs life_exp with trendline\n",
+        "sns.lmplot(x='life_exp', y='happiness_score', data=world_happiness, ci=None)\n",
+        "\n",
+        "# Show plot\n",
+        "plt.show()"
+      ],
+      "id": "3018eeb9",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "3.  \n",
+        "\n",
+        "**Pregunta**\n",
+        "\n",
+        "Según el diagrama de dispersión, cuál es la correlación más probable entre `life_exp` y `happiness_score`?\n",
+        "\n",
+        "**Respuestras posibles**\n",
+        "\n",
+        "-   [ ] 0.3\n",
+        "\n",
+        "-   [ ] -0.3\n",
+        "\n",
+        "-   [x] 0.8\n",
+        "\n",
+        "-   [ ] -0.8\n",
+        "\n",
+        "4.  Calcula la correlación entre `life_exp` y `happiness_score`. Guárdala como `cor`."
+      ],
+      "id": "26562d9a"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Correlation between life_exp and happiness_score\n",
+        "cor =  world_happiness['life_exp'].corr(world_happiness['happiness_score'])\n",
+        "\n",
+        "print(cor)"
+      ],
+      "id": "46c089b9",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Los diagramas de dispersión con líneas de tendencia son una excelente manera de verificar que una relación estre dos variables es realmente lineal.\n",
+        "\n",
+        "## Advertencias sobre la correlación\n",
+        "\n",
+        "-   Relaciones no lineales\n",
+        "\n",
+        "    -   Siempre que sea posible visualizar los datos.\n",
+        "\n",
+        "-   Transformación logaritmica\n",
+        "\n",
+        "    -   Es posible usarla cuando hayan datos muy sesgados.\n",
+        "\n",
+        "-   Otras transformaciones\n",
+        "\n",
+        "    -   Transformación logarítmica (`log(x)`)\n",
+        "\n",
+        "    -   Transformación raíz cuadrada (`sqrt(x)`)\n",
+        "\n",
+        "    -   Transformación recíproca (`1 / x`)\n",
+        "\n",
+        "    -   Combinations de esteas, por ejemplo:\n",
+        "\n",
+        "        -   `log(x)` y `log(y)`\n",
+        "\n",
+        "        -   `sqrt(x)` y `1 / y`\n",
+        "\n",
+        "-   Por qué usar una transformación?\n",
+        "\n",
+        "    -   Ciertos métodos estadísticos se basan en que las variables tengan una relación lineal.\n",
+        "\n",
+        "        -   Coeficiente de correlación\n",
+        "\n",
+        "        -   Regresión lineal.\n",
+        "\n",
+        "-   La correlación no implica causalidad.\n",
+        "\n",
+        "    Si `x` está correlacionada con `y` no significa que `x` cause `y`.\n",
+        "\n",
+        "-   Confusión\n",
+        "\n",
+        "    Este fenómeno puede dar lugar a correlaciones espurias.\n",
+        "\n",
+        "### Qué no puede medir la correlación?\n",
+        "\n",
+        "Aunque el coeficiente de correlación es una forma cómoda de cuantificar la fuerza de una relación entre dos variables, dista mucho de ser perfecto. En este ejercicio, explorarás una de las advertencias sobre el coeficiente de correlación examinando la relación entre el GDP per cápita de un país (`gdp_per_cap`) y la puntuación de felicidad.\n",
+        "\n",
+        "### Instrucciones:\n",
+        "\n",
+        "1.  \n",
+        "\n",
+        "-   Crea un diagrama de dispersión `seaborn` (sin línea de tendencia) que muestre la relación entre `gdp_per_cap` (en el eje X) y `life_exp` (en el eje Y).\n",
+        "\n",
+        "-   Muestra el gráfico."
+      ],
+      "id": "4bfd6611"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Scatterplot of gdp_per_cap and life_exp\n",
+        "sns.scatterplot(x='gdp_per_cap', y='life_exp', data=world_happiness)\n",
+        "\n",
+        "# Show plot\n",
+        "plt.show()"
+      ],
+      "id": "6f37052f",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "2.  Calcula la correlación entre `gdp_per_cap` y `life_exp` y guárdala como `cor`."
+      ],
+      "id": "f8055619"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Correlation between gdp_per_cap and life_exp\n",
+        "cor = world_happiness['gdp_per_cap'].corr(world_happiness['life_exp'])\n",
+        "\n",
+        "print(cor)"
+      ],
+      "id": "c376ec7f",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "3.  \n",
+        "\n",
+        "**Pregunta**\n",
+        "\n",
+        "La correlación entre GDP per cápita y esperanza de vida es de 0.7. Por qué la correlación no es la mejor forma de medir la relación entre estas dos variables?\n",
+        "\n",
+        "**Respuestas posibles**\n",
+        "\n",
+        "-   [ ] La correlación mide cómo afecta una variable a otra.\n",
+        "\n",
+        "-   [x] La correlación solo mide las correlaciones lineales.\n",
+        "\n",
+        "-   [ ] La correlación no puede medir adecuadamente las relaciones entre variables numéricas.\n",
+        "\n",
+        "El coeficiente de correlación no puede dar cuenta de ninguna relación que no sea lineal, independientemente de su fuerza.\n",
+        "\n",
+        "### Transformación de variables\n",
+        "\n",
+        "Cuando las variables tienen distribuciones sesgadas, a menudo requieren una transformación para formar una relación lineal con otra variable, de modo que pueda calcularse la correlación. En este ejercicio realizarás una transformación.\n",
+        "\n",
+        "#### Instrucciones:\n",
+        "\n",
+        "1.  Crea un diagrama de dispersión de `happiness_score` frente a `gdp_per_cap` y calcula la correlación entre ambos."
+      ],
+      "id": "a3dbc6ce"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Scatterplot of happiness_score vs. gdp_per_cap\n",
+        "sns.scatterplot(x='gdp_per_cap', y='happiness_score', data=world_happiness)\n",
+        "plt.show()\n",
+        "\n",
+        "# Calculate correlation\n",
+        "cor = world_happiness['happiness_score'].corr(world_happiness['gdp_per_cap'])\n",
+        "print(cor)"
+      ],
+      "id": "eef0088b",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "2.  Añade una nueva columna a `world_happiness` llamada `log_gdp_per_cap` que contenga el logaritmo de `gdp_per_cap`. Crea un diagrama de dispersión `seaborn` de `happiness_score` frente a `log_gdp_per_cap` y `happiness_score`. Calcula la correlación enre `log_gdp_per_cap` y `happiness_score`."
+      ],
+      "id": "aa30428d"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Create log_gdp_per_cap column\n",
+        "world_happiness['log_gdp_per_cap'] = np.log(world_happiness['gdp_per_cap'])\n",
+        "\n",
+        "# Scatterplot of happiness_score vs. log_gdp_per_cap\n",
+        "sns.scatterplot(x='log_gdp_per_cap', y='happiness_score', data=world_happiness)\n",
+        "plt.show()\n",
+        "\n",
+        "# Calculate correlation\n",
+        "cor = world_happiness['log_gdp_per_cap'].corr(world_happiness['happiness_score'])\n",
+        "print(cor)"
+      ],
+      "id": "885d4395",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "La relación entre el PIB per cápita y la felicidad se volvió más lineal al aplicar una transformación logarítmica. Las transformaciones logarítmicas son excelentes para usar en variables con una distribución sesgada, como el PIB.\n",
+        "\n",
+        "### El azúcar aumenta la felicidad?\n",
+        "\n",
+        "Se ha añadido una nueva columna a `world_happiness` llamada `grams_sugar_per_day`, que contiene la cantidad media de azúcar ingerida por persona y día en cada país. En este ejercicio, examinarás el efecto del consumo medio de azúcar de un país en su puntuación de felicidad."
+      ],
+      "id": "f766ad2f"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "world_happiness = pd.read_csv('./data/world_happiness_add_sugar.csv', index_col=0)\n",
+        "world_happiness"
+      ],
+      "id": "7b574452",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "#### Instrucciones:\n",
+        "\n",
+        "1.  \n",
+        "\n",
+        "-   Crea un diagrama de dispersión `seaborn` que muestre la relación entre `grams_sugar_per_day` (en el eje X) y `happiness_score` (en el eje Y).\n",
+        "\n",
+        "-   Calcula la correlación entre `grams_sugar_per_day` y `happiness_score`."
+      ],
+      "id": "c54c7118"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Scatterplot of grams_sugar_per_day and happiness_score\n",
+        "sns.scatterplot(x='grams_sugar_per_day', y='happiness_score', data=world_happiness)\n",
+        "plt.show()\n",
+        "\n",
+        "# Correlation between grams_sugar_per_day and happiness_score\n",
+        "cor = world_happiness['grams_sugar_per_day'].corr(world_happiness['happiness_score'])\n",
+        "print(cor)"
+      ],
+      "id": "df5260ac",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "2.  \n",
+        "\n",
+        "**Pregunta**\n",
+        "\n",
+        "Según estos datos, qué afirmación sobre el consumo de azúcar y las puntuaciones de felicidad es cierta?\n",
+        "\n",
+        "**Respuestas posibles**\n",
+        "\n",
+        "-   [ ] Un mayor consumo de azúcar conduce a una mayor puntuación de felicidad.\n",
+        "-   [ ] A menor consumo de azúcar, menor puntuación de felicidad.\n",
+        "-   [x] Un mayor consumo de azúcar se asocia a una mayor puntuación de felicidad.\n",
+        "-   [ ] El consumo de azúcar no está relacionado con la felicidad.\n",
+        "\n",
+        "Si la correlación siempre implicara que una cosa causa la otra, la gente podría hacer cosas son sentido, como comer más azúcar para se más feliz.\n",
+        "\n",
+        "### Factores de confusión\n",
+        "\n",
+        "Un estudio investiga la relación entre la residencia en el vecindario y la capacidad pulmonar. Los investigadores miden la capacidad pulmonar de treinta personas del vecindario A, situado cerca de una autovía, y de treinta personas del vecindario B, que no está cerca de una autovía. Ambos grupos tienen unos hábitos de consumo de tabaco y un desglose por sexos similares.\n",
+        "\n",
+        "¿Cuál de los siguientes podría ser un factor de confusión en este estudio?\n",
+        "\n",
+        "**Respuestas posibles**\n",
+        "\n",
+        "-   [ ] Capacidad pulmonar\n",
+        "-   [ ] Vecindario\n",
+        "-   [x] Contaminación atmosférica\n",
+        "-   [ ] Condición de fumador\n",
+        "-   [ ] Sexo\n",
+        "\n",
+        "Es de esperar que haya más contaminación atmosférica en el vecindario situado cerca de la autovía, lo que puede provocar una menor capacidad pulmonar.\n",
+        "\n",
+        "## Diseño de experimentos\n",
+        "\n",
+        "-   Vocabulario\n",
+        "    -   El experimento responde a la prgunta: Cuál es el efecto del tratamiento sobre la respuesta?.\n",
+        "        -   Tratamiento: Variable explicativa o independiente.\n",
+        "        -   Respuesta: Variable dependiente o de respuesta.\n",
+        "    -   Ejemplo: Cuál es el efecto de un anuncio en el número de productos comprados?\n",
+        "        -   Tratamiento: Anuncio\n",
+        "        -   Respuesta: Número de productos comprados\n",
+        "-   Experimentos Controlados\n",
+        "    -   Los participantes son asignados aleatoriamente a los grupos de tratamiento o al grupo de control. El grupo de tratamiento recibe el tratamiento y el de control no.\n",
+        "        -   Grupo de tratamiento ve los anuncios\n",
+        "        -   El grupo de control no.\n",
+        "    -   Los grupos deben ser comparables de modo que la causalidad pueda ser inferida.\n",
+        "    -   Si los grupos no son comparables, esto podria llevar a confusión.\n",
+        "        -   Grupo de tratamiento con edad promedio de : 25\n",
+        "        -   Grupo de control con edad promedio de: 50\n",
+        "        -   La edad es un un potencial factor de confusión.\n",
+        "-   El gold estándar de los experimento usará...\n",
+        "    -   Ensayo controlado aleatorio.\n",
+        "        -   Los participantes son asignados al azar al grupo de tratamiento o de control. No basado en alguna característica.\n",
+        "        -   La asignación aleatoria ayuda a asegurar que los grupos sean comparables.\n",
+        "    -   Placebo\n",
+        "        -   Se parace al tratamiento, pero no tiene efecto.\n",
+        "        -   Los participantes no sabrán a cual grupo irán.\n",
+        "    -   Doble ciego\n",
+        "        -   La persona que administra el tratamiento no conoce cual es el tratamiento real o el placebo.\n",
+        "        -   Previene el sesgo en la respuesta y/o en el análisis de resultados.\n",
+        "    -   Menos oportunidades de que haya sesgo = mas fiable sera la conclusión que el tratamiento afecta la respuesta.\n",
+        "-   Estudios observacionales\n",
+        "    -   Los participantes no se asignan aleatoriamente a los grupos.\n",
+        "        -   Los participantes se asignan a si mismos, usualmente basado en características preexistentes.\n",
+        "    -   Muchas preguntas no son conducidas a un experimento controlado.\n",
+        "        -   No puedes forzar a alguien a fumar o tener un deseso.\n",
+        "        -   No puede hacer que alguien tengan cierto comportamiento.\n",
+        "    -   Se establece asociación no causalidad.\n",
+        "        -   Los efectos del tratamiento pueden ser confundidos por factores que llevaron a ciertas personas al grupo de control o tratamiento.\n",
+        "        -   Hay formas de controlar la confusión para obtener más conclusiones fiabiles acerca de la asociación.\n",
+        "-   Estudios Longitudinales vs Estudios transversales\n",
+        "    -   Estudios Longitudinales\n",
+        "        -   Se sigue a los mismos participantes durante un periodo de tiempo para examinar el efecto del tratamiento en la respuesta.\n",
+        "        -   El efecto de la edad en la altura no es confundida por generación.\n",
+        "        -   Son más costosos, los resultados toman tiempo.\n",
+        "    -   Estudio transversal\n",
+        "        -   Los datos de los participantes son recolectados de una sola camptura en el tiempo.\n",
+        "        -   El efecto de la edad en la altura se confunde por generación.\n",
+        "        -   Son más baratos, rápidos y mas convenientes.\n",
+        "\n",
+        "### Tipos de estudio\n",
+        "\n",
+        "Aunque los experimentos controlados son ideales, muchas situaciones y preguntas de investigación no son propicias para un experimento controlado. En un experimento controlado, es probable que pueda inferirse la causalidad si los grupos de control y de prueba tienen características similares y no hay ninguna diferencia sistemática entre ellos. Por otra parte , la causalidad no suele inferirse de los estudios observacionales, cuyos resultados suelen interpretarse erróneamente como consecuencia de ello.\n",
+        "\n",
+        "#### Instrucciones\n",
+        "\n",
+        "-   Determina si cada estudio es un experimento controlado o un estudio observacional\n",
+        "\n",
+        "| Experimento Controlado | Estudio Observacional |\n",
+        "|----|----|\n",
+        "| Se comparan los síntomas de asma entre niños asignados aleatoriamente a recibir servicios profesionales de control de plagas a domicilio o educaci´øn sobre el control de plagas. | Se compara la prevalencia de enfermedades cardíacas entre veteranos con PTSD y veteranos sin PTSD. |\n",
+        "| Se comparan las tasas de compra entre los usuarios de un sitio de comercio electrónico que son dirigidos aleatoriamente a una nueva versión de la página de inicio o a una versión antigua. | Hace una semana, se actualizó la página de inico de un sitio de comercio electrónico. Las tasas de compra se comparan entre los usuarios que vieron las versiones antigua y nueva de la págna de inicio. |\n",
+        "| Se asigna aleatoriamente a los sujetos una dieta y se compara la pérdida de peso. |  |\n",
+        "\n",
+        "### Estudios longitudinales frente a estudios transversales\n",
+        "\n",
+        "Una empresa fabrica termómetros y quiere estudiar la relación entre la antigüedad de un termómetro y su exactitud. Para ello, toman una muestra de 100 termómetros diferentes de distintas antigüedades y comprueban su exactitud. Son datos longitudinales o transversales?\n",
+        "\n",
+        "**Respuestas posibles**\n",
+        "\n",
+        "Selecciona una respuesta:\n",
+        "\n",
+        "- [ ] Longitudinal\n",
+        "- [x] Transversal\n",
+        "- [ ] Ambos\n",
+        "- [ ] Ninguno\n",
+        "\n",
+        "Se trata de un estudio transversal, ya que los investigadores no están siguiendo el mismo conjunto de termómetros a lo largo del tiempo y midiendo repetidamente su exactitud con diferentes antigüedades."
+      ],
+      "id": "f72ac653"
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "name": "python3",
+      "language": "python",
+      "display_name": "Python 3 (ipykernel)",
+      "path": "/Users/macbookairedwin/Documents/Datacamp/analista-de-datos-en-python/.venv/share/jupyter/kernels/python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}

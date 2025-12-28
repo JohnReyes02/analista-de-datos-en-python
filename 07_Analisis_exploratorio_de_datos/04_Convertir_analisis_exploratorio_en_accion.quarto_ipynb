@@ -1,0 +1,969 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "title: \"Convertir el análisis exploratorio en acción\"\n",
+        "---\n",
+        "\n",
+        "El análisis exploratorio de datos es un paso crucial en el flujo de trabajo de la ciencia de datos, ¡por no esl el final! Ahora es el momento de aprender técnicas y consideraciones que puedes utilizar para avanzar con éxito en tus proyectos una vez que hayas terminado de explorar.\n",
+        "\n",
+        "## Consideraciones para datos categóricos\n",
+        "\n",
+        "-   Por qué ejecutar EDA?\n",
+        "    -   Detectar patrones y relaciones.\n",
+        "    -   Generar preguntas o hipótesis.\n",
+        "    -   Preparar datos para modelos de machine learning.\n",
+        "-   Representatividad de los datos\n",
+        "    -   La muestra debe representar la población.\n",
+        "    -   Por ejemplo:\n",
+        "        -   Educación versus ingresos en USA\n",
+        "            -   No se pueden usar datos de Francia\n",
+        "-   Clases Categóricas\n",
+        "    -   Clases = etiquetas\n",
+        "    -   Ejemplo, actitudes de las personas hacia el matrimonio.\n",
+        "        -   Estado civil\n",
+        "            -   Soltero\n",
+        "            -   Casado\n",
+        "            -   Divorciado\n",
+        "-   Desbalance de Clases\n",
+        "\n",
+        "![](images/paste-66.png)\n",
+        "\n",
+        "-   Frecuencia de Clases"
+      ],
+      "id": "35c05b5f"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| eval: false\n",
+        "print(planes('Destination').value_counts())"
+      ],
+      "id": "2da9e7aa",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "![](images/paste-67.png)\n",
+        "\n",
+        "-   Frecuencia relativa de clases\n",
+        "\n",
+        "    -   40% de los vuelos internos de la India van hacia Delhi."
+      ],
+      "id": "0f999eaf"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| eval: false\n",
+        "planes['Destination'].value_counts(normalize=True)"
+      ],
+      "id": "322ea76e",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "![](images/paste-68.png)\n",
+        "\n",
+        "Es nuestra muestra representativa de la población? (Vuelos internos de India)\n",
+        "\n",
+        "-   Tabulación Cruzada\n",
+        "\n",
+        "    -   Es otro método para observar la frecuencia de clase, que permite examinar la frecuencia de combinaciones de clases\n",
+        "\n",
+        "    ![](images/paste-69.png)"
+      ],
+      "id": "5bc0e60a"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| eval: false\n",
+        "pd.crosstab(planes['Source'], planes['Destination'])"
+      ],
+      "id": "59e20a2d",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "![](images/paste-70.png)\n",
+        "\n",
+        "-   Extendiendo la tabulación cruzada\n",
+        "\n",
+        "| Source   | Destination | Median Price (IDR) |\n",
+        "|----------|-------------|--------------------|\n",
+        "| Banglore | Delhi       | 4232.21            |\n",
+        "| Banglore | New Delhi   | 12114.56           |\n",
+        "| Chennai  | Kolkata     | 3859.76            |\n",
+        "| Delhi    | Cochin      | 9987.63            |\n",
+        "| Kolkata  | Banglore    | 9654.21            |\n",
+        "| Mumbai   | Hyderabad   | 3431.97            |\n",
+        "\n",
+        "-   Agregación de valores con pd.crosstab()"
+      ],
+      "id": "f09091b2"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| eval: false\n",
+        "pd.crosstab(planes['Source'], planes['Destination'],\n",
+        "           values=planes['Price'], aggfunc='median')"
+      ],
+      "id": "8dcda087",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "![](images/paste-71.png)\n",
+        "\n",
+        "Los resultados muestran valores de la mediana para todas las rutas posibles en el conjunto de datos.\n",
+        "\n",
+        "-   Comparando la muestra con la población\n",
+        "\n",
+        "| Source   | Desitnation | Median Price (IDR) | Median Price (dataset) |\n",
+        "|----------|-------------|--------------------|------------------------|\n",
+        "| Banglore | Delhi       | 4232.21            | 4823.0                 |\n",
+        "| Banglore | New Delhi   | 12114.56           | 10976.50               |\n",
+        "| Chennai  | Kolkata     | 3859.76            | 3850.0                 |\n",
+        "| Delhi    | Cochin      | 9987.63            | 10260.0                |\n",
+        "| Kolkata  | Banglore    | 9654.21            | 9345.0                 |\n",
+        "| Mumbai   | Hyderabad   | 3431.97            | 3342.0                 |\n",
+        "\n",
+        "### Comprobación del desequilibrio de clases\n",
+        "\n",
+        "La [Encuesta Kaggle 2022](https://www.kaggle.com/kaggle-survey-2022) recoge la información sobre la formación de los científicos de datos, sus tecnologías y técnicas preferidas. Se considera una visión precisa de lo que está ocurriendo en la ciencia de datos, basada en el volumen y el perfil de los que responden.\n",
+        "\n",
+        "Una vez examinados los títulos de los puestos y categorizados para alinearlos con nuestro `salaries` DataFrame\\`, puedes ver la siguiente proporción de categorías laborales en la encuesta Kaggle:\n",
+        "\n",
+        "| Categoría laboral   | Frecuencia relativa |\n",
+        "|---------------------|---------------------|\n",
+        "| Ciencia de datos    | 0,281236            |\n",
+        "| Análisis de datos   | 0,224231            |\n",
+        "| Otros               | 0,214609            |\n",
+        "| Dirección           | 0,121300            |\n",
+        "| Machine Learning    | 0,083248            |\n",
+        "| Ingeniería de datos | 0,075375            |\n",
+        "\n",
+        "Pensando en los resultados de la encuesta Kaggle como población, tu tarea consiste en averiguar si el DataFrame `salaries` es representativo comparando la frecuencia relativa de las categorías laborales."
+      ],
+      "id": "92c3b4fa"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import pandas as pd\n",
+        "ruta = './data/salaries.csv'\n",
+        "salaries = pd.read_csv(ruta)\n",
+        "salaries.head()"
+      ],
+      "id": "95eed27e",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "#### Instrucciones\n",
+        "\n",
+        "-   Imprime la frecuencia relativa de la columna `Job_Category` de `salaries` DataFrame\n",
+        "\n",
+        "::: callout-note\n",
+        "Para exportar el dataset en formato CSV dentro de DataCamp y luego copiarlo:\n",
+        "\n",
+        "``` python\n",
+        "print(salaries.to_csv(index=False))\n",
+        "```\n",
+        ":::"
+      ],
+      "id": "912ced1a"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Print the relative frequency of Job_Category\n",
+        "print(salaries['Job_Category'].value_counts(normalize=True))"
+      ],
+      "id": "24d68d5b",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Parece que Data Science es la clase más popular y tiene una representación similar. Aún así, las otras categorías tienen frecuencias relativas bastante diferentes, lo cual pordría no ser sorprendente dado que el público objetivo son científico de datos. Dada la diferencia en las frecuencias relativas, ¿puedes confiar en que el DataFrame `salaries` representa con precisión los roles gerenciales?\n",
+        "\n",
+        "### Tabulación cruzada\n",
+        "\n",
+        "La tabulación cruzada puede ayudar a identificar cómo se combinan las observaciones.\n",
+        "\n",
+        "Utilizando el conjunto de datos `salaries`, que se ha importado como un DataFrame `pandas`, realizarás una tabulación cruzada de múltiples variables, incluyendo el uso de la agregación, para ver la relación entre 'Company_Size' y otras variables.\n",
+        "\n",
+        "#### Instrucciones\n",
+        "\n",
+        "1.  Realiza una tabulación cruzada, estableciendo `Company_Size` como índice, y las columnas a las clases en `Experience`."
+      ],
+      "id": "cd398d76"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Cross-tabulate Company_Size and Experience\n",
+        "print(pd.crosstab(salaries['Company_Size'], salaries['Experience']))"
+      ],
+      "id": "5dc03650",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "2.  Cruza 'Job_Category' y las clases de 'Company_Size' como nombres de columna."
+      ],
+      "id": "25db030e"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Cross-tabulate Job_Category and Company_Size\n",
+        "print(pd.crosstab(salaries['Job_Category'], salaries['Company_Size']))"
+      ],
+      "id": "c00788e6",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "3.  Actualiza `pd.crosstab()` para que devuelva los valores medios de `Salary_USD`."
+      ],
+      "id": "8d79d843"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Cross-tabulate Job_Category and Company_Size\n",
+        "print(pd.crosstab(salaries['Job_Category'], salaries['Company_Size'], values= salaries['Salary_USD'], aggfunc='mean'))"
+      ],
+      "id": "047292aa",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Ésta es una función útil para examinar la combinación de frecuencias, así como para encontrar estadísticas agregadas. ¡Parece que el salario medio más alto es para roles de datos gerenciales en grandes empresas!\n",
+        "\n",
+        "## Generar nuevas Características\n",
+        "\n",
+        "-   Correlación"
+      ],
+      "id": "c25eddb3"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| eval: false\n",
+        "sns.heatmap(planes.corr(numeric_only=True), annot=True)\n",
+        "plt.show()"
+      ],
+      "id": "e81ad9e6",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "![](images/paste-72.png)\n",
+        "\n",
+        "-   Viendo el tipo de datos"
+      ],
+      "id": "e505c65e"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| eval: false\n",
+        "print(planes.dtypes)"
+      ],
+      "id": "3cd70c99",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "![](images/paste-73.png)\n",
+        "\n",
+        "-   Total Stops"
+      ],
+      "id": "f6291b93"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| eval: false\n",
+        "print(planes['Total_Stops'].value_counts())"
+      ],
+      "id": "e7d17fea",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "![](images/paste-74.png)\n",
+        "\n",
+        "Se observa que es necesario eliminar algunos caracteres.\n",
+        "\n",
+        "-   Limpiando Total Stops"
+      ],
+      "id": "ae8d5b08"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| eval: false\n",
+        "planes['Total_Stops'] = planes['Total_Stops'].str.replace(' stops', '')\n",
+        "planes['Total_Stops'] = planes['Total_Stops'].str.replace(' stop', '')\n",
+        "planes['Total_Stops'] = planes['Total_Stops'].str.replace('non-stop', '0')\n",
+        "planes['Total_Stops'] = planes['Total_Stops'].astype(int)"
+      ],
+      "id": "c10fc51c",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "-   Correlación"
+      ],
+      "id": "8eef577a"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| eval: false\n",
+        "sns.heatmap(planes.corr(numeric_only=True), annot=True)\n",
+        "plt.show()"
+      ],
+      "id": "8e32064f",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "![](images/paste-75.png)\n",
+        "\n",
+        "-   Fechas"
+      ],
+      "id": "80bf9f88"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| eval: false\n",
+        "print(planes.dtypes)"
+      ],
+      "id": "0e4f940b",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "![](images/paste-76.png)\n",
+        "\n",
+        "-   Extrayendo el mes y el día de la semana"
+      ],
+      "id": "c36d8233"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| eval: false\n",
+        "planes['month'] = planes['Date_of_Journey'].dt.month\n",
+        "planes['weekday'] = planes['Date_of_Journey'].dt.weekday\n",
+        "print(planes[['month', 'weekday', 'Date_of_Journey']].head())"
+      ],
+      "id": "fced3185",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "![](images/paste-77.png)\n",
+        "\n",
+        "-   Tiempos de salidas y llegadas"
+      ],
+      "id": "3c233744"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| eval: false\n",
+        "planes['Dep_Hour'] = planes['Dep_Time'].dt.hour\n",
+        "planes['Arrival_Hour'] = planes['Arrival_Time'].dt.hour"
+      ],
+      "id": "68fa8f20",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "-   Correlación\n",
+        "\n",
+        "![](images/paste-78.png)\n",
+        "\n",
+        "No hay correlaciones, pero no lo sabríamos si no se hubieran generado nuevas características.\n",
+        "\n",
+        "-   Creando características"
+      ],
+      "id": "553f31d0"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| eval: false\n",
+        "print(planes['Price'].describe())"
+      ],
+      "id": "200cb1d6",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "![](images/paste-79.png)\n",
+        "\n",
+        "| Rango             | Tipo de tiquete |\n",
+        "|-------------------|-----------------|\n",
+        "| \\<= 5228          | Economy         |\n",
+        "| \\> 5528 \\<= 8355  | Premium Economy |\n",
+        "| \\> 8355 \\<= 12373 | Business Class  |\n",
+        "| \\> 12373          | First Class     |\n",
+        "\n",
+        "-   Estadística descriptiva"
+      ],
+      "id": "1f47a5de"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| eval: false\n",
+        "twenty_fifth = planes['Price'].quantile(0.25)\n",
+        "median = planes['Price'].median()\n",
+        "seventy_fifth = planes['Price'].quantile(0.75)\n",
+        "maximum = planes['Price'].max()"
+      ],
+      "id": "750ab0ee",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "-   Etiquetas y bins"
+      ],
+      "id": "78cc9e39"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| eval: false\n",
+        "labels = ['Economy', 'Premium Economy', 'Business Class', 'First Class']\n",
+        "bins = [0, twenty_fifth, median, seventy_fifth, maximum]"
+      ],
+      "id": "ec3ec1ee",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "-   pd.cut()\n",
+        "\n",
+        "![](images/paste-80.png)"
+      ],
+      "id": "346d15e9"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| eval: false\n",
+        "planes['Price_Category'] = pd.cut(planes['Price'], labels=labels, bins=bins)"
+      ],
+      "id": "ef10cecd",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "-   Categoría de precios"
+      ],
+      "id": "fd8d9fbc"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| eval: false\n",
+        "print(planes[['Price', 'Price_Category']].head())"
+      ],
+      "id": "6e06b138",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "![](images/paste-81.png)\n",
+        "\n",
+        "-   Categoría de precio por aerolínea"
+      ],
+      "id": "ffe684d7"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| eval: false\n",
+        "sns.countplot(data=planes, x='Airline', hue='Price_Category')\n",
+        "plt.show()"
+      ],
+      "id": "e0de5443",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "![](images/paste-82.png)\n",
+        "\n",
+        "### Extraer características para la correlación\n",
+        "\n",
+        "En este ejercicio trabajarás con una versión del conjunto de datos `salaries` que contiene una nueva columna llamada \"\\`date_of_response\".\n",
+        "\n",
+        "El conjunto de datos se ha leído comjo un DataFrame de pandas, con \"`date_of_response`\" como tipo de datos `datetime`.\n",
+        "\n",
+        "Tu tarea consiste en extraer los atributos fecha-hora de esta columna y, a continuación, crear un mapa de calor para visualizar los coeficientes de correlación entre las variables.\n",
+        "\n",
+        "::: {.callout-important collapse=\"true\"}\n",
+        "Para realizar el ejercicio fue necesario bajar el DataFrame de Datacamp teniendo en cuenta la nueva columna, y cambiando el tipo de formato de la columna `date_of_response` usando los comandos:"
+      ],
+      "id": "a023f912"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: true\n",
+        "#| eval: false\n",
+        "print(salaries.to_csv(index=false))"
+      ],
+      "id": "1f684c5a",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        ":::"
+      ],
+      "id": "10cc2b22"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import pandas as pd\n",
+        "import seaborn as sns\n",
+        "import matplotlib.pyplot as plt\n",
+        "ruta = './data/salaries_2.csv'\n",
+        "salaries = pd.read_csv(ruta)\n",
+        "\n",
+        "# Cambia el tipo de datos de date_of_response\n",
+        "salaries['date_of_response'] = pd.to_datetime(salaries['date_of_response'])\n",
+        "salaries.head()"
+      ],
+      "id": "7ba79dfc",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "#### Instrucciones\n",
+        "\n",
+        "-   Extrae el mes de \"`date_of_response`\", almacenándolo como una columna llamada \"`month`\".\n",
+        "\n",
+        "-   Crea la columna \"`weekday`\", que contiene el día de la semana en que los participantes completaron la encuesta.\n",
+        "\n",
+        "-   Traza un mapa de calor, incluyendo las puntuaciones del coeficiente de correlación de Pearson."
+      ],
+      "id": "1d827c60"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Get the month of the response\n",
+        "salaries['month'] = salaries['date_of_response'].dt.month\n",
+        "\n",
+        "# Extract the weekday of the response\n",
+        "salaries['weekday'] = salaries['date_of_response'].dt.weekday\n",
+        "\n",
+        "# Create a heatmap\n",
+        "sns.heatmap(salaries.corr(numeric_only=True), annot=True)\n",
+        "plt.show()"
+      ],
+      "id": "bd1e9a01",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "¡Fantástica creación de características! Parece que no hay relaciones significativas entre nuestras variables numéricas, así que veamos si convertir los datos numéricos en clases ofrece información adicional.\n",
+        "\n",
+        "### Cálculo de los percentiles salariales\n",
+        "\n",
+        "Tu tarea consiste en convertir la columna \"`Salary_USD`\" en categorías basadas en sus percentiles . Primero tienes que encontrar los percentiles y almacenarlos como variables.\n",
+        "\n",
+        "#### Instrucciones\n",
+        "\n",
+        "-   Halla el percentil 25 de \"`Salary_USD`\"\n",
+        "\n",
+        "-   Guarda la mediana de \"`Salary_USD`\" como `salaries_median`.\n",
+        "\n",
+        "-   Obtén el percentil 75 de los salaries"
+      ],
+      "id": "01bb79a8"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Find the 25th percentile \n",
+        "twenty_fifth = salaries['Salary_USD'].quantile(0.25)\n",
+        "\n",
+        "# Save the median\n",
+        "salaries_median = salaries['Salary_USD'].median()\n",
+        "\n",
+        "# Gather the 75th percentile\n",
+        "seventy_fifth = salaries['Salary_USD'].quantile(0.75)\n",
+        "\n",
+        "print(twenty_fifth, salaries_median, seventy_fifth)"
+      ],
+      "id": "30aabda8",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "¡Parece que el rango intercuartil está entre 60881 y 143225 dólares! ¡Ahora usemos estas variables para agregar una columna categórica de salario en el DataFrame\n",
+        "\n",
+        "### Categorizar los salarios\n",
+        "\n",
+        "¡Ahora es el momento de crear una nueva categoría! Utilizarás las variables `twenty_fifth`, `salaries_median` y `seventy_fifth`, que creaste en el ejercicio anterior, para dividir los salarios en diferentes etiquetas.\n",
+        "\n",
+        "El resultado será una nueva columna llamada \"`salary_level`\", que incorporarás a una visualización para analizar el salario de los encuestados y en empresas de distintos tamaños.\n",
+        "\n",
+        "#### Instrucciones\n",
+        "\n",
+        "1.  Crea `salaries_labels`, una lista que contenga \"`entry`\", \"`mid`\", \"`senior`\" y \"`exec`\"."
+      ],
+      "id": "98193faf"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Create salary labels\n",
+        "salary_labels = ['entry', 'mid', 'senior', 'exec']"
+      ],
+      "id": "d57113f4",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "2.  Termina `salary_ranges`, añadiendo el percentil 25, la mediana, el percentil 75 y el valor más grande de \"`Salary_USD`\""
+      ],
+      "id": "bbe2af67"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Create the salary ranges list\n",
+        "salary_ranges = [0, twenty_fifth, salaries_median, seventy_fifth, salaries['Salary_USD'].max()]"
+      ],
+      "id": "b5516b92",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "3.  Divide \"`Salary_USD`\" en función de las etiquetas y rangos que hayas creado."
+      ],
+      "id": "ef370b08"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Create salary_level\n",
+        "salaries['salary_level'] = pd.cut(salaries['Salary_USD'], bins=salary_ranges, labels=salary_labels)"
+      ],
+      "id": "c3ebda92",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "4.  Utiliza `sns.countplot()` para visualizar el reconteo de \"`Company_Size`\", factrorizando las etiquetas de nivel salarial."
+      ],
+      "id": "ef72aa31"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Plot the count of salary levels at companies of different sizes\n",
+        "sns.countplot(data=salaries, x='Company_Size', hue='salary_level')\n",
+        "plt.show()"
+      ],
+      "id": "7992ebd4",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Al usar `pd.cut()` para dividir los datos numéricos en categorías, se puede ver que una gran proporción de trabajadores en empresas pequeñas reciben salarios de nivel de \"entrada\", mientras que más personal en empresas medianas son recompensados con salarios de nivel \"senior\". ¡Ahora vamos a ver cómo generar hipótesis a medida que se llega al final de la fase de EDA!\n",
+        "\n",
+        "## Generar hipótesis\n",
+        "\n",
+        "Generar hipótesis es una tarea fundamental para los científicos de datos.\n",
+        "\n",
+        "Al realizar EDA, la pregunta que debemos hacernos es ¿Cómo sabemos que lo que estamos observando es verdadero?\n",
+        "\n",
+        "Por ejemplo:\n",
+        "\n",
+        "-   Si recopilamos nuevos datos sobre vuelos de un período de tiempo diferente ¿observaríamos los mismos resultados?\n",
+        "\n",
+        "-   Detectar relaciones, diferencias y patrones:\n",
+        "\n",
+        "    -   Usamos **Prueba de hipótesis**\n",
+        "\n",
+        "-   La prueba de hipótesis requiere previo a la recolección de datos:\n",
+        "\n",
+        "    -   Generar una hipótesis o pregunta.\n",
+        "    -   Una decisión en la se pueda usar una prueba estadística\n",
+        "\n",
+        "-   Data snooping\n",
+        "\n",
+        "    -   Los análisis de datos excesivos, la generación de múltiples hipótesis y la ejecución de múltiples pruebas estadísticas\n",
+        "\n",
+        "-   Generación de Hipótesis\n",
+        "\n",
+        "    -   Se realiza usando análisis exploratorio de datos\n",
+        "\n",
+        "-   Próximos pasos\n",
+        "\n",
+        "    -   Diseñar nuestro experimento.\n",
+        "    -   Envuelve pasos como:\n",
+        "        -   Elegir una muestra\n",
+        "        -   Calcular cuántos puntos de datos necesitamos\n",
+        "        -   Decidir que prueba estadística ejecutar.\n",
+        "\n",
+        "### Comparar salarios\n",
+        "\n",
+        "¡El análisis exploratorio de datos es un paso crucial en la generación de hipótesis!\n",
+        "\n",
+        "Se te ha ocurrido una idea que te gustaría investigar: ¿los profesionales de los datos cobran más en Estados Unidos que en Gran Bretaña?\n",
+        "\n",
+        "Tendrás que subconjuntar los datos en \"`Employee_Location`\" y elaborar un gráfico que muestre el salario medio entre los dos grupos.\n",
+        "\n",
+        "#### Instrucciones\n",
+        "\n",
+        "-   Filtra `salaries` donde \"`Employee_Location`\" es \"`US`\" o \"`GB`\", guardando como `usa_and_gb`.\n",
+        "\n",
+        "-   Utiliza `usa_and_gb` para crear un gráfico de barras que visualice \"`Salary_USD`\" frete a \"`Employee_Location`\"."
+      ],
+      "id": "ef593f00"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Filter for employees in the US or GB\n",
+        "usa_and_gb = salaries[salaries['Employee_Location'].isin(['US', 'GB'])]\n",
+        "\n",
+        "# Create a barplot of salaries by location\n",
+        "sns.barplot(data=usa_and_gb, x='Employee_Location', y='Salary_USD')\n",
+        "plt.show()"
+      ],
+      "id": "28322b91",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Al subconfigurar los datos, pudiste comparar directamente los salarios entre EE.UU. y Gran Bretaña. La visualización sugiere que has generado una hipótesis que vale la pena investigar formalmente para determinar si existe una diferencia real o no.\n",
+        "\n",
+        "### Elegir una hipótesis\n",
+        "\n",
+        "Has visto cómo las visualizaciones pueden utilizarse para generar hipótesis, ¡lo que las convierte en una parte crucial del análisis exploratorio de datos!\n",
+        "\n",
+        "En este ejercicio, generarás un diagrama de barras para inspeccionar cómo difieren los salarios según el tamaño de la empresa y la situación laboral.\n",
+        "\n",
+        "Como referencia, hay cuatro valores:\n",
+        "\n",
+        "| Valor | Significado       |\n",
+        "|-------|-------------------|\n",
+        "| `CT`  | Contratista       |\n",
+        "| `FL`  | Autónomo          |\n",
+        "| `PT`  | A tiempo parcial  |\n",
+        "| `FT`  | A tiempo completo |\n",
+        "\n",
+        "#### Instrucciones\n",
+        "\n",
+        "1. Elabora un diagrama de barras comparando \"`Salary_USD`\" por \"`Company_Size`\", factorizando \"`Employment_Status`\".\n"
+      ],
+      "id": "fa80184e"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Create a bar plot  of salary versus company size, factoring in employment status\n",
+        "sns.barplot(data=salaries, x='Company_Size', y='Salary_USD', hue='Employment_Status')\n",
+        "plt.show()"
+      ],
+      "id": "b51f566f",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "2. **Pregunta**\n",
+        "¿ Cuál es una hipótesis razonable que se puede generar a partir de esta trama?\n",
+        "\n",
+        "**Respuestas Posibles**\n",
+        "\n",
+        "- [ ] Por término medio, las pequeñas empresas pagan menos a los empleados a tiempo parcial que las grandes empresas.\n",
+        "- [ ] Los autónomos ganan más en las empresas medianas que en las pequeñas o grandes.\n",
+        "- [X] Por término medio, las grandes empresas pagan más a los contratistas que las medianas.\n",
+        "- [ ] No se puede generar ninguna hipótesis a partir de este gráfico.\n",
+        "\n",
+        "Los contratistas parecen se mejor pagados por las grandes empresas en promedio según los datos, ¡así que esta es una hipótesis razonable!"
+      ],
+      "id": "1045dcfd"
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "name": "python3",
+      "language": "python",
+      "display_name": "Python 3 (ipykernel)",
+      "path": "/Users/macbookairedwin/Documents/Datacamp/analista-de-datos-en-python/.venv/share/jupyter/kernels/python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}

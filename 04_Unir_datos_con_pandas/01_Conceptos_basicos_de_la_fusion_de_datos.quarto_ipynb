@@ -1,0 +1,335 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "title: \"Conceptos Básicos de la fusión de datos\"\n",
+        "---\n",
+        "\n",
+        "Aprende a fusionar datos dispares mediante uniones internas. Combinando información de múltiples fuentes, descubrirás perspectivas convincentes que antes podían estar ocultas. También aprenderás cómo la relación entre esas fuentes, de uno a uno o de uno a muchos, puede afectar a tu resultado.\n",
+        "\n",
+        "## Unión interna\n",
+        "\n",
+        "### Qué columna elegiremos para fusionar?\n",
+        "\n",
+        "Chicago proporciona una lista de propietarios de taxis y vehículos con licencia para operar en la ciudad, por seguridad pública. Tu objetivo es unir dos tablas. Una tabla se llama `taxi_owners` y contiene información sobre los propietarios de las empresas de taxis, mientras que la otra se llama `taxi_veh`e incluye información sobre cada vehículo de taxi."
+      ],
+      "id": "412e4a3b"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import pandas as pd"
+      ],
+      "id": "617fdf28",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "taxi_owners = pd.read_pickle('./data/taxi_owners.p')\n",
+        "taxi_owners.head()"
+      ],
+      "id": "f8d1d251",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "taxi_veh = pd.read_pickle('./data/taxi_vehicles.p')\n",
+        "taxi_veh.head()"
+      ],
+      "id": "44fe4f9d",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "#### Instrucciones:\n",
+        "\n",
+        "Elige una columna que utilizarías para fusionar las dos tablas utilizando el método `.merge()`.\n",
+        "\n",
+        "Respuestas posibles\n",
+        "\n",
+        "-   [ ] on='rid'\n",
+        "\n",
+        "-   [x] on='vid'\n",
+        "\n",
+        "-   [ ] on='year'\n",
+        "\n",
+        "-   [ ] on='zip'\n",
+        "\n",
+        "### Tu primera unión interna\n",
+        "\n",
+        "Te han encargado que averigües cuáles son los tipos de combustibles más utlizados en los taxis de Chicago. Para completar el análisis, tienes que fusionar las tablas `taxi_owners` y `taxi_veh` en la columna `vid`. A continuación, puedes utilizar la tabla combinada junto con el método `.values_counts()` para encontrar el `fuel_type` más común.\n",
+        "\n",
+        "#### Instrucciones:\n",
+        "\n",
+        "1.  Fusiona `taxi_owners` con `taxi_veh` en la columna `vid` y guarda el resultado en `taxi_own_veh`."
+      ],
+      "id": "7335954c"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Merge the taxi_owners and taxi_veh tables\n",
+        "taxi_own_veh = taxi_owners.merge(taxi_veh, on='vid')\n",
+        "taxi_own_veh.head()\n",
+        "\n",
+        "# Print the column names of taxi_own_veh\n",
+        "print(taxi_own_veh.columns)"
+      ],
+      "id": "d6f027ae",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "2.  Establece los sufijos izquierdo y derecho de la tabla para las columnas solapadas de la fusión en `_own` y `_veh`, respectivamente."
+      ],
+      "id": "c961638a"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Merge the taxi_owners and taxi_veh tables setting a suffix\n",
+        "taxi_own_veh = taxi_owners.merge(taxi_veh, on='vid', suffixes=('_own', '_veh'))\n",
+        "taxi_own_veh.head()\n",
+        "\n",
+        "# Print the column names of taxi_own_veh\n",
+        "print(taxi_own_veh.columns)"
+      ],
+      "id": "23bebfc4",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "3.  Selecciona la columna `fuel_type` de `taxi_own_veh` e imprime `value_counts()` para encontrar los `fuel_type` más utilizados."
+      ],
+      "id": "e6250b57"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Merge the taxi_owners and taxi_veh tables setting a suffix\n",
+        "taxi_own_veh = taxi_owners.merge(taxi_veh, on='vid', suffixes=('_own', '_veh'))\n",
+        "\n",
+        "# Print the value_counts to find the most popular fuel_type\n",
+        "print(taxi_own_veh['fuel_type'].value_counts())"
+      ],
+      "id": "f4f68abe",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### Uniones internas y número de filas devueltas\n",
+        "\n",
+        "Todas las fusiones que has estudiado hasta ahora se llaman uniones internas. Es necesario comprender que las uniones internas solo devuelven las filas con valores coincidentes en ambas tablas. Explorarás esto más a fondo revisando la fusión entre las tablas `wards` y `census`, y comparándola después con fusiones de copias de estas tablas ligeramente alteradas, denominadas `wards_altered` y `census_altered`. La primera fila de la columna `wards` se ha modificado en las tablas alteradas. Examinarás cómo afecta esto a la fusión entre ellos."
+      ],
+      "id": "82952f95"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "wards = pd.read_pickle('./data/ward.p')\n",
+        "wards.head()"
+      ],
+      "id": "8027dfb4",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "census = pd.read_pickle('./data/census.p')\n",
+        "census.head()"
+      ],
+      "id": "fdc54bc1",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "wards_altered = wards.copy()\n",
+        "wards_altered.loc[0, 'ward'] = 61\n",
+        "wards_altered.head()"
+      ],
+      "id": "61422b3f",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "census_altered = census.copy()\n",
+        "census_altered.loc[0, 'ward'] = None\n",
+        "census_altered.head()"
+      ],
+      "id": "a53c2140",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "#### Instrucciones:\n",
+        "\n",
+        "1.  Fusiona `wards` y `census` en la columna `ward` y guarda el resultado en `ward_census`."
+      ],
+      "id": "67dfa278"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Merge the wards and census tables on the ward column\n",
+        "ward_census = wards.merge(census, on='ward')\n",
+        "\n",
+        "# Print the shape of wards_census\n",
+        "print(f'ward_census table shape: {ward_census.shape}')"
+      ],
+      "id": "64c4d676",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "2.  Fusiona las tablas `merge_altered` y `census` en la columna `ward` y observa la diferencia en las filas devueltas."
+      ],
+      "id": "fe9df550"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Print the first few rows of the wards_altered table to view the change\n",
+        "print(wards_altered[['ward']].head())\n",
+        "\n",
+        "# Merge the wards_altered and census tables on the ward column\n",
+        "wards_altered_census =  wards_altered.merge(census, on='ward')\n",
+        "\n",
+        "# Print the shape of wards_altered_census\n",
+        "print(f'wards_altered_census table shape: {wards_altered_census.shape}')"
+      ],
+      "id": "297a5b90",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "3.  Fusiona las tablas `wards` y `census_altered` en la columna `ward` y observa la diferencia en las filas devueltas."
+      ],
+      "id": "9e34b2f6"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Print the first few rows of the wards_altered table to view the change\n",
+        "print(census_altered[['ward']].head())\n",
+        "\n",
+        "# Merge the wards_altered and census tables on the ward column\n",
+        "wards_altered_census =  wards.merge(census_altered, on='ward')\n",
+        "\n",
+        "# Print the shape of wards_altered_census\n",
+        "print(f'wards_altered_census table shape: {wards_altered_census.shape}')"
+      ],
+      "id": "e2d26eb8",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "En el paso 1, el `.merge()` devolvió una tabla con el mismo número de filas que la tabla original `wards`. Sin embargo, en los pasos 2 y 3, al usar las tablas alteradas con la primera fila alterada de la columna `ward`, el número de filas devueltas fue menor. No había un valor coincidente en la columna `ward` de la otra tabla. *Recuerda que `.merge()` solo devuelve filas donde los valores coinciden en ambas tablas.*\n",
+        "\n",
+        "## Relaciones de uno a muchos\n",
+        "\n",
+        "En una relación de uno a muchos cada fila de la tabla izquierda esta relacionada con una o varias filas de la tabla derecha.\n",
+        "\n",
+        "A continuación se muestran algunos ejemplos de relación uno a uno y relación uno a muchos:\n",
+        "\n",
+        "| **Uno a uno** | **Uno a muchos** |\n",
+        "|---------------------------------------|---------------------------------|\n",
+        "| La relación entre `products` y `inventory` | La relación entre `products` y `orders` |\n",
+        "| La relación entre `customer`y `cust_tax_info` | La relación entre `customers`y `orders` |\n",
+        "\n",
+        "### Fusión de uno a muchos\n",
+        "\n",
+        "Una empresa puede tener uno o varios propietarios. En este ejercicio, seguirás adquiriendo experiencia con las uniones de uno a muchos fusionando una tabla de propietarios de empresas, llamada `biz_owners`, con la tabla `licenses`. Recuerda de la lección de video que, con una relación de uno a muchos, una fila de la tabla izquierda puede repetirse si está relacionada con varias filas de la tabla de la derecha. En esta lección, profundizarás en este tema averiguando cuál es el título de propietario de empresa más habitual (por ejemplo, secretario, CEO, o vicepresidente).\n"
+      ],
+      "id": "972799de"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "licenses = pd.read_pickle('./data/licenses.p')\n",
+        "licenses.head()"
+      ],
+      "id": "9483891e",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "biz_owners = pd.read_pickle('./data/business_owners.p')\n",
+        "biz_owners.head()"
+      ],
+      "id": "f3e6ba4b",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "#### Instrucciones:\n"
+      ],
+      "id": "57e80d50"
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "name": "python3",
+      "language": "python",
+      "display_name": "Python 3 (ipykernel)",
+      "path": "/Users/macbookairedwin/Documents/Datacamp/analista-de-datos-en-python/.venv/share/jupyter/kernels/python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}
