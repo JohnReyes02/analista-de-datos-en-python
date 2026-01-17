@@ -9,8 +9,8 @@ execute:
 
 book:
   title: "Analísta de Datos en Python"
-  reader-mode: false
   author: "Edwin John Fredy Reyes Aguirre"
+  reader-mode: false
   date: last-modified
 
   sidebar:
@@ -18,7 +18,6 @@ book:
     search: true
     collapse-level: 1
   
-  # En esta seccion se enlaza el repositorio de GitHub
   repo-url: https://github.com/JohnReyes02/analista-de-datos-en-python
   repo-branch: main
   repo-actions: [edit, issue, source]
@@ -99,7 +98,6 @@ book:
         - 09_Pruebas_de_hipotesis_en_python/02_Pruebas_de_dos_muestras_y_ANOVA.qmd
         - 09_Pruebas_de_hipotesis_en_python/03_Pruebas_de_proporcion.qmd
         - 09_Pruebas_de_hipotesis_en_python/04_Pruebas_no_parametricas.qmd
-
 
 website:
   site-url: https://johnreyes02.github.io/analista-de-datos-en-python/
